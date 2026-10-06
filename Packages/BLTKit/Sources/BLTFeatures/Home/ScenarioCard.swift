@@ -1,7 +1,8 @@
 import BLTDesign
 import SwiftUI
 
-/// One tappable scenario on Home: title, subtitle and plain counts. No streaks, points or ranks.
+/// One tappable scenario on Home: title, subtitle and one completion bar with its percent.
+/// No streaks, points or ranks.
 struct ScenarioCard: View {
     @Environment(\.colorScheme) private var colorScheme
 
@@ -11,19 +12,14 @@ struct ScenarioCard: View {
     var body: some View {
         let palette = Palette(colorScheme)
         Button(action: action) {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text(summary.title)
                     .font(.headline)
                     .foregroundStyle(palette.textPrimaryColor)
                 Text(summary.subtitle)
                     .font(.subheadline)
                     .foregroundStyle(palette.textSecondaryColor)
-                Text("\(summary.dueCount) due · \(summary.newCount) new · \(summary.learnedCount) learned")
-                    .font(.subheadline)
-                    .foregroundStyle(palette.textPrimaryColor)
-                Text("\(summary.answeredCount) of \(summary.totalCount) answered")
-                    .font(.footnote)
-                    .foregroundStyle(palette.textSecondaryColor)
+                CompletionBar(percent: summary.completionPercent)
             }
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -33,8 +29,15 @@ struct ScenarioCard: View {
             .contentShape(RoundedRectangle(cornerRadius: 14))
         }
         .buttonStyle(.plain)
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(accessibilityLabel)
         .accessibilityHint("Opens a practice session for this scenario")
         .accessibilityIdentifier(AccessibilityID.scenarioCard(summary.id.rawValue))
+    }
+
+    /// Title, then subtitle, then completion: "zz A, zz sub A, 35 percent complete".
+    private var accessibilityLabel: String {
+        let completion = CompletionBar.accessibilityValue(forPercent: summary.completionPercent)
+        return "\(summary.title), \(summary.subtitle), \(completion)"
     }
 }

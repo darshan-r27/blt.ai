@@ -294,3 +294,12 @@ The intro title is **blt.ai** (it was "For the love of Tamil"; the tagline stays
 **App icon:** "Two voices": a Telugu అ bubble overlapping a Tamil அ bubble, in standard, dark and tinted variants (`tools/app-icon/`).
 
 **Known limits:** the iOS keyboard's return key and some system keyboard UI stay system blue (SwiftUI tint does not reach them). The Settings reset button and confirmation dialogs use a destructive role, which could render red on some iOS versions; revisit if seen.
+
+## 033 — Home: shiny greeting on top; cards show completion %, wrong answers stay incomplete
+**Status:** active — supersedes the card counts in 031
+
+The greeting "Hi <name>" is the first element on Home, in a shimmering deep-purple heading (`ShimmerText`), above a plain "Scenarios" label. The large "Scenarios" navigation title and the overall "n items due" / "Nothing is due for review right now." lines are gone: if nothing is pressing, nothing is shown.
+
+Each scenario card shows its title, subtitle and one completion percent with a bar (`CompletionBar`), replacing "x due · y new · z learned" and "n of N answered". An item is **complete** only when its latest outcome is `correct`; never answered, `wrongRegister` and `wrong` are incomplete, so a wrong answer keeps the scenario below 100% and the session planner (unchanged) re-presents it. The percent rounds down, so 100% means every item is complete.
+
+**Accessibility:** every shimmer gradient stop, the highlight peak and every blend between them keeps at least 4.5:1 against the page in light and dark (tested); Reduce Motion gives a static gradient; the sweep is hidden from VoiceOver.
