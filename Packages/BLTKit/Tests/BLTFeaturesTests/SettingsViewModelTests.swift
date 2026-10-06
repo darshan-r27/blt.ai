@@ -40,12 +40,13 @@ private final class NameCounter {
 @MainActor
 private func makeModel(
     store: any ProgressStore,
+    allReviewed: Bool = false,
     profileStore: any ProfileStore = InMemoryProfileStore(initial: UserProfile(name: "zz Sample")),
     onDidReset: @escaping @MainActor () -> Void = {},
     onDidChangeName: @escaping @MainActor (UserProfile) -> Void = { _ in }
 ) -> SettingsViewModel {
     SettingsViewModel(
-        dependencies: makeDependencies(store: store),
+        dependencies: makeDependencies(store: store, allReviewed: allReviewed),
         profileStore: profileStore,
         profileName: "zz Sample",
         onDidReset: onDidReset,
@@ -53,11 +54,12 @@ private func makeModel(
     )
 }
 
-private func makeDependencies(store: any ProgressStore) -> AppDependencies {
+private func makeDependencies(store: any ProgressStore, allReviewed: Bool = false) -> AppDependencies {
+    let rest: ReviewStatus = allReviewed ? .reviewed : .unreviewed
     let items = [
         makeItem("zz-s1", status: .reviewed),
-        makeItem("zz-s2", status: .unreviewed),
-        makeItem("zz-s3", status: .unreviewed)
+        makeItem("zz-s2", status: rest),
+        makeItem("zz-s3", status: rest)
     ]
     let scenario = Scenario(
         id: ScenarioID(rawValue: "zz-s"),
@@ -97,6 +99,19 @@ struct SettingsViewModelTests {
         let model = makeModel(store: SettingsStubStore())
         #expect(model.reviewedCount == 1)
         #expect(model.totalCount == 3)
+    }
+
+    @Test func contentStatementIsTheDraftWordingUntilEverythingIsReviewed() {
+        let model = makeModel(store: SettingsStubStore())
+        #expect(!model.allContentReviewed)
+        #expect(model.contentStatement.contains("drafted by an AI"))
+        #expect(!model.contentStatement.contains("Every lesson"))
+    }
+
+    @Test func contentStatementClaimsNativeReviewOnlyWhenEveryItemIsReviewed() {
+        let model = makeModel(store: SettingsStubStore(), allReviewed: true)
+        #expect(model.allContentReviewed)
+        #expect(model.contentStatement.hasPrefix("Every lesson was checked by a native Tamil speaker"))
     }
 
     @Test func requestingResetDoesNotErase() async {
