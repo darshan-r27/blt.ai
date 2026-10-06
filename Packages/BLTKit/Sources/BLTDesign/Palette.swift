@@ -2,7 +2,9 @@ import SwiftUI
 
 /// Explicit light/dark palette. There is deliberately no red: feedback colour comes only from
 /// `FeedbackTone`, and tones read as affirming (green), gentle (amber) and calm (blue-grey).
-/// Contrast (WCAG >= 4.5:1) and the no-red rule are enforced by `PaletteTests`.
+/// The page background is a light lilac in light mode and a deep muted purple-grey in dark mode;
+/// cards (`surface`) are a step lighter than the page in both. Contrast (WCAG >= 4.5:1), tone-versus-page
+/// distinctness and the no-red rule are enforced by `PaletteTests`.
 public struct Palette: Sendable, Equatable {
     public enum Scheme: Sendable, Equatable, CaseIterable {
         case light
@@ -40,20 +42,20 @@ public struct Palette: Sendable, Equatable {
         self.scheme = scheme
         switch scheme {
         case .light:
-            background = DesignRGB(hex: 0xF6F5F1)
-            surface = DesignRGB(hex: 0xFFFFFF)
-            textPrimary = DesignRGB(hex: 0x1C1D20)
-            textSecondary = DesignRGB(hex: 0x55585F)
-            outline = DesignRGB(hex: 0xC9CCD1)
-            affirm = TonePair(background: DesignRGB(hex: 0xDDF1E2), foreground: DesignRGB(hex: 0x14462A))
-            nudge = TonePair(background: DesignRGB(hex: 0xFCEBC8), foreground: DesignRGB(hex: 0x5C3A00))
-            neutral = TonePair(background: DesignRGB(hex: 0xE1E8F2), foreground: DesignRGB(hex: 0x22344F))
+            background = DesignRGB(hex: 0xF0EAFA)
+            surface = DesignRGB(hex: 0xFCFAFF)
+            textPrimary = DesignRGB(hex: 0x1D1B24)
+            textSecondary = DesignRGB(hex: 0x56535F)
+            outline = DesignRGB(hex: 0xCBC6D8)
+            affirm = TonePair(background: DesignRGB(hex: 0xCAE8D4), foreground: DesignRGB(hex: 0x14462A))
+            nudge = TonePair(background: DesignRGB(hex: 0xF6E0B0), foreground: DesignRGB(hex: 0x5C3A00))
+            neutral = TonePair(background: DesignRGB(hex: 0xD3DEEE), foreground: DesignRGB(hex: 0x22344F))
         case .dark:
-            background = DesignRGB(hex: 0x121316)
-            surface = DesignRGB(hex: 0x1C1E22)
-            textPrimary = DesignRGB(hex: 0xF1F2F4)
-            textSecondary = DesignRGB(hex: 0xAEB3BB)
-            outline = DesignRGB(hex: 0x3A3E45)
+            background = DesignRGB(hex: 0x1A1821)
+            surface = DesignRGB(hex: 0x24212D)
+            textPrimary = DesignRGB(hex: 0xF2F1F5)
+            textSecondary = DesignRGB(hex: 0xB1AEBC)
+            outline = DesignRGB(hex: 0x3F3B4A)
             affirm = TonePair(background: DesignRGB(hex: 0x173825), foreground: DesignRGB(hex: 0xBDEBC8))
             nudge = TonePair(background: DesignRGB(hex: 0x3B2A0A), foreground: DesignRGB(hex: 0xFFDDA0))
             neutral = TonePair(background: DesignRGB(hex: 0x1F2A3B), foreground: DesignRGB(hex: 0xCCDAF0))
