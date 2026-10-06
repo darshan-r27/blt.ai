@@ -41,7 +41,7 @@ Pure audio gives no way to render "you said X, target was Y," so feedback become
 **Decision:** voice is the stimulus and the response; text is the feedback surface only. Navigation is tap-only.
 
 ## 005 — iOS 17 deployment target, not 26
-**Status:** active
+**Status:** superseded by 029
 
 iOS 26's `SpeechAnalyzer` is better but narrows device support, and its supported-locale list likely excludes Tamil anyway. Verify on hardware (Task 0.1) before relying on any Apple speech API.
 
@@ -258,3 +258,12 @@ Two owner directions for v1 content:
 **Why:** the data is on the order of a hundred review records plus an attempt log. Plain value types are `Sendable` and stay clean under Swift 6 strict concurrency, where SwiftData `@Model` classes and `ModelContext` isolation add friction. Reset is deleting one file, and the schema version is explicit. The protocol boundary lets SwiftData replace it later without touching callers.
 
 **Consequences:** a corrupt file throws and is never silently overwritten. v2 can swap the store behind the same protocol.
+
+## 029 — iOS 27 deployment target and iPhone 17 simulator as the standard
+**Status:** active — supersedes 005
+
+**Decision:** the app targets iOS 27, and iPhone 17 is the standard test simulator. `IPHONEOS_DEPLOYMENT_TARGET = 27.0`; Swift packages declare `.iOS(.v27)`.
+
+**Why:** 005 chose iOS 17 to widen device support and avoid iOS 26's `SpeechAnalyzer`. This is a portfolio project that is not distributed (README), so device reach has no value, and the only simulator runtime installed is iOS 27, so testing on the real deployment target is simpler and more honest than testing on a newer OS than we claim to support. The `SpeechAnalyzer` concern belonged to v2 voice and is revisited there (Task 0.1).
+
+**Consequence:** the original reasoning is kept in 005. Docs that said iOS 17 were updated in the same change. Nothing in v1 depends on iOS 27-only APIs, so lowering the target later is a one-line change if distribution ever matters.

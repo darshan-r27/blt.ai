@@ -12,7 +12,7 @@ Written for someone who has not built an iOS app or used an agentic coding tool 
 | --- | --- |
 | Mac | Your M1 with 16GB is fine. Xcode is the heaviest thing you'll run. |
 | Xcode | Free, Mac App Store, ~15GB plus another ~10GB of simulators. Install it tonight; it's slow. |
-| A physical iPhone | **Non-negotiable.** Speech and microphone APIs do not work in Simulator. Any iPhone running iOS 17+. |
+| A physical iPhone | **Non-negotiable.** Speech and microphone APIs do not work in Simulator. An iPhone able to run the app's deployment target (iOS 27, DECISIONS 029). |
 | Apple ID | A free account gives you 7-day device provisioning, which is enough for all development. |
 | Apple Developer Program | $99/yr, needed only for TestFlight (Task 5.5). Defer it until week 9. |
 | Claude Code | See below. |

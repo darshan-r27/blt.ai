@@ -31,13 +31,13 @@ xcodebuild -scheme BLTApp -destination 'platform=iOS Simulator,name=iPhone 17' t
 swiftlint --strict
 ```
 
-The Simulator runtime on this Mac is iOS 27 (iPhone 17 and later); there is no iOS 17 runtime, so the iOS 17 deployment target is verified by build settings, not by running an iOS 17 simulator. List available devices with `xcrun simctl list devices available`; parallel agents should each use a different device.
+The standard target is **iOS 27** and the standard simulator is **iPhone 17** (the only runtime installed here is iOS 27). List devices with `xcrun simctl list devices available`; parallel agents should each use a different device (DECISIONS 029).
 
 Speech and microphone APIs **do not work in Simulator.** Anything touching `AudioRecorder`, `SFSpeechRecognizer`, or the scoring engines must be verified by the human on a physical device. Say so explicitly when you finish such a task rather than reporting it as done.
 
 ## Conventions
 
-- Swift 6, strict concurrency `complete`, iOS 17 deployment target
+- Swift 6, strict concurrency `complete`, iOS 27 deployment target
 - SwiftUI only. No UIKit unless there is no alternative, and then say why
 - Module structure per PRD §7: `Catalog`, `Session`, `Audio`, `Scoring`, `Progress`, `DesignSystem`
 - One type per file, named for the type

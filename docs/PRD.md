@@ -140,7 +140,7 @@ The resulting claim is narrower than v1's but stronger as a demonstration: *the 
 
 | Layer | Choice | Note |
 | --- | --- | --- |
-| UI | SwiftUI, iOS 17+ | Not 26 — widens device support. Swift 6 strict concurrency on. |
+| UI | SwiftUI, iOS 27 | Portfolio project, not distributed (DECISIONS 029); matches the simulator runtime available. Swift 6 strict concurrency on. |
 | Audio capture | AVAudioEngine | Tap runs on a real-time thread; capture locals only, never a `@MainActor` object. Recording deleted in a `defer` so a scoring failure still deletes; orphans swept at launch. |
 | Playback | AVAudioPlayer + AVAudioUnitTimePitch | Bundled AAC. Speed change must preserve pitch. |
 | ASR | Core ML, converted from AI4Bharat IndicConformer-TA (120M) | Fallback: whisper.cpp small via SPM. |
