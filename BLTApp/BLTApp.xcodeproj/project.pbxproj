@@ -6,6 +6,11 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D1D0DF7D30757400000FB9E5 /* content in Resources */ = {isa = PBXBuildFile; fileRef = D1D0DF7C30757400000FB9E5 /* content */; };
+		D1D0DF7B30757375000FB9E5 /* BLTFeatures in Frameworks */ = {isa = PBXBuildFile; productRef = D1D0DF7A30757375000FB9E5 /* BLTFeatures */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D189D3743074925C00F60AD0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -17,8 +22,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D1D0DF7C30757400000FB9E5 /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = content; path = ../content; sourceTree = "<group>"; };
 		000000000000000000000120 /* BLTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D189D3703074925C00F60AD0 /* BLTAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLTAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D0DF793075719A000FB9E5 /* BLTKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BLTKit; path = ../Packages/BLTKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -38,6 +45,7 @@
 		000000000000000130000000 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				D1D0DF7B30757375000FB9E5 /* BLTFeatures in Frameworks */,
 			);
 		};
 		D189D36D3074925C00F60AD0 /* Frameworks */ = {
@@ -52,7 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				000000000000000000000010 /* BLTApp */,
+				D1D0DF7C30757400000FB9E5 /* content */,
 				D189D3713074925C00F60AD0 /* BLTAppUITests */,
+				D1D0DF783075719A000FB9E5 /* Frameworks */,
 				000000000000000000000020 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +74,14 @@
 				D189D3703074925C00F60AD0 /* BLTAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D1D0DF783075719A000FB9E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1D0DF793075719A000FB9E5 /* BLTKit */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +101,9 @@
 				000000000000000000000010 /* BLTApp */,
 			);
 			name = BLTApp;
+			packageProductDependencies = (
+				D1D0DF7A30757375000FB9E5 /* BLTFeatures */,
+			);
 			productName = MyApp;
 			productReference = 000000000000000000000120 /* BLTApp.app */;
 			productType = "com.apple.product-type.application";
@@ -151,6 +172,7 @@
 		000000000000000140000000 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				D1D0DF7D30757400000FB9E5 /* content in Resources */,
 			);
 		};
 		D189D36E3074925C00F60AD0 /* Resources */ = {
@@ -326,12 +348,16 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BLT.ai;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -365,12 +391,16 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BLT.ai;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -471,6 +501,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1D0DF7A30757375000FB9E5 /* BLTFeatures */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BLTFeatures;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 000000000000000000000000 /* Project object */;
 }
