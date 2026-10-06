@@ -278,3 +278,10 @@ Two owner directions for v1 content:
 **Rules:** the name is trimmed, 1 to 40 characters, no control characters; any script is allowed because it is the user's own name. "Change name" lives in Settings. Reset progress does not delete the name. Quitting a session mid-way keeps every answer already given, because each answer is saved the moment it is made.
 
 **Privacy manifest:** `NSPrivacyCollectedDataTypes` stays empty because nothing is collected off-device.
+
+## 031 — Scenario cards show answered progress, not the native-review count
+**Status:** active — amends 025
+
+The Home card line "n of 20 reviewed" counted items whose `reviewStatus` is `reviewed` (native-speaker review of the AI-drafted content), but sat next to the learner's own progress and read as "questions you've reviewed". The owner is verifying the content JSON by hand, so the card now shows the learner's progress instead: **"n of 20 answered"** (distinct items answered at least once).
+
+**Unchanged:** the item-level "Unreviewed draft" badge on Question and Feedback and the Settings statement ("drafted by an AI … n of 100 reviewed") still disclose review status honestly (025). Only the card changed.

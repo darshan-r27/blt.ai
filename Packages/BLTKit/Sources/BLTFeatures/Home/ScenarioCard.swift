@@ -21,7 +21,7 @@ struct ScenarioCard: View {
                 Text("\(summary.dueCount) due · \(summary.newCount) new · \(summary.learnedCount) learned")
                     .font(.subheadline)
                     .foregroundStyle(palette.textPrimaryColor)
-                Text("\(summary.reviewedCount) of \(summary.totalCount) reviewed")
+                Text("\(summary.answeredCount) of \(summary.totalCount) answered")
                     .font(.footnote)
                     .foregroundStyle(palette.textSecondaryColor)
             }
