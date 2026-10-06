@@ -68,6 +68,60 @@ struct PaletteTests {
         #expect(Palette.light.background != Palette.dark.background)
     }
 
+    // MARK: Lilac page background
+
+    @Test func lightBackgroundIsALightLilac() {
+        let background = Palette.light.background
+        #expect(background.hue >= 255 && background.hue <= 285, "hue \(background.hue)")
+        #expect(background.saturation >= 0.05 && background.saturation <= 0.20, "saturation \(background.saturation)")
+        #expect(background.relativeLuminance >= 0.8, "luminance \(background.relativeLuminance)")
+        #expect(!background.isRed)
+    }
+
+    @Test func darkBackgroundIsADeepMutedPurpleGrey() {
+        let background = Palette.dark.background
+        #expect(background.hue >= 245 && background.hue <= 285, "hue \(background.hue)")
+        #expect(background.saturation <= 0.35, "saturation \(background.saturation)")
+        #expect(background.relativeLuminance <= 0.02, "luminance \(background.relativeLuminance)")
+        #expect(Palette.dark.background.relativeLuminance < Palette.light.background.relativeLuminance)
+    }
+
+    @Test func lilacIsFarFromRed() {
+        for scheme in Palette.Scheme.allCases {
+            let hue = Palette(scheme: scheme).background.hue
+            let distanceFromRed = min(hue, 360 - hue)
+            #expect(distanceFromRed > 90, "\(scheme) background hue \(hue)")
+        }
+    }
+
+    @Test(arguments: Palette.Scheme.allCases)
+    func surfaceIsASlightlyLighterCardOnThePage(scheme: Palette.Scheme) {
+        let palette = Palette(scheme: scheme)
+        #expect(palette.surface.relativeLuminance > palette.background.relativeLuminance)
+        let ratio = palette.surface.contrastRatio(with: palette.background)
+        #expect(ratio >= 1.05 && ratio <= 1.3, "\(scheme) surface vs page \(ratio)")
+    }
+
+    @Test(arguments: Palette.Scheme.allCases)
+    func outlineIsVisibleAgainstPageAndSurface(scheme: Palette.Scheme) {
+        let palette = Palette(scheme: scheme)
+        #expect(palette.outline.contrastRatio(with: palette.background) >= 1.2)
+        #expect(palette.outline.contrastRatio(with: palette.surface) >= 1.2)
+    }
+
+    /// Minimum contrast ratio between a tone's background and the page behind it, so a tinted
+    /// panel never dissolves into the page. Tones also carry a border and a symbol (see `OptionButton`).
+    private let minimumToneVersusPageContrast = 1.08
+
+    @Test(arguments: Palette.Scheme.allCases)
+    func everyToneBackgroundIsDistinctFromThePage(scheme: Palette.Scheme) {
+        let palette = Palette(scheme: scheme)
+        for tone in allTones {
+            let ratio = palette.tone(tone).background.contrastRatio(with: palette.background)
+            #expect(ratio >= minimumToneVersusPageContrast, "\(tone) in \(scheme) vs page \(ratio)")
+        }
+    }
+
     @Test func paletteIsDeterministic() {
         for scheme in Palette.Scheme.allCases {
             #expect(Palette(scheme: scheme) == Palette(scheme: scheme))
