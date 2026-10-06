@@ -203,7 +203,7 @@ async function ingest(entries) {
   renderAll();
 }
 $('btnOpenDir').addEventListener('click', async () => {
-  if (!window.showDirectoryPicker) { alert('This browser cannot save into folders. Use Chrome or Edge, or click “Open files…”.'); return; }
+  if (!window.showDirectoryPicker) { alert('This browser cannot open folders (Safari, Firefox and embedded viewers cannot). Open this page in Google Chrome, or use “Open files…”.'); return; }
   try {
     const dir = await window.showDirectoryPicker({ mode: 'readwrite' });
     const entries = [];
@@ -212,7 +212,7 @@ $('btnOpenDir').addEventListener('click', async () => {
     }
     if (!entries.length) { alert('No scenario-*.json files found in that folder. Pick the repo’s content folder.'); return; }
     state.dir = dir; await ingest(entries);
-  } catch (err) { if (err.name !== 'AbortError') alert(err.message); }
+  } catch (err) { if (err.name !== 'AbortError') alert('Could not open the folder: ' + err.message + '\n\nIf this keeps happening, open the page in Google Chrome (see the note on the page), or use “Open files…”.'); }
 });
 $('btnOpenFiles').addEventListener('click', () => $('fileInput').click());
 $('fileInput').addEventListener('change', async (ev) => {
@@ -420,6 +420,15 @@ document.addEventListener('keydown', (ev) => {
   if (ev.key === 'ArrowRight') { ev.preventDefault(); step(1, ev.shiftKey ? 'ok' : undefined); }
   if (ev.key === 'ArrowLeft') { ev.preventDefault(); step(-1); }
 });
+(function capabilityCheck() {
+  if (window.showDirectoryPicker) return;
+  const b = $('btnOpenDir'); b.disabled = true; b.title = 'Not supported in this browser: open this page in Google Chrome.';
+  $('editor').replaceChildren(h('div', { class: 'card' },
+    h('h2', { text: 'This browser cannot open or save into folders' }),
+    h('p', { class: 'help', text: 'Folder access works in Google Chrome and Microsoft Edge only (not Safari, Firefox, or the viewer inside other apps). To use it, open this page in Chrome by running this in a terminal:' }),
+    h('pre', { text: 'open -a "Google Chrome" ~/dev/blt.ai/tools/content-editor/index.html' }),
+    h('p', { class: 'help', text: 'Or keep using “Open files…” here: pick all five scenario files at once. Saving will then download the edited files; move them into content/ and replace the originals.' })));
+})();
 window.addEventListener('beforeunload', (ev) => { if (state.files.some(fileDirty)) { ev.preventDefault(); ev.returnValue = ''; } });
 </script>
 </body>
