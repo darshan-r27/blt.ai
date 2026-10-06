@@ -19,7 +19,15 @@
   }
   * { box-sizing: border-box; }
   body { margin: 0; font: 15px/1.45 system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); }
-  header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 14px; background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  #top { position: sticky; top: 0; z-index: 5; }
+  header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 14px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  #reviewbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 14px; background: var(--bg); border-bottom: 2px solid var(--accent); }
+  #reviewbar[hidden] { display: none; }
+  #rvPos { font-weight: 600; flex: 1; min-width: 220px; }
+  #rvPos small { display: block; font-weight: 400; color: var(--muted); }
+  #rvBar { width: 100%; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  #rvBar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  #reviewbar label { font-size: 13px; color: var(--muted); }
   header h1 { font-size: 16px; margin: 0 8px 0 0; font-weight: 600; }
   button, select, input[type=text], textarea { font: inherit; color: var(--ink); }
   button { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
@@ -31,9 +39,9 @@
   input[type=text]:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; }
   .spacer { flex: 1; }
   #status { font-size: 13px; color: var(--muted); }
-  main { display: grid; grid-template-columns: 340px 1fr; min-height: calc(100vh - 56px); }
+  main { display: grid; grid-template-columns: 340px 1fr; min-height: calc(100vh - var(--topH, 56px)); }
   @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
-  #sidebar { border-right: 1px solid var(--line); background: var(--panel); overflow: auto; max-height: calc(100vh - 56px); }
+  #sidebar { border-right: 1px solid var(--line); background: var(--panel); overflow: auto; position: sticky; top: var(--topH, 56px); max-height: calc(100vh - var(--topH, 56px)); align-self: start; }
   #filters { padding: 10px; display: grid; gap: 6px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--panel); }
   #filters .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
   .scenario-title { padding: 8px 10px; font-weight: 600; background: var(--bg); border-bottom: 1px solid var(--line); font-size: 13px; }
@@ -43,7 +51,7 @@
   .item-row .id { font-size: 12px; opacity: .8; }
   .badge { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 99px; margin-right: 4px; }
   .b-bad { background: var(--bad-bg); color: var(--bad); } .b-edit { background: var(--info-bg); color: var(--info); }
-  .b-ok { background: var(--ok-bg); color: var(--ok); } .b-warn { background: var(--warn-bg); color: var(--warn); }
+  .b-chk { background: var(--ok-bg); color: var(--ok); } .b-ok { background: var(--ok-bg); color: var(--ok); } .b-warn { background: var(--warn-bg); color: var(--warn); }
   #editor { padding: 16px; max-width: 920px; }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
   .card h2 { margin: 0 0 4px; font-size: 14px; text-transform: none; }
@@ -66,6 +74,7 @@
 </style>
 </head>
 <body>
+<div id="top">
 <header>
   <h1>BLT.ai content editor</h1>
   <button id="btnOpenDir" class="primary">Open content folder…</button>
@@ -76,6 +85,17 @@
   <button id="btnCsv" disabled>Export review sheet (CSV)</button>
   <button id="btnSave" class="primary" disabled>Save changes</button>
 </header>
+<div id="reviewbar" hidden>
+  <button id="rvBack">← Back</button>
+  <div id="rvPos" aria-live="polite"></div>
+  <button id="rvNext">Next →</button>
+  <button id="rvOk" class="primary" title="Mark this item as checked and go to the next one">✓ Looks right · Next</button>
+  <button id="rvReviewed" title="Also set the item's review status to “reviewed”">Mark reviewed · Next</button>
+  <label><input type="checkbox" id="rvAuto" checked> <span id="rvAutoText">Auto-save when moving on</span></label>
+  <button id="rvReset" class="small" title="Forget which items you have checked">Reset checks</button>
+  <div id="rvBar"><i></i></div>
+</div>
+</div>
 <main>
   <aside id="sidebar">
     <div id="filters">
@@ -88,13 +108,15 @@
     </div>
     <div id="list"></div>
   </aside>
-  <section id="editor"><div class="empty">Open the <code>content</code> folder to start.<br>Chrome and Edge can save straight back to the files. In Safari or Firefox, use “Open files…”; saving then downloads the edited files for you to move into <code>content/</code>.</div></section>
+  <section id="editor"><div class="empty">Open the <code>content</code> folder to start. You will step through every item with Back / Next (Alt+→ / Alt+←; Alt+Shift+→ marks it checked).<br>Chrome and Edge can save straight back to the files. In Safari or Firefox, use “Open files…”; saving then downloads the edited files for you to move into <code>content/</code>.</div></section>
 </main>
 
 <script>
 'use strict';
 const TAMIL = /[஀-௿]/;
-const state = { files: [], dir: null, sel: null, selectedIsNew: false };
+const state = { files: [], dir: null, sel: null, checked: new Set() };
+try { state.checked = new Set(JSON.parse(localStorage.getItem('blt-editor-checked') || '[]')); } catch (_) { /* storage unavailable */ }
+function persistChecked() { try { localStorage.setItem('blt-editor-checked', JSON.stringify([...state.checked])); } catch (_) { /* ignore */ } }
 
 // ---------- helpers ----------
 const $ = (id) => document.getElementById(id);
@@ -173,7 +195,11 @@ async function ingest(entries) {
     files.push({ name, handle, data, original: serialize(data), originalData: JSON.parse(text) });
   }
   files.sort((a, b) => a.name.localeCompare(b.name));
-  state.files = files; state.sel = files.length ? { f: 0, i: 0 } : null;
+  state.files = files;
+  const fl = flat();
+  state.sel = fl.find((p) => !state.checked.has(state.files[p.f].data.items[p.i].id)) || fl[0] || null;
+  $('rvAuto').disabled = !files.some((f) => f.handle?.createWritable);
+  $('rvAutoText').textContent = $('rvAuto').disabled ? 'Auto-save (needs Chrome/Edge folder mode)' : 'Auto-save when moving on';
   renderAll();
 }
 $('btnOpenDir').addEventListener('click', async () => {
@@ -205,10 +231,8 @@ $('btnSave').addEventListener('click', async () => {
   let saved = 0, downloaded = 0;
   for (const f of state.files.filter(fileDirty)) {
     const text = serialize(f.data);
-    if (f.handle?.createWritable) {
-      const w = await f.handle.createWritable(); await w.write(text); await w.close(); saved++;
-    } else { download(f.name, text, 'application/json'); downloaded++; }
-    f.original = text; f.originalData = JSON.parse(text);
+    if (f.handle?.createWritable) { await writeFile(f); saved++; }
+    else { download(f.name, text, 'application/json'); downloaded++; f.original = text; f.originalData = JSON.parse(text); }
   }
   $('status').textContent = saved ? `Saved ${saved} file(s) in place.` : downloaded ? `Downloaded ${downloaded} file(s). Move them into content/ and replace the originals.` : 'No changes to save.';
   renderAll();
@@ -248,13 +272,45 @@ function renderList() {
           item.id + ' · ' + item.register + ' ',
           problems ? h('span', { class: 'badge b-bad', text: `${problems} problem${problems > 1 ? 's' : ''}` }) : null,
           itemDirty(f, item) ? h('span', { class: 'badge b-edit', text: 'edited' }) : null,
+          state.checked.has(item.id) ? h('span', { class: 'badge b-chk', text: '✓ checked' }) : null,
           item.reviewStatus === 'reviewed' ? h('span', { class: 'badge b-ok', text: 'reviewed' }) : null)));
     });
     if (rows.length) list.append(h('div', { class: 'scenario-title', text: `${f.data.title || f.name}${fileDirty(f) ? ' • edited' : ''}` }), ...rows);
   });
   if (!shown) list.append(h('div', { class: 'empty', text: state.files.length ? 'No items match the filters.' : '' }));
 }
-function select(fi, ii) { state.sel = { f: fi, i: ii }; renderList(); renderEditor(); }
+function select(fi, ii) { state.sel = { f: fi, i: ii }; renderList(); renderEditor(); $('editor').scrollTop = 0; window.scrollTo(0, 0); }
+
+// ---------- guided review: Back / Next through every item in order ----------
+function flat() { const out = []; state.files.forEach((f, fi) => f.data.items.forEach((_, ii) => out.push({ f: fi, i: ii }))); return out; }
+function position() { const fl = flat(); return { fl, idx: fl.findIndex((p) => state.sel && p.f === state.sel.f && p.i === state.sel.i) }; }
+async function writeFile(f) {
+  const text = serialize(f.data);
+  const w = await f.handle.createWritable(); await w.write(text); await w.close();
+  f.original = text; f.originalData = JSON.parse(text);
+}
+async function step(delta, mark) {
+  const cur = current(); if (!cur) return;
+  if (mark) { if (mark === 'reviewed') cur.item.reviewStatus = 'reviewed'; state.checked.add(cur.item.id); persistChecked(); }
+  if ($('rvAuto').checked && cur.f.handle?.createWritable && fileDirty(cur.f)) {
+    try { await writeFile(cur.f); $('status').textContent = `Auto-saved ${cur.f.name}.`; } catch (err) { alert('Auto-save failed: ' + err.message); return; }
+  }
+  const { fl, idx } = position(); const n = idx + delta;
+  if (n < 0 || n >= fl.length) { renderAll(); $('rvPos').firstChild.textContent = n < 0 ? 'This is the first item.' : 'End of the list: every item has been visited.'; return; }
+  select(fl[n].f, fl[n].i);
+}
+function updateReviewBar() {
+  const bar = $('reviewbar'); bar.hidden = state.files.length === 0;
+  document.documentElement.style.setProperty('--topH', $('top').offsetHeight + 'px');
+  if (bar.hidden) return;
+  const { fl, idx } = position(); const cur = current(); if (!cur) return;
+  const items = cur.f.data.items; const k = state.sel.i + 1;
+  const total = fl.length; const done = fl.filter((p) => state.checked.has(state.files[p.f].data.items[p.i].id)).length;
+  const sIdx = state.files.indexOf(cur.f) + 1;
+  const pos = $('rvPos'); pos.replaceChildren(document.createTextNode(`Item ${idx + 1} of ${total}${state.checked.has(cur.item.id) ? '  ✓ checked' : ''}`), h('small', { text: `Scenario ${sIdx} of ${state.files.length}: ${cur.f.data.title || cur.f.name} · item ${k} of ${items.length} · ${done} of ${total} checked` }));
+  $('rvBack').disabled = idx <= 0; $('rvNext').disabled = idx >= total - 1;
+  $('rvBar').firstElementChild.style.width = (100 * done / total) + '%';
+}
 function current() { return state.sel ? { f: state.files[state.sel.f], item: state.files[state.sel.f].data.items[state.sel.i] } : null; }
 
 function textField(label, value, onInput, opts = {}) {
@@ -347,12 +403,23 @@ function refreshDerived() {
   const bad = state.files.reduce((n, f) => n + f.data.items.filter((i) => validate(i, ids).length).length, 0);
   $('status').textContent = `${state.files.length} file(s) · ${state.files.reduce((n, f) => n + f.data.items.length, 0)} items · ${bad} with problems · ${dirtyFiles} edited`;
   $('btnSave').disabled = dirtyFiles === 0;
+  updateReviewBar();
 }
 function renderAll() {
   $('btnCsv').disabled = state.files.length === 0;
-  renderList(); renderEditor();
+  renderList(); renderEditor(); updateReviewBar();
 }
 ['fSearch', 'fRegister', 'fStatus', 'fIssues'].forEach((id) => $(id).addEventListener('input', renderList));
+$('rvBack').addEventListener('click', () => step(-1));
+$('rvNext').addEventListener('click', () => step(1));
+$('rvOk').addEventListener('click', () => step(1, 'ok'));
+$('rvReviewed').addEventListener('click', () => step(1, 'reviewed'));
+$('rvReset').addEventListener('click', () => { if (confirm('Forget which items you have checked?')) { state.checked.clear(); persistChecked(); renderAll(); } });
+document.addEventListener('keydown', (ev) => {
+  if (!ev.altKey || ev.metaKey || ev.ctrlKey) return;
+  if (ev.key === 'ArrowRight') { ev.preventDefault(); step(1, ev.shiftKey ? 'ok' : undefined); }
+  if (ev.key === 'ArrowLeft') { ev.preventDefault(); step(-1); }
+});
 window.addEventListener('beforeunload', (ev) => { if (state.files.some(fileDirty)) { ev.preventDefault(); ev.returnValue = ''; } });
 </script>
 </body>
