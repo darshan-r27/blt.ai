@@ -41,10 +41,10 @@ let package = Package(
         .testTarget(name: "BLTDesignTests", dependencies: ["BLTDesign", "BLTCore"], swiftSettings: strictWarnings),
         .testTarget(
             name: "BLTFeaturesTests",
-            dependencies: ["BLTFeatures", "BLTCatalog", "BLTCore"],
+            dependencies: ["BLTFeatures", "BLTCatalog", "BLTCore", "BLTProgress", "BLTSession", "BLTDesign"],
             swiftSettings: strictWarnings
         ),
-        .testTarget(name: "BLTContentTests", swiftSettings: strictWarnings),
+        .testTarget(name: "BLTContentTests", dependencies: ["BLTCatalog", "BLTCore"], swiftSettings: strictWarnings),
     ],
     swiftLanguageModes: [.v6]
 )
