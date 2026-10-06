@@ -294,3 +294,10 @@ The intro title is **blt.ai** (it was "For the love of Tamil"; the tagline stays
 **App icon:** "Two voices": a Telugu అ bubble overlapping a Tamil அ bubble, in standard, dark and tinted variants (`tools/app-icon/`).
 
 **Known limits:** the iOS keyboard's return key and some system keyboard UI stay system blue (SwiftUI tint does not reach them). The Settings reset button and confirmation dialogs use a destructive role, which could render red on some iOS versions; revisit if seen.
+
+## 034 — Sessions sample and shuffle questions
+**Status:** active
+
+**Decision:** `SessionPlanner` takes a random generator (`plan(…using:)`, `reviewAnywayPlan(…using:)`; the old non-random signatures are removed on purpose). Due items are always selected first (earliest due first, so wrong answers always beat new items); any remaining places are filled with a random sample of the unseen items instead of the first ones in content order; the whole selection is then shuffled, so due and new items interleave. "Review anyway" picks the earliest-due items as before and shuffles their order.
+
+**Why:** with a fixed content order every session opened with the same questions in the same order, so answers could be remembered by position rather than learned. **Trade-off:** scheduling priority is unchanged (what is selected still follows due dates); only the choice among unseen items and the presentation order are random. `SessionViewModel` passes its injected `SessionRandomSource`, so tests seed it.
