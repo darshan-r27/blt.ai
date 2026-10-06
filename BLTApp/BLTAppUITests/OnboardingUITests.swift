@@ -58,7 +58,7 @@ final class OnboardingUITests: BLTUITestCase {
 
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting")
-        XCTAssertEqual(greeting.label, "Hi \(enteredName)")
+        requireGreetingText("Hi \(enteredName)", in: app)
         XCTAssertFalse(app.textFields[AXID.nameField].exists)
     }
 
@@ -72,7 +72,7 @@ final class OnboardingUITests: BLTUITestCase {
 
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting after relaunch")
-        XCTAssertEqual(greeting.label, "Hi \(enteredName)")
+        requireGreetingText("Hi \(enteredName)", in: app)
         XCTAssertFalse(app.element(AXID.introStart).exists, "Onboarding must not repeat")
     }
 
@@ -81,7 +81,7 @@ final class OnboardingUITests: BLTUITestCase {
 
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting")
-        XCTAssertEqual(greeting.label, "Hi ZzTest")
+        requireGreetingText("Hi ZzTest", in: app)
         XCTAssertFalse(app.element(AXID.introStart).exists)
         XCTAssertFalse(app.textFields[AXID.nameField].exists)
     }
