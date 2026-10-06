@@ -1,0 +1,651 @@
+{
+  "scenarioId": "s04",
+  "title": "Shopping and bargaining",
+  "subtitle": "Prices, sizes, paying and polite haggling",
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "s04-i01",
+      "sourcePrompt": "How much is this?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "idhu evlo?",
+      "acceptedAnswers": [
+        "idhu evlo?",
+        "idhu evlo",
+        "idhu evlo nga?",
+        "idhu price evlo?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "idhu enna?",
+        "idhu enga?",
+        "idhu eppo?"
+      ],
+      "tokens": [
+        {
+          "tamil": "idhu",
+          "english": "this"
+        },
+        {
+          "tamil": "evlo",
+          "english": "how much"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i02",
+      "sourcePrompt": "That's too expensive.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "romba jaasthi",
+      "acceptedAnswers": [
+        "romba jaasthi",
+        "idhu romba jaasthi",
+        "romba costly"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "romba kammi",
+        "romba nalla irukku",
+        "romba periya size"
+      ],
+      "tokens": [
+        {
+          "tamil": "romba",
+          "english": "very"
+        },
+        {
+          "tamil": "jaasthi",
+          "english": "too much"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i03",
+      "sourcePrompt": "Please reduce the price. (to a shopkeeper)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "konjam kammi pannunga",
+      "acceptedAnswers": [
+        "konjam kammi pannunga",
+        "konjam kammiya kudunga",
+        "kammi pannunga",
+        "konjam kammi pannunga!"
+      ],
+      "registerVariant": "konjam kammi pannu",
+      "distractors": [
+        "konjam jaasthi pannunga",
+        "konjam mella pannunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "konjam",
+          "english": "a little"
+        },
+        {
+          "tamil": "kammi",
+          "english": "less"
+        },
+        {
+          "tamil": "pannunga",
+          "english": "do (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i04",
+      "sourcePrompt": "What's the final price?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "last price evlo?",
+      "acceptedAnswers": [
+        "last price evlo?",
+        "final price evlo?",
+        "last price enna?",
+        "kadaisi price evlo?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "first price evlo?",
+        "stock evlo irukku?",
+        "bill evlo?"
+      ],
+      "tokens": [
+        {
+          "tamil": "last price",
+          "english": "final price"
+        },
+        {
+          "tamil": "evlo",
+          "english": "how much"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i05",
+      "sourcePrompt": "I'll take two.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "rendu eduthukkuren",
+      "acceptedAnswers": [
+        "rendu eduthukkuren",
+        "rendu eduthukaren",
+        "rendu vaangikkuren",
+        "rendu eduthukkaren"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "moonu eduthukkuren",
+        "rendu vendaam",
+        "rendu kudunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "rendu",
+          "english": "two"
+        },
+        {
+          "tamil": "eduthukkuren",
+          "english": "I'll take"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i06",
+      "sourcePrompt": "I don't want it.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enakku venaam",
+      "acceptedAnswers": [
+        "enakku venaam",
+        "enakku vendaam",
+        "venaam",
+        "enaku venaam"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "enakku venum",
+        "enakku pidichirukku",
+        "enakku theriyala"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "venaam",
+          "english": "not wanted"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i07",
+      "sourcePrompt": "I like this.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enakku idhu pidichirukku",
+      "acceptedAnswers": [
+        "enakku idhu pidichirukku",
+        "enakku idhu pidichiruku",
+        "enakku idhu romba pidichirukku",
+        "idhu enakku pidichirukku"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "enakku idhu pidikkala",
+        "enakku idhu venum",
+        "enakku idhu theriyum"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "idhu",
+          "english": "this"
+        },
+        {
+          "tamil": "pidichirukku",
+          "english": "is liked"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i08",
+      "sourcePrompt": "Do you have a bigger size?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "periya size irukkaa?",
+      "acceptedAnswers": [
+        "periya size irukkaa?",
+        "periya size irukka?",
+        "periya size irukkaa"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "chinna size irukkaa?",
+        "vera colour irukkaa?",
+        "periya size evlo?"
+      ],
+      "tokens": [
+        {
+          "tamil": "periya",
+          "english": "big"
+        },
+        {
+          "tamil": "size",
+          "english": "size"
+        },
+        {
+          "tamil": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i09",
+      "sourcePrompt": "Do you have another colour?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "vera colour irukkaa?",
+      "acceptedAnswers": [
+        "vera colour irukkaa?",
+        "vera colour irukka?",
+        "vera color irukka?",
+        "vera colour irukkaa"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "vera size irukkaa?",
+        "vera kadai irukkaa?",
+        "vera colour venaam"
+      ],
+      "tokens": [
+        {
+          "tamil": "vera",
+          "english": "other"
+        },
+        {
+          "tamil": "colour",
+          "english": "colour"
+        },
+        {
+          "tamil": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i10",
+      "sourcePrompt": "Can I try it on?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "pottu paakkalaama?",
+      "acceptedAnswers": [
+        "pottu paakkalaama?",
+        "pottu paakalaama?",
+        "pottu paakkalaamaa?",
+        "try pannalaama?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "pottu paakka maatten",
+        "pottu paarunga",
+        "vaangikkalaama?"
+      ],
+      "tokens": [
+        {
+          "tamil": "pottu",
+          "english": "putting on"
+        },
+        {
+          "tamil": "paakkalaama",
+          "english": "may I see?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i11",
+      "sourcePrompt": "Where do I pay?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enga kaasu kudukkanum?",
+      "acceptedAnswers": [
+        "enga kaasu kudukkanum?",
+        "enga pay pannanum?",
+        "enga kaasu kudukanum?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "yaarukku kaasu kudukkanum?",
+        "eppo kaasu kudukkanum?",
+        "evlo kaasu kudukkanum?"
+      ],
+      "tokens": [
+        {
+          "tamil": "enga",
+          "english": "where"
+        },
+        {
+          "tamil": "kaasu",
+          "english": "money"
+        },
+        {
+          "tamil": "kudukkanum",
+          "english": "should give"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i12",
+      "sourcePrompt": "Do you take cards? (to a shopkeeper)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "card edukkuveengala?",
+      "acceptedAnswers": [
+        "card edukkuveengala?",
+        "card edhukkuveengala?",
+        "card edukkuveengala",
+        "card edukkuveenga?"
+      ],
+      "registerVariant": "card edukkuviya?",
+      "distractors": [
+        "card kudunga",
+        "cash edukkuveengala?"
+      ],
+      "tokens": [
+        {
+          "tamil": "card",
+          "english": "card"
+        },
+        {
+          "tamil": "edukkuveengala",
+          "english": "will you take?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i13",
+      "sourcePrompt": "Can I pay by GPay?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "GPay-la pay pannalaama?",
+      "acceptedAnswers": [
+        "GPay-la pay pannalaama?",
+        "GPay la pay pannalaama?",
+        "Gpay-la pay pannalaamaa?",
+        "GPay-la kudukkalaama?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "GPay irukka?",
+        "GPay-la evlo aachu?",
+        "GPay-la pay pannaadheenga"
+      ],
+      "tokens": [
+        {
+          "tamil": "GPay-la",
+          "english": "by GPay"
+        },
+        {
+          "tamil": "pay pannalaama",
+          "english": "may I pay?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i14",
+      "sourcePrompt": "Please pack it. (to a shopkeeper)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "pack pannunga",
+      "acceptedAnswers": [
+        "pack pannunga",
+        "pack panunga",
+        "pack pannunga!",
+        "pack pannidunga"
+      ],
+      "registerVariant": "pack pannu",
+      "distractors": [
+        "pack pannaadheenga",
+        "pack evlo?"
+      ],
+      "tokens": [
+        {
+          "tamil": "pack",
+          "english": "pack"
+        },
+        {
+          "tamil": "pannunga",
+          "english": "do (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i15",
+      "sourcePrompt": "Do you have a bag?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "bag irukkaa?",
+      "acceptedAnswers": [
+        "bag irukkaa?",
+        "bag irukka?",
+        "bag irukkunga?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "bag venaam",
+        "bag vechirukken",
+        "bag evlo?"
+      ],
+      "tokens": [
+        {
+          "tamil": "bag",
+          "english": "bag"
+        },
+        {
+          "tamil": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i16",
+      "sourcePrompt": "What time does the shop open?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "kadai eppo thirakkum?",
+      "acceptedAnswers": [
+        "kadai eppo thirakkum?",
+        "kadai eppo thorakkum?",
+        "kadai eppa thirakkum?",
+        "kadai eppo open aagum?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "kadai eppo moodum?",
+        "kadai enga irukku?",
+        "kadai evlo dhooram?"
+      ],
+      "tokens": [
+        {
+          "tamil": "kadai",
+          "english": "shop"
+        },
+        {
+          "tamil": "eppo",
+          "english": "when"
+        },
+        {
+          "tamil": "thirakkum",
+          "english": "will open"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i17",
+      "sourcePrompt": "Half a kilo, please.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "arai kilo kudunga",
+      "acceptedAnswers": [
+        "arai kilo kudunga",
+        "arai kilo kodunga",
+        "half kilo kudunga",
+        "arai kilo podunga"
+      ],
+      "registerVariant": "arai kilo kudu",
+      "distractors": [
+        "oru kilo kudunga",
+        "kaal kilo kudunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "arai",
+          "english": "half"
+        },
+        {
+          "tamil": "kilo",
+          "english": "kilo"
+        },
+        {
+          "tamil": "kudunga",
+          "english": "give (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i18",
+      "sourcePrompt": "How much per kilo?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "oru kilo evlo?",
+      "acceptedAnswers": [
+        "oru kilo evlo?",
+        "oru kilo evlo",
+        "kilo evlo?",
+        "oru kilo evlo nga?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "oru kilo eppo?",
+        "evlo kilo irukku?",
+        "oru kilo enga?"
+      ],
+      "tokens": [
+        {
+          "tamil": "oru kilo",
+          "english": "one kilo"
+        },
+        {
+          "tamil": "evlo",
+          "english": "how much"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i19",
+      "sourcePrompt": "Is there a discount?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "discount irukkaa?",
+      "acceptedAnswers": [
+        "discount irukkaa?",
+        "discount irukka?",
+        "discount irukkunga?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "discount venaam",
+        "discount eppo?",
+        "discount evlo kaasu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "discount",
+          "english": "discount"
+        },
+        {
+          "tamil": "irukkaa",
+          "english": "is there?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s04-i20",
+      "sourcePrompt": "I'll come back later.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "naan appuram varen",
+      "acceptedAnswers": [
+        "naan appuram varen",
+        "naan appuram varein",
+        "nan appuram varen"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "naan appuram poren",
+        "naan ippo varen",
+        "naan innikku varala"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "appuram",
+          "english": "later"
+        },
+        {
+          "tamil": "varen",
+          "english": "I come"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    }
+  ]
+}

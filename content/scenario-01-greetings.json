@@ -2,24 +2,24 @@
   "scenarioId": "s01-greetings",
   "title": "Greetings and small talk",
   "subtitle": "Meeting people and getting by in everyday conversation",
-  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed.",
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
   "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
   "items": [
     {
       "id": "s01-i01",
-      "sourcePrompt": "How are you? (to a friend)",
+      "sourcePrompt": "How are you? (to a male friend)",
       "register": "casual",
-      "canonical": "eppadi irukka?",
+      "canonical": "eppadi irukka da?",
       "acceptedAnswers": [
-        "eppadi irukka?",
-        "eppadi irukka",
-        "epdi irukka",
-        "eppadi iruka?"
+        "eppadi irukka da?",
+        "eppadi irukkada?",
+        "epdi irukka da?",
+        "eppadi irukka da"
       ],
       "registerVariant": "eppadi irukkeenga?",
       "distractors": [
-        "enga irukka?",
-        "enna aachu?"
+        "enga irukka da?",
+        "enna aachu da?"
       ],
       "tokens": [
         {
@@ -29,10 +29,15 @@
         {
           "tamil": "irukka",
           "english": "are you (casual)"
+        },
+        {
+          "tamil": "da",
+          "english": "friendly address to a man"
         }
       ],
-      "note": "irukka is the casual you-form; irukkeenga is the respectful one.",
-      "reviewStatus": "unreviewed"
+      "note": "da is the friendly address between male friends; use it only with close male friends.",
+      "reviewStatus": "unreviewed",
+      "addressee": "male"
     },
     {
       "id": "s01-i02",
@@ -61,23 +66,24 @@
         }
       ],
       "note": "Use -eenga with elders and strangers.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i03",
-      "sourcePrompt": "I'm fine, and you? (to a friend)",
+      "sourcePrompt": "I'm fine, and you? (to a female friend)",
       "register": "casual",
-      "canonical": "naan nalla irukken, nee?",
+      "canonical": "naan nalla irukken di, nee?",
       "acceptedAnswers": [
-        "naan nalla irukken, nee?",
-        "naan nalla irukken nee",
-        "nan nalla irukken, nee?",
-        "naan nallaa irukken, nee?"
+        "naan nalla irukken di, nee?",
+        "naan nalla irukken di nee",
+        "nan nalla irukken di, nee?",
+        "naan nallaa irukken di, nee?"
       ],
       "registerVariant": "naan nalla irukken, neenga?",
       "distractors": [
-        "naan saapten, nee?",
-        "naan poren, nee?"
+        "naan saapten di, nee?",
+        "naan poren di, nee?"
       ],
       "tokens": [
         {
@@ -93,12 +99,17 @@
           "english": "am"
         },
         {
+          "tamil": "di",
+          "english": "friendly address to a woman"
+        },
+        {
           "tamil": "nee",
           "english": "you (casual)"
         }
       ],
-      "note": "nee for friends and younger people; neenga for elders.",
-      "reviewStatus": "unreviewed"
+      "note": "di is the friendly address to a female friend; da is for a male friend.",
+      "reviewStatus": "unreviewed",
+      "addressee": "female"
     },
     {
       "id": "s01-i04",
@@ -127,7 +138,8 @@
         }
       ],
       "note": "vaanga is respectful; vaa is for friends and kids.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i05",
@@ -152,7 +164,8 @@
         }
       ],
       "note": "-unga marks respect; ukkaaru is casual.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i06",
@@ -185,7 +198,8 @@
         }
       ],
       "note": "ungaloda is the respectful your; un is casual.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i07",
@@ -219,7 +233,8 @@
         }
       ],
       "note": "No register change needed when talking about yourself.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i08",
@@ -252,7 +267,8 @@
         }
       ],
       "note": "neenga ... vareenga for elders and strangers.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i09",
@@ -290,57 +306,72 @@
         }
       ],
       "note": "Said politely to someone you've just met.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i10",
-      "sourcePrompt": "Have you eaten? (to an elder)",
+      "sourcePrompt": "Have you eaten? (to a male friend)",
       "register": "respectful",
-      "canonical": "saapteengala?",
+      "canonical": "saaptiya da?",
       "acceptedAnswers": [
-        "saapteengala?",
-        "saapteengala",
-        "saapteengalaa",
-        "saapteenga"
+        "saaptiya da?",
+        "saaptiyada?",
+        "saaptiya da",
+        "saaptiyaa da"
       ],
       "registerVariant": "saaptiya?",
       "distractors": [
-        "saapdalaama?",
-        "enna saappaadu?"
-      ],
-      "tokens": [
-        {
-          "tamil": "saapteengala",
-          "english": "did you eat (respectful)"
-        }
-      ],
-      "note": "A common way to greet someone.",
-      "reviewStatus": "unreviewed"
-    },
-    {
-      "id": "s01-i11",
-      "sourcePrompt": "Have you eaten? (to a friend)",
-      "register": "casual",
-      "canonical": "saaptiya?",
-      "acceptedAnswers": [
-        "saaptiya?",
-        "saaptiya",
-        "saaptiyaa",
-        "saaptiya da"
-      ],
-      "registerVariant": "saapteengala?",
-      "distractors": [
-        "saapda poreena?",
-        "saappaadu ready-aa?"
+        "saapda poreena da?",
+        "saappaadu ready-aa da?"
       ],
       "tokens": [
         {
           "tamil": "saaptiya",
           "english": "did you eat (casual)"
+        },
+        {
+          "tamil": "da",
+          "english": "friendly address to a man"
+        }
+      ],
+      "note": "A common way to greet someone.",
+      "reviewStatus": "unreviewed",
+      "addressee": "male"
+    },
+    {
+      "id": "s01-i11",
+      "sourcePrompt": "What are you doing? (to a female friend)",
+      "register": "casual",
+      "canonical": "enna panra di?",
+      "acceptedAnswers": [
+        "enna panra di?",
+        "enna pandra di?",
+        "enna panra di",
+        "enna pannura di?"
+      ],
+      "registerVariant": "saapteengala?",
+      "distractors": [
+        "enga poora di?",
+        "enna aachu di?"
+      ],
+      "tokens": [
+        {
+          "tamil": "enna",
+          "english": "what"
+        },
+        {
+          "tamil": "panra",
+          "english": "are you doing (casual)"
+        },
+        {
+          "tamil": "di",
+          "english": "friendly address to a woman"
         }
       ],
       "note": "-iya is the casual question ending.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "female"
     },
     {
       "id": "s01-i12",
@@ -369,7 +400,8 @@
         }
       ],
       "note": "panra is casual; pannureenga is respectful.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i13",
@@ -399,7 +431,8 @@
         }
       ],
       "note": "Tamil speakers say go-and-come when leaving.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i14",
@@ -428,7 +461,8 @@
         }
       ],
       "note": "Casual speech often just says thanks.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i15",
@@ -453,7 +487,8 @@
         }
       ],
       "note": "-unga respectful, plain mannichidu casual.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i16",
@@ -483,7 +518,8 @@
         }
       ],
       "note": "Spoken negative -ala.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i17",
@@ -516,7 +552,8 @@
         }
       ],
       "note": "pesunga is respectful; pesu is casual.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i18",
@@ -549,7 +586,8 @@
         }
       ],
       "note": "unakku casual; ungalukku respectful.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i19",
@@ -587,7 +625,8 @@
         }
       ],
       "note": "A useful line to say early in any conversation.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     },
     {
       "id": "s01-i20",
@@ -617,7 +656,8 @@
         }
       ],
       "note": "The casual way to part.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
     }
   ]
 }
