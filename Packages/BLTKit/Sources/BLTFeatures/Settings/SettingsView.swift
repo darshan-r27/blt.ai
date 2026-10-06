@@ -16,12 +16,11 @@ public struct SettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 section("About the content") {
-                    Text(
-                        "The lessons were drafted by an AI. Each item shows its review status, "
-                            + "and an item is marked reviewed only after a native Tamil speaker has checked it."
-                    )
-                    Text("\(viewModel.reviewedCount) of \(viewModel.totalCount) reviewed")
-                        .font(.headline)
+                    Text(viewModel.contentStatement)
+                    if !viewModel.allContentReviewed {
+                        Text("\(viewModel.reviewedCount) of \(viewModel.totalCount) reviewed")
+                            .font(.headline)
+                    }
                 }
                 section("Your name") {
                     Text(viewModel.profileName)

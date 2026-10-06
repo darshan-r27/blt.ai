@@ -310,3 +310,10 @@ Each scenario card shows its title, subtitle and one completion percent with a b
 **Decision:** `SessionPlanner` takes a random generator (`plan(…using:)`, `reviewAnywayPlan(…using:)`; the old non-random signatures are removed on purpose). Due items are always selected first (earliest due first, so wrong answers always beat new items); any remaining places are filled with a random sample of the unseen items instead of the first ones in content order; the whole selection is then shuffled, so due and new items interleave. "Review anyway" picks the earliest-due items as before and shuffles their order.
 
 **Why:** with a fixed content order every session opened with the same questions in the same order, so answers could be remembered by position rather than learned. **Trade-off:** scheduling priority is unchanged (what is selected still follows due dates); only the choice among unseen items and the presentation order are random. `SessionViewModel` passes its injected `SessionRandomSource`, so tests seed it.
+
+## 035 — "About the content" follows the data
+**Status:** active — refines 025
+
+The owner wants Settings to say that every lesson is checked by a native Tamil speaker before the learner sees it. The statement is therefore data-driven: when every item's `reviewStatus` is `reviewed` it reads "Every lesson was checked by a native Tamil speaker before it was added to the app." and the "n of N reviewed" line is hidden; until then it keeps the honest draft wording and the count. It flips automatically once the owner marks items reviewed (content editor, "Mark reviewed"). The per-item "Unreviewed draft" badge is unchanged and disappears item by item.
+
+**Why not an unconditional claim:** with 0 of 100 items marked reviewed the app would assert something its own data contradicts, which is exactly what 025 exists to prevent.

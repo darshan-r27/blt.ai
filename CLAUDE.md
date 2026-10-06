@@ -2,7 +2,7 @@
 
 iOS app teaching colloquial Tamil to Telugu speakers. Voice-first, on-device, no backend.
 
-Read `@docs/PRD.md` before any product decision. Read `@docs/BUILD_PLAN.md` for the task you're on. Read `@docs/SECURITY.md` before touching audio, file storage, `Info.plist`, or dependencies. Read `@docs/BACKEND.md` before any telemetry work.
+Start every new session by reading `@docs/HANDOFF.md` (current status, commands, how we work). Read `@docs/PRD.md` before any product decision. Read `@docs/BUILD_PLAN.md` for the task you're on. Read `@docs/SECURITY.md` before touching audio, file storage, `Info.plist`, or dependencies. Read `@docs/BACKEND.md` before any telemetry work.
 
 ## Hard constraints
 
