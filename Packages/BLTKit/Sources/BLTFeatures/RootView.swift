@@ -1,5 +1,6 @@
 import BLTCatalog
 import BLTCore
+import BLTDesign
 import BLTProgress
 import SwiftUI
 
@@ -24,6 +25,8 @@ public struct RootView: View {
 
     public var body: some View {
         content
+            // Once, at the root: the purple accent reaches toolbar icons, links, cursors, sheets and the session cover.
+            .bltTheme()
             .task { await gate.load() }
     }
 

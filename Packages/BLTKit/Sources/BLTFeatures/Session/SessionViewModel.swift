@@ -207,12 +207,15 @@ public final class SessionViewModel {
         }
         guard !hasEnded else { return }
         let now = dependencies.now()
-        let planned = planner.plan(scenario: scenario, snapshot: snapshot, now: now)
+        var rng = random
+        let planned = planner.plan(scenario: scenario, snapshot: snapshot, now: now, using: &rng)
+        random = rng
         if !planned.isEmpty {
             begin(with: planned)
             return
         }
-        reviewAnywayItems = planner.reviewAnywayPlan(scenario: scenario, snapshot: snapshot)
+        reviewAnywayItems = planner.reviewAnywayPlan(scenario: scenario, snapshot: snapshot, using: &rng)
+        random = rng
         setPhase(reviewAnywayItems.isEmpty ? .nothingToStudy : .nothingDue)
     }
 

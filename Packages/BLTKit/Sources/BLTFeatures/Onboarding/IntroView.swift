@@ -16,7 +16,7 @@ struct IntroView: View {
                     .imageScale(.large)
                     .foregroundStyle(palette.textSecondaryColor)
                     .accessibilityHidden(true)
-                Text("For the love of Tamil")
+                Text("blt.ai")
                     .font(.largeTitle.bold())
                     .foregroundStyle(palette.textPrimaryColor)
                     .multilineTextAlignment(.center)
@@ -36,7 +36,7 @@ struct IntroView: View {
                 Text("Get started")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.bltPrimary)
             .controlSize(.large)
             .accessibilityIdentifier(AccessibilityID.introStart)
             .padding(.horizontal, 24)

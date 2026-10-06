@@ -9,14 +9,14 @@ public struct ScenariosView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Bindable private var viewModel: HomeViewModel
 
-    private let name: String
+    private let name: String?
     private let onSelectScenario: (ScenarioID) -> Void
     private let onOpenProgress: () -> Void
     private let onOpenSettings: () -> Void
 
     public init(
         viewModel: HomeViewModel,
-        name: String,
+        name: String?,
         onSelectScenario: @escaping (ScenarioID) -> Void,
         onOpenProgress: @escaping () -> Void,
         onOpenSettings: @escaping () -> Void
@@ -32,7 +32,8 @@ public struct ScenariosView: View {
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .bltScreenBackground()
-            .navigationTitle("Scenarios")
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Progress", systemImage: "chart.bar", action: onOpenProgress)
@@ -75,19 +76,17 @@ public struct ScenariosView: View {
     private var scenarioList: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 12) {
-                Text(HomeViewModel.greeting(forName: name))
-                    .font(.largeTitle.bold())
+                if let greeting {
+                    ShimmerText(greeting)
+                        .padding(.horizontal, 4)
+                        .padding(.bottom, 4)
+                        .accessibilityIdentifier(AccessibilityID.greeting)
+                }
+                Text("Scenarios")
+                    .font(.title3.weight(.semibold))
                     .foregroundStyle(Palette(colorScheme).textPrimaryColor)
-                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.horizontal, 4)
                     .accessibilityAddTraits(.isHeader)
-                    .accessibilityIdentifier(AccessibilityID.greeting)
-                if let summary = viewModel.summary {
-                    Text(overallLine(summary))
-                        .font(.subheadline)
-                        .foregroundStyle(Palette(colorScheme).textSecondaryColor)
-                        .padding(.horizontal, 4)
-                }
                 ForEach(viewModel.scenarios) { scenario in
                     ScenarioCard(summary: scenario) { onSelectScenario(scenario.id) }
                 }
@@ -97,12 +96,10 @@ public struct ScenariosView: View {
         }
     }
 
-    private func overallLine(_ summary: ProgressSummary) -> String {
-        switch summary.dueCount {
-        case 0: "Nothing is due for review right now."
-        case 1: "1 item is due for review."
-        default: "\(summary.dueCount) items are due for review."
-        }
+    /// "Hi <name>", or `nil` (nothing is shown) when there is no usable name.
+    private var greeting: String? {
+        guard let name, !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
+        return HomeViewModel.greeting(forName: name)
     }
 
     private var emptyState: some View {
@@ -132,11 +129,11 @@ public struct ScenariosView: View {
                 }
                 if viewModel.canOfferReset {
                     Button("Reset progress…", role: .destructive) { viewModel.requestReset() }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bltPrimary)
                         .accessibilityIdentifier(AccessibilityID.settingsReset)
                 } else {
                     Button("Try again") { Task { await viewModel.load() } }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bltPrimary)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

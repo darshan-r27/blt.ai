@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#1F1733"/>
+  <rect x="26" y="40" width="96" height="74" rx="22" fill="#F0EAFA"/>
+  <path d="M44 112 L40 142 L70 114 Z" fill="#F0EAFA"/>
+  <text x="74" y="94" text-anchor="middle" font-size="56" font-family="'Telugu Sangam MN','Telugu MN',sans-serif" fill="#4B3390">అ</text>
+  <rect x="78" y="86" width="96" height="74" rx="22" fill="#B79CF0"/>
+  <path d="M152 158 L160 188 L128 160 Z" fill="#B79CF0"/>
+  <text x="126" y="142" text-anchor="middle" font-size="56" font-family="'Tamil Sangam MN','Tamil MN',sans-serif" fill="#1F1733">அ</text>
+</svg>
