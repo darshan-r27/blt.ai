@@ -1,0 +1,208 @@
+# BLT.ai — decision log
+
+Lightweight ADRs. Superseded decisions are kept, not deleted — the reasoning that led somewhere wrong is often more useful than the conclusion, and in two cases here the reversal is the most interesting thing in the record.
+
+Status values: **active**, **superseded by NN**, **pending** (decided, not yet applied), **open**.
+
+---
+
+## 001 — Target colloquial Tamil for Telugu speakers, not grammar
+**Status:** active
+
+Tamil is strongly diglossic — written (செந்தமிழ்) and spoken (கொடுந்தமிழ்) differ in verb morphology, pronouns, and case endings. Every mainstream app teaches the written register, so a learner finishes able to read a signboard and unable to hold a conversation.
+
+Tamil and Telugu are both Dravidian: shared SOV order, agglutinative case suffixing, dative-subject constructions, large shared Sanskrit-derived lexicon. A Telugu speaker already owns the grammar.
+
+**Decision:** skip grammar instruction entirely. Spend all learner effort on lexical substitution, register, and listening at natural speed.
+
+**Consequence:** the thesis is language-pair-specific. It does not transfer to English L1 — see 020.
+
+## 002 — Don't train a model
+**Status:** active
+
+The original plan involved sourcing a dialogue dataset and fine-tuning. Teaching ~120 colloquial phrases is a content problem, not an ML problem.
+
+**Decision:** use pretrained AI4Bharat IndicConformer-TA. No training, no fine-tuning, no GPU budget.
+
+**Consequence:** the hard problems moved to content quality and scoring design, which is where they belonged.
+
+## 003 — Romanised Tamil, not Tamil script
+**Status:** active
+
+Young Tamil speakers text each other in Latin script. Script acquisition is a ~40-hour tax unrelated to the goal of speaking to a 25-year-old.
+
+**Consequence:** the register rules in 008 match on romanised surface forms, so the romanisation scheme (see OPEN_ITEMS) is load-bearing for the classifier.
+
+## 004 — Voice-first, not voice-only
+**Status:** active
+
+Pure audio gives no way to render "you said X, target was Y," so feedback becomes unactionable. It also fails on trains, in offices, and for anyone who can't speak aloud.
+
+**Decision:** voice is the stimulus and the response; text is the feedback surface only. Navigation is tap-only.
+
+## 005 — iOS 17 deployment target, not 26
+**Status:** active
+
+iOS 26's `SpeechAnalyzer` is better but narrows device support, and its supported-locale list likely excludes Tamil anyway. Verify on hardware (Task 0.1) before relying on any Apple speech API.
+
+## 006 — Pronunciation instruction cut
+**Status:** superseded by 007
+
+Drilling மழை/மலை in week one teaches that Tamil is a minefield where small errors mean total failure — demoralising and false. Cut phoneme-level scoring entirely.
+
+**Why superseded:** the cut conflated *teaching* pronunciation with *measuring* it. Measurement without gating was available and wasn't considered.
+
+**Worth keeping:** this cut also corrected an error in the original framing. Telugu has ళ ≈ Tamil ள and ఱ ≈ ற (archaic, merged with ర in modern speech). Only ழ /ɻ/ is genuinely absent from Telugu, so the difficulty was overstated from the start.
+
+## 007 — Pronunciation measured, never gating
+**Status:** active
+
+**Decision:** score pronunciation on every attempt from day one. It never changes the verdict, never blocks progression, never appears in red.
+
+Two separate knobs, and conflating them is the error to avoid:
+- **Detection threshold** — per phoneme, where GOP separates "produced as target" from "produced as something else." Calibrated from data, then fixed. A measurement decision.
+- **Tolerance** — per user, what share of instances may fall below detection before the app says anything. Adaptive. A pedagogical decision.
+
+Separating them means the detector never needs recalibrating as users advance, and the ladder is one integer on the progress record.
+
+**Ladder:** level 1 not scored → 2 at 50% → 3 at 65% → 4 at 75% (v1 ceiling) → 5+ at 85%–native baseline (v2). Advancement is one-way in v1.
+
+**Why 75%:** a naive implementation requires every scored instance to clear, i.e. 100%. A quarter of that was given back as headroom. There was never a prior numeric baseline — thresholds come from calibration, and picking one before the data exists is guessing.
+
+**Level 5 is capped at the measured native baseline, not 100%.** Natives won't score 100% — ASR noise and coarticulation cost instances. Shipping an unreachable rung is a bug.
+
+## 008 — Register classification by rules, not a model
+**Status:** active
+
+Tamil's formal/colloquial split is highly regular where it matters: வாருங்கள்→வாங்க, போகிறேன்→போறேன், அவர்கள்→அவங்க, என்னுடைய→என்னோட.
+
+**Decision:** ~40 rules over romanised suffixes plus a small lexicon of formal/colloquial pairs. Not a model.
+
+**Consequence:** unglamorous, highly accurate, and it produces the app's best feedback state — *"Understood, but that's how a news anchor would say it."* It also survives the ML going sideways, which is why the on-thesis feature carries no model risk.
+
+## 009 — Semantic acceptance over exact match
+**Status:** active
+
+There is rarely one correct way to say something. Exact matching makes the app feel broken within about ten items, which is the most common way a language app loses a user.
+
+**Decision:** 3–6 authored accepted answers per item. Exact match first (fast path); on miss, an on-device sentence encoder and max cosine similarity.
+
+## 010 — ScoringEngine protocol boundary
+**Status:** active
+
+A single-method protocol with a crude week-2 implementation and a real week-6 one. Everything upstream depends on the protocol, never the concrete type.
+
+**Consequence:** the placeholder buys a working end-to-end loop without becoming load-bearing. Swapping engines is one line at the composition root — and if it isn't one line, the boundary was done wrong.
+
+## 011 — Zero network requests
+**Status:** superseded by 012
+
+No analytics, no crash reporter, no backend. A verifiable security property, removal of nearly the whole attack surface, and a one-sentence claim.
+
+**Why superseded:** it left the app blind, and it demonstrated zero infrastructure competence — which is half the target-role surface for a portfolio project.
+
+## 012 — Network confined to one module
+**Status:** active
+
+**Decision:** from v1.5, the `Telemetry` module is the only component permitted to open a connection. It is off by default and the app is fully functional without it. CI greps for network APIs and exempts exactly one path; a PR widening that exemption is a design change, not a build fix.
+
+**Consequence:** the claim becomes *"makes no network requests unless you turn telemetry on, and shows you the exact payload before it sends,"* which is a stronger portfolio signal than either extreme. Designing data collection is harder to demonstrate than avoiding it.
+
+## 013 — "ZDR" replaced by "no raw user content is retained"
+**Status:** active
+
+Zero data retention and a product that learns from usage are mutually exclusive. The accurate claim is narrower: nothing transmitted can reconstruct what a user said.
+
+**Consequence:** precision bought more credibility than the stronger-sounding wrong word would have. Worth saying out loud in an interview.
+
+## 014 — Identity: the full arc
+**Status:** active (as 014c)
+
+The most instructive sequence in the project.
+
+**014a — rotatable pseudonymous install ID.** *Superseded.* Enough to link a learning curve without naming anyone.
+
+**014b — no identity at all.** *Superseded.* Correct reasoning for anonymous cohort telemetry: an identifier you don't need is a liability. Dropped install ID, kept a session-scoped ephemeral ID.
+
+**014c — named profile.** *Active.* The actual requirement turned out to be tracking one known person over time, not measuring a cohort of strangers. A user-chosen display name, typed at onboarding after explicit consent, which doubles as the deletion key. It need not be a real name.
+
+**Why the middle step mattered:** 014b is what revealed the privacy machinery was solving a problem this project doesn't have. An anonymous ID between two people who have met is privacy theatre. 014b also demonstrated something real — removing data from a design removes the machinery that would have guarded it. Phase 6 shrank by a week when identity came out and grew back when it returned.
+
+**Precise timestamps:** excluded under 014b as a fingerprinting vector, restored under 014c. With a name attached there is nothing left to fingerprint.
+
+## 015 — Transcripts excluded from telemetry
+**Status:** active
+
+A transcript is user-generated content and may contain anything the user said, including speech unrelated to the prompt.
+
+**Decision:** never transmitted, in either stream.
+
+**Cost, acknowledged:** knowing *what* a learner said when they failed an item is materially more diagnostic than knowing *that* they failed. Excluded anyway, because a claim that holds only when users say what you expected is not a claim. This is the most expensive exclusion in the design and the one to be able to defend out loud.
+
+## 016 — No third-party crash SDK
+**Status:** active
+
+**Decision:** three tiers — TestFlight/Xcode Organizer for crashes (free, zero code), MetricKit for hangs and performance (native, next-day delivery), own structured errors with breadcrumbs for non-fatal failures.
+
+**Rejected:** Sentry, Crashlytics. A third-party SDK with network access breaks the 012 boundary, adds supply-chain surface to a repo whose low dependency count is a stated feature, and transmits on its own schedule outside the consent surface.
+
+**Note:** tier 3 catches what matters most in practice — ASR returning nothing, a model failing to load, an audio session refusing to activate. None of these crash, so none reach tiers 1 or 2.
+
+## 017 — Breadcrumbs as a closed enum
+**Status:** active
+
+A breadcrumb reading `scored item 042, transcript "naan varen"` leaks exactly what 013 and 015 forbid, through the diagnostics path, where nobody is looking.
+
+**Decision:** breadcrumbs carry item IDs and state-machine states only, modelled as a closed enum with no case capable of holding free text, a file path, or a payload body.
+
+**Consequence:** the rule is compiler-enforced, not review-enforced. Verify by reading the type definition, not by auditing call sites — if the type permits arbitrary text, no amount of call-site discipline holds. This is the highest-risk line in the design.
+
+## 018 — Audio deletion is unconditional and swept
+**Status:** active
+
+Original phrasing — "does not persist past scoring" — quietly assumed scoring always completes.
+
+**Decision:** two mechanisms. The unlink sits in a `defer` at the top of the scoring path so a scoring failure still deletes. And a launch-time sweep clears the recording directory, because a crash between recording and scoring orphans a file no in-session path reaches.
+
+**Consequence:** four lifecycle tests on Task 1.3 — directory empty after success, after scoring failure, after mid-attempt interruption, and after crash-then-relaunch. Without them, P2 is a policy statement rather than a tested property.
+
+## 019 — No CLV; a modelled LTV sensitivity table instead
+**Status:** active
+
+No revenue, no paid tier, two users. Lifetime value is undefined, and a CLV figure built on invented numbers is what a sharp interviewer pulls on.
+
+**Decision:** a model with every input labelled external-benchmark or assumed, output as a sensitivity table, first cell stating no input is measured. Own retention data deliberately excluded as an input — a two-person curve is a worse estimator than a published benchmark.
+
+## 020 — Content is recorded, never scraped
+**Status:** active
+
+Film dialogue, song lyrics, and scraped YouTube audio are rights-encumbered. Songs are also the wrong register — literary Tamil, inverted syntax. Films are performative and dialect-marked. A public repo containing ripped audio is a liability attached to your name.
+
+**Decision:** record with native speakers. Use IndicVoices/Common Voice for native calibration baselines only. Use films and vlogs as *research* — watch, note how people talk, write scripts reflecting it.
+
+**TTS is not a substitute** for teaching audio: Tamil TTS is trained predominantly on read speech, which is the formal register the product exists to fix. Acceptable as a development placeholder only.
+
+## 021 — Elicit, don't read
+**Status:** pending — Phase 2 not yet reordered
+
+Reading written Tamil aloud pulls a speaker toward formal register through orthographic interference. This affects fluent speakers too — it is an artifact of literacy, not of proficiency. The conventional script-then-record workflow causes the exact failure the product exists to prevent.
+
+**Decision:** invert the order. Describe a situation out loud, let two speakers enact it, record, transcribe afterward in romanised Tamil exactly as spoken, then select items. The corpus is the output of the session, not its input.
+
+**Consequence:** Task 2.3's register red-line largely dissolves into a selection pass. BUILD_PLAN Phase 2 still has the old ordering and needs rewriting.
+
+## 022 — The backend exists for portfolio reasons, not measurement
+**Status:** active
+
+Expected user count is two. At n=2 telemetry has no analytical value — a retention curve from two people is noise.
+
+**Decision:** build it anyway, and say why. It demonstrates a pipeline designed around a privacy guarantee, that guarantee enforced in code and tested, and a real deployment with IaC and teardown. It is also a genuine longitudinal case study of one learner.
+
+**Consequence:** the README must call it a case study, not a cohort finding. Dashboard charts built on seeded data carry a visible synthetic label in the chart, not a footnote. A reviewer who catches an unlabelled synthetic chart discounts everything else in the repo.
+
+## 023 — Name: BLT.ai
+**Status:** active
+
+"Budugu Learns Tamil." Budugu (బుడుగు) is Mullapudi Venkata Ramana's schoolboy, near-universally recognised by Telugu speakers in the target age band.
+
+**Caveats:** the character is under copyright. Fine for a portfolio project never distributed commercially; a trademark conversation if that changes. The name is an allusion — don't use the likeness or adopt his voice in the copy. Xcode target is `BLTApp` (module names can't contain dots), bundle id `ai.blt.app`.
