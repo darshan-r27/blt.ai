@@ -206,3 +206,28 @@ Expected user count is two. At n=2 telemetry has no analytical value — a reten
 "Budugu Learns Tamil." Budugu (బుడుగు) is Mullapudi Venkata Ramana's schoolboy, near-universally recognised by Telugu speakers in the target age band.
 
 **Caveats:** the character is under copyright. Fine for a portfolio project never distributed commercially; a trademark conversation if that changes. The name is an allusion — don't use the likeness or adopt his voice in the copy. Xcode target is `BLTApp` (module names can't contain dots), bundle id `ai.blt.app`.
+
+## 024 — v1 is a text-only English→Tamil multiple-choice MVP; voice is v2
+**Status:** active
+
+The primary user is a Telugu speaker who is also fluent in English, so the transfer thesis in 001 is unchanged: the audience is still Telugu L1. English is the *prompt* language because it is the shared working language, not because the audience changed.
+
+**Decision:** MVP v1 is text-to-text. An English prompt, four romanised-Tamil options (the colloquial form, the textbook form, two wrong), feedback, SM-2-style review. No audio, no microphone, no speech recognition. MVP v2 adds the voice loop from the original plan (listen, produce, compare).
+
+**Consequences:**
+- The register feature survives: picking the textbook form yields "understood, but that's how a news anchor would say it." It is language-internal to Tamil and needs no audio.
+- Audio, recorder, player, transcriber, transliterator, pronunciation ladder, and "keep my recordings" move to v2. The Simulator can verify the whole v1 loop; the device probe (Task 0.1) no longer blocks v1.
+- The network-confinement and no-third-party-SDK constraints apply unchanged. The audio-lifecycle constraints apply from v2.
+- Distractor quality carries the learning value in a multiple-choice format, so content review matters more, not less.
+- Schema uses the source-agnostic names `sourceGloss` / `sourcePrompt` (OPEN_ITEMS "Source language"). Telugu cognate hints are a possible later addition, not v1.
+
+## 025 — v1 content is Claude-drafted and labelled unreviewed
+**Status:** active — supersedes 020 and the "do not generate content" rule for v1 text content only
+
+020 required all content to come from native speakers recorded in person. That still holds for v2 audio. For v1 text, the owner decided Claude drafts the content so the app is buildable now: 5 scenarios of 20 items, covering everyday communication.
+
+**Decision:** every item carries a `reviewStatus` (`unreviewed` | `reviewed`). Claude-authored items ship as `unreviewed`; an item becomes `reviewed` only when a native speaker has checked its colloquial form, its textbook form, and its distractors. The app and README state the review status plainly.
+
+**Why the label matters:** Claude is more likely than a native speaker to drift toward textbook register, mis-spell informal romanisation, or choose a phrase nobody says. The register feature depends on exactly that distinction, so unlabelled generated content would undermine the product's central claim.
+
+**Consequences:** a second Tamil speaker is still needed to promote items to `reviewed`. Content lives in data files, not code, so review changes never touch Swift.

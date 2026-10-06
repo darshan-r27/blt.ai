@@ -65,7 +65,7 @@ Guessing wastes more of the human's time than asking does. He is reviewing for s
 - Do not write code that silently falls back — to a network path, a default value, a cloud recognizer. Surface the error.
 - Do not add a dependency to avoid writing forty lines.
 - Do not restructure existing modules as a side effect of a feature task.
-- Do not generate content (Tamil phrases, paraphrases, register variants). All content comes from native speakers. Placeholder fixtures in tests are fine and must be obviously fake.
+- Do not generate Tamil content outside the v1 content task. Per DECISIONS 025, v1 text content is Claude-drafted, must carry `reviewStatus: unreviewed`, and lives only in the content data files. Code and test fixtures never contain real Tamil phrases; fixtures must be obviously fake. v2 audio content still comes from native speakers.
 
 ## Context
 

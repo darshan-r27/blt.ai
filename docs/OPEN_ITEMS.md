@@ -22,7 +22,9 @@ Things not yet settled, or settled but not yet applied. Review this before start
 
 ## Undecided
 
-**Source language: Telugu or English.** The schema has `teluguGloss` and `teluguPrompt`. Renaming to `sourceGloss` and `sourcePrompt` makes the codebase source-agnostic — one field change, no logic change — allowing English glosses to ship first (authorable solo, unblocked) with Telugu added to the same items later.
+**Source language: decided for v1 (see DECISIONS 024).** English prompts, Telugu audience. The remainder of this item (Telugu glosses as a later addition) stays open.
+
+**Source language: Telugu or English (original framing).** The schema has `teluguGloss` and `teluguPrompt`. Renaming to `sourceGloss` and `sourcePrompt` makes the codebase source-agnostic — one field change, no logic change — allowing English glosses to ship first (authorable solo, unblocked) with Telugu added to the same items later.
 
 Arguments on record:
 - The transfer thesis (DECISIONS 001) only holds for Telugu L1. An English speaker shares no syntax, no case system, no lexicon, and no retroflexes. Lexical substitution onto shared syntax is *generative*; 120 English→Tamil phrases are just 120 memorised phrases.
