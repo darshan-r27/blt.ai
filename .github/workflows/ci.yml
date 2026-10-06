@@ -1,0 +1,75 @@
+name: CI
+
+# Runs the repo guardrails, SwiftLint, package tests and app tests (docs/MVP_PLAN.md C1, section 7).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # TODO(human, H4): pin the SwiftLint release you have reviewed. 0.65.1 is the version used locally;
+  # take the SHA-256 of portable_swiftlint.zip from that release's page. Do NOT guess this value.
+  SWIFTLINT_VERSION: "0.65.1"
+  SWIFTLINT_SHA256: "TODO_REPLACE_WITH_SHA256_OF_portable_swiftlint.zip"
+  BLT_SIM: "iPhone 17"
+
+jobs:
+  checks:
+    # TODO(human): confirm a runner image that ships an Xcode with the iOS 27 SDK and an iPhone 17
+    # simulator runtime, then pin it by label (and select the Xcode version with a step if needed).
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      # TODO(human, H4): pin every action below by full commit SHA (`uses: owner/repo@<40-hex-sha> # vX.Y.Z`).
+      # The tag is a placeholder because commit SHAs cannot be looked up offline.
+      - name: Checkout
+        uses: actions/checkout@v4 # TODO(human): replace tag with commit SHA
+
+      - name: Forbidden-API guard self-test
+        run: bash scripts/check-forbidden-apis.sh --self-test
+
+      - name: Forbidden-API guard scan
+        run: bash scripts/check-forbidden-apis.sh
+
+      - name: Install SwiftLint (pinned, SHA-256 verified)
+        run: |
+          set -euo pipefail
+          case "$SWIFTLINT_SHA256" in
+            TODO*) echo "SWIFTLINT_SHA256 is still a placeholder; set it in .github/workflows/ci.yml" >&2; exit 1 ;;
+          esac
+          url="https://github.com/realm/SwiftLint/releases/download/${SWIFTLINT_VERSION}/portable_swiftlint.zip"
+          curl --fail --silent --show-error --location --output "$RUNNER_TEMP/swiftlint.zip" "$url"
+          echo "${SWIFTLINT_SHA256}  $RUNNER_TEMP/swiftlint.zip" | shasum -a 256 --check -
+          mkdir -p "$RUNNER_TEMP/swiftlint"
+          unzip -q "$RUNNER_TEMP/swiftlint.zip" -d "$RUNNER_TEMP/swiftlint"
+          chmod +x "$RUNNER_TEMP/swiftlint/swiftlint"
+          echo "$RUNNER_TEMP/swiftlint" >> "$GITHUB_PATH"
+
+      - name: SwiftLint
+        run: |
+          swiftlint version
+          swiftlint lint --strict --config .swiftlint.yml
+
+      - name: Package tests
+        run: |
+          if [ -f Packages/BLTKit/Package.swift ]; then
+            scripts/test.sh package
+          else
+            echo "Packages/BLTKit not present yet; skipping package tests."
+          fi
+
+      - name: App tests
+        run: |
+          if [ -d BLTApp/BLTApp.xcodeproj ]; then
+            scripts/test.sh app
+          else
+            echo "BLTApp/BLTApp.xcodeproj not present; skipping app tests."
+          fi
