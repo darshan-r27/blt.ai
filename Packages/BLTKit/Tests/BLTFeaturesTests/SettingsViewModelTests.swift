@@ -30,6 +30,29 @@ private final class ResetCounter {
     var fired = false
 }
 
+/// Records the names the owner was told about.
+@MainActor
+private final class NameCounter {
+    private(set) var profiles: [UserProfile] = []
+    func record(_ profile: UserProfile) { profiles.append(profile) }
+}
+
+@MainActor
+private func makeModel(
+    store: any ProgressStore,
+    profileStore: any ProfileStore = InMemoryProfileStore(initial: UserProfile(name: "zz Sample")),
+    onDidReset: @escaping @MainActor () -> Void = {},
+    onDidChangeName: @escaping @MainActor (UserProfile) -> Void = { _ in }
+) -> SettingsViewModel {
+    SettingsViewModel(
+        dependencies: makeDependencies(store: store),
+        profileStore: profileStore,
+        profileName: "zz Sample",
+        onDidReset: onDidReset,
+        onDidChangeName: onDidChangeName
+    )
+}
+
 private func makeDependencies(store: any ProgressStore) -> AppDependencies {
     let items = [
         makeItem("zz-s1", status: .reviewed),
@@ -71,14 +94,14 @@ private func makeItem(_ id: String, status: ReviewStatus) -> Item {
 @MainActor
 struct SettingsViewModelTests {
     @Test func reviewedCountIsComputedFromTheCatalog() {
-        let model = SettingsViewModel(dependencies: makeDependencies(store: SettingsStubStore()))
+        let model = makeModel(store: SettingsStubStore())
         #expect(model.reviewedCount == 1)
         #expect(model.totalCount == 3)
     }
 
     @Test func requestingResetDoesNotErase() async {
         let store = SettingsStubStore()
-        let model = SettingsViewModel(dependencies: makeDependencies(store: store))
+        let model = makeModel(store: store)
         model.requestReset()
         #expect(model.isConfirmingReset)
         #expect(await store.eraseCount == 0)
@@ -87,7 +110,7 @@ struct SettingsViewModelTests {
 
     @Test func cancellingResetDoesNotErase() async {
         let store = SettingsStubStore()
-        let model = SettingsViewModel(dependencies: makeDependencies(store: store))
+        let model = makeModel(store: store)
         model.requestReset()
         model.cancelReset()
         #expect(model.isConfirmingReset == false)
@@ -98,7 +121,7 @@ struct SettingsViewModelTests {
     @Test func confirmingResetErasesAndReportsSuccess() async {
         let store = SettingsStubStore()
         let counter = ResetCounter()
-        let model = SettingsViewModel(dependencies: makeDependencies(store: store)) { counter.fired = true }
+        let model = makeModel(store: store, onDidReset: { counter.fired = true })
         model.requestReset()
         await model.confirmReset()
         #expect(await store.eraseCount == 1)
@@ -120,7 +143,7 @@ struct SettingsViewModelTests {
         )
         let attempt = AttemptRecord(itemID: item, outcome: .correct, date: Date(timeIntervalSince1970: 1_000_000))
         let store = InMemoryProgressStore(initial: ProgressSnapshot(reviews: [item: review], attempts: [attempt]))
-        let model = SettingsViewModel(dependencies: makeDependencies(store: store))
+        let model = makeModel(store: store)
         model.requestReset()
         await model.confirmReset()
         #expect(try await store.load() == .empty)
@@ -129,11 +152,92 @@ struct SettingsViewModelTests {
     @Test func resetFailureIsSurfacedAndDoesNotNotifyOwner() async {
         let store = SettingsStubStore(eraseError: .eraseFailed)
         let counter = ResetCounter()
-        let model = SettingsViewModel(dependencies: makeDependencies(store: store)) { counter.fired = true }
+        let model = makeModel(store: store, onDidReset: { counter.fired = true })
         model.requestReset()
         await model.confirmReset()
         #expect(await store.eraseCount == 1)
         #expect(model.resetOutcome == .failed(.eraseFailed))
         #expect(counter.fired == false)
+    }
+
+    @Test func showsTheSavedNameAndOpensNoEditorUntilAsked() {
+        let model = makeModel(store: SettingsStubStore())
+        #expect(model.profileName == "zz Sample")
+        #expect(model.nameEditor == nil)
+    }
+
+    @Test func cancellingChangeNameChangesNothing() async {
+        let profileStore = OnboardingStubProfileStore(profile: UserProfile(name: "zz Sample"))
+        let names = NameCounter()
+        let model = makeModel(
+            store: SettingsStubStore(),
+            profileStore: profileStore,
+            onDidChangeName: { names.record($0) }
+        )
+        model.beginChangeName()
+        #expect(model.nameEditor?.name == "zz Sample")
+        model.nameEditor?.updateName("zz Other")
+        model.cancelChangeName()
+        #expect(model.nameEditor == nil)
+        #expect(model.profileName == "zz Sample")
+        #expect(names.profiles.isEmpty)
+        #expect(await profileStore.saveCount == 0)
+        #expect(await profileStore.savedProfile == UserProfile(name: "zz Sample"))
+    }
+
+    @Test func savingANewNameUpdatesImmediatelyAndNotifiesTheOwner() async {
+        let profileStore = OnboardingStubProfileStore(profile: UserProfile(name: "zz Sample"))
+        let names = NameCounter()
+        let model = makeModel(
+            store: SettingsStubStore(),
+            profileStore: profileStore,
+            onDidChangeName: { names.record($0) }
+        )
+        model.beginChangeName()
+        model.nameEditor?.updateName("  zz   Other ")
+        await model.nameEditor?.submit()
+        #expect(model.profileName == "zz Other")
+        #expect(model.nameEditor == nil)
+        #expect(names.profiles == [UserProfile(name: "zz Other")])
+        #expect(await profileStore.savedProfile == UserProfile(name: "zz Other"))
+    }
+
+    @Test func invalidNewNameKeepsTheSheetOpenAndSavesNothing() async {
+        let profileStore = OnboardingStubProfileStore(profile: UserProfile(name: "zz Sample"))
+        let model = makeModel(store: SettingsStubStore(), profileStore: profileStore)
+        model.beginChangeName()
+        model.nameEditor?.updateName("   ")
+        await model.nameEditor?.submit()
+        #expect(model.nameEditor?.problem == .invalid(.empty))
+        #expect(model.profileName == "zz Sample")
+        #expect(await profileStore.saveCount == 0)
+    }
+
+    @Test func failedNameSaveKeepsTheSheetOpenAndTheOldName() async {
+        let profileStore = OnboardingStubProfileStore(profile: UserProfile(name: "zz Sample"), saveError: .writeFailed)
+        let names = NameCounter()
+        let model = makeModel(
+            store: SettingsStubStore(),
+            profileStore: profileStore,
+            onDidChangeName: { names.record($0) }
+        )
+        model.beginChangeName()
+        model.nameEditor?.updateName("zz Other")
+        await model.nameEditor?.submit()
+        #expect(model.nameEditor?.problem == .saveFailed(.writeFailed))
+        #expect(model.profileName == "zz Sample")
+        #expect(names.profiles.isEmpty)
+    }
+
+    @Test func resettingProgressDoesNotTouchTheName() async {
+        let profileStore = OnboardingStubProfileStore(profile: UserProfile(name: "zz Sample"))
+        let model = makeModel(store: SettingsStubStore(), profileStore: profileStore)
+        model.requestReset()
+        await model.confirmReset()
+        #expect(model.resetOutcome == .succeeded)
+        #expect(model.profileName == "zz Sample")
+        #expect(await profileStore.eraseCount == 0)
+        #expect(await profileStore.saveCount == 0)
+        #expect(await profileStore.savedProfile == UserProfile(name: "zz Sample"))
     }
 }

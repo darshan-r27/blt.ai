@@ -15,14 +15,21 @@ struct CompositionRoot {
         self.arguments = arguments
     }
 
-    /// Async because a UI-test launch may have to erase its progress file before anything reads it.
-    func makeDependencies() async -> AppDependencies {
+    /// Everything the app's root view needs. `AppDependencies` is a frozen contract, so the profile store
+    /// travels beside it rather than inside it.
+    struct Composed: Sendable {
+        let dependencies: AppDependencies
+        let profileStore: any ProfileStore
+    }
+
+    /// Async because a UI-test launch may have to erase its files before anything reads them.
+    func compose() async -> Composed {
         #if DEBUG
-        if let fixtures = await UITestLaunch(arguments: arguments).makeDependencies() {
+        if let fixtures = await UITestLaunch(arguments: arguments).compose() {
             return fixtures
         }
         #endif
-        return makeShippingDependencies()
+        return makeShippingComposition()
     }
 
     /// `Application Support/BLT/<fileName>`. The folder is created on first write.
@@ -32,12 +39,15 @@ struct CompositionRoot {
             .appending(path: fileName, directoryHint: .notDirectory)
     }
 
-    private func makeShippingDependencies() -> AppDependencies {
-        AppDependencies(
-            catalog: loadBundledCatalog(),
-            store: FileProgressStore(fileURL: Self.supportFileURL(named: "progress.json")),
-            scheduler: SM2Scheduler(),
-            now: { Date.now }
+    private func makeShippingComposition() -> Composed {
+        Composed(
+            dependencies: AppDependencies(
+                catalog: loadBundledCatalog(),
+                store: FileProgressStore(fileURL: Self.supportFileURL(named: "progress.json")),
+                scheduler: SM2Scheduler(),
+                now: { Date.now }
+            ),
+            profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json"))
         )
     }
 

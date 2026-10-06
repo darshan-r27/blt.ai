@@ -268,4 +268,9 @@ struct HomeViewModelTests {
         #expect(model.loadError == .corrupt)
         #expect(model.scenarios.isEmpty)
     }
+
+    @Test func greetingUsesTheNameAsGiven() {
+        #expect(HomeViewModel.greeting(forName: "zz Sample") == "Hi zz Sample")
+        #expect(HomeViewModel.greeting(forName: "zz Sample Name") == "Hi zz Sample Name")
+    }
 }
