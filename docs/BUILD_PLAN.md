@@ -51,7 +51,7 @@ Goal: an end-to-end loop with three hardcoded items and deliberately crude scori
 
 ### Task 1.1 — Project scaffold
 
-Create an Xcode project named `BLTApp` with display name `BLT.ai` and bundle id `ai.blt.app` — module names can't contain dots. iOS 17 deployment target, SwiftUI lifecycle, Swift 6 language mode with strict concurrency set to `complete`. SPM only. Set up the module folder structure from PRD §7. Add SwiftLint with a committed config. Add a GitHub Actions workflow that builds and runs tests on every push.
+Create an Xcode project named `BLTApp` with display name `BLT.ai` and bundle id `ai.blt.app` — module names can't contain dots. iOS 27 deployment target (DECISIONS 029), SwiftUI lifecycle, Swift 6 language mode with strict concurrency set to `complete`. SPM only. Set up the module folder structure from PRD §7. Add SwiftLint with a committed config. Add a GitHub Actions workflow that builds and runs tests on every push.
 
 **Acceptance:** clean build with zero warnings under strict concurrency. CI green. `.gitignore` covers `xcuserdata`, `*.xcconfig`, `DerivedData`.
 
@@ -286,7 +286,7 @@ Problem, thesis, architecture diagram, the three decisions you'd defend, what yo
 ### Task 5.2 — Decision log
 `docs/DECISIONS.md` as lightweight ADRs. The interesting ones:
 
-- iOS 17 over 26, and what that cost
+- iOS 17 over 26, and what that cost (superseded: iOS 27 per DECISIONS 029)
 - zero-network as a hard constraint
 - the `ScoringEngine` protocol boundary, and why the placeholder was safe
 - pronunciation measured but never gating — the two-knob split between a calibrated detection threshold and an adaptive tolerance, and why one knob doing both jobs gets messy by month three
