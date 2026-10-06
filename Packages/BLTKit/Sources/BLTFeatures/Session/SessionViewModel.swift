@@ -41,6 +41,10 @@ public final class SessionViewModel {
     /// Bumps on every screen change; the view keys its crossfade on it.
     public private(set) var beat = 0
 
+    /// True from the moment `endSession()` is first called. Once set, the session accepts no
+    /// further answers, so nothing new can be written after the learner has left.
+    public private(set) var hasEnded = false
+
     private enum Phase {
         case loading
         case loadFailed
@@ -60,6 +64,7 @@ public final class SessionViewModel {
     private var wrongCounts: [ItemID: Int] = [:]
     private var hasStarted = false
     private var saveTask: Task<Void, Never>?
+    private var doneHandler: (@MainActor () -> Void)?
 
     /// How many wrong answers an item can get before the machine stops requeuing it
     /// (it requeues at most twice, so the third wrong answer is the last).
@@ -115,20 +120,21 @@ public final class SessionViewModel {
     }
 
     public func retry() async {
+        guard !hasEnded else { return }
         setPhase(.loading)
         await load()
     }
 
     /// Starts a session from the earliest-due items when nothing was due or new.
     public func startReviewAnyway() {
-        guard phase == .nothingDue else { return }
+        guard phase == .nothingDue, !hasEnded else { return }
         begin(with: reviewAnywayItems)
     }
 
     /// Answers the current question. Only the first presentation of an item yields an
     /// `AttemptRecord`, so a requeued presentation schedules and writes nothing.
     public func choose(_ optionID: Int) {
-        guard var current = machine else { return }
+        guard !hasEnded, var current = machine else { return }
         let before = current.state
         var rng = random
         let attempt = current.choose(optionID, at: dependencies.now(), using: &rng)
@@ -147,7 +153,7 @@ public final class SessionViewModel {
 
     /// Moves from feedback to the next question, or to the summary.
     public func advance() {
-        guard var current = machine else { return }
+        guard !hasEnded, var current = machine else { return }
         let before = current.state
         var rng = random
         current.advance(using: &rng)
@@ -156,6 +162,25 @@ public final class SessionViewModel {
         if current.state != before {
             beat += 1
         }
+    }
+
+    /// Registers the closure `endSession()` calls to leave the session. The view sets this from
+    /// its `onDone`. It is called at most once.
+    public func setDoneHandler(_ handler: @escaping @MainActor () -> Void) {
+        doneHandler = handler
+    }
+
+    /// Leaves the session. First waits for every queued save, so each answer given so far is
+    /// persisted, then calls the done handler exactly once. The unanswered current item records
+    /// nothing, and after the first call the session ignores answers, so repeated calls (a
+    /// double tap) do nothing.
+    public func endSession() async {
+        guard !hasEnded else { return }
+        hasEnded = true
+        await waitForPendingSaves()
+        let handler = doneHandler
+        doneHandler = nil
+        handler?()
     }
 
     /// Waits until every queued save has finished. For tests, and for a host that wants to be
@@ -180,6 +205,7 @@ public final class SessionViewModel {
             setPhase(.loadFailed)
             return
         }
+        guard !hasEnded else { return }
         let now = dependencies.now()
         let planned = planner.plan(scenario: scenario, snapshot: snapshot, now: now)
         if !planned.isEmpty {
