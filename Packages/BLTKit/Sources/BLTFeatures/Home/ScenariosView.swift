@@ -132,11 +132,11 @@ public struct ScenariosView: View {
                 }
                 if viewModel.canOfferReset {
                     Button("Reset progress…", role: .destructive) { viewModel.requestReset() }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bltPrimary)
                         .accessibilityIdentifier(AccessibilityID.settingsReset)
                 } else {
                     Button("Try again") { Task { await viewModel.load() } }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bltPrimary)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
