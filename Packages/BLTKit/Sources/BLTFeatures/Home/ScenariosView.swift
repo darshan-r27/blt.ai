@@ -9,27 +9,29 @@ public struct ScenariosView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Bindable private var viewModel: HomeViewModel
 
+    private let name: String
     private let onSelectScenario: (ScenarioID) -> Void
     private let onOpenProgress: () -> Void
     private let onOpenSettings: () -> Void
 
     public init(
         viewModel: HomeViewModel,
+        name: String,
         onSelectScenario: @escaping (ScenarioID) -> Void,
         onOpenProgress: @escaping () -> Void,
         onOpenSettings: @escaping () -> Void
     ) {
         self.viewModel = viewModel
+        self.name = name
         self.onSelectScenario = onSelectScenario
         self.onOpenProgress = onOpenProgress
         self.onOpenSettings = onOpenSettings
     }
 
     public var body: some View {
-        let palette = Palette(colorScheme)
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(palette.backgroundColor)
+            .bltScreenBackground()
             .navigationTitle("Scenarios")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -50,7 +52,10 @@ public struct ScenariosView: View {
                 }
                 Button("Cancel", role: .cancel) { viewModel.cancelReset() }
             } message: {
-                Text("This erases your review schedule and answer history on this device. It cannot be undone.")
+                Text(
+                    "This erases your review schedule and answer history on this device. "
+                        + "It cannot be undone. Your name is not erased."
+                )
             }
     }
 
@@ -70,6 +75,13 @@ public struct ScenariosView: View {
     private var scenarioList: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 12) {
+                Text(HomeViewModel.greeting(forName: name))
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(Palette(colorScheme).textPrimaryColor)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 4)
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilityIdentifier(AccessibilityID.greeting)
                 if let summary = viewModel.summary {
                     Text(overallLine(summary))
                         .font(.subheadline)
@@ -158,6 +170,7 @@ private struct HomePreviewHost: View {
         NavigationStack {
             ScenariosView(
                 viewModel: viewModel,
+                name: "zz Sample",
                 onSelectScenario: { _ in },
                 onOpenProgress: {},
                 onOpenSettings: {}
@@ -172,6 +185,16 @@ private struct HomePreviewHost: View {
 
 #Preview("Home, empty progress") {
     HomePreviewHost(PreviewDependencies.empty())
+}
+
+#Preview("Home, with data, dark") {
+    HomePreviewHost(PreviewDependencies.withData())
+        .preferredColorScheme(.dark)
+}
+
+#Preview("Home, with data, largest accessibility size") {
+    HomePreviewHost(PreviewDependencies.withData())
+        .environment(\.dynamicTypeSize, .accessibility5)
 }
 
 #Preview("Home, corrupt progress file") {

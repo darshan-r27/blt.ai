@@ -2,7 +2,7 @@ import BLTDesign
 import BLTProgress
 import SwiftUI
 
-/// Settings has no preferences in v1: two plain statements and one action, Reset progress.
+/// Settings has no preferences in v1: the saved name with Change name, plain statements, and Reset progress.
 public struct SettingsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Bindable private var viewModel: SettingsViewModel
@@ -23,8 +23,16 @@ public struct SettingsView: View {
                     Text("\(viewModel.reviewedCount) of \(viewModel.totalCount) reviewed")
                         .font(.headline)
                 }
+                section("Your name") {
+                    Text(viewModel.profileName)
+                        .font(.headline)
+                    Button("Change name") { viewModel.beginChangeName() }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier(AccessibilityID.settingsChangeName)
+                }
                 section("Privacy") {
-                    Text("This app makes no network requests. Your progress stays on this device.")
+                    Text("This app makes no network requests. Your name stays on this device.")
+                    Text("Your progress stays on this device.")
                 }
                 section("Your progress") {
                     Button("Reset progress", role: .destructive) { viewModel.requestReset() }
@@ -37,8 +45,11 @@ public struct SettingsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(16)
         }
-        .background(palette.backgroundColor)
+        .bltScreenBackground()
         .navigationTitle("Settings")
+        .sheet(item: nameEditorBinding) { editor in
+            ChangeNameView(viewModel: editor, onCancel: { viewModel.cancelChangeName() })
+        }
         .confirmationDialog(
             "Reset all progress?",
             isPresented: $viewModel.isConfirmingReset,
@@ -49,8 +60,21 @@ public struct SettingsView: View {
             }
             Button("Cancel", role: .cancel) { viewModel.cancelReset() }
         } message: {
-            Text("This erases your review schedule and answer history on this device. It cannot be undone.")
+            Text(
+                "This erases your review schedule and answer history on this device. "
+                    + "It cannot be undone. Your name is not erased."
+            )
         }
+    }
+
+    /// Dismissing the sheet by swiping it away counts as Cancel.
+    private var nameEditorBinding: Binding<NameEntryViewModel?> {
+        Binding(
+            get: { viewModel.nameEditor },
+            set: { editor in
+                if editor == nil { viewModel.cancelChangeName() }
+            }
+        )
     }
 
     @ViewBuilder
@@ -91,7 +115,11 @@ private struct SettingsPreviewHost: View {
     @State private var viewModel: SettingsViewModel
 
     init(_ dependencies: AppDependencies) {
-        _viewModel = State(initialValue: SettingsViewModel(dependencies: dependencies))
+        _viewModel = State(initialValue: SettingsViewModel(
+            dependencies: dependencies,
+            profileStore: InMemoryProfileStore(initial: UserProfile(name: "zz Sample")),
+            profileName: "zz Sample"
+        ))
     }
 
     var body: some View {
@@ -101,7 +129,17 @@ private struct SettingsPreviewHost: View {
     }
 }
 
-#Preview("Settings") {
+#Preview("Settings, with name") {
     SettingsPreviewHost(PreviewDependencies.withData())
+}
+
+#Preview("Settings, dark") {
+    SettingsPreviewHost(PreviewDependencies.withData())
+        .preferredColorScheme(.dark)
+}
+
+#Preview("Settings, largest accessibility size") {
+    SettingsPreviewHost(PreviewDependencies.withData())
+        .environment(\.dynamicTypeSize, .accessibility5)
 }
 #endif

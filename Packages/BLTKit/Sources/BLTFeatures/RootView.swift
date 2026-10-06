@@ -1,13 +1,58 @@
 import BLTCatalog
 import BLTCore
+import BLTProgress
 import SwiftUI
 
-/// The app's navigation: Scenarios is home, Progress and Settings push onto its stack, and a
-/// session covers the whole screen. Everything it needs arrives through `AppDependencies`.
+/// The app's front door and navigation.
+///
+/// It first loads the saved profile (DECISIONS 030). With none, the person sees the intro and name entry
+/// once; with one, Home opens straight away; a profile that cannot be read gets a calm explanation
+/// instead of being silently replaced. Home then works as before: Scenarios is home, Progress and
+/// Settings push onto its stack, and a session covers the whole screen.
+///
+/// `AppDependencies` is deliberately unchanged, so the profile store arrives as its own parameter.
+public struct RootView: View {
+    private let dependencies: AppDependencies
+    private let profileStore: any ProfileStore
+    @State private var gate: ProfileGateViewModel
+
+    public init(dependencies: AppDependencies, profileStore: any ProfileStore) {
+        self.dependencies = dependencies
+        self.profileStore = profileStore
+        _gate = State(initialValue: ProfileGateViewModel(store: profileStore))
+    }
+
+    public var body: some View {
+        content
+            .task { await gate.load() }
+    }
+
+    @ViewBuilder private var content: some View {
+        switch gate.state {
+        case .loading:
+            ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .bltScreenBackground()
+        case .needsOnboarding:
+            OnboardingFlow(gate: gate)
+        case .loadFailed(let error):
+            ProfileLoadProblemView(gate: gate, error: error)
+        case .ready(let profile):
+            HomeFlow(
+                dependencies: dependencies,
+                profileStore: profileStore,
+                name: profile.name,
+                onNameChanged: { gate.profileDidChange($0) }
+            )
+        }
+    }
+}
+
+/// Home and everything reachable from it. Built only once there is a profile.
 ///
 /// Home is reloaded when a session is dismissed and when Settings finishes a reset, so the cards
 /// never show figures from before the last answer.
-public struct RootView: View {
+private struct HomeFlow: View {
     /// A pushed screen. Plain values so the stack's path stays `Hashable`.
     private enum Destination: Hashable {
         case progress
@@ -21,19 +66,31 @@ public struct RootView: View {
     }
 
     private let dependencies: AppDependencies
+    private let profileStore: any ProfileStore
+    private let name: String
+    private let onNameChanged: @MainActor (UserProfile) -> Void
     @State private var home: HomeViewModel
     @State private var path: [Destination] = []
     @State private var session: SessionSelection?
 
-    public init(dependencies: AppDependencies) {
+    init(
+        dependencies: AppDependencies,
+        profileStore: any ProfileStore,
+        name: String,
+        onNameChanged: @escaping @MainActor (UserProfile) -> Void
+    ) {
         self.dependencies = dependencies
+        self.profileStore = profileStore
+        self.name = name
+        self.onNameChanged = onNameChanged
         _home = State(initialValue: HomeViewModel(dependencies: dependencies))
     }
 
-    public var body: some View {
+    var body: some View {
         NavigationStack(path: $path) {
             ScenariosView(
                 viewModel: home,
+                name: name,
                 onSelectScenario: select,
                 onOpenProgress: { path.append(.progress) },
                 onOpenSettings: { path.append(.settings) }
@@ -43,7 +100,13 @@ public struct RootView: View {
                 case .progress:
                     ProgressDestination(dependencies: dependencies)
                 case .settings:
-                    SettingsDestination(dependencies: dependencies, onDidReset: reloadHome)
+                    SettingsDestination(
+                        dependencies: dependencies,
+                        profileStore: profileStore,
+                        name: name,
+                        onDidReset: reloadHome,
+                        onDidChangeName: onNameChanged
+                    )
                 }
             }
         }
@@ -52,6 +115,7 @@ public struct RootView: View {
                 viewModel: SessionViewModel(scenario: selection.scenario, dependencies: dependencies),
                 onDone: { session = nil }
             )
+            .bltScreenBackground()
         }
     }
 
@@ -83,8 +147,20 @@ private struct ProgressDestination: View {
 private struct SettingsDestination: View {
     @State private var viewModel: SettingsViewModel
 
-    init(dependencies: AppDependencies, onDidReset: @escaping @MainActor () -> Void) {
-        _viewModel = State(initialValue: SettingsViewModel(dependencies: dependencies, onDidReset: onDidReset))
+    init(
+        dependencies: AppDependencies,
+        profileStore: any ProfileStore,
+        name: String,
+        onDidReset: @escaping @MainActor () -> Void,
+        onDidChangeName: @escaping @MainActor (UserProfile) -> Void
+    ) {
+        _viewModel = State(initialValue: SettingsViewModel(
+            dependencies: dependencies,
+            profileStore: profileStore,
+            profileName: name,
+            onDidReset: onDidReset,
+            onDidChangeName: onDidChangeName
+        ))
     }
 
     var body: some View {
@@ -93,7 +169,14 @@ private struct SettingsDestination: View {
 }
 
 #if DEBUG
-#Preview("Root, fake content") {
-    RootView(dependencies: PreviewDependencies.withData())
+#Preview("Root, first launch") {
+    RootView(dependencies: PreviewDependencies.withData(), profileStore: InMemoryProfileStore())
+}
+
+#Preview("Root, saved name") {
+    RootView(
+        dependencies: PreviewDependencies.withData(),
+        profileStore: InMemoryProfileStore(initial: UserProfile(name: "zz Sample"))
+    )
 }
 #endif
