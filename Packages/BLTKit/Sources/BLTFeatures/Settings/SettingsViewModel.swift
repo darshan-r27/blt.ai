@@ -2,7 +2,8 @@ import BLTProgress
 import Foundation
 import Observation
 
-/// Drives Settings: the content-review statement and the one action, Reset progress.
+/// Drives Settings: the content-review statement, the saved name with Change name, and Reset progress.
+/// Reset erases progress only; the name is a different store and is never touched here.
 @MainActor
 @Observable
 public final class SettingsViewModel {
@@ -15,18 +16,52 @@ public final class SettingsViewModel {
     public let totalCount: Int
     public private(set) var resetOutcome: ResetOutcome?
     public private(set) var isResetting = false
+    /// The saved display name. Updated as soon as Change name saves.
+    public private(set) var profileName: String
+    /// Non-nil exactly while the Change name sheet is open.
+    public private(set) var nameEditor: NameEntryViewModel?
     /// Bound to the confirmation dialog. Setting it is not a confirmation; only `confirmReset()` erases.
     public var isConfirmingReset = false
 
     private let store: any ProgressStore
+    private let profileStore: any ProfileStore
     private let onDidReset: @MainActor () -> Void
+    private let onDidChangeName: @MainActor (UserProfile) -> Void
 
-    /// `onDidReset` lets the owner of Home reload after a successful reset.
-    public init(dependencies: AppDependencies, onDidReset: @escaping @MainActor () -> Void = {}) {
+    /// `onDidReset` lets the owner of Home reload after a successful reset; `onDidChangeName` lets it show
+    /// the new name straight away.
+    public init(
+        dependencies: AppDependencies,
+        profileStore: any ProfileStore,
+        profileName: String,
+        onDidReset: @escaping @MainActor () -> Void = {},
+        onDidChangeName: @escaping @MainActor (UserProfile) -> Void = { _ in }
+    ) {
         reviewedCount = dependencies.catalog.reviewedItemCount
         totalCount = dependencies.catalog.totalItemCount
         store = dependencies.store
+        self.profileStore = profileStore
+        self.profileName = profileName
         self.onDidReset = onDidReset
+        self.onDidChangeName = onDidChangeName
+    }
+
+    /// Opens the Change name sheet with the current name in the field. Saves nothing.
+    public func beginChangeName() {
+        nameEditor = NameEntryViewModel(store: profileStore, initialName: profileName) { [weak self] profile in
+            self?.nameDidSave(profile)
+        }
+    }
+
+    /// Closes the sheet. Whatever was typed is discarded and the saved name is unchanged.
+    public func cancelChangeName() {
+        nameEditor = nil
+    }
+
+    private func nameDidSave(_ profile: UserProfile) {
+        profileName = profile.name
+        nameEditor = nil
+        onDidChangeName(profile)
     }
 
     /// Step one of Reset: ask the user. Erases nothing.

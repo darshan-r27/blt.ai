@@ -4,15 +4,15 @@ import SwiftUI
 @main
 struct BLTAppMain: App {
     /// `nil` only for the instant it takes the composition root to finish.
-    @State private var dependencies: AppDependencies?
+    @State private var composed: CompositionRoot.Composed?
 
     var body: some Scene {
         WindowGroup {
-            if let dependencies {
-                RootView(dependencies: dependencies)
+            if let composed {
+                RootView(dependencies: composed.dependencies, profileStore: composed.profileStore)
             } else {
                 ProgressView()
-                    .task { dependencies = await CompositionRoot().makeDependencies() }
+                    .task { composed = await CompositionRoot().compose() }
             }
         }
     }
