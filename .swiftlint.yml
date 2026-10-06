@@ -1,0 +1,132 @@
+# SwiftLint config for BLT.ai (run with `swiftlint lint --strict --config .swiftlint.yml`).
+# Pinned version: see .github/workflows/ci.yml. Mirrors the bans in docs/MVP_PLAN.md section 7;
+# scripts/check-forbidden-apis.sh is the authoritative scanner, these rules give earlier feedback.
+
+included:
+  - Packages/BLTKit/Sources
+  - Packages/BLTKit/Tests
+  - BLTApp/BLTApp
+  - BLTApp/BLTAppUITests
+
+excluded:
+  - .build
+  - "**/.build"
+  - DerivedData
+  - "**/DerivedData"
+  - content
+  - Packages/BLTKit/.build
+  - Packages/BLTKit/.swiftpm
+
+opt_in_rules:
+  - closure_spacing
+  - collection_alignment
+  - contains_over_first_not_nil
+  - discouraged_optional_boolean
+  - empty_count
+  - empty_string
+  - explicit_init
+  - fatal_error_message
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - joined_default_parameter
+  - last_where
+  - literal_expression_end_indentation
+  - multiline_arguments
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prefer_self_type_over_type_of_self
+  - redundant_nil_coalescing
+  - sorted_first_last
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+  - vertical_whitespace_closing_braces
+
+line_length:
+  warning: 120
+  error: 160
+  ignores_comments: true
+  ignores_urls: true
+
+file_length:
+  warning: 400
+  error: 800
+
+type_body_length:
+  warning: 250
+  error: 400
+
+function_body_length:
+  warning: 50
+  error: 100
+
+identifier_name:
+  min_length:
+    warning: 2
+  excluded:
+    - id
+    - x
+    - y
+
+# Force unwraps are banned in shipping code (MVP_PLAN section 7); tests may use them.
+force_unwrapping:
+  severity: error
+
+custom_rules:
+  no_print:
+    name: "No print in shipping code"
+    regex: '(?<![\w.])print\s*\('
+    excluded: '.*Tests/.*'
+    excluded_match_kinds:
+      - comment
+      - string
+    message: "Use Logger with privacy: .private instead of print( (CLAUDE.md constraint 8)."
+    severity: error
+  no_unchecked_sendable:
+    name: "No @unchecked Sendable"
+    regex: '@unchecked\s+Sendable'
+    excluded_match_kinds:
+      - comment
+      - string
+    message: "@unchecked Sendable is banned (CLAUDE.md constraint 6). Fix the race instead."
+    severity: error
+  no_nonisolated_unsafe:
+    name: "No nonisolated(unsafe)"
+    regex: 'nonisolated\s*\(\s*unsafe\s*\)'
+    excluded_match_kinds:
+      - comment
+      - string
+    message: "nonisolated(unsafe) is banned (CLAUDE.md constraint 6). Fix the race instead."
+    severity: error
+  no_try_bang:
+    name: "No try!"
+    regex: '\btry!'
+    excluded_match_kinds:
+      - comment
+      - string
+    message: "try! is banned. Handle or propagate the error."
+    severity: error
+  no_dispatch_semaphore:
+    name: "No DispatchSemaphore"
+    regex: '\bDispatchSemaphore\b'
+    excluded_match_kinds:
+      - comment
+      - string
+    message: "DispatchSemaphore is banned. Use structured concurrency."
+    severity: error
+  no_red:
+    name: "Never red"
+    regex: '\.foregroundColor\(\s*\.red\b|\.foregroundStyle\(\s*\.red\b|\bColor\.red\b|\bsystemRed\b'
+    excluded_match_kinds:
+      - comment
+      - string
+    message: "Never use red; feedback colour comes only from FeedbackTone (MVP_PLAN section 7)."
+    severity: error
+  no_fixed_font_size:
+    name: "No fixed font size"
+    regex: '\.font\(\s*\.system\(\s*size\s*:'
+    excluded_match_kinds:
+      - comment
+      - string
+    message: "Fixed font sizes ignore Dynamic Type. Use a text style."
+    severity: error
