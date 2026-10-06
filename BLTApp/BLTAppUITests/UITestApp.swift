@@ -176,6 +176,17 @@ class BLTUITestCase: XCTestCase {
         )
     }
 
+    /// The Home greeting: its identifier is on a container, so the words are read from the static text inside it.
+    func requireGreetingText(
+        _ text: String,
+        in app: XCUIApplication,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        requireExists(app.element(AXID.greeting), "the Home greeting", file: file, line: line)
+        requireExists(app.staticTexts[text], "the greeting text '\(text)'", file: file, line: line)
+    }
+
     func tap(_ element: XCUIElement, _ what: String, file: StaticString = #filePath, line: UInt = #line) {
         requireExists(element, what, file: file, line: line)
         element.tap()

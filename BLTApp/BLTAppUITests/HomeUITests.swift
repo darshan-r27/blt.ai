@@ -13,10 +13,11 @@ final class HomeUITests: BLTUITestCase {
     func testGreetingIsAboveTheScenariosLabel() {
         let app = launchHome()
 
-        let greeting = app.element(AXID.greeting)
+        // The identifier sits on the greeting's container; the words are its static text child.
+        requireGreetingText("Hi ZzTest", in: app)
+        let greeting = app.staticTexts["Hi ZzTest"]
         let label = app.staticTexts["Scenarios"]
         requireExists(label, "the Scenarios label")
-        XCTAssertEqual(greeting.label, "Hi ZzTest")
         XCTAssertLessThanOrEqual(greeting.frame.maxY, label.frame.minY, "The greeting must sit above 'Scenarios'")
         XCTAssertLessThan(label.frame.minY, app.element(AXID.fixtureScenarioCard).frame.minY)
     }

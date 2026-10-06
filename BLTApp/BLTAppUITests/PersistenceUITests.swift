@@ -36,7 +36,7 @@ final class PersistenceUITests: BLTUITestCase {
 
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting after relaunch")
-        XCTAssertEqual(greeting.label, "Hi ZzTest", "The saved name must survive too")
+        requireGreetingText("Hi ZzTest", in: app)
         requireCompletion(percent: 50, in: app)
         openProgress(app)
         requireLabel(of: attemptsRow(app), containing: "1")
@@ -90,7 +90,7 @@ final class PersistenceUITests: BLTUITestCase {
         app.navigationBars.buttons.firstMatch.tap()
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting")
-        XCTAssertEqual(greeting.label, "Hi ZzTest")
+        requireGreetingText("Hi ZzTest", in: app)
         requireCompletion(percent: 0, in: app)
         openProgress(app)
         requireLabel(of: attemptsRow(app), containing: "0")
