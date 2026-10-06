@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D1D0DF7D30757400000FB9E5 /* content in Resources */ = {isa = PBXBuildFile; fileRef = D1D0DF7C30757400000FB9E5 /* content */; };
 		D1D0DF7B30757375000FB9E5 /* BLTFeatures in Frameworks */ = {isa = PBXBuildFile; productRef = D1D0DF7A30757375000FB9E5 /* BLTFeatures */; };
+		D1D0DF7D30757400000FB9E5 /* content in Resources */ = {isa = PBXBuildFile; fileRef = D1D0DF7C30757400000FB9E5 /* content */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,10 +22,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D1D0DF7C30757400000FB9E5 /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = content; path = ../content; sourceTree = "<group>"; };
 		000000000000000000000120 /* BLTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D189D3703074925C00F60AD0 /* BLTAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLTAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D0DF793075719A000FB9E5 /* BLTKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BLTKit; path = ../Packages/BLTKit; sourceTree = "<group>"; };
+		D1D0DF7C30757400000FB9E5 /* content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = content; path = ../content; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
