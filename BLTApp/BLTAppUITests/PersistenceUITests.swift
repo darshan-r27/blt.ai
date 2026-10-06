@@ -10,7 +10,7 @@ final class PersistenceUITests: BLTUITestCase {
         choose(question.canonical, in: app)
         requireExists(app.element(AXID.feedbackCorrect), "correct feedback")
         confirmEndSession(app)
-        requireLabel(of: app.element(AXID.fixtureScenarioCard), containing: "1 of 2 answered")
+        requireCompletion(percent: 50, in: app)
     }
 
     private func openProgress(_ app: XCUIApplication) {
@@ -37,7 +37,7 @@ final class PersistenceUITests: BLTUITestCase {
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting after relaunch")
         XCTAssertEqual(greeting.label, "Hi ZzTest", "The saved name must survive too")
-        requireLabel(of: app.element(AXID.fixtureScenarioCard), containing: "1 of 2 answered")
+        requireCompletion(percent: 50, in: app)
         openProgress(app)
         requireLabel(of: attemptsRow(app), containing: "1")
     }
@@ -49,7 +49,7 @@ final class PersistenceUITests: BLTUITestCase {
         app.terminate()
         let fresh = launch(reset: true, name: "ZzTest")
 
-        requireLabel(of: fresh.element(AXID.fixtureScenarioCard), containing: "0 of 2 answered")
+        requireCompletion(percent: 0, in: fresh)
         openProgress(fresh)
         requireLabel(of: attemptsRow(fresh), containing: "0")
     }
@@ -71,7 +71,7 @@ final class PersistenceUITests: BLTUITestCase {
         requireGone(confirmation, "the confirmation")
         XCTAssertFalse(app.staticTexts["Progress was reset."].exists)
         app.navigationBars.buttons.firstMatch.tap()
-        requireLabel(of: app.element(AXID.fixtureScenarioCard), containing: "1 of 2 answered")
+        requireCompletion(percent: 50, in: app)
     }
 
     func testConfirmedResetClearsProgressButKeepsTheName() throws {
@@ -91,7 +91,7 @@ final class PersistenceUITests: BLTUITestCase {
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting")
         XCTAssertEqual(greeting.label, "Hi ZzTest")
-        requireLabel(of: app.element(AXID.fixtureScenarioCard), containing: "0 of 2 answered")
+        requireCompletion(percent: 0, in: app)
         openProgress(app)
         requireLabel(of: attemptsRow(app), containing: "0")
     }

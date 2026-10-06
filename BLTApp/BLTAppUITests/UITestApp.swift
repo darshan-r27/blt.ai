@@ -160,6 +160,22 @@ class BLTUITestCase: XCTestCase {
         )
     }
 
+    /// The fixture scenario card's completion. The card reads "title, subtitle, N percent complete", so the
+    /// match includes the preceding ", " (otherwise "0 percent" would also match "50" and "100").
+    func requireCompletion(
+        percent: Int,
+        in app: XCUIApplication,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        requireLabel(
+            of: app.element(AXID.fixtureScenarioCard),
+            containing: ", \(percent) percent complete",
+            file: file,
+            line: line
+        )
+    }
+
     func tap(_ element: XCUIElement, _ what: String, file: StaticString = #filePath, line: UInt = #line) {
         requireExists(element, what, file: file, line: line)
         element.tap()
