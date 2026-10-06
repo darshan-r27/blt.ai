@@ -83,11 +83,18 @@ struct SessionViewModelTests {
     ])
     func choosingAnOptionStoresOutcomeAndReviewState(kind: AnswerOption.Kind, outcome: Outcome) async throws {
         let store = InMemoryProgressStore()
-        let model = makeModel(store: store)
+        // One item (the one with a register variant), so the random order cannot change what is asked.
+        let single = Scenario(
+            id: PreviewCatalog.scenarioID,
+            title: "zz",
+            subtitle: "zz",
+            romanisationNote: nil,
+            items: [PreviewCatalog.respectfulItem]
+        )
+        let model = makeModel(store: store, scenario: single)
         await model.start()
 
         let question = try asking(model)
-        #expect(question.item.id == PreviewCatalog.respectfulItem.id)
         model.choose(try optionID(question, kind))
         await model.waitForPendingSaves()
 
@@ -106,6 +113,11 @@ struct SessionViewModelTests {
         let model = makeModel(store: store)
         await model.start()
 
+        // The session order is random, so reach the previously seen item rather than assume it is first.
+        while case .session(.asking(let other)) = model.screen, other.item.id != itemID {
+            model.choose(try optionID(other, .canonical))
+            model.advance()
+        }
         let question = try asking(model)
         #expect(question.item.id == itemID)
         model.choose(try optionID(question, .canonical))
@@ -146,10 +158,15 @@ struct SessionViewModelTests {
     @Test func finishedSummaryCountsFirstAttempts() async throws {
         let model = makeModel(store: InMemoryProgressStore())
         await model.start()
-        model.choose(try optionID(try asking(model), .registerVariant))
-        model.advance()
-        model.choose(try optionID(try asking(model), .canonical))
-        model.advance()
+        // The order is random: answer the item with a register variant that way, the other correctly.
+        for _ in 0..<2 {
+            let question = try asking(model)
+            let kind: AnswerOption.Kind = question.item.id == PreviewCatalog.respectfulItem.id
+                ? .registerVariant
+                : .canonical
+            model.choose(try optionID(question, kind))
+            model.advance()
+        }
 
         guard case .session(.finished(let result)) = model.screen else {
             Issue.record("expected the finished screen")
@@ -222,6 +239,26 @@ struct SessionViewModelTests {
         _ = try asking(model)
     }
 
+    @Test func differentSeedsStartWithDifferentQuestions() async throws {
+        let scenario = bigScenario(count: 20)
+        var firstItems = Set<String>()
+        for seed in UInt64(1)...UInt64(10) {
+            let order = try await askedOrder(seed: seed, scenario: scenario)
+            #expect(order.count == 10)
+            firstItems.insert(try #require(order.first))
+        }
+        #expect(firstItems.count > 1)
+    }
+
+    @Test func theSameSeedReproducesTheSameSessionOrder() async throws {
+        let scenario = bigScenario(count: 20)
+        let first = try await askedOrder(seed: 7, scenario: scenario)
+        let second = try await askedOrder(seed: 7, scenario: scenario)
+        let other = try await askedOrder(seed: 8, scenario: scenario)
+        #expect(first == second)
+        #expect(first != other)
+    }
+
     @Test func anEmptyScenarioShowsTheEmptyState() async {
         let empty = Scenario(
             id: ScenarioID(rawValue: "zz-empty"),
@@ -278,6 +315,53 @@ struct SessionViewModelTests {
         model.choose(try optionID(try asking(model), .canonical))
         await model.start()
         #expect(isFeedback(model))
+    }
+}
+
+@MainActor
+extension SessionViewModelTests {
+    /// A scenario of fake items, big enough that the first question visibly varies with the seed.
+    private func bigScenario(count: Int) -> Scenario {
+        let items = (1...count).map { number in
+            Item(
+                id: ItemID(rawValue: "zz-\(number)"),
+                scenarioID: ScenarioID(rawValue: "zz-big"),
+                sourcePrompt: "zz prompt \(number)",
+                register: .neutral,
+                addressee: .any,
+                canonical: "zz canonical \(number)",
+                acceptedAnswers: ["zz canonical \(number)", "zz b", "zz c"],
+                registerVariant: nil,
+                distractors: ["zz w1 \(number)", "zz w2 \(number)", "zz w3 \(number)"],
+                tokens: [],
+                note: nil,
+                reviewStatus: .unreviewed
+            )
+        }
+        return Scenario(
+            id: ScenarioID(rawValue: "zz-big"),
+            title: "zz",
+            subtitle: "zz",
+            romanisationNote: nil,
+            items: items
+        )
+    }
+
+    /// The item IDs of a session's questions in the order they are asked, answering each correctly.
+    private func askedOrder(seed: UInt64, scenario: Scenario) async throws -> [String] {
+        let model = SessionViewModel(
+            scenario: scenario,
+            dependencies: dependencies(store: InMemoryProgressStore()),
+            random: .seeded(seed)
+        )
+        await model.start()
+        var order: [String] = []
+        while case .session(.asking(let question)) = model.screen {
+            order.append(question.item.id.rawValue)
+            model.choose(try optionID(question, .canonical))
+            model.advance()
+        }
+        return order
     }
 }
 
