@@ -41,16 +41,16 @@
       "sourcePrompt": "I'm thirsty.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "enakku dhaagamaa irukku",
+      "canonical": "enakku thaagamaa irukku",
       "acceptedAnswers": [
-        "enakku dhaagamaa irukku",
         "enakku thaagamaa irukku",
-        "enakku dhaagam"
+        "enakku dhaagamaa irukku",
+        "enakku thaagam"
       ],
       "registerVariant": null,
       "distractors": [
         "enakku pasikkuthu",
-        "enakku kobama irukku",
+        "enakku kobamaa irukku",
         "enakku kaaichal"
       ],
       "tokens": [
@@ -59,7 +59,7 @@
           "english": "to me"
         },
         {
-          "tamil": "dhaagamaa",
+          "tamil": "thaagamaa",
           "english": "thirsty"
         },
         {
@@ -72,7 +72,7 @@
     },
     {
       "id": "s03-i03",
-      "sourcePrompt": "Water, please.",
+      "sourcePrompt": "Water, please. (to a waiter)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "thanni kudunga",
@@ -84,7 +84,7 @@
       ],
       "registerVariant": "thanni kudu",
       "distractors": [
-        "saapaadu kudunga",
+        "saappaadu kudunga",
         "tea kudunga"
       ],
       "tokens": [
@@ -102,7 +102,7 @@
     },
     {
       "id": "s03-i04",
-      "sourcePrompt": "One tea, please.",
+      "sourcePrompt": "One tea, please. (to a server)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "oru tea kudunga",
@@ -169,11 +169,11 @@
       "sourcePrompt": "What do you want to eat? (to a female friend)",
       "register": "casual",
       "addressee": "female",
-      "canonical": "enna saapda poora di?",
+      "canonical": "enna saapda pora di?",
       "acceptedAnswers": [
-        "enna saapda poora di?",
         "enna saapda pora di?",
-        "enna saapda poora di"
+        "enna saapda poora di?",
+        "enna saapda pora di"
       ],
       "registerVariant": "enna saapda poreenga?",
       "distractors": [
@@ -190,7 +190,7 @@
           "english": "to eat"
         },
         {
-          "tamil": "poora",
+          "tamil": "pora",
           "english": "are you going (casual)"
         },
         {
@@ -203,7 +203,7 @@
     },
     {
       "id": "s03-i07",
-      "sourcePrompt": "One dosa for me, please.",
+      "sourcePrompt": "One dosa for me, please. (to a waiter)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "enakku oru dosa kudunga",
@@ -241,7 +241,7 @@
     },
     {
       "id": "s03-i08",
-      "sourcePrompt": "Less spicy, please.",
+      "sourcePrompt": "Less spicy, please. (to the cook)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "kaaram kammiya podunga",
@@ -310,22 +310,26 @@
     },
     {
       "id": "s03-i10",
-      "sourcePrompt": "A little more rice, please.",
+      "sourcePrompt": "A little more rice, please. (to a server)",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "konjam saadham podunga",
+      "canonical": "innum konjam saadham podunga",
       "acceptedAnswers": [
+        "innum konjam saadham podunga",
         "konjam saadham podunga",
-        "konjam sadham podunga",
-        "konjam saadham kudunga",
-        "innum konjam saadham podunga"
+        "innum konjam sadham podunga",
+        "konjam saadham kudunga"
       ],
-      "registerVariant": "konjam saadham podu",
+      "registerVariant": "innum konjam saadham podu",
       "distractors": [
         "konjam thanni podunga",
         "konjam kuzhambu podunga"
       ],
       "tokens": [
+        {
+          "tamil": "innum",
+          "english": "more"
+        },
         {
           "tamil": "konjam",
           "english": "a little"
@@ -409,7 +413,7 @@
     },
     {
       "id": "s03-i13",
-      "sourcePrompt": "The bill, please.",
+      "sourcePrompt": "The bill, please. (to a waiter)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "bill kudunga",
@@ -470,7 +474,7 @@
     {
       "id": "s03-i15",
       "sourcePrompt": "Keep the change.",
-      "register": "neutral",
+      "register": "respectful",
       "addressee": "any",
       "canonical": "chillarai vechukonga",
       "acceptedAnswers": [
@@ -479,10 +483,9 @@
         "chillarai vechikonga",
         "meethi vechukonga"
       ],
-      "registerVariant": null,
+      "registerVariant": "chillarai vechukko",
       "distractors": [
         "chillarai kudunga",
-        "paisa kudunga",
         "chillarai irukka?"
       ],
       "tokens": [
@@ -607,7 +610,8 @@
         "enakku pothum",
         "enaku pothum",
         "pothum",
-        "pothum nga"
+        "podhum",
+        "enakku podhum"
       ],
       "registerVariant": null,
       "distractors": [
@@ -630,23 +634,24 @@
     },
     {
       "id": "s03-i20",
-      "sourcePrompt": "The food was delicious, thank you. (to the host)",
-      "register": "respectful",
+      "sourcePrompt": "The food was delicious.",
+      "register": "neutral",
       "addressee": "any",
-      "canonical": "saapaadu romba nalla irundhuchu, nandringa",
+      "canonical": "saappaadu romba nalla irundhuchu",
       "acceptedAnswers": [
-        "saapaadu romba nalla irundhuchu, nandringa",
-        "saapadu romba nalla irundhuchu nandringa",
-        "saapaadu romba nalla irundhuchu, nandri"
+        "saappaadu romba nalla irundhuchu",
+        "saapadu romba nalla irundhuchu",
+        "saappaadu nalla irundhuchu"
       ],
-      "registerVariant": "saapaadu romba nalla irundhuchu, thanks",
+      "registerVariant": null,
       "distractors": [
-        "saapaadu romba kaaram irundhuchu, nandringa",
-        "saapaadu romba late-aa vandhuchu, nandringa"
+        "saappaadu romba kaaramaa irundhuchu",
+        "saappaadu romba late-aa vandhuchu",
+        "saappaadu romba kammiya irundhuchu"
       ],
       "tokens": [
         {
-          "tamil": "saapaadu",
+          "tamil": "saappaadu",
           "english": "food"
         },
         {
@@ -656,13 +661,9 @@
         {
           "tamil": "irundhuchu",
           "english": "it was"
-        },
-        {
-          "tamil": "nandringa",
-          "english": "thanks (respectful)"
         }
       ],
-      "note": null,
+      "note": "",
       "reviewStatus": "unreviewed"
     }
   ]

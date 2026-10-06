@@ -147,7 +147,7 @@
       "distractors": [
         "moonu eduthukkuren",
         "rendu vendaam",
-        "rendu kudunga"
+        "rendu vaangala"
       ],
       "tokens": [
         {
@@ -367,17 +367,17 @@
       "sourcePrompt": "Do you take cards? (to a shopkeeper)",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "card edukkuveengala?",
+      "canonical": "card accept pannuveengala?",
       "acceptedAnswers": [
-        "card edukkuveengala?",
-        "card edhukkuveengala?",
-        "card edukkuveengala",
-        "card edukkuveenga?"
+        "card accept pannuveengala?",
+        "card accept pannuveengalaa?",
+        "card edupeengala?",
+        "card edupeengalaa?"
       ],
-      "registerVariant": "card edukkuviya?",
+      "registerVariant": "card accept pannuviya?",
       "distractors": [
         "card kudunga",
-        "cash edukkuveengala?"
+        "cash mattum thaanaa?"
       ],
       "tokens": [
         {
@@ -385,8 +385,8 @@
           "english": "card"
         },
         {
-          "tamil": "edukkuveengala",
-          "english": "will you take?"
+          "tamil": "accept pannuveengala",
+          "english": "will you accept?"
         }
       ],
       "note": null,
@@ -406,7 +406,7 @@
       ],
       "registerVariant": null,
       "distractors": [
-        "GPay irukka?",
+        "GPay number enna?",
         "GPay-la evlo aachu?",
         "GPay-la pay pannaadheenga"
       ],
@@ -520,7 +520,7 @@
     },
     {
       "id": "s04-i17",
-      "sourcePrompt": "Half a kilo, please.",
+      "sourcePrompt": "Half a kilo, please. (to a shopkeeper)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "arai kilo kudunga",
@@ -566,9 +566,9 @@
       ],
       "registerVariant": null,
       "distractors": [
-        "oru kilo eppo?",
-        "evlo kilo irukku?",
-        "oru kilo enga?"
+        "arai kilo evlo?",
+        "evlo kilo venum?",
+        "oru kilo venum"
       ],
       "tokens": [
         {
@@ -597,8 +597,8 @@
       "registerVariant": null,
       "distractors": [
         "discount venaam",
-        "discount eppo?",
-        "discount evlo kaasu?"
+        "discount eppo varaikkum?",
+        "discount illa"
       ],
       "tokens": [
         {

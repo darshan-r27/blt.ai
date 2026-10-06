@@ -10,23 +10,23 @@
       "sourcePrompt": "This is my mother.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "idhu en amma",
+      "canonical": "ivanga en amma",
       "acceptedAnswers": [
+        "ivanga en amma",
         "idhu en amma",
-        "idhu en ammaa",
-        "ithu en amma",
-        "idhu amma"
+        "ivanga amma",
+        "ivanga en ammaa"
       ],
       "registerVariant": null,
       "distractors": [
-        "idhu en akka",
-        "idhu en paati",
-        "idhu en appa"
+        "ivanga en akka",
+        "ivanga en paati",
+        "ivar en appa"
       ],
       "tokens": [
         {
-          "tamil": "idhu",
-          "english": "this"
+          "tamil": "ivanga",
+          "english": "she (polite)"
         },
         {
           "tamil": "en",
@@ -86,7 +86,7 @@
         "unga veetla evlo peru irukkeenga",
         "unga veettula evlo peru irukkeenga?"
       ],
-      "registerVariant": "un veetla evlo peru irukka?",
+      "registerVariant": "un veetla evlo peru?",
       "distractors": [
         "unga veetla enna irukku?",
         "unga veetuku evlo dhooram?"
@@ -114,33 +114,36 @@
     },
     {
       "id": "s05-i04",
-      "sourcePrompt": "Where do you live? (to an elder)",
+      "sourcePrompt": "Where is your house? (to an elder)",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "neenga enga irukkeenga?",
+      "canonical": "unga veedu enga irukku?",
       "acceptedAnswers": [
-        "neenga enga irukkeenga?",
-        "neenga enga irukeenga?",
-        "neenga enga irukkinga?",
-        "neenga enga irukkeenga"
+        "unga veedu enga irukku?",
+        "unga veedu enga irukunga?",
+        "unga veedu enga irukkunga?"
       ],
-      "registerVariant": "nee enga irukka?",
+      "registerVariant": "un veedu enga irukku?",
       "distractors": [
-        "neenga enga poreenga?",
-        "neenga enna panreenga?"
+        "unga veedu evlo dhooram?",
+        "unga veedu periyadhaa?"
       ],
       "tokens": [
         {
-          "tamil": "neenga",
-          "english": "you (respectful)"
+          "tamil": "unga",
+          "english": "your (respectful)"
+        },
+        {
+          "tamil": "veedu",
+          "english": "house"
         },
         {
           "tamil": "enga",
           "english": "where"
         },
         {
-          "tamil": "irukkeenga",
-          "english": "are you"
+          "tamil": "irukku",
+          "english": "is"
         }
       ],
       "note": null,
@@ -162,7 +165,7 @@
       "distractors": [
         "naan Hyderabad-ku poren",
         "naan Hyderabad-la irundhu varen",
-        "naan Hyderabad-la irukken-nu sonnen"
+        "naan Hyderabad-la velai pannuren"
       ],
       "tokens": [
         {
@@ -322,15 +325,15 @@
       "canonical": "raathiri saappaadu enna?",
       "acceptedAnswers": [
         "raathiri saappaadu enna?",
-        "raathiri saapaadu enna?",
+        "raathiri saappaadu enna?",
         "dinner enna?",
         "night saappaadu enna?"
       ],
       "registerVariant": null,
       "distractors": [
-        "raathiri eppo?",
-        "raathiri enga?",
-        "raathiri evlo?"
+        "raathiri saappaadu eppo?",
+        "madhiyam saappaadu enna?",
+        "raathiri saappaadu aachaa?"
       ],
       "tokens": [
         {
@@ -358,7 +361,6 @@
       "acceptedAnswers": [
         "veetla yaaraachum irukkeengala?",
         "veetla yaaravadhu irukkeengala?",
-        "veetla yaaru irukkeenga?",
         "yaaraachum irukkeengala?"
       ],
       "registerVariant": "veetla yaaraachum irukkiya?",
@@ -385,7 +387,7 @@
     },
     {
       "id": "s05-i12",
-      "sourcePrompt": "Please open the door.",
+      "sourcePrompt": "Please open the door. (to an elder)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "kadhava thorangunga",
@@ -393,7 +395,7 @@
         "kadhava thorangunga",
         "kadhava thorakkunga",
         "kadhavai thorangunga",
-        "kadhava thirakkunga"
+        "kadhava thoranga"
       ],
       "registerVariant": "kadhava thora",
       "distractors": [
@@ -415,13 +417,12 @@
     },
     {
       "id": "s05-i13",
-      "sourcePrompt": "Please close the door.",
+      "sourcePrompt": "Please close the door. (to an elder)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "kadhava moodunga",
       "acceptedAnswers": [
         "kadhava moodunga",
-        "kadhava mooduga",
         "kadhavai moodunga",
         "kadhava moodunga!"
       ],
@@ -445,14 +446,14 @@
     },
     {
       "id": "s05-i14",
-      "sourcePrompt": "Turn on the light.",
+      "sourcePrompt": "Turn on the light. (to an elder)",
       "register": "respectful",
       "addressee": "any",
       "canonical": "light-a on pannunga",
       "acceptedAnswers": [
         "light-a on pannunga",
         "light a on pannunga",
-        "light-a pottunga",
+        "light-a podunga",
         "lightaa on pannunga"
       ],
       "registerVariant": "light-a on pannu",
@@ -478,11 +479,10 @@
       "sourcePrompt": "It's very hot today.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "innikku romba sudaa irukku",
+      "canonical": "innikku romba veyilaa irukku",
       "acceptedAnswers": [
-        "innikku romba sudaa irukku",
-        "innikku romba suda irukku",
-        "innikku romba sudu",
+        "innikku romba veyilaa irukku",
+        "innikku romba heat-aa irukku",
         "innikku romba veyil"
       ],
       "registerVariant": null,
@@ -501,8 +501,8 @@
           "english": "very"
         },
         {
-          "tamil": "sudaa",
-          "english": "hot"
+          "tamil": "veyilaa",
+          "english": "hot (sunny)"
         },
         {
           "tamil": "irukku",
@@ -528,7 +528,7 @@
       "distractors": [
         "veyil adikkudhu",
         "kaathu adikkudhu",
-        "mazhai vandhuduchu"
+        "mazhai ninnuduchu"
       ],
       "tokens": [
         {
@@ -590,7 +590,7 @@
       ],
       "registerVariant": "enna aachunga?",
       "distractors": [
-        "enga poora da?",
+        "enga pora da?",
         "yaaru da?"
       ],
       "tokens": [
@@ -634,7 +634,7 @@
         },
         {
           "tamil": "padaadheenga",
-          "english": "don't (respectful)"
+          "english": "don't feel (respectful)"
         }
       ],
       "note": null,
