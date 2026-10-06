@@ -241,7 +241,7 @@ public struct ContentLoader: Sendable { public init(limits: Limits = .default); 
 
 ## 6b. UI workflow changes (before C11) — added 2026-10-06
 
-Owner-requested: (1) light lilac app background; (2) intro page "For the love of Tamil" and a name-only sign-up; (3) Home greets "Hi <name>"; (4) a clear way to quit a session at any time. Data policy: DECISIONS 030 (name only, on device).
+Owner-requested: (1) light lilac app background; (2) intro page titled "blt.ai" (originally "For the love of Tamil") and a name-only sign-up; (3) Home greets "Hi <name>"; (4) a clear way to quit a session at any time. Data policy: DECISIONS 030 (name only, on device).
 
 ```swift
 // U1 (BLTProgress/Profile)

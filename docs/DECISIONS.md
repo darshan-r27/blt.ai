@@ -285,3 +285,12 @@ Two owner directions for v1 content:
 The Home card line "n of 20 reviewed" counted items whose `reviewStatus` is `reviewed` (native-speaker review of the AI-drafted content), but sat next to the learner's own progress and read as "questions you've reviewed". The owner is verifying the content JSON by hand, so the card now shows the learner's progress instead: **"n of 20 answered"** (distinct items answered at least once).
 
 **Unchanged:** the item-level "Unreviewed draft" badge on Question and Feedback and the Settings statement ("drafted by an AI … n of 100 reviewed") still disclose review status honestly (025). Only the card changed.
+
+## 032 — Intro title "blt.ai" and a deep-purple accent
+**Status:** active
+
+The intro title is **blt.ai** (it was "For the love of Tamil"; the tagline stays). The app accent is deep purple instead of system blue: light `#5B3FA8` with white text, dark `#B79CF0` with dark text `#1A1821`; accent tint `#E4DBF6` / `#33294F`. It is applied once through `bltTheme()` and `BLTPrimaryButtonStyle`, and through the `AccentColor` asset for system dialogs. The page stays lilac (`#F0EAFA` light, `#1A1821` dark); feedback tones are unchanged.
+
+**App icon:** "Two voices": a Telugu అ bubble overlapping a Tamil அ bubble, in standard, dark and tinted variants (`tools/app-icon/`).
+
+**Known limits:** the iOS keyboard's return key and some system keyboard UI stay system blue (SwiftUI tint does not reach them). The Settings reset button and confirmation dialogs use a destructive role, which could render red on some iOS versions; revisit if seen.
