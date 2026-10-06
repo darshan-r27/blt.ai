@@ -8,6 +8,7 @@ struct ItemContractTests {
         let url = try #require(
             Bundle.module.url(forResource: "valid-minimal", withExtension: "json", subdirectory: "Fixtures")
         )
+        precondition(url.isFileURL)
         let data = try Data(contentsOf: url)
         let object = try #require(try JSONSerialization.jsonObject(with: data) as? [String: Any])
         let items = try #require(object["items"] as? [[String: Any]])
@@ -20,14 +21,28 @@ struct ItemContractTests {
     }
 
     @Test func catalogLooksUpItemsAndListsIDs() {
+        let scenarioID = ScenarioID(rawValue: "zz-s")
         let id = ItemID(rawValue: "zz-1")
         let item = Item(
-            id: id, scenarioID: ScenarioID(rawValue: "zz-s"), sourcePrompt: "zz", register: .neutral,
-            addressee: .any, canonical: "zz a", acceptedAnswers: ["zz a", "zz b", "zz c"], registerVariant: nil,
-            distractors: ["zz d", "zz e", "zz f"], tokens: [], note: nil, reviewStatus: .unreviewed
+            id: id,
+            scenarioID: scenarioID,
+            sourcePrompt: "zz",
+            register: .neutral,
+            addressee: .any,
+            canonical: "zz a",
+            acceptedAnswers: ["zz a", "zz b", "zz c"],
+            registerVariant: nil,
+            distractors: ["zz d", "zz e", "zz f"],
+            tokens: [],
+            note: nil,
+            reviewStatus: .unreviewed
         )
         let scenario = Scenario(
-            id: ScenarioID(rawValue: "zz-s"), title: "zz", subtitle: "zz", romanisationNote: nil, items: [item]
+            id: scenarioID,
+            title: "zz",
+            subtitle: "zz",
+            romanisationNote: nil,
+            items: [item]
         )
         let catalog = Catalog(scenarios: [scenario], issues: [])
         #expect(catalog.item(id) == item)

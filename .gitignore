@@ -12,3 +12,4 @@ DerivedData/
 *.xcconfig
 *.mobileprovision
 *.p12
+.claude/worktrees/
