@@ -28,6 +28,11 @@ public final class HomeViewModel {
         self.dependencies = dependencies
     }
 
+    /// The greeting above the scenario cards. `name` is the validated display name (DECISIONS 030).
+    public static func greeting(forName name: String) -> String {
+        "Hi \(name)"
+    }
+
     /// Only a damaged or newer-than-supported file can be fixed by erasing it. A transient read
     /// failure (`.unreadable`) should be retried instead, so no Reset is offered for it.
     public var canOfferReset: Bool {
