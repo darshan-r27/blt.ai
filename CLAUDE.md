@@ -22,14 +22,16 @@ These are not preferences. Violating one is a bug regardless of whether tests pa
 
 ```bash
 # Build
-xcodebuild -scheme BLTApp -destination 'platform=iOS Simulator,name=iPhone 15' build
+xcodebuild -scheme BLTApp -destination 'platform=iOS Simulator,name=iPhone 17' build
 
 # Test
-xcodebuild -scheme BLTApp -destination 'platform=iOS Simulator,name=iPhone 15' test
+xcodebuild -scheme BLTApp -destination 'platform=iOS Simulator,name=iPhone 17' test
 
 # Lint
 swiftlint --strict
 ```
+
+The Simulator runtime on this Mac is iOS 27 (iPhone 17 and later); there is no iOS 17 runtime, so the iOS 17 deployment target is verified by build settings, not by running an iOS 17 simulator. List available devices with `xcrun simctl list devices available`; parallel agents should each use a different device.
 
 Speech and microphone APIs **do not work in Simulator.** Anything touching `AudioRecorder`, `SFSpeechRecognizer`, or the scoring engines must be verified by the human on a physical device. Say so explicitly when you finish such a task rather than reporting it as done.
 
