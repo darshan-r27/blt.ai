@@ -249,3 +249,12 @@ Two owner directions for v1 content:
 - **Common English loanwords stay English.** Tamil speakers say `phone pannu`, `bus`, `ticket`, `bill`, `thanks`, `sorry`; the app teaches those forms rather than literary Tamil replacements. The target is the ordinary Tamil speaker, who knows these words.
 
 **Consequence:** `romba thanks` and `wait pannu` are correct answers, and a Sanskritised Tamil substitute would be the wrong one. Content validation must not flag Latin-script English words in romanised fields.
+
+## 028 — v1 progress is stored in a single JSON file, not SwiftData
+**Status:** active — departs from PRD §7
+
+**Decision:** review state and the attempt log (item ID, outcome, timestamp) live in one Codable JSON file in the app's Application Support directory, written atomically with `.completeFileProtection`, behind a `ProgressStore` protocol. SwiftData is not used in v1.
+
+**Why:** the data is on the order of a hundred review records plus an attempt log. Plain value types are `Sendable` and stay clean under Swift 6 strict concurrency, where SwiftData `@Model` classes and `ModelContext` isolation add friction. Reset is deleting one file, and the schema version is explicit. The protocol boundary lets SwiftData replace it later without touching callers.
+
+**Consequences:** a corrupt file throws and is never silently overwritten. v2 can swap the store behind the same protocol.

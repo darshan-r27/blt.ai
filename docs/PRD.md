@@ -59,7 +59,7 @@ Explicitly out of scope for v1. Each is a deliberate cut, not an oversight.
 | Pronunciation *instruction* | Measured, reported, never taught or gated. See below and §8.5. |
 | Tamil script | Young Tamil speakers text in Latin script. Script is a ~40-hour tax unrelated to the goal. Romanised only. |
 | Tamil → Telugu direction | Doubles content cost, halves depth. One direction, done well. |
-| English → Tamil | The Dravidian-transfer thesis doesn't hold. Different product. |
+| English → Tamil for English-L1 learners | The Dravidian-transfer thesis needs a Telugu-L1 learner, so teaching English speakers is a different product. English is used only as the *prompt language* for Telugu speakers who are fluent in English (DECISIONS 024). |
 | Gamification | Streaks, XP, leaderboards, mascot. Anti-goal. |
 | Backend in v1 | The v1 app ships with no network requests at all. An opt-in telemetry service arrives in v1.5 — see §12. Progress sync stays cut permanently: it needs identity, brings PII, and is worth less than telemetry. |
 | Grammar explanation | See §2. |
