@@ -65,6 +65,6 @@ final class EndSessionUITests: BLTUITestCase {
 
         confirmEndSession(app)
 
-        requireLabel(of: app.element(AXID.fixtureScenarioCard), containing: "1 of 2 answered")
+        requireCompletion(percent: 50, in: app)
     }
 }
