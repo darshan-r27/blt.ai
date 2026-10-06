@@ -139,14 +139,14 @@ struct HomeViewModelTests {
         #expect(first.newCount == 1)
         #expect(first.learnedCount == 2)
         #expect(first.totalCount == 4)
-        #expect(first.reviewedCount == 2)
+        #expect(first.answeredCount == 3)
 
         let second = try #require(model.scenarios.first { $0.id.rawValue == "zz-b" })
         #expect(second.dueCount == 0)
         #expect(second.newCount == 1)
         #expect(second.learnedCount == 0)
         #expect(second.totalCount == 2)
-        #expect(second.reviewedCount == 1)
+        #expect(second.answeredCount == 1)
         #expect(model.loadError == nil)
     }
 

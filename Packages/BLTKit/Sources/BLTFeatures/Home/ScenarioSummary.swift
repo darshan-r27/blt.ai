@@ -15,8 +15,8 @@ public struct ScenarioSummary: Sendable, Equatable, Identifiable {
     public let newCount: Int
     public let learnedCount: Int
     public let totalCount: Int
-    /// Items whose `reviewStatus` is `.reviewed`: the "n of N reviewed" figure (DECISIONS 025).
-    public let reviewedCount: Int
+    /// Items answered at least once: the "n of N answered" figure (DECISIONS 031).
+    public let answeredCount: Int
 
     public init(scenario: Scenario, snapshot: ProgressSnapshot, now: Date) {
         id = scenario.id
@@ -27,6 +27,6 @@ public struct ScenarioSummary: Sendable, Equatable, Identifiable {
         newCount = scenario.items.count - reviews.count
         learnedCount = reviews.filter(\.isLearned).count
         totalCount = scenario.items.count
-        reviewedCount = scenario.items.filter { $0.reviewStatus == .reviewed }.count
+        answeredCount = reviews.count
     }
 }
