@@ -267,3 +267,14 @@ Two owner directions for v1 content:
 **Why:** 005 chose iOS 17 to widen device support and avoid iOS 26's `SpeechAnalyzer`. This is a portfolio project that is not distributed (README), so device reach has no value, and the only simulator runtime installed is iOS 27, so testing on the real deployment target is simpler and more honest than testing on a newer OS than we claim to support. The `SpeechAnalyzer` concern belonged to v2 voice and is revisited there (Task 0.1).
 
 **Consequence:** the original reasoning is kept in 005. Docs that said iOS 17 were updated in the same change. Nothing in v1 depends on iOS 27-only APIs, so lowering the target later is a one-line change if distribution ever matters.
+
+## 030 — v1 collects a display name only, stored on the device
+**Status:** active — implements 014c for v1 (no telemetry yet)
+
+**Decision:** on first launch the app asks for one thing: a display name. It is shown in the greeting ("Hi <name>") and nothing else. It is stored in a local JSON file (`Application Support/BLT/profile.json`, atomic write, `.completeFileProtection`) behind a `ProfileStore` protocol and never leaves the device: v1 has no network code (CLAUDE.md constraint 1; enforced by the forbidden-API guard and the binary check). There is no account, password, email, or identifier of any kind.
+
+**Not collected:** age, gender, location, contacts, device identifiers. They have no use in v1 (nothing is personalised; there is no cohort analysis, DECISIONS 022), so collecting them would be data we hold without a purpose. Adding any field later means editing this ADR first; if it ever feeds telemetry, `docs/BACKEND.md` §5 (the exhaustive field tables) must be edited first and consent shown (DECISIONS 012, 014c).
+
+**Rules:** the name is trimmed, 1 to 40 characters, no control characters; any script is allowed because it is the user's own name. "Change name" lives in Settings. Reset progress does not delete the name. Quitting a session mid-way keeps every answer already given, because each answer is saved the moment it is made.
+
+**Privacy manifest:** `NSPrivacyCollectedDataTypes` stays empty because nothing is collected off-device.

@@ -239,6 +239,35 @@ public struct ContentLoader: Sendable { public init(limits: Limits = .default); 
 // C7 (BLTDesign): Palette, OptionButton, GlossView, ReviewStatusBadge (plain-string inputs; no Catalog/Session types)
 ```
 
+## 6b. UI workflow changes (before C11) — added 2026-10-06
+
+Owner-requested: (1) light lilac app background; (2) intro page "For the love of Tamil" and a name-only sign-up; (3) Home greets "Hi <name>"; (4) a clear way to quit a session at any time. Data policy: DECISIONS 030 (name only, on device).
+
+```swift
+// U1 (BLTProgress/Profile)
+public struct UserProfile: Sendable, Equatable, Codable { public let name: String; public init(name: String) }
+public enum ProfileNameError: Error, Sendable, Equatable { case empty, tooLong, invalidCharacters }
+public enum ProfileNameValidator { public static func validate(_ raw: String) -> Result<String, ProfileNameError> } // trims, collapses inner whitespace, 1...40, rejects control characters
+public enum ProfileStoreError: Error, Sendable, Equatable { case unreadable, corrupt, unsupportedSchemaVersion(Int), writeFailed, eraseFailed }
+public protocol ProfileStore: Sendable {
+    func load() async throws(ProfileStoreError) -> UserProfile?   // nil = no profile yet
+    func save(_ profile: UserProfile) async throws(ProfileStoreError)
+    func erase() async throws(ProfileStoreError)
+}
+public actor FileProfileStore: ProfileStore { public init(fileURL: URL) }   // same rules as FileProgressStore: corrupt is never overwritten
+public actor InMemoryProfileStore: ProfileStore { public init(initial: UserProfile? = nil) }
+// U3 (BLTDesign): lilac Palette.background (light) and a deep muted-purple counterpart (dark);
+//   public extension View { func bltScreenBackground() -> some View }   // applies Palette.background, ignoring safe areas
+// U2 (BLTFeatures/Session): an always-visible End-session control (X, top leading) on question and feedback beats;
+//   confirmation "End this session? Your answers so far are saved." with buttons "End session" / "Keep going" (no red/destructive role);
+//   SessionViewModel.endSession() awaits pending saves, then calls the Done closure.
+// U4 (BLTFeatures/Onboarding, RootView, Home, Settings, BLTApp/CompositionRoot): intro -> name entry (first launch only) -> Home "Hi <name>";
+//   RootView(dependencies:, profileStore:); AppDependencies is NOT changed; Settings shows the name with "Change name"; the no-network
+//   statement also says the name stays on this device.
+```
+
+Waves: **U1 ∥ U2 ∥ U3** (disjoint files), then **U4** (needs all three). C11 then also covers onboarding, the greeting, and the quit button.
+
 ## 7. Review checklist for every PR
 
 - **Network ban** (script + CI; exemption list empty in v1): no `URLSession`, `NSURLConnection`, `NWConnection`, `NWPathMonitor`, `CFStream`, `CFSocket`, `getaddrinfo`; no `WKWebView`, `AsyncImage`, `Link(`, `openURL`, `SFSafariViewController`, `ASWebAuthenticationSession`; no `import Network/WebKit/SafariServices/CloudKit/MultipeerConnectivity`; no `http` URL literals; `Data(contentsOf:)` only after an `isFileURL` check; project has no network entitlements.
