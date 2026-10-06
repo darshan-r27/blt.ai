@@ -390,17 +390,17 @@
       "sourcePrompt": "Please open the door. (to an elder)",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "kadhava thorangunga",
+      "canonical": "kadhava thoranga",
       "acceptedAnswers": [
-        "kadhava thorangunga",
+        "kadhava thoranga",
         "kadhava thorakkunga",
-        "kadhavai thorangunga",
-        "kadhava thoranga"
+        "kadhava open pannunga",
+        "kadhavai thoranga"
       ],
       "registerVariant": "kadhava thora",
       "distractors": [
         "kadhava moodunga",
-        "jannala thorangunga"
+        "jannala thoranga"
       ],
       "tokens": [
         {
@@ -408,7 +408,7 @@
           "english": "the door"
         },
         {
-          "tamil": "thorangunga",
+          "tamil": "thoranga",
           "english": "open (respectful)"
         }
       ],
@@ -479,11 +479,12 @@
       "sourcePrompt": "It's very hot today.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "innikku romba veyilaa irukku",
+      "canonical": "innikku romba sudaa irukku",
       "acceptedAnswers": [
+        "innikku romba sudaa irukku",
+        "innikku romba suda irukku",
         "innikku romba veyilaa irukku",
-        "innikku romba heat-aa irukku",
-        "innikku romba veyil"
+        "innikku romba heat-aa irukku"
       ],
       "registerVariant": null,
       "distractors": [
@@ -501,8 +502,8 @@
           "english": "very"
         },
         {
-          "tamil": "veyilaa",
-          "english": "hot (sunny)"
+          "tamil": "sudaa",
+          "english": "hot"
         },
         {
           "tamil": "irukku",
