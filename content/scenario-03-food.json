@@ -1,0 +1,669 @@
+{
+  "scenarioId": "s03",
+  "title": "Food and eating out",
+  "subtitle": "Ordering, tasting and paying at a restaurant or stall",
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "s03-i01",
+      "sourcePrompt": "I'm hungry.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enakku pasikkuthu",
+      "acceptedAnswers": [
+        "enakku pasikkuthu",
+        "enakku pasikkudhu",
+        "enakku pasikkuthu!",
+        "enaku pasikkuthu"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "enakku thookkam varudhu",
+        "enakku thaagamaa irukku",
+        "enakku kaaichal"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "pasikkuthu",
+          "english": "hunger is felt"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i02",
+      "sourcePrompt": "I'm thirsty.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enakku dhaagamaa irukku",
+      "acceptedAnswers": [
+        "enakku dhaagamaa irukku",
+        "enakku thaagamaa irukku",
+        "enakku dhaagam"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "enakku pasikkuthu",
+        "enakku kobama irukku",
+        "enakku kaaichal"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "dhaagamaa",
+          "english": "thirsty"
+        },
+        {
+          "tamil": "irukku",
+          "english": "is"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i03",
+      "sourcePrompt": "Water, please.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "thanni kudunga",
+      "acceptedAnswers": [
+        "thanni kudunga",
+        "thanni kodunga",
+        "thanni kudunga!",
+        "thanni kudungaa"
+      ],
+      "registerVariant": "thanni kudu",
+      "distractors": [
+        "saapaadu kudunga",
+        "tea kudunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "thanni",
+          "english": "water"
+        },
+        {
+          "tamil": "kudunga",
+          "english": "give (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i04",
+      "sourcePrompt": "One tea, please.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "oru tea kudunga",
+      "acceptedAnswers": [
+        "oru tea kudunga",
+        "oru tea kodunga",
+        "oru tea kudunga!",
+        "oru chai kudunga"
+      ],
+      "registerVariant": "oru tea kudu",
+      "distractors": [
+        "oru coffee kudunga",
+        "rendu tea kudunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "oru",
+          "english": "one"
+        },
+        {
+          "tamil": "tea",
+          "english": "tea"
+        },
+        {
+          "tamil": "kudunga",
+          "english": "give (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i05",
+      "sourcePrompt": "What do you have? (asking the waiter)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "enna irukkunga?",
+      "acceptedAnswers": [
+        "enna irukkunga?",
+        "enna irukunga?",
+        "enna irukku nga?",
+        "enna irukkunga"
+      ],
+      "registerVariant": "enna irukku?",
+      "distractors": [
+        "enna venum?",
+        "enna aachu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "enna",
+          "english": "what"
+        },
+        {
+          "tamil": "irukkunga",
+          "english": "is there (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i06",
+      "sourcePrompt": "What do you want to eat? (to a female friend)",
+      "register": "casual",
+      "addressee": "female",
+      "canonical": "enna saapda poora di?",
+      "acceptedAnswers": [
+        "enna saapda poora di?",
+        "enna saapda pora di?",
+        "enna saapda poora di"
+      ],
+      "registerVariant": "enna saapda poreenga?",
+      "distractors": [
+        "enga saapda poora di?",
+        "eppo saapda poora di?"
+      ],
+      "tokens": [
+        {
+          "tamil": "enna",
+          "english": "what"
+        },
+        {
+          "tamil": "saapda",
+          "english": "to eat"
+        },
+        {
+          "tamil": "poora",
+          "english": "are you going (casual)"
+        },
+        {
+          "tamil": "di",
+          "english": "friendly address to a woman"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i07",
+      "sourcePrompt": "One dosa for me, please.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "enakku oru dosa kudunga",
+      "acceptedAnswers": [
+        "enakku oru dosa kudunga",
+        "oru dosa kudunga",
+        "enaku oru dosa kudunga",
+        "enakku oru dosa kodunga"
+      ],
+      "registerVariant": "enakku oru dosa kudu",
+      "distractors": [
+        "enakku rendu dosa kudunga",
+        "enakku oru idli kudunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "oru",
+          "english": "one"
+        },
+        {
+          "tamil": "dosa",
+          "english": "dosa"
+        },
+        {
+          "tamil": "kudunga",
+          "english": "give (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i08",
+      "sourcePrompt": "Less spicy, please.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "kaaram kammiya podunga",
+      "acceptedAnswers": [
+        "kaaram kammiya podunga",
+        "kaaram kammiyaa podunga",
+        "kaaram konjam kammiya podunga",
+        "kaaram kammi-a podunga"
+      ],
+      "registerVariant": "kaaram kammiya podu",
+      "distractors": [
+        "kaaram jaasthiya podunga",
+        "uppu kammiya podunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "kaaram",
+          "english": "spice"
+        },
+        {
+          "tamil": "kammiya",
+          "english": "less"
+        },
+        {
+          "tamil": "podunga",
+          "english": "put (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i09",
+      "sourcePrompt": "Is it spicy?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "idhu kaaramaa irukkumaa?",
+      "acceptedAnswers": [
+        "idhu kaaramaa irukkumaa?",
+        "idhu kaaramaa irukkuma?",
+        "idhu kaaramaa irukkuma",
+        "idhu kaaram-aa?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "idhu sweet-aa irukkumaa?",
+        "idhu evlo kaasu?",
+        "idhu eppo varum?"
+      ],
+      "tokens": [
+        {
+          "tamil": "idhu",
+          "english": "this"
+        },
+        {
+          "tamil": "kaaramaa",
+          "english": "spicy"
+        },
+        {
+          "tamil": "irukkumaa",
+          "english": "will it be?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i10",
+      "sourcePrompt": "A little more rice, please.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "konjam saadham podunga",
+      "acceptedAnswers": [
+        "konjam saadham podunga",
+        "konjam sadham podunga",
+        "konjam saadham kudunga",
+        "innum konjam saadham podunga"
+      ],
+      "registerVariant": "konjam saadham podu",
+      "distractors": [
+        "konjam thanni podunga",
+        "konjam kuzhambu podunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "konjam",
+          "english": "a little"
+        },
+        {
+          "tamil": "saadham",
+          "english": "rice"
+        },
+        {
+          "tamil": "podunga",
+          "english": "put (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i11",
+      "sourcePrompt": "It's very tasty.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "romba nalla irukku",
+      "acceptedAnswers": [
+        "romba nalla irukku",
+        "romba nallaa irukku",
+        "romba tasty-aa irukku",
+        "super-aa irukku"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "romba kaaramaa irukku",
+        "romba sudaa irukku",
+        "romba uppa irukku"
+      ],
+      "tokens": [
+        {
+          "tamil": "romba",
+          "english": "very"
+        },
+        {
+          "tamil": "nalla",
+          "english": "good"
+        },
+        {
+          "tamil": "irukku",
+          "english": "is"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i12",
+      "sourcePrompt": "It's too salty.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "uppu jaasthi",
+      "acceptedAnswers": [
+        "uppu jaasthi",
+        "uppu jasthi",
+        "uppu romba jaasthi"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "kaaram jaasthi",
+        "sakkarai jaasthi",
+        "thanni jaasthi"
+      ],
+      "tokens": [
+        {
+          "tamil": "uppu",
+          "english": "salt"
+        },
+        {
+          "tamil": "jaasthi",
+          "english": "too much"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i13",
+      "sourcePrompt": "The bill, please.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "bill kudunga",
+      "acceptedAnswers": [
+        "bill kudunga",
+        "bill kodunga",
+        "bill kudunga!"
+      ],
+      "registerVariant": "bill kudu",
+      "distractors": [
+        "menu kudunga",
+        "thanni kudunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "bill",
+          "english": "bill"
+        },
+        {
+          "tamil": "kudunga",
+          "english": "give (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i14",
+      "sourcePrompt": "How much is it?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "evlo aachu?",
+      "acceptedAnswers": [
+        "evlo aachu?",
+        "evlo aachu",
+        "evlo achu?",
+        "evlo aachunga?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "evlo irukku?",
+        "enna aachu?",
+        "evlo venum?"
+      ],
+      "tokens": [
+        {
+          "tamil": "evlo",
+          "english": "how much"
+        },
+        {
+          "tamil": "aachu",
+          "english": "has it become"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i15",
+      "sourcePrompt": "Keep the change.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "chillarai vechukonga",
+      "acceptedAnswers": [
+        "chillarai vechukonga",
+        "chillara vechukonga",
+        "chillarai vechikonga",
+        "meethi vechukonga"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "chillarai kudunga",
+        "paisa kudunga",
+        "chillarai irukka?"
+      ],
+      "tokens": [
+        {
+          "tamil": "chillarai",
+          "english": "change"
+        },
+        {
+          "tamil": "vechukonga",
+          "english": "keep (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i16",
+      "sourcePrompt": "Do you have change?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "chillarai irukkaa?",
+      "acceptedAnswers": [
+        "chillarai irukkaa?",
+        "chillarai irukka?",
+        "chillara irukka?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "chillarai kudunga",
+        "chillarai evlo?",
+        "chillarai vechukonga"
+      ],
+      "tokens": [
+        {
+          "tamil": "chillarai",
+          "english": "change"
+        },
+        {
+          "tamil": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i17",
+      "sourcePrompt": "I only eat vegetarian food.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "naan veg thaan saapduven",
+      "acceptedAnswers": [
+        "naan veg thaan saapduven",
+        "naan veg dhaan saapduven",
+        "naan veg mattum saapduven"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "naan non-veg thaan saapduven",
+        "naan saapda maaten",
+        "naan veg saapda poren"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "veg",
+          "english": "vegetarian"
+        },
+        {
+          "tamil": "thaan",
+          "english": "only"
+        },
+        {
+          "tamil": "saapduven",
+          "english": "will eat"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i18",
+      "sourcePrompt": "Is this vegetarian?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "idhu veg-aa?",
+      "acceptedAnswers": [
+        "idhu veg-aa?",
+        "idhu veg aa?",
+        "idhu vegaa?",
+        "idhu veg-a?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "idhu non-veg-aa?",
+        "idhu fresh-aa?",
+        "idhu evlo?"
+      ],
+      "tokens": [
+        {
+          "tamil": "idhu",
+          "english": "this"
+        },
+        {
+          "tamil": "veg-aa",
+          "english": "vegetarian?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i19",
+      "sourcePrompt": "I've had enough.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enakku pothum",
+      "acceptedAnswers": [
+        "enakku pothum",
+        "enaku pothum",
+        "pothum",
+        "pothum nga"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "innum podunga",
+        "konjam podunga",
+        "kammiyaa podunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "pothum",
+          "english": "enough"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s03-i20",
+      "sourcePrompt": "The food was delicious, thank you. (to the host)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "saapaadu romba nalla irundhuchu, nandringa",
+      "acceptedAnswers": [
+        "saapaadu romba nalla irundhuchu, nandringa",
+        "saapadu romba nalla irundhuchu nandringa",
+        "saapaadu romba nalla irundhuchu, nandri"
+      ],
+      "registerVariant": "saapaadu romba nalla irundhuchu, thanks",
+      "distractors": [
+        "saapaadu romba kaaram irundhuchu, nandringa",
+        "saapaadu romba late-aa vandhuchu, nandringa"
+      ],
+      "tokens": [
+        {
+          "tamil": "saapaadu",
+          "english": "food"
+        },
+        {
+          "tamil": "romba nalla",
+          "english": "very good"
+        },
+        {
+          "tamil": "irundhuchu",
+          "english": "it was"
+        },
+        {
+          "tamil": "nandringa",
+          "english": "thanks (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    }
+  ]
+}

@@ -240,3 +240,12 @@ The owner's direction: teach the bare minimum of register, casual (`nee`, `un-`)
 **Decision:** every item carries a `register` (`casual` | `respectful` | `neutral`). The "other option" in each question is the same sentence in the *other spoken register* (`registerVariant`), not a textbook form. The prompt names the audience ("to a friend", "to an elder"), so choosing the wrong register for the audience is a register mistake, not a vocabulary one. `neutral` items have no you-form and no register variant, so they carry a third wrong distractor instead.
 
 **Consequence:** the Feedback state formerly called "understood, but formal" becomes "right sentence, wrong register for this person" and says what to use with whom. This keeps the register-awareness feature and drops the news-anchor framing, so register feedback now needs no ~40-rule classifier in v1, only item data. Schema change: `formalVariant` → `registerVariant` (nullable), plus `register`.
+
+## 027 — Gendered casual address taught; common English loanwords kept as spoken
+**Status:** active — refines 026
+
+Two owner directions for v1 content:
+- **Casual speech carries gendered address.** Casual items to a close friend end in `da` (male) or `di` (female); each item records `addressee` (`male` | `female` | `any`). Respectful speech has no gendered address.
+- **Common English loanwords stay English.** Tamil speakers say `phone pannu`, `bus`, `ticket`, `bill`, `thanks`, `sorry`; the app teaches those forms rather than literary Tamil replacements. The target is the ordinary Tamil speaker, who knows these words.
+
+**Consequence:** `romba thanks` and `wait pannu` are correct answers, and a Sanskritised Tamil substitute would be the wrong one. Content validation must not flag Latin-script English words in romanised fields.

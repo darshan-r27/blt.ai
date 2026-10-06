@@ -1,0 +1,675 @@
+{
+  "scenarioId": "s02",
+  "title": "Getting around",
+  "subtitle": "Buses, autos, directions and asking the way",
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "s02-i01",
+      "sourcePrompt": "Where is the bus stand? (asking a stranger)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "bus stand enga irukkunga?",
+      "acceptedAnswers": [
+        "bus stand enga irukkunga?",
+        "bus stand enga irukunga?",
+        "bus stand enga irukku nga?",
+        "bus stand enga irukkunga"
+      ],
+      "registerVariant": "bus stand enga irukku?",
+      "distractors": [
+        "bus stand eppo varum?",
+        "bus enga poguthu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "bus stand",
+          "english": "bus stand"
+        },
+        {
+          "tamil": "enga",
+          "english": "where"
+        },
+        {
+          "tamil": "irukkunga",
+          "english": "is it (respectful)"
+        }
+      ],
+      "note": "-nga adds respect when asking a stranger.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i02",
+      "sourcePrompt": "Which bus goes to the station?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "station-ku entha bus pogum?",
+      "acceptedAnswers": [
+        "station-ku entha bus pogum?",
+        "station ku entha bus pogum?",
+        "station-kku entha bus pogum?",
+        "stationku entha bus pogum?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "station enga irukku?",
+        "bus eppo varum?",
+        "station-la entha bus nikkum?"
+      ],
+      "tokens": [
+        {
+          "tamil": "station-ku",
+          "english": "to the station"
+        },
+        {
+          "tamil": "entha",
+          "english": "which"
+        },
+        {
+          "tamil": "bus",
+          "english": "bus"
+        },
+        {
+          "tamil": "pogum",
+          "english": "goes"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i03",
+      "sourcePrompt": "How much is the ticket?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "ticket evlo?",
+      "acceptedAnswers": [
+        "ticket evlo?",
+        "ticket evlo",
+        "ticket evvalavu?",
+        "ticket price evlo?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "ticket eppo?",
+        "ticket enga kidaikkum?",
+        "ticket irukka?"
+      ],
+      "tokens": [
+        {
+          "tamil": "ticket",
+          "english": "ticket"
+        },
+        {
+          "tamil": "evlo",
+          "english": "how much"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i04",
+      "sourcePrompt": "One ticket to Chennai, please. (to the conductor)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "Chennai-ku oru ticket kudunga",
+      "acceptedAnswers": [
+        "Chennai-ku oru ticket kudunga",
+        "Chennai ku oru ticket kudunga",
+        "Chennai-kku oru ticket kudunga",
+        "Chennaiku oru ticket kudunga"
+      ],
+      "registerVariant": "Chennai-ku oru ticket kudu",
+      "distractors": [
+        "Chennai-la irundhu oru ticket kudunga",
+        "Chennai-ku rendu ticket kudunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "Chennai-ku",
+          "english": "to Chennai"
+        },
+        {
+          "tamil": "oru",
+          "english": "one"
+        },
+        {
+          "tamil": "ticket",
+          "english": "ticket"
+        },
+        {
+          "tamil": "kudunga",
+          "english": "give (respectful)"
+        }
+      ],
+      "note": "kudunga is respectful; kudu is casual.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i05",
+      "sourcePrompt": "When will the bus come?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "bus eppo varum?",
+      "acceptedAnswers": [
+        "bus eppo varum?",
+        "bus eppo varum",
+        "bus eppa varum?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "bus enga varum?",
+        "bus evlo neram aagum?",
+        "bus eppo poyiduchu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "bus",
+          "english": "bus"
+        },
+        {
+          "tamil": "eppo",
+          "english": "when"
+        },
+        {
+          "tamil": "varum",
+          "english": "will come"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i06",
+      "sourcePrompt": "Where are you going? (to a male friend)",
+      "register": "casual",
+      "addressee": "male",
+      "canonical": "enga poora da?",
+      "acceptedAnswers": [
+        "enga poora da?",
+        "enga pora da?",
+        "enga poora da",
+        "enga poorada?"
+      ],
+      "registerVariant": "enga poreenga?",
+      "distractors": [
+        "enga irundhu vara da?",
+        "eppo poora da?"
+      ],
+      "tokens": [
+        {
+          "tamil": "enga",
+          "english": "where"
+        },
+        {
+          "tamil": "poora",
+          "english": "are you going (casual)"
+        },
+        {
+          "tamil": "da",
+          "english": "friendly address to a man"
+        }
+      ],
+      "note": "poreenga is the respectful form.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i07",
+      "sourcePrompt": "I'm going to the market.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "naan market-ku poren",
+      "acceptedAnswers": [
+        "naan market-ku poren",
+        "naan market ku poren",
+        "naan marketku poren",
+        "naan market-kku poren"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "naan market-la irukken",
+        "naan market-la irundhu varen",
+        "naan market-ku vandhen"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "market-ku",
+          "english": "to the market"
+        },
+        {
+          "tamil": "poren",
+          "english": "am going"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i08",
+      "sourcePrompt": "Please stop here. (to an auto driver)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "inga niruthunga",
+      "acceptedAnswers": [
+        "inga niruthunga",
+        "inga nirutthunga",
+        "inga niruthunga!",
+        "inga niruthunga sir"
+      ],
+      "registerVariant": "inga niruthu",
+      "distractors": [
+        "inga irukkunga",
+        "mella poonga"
+      ],
+      "tokens": [
+        {
+          "tamil": "inga",
+          "english": "here"
+        },
+        {
+          "tamil": "niruthunga",
+          "english": "please stop (respectful)"
+        }
+      ],
+      "note": "niruthu is casual, for friends.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i09",
+      "sourcePrompt": "Go straight. (to an auto driver)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "straight-a poonga",
+      "acceptedAnswers": [
+        "straight-a poonga",
+        "straight a poonga",
+        "straightaa poonga",
+        "straight-aa poonga"
+      ],
+      "registerVariant": "straight-a po",
+      "distractors": [
+        "right-la poonga",
+        "left-la poonga"
+      ],
+      "tokens": [
+        {
+          "tamil": "straight-a",
+          "english": "straight"
+        },
+        {
+          "tamil": "poonga",
+          "english": "go (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i10",
+      "sourcePrompt": "Turn right. (to an auto driver)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "right-la thirumbunga",
+      "acceptedAnswers": [
+        "right-la thirumbunga",
+        "right la thirumbunga",
+        "right-la thirumbunga!",
+        "right-la thirumbungaa"
+      ],
+      "registerVariant": "right-la thirumbu",
+      "distractors": [
+        "left-la thirumbunga",
+        "thirumbi vaanga"
+      ],
+      "tokens": [
+        {
+          "tamil": "right-la",
+          "english": "to the right"
+        },
+        {
+          "tamil": "thirumbunga",
+          "english": "turn (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i11",
+      "sourcePrompt": "How far is it?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "evlo dhooram?",
+      "acceptedAnswers": [
+        "evlo dhooram?",
+        "evlo dhooram",
+        "evlo dooram?",
+        "evlo thooram?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "evlo neram?",
+        "evlo kaasu?",
+        "evlo naal?"
+      ],
+      "tokens": [
+        {
+          "tamil": "evlo",
+          "english": "how much"
+        },
+        {
+          "tamil": "dhooram",
+          "english": "distance"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i12",
+      "sourcePrompt": "How long will it take?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "evlo neram aagum?",
+      "acceptedAnswers": [
+        "evlo neram aagum?",
+        "evlo neram aagum",
+        "evlo time aagum?",
+        "evlo neram aahum?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "evlo kaasu aagum?",
+        "evlo naal aagum?",
+        "evlo dhooram aagum?"
+      ],
+      "tokens": [
+        {
+          "tamil": "evlo",
+          "english": "how much"
+        },
+        {
+          "tamil": "neram",
+          "english": "time"
+        },
+        {
+          "tamil": "aagum",
+          "english": "will take"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i13",
+      "sourcePrompt": "Is it far?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "romba dhooramaa?",
+      "acceptedAnswers": [
+        "romba dhooramaa?",
+        "romba dhooramaa",
+        "romba dooramaa?",
+        "romba thooramaa?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "pakkamaa?",
+        "romba neramaa?",
+        "romba kaasaa?"
+      ],
+      "tokens": [
+        {
+          "tamil": "romba",
+          "english": "very"
+        },
+        {
+          "tamil": "dhooramaa",
+          "english": "far?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i14",
+      "sourcePrompt": "I don't know the way.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enakku vazhi theriyala",
+      "acceptedAnswers": [
+        "enakku vazhi theriyala",
+        "enaku vazhi theriyala",
+        "enakku route theriyala",
+        "enakku vazhi theriyala!"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "enakku ooru theriyala",
+        "enakku bus theriyala",
+        "enakku peru theriyala"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "vazhi",
+          "english": "way"
+        },
+        {
+          "tamil": "theriyala",
+          "english": "not known"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i15",
+      "sourcePrompt": "Please tell me the way. (to a stranger)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "vazhi sollunga",
+      "acceptedAnswers": [
+        "vazhi sollunga",
+        "vazhi sollungaa",
+        "vazhi sollunga!",
+        "vazhi solunga"
+      ],
+      "registerVariant": "vazhi sollu",
+      "distractors": [
+        "vazhi vidunga",
+        "vazhi theriyuma?"
+      ],
+      "tokens": [
+        {
+          "tamil": "vazhi",
+          "english": "way"
+        },
+        {
+          "tamil": "sollunga",
+          "english": "tell (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i16",
+      "sourcePrompt": "Is this the right bus?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "idhu sariyaana bus-aa?",
+      "acceptedAnswers": [
+        "idhu sariyaana bus-aa?",
+        "idhu sariyana busaa?",
+        "idhu correct bus-aa?",
+        "idhu sariyaana bus a?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "idhu enga pogum bus?",
+        "idhu eppo varum bus?",
+        "idhu evlo bus?"
+      ],
+      "tokens": [
+        {
+          "tamil": "idhu",
+          "english": "this"
+        },
+        {
+          "tamil": "sariyaana",
+          "english": "right"
+        },
+        {
+          "tamil": "bus-aa",
+          "english": "bus?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i17",
+      "sourcePrompt": "Wait here. (to a male friend)",
+      "register": "casual",
+      "addressee": "male",
+      "canonical": "inga wait pannu da",
+      "acceptedAnswers": [
+        "inga wait pannu da",
+        "inga wait pannuda",
+        "inga wait pannu da!"
+      ],
+      "registerVariant": "inga wait pannunga",
+      "distractors": [
+        "inga vaa da",
+        "inga ukkaaru da"
+      ],
+      "tokens": [
+        {
+          "tamil": "inga",
+          "english": "here"
+        },
+        {
+          "tamil": "wait pannu",
+          "english": "wait (casual)"
+        },
+        {
+          "tamil": "da",
+          "english": "friendly address to a man"
+        }
+      ],
+      "note": "wait pannu uses the English word the way speakers do.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i18",
+      "sourcePrompt": "I'll be there in five minutes.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "five minutes-la varen",
+      "acceptedAnswers": [
+        "five minutes-la varen",
+        "five minutes la varen",
+        "five mins-la varen",
+        "anju nimisham-la varen"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "five minutes-ku munnaadi vandhuten",
+        "five days-la varen",
+        "five minutes-la poiduven"
+      ],
+      "tokens": [
+        {
+          "tamil": "five minutes-la",
+          "english": "in five minutes"
+        },
+        {
+          "tamil": "varen",
+          "english": "I come"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i19",
+      "sourcePrompt": "I'll get off here.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "naan inga irangaren",
+      "acceptedAnswers": [
+        "naan inga irangaren",
+        "nan inga irangaren",
+        "naan inga irangaren!",
+        "naan inga irangurein"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "naan inga yeraren",
+        "naan inga irukken",
+        "naan inga poren"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "inga",
+          "english": "here"
+        },
+        {
+          "tamil": "irangaren",
+          "english": "get off"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s02-i20",
+      "sourcePrompt": "Where can I get an auto?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "auto enga kidaikkum?",
+      "acceptedAnswers": [
+        "auto enga kidaikkum?",
+        "auto enga kedaikkum?",
+        "auto enga kidaikum?",
+        "auto enga kidaikkum"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "auto evlo?",
+        "auto eppo poguthu?",
+        "auto yaarudhu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "auto",
+          "english": "auto-rickshaw"
+        },
+        {
+          "tamil": "enga",
+          "english": "where"
+        },
+        {
+          "tamil": "kidaikkum",
+          "english": "will be available"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    }
+  ]
+}

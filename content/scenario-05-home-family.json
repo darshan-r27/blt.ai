@@ -1,0 +1,678 @@
+{
+  "scenarioId": "s05",
+  "title": "Home, family and daily routine",
+  "subtitle": "Introducing family and everyday home talk",
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "s05-i01",
+      "sourcePrompt": "This is my mother.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "idhu en amma",
+      "acceptedAnswers": [
+        "idhu en amma",
+        "idhu en ammaa",
+        "ithu en amma",
+        "idhu amma"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "idhu en akka",
+        "idhu en paati",
+        "idhu en appa"
+      ],
+      "tokens": [
+        {
+          "tamil": "idhu",
+          "english": "this"
+        },
+        {
+          "tamil": "en",
+          "english": "my"
+        },
+        {
+          "tamil": "amma",
+          "english": "mother"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i02",
+      "sourcePrompt": "This is my friend.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "idhu en friend",
+      "acceptedAnswers": [
+        "idhu en friend",
+        "ithu en friend",
+        "idhu en nanban",
+        "idhu en friend-u"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "idhu en appa",
+        "idhu en neighbour",
+        "idhu en annan"
+      ],
+      "tokens": [
+        {
+          "tamil": "idhu",
+          "english": "this"
+        },
+        {
+          "tamil": "en",
+          "english": "my"
+        },
+        {
+          "tamil": "friend",
+          "english": "friend"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i03",
+      "sourcePrompt": "How many people are in your family? (to an elder)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "unga veetla evlo peru irukkeenga?",
+      "acceptedAnswers": [
+        "unga veetla evlo peru irukkeenga?",
+        "unga veetla evlo peru irukkeenga",
+        "unga veettula evlo peru irukkeenga?"
+      ],
+      "registerVariant": "un veetla evlo peru irukka?",
+      "distractors": [
+        "unga veetla enna irukku?",
+        "unga veetuku evlo dhooram?"
+      ],
+      "tokens": [
+        {
+          "tamil": "unga",
+          "english": "your (respectful)"
+        },
+        {
+          "tamil": "veetla",
+          "english": "at home"
+        },
+        {
+          "tamil": "evlo peru",
+          "english": "how many people"
+        },
+        {
+          "tamil": "irukkeenga",
+          "english": "are there"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i04",
+      "sourcePrompt": "Where do you live? (to an elder)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "neenga enga irukkeenga?",
+      "acceptedAnswers": [
+        "neenga enga irukkeenga?",
+        "neenga enga irukeenga?",
+        "neenga enga irukkinga?",
+        "neenga enga irukkeenga"
+      ],
+      "registerVariant": "nee enga irukka?",
+      "distractors": [
+        "neenga enga poreenga?",
+        "neenga enna panreenga?"
+      ],
+      "tokens": [
+        {
+          "tamil": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "tamil": "enga",
+          "english": "where"
+        },
+        {
+          "tamil": "irukkeenga",
+          "english": "are you"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i05",
+      "sourcePrompt": "I live in Hyderabad.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "naan Hyderabad-la irukken",
+      "acceptedAnswers": [
+        "naan Hyderabad-la irukken",
+        "naan Hyderabad la irukken",
+        "naan hyderabad-la irukken",
+        "naan Hyderabadla irukken"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "naan Hyderabad-ku poren",
+        "naan Hyderabad-la irundhu varen",
+        "naan Hyderabad-la irukken-nu sonnen"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "Hyderabad-la",
+          "english": "in Hyderabad"
+        },
+        {
+          "tamil": "irukken",
+          "english": "live"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i06",
+      "sourcePrompt": "What work do you do? (to an elder)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "neenga enna velai pannureenga?",
+      "acceptedAnswers": [
+        "neenga enna velai pannureenga?",
+        "neenga enna velai pannreenga?",
+        "neenga enna velai panreenga?",
+        "neenga enna work pannureenga?"
+      ],
+      "registerVariant": "nee enna velai pannura?",
+      "distractors": [
+        "neenga enga velai pannureenga?",
+        "neenga enna saapdureenga?"
+      ],
+      "tokens": [
+        {
+          "tamil": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "tamil": "enna velai",
+          "english": "what work"
+        },
+        {
+          "tamil": "pannureenga",
+          "english": "do"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i07",
+      "sourcePrompt": "I work in an office.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "naan office-la velai pannuren",
+      "acceptedAnswers": [
+        "naan office-la velai pannuren",
+        "naan office la velai pannuren",
+        "naan office-la work pannuren",
+        "naan officela velai panren"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "naan office-ku poren",
+        "naan office-la irundhu varen",
+        "naan office-la saapduren"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "office-la",
+          "english": "in an office"
+        },
+        {
+          "tamil": "velai pannuren",
+          "english": "work"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i08",
+      "sourcePrompt": "I'm sleepy.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "enakku thookkam varudhu",
+      "acceptedAnswers": [
+        "enakku thookkam varudhu",
+        "enakku thookkam varuthu",
+        "enaku thookkam varudhu",
+        "enakku thookkama irukku"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "enakku pasikkuthu",
+        "enakku dhaagamaa irukku",
+        "enakku kaaichal"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "thookkam",
+          "english": "sleep"
+        },
+        {
+          "tamil": "varudhu",
+          "english": "is coming"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i09",
+      "sourcePrompt": "Sleep well. (to an elder)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "nalla thoongunga",
+      "acceptedAnswers": [
+        "nalla thoongunga",
+        "nalla thoongunga!",
+        "nalla thoongunga ma"
+      ],
+      "registerVariant": "nalla thoongu",
+      "distractors": [
+        "nalla saapdunga",
+        "nalla padinga"
+      ],
+      "tokens": [
+        {
+          "tamil": "nalla",
+          "english": "well"
+        },
+        {
+          "tamil": "thoongunga",
+          "english": "sleep (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i10",
+      "sourcePrompt": "What's for dinner?",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "raathiri saappaadu enna?",
+      "acceptedAnswers": [
+        "raathiri saappaadu enna?",
+        "raathiri saapaadu enna?",
+        "dinner enna?",
+        "night saappaadu enna?"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "raathiri eppo?",
+        "raathiri enga?",
+        "raathiri evlo?"
+      ],
+      "tokens": [
+        {
+          "tamil": "raathiri",
+          "english": "night"
+        },
+        {
+          "tamil": "saappaadu",
+          "english": "meal"
+        },
+        {
+          "tamil": "enna",
+          "english": "what"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i11",
+      "sourcePrompt": "Is anyone at home? (calling out at a door)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "veetla yaaraachum irukkeengala?",
+      "acceptedAnswers": [
+        "veetla yaaraachum irukkeengala?",
+        "veetla yaaravadhu irukkeengala?",
+        "veetla yaaru irukkeenga?",
+        "yaaraachum irukkeengala?"
+      ],
+      "registerVariant": "veetla yaaraachum irukkiya?",
+      "distractors": [
+        "veetla yaaru vandhaanga?",
+        "veetla enna irukku?"
+      ],
+      "tokens": [
+        {
+          "tamil": "veetla",
+          "english": "at home"
+        },
+        {
+          "tamil": "yaaraachum",
+          "english": "anyone"
+        },
+        {
+          "tamil": "irukkeengala",
+          "english": "are you there?"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i12",
+      "sourcePrompt": "Please open the door.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "kadhava thorangunga",
+      "acceptedAnswers": [
+        "kadhava thorangunga",
+        "kadhava thorakkunga",
+        "kadhavai thorangunga",
+        "kadhava thirakkunga"
+      ],
+      "registerVariant": "kadhava thora",
+      "distractors": [
+        "kadhava moodunga",
+        "jannala thorangunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "kadhava",
+          "english": "the door"
+        },
+        {
+          "tamil": "thorangunga",
+          "english": "open (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i13",
+      "sourcePrompt": "Please close the door.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "kadhava moodunga",
+      "acceptedAnswers": [
+        "kadhava moodunga",
+        "kadhava mooduga",
+        "kadhavai moodunga",
+        "kadhava moodunga!"
+      ],
+      "registerVariant": "kadhava moodu",
+      "distractors": [
+        "kadhava thorangunga",
+        "light-a off pannunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "kadhava",
+          "english": "the door"
+        },
+        {
+          "tamil": "moodunga",
+          "english": "close (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i14",
+      "sourcePrompt": "Turn on the light.",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "light-a on pannunga",
+      "acceptedAnswers": [
+        "light-a on pannunga",
+        "light a on pannunga",
+        "light-a pottunga",
+        "lightaa on pannunga"
+      ],
+      "registerVariant": "light-a on pannu",
+      "distractors": [
+        "light-a off pannunga",
+        "fan-a on pannunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "light-a",
+          "english": "the light"
+        },
+        {
+          "tamil": "on pannunga",
+          "english": "turn on (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i15",
+      "sourcePrompt": "It's very hot today.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "innikku romba sudaa irukku",
+      "acceptedAnswers": [
+        "innikku romba sudaa irukku",
+        "innikku romba suda irukku",
+        "innikku romba sudu",
+        "innikku romba veyil"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "innikku romba kulirudhu",
+        "innikku romba mazhai",
+        "innikku romba kaathu"
+      ],
+      "tokens": [
+        {
+          "tamil": "innikku",
+          "english": "today"
+        },
+        {
+          "tamil": "romba",
+          "english": "very"
+        },
+        {
+          "tamil": "sudaa",
+          "english": "hot"
+        },
+        {
+          "tamil": "irukku",
+          "english": "is"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i16",
+      "sourcePrompt": "It's raining.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "mazhai peiyudhu",
+      "acceptedAnswers": [
+        "mazhai peiyudhu",
+        "mazhai peyyudhu",
+        "mazhai peiyuthu",
+        "mazha peiyudhu"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "veyil adikkudhu",
+        "kaathu adikkudhu",
+        "mazhai vandhuduchu"
+      ],
+      "tokens": [
+        {
+          "tamil": "mazhai",
+          "english": "rain"
+        },
+        {
+          "tamil": "peiyudhu",
+          "english": "is falling"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i17",
+      "sourcePrompt": "Come quickly. (to a female friend)",
+      "register": "casual",
+      "addressee": "female",
+      "canonical": "seekirama vaa di",
+      "acceptedAnswers": [
+        "seekirama vaa di",
+        "seekkirama vaa di",
+        "seekiram vaa di"
+      ],
+      "registerVariant": "seekirama vaanga",
+      "distractors": [
+        "mella vaa di",
+        "naalaikku vaa di"
+      ],
+      "tokens": [
+        {
+          "tamil": "seekirama",
+          "english": "quickly"
+        },
+        {
+          "tamil": "vaa",
+          "english": "come (casual)"
+        },
+        {
+          "tamil": "di",
+          "english": "friendly address to a woman"
+        }
+      ],
+      "note": "vaa is casual; vaanga is respectful.",
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i18",
+      "sourcePrompt": "What happened? (to a male friend)",
+      "register": "casual",
+      "addressee": "male",
+      "canonical": "enna aachu da?",
+      "acceptedAnswers": [
+        "enna aachu da?",
+        "enna aachuda?",
+        "enna aachu da",
+        "enna achu da?"
+      ],
+      "registerVariant": "enna aachunga?",
+      "distractors": [
+        "enga poora da?",
+        "yaaru da?"
+      ],
+      "tokens": [
+        {
+          "tamil": "enna",
+          "english": "what"
+        },
+        {
+          "tamil": "aachu",
+          "english": "happened"
+        },
+        {
+          "tamil": "da",
+          "english": "friendly address to a man"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i19",
+      "sourcePrompt": "Don't worry. (to an elder)",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "kavala padaadheenga",
+      "acceptedAnswers": [
+        "kavala padaadheenga",
+        "kavalai padaadheenga",
+        "kavala padaadhinga",
+        "kavala padathinga"
+      ],
+      "registerVariant": "kavala padaadha",
+      "distractors": [
+        "kavala padunga",
+        "kavala pattuten"
+      ],
+      "tokens": [
+        {
+          "tamil": "kavala",
+          "english": "worry"
+        },
+        {
+          "tamil": "padaadheenga",
+          "english": "don't (respectful)"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "s05-i20",
+      "sourcePrompt": "I've reached home.",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "naan veetuku vandhuten",
+      "acceptedAnswers": [
+        "naan veetuku vandhuten",
+        "naan veetukku vandhuten",
+        "naan veettuku vandhuten"
+      ],
+      "registerVariant": null,
+      "distractors": [
+        "naan veetla irundhu varen",
+        "naan veetuku poren",
+        "naan veetla illa"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "veetuku",
+          "english": "to home"
+        },
+        {
+          "tamil": "vandhuten",
+          "english": "have arrived"
+        }
+      ],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    }
+  ]
+}
