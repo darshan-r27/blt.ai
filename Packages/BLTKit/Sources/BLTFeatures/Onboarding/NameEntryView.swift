@@ -21,7 +21,7 @@ struct NameEntryView: View {
                     Text("Continue")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bltPrimary)
                 .controlSize(.large)
                 .accessibilityIdentifier(AccessibilityID.nameContinue)
             }

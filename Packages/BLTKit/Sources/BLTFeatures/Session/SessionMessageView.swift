@@ -30,7 +30,7 @@ struct SessionMessageView: View {
                 ForEach(actions) { action in
                     if action.isPrimary {
                         Button(action.title, action: action.run)
-                            .buttonStyle(.borderedProminent)
+                            .buttonStyle(.bltPrimary)
                             .controlSize(.large)
                     } else {
                         Button(action.title, action: action.run)
