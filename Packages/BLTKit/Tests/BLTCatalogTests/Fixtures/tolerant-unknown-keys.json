@@ -1,0 +1,37 @@
+{
+  "scenarioId": "zz-tolerant",
+  "title": "zz tolerant",
+  "subtitle": "zz subtitle",
+  "registerPolicy": "zz policy text the loader must ignore",
+  "romanisationNote": "zz romanisation note",
+  "futureKey": { "nested": [1, 2, 3] },
+  "items": [
+    {
+      "id": "zz-tolerant-1",
+      "sourcePrompt": "zz prompt one",
+      "register": "casual",
+      "addressee": "male",
+      "canonical": "zz one canonical",
+      "acceptedAnswers": ["zz one canonical", "zz one b", "zz one c"],
+      "registerVariant": "zz one respectful",
+      "distractors": ["zz one wrong a", "zz one wrong b"],
+      "tokens": [{"tamil": "ZZ", "english": "zz gloss", "extraTokenKey": true}],
+      "note": "zz note",
+      "reviewStatus": "reviewed",
+      "extraItemKey": "zz ignored"
+    },
+    {
+      "id": "zz-tolerant-2",
+      "sourcePrompt": "zz prompt two",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "zz two canonical",
+      "acceptedAnswers": ["zz two canonical", "zz two b", "zz two c"],
+      "registerVariant": null,
+      "distractors": ["zz two wrong a", "zz two wrong b", "zz two wrong c"],
+      "tokens": [{"tamil": "zz two", "english": "zz gloss"}],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    }
+  ]
+}

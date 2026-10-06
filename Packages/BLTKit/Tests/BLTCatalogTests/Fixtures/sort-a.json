@@ -1,0 +1,20 @@
+{
+  "scenarioId": "zz-a-first",
+  "title": "zz a",
+  "subtitle": "zz subtitle",
+  "items": [
+    {
+      "id": "zz-a-1",
+      "sourcePrompt": "zz prompt",
+      "register": "neutral",
+      "addressee": "any",
+      "canonical": "zz a canonical",
+      "acceptedAnswers": ["zz a canonical", "zz a two", "zz a three"],
+      "registerVariant": null,
+      "distractors": ["zz wrong a", "zz wrong b", "zz wrong c"],
+      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    }
+  ]
+}

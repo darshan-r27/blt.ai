@@ -1,0 +1,20 @@
+{
+  "scenarioId": "zz-loanwords",
+  "title": "zz loanwords",
+  "subtitle": "zz subtitle",
+  "items": [
+    {
+      "id": "zz-loan-1",
+      "sourcePrompt": "zz take the bus and pay with GPay",
+      "register": "casual",
+      "addressee": "any",
+      "canonical": "zz bus GPay pannu",
+      "acceptedAnswers": ["zz bus GPay pannu", "zz bus GPay pannu da", "zz GPay bus pannu"],
+      "registerVariant": "zz bus GPay pannunga",
+      "distractors": ["zz train UPI pannu", "zz cab Paytm pannu"],
+      "tokens": [{"tamil": "bus", "english": "bus"}, {"tamil": "gpay", "english": "GPay"}],
+      "note": "zz English loanwords stay in Latin script",
+      "reviewStatus": "unreviewed"
+    }
+  ]
+}
