@@ -47,11 +47,11 @@ struct ProfileLoadProblemView: View {
     @ViewBuilder private var action: some View {
         if gate.canOfferStartOver {
             Button("Start over") { gate.requestStartOver() }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bltPrimary)
                 .controlSize(.large)
         } else {
             Button("Try again") { Task { await gate.retry() } }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bltPrimary)
                 .controlSize(.large)
         }
     }

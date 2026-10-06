@@ -73,7 +73,7 @@ struct FeedbackView: View {
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 44)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.bltPrimary)
             .controlSize(.large)
             .accessibilityIdentifier(AccessibilityID.continueButton)
             .padding(.horizontal, 20)
