@@ -162,7 +162,7 @@
       "distractors": [
         "bus enga varum?",
         "bus evlo neram aagum?",
-        "bus eppo poyiduchu?"
+        "bus eppo poochu?"
       ],
       "tokens": [
         {
@@ -186,17 +186,17 @@
       "sourcePrompt": "Where are you going? (to a male friend)",
       "register": "casual",
       "addressee": "male",
-      "canonical": "enga poora da?",
+      "canonical": "enga pora da?",
       "acceptedAnswers": [
-        "enga poora da?",
         "enga pora da?",
-        "enga poora da",
-        "enga poorada?"
+        "enga poora da?",
+        "enga pora da",
+        "enga porada?"
       ],
       "registerVariant": "enga poreenga?",
       "distractors": [
         "enga irundhu vara da?",
-        "eppo poora da?"
+        "eppo pora da?"
       ],
       "tokens": [
         {
@@ -204,7 +204,7 @@
           "english": "where"
         },
         {
-          "tamil": "poora",
+          "tamil": "pora",
           "english": "are you going (casual)"
         },
         {
@@ -265,7 +265,7 @@
       "registerVariant": "inga niruthu",
       "distractors": [
         "inga irukkunga",
-        "mella poonga"
+        "mella ponga"
       ],
       "tokens": [
         {
@@ -285,17 +285,17 @@
       "sourcePrompt": "Go straight. (to an auto driver)",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "straight-a poonga",
+      "canonical": "straight-a ponga",
       "acceptedAnswers": [
+        "straight-a ponga",
         "straight-a poonga",
-        "straight a poonga",
-        "straightaa poonga",
-        "straight-aa poonga"
+        "nera ponga",
+        "straightaa ponga"
       ],
       "registerVariant": "straight-a po",
       "distractors": [
-        "right-la poonga",
-        "left-la poonga"
+        "right-la ponga",
+        "left-la ponga"
       ],
       "tokens": [
         {
@@ -303,7 +303,7 @@
           "english": "straight"
         },
         {
-          "tamil": "poonga",
+          "tamil": "ponga",
           "english": "go (respectful)"
         }
       ],
@@ -516,9 +516,9 @@
       ],
       "registerVariant": null,
       "distractors": [
-        "idhu enga pogum bus?",
-        "idhu eppo varum bus?",
-        "idhu evlo bus?"
+        "indha bus enga pogum?",
+        "indha bus eppo kelambum?",
+        "indha bus-la koottamaa irukkum?"
       ],
       "tokens": [
         {
@@ -580,7 +580,7 @@
         "five minutes-la varen",
         "five minutes la varen",
         "five mins-la varen",
-        "anju nimisham-la varen"
+        "anju nimishathula varen"
       ],
       "registerVariant": null,
       "distractors": [
@@ -606,16 +606,16 @@
       "sourcePrompt": "I'll get off here.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "naan inga irangaren",
+      "canonical": "naan inga iranguren",
       "acceptedAnswers": [
-        "naan inga irangaren",
-        "nan inga irangaren",
-        "naan inga irangaren!",
-        "naan inga irangurein"
+        "naan inga iranguren",
+        "naan inga erangren",
+        "naan inga erangiduren",
+        "naan inga iranguren!"
       ],
       "registerVariant": null,
       "distractors": [
-        "naan inga yeraren",
+        "naan inga eruren",
         "naan inga irukken",
         "naan inga poren"
       ],
@@ -629,7 +629,7 @@
           "english": "here"
         },
         {
-          "tamil": "irangaren",
+          "tamil": "iranguren",
           "english": "get off"
         }
       ],

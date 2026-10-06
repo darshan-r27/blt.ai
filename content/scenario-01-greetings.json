@@ -120,11 +120,11 @@
         "ulla vaanga",
         "ulle vaanga",
         "ulla vaanga!",
-        "ulla vaanga ma"
+        "ulla vanga"
       ],
       "registerVariant": "ulla vaa",
       "distractors": [
-        "veliya poonga",
+        "veliya ponga",
         "inga ukkaarunga"
       ],
       "tokens": [
@@ -178,7 +178,7 @@
         "unga peru enna?",
         "ungalukku enna peru?"
       ],
-      "registerVariant": "un peru enna?",
+      "registerVariant": "unnoda peru enna?",
       "distractors": [
         "ungaloda ooru enna?",
         "ungaloda velai enna?"
@@ -273,7 +273,7 @@
     {
       "id": "s01-i09",
       "sourcePrompt": "Nice to meet you.",
-      "register": "neutral",
+      "register": "respectful",
       "canonical": "ungala paathathula romba santhosham",
       "acceptedAnswers": [
         "ungala paathathula romba santhosham",
@@ -281,16 +281,15 @@
         "ungala paathadhula romba santhosham",
         "ungala meet pannadhula romba santhosham"
       ],
-      "registerVariant": null,
+      "registerVariant": "unna paathathula romba santhosham",
       "distractors": [
         "ungala naalaikku paakkalam",
-        "ungala theriyala",
         "ungala paathu romba naal aachu"
       ],
       "tokens": [
         {
           "tamil": "ungala",
-          "english": "you (object)"
+          "english": "you (object, respectful)"
         },
         {
           "tamil": "paathathula",
@@ -305,14 +304,40 @@
           "english": "happiness"
         }
       ],
-      "note": "Said politely to someone you've just met.",
+      "note": "ungala is respectful; unna is casual.",
       "reviewStatus": "unreviewed",
       "addressee": "any"
     },
     {
       "id": "s01-i10",
-      "sourcePrompt": "Have you eaten? (to a male friend)",
+      "sourcePrompt": "Have you eaten? (to an elder)",
       "register": "respectful",
+      "canonical": "saapteengala?",
+      "acceptedAnswers": [
+        "saapteengala?",
+        "saapteengala",
+        "saapteengalaa",
+        "saapteenga"
+      ],
+      "registerVariant": "saaptiya?",
+      "distractors": [
+        "saapdalaama?",
+        "enna saappaadu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "saapteengala",
+          "english": "did you eat (respectful)"
+        }
+      ],
+      "note": "A common way to greet someone.",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "s01-i11",
+      "sourcePrompt": "Have you eaten? (to a male friend)",
+      "register": "casual",
       "canonical": "saaptiya da?",
       "acceptedAnswers": [
         "saaptiya da?",
@@ -320,9 +345,9 @@
         "saaptiya da",
         "saaptiyaa da"
       ],
-      "registerVariant": "saaptiya?",
+      "registerVariant": "saapteengala?",
       "distractors": [
-        "saapda poreena da?",
+        "saapda poriya da?",
         "saappaadu ready-aa da?"
       ],
       "tokens": [
@@ -335,12 +360,12 @@
           "english": "friendly address to a man"
         }
       ],
-      "note": "A common way to greet someone.",
+      "note": "-iya is the casual question ending.",
       "reviewStatus": "unreviewed",
       "addressee": "male"
     },
     {
-      "id": "s01-i11",
+      "id": "s01-i12",
       "sourcePrompt": "What are you doing? (to a female friend)",
       "register": "casual",
       "canonical": "enna panra di?",
@@ -350,9 +375,9 @@
         "enna panra di",
         "enna pannura di?"
       ],
-      "registerVariant": "saapteengala?",
+      "registerVariant": "enna panreenga?",
       "distractors": [
-        "enga poora di?",
+        "enga pora di?",
         "enna aachu di?"
       ],
       "tokens": [
@@ -369,39 +394,9 @@
           "english": "friendly address to a woman"
         }
       ],
-      "note": "-iya is the casual question ending.",
+      "note": "panra is casual; panreenga is respectful.",
       "reviewStatus": "unreviewed",
       "addressee": "female"
-    },
-    {
-      "id": "s01-i12",
-      "sourcePrompt": "What are you doing? (to a friend)",
-      "register": "casual",
-      "canonical": "enna panra?",
-      "acceptedAnswers": [
-        "enna panra?",
-        "enna pandra?",
-        "enna panra",
-        "enna pannura?"
-      ],
-      "registerVariant": "enna pannureenga?",
-      "distractors": [
-        "enga poora?",
-        "enna aachu?"
-      ],
-      "tokens": [
-        {
-          "tamil": "enna",
-          "english": "what"
-        },
-        {
-          "tamil": "panra",
-          "english": "are you doing (casual)"
-        }
-      ],
-      "note": "panra is casual; pannureenga is respectful.",
-      "reviewStatus": "unreviewed",
-      "addressee": "any"
     },
     {
       "id": "s01-i13",
@@ -437,18 +432,19 @@
     {
       "id": "s01-i14",
       "sourcePrompt": "Thank you very much.",
-      "register": "respectful",
-      "canonical": "romba nandringa",
+      "register": "neutral",
+      "canonical": "romba thanks",
       "acceptedAnswers": [
-        "romba nandringa",
+        "romba thanks",
         "romba nandri",
-        "romba nanri",
-        "romba nandringa!"
+        "romba nandringa",
+        "thanks romba"
       ],
-      "registerVariant": "romba thanks",
+      "registerVariant": null,
       "distractors": [
         "romba santhosham",
-        "romba kashtam"
+        "romba kashtam",
+        "romba late"
       ],
       "tokens": [
         {
@@ -456,11 +452,11 @@
           "english": "very"
         },
         {
-          "tamil": "nandringa",
-          "english": "thanks (respectful)"
+          "tamil": "thanks",
+          "english": "thanks"
         }
       ],
-      "note": "Casual speech often just says thanks.",
+      "note": "Speakers say thanks in every register; the English word is normal.",
       "reviewStatus": "unreviewed",
       "addressee": "any"
     },
@@ -471,7 +467,6 @@
       "canonical": "mannichidunga",
       "acceptedAnswers": [
         "mannichidunga",
-        "mannichiduga",
         "mannichikonga",
         "mannichidunga!"
       ],
@@ -525,14 +520,14 @@
       "id": "s01-i17",
       "sourcePrompt": "Please speak slowly. (to an elder or stranger)",
       "register": "respectful",
-      "canonical": "konjam mella pesunga",
+      "canonical": "konjam medhuvaa pesunga",
       "acceptedAnswers": [
+        "konjam medhuvaa pesunga",
         "konjam mella pesunga",
-        "konjam mella pesunga!",
-        "konjam mella pesungaa",
-        "konjam melladhaa pesunga"
+        "konjam medhuva pesunga",
+        "konjam medhuvaa pesunga!"
       ],
-      "registerVariant": "konjam mella pesu",
+      "registerVariant": "konjam medhuvaa pesu",
       "distractors": [
         "konjam saththama pesunga",
         "konjam vegama pesunga"
@@ -543,7 +538,7 @@
           "english": "a little"
         },
         {
-          "tamil": "mella",
+          "tamil": "medhuvaa",
           "english": "slowly"
         },
         {
@@ -563,8 +558,7 @@
       "acceptedAnswers": [
         "unakku English theriyumaa?",
         "unakku English theriyuma?",
-        "unakku English theriyuma",
-        "nee English pesuvaya?"
+        "unakku English theriyuma"
       ],
       "registerVariant": "ungalukku English theriyumaa?",
       "distractors": [
