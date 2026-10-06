@@ -1,0 +1,58 @@
+{
+  "scenarioId": "zz-mixed",
+  "title": "zz mixed",
+  "subtitle": "zz subtitle",
+  "items": [
+    {
+      "id": "zz-mixed-1",
+      "sourcePrompt": "zz prompt",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "zz good one",
+      "acceptedAnswers": ["zz good one", "zz good b", "zz good c"],
+      "registerVariant": "zz good casual",
+      "distractors": ["zz wrong a", "zz wrong b"],
+      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "zz-mixed-bad-missing-canonical",
+      "sourcePrompt": "zz prompt",
+      "register": "respectful",
+      "addressee": "any",
+      "acceptedAnswers": ["zz a", "zz b", "zz c"],
+      "registerVariant": "zz casual",
+      "distractors": ["zz wrong a", "zz wrong b"],
+      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "note": null,
+      "reviewStatus": "unreviewed"
+    },
+    {
+      "id": "zz-mixed-bad-status",
+      "sourcePrompt": "zz prompt",
+      "register": "respectful",
+      "addressee": "any",
+      "canonical": "zz bad status",
+      "acceptedAnswers": ["zz bad status", "zz b", "zz c"],
+      "registerVariant": "zz casual",
+      "distractors": ["zz wrong a", "zz wrong b"],
+      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "note": null,
+      "reviewStatus": "zz-not-a-status"
+    },
+    {
+      "id": "zz-mixed-3",
+      "sourcePrompt": "zz prompt",
+      "register": "neutral",
+      "addressee": "female",
+      "canonical": "zz good three",
+      "acceptedAnswers": ["zz good three", "zz three b", "zz three c"],
+      "registerVariant": null,
+      "distractors": ["zz wrong a", "zz wrong b", "zz wrong c"],
+      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "note": "zz note",
+      "reviewStatus": "reviewed"
+    }
+  ]
+}
