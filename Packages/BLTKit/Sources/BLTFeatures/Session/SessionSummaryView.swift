@@ -32,7 +32,7 @@ struct SessionSummaryView: View {
                 }
 
                 Button("Done", action: onDone)
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bltPrimary)
                     .controlSize(.large)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -11,9 +11,7 @@ import Observation
 @Observable
 public final class HomeViewModel {
     public private(set) var scenarios: [ScenarioSummary] = []
-    /// Overall figures; `nil` until a load succeeds.
-    public private(set) var summary: ProgressSummary?
-    /// Set when the store could not be read. While set, `scenarios` is empty and `summary` is `nil`.
+    /// Set when the store could not be read. While set, `scenarios` is empty.
     public private(set) var loadError: ProgressStoreError?
     public private(set) var hasLoaded = false
     /// Set when a reset was confirmed but the store could not erase.
@@ -45,14 +43,10 @@ public final class HomeViewModel {
     public func load() async {
         do throws(ProgressStoreError) {
             let snapshot = try await dependencies.store.load()
-            let now = dependencies.now()
-            let catalog = dependencies.catalog
-            scenarios = catalog.scenarios.map { ScenarioSummary(scenario: $0, snapshot: snapshot, now: now) }
-            summary = catalog.progressSummary(snapshot: snapshot, now: now)
+            scenarios = dependencies.catalog.scenarios.map { ScenarioSummary(scenario: $0, snapshot: snapshot) }
             loadError = nil
         } catch {
             scenarios = []
-            summary = nil
             loadError = error
         }
         hasLoaded = true

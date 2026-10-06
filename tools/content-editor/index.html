@@ -89,8 +89,8 @@
   <button id="rvBack">← Back</button>
   <div id="rvPos" aria-live="polite"></div>
   <button id="rvNext">Next →</button>
-  <button id="rvOk" class="primary" title="Mark this item as checked and go to the next one">✓ Looks right · Next</button>
-  <button id="rvReviewed" title="Also set the item's review status to “reviewed”">Mark reviewed · Next</button>
+  <button id="rvOk" class="primary" title="Bookmark this item as checked (kept in this browser only, not written to the file) and go to the next one">✓ Looks right · Next</button>
+  <button id="rvReviewed" title="Bookmark it AND write reviewStatus: reviewed into the file (the app then hides its Unreviewed draft badge for this item)">Mark reviewed · Next</button>
   <label><input type="checkbox" id="rvAuto" checked> <span id="rvAutoText">Auto-save when moving on</span></label>
   <button id="rvReset" class="small" title="Forget which items you have checked">Reset checks</button>
   <div id="rvBar"><i></i></div>
@@ -403,6 +403,8 @@ function refreshDerived() {
   const bad = state.files.reduce((n, f) => n + f.data.items.filter((i) => validate(i, ids).length).length, 0);
   $('status').textContent = `${state.files.length} file(s) · ${state.files.reduce((n, f) => n + f.data.items.length, 0)} items · ${bad} with problems · ${dirtyFiles} edited`;
   $('btnSave').disabled = dirtyFiles === 0;
+  $('btnSave').textContent = dirtyFiles ? `Save changes (${dirtyFiles} file${dirtyFiles > 1 ? 's' : ''})` : 'No unsaved changes';
+  $('btnSave').title = dirtyFiles ? 'Write the edited files' : 'Everything you edited is already saved. “✓ checked” is only a bookmark in this browser; use “Mark reviewed · Next” to record a verdict in the file.';
   updateReviewBar();
 }
 function renderAll() {

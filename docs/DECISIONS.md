@@ -280,8 +280,33 @@ Two owner directions for v1 content:
 **Privacy manifest:** `NSPrivacyCollectedDataTypes` stays empty because nothing is collected off-device.
 
 ## 031 — Scenario cards show answered progress, not the native-review count
-**Status:** active — amends 025
+**Status:** superseded by 033 (cards now show a completion percentage) — amended 025
 
 The Home card line "n of 20 reviewed" counted items whose `reviewStatus` is `reviewed` (native-speaker review of the AI-drafted content), but sat next to the learner's own progress and read as "questions you've reviewed". The owner is verifying the content JSON by hand, so the card now shows the learner's progress instead: **"n of 20 answered"** (distinct items answered at least once).
 
 **Unchanged:** the item-level "Unreviewed draft" badge on Question and Feedback and the Settings statement ("drafted by an AI … n of 100 reviewed") still disclose review status honestly (025). Only the card changed.
+
+## 032 — Intro title "blt.ai" and a deep-purple accent
+**Status:** active
+
+The intro title is **blt.ai** (it was "For the love of Tamil"; the tagline stays). The app accent is deep purple instead of system blue: light `#5B3FA8` with white text, dark `#B79CF0` with dark text `#1A1821`; accent tint `#E4DBF6` / `#33294F`. It is applied once through `bltTheme()` and `BLTPrimaryButtonStyle`, and through the `AccentColor` asset for system dialogs. The page stays lilac (`#F0EAFA` light, `#1A1821` dark); feedback tones are unchanged.
+
+**App icon:** "Two voices": a Telugu అ bubble overlapping a Tamil அ bubble, in standard, dark and tinted variants (`tools/app-icon/`).
+
+**Known limits:** the iOS keyboard's return key and some system keyboard UI stay system blue (SwiftUI tint does not reach them). The Settings reset button and confirmation dialogs use a destructive role, which could render red on some iOS versions; revisit if seen.
+
+## 033 — Home: shiny greeting on top; cards show completion %, wrong answers stay incomplete
+**Status:** active — supersedes the card counts in 031
+
+The greeting "Hi <name>" is the first element on Home, in a shimmering deep-purple heading (`ShimmerText`), above a plain "Scenarios" label. The large "Scenarios" navigation title and the overall "n items due" / "Nothing is due for review right now." lines are gone: if nothing is pressing, nothing is shown.
+
+Each scenario card shows its title, subtitle and one completion percent with a bar (`CompletionBar`), replacing "x due · y new · z learned" and "n of N answered". An item is **complete** only when its latest outcome is `correct`; never answered, `wrongRegister` and `wrong` are incomplete, so a wrong answer keeps the scenario below 100% and the session planner (unchanged) re-presents it. The percent rounds down, so 100% means every item is complete.
+
+**Accessibility:** every shimmer gradient stop, the highlight peak and every blend between them keeps at least 4.5:1 against the page in light and dark (tested); Reduce Motion gives a static gradient; the sweep is hidden from VoiceOver.
+
+## 034 — Sessions sample and shuffle questions
+**Status:** active
+
+**Decision:** `SessionPlanner` takes a random generator (`plan(…using:)`, `reviewAnywayPlan(…using:)`; the old non-random signatures are removed on purpose). Due items are always selected first (earliest due first, so wrong answers always beat new items); any remaining places are filled with a random sample of the unseen items instead of the first ones in content order; the whole selection is then shuffled, so due and new items interleave. "Review anyway" picks the earliest-due items as before and shuffles their order.
+
+**Why:** with a fixed content order every session opened with the same questions in the same order, so answers could be remembered by position rather than learned. **Trade-off:** scheduling priority is unchanged (what is selected still follows due dates); only the choice among unseen items and the presentation order are random. `SessionViewModel` passes its injected `SessionRandomSource`, so tests seed it.
