@@ -205,6 +205,40 @@ File ownership never overlaps within a wave. `Package.swift` and every §5 file 
 
 **C11 — UI tests and accessibility** (Wave 4; needs C10). Owns `UITESTS/{FeedbackFlowUITests,PersistenceUITests,AccessibilityUITests}.swift`. *Accept:* with fixtures, tapping canonical, register-variant and distractor options reaches the respective feedback IDs; a wrong item reappears later in the session; the badge shows for an unreviewed fixture and not a reviewed one; Progress counts update and survive terminate-and-relaunch; `performAccessibilityAudit()` passes on all five screens at default and `accessibilityXXXL` sizes.
 
+## 6a. Wave 1 API details (set when Wave 1 was dispatched; Wave 2 builds against these)
+
+```swift
+// C4 (BLTProgress)
+public struct SM2Scheduler: Scheduler { public init() }
+public struct ProgressSummary: Sendable, Equatable {
+    public let registerAccuracy: Double?   // correct / (correct + wrongRegister) over variant-item attempts; nil if none
+    public let learnedCount: Int; public let dueCount: Int; public let attemptCount: Int
+    public init(snapshot: ProgressSnapshot, knownItems: Set<ItemID>, variantItems: Set<ItemID>, now: Date)
+}
+// C5 (BLTProgress)
+public actor FileProgressStore: ProgressStore { public init(fileURL: URL) }
+public actor InMemoryProgressStore: ProgressStore { public init() }
+// C6 (BLTSession)
+public struct SessionPlanner: Sendable {
+    public init()
+    public func plan(scenario: Scenario, snapshot: ProgressSnapshot, now: Date, limit: Int = 10) -> [Item]
+    public func reviewAnywayPlan(scenario: Scenario, snapshot: ProgressSnapshot, limit: Int = 10) -> [Item]
+}
+public enum SessionState: Sendable, Equatable {
+    case asking(Question); case feedback(Question, chosen: Int, verdict: Verdict); case finished(SessionResult)
+}
+public struct SessionResult: Sendable, Equatable { public let correctCount, wrongRegisterCount, wrongCount: Int; public var total: Int }
+public struct SessionMachine: Sendable {
+    public init(items: [Item], using rng: inout some RandomNumberGenerator)
+    public private(set) var state: SessionState
+    public mutating func choose(_ optionID: Int, at now: Date, using rng: inout some RandomNumberGenerator) -> AttemptRecord?
+    public mutating func advance(using rng: inout some RandomNumberGenerator)
+}
+// C2 (BLTCatalog)
+public struct ContentLoader: Sendable { public init(limits: Limits = .default); public func load(files: [URL]) -> Catalog }
+// C7 (BLTDesign): Palette, OptionButton, GlossView, ReviewStatusBadge (plain-string inputs; no Catalog/Session types)
+```
+
 ## 7. Review checklist for every PR
 
 - **Network ban** (script + CI; exemption list empty in v1): no `URLSession`, `NSURLConnection`, `NWConnection`, `NWPathMonitor`, `CFStream`, `CFSocket`, `getaddrinfo`; no `WKWebView`, `AsyncImage`, `Link(`, `openURL`, `SFSafariViewController`, `ASWebAuthenticationSession`; no `import Network/WebKit/SafariServices/CloudKit/MultipeerConnectivity`; no `http` URL literals; `Data(contentsOf:)` only after an `isFileURL` check; project has no network entitlements.
