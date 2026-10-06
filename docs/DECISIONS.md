@@ -231,3 +231,12 @@ The primary user is a Telugu speaker who is also fluent in English, so the trans
 **Why the label matters:** Claude is more likely than a native speaker to drift toward textbook register, mis-spell informal romanisation, or choose a phrase nobody says. The register feature depends on exactly that distinction, so unlabelled generated content would undermine the product's central claim.
 
 **Consequences:** a second Tamil speaker is still needed to promote items to `reviewed`. Content lives in data files, not code, so review changes never touch Swift.
+
+## 026 — Two spoken registers only: casual and respectful
+**Status:** active — refines 008 for v1
+
+The owner's direction: teach the bare minimum of register, casual (`nee`, `un-`) and respectful (`neenga`, `unga-`), and skip written or literary forms such as `neengal`.
+
+**Decision:** every item carries a `register` (`casual` | `respectful` | `neutral`). The "other option" in each question is the same sentence in the *other spoken register* (`registerVariant`), not a textbook form. The prompt names the audience ("to a friend", "to an elder"), so choosing the wrong register for the audience is a register mistake, not a vocabulary one. `neutral` items have no you-form and no register variant, so they carry a third wrong distractor instead.
+
+**Consequence:** the Feedback state formerly called "understood, but formal" becomes "right sentence, wrong register for this person" and says what to use with whom. This keeps the register-awareness feature and drops the news-anchor framing, so register feedback now needs no ~40-rule classifier in v1, only item data. Schema change: `formalVariant` → `registerVariant` (nullable), plus `register`.

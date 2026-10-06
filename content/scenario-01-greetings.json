@@ -2,296 +2,621 @@
   "scenarioId": "s01-greetings",
   "title": "Greetings and small talk",
   "subtitle": "Meeting people and getting by in everyday conversation",
-  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats: aa/ee/oo for long vowels, zh for the retroflex approximant, -nga/-ga for the respectful ending. Final scheme is open (OPEN_ITEMS, Task 0.3). Spelling variants are listed in acceptedAnswers.",
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
   "items": [
     {
       "id": "s01-i01",
-      "sourcePrompt": "How are you? (to an elder or someone you respect)",
-      "canonical": "eppadi irukkeenga?",
-      "acceptedAnswers": ["eppadi irukkeenga?", "eppadi irukkeenga", "epdi irukkeenga", "eppadi irukkinga"],
-      "formalVariant": "eppadi irukkireergal?",
-      "distractors": ["enga irukkeenga?", "enna aachunga?"],
-      "tokens": [
-        {"tamil": "eppadi", "english": "how"},
-        {"tamil": "irukkeenga", "english": "are you (respectful)"}
+      "sourcePrompt": "How are you? (to a friend)",
+      "register": "casual",
+      "canonical": "eppadi irukka?",
+      "acceptedAnswers": [
+        "eppadi irukka?",
+        "eppadi irukka",
+        "epdi irukka",
+        "eppadi iruka?"
       ],
-      "note": "Spoken -eenga replaces the written -ireergal.",
+      "registerVariant": "eppadi irukkeenga?",
+      "distractors": [
+        "enga irukka?",
+        "enna aachu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "eppadi",
+          "english": "how"
+        },
+        {
+          "tamil": "irukka",
+          "english": "are you (casual)"
+        }
+      ],
+      "note": "irukka is the casual you-form; irukkeenga is the respectful one.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i02",
-      "sourcePrompt": "I'm fine, and you?",
-      "canonical": "naan nalla irukken, neenga?",
-      "acceptedAnswers": ["naan nalla irukken, neenga?", "naan nalla irukken neenga", "nan nalla irukken, neenga?", "naan nallaa irukken, neenga?"],
-      "formalVariant": "naan nalamaaga irukkiren, neengal?",
-      "distractors": ["naan saapten, neenga?", "naan poren, neenga?"],
-      "tokens": [
-        {"tamil": "naan", "english": "I"},
-        {"tamil": "nalla", "english": "well"},
-        {"tamil": "irukken", "english": "am"},
-        {"tamil": "neenga", "english": "you (respectful)"}
+      "sourcePrompt": "How are you? (to an elder)",
+      "register": "respectful",
+      "canonical": "eppadi irukkeenga?",
+      "acceptedAnswers": [
+        "eppadi irukkeenga?",
+        "eppadi irukkeenga",
+        "epdi irukkeenga",
+        "eppadi irukkinga"
       ],
-      "note": "Spoken neenga for the written neengal; irukken for irukkiren.",
+      "registerVariant": "eppadi irukka?",
+      "distractors": [
+        "enga irukkeenga?",
+        "enna aachunga?"
+      ],
+      "tokens": [
+        {
+          "tamil": "eppadi",
+          "english": "how"
+        },
+        {
+          "tamil": "irukkeenga",
+          "english": "are you (respectful)"
+        }
+      ],
+      "note": "Use -eenga with elders and strangers.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i03",
-      "sourcePrompt": "Come in!",
-      "canonical": "ulla vaanga",
-      "acceptedAnswers": ["ulla vaanga", "ulle vaanga", "ulla vaanga!", "ulla vaanga ma"],
-      "formalVariant": "ullae vaarungal",
-      "distractors": ["veliya poonga", "inga ukkaarunga"],
-      "tokens": [
-        {"tamil": "ulla", "english": "inside"},
-        {"tamil": "vaanga", "english": "come (respectful)"}
+      "sourcePrompt": "I'm fine, and you? (to a friend)",
+      "register": "casual",
+      "canonical": "naan nalla irukken, nee?",
+      "acceptedAnswers": [
+        "naan nalla irukken, nee?",
+        "naan nalla irukken nee",
+        "nan nalla irukken, nee?",
+        "naan nallaa irukken, nee?"
       ],
-      "note": "vaanga is the everyday form of the written vaarungal.",
+      "registerVariant": "naan nalla irukken, neenga?",
+      "distractors": [
+        "naan saapten, nee?",
+        "naan poren, nee?"
+      ],
+      "tokens": [
+        {
+          "tamil": "naan",
+          "english": "I"
+        },
+        {
+          "tamil": "nalla",
+          "english": "well"
+        },
+        {
+          "tamil": "irukken",
+          "english": "am"
+        },
+        {
+          "tamil": "nee",
+          "english": "you (casual)"
+        }
+      ],
+      "note": "nee for friends and younger people; neenga for elders.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i04",
-      "sourcePrompt": "Please sit.",
-      "canonical": "ukkaarunga",
-      "acceptedAnswers": ["ukkaarunga", "okkaarunga", "ukkarunga", "ukkaaru"],
-      "formalVariant": "amarungal",
-      "distractors": ["nillunga", "saapdunga"],
-      "tokens": [
-        {"tamil": "ukkaarunga", "english": "please sit (respectful)"}
+      "sourcePrompt": "Come in! (to a guest)",
+      "register": "respectful",
+      "canonical": "ulla vaanga",
+      "acceptedAnswers": [
+        "ulla vaanga",
+        "ulle vaanga",
+        "ulla vaanga!",
+        "ulla vaanga ma"
       ],
-      "note": "amarungal is the written word for sit; speakers say ukkaarunga.",
+      "registerVariant": "ulla vaa",
+      "distractors": [
+        "veliya poonga",
+        "inga ukkaarunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "ulla",
+          "english": "inside"
+        },
+        {
+          "tamil": "vaanga",
+          "english": "come (respectful)"
+        }
+      ],
+      "note": "vaanga is respectful; vaa is for friends and kids.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i05",
-      "sourcePrompt": "What's your name?",
-      "canonical": "ungaloda peru enna?",
-      "acceptedAnswers": ["ungaloda peru enna?", "ungaloda peru enna", "unga peru enna?", "ungalukku enna peru?"],
-      "formalVariant": "ungal peyar enna?",
-      "distractors": ["ungaloda ooru enna?", "ungaloda velai enna?"],
-      "tokens": [
-        {"tamil": "ungaloda", "english": "your"},
-        {"tamil": "peru", "english": "name"},
-        {"tamil": "enna", "english": "what"}
+      "sourcePrompt": "Please sit. (to an elder or guest)",
+      "register": "respectful",
+      "canonical": "ukkaarunga",
+      "acceptedAnswers": [
+        "ukkaarunga",
+        "okkaarunga",
+        "ukkarunga",
+        "ukkaarunga!"
       ],
-      "note": "Spoken peru for the written peyar.",
+      "registerVariant": "ukkaaru",
+      "distractors": [
+        "nillunga",
+        "saapdunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "ukkaarunga",
+          "english": "please sit (respectful)"
+        }
+      ],
+      "note": "-unga marks respect; ukkaaru is casual.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i06",
-      "sourcePrompt": "My name is Ravi.",
-      "canonical": "en peru Ravi",
-      "acceptedAnswers": ["en peru Ravi", "en peru ravi", "en peru Ravi nga", "en peru Ravi-nga"],
-      "formalVariant": "en peyar Ravi",
-      "distractors": ["en appa peru Ravi", "en nanban peru Ravi"],
-      "tokens": [
-        {"tamil": "en", "english": "my"},
-        {"tamil": "peru", "english": "name"},
-        {"tamil": "Ravi", "english": "Ravi"}
+      "sourcePrompt": "What's your name? (to someone you've just met)",
+      "register": "respectful",
+      "canonical": "ungaloda peru enna?",
+      "acceptedAnswers": [
+        "ungaloda peru enna?",
+        "ungaloda peru enna",
+        "unga peru enna?",
+        "ungalukku enna peru?"
       ],
-      "note": "Same peru/peyar split as the previous item.",
+      "registerVariant": "un peru enna?",
+      "distractors": [
+        "ungaloda ooru enna?",
+        "ungaloda velai enna?"
+      ],
+      "tokens": [
+        {
+          "tamil": "ungaloda",
+          "english": "your (respectful)"
+        },
+        {
+          "tamil": "peru",
+          "english": "name"
+        },
+        {
+          "tamil": "enna",
+          "english": "what"
+        }
+      ],
+      "note": "ungaloda is the respectful your; un is casual.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i07",
-      "sourcePrompt": "Where have you come from?",
-      "canonical": "neenga enga irundhu vareenga?",
-      "acceptedAnswers": ["neenga enga irundhu vareenga?", "neenga enga irundhu varreenga?", "neenga enga irunthu vareenga", "neenga enga irundhu varinga?"],
-      "formalVariant": "neengal engirundhu varugireergal?",
-      "distractors": ["neenga enga poreenga?", "neenga eppo vareenga?"],
-      "tokens": [
-        {"tamil": "neenga", "english": "you (respectful)"},
-        {"tamil": "enga irundhu", "english": "from where"},
-        {"tamil": "vareenga", "english": "are coming"}
+      "sourcePrompt": "My name is Ravi.",
+      "register": "neutral",
+      "canonical": "en peru Ravi",
+      "acceptedAnswers": [
+        "en peru Ravi",
+        "en peru ravi",
+        "en peru Ravi nga",
+        "en peru Ravi-nga"
       ],
-      "note": "Spoken vareenga for the written varugireergal.",
+      "registerVariant": null,
+      "distractors": [
+        "en appa peru Ravi",
+        "en nanban peru Ravi",
+        "en annan peru Ravi"
+      ],
+      "tokens": [
+        {
+          "tamil": "en",
+          "english": "my"
+        },
+        {
+          "tamil": "peru",
+          "english": "name"
+        },
+        {
+          "tamil": "Ravi",
+          "english": "Ravi"
+        }
+      ],
+      "note": "No register change needed when talking about yourself.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i08",
-      "sourcePrompt": "Nice to meet you.",
-      "canonical": "ungala paathathula romba santhosham",
-      "acceptedAnswers": ["ungala paathathula romba santhosham", "ungala paathathula romba santhoshama", "ungala paathadhula romba santhosham", "ungala meet pannadhula romba santhosham"],
-      "formalVariant": "ungalai santhitthadhil mikka magizhchi",
-      "distractors": ["ungala naalaikku paakkalam", "ungala theriyala"],
-      "tokens": [
-        {"tamil": "ungala", "english": "you (object)"},
-        {"tamil": "paathathula", "english": "in seeing"},
-        {"tamil": "romba", "english": "very"},
-        {"tamil": "santhosham", "english": "happiness"}
+      "sourcePrompt": "Where have you come from? (to a stranger)",
+      "register": "respectful",
+      "canonical": "neenga enga irundhu vareenga?",
+      "acceptedAnswers": [
+        "neenga enga irundhu vareenga?",
+        "neenga enga irundhu varreenga?",
+        "neenga enga irunthu vareenga",
+        "neenga enga irundhu varinga?"
       ],
-      "note": "Spoken romba replaces the written mikka; -ai becomes -a.",
+      "registerVariant": "nee enga irundhu varra?",
+      "distractors": [
+        "neenga enga poreenga?",
+        "neenga eppo vareenga?"
+      ],
+      "tokens": [
+        {
+          "tamil": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "tamil": "enga irundhu",
+          "english": "from where"
+        },
+        {
+          "tamil": "vareenga",
+          "english": "are coming"
+        }
+      ],
+      "note": "neenga ... vareenga for elders and strangers.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i09",
-      "sourcePrompt": "Have you eaten?",
-      "canonical": "saapteengala?",
-      "acceptedAnswers": ["saapteengala?", "saapteengala", "saapteengalaa", "saapteenga"],
-      "formalVariant": "saappitteergalaa?",
-      "distractors": ["saapdalaama?", "enna saappaadu?"],
-      "tokens": [
-        {"tamil": "saapteengala", "english": "did you eat (respectful)"}
+      "sourcePrompt": "Nice to meet you.",
+      "register": "neutral",
+      "canonical": "ungala paathathula romba santhosham",
+      "acceptedAnswers": [
+        "ungala paathathula romba santhosham",
+        "ungala paathathula romba santhoshama",
+        "ungala paathadhula romba santhosham",
+        "ungala meet pannadhula romba santhosham"
       ],
-      "note": "A common way to greet someone; the written form is rarely heard.",
+      "registerVariant": null,
+      "distractors": [
+        "ungala naalaikku paakkalam",
+        "ungala theriyala",
+        "ungala paathu romba naal aachu"
+      ],
+      "tokens": [
+        {
+          "tamil": "ungala",
+          "english": "you (object)"
+        },
+        {
+          "tamil": "paathathula",
+          "english": "in seeing"
+        },
+        {
+          "tamil": "romba",
+          "english": "very"
+        },
+        {
+          "tamil": "santhosham",
+          "english": "happiness"
+        }
+      ],
+      "note": "Said politely to someone you've just met.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i10",
-      "sourcePrompt": "What are you doing? (to a friend)",
-      "canonical": "enna panra?",
-      "acceptedAnswers": ["enna panra?", "enna pandra?", "enna panra", "enna pannura?"],
-      "formalVariant": "enna seygiraai?",
-      "distractors": ["enga poora?", "enna aachu?"],
-      "tokens": [
-        {"tamil": "enna", "english": "what"},
-        {"tamil": "panra", "english": "are you doing"}
+      "sourcePrompt": "Have you eaten? (to an elder)",
+      "register": "respectful",
+      "canonical": "saapteengala?",
+      "acceptedAnswers": [
+        "saapteengala?",
+        "saapteengala",
+        "saapteengalaa",
+        "saapteenga"
       ],
-      "note": "panra is the spoken form; the written verb is seygiraai.",
+      "registerVariant": "saaptiya?",
+      "distractors": [
+        "saapdalaama?",
+        "enna saappaadu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "saapteengala",
+          "english": "did you eat (respectful)"
+        }
+      ],
+      "note": "A common way to greet someone.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i11",
-      "sourcePrompt": "I'm leaving now. (I'll be back)",
-      "canonical": "poitu varen",
-      "acceptedAnswers": ["poitu varen", "poitu varen!", "poitu varein", "poyittu varen"],
-      "formalVariant": "poyvittu varugiren",
-      "distractors": ["vandhuten", "inga irukken"],
-      "tokens": [
-        {"tamil": "poitu", "english": "having gone"},
-        {"tamil": "varen", "english": "I come"}
+      "sourcePrompt": "Have you eaten? (to a friend)",
+      "register": "casual",
+      "canonical": "saaptiya?",
+      "acceptedAnswers": [
+        "saaptiya?",
+        "saaptiya",
+        "saaptiyaa",
+        "saaptiya da"
       ],
-      "note": "Tamil speakers say go-and-come when leaving, not goodbye.",
+      "registerVariant": "saapteengala?",
+      "distractors": [
+        "saapda poreena?",
+        "saappaadu ready-aa?"
+      ],
+      "tokens": [
+        {
+          "tamil": "saaptiya",
+          "english": "did you eat (casual)"
+        }
+      ],
+      "note": "-iya is the casual question ending.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i12",
-      "sourcePrompt": "Thank you very much.",
-      "canonical": "romba nandringa",
-      "acceptedAnswers": ["romba nandringa", "romba nandri", "romba nanri", "romba nandringa!"],
-      "formalVariant": "mikka nandri",
-      "distractors": ["romba santhosham", "romba kashtam"],
-      "tokens": [
-        {"tamil": "romba", "english": "very"},
-        {"tamil": "nandringa", "english": "thanks (respectful)"}
+      "sourcePrompt": "What are you doing? (to a friend)",
+      "register": "casual",
+      "canonical": "enna panra?",
+      "acceptedAnswers": [
+        "enna panra?",
+        "enna pandra?",
+        "enna panra",
+        "enna pannura?"
       ],
-      "note": "romba replaces mikka; -nga adds politeness.",
+      "registerVariant": "enna pannureenga?",
+      "distractors": [
+        "enga poora?",
+        "enna aachu?"
+      ],
+      "tokens": [
+        {
+          "tamil": "enna",
+          "english": "what"
+        },
+        {
+          "tamil": "panra",
+          "english": "are you doing (casual)"
+        }
+      ],
+      "note": "panra is casual; pannureenga is respectful.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i13",
-      "sourcePrompt": "Sorry, please forgive me.",
-      "canonical": "mannichidunga",
-      "acceptedAnswers": ["mannichidunga", "mannichiduga", "mannichikonga", "mannichidunga!"],
-      "formalVariant": "mannikkavum",
-      "distractors": ["paravaayilla", "sari"],
-      "tokens": [
-        {"tamil": "mannichidunga", "english": "please forgive (respectful)"}
+      "sourcePrompt": "I'm leaving now. (I'll be back)",
+      "register": "neutral",
+      "canonical": "poitu varen",
+      "acceptedAnswers": [
+        "poitu varen",
+        "poitu varen!",
+        "poitu varein",
+        "poyittu varen"
       ],
-      "note": "mannikkavum is the written form.",
+      "registerVariant": null,
+      "distractors": [
+        "vandhuten",
+        "inga irukken",
+        "ippo varen"
+      ],
+      "tokens": [
+        {
+          "tamil": "poitu",
+          "english": "having gone"
+        },
+        {
+          "tamil": "varen",
+          "english": "I come"
+        }
+      ],
+      "note": "Tamil speakers say go-and-come when leaving.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i14",
-      "sourcePrompt": "I don't understand.",
-      "canonical": "enakku puriyala",
-      "acceptedAnswers": ["enakku puriyala", "enakku puriyalai", "enakku puriyalaa", "enaku puriyala"],
-      "formalVariant": "enakku puriyavillai",
-      "distractors": ["enakku theriyala", "enakku puriyum"],
-      "tokens": [
-        {"tamil": "enakku", "english": "to me"},
-        {"tamil": "puriyala", "english": "doesn't make sense / not understood"}
+      "sourcePrompt": "Thank you very much.",
+      "register": "respectful",
+      "canonical": "romba nandringa",
+      "acceptedAnswers": [
+        "romba nandringa",
+        "romba nandri",
+        "romba nanri",
+        "romba nandringa!"
       ],
-      "note": "Spoken negative -ala replaces the written -avillai.",
+      "registerVariant": "romba thanks",
+      "distractors": [
+        "romba santhosham",
+        "romba kashtam"
+      ],
+      "tokens": [
+        {
+          "tamil": "romba",
+          "english": "very"
+        },
+        {
+          "tamil": "nandringa",
+          "english": "thanks (respectful)"
+        }
+      ],
+      "note": "Casual speech often just says thanks.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i15",
-      "sourcePrompt": "Please speak slowly.",
-      "canonical": "konjam mella pesunga",
-      "acceptedAnswers": ["konjam mella pesunga", "konjam mella pesunga!", "konjam mella pesungaa", "konjam melladhaa pesunga"],
-      "formalVariant": "dayavu seydhu medhuvaaga pesungal",
-      "distractors": ["konjam saththama pesunga", "konjam vegama pesunga"],
-      "tokens": [
-        {"tamil": "konjam", "english": "a little"},
-        {"tamil": "mella", "english": "slowly"},
-        {"tamil": "pesunga", "english": "speak (respectful)"}
+      "sourcePrompt": "Sorry, please forgive me. (to an elder)",
+      "register": "respectful",
+      "canonical": "mannichidunga",
+      "acceptedAnswers": [
+        "mannichidunga",
+        "mannichiduga",
+        "mannichikonga",
+        "mannichidunga!"
       ],
-      "note": "Spoken mella and pesunga replace the written medhuvaaga and pesungal.",
+      "registerVariant": "mannichidu",
+      "distractors": [
+        "paravaayilla",
+        "sari"
+      ],
+      "tokens": [
+        {
+          "tamil": "mannichidunga",
+          "english": "please forgive (respectful)"
+        }
+      ],
+      "note": "-unga respectful, plain mannichidu casual.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i16",
-      "sourcePrompt": "Do you know English?",
-      "canonical": "ungalukku English theriyumaa?",
-      "acceptedAnswers": ["ungalukku English theriyumaa?", "ungalukku English theriyuma?", "ungalukku English theriyuma", "unga kitta English theriyumaa?"],
-      "formalVariant": "ungalukku aangilam theriyumaa?",
-      "distractors": ["ungalukku Tamil theriyumaa?", "ungalukku Hindi theriyumaa?"],
-      "tokens": [
-        {"tamil": "ungalukku", "english": "to you"},
-        {"tamil": "English", "english": "English"},
-        {"tamil": "theriyumaa", "english": "do you know"}
+      "sourcePrompt": "I don't understand.",
+      "register": "neutral",
+      "canonical": "enakku puriyala",
+      "acceptedAnswers": [
+        "enakku puriyala",
+        "enakku puriyalai",
+        "enakku puriyalaa",
+        "enaku puriyala"
       ],
-      "note": "Speakers say English; aangilam is the written word.",
+      "registerVariant": null,
+      "distractors": [
+        "enakku theriyala",
+        "enakku puriyum",
+        "enakku kekkala"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "puriyala",
+          "english": "not understood"
+        }
+      ],
+      "note": "Spoken negative -ala.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i17",
-      "sourcePrompt": "I know a little Tamil.",
-      "canonical": "enakku konjam Tamil theriyum",
-      "acceptedAnswers": ["enakku konjam Tamil theriyum", "enakku konjam tamil theriyum", "enakku konjam Tamil theriyum!", "enaku konjam Tamil theriyum"],
-      "formalVariant": "enakku sirithu Thamizh theriyum",
-      "distractors": ["enakku Tamil theriyaadhu", "enakku nalla Tamil theriyum"],
-      "tokens": [
-        {"tamil": "enakku", "english": "to me"},
-        {"tamil": "konjam", "english": "a little"},
-        {"tamil": "Tamil", "english": "Tamil"},
-        {"tamil": "theriyum", "english": "is known"}
+      "sourcePrompt": "Please speak slowly. (to an elder or stranger)",
+      "register": "respectful",
+      "canonical": "konjam mella pesunga",
+      "acceptedAnswers": [
+        "konjam mella pesunga",
+        "konjam mella pesunga!",
+        "konjam mella pesungaa",
+        "konjam melladhaa pesunga"
       ],
-      "note": "konjam replaces the written sirithu.",
+      "registerVariant": "konjam mella pesu",
+      "distractors": [
+        "konjam saththama pesunga",
+        "konjam vegama pesunga"
+      ],
+      "tokens": [
+        {
+          "tamil": "konjam",
+          "english": "a little"
+        },
+        {
+          "tamil": "mella",
+          "english": "slowly"
+        },
+        {
+          "tamil": "pesunga",
+          "english": "speak (respectful)"
+        }
+      ],
+      "note": "pesunga is respectful; pesu is casual.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i18",
-      "sourcePrompt": "What time is it?",
-      "canonical": "ippo mani enna?",
-      "acceptedAnswers": ["ippo mani enna?", "ippo mani enna", "ippo time enna?", "ippo enna mani?"],
-      "formalVariant": "ippozhudhu neram enna?",
-      "distractors": ["innikku enna naal?", "innikku enna vishesham?"],
-      "tokens": [
-        {"tamil": "ippo", "english": "now"},
-        {"tamil": "mani", "english": "hour o'clock"},
-        {"tamil": "enna", "english": "what"}
+      "sourcePrompt": "Do you know English? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku English theriyumaa?",
+      "acceptedAnswers": [
+        "unakku English theriyumaa?",
+        "unakku English theriyuma?",
+        "unakku English theriyuma",
+        "nee English pesuvaya?"
       ],
-      "note": "ippo replaces the written ippozhudhu.",
+      "registerVariant": "ungalukku English theriyumaa?",
+      "distractors": [
+        "unakku Tamil theriyumaa?",
+        "unakku Hindi theriyumaa?"
+      ],
+      "tokens": [
+        {
+          "tamil": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "tamil": "English",
+          "english": "English"
+        },
+        {
+          "tamil": "theriyumaa",
+          "english": "do you know"
+        }
+      ],
+      "note": "unakku casual; ungalukku respectful.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i19",
-      "sourcePrompt": "Call me.",
-      "canonical": "enakku phone pannunga",
-      "acceptedAnswers": ["enakku phone pannunga", "enakku phone panunga", "enakku call pannunga", "enakku phone pannunga!"],
-      "formalVariant": "ennai thodarpu kollungal",
-      "distractors": ["enakku message pannunga", "ennai marandhudaadheenga"],
-      "tokens": [
-        {"tamil": "enakku", "english": "to me"},
-        {"tamil": "phone", "english": "phone"},
-        {"tamil": "pannunga", "english": "do (respectful)"}
+      "sourcePrompt": "I know a little Tamil.",
+      "register": "neutral",
+      "canonical": "enakku konjam Tamil theriyum",
+      "acceptedAnswers": [
+        "enakku konjam Tamil theriyum",
+        "enakku konjam tamil theriyum",
+        "enakku konjam Tamil theriyum!",
+        "enaku konjam Tamil theriyum"
       ],
-      "note": "phone pannu is how speakers say to call.",
+      "registerVariant": null,
+      "distractors": [
+        "enakku Tamil theriyaadhu",
+        "enakku nalla Tamil theriyum",
+        "enakku konjam Hindi theriyum"
+      ],
+      "tokens": [
+        {
+          "tamil": "enakku",
+          "english": "to me"
+        },
+        {
+          "tamil": "konjam",
+          "english": "a little"
+        },
+        {
+          "tamil": "Tamil",
+          "english": "Tamil"
+        },
+        {
+          "tamil": "theriyum",
+          "english": "is known"
+        }
+      ],
+      "note": "A useful line to say early in any conversation.",
       "reviewStatus": "unreviewed"
     },
     {
       "id": "s01-i20",
       "sourcePrompt": "See you tomorrow.",
+      "register": "neutral",
       "canonical": "naalaikku paakkalam",
-      "acceptedAnswers": ["naalaikku paakkalam", "naalaiku paakkalam", "naalaikku paarkalam", "naalaikku paakalam"],
-      "formalVariant": "naalai santhippom",
-      "distractors": ["innikku paakkalam", "appuram paakkalam"],
-      "tokens": [
-        {"tamil": "naalaikku", "english": "tomorrow"},
-        {"tamil": "paakkalam", "english": "let's see each other"}
+      "acceptedAnswers": [
+        "naalaikku paakkalam",
+        "naalaiku paakkalam",
+        "naalaikku paarkalam",
+        "naalaikku paakalam"
       ],
-      "note": "paakkalam is the casual let's-meet; santhippom is the written verb.",
+      "registerVariant": null,
+      "distractors": [
+        "innikku paakkalam",
+        "appuram paakkalam",
+        "eppo paakkalam"
+      ],
+      "tokens": [
+        {
+          "tamil": "naalaikku",
+          "english": "tomorrow"
+        },
+        {
+          "tamil": "paakkalam",
+          "english": "let's meet"
+        }
+      ],
+      "note": "The casual way to part.",
       "reviewStatus": "unreviewed"
     }
   ]
