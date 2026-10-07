@@ -4,7 +4,8 @@ import XCTest
 /// accessibility size, plus checks that the key controls can still be reached at that size.
 ///
 /// A finding fails the test and goes in the report. The two narrow exceptions are documented on
-/// `isSystemToolbarButtonDynamicTypeIssue` and `isOccludedByContinueBar`.
+/// `isSystemToolbarButtonDynamicTypeIssue` and `isOccludedByContinueBar`; the name screens are audited with the
+/// system keyboard dismissed (see `dismissKeyboard`).
 @MainActor
 final class AccessibilityUITests: BLTUITestCase {
     private enum Screen {
@@ -106,8 +107,31 @@ final class AccessibilityUITests: BLTUITestCase {
         return element.frame.intersects(bar)
     }
 
+    /// The two name screens focus their field on arrival, so the system keyboard is up when the audit starts.
+    /// That keyboard is Apple's, not ours, and it makes the audit report things we cannot fix: its empty
+    /// prediction cells have no label (seen on a GitHub runner), and at the largest text size it covers the
+    /// Continue button and the helper text, which the audit then reports as contrast failures. So these two
+    /// screens are audited with the keyboard dismissed; that they can still be used with it up is covered by the
+    /// `...ControlsAreReachableAtXXXL` tests. Both screens scroll with `.scrollDismissesKeyboard(.interactively)`,
+    /// so a drag from just above the field down past the keyboard's top edge pulls it away.
+    private func dismissKeyboard(in app: XCUIApplication, field: XCUIElement) {
+        let keyboard = app.keyboards.firstMatch
+        guard keyboard.exists else { return }
+        let start = field.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0))
+            .withOffset(CGVector(dx: 0, dy: -12))
+        let end = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.97))
+        start.press(forDuration: 0.1, thenDragTo: end)
+        let gone = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: keyboard)
+        XCTAssertEqual(XCTWaiter().wait(for: [gone], timeout: Self.timeout), .completed, "The keyboard did not dismiss")
+    }
+
     private func audit(_ screen: Screen, largestText: Bool) throws {
         let app = open(screen, largestText: largestText)
+        switch screen {
+        case .nameEntry: dismissKeyboard(in: app, field: app.textFields[AXID.nameField])
+        case .changeName: dismissKeyboard(in: app, field: app.textFields[AXID.changeNameField])
+        default: break
+        }
         // Only the feedback screen has a Continue bar; reading its frame elsewhere would fail the lookup.
         let continueBar = screen == .feedback ? app.buttons[AXID.continueButton].frame : .zero
         // Keep going after the first finding so one run reports every issue on the screen.

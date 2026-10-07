@@ -89,4 +89,16 @@ jobs:
         run: scripts/test.sh package
 
       - name: App build and UI tests
-        run: scripts/test.sh app
+        run: scripts/test.sh app -resultBundlePath "$RUNNER_TEMP/app.xcresult"
+
+      # The xcodebuild log omits what an accessibility audit objected to; the result bundle has it.
+      - name: Summarise UI test failures
+        if: failure()
+        run: |
+          xcrun xcresulttool get test-results summary --path "$RUNNER_TEMP/app.xcresult" > "$RUNNER_TEMP/summary.json" || exit 0
+          python3 - "$RUNNER_TEMP/summary.json" <<'PY'
+          import json, sys
+          for f in json.load(open(sys.argv[1])).get("testFailures", []):
+              print("FAILED", f.get("testName"))
+              print("   ", f.get("failureText"))
+          PY
