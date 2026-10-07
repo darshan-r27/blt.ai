@@ -12,26 +12,35 @@ struct ChangeNameView: View {
 
     var body: some View {
         let palette = Palette(colorScheme)
-        NavigationStack {
+        // A plain top bar instead of the system toolbar: the system's glass bar buttons failed the contrast audit
+        // on the lilac sheet, and these read clearly in both appearances.
+        VStack(spacing: 0) {
+            HStack {
+                Button("Cancel", action: onCancel)
+                    .foregroundStyle(palette.accentColor)
+                    .accessibilityIdentifier(AccessibilityID.changeNameCancel)
+                Spacer()
+                Button("Save", action: save)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(palette.accentColor)
+                    .accessibilityIdentifier(AccessibilityID.changeNameSave)
+            }
+            .font(.body)
+            .padding(.horizontal, 20)
+            .frame(minHeight: 52)
             ScrollView {
-                NameEntryForm(viewModel: viewModel, fieldID: AccessibilityID.changeNameField, onSubmit: save)
-                    .padding(24)
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Change name")
+                        .font(.title2.bold())
+                        .foregroundStyle(palette.textPrimaryColor)
+                        .accessibilityAddTraits(.isHeader)
+                    NameEntryForm(viewModel: viewModel, fieldID: AccessibilityID.changeNameField, onSubmit: save)
+                }
+                .padding(24)
             }
             .scrollDismissesKeyboard(.interactively)
-            .bltScreenBackground()
-            .navigationTitle("Change name")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", action: onCancel)
-                        .accessibilityIdentifier(AccessibilityID.changeNameCancel)
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save", action: save)
-                        .accessibilityIdentifier(AccessibilityID.changeNameSave)
-                }
-            }
         }
+        .bltScreenBackground()
         // The sheet's own surface is system white or grey; match the page so it does not look like a different app.
         .presentationBackground(palette.backgroundColor)
     }

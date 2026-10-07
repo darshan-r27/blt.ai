@@ -23,7 +23,7 @@ final class OnboardingUITests: BLTUITestCase {
         let app = launch(reset: true)
 
         requireExists(app.element(AXID.introStart), "the Get started button")
-        XCTAssertTrue(app.staticTexts["blt.ai"].exists)
+        XCTAssertTrue(app.staticTexts["B L T dot A I"].exists)
         XCTAssertFalse(app.element(AXID.greeting).exists, "Home must not show before a name is saved")
     }
 
