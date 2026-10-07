@@ -89,7 +89,7 @@ jobs:
         run: scripts/test.sh package
 
       - name: App build and UI tests
-        run: scripts/test.sh app -resultBundlePath "$RUNNER_TEMP/app.xcresult" -only-testing:BLTAppUITests/AccessibilityUITests  # TEMPORARY, branch only
+        run: scripts/test.sh app -resultBundlePath "$RUNNER_TEMP/app.xcresult"
 
       # The xcodebuild log omits what an accessibility audit objected to; the result bundle has it.
       - name: Summarise UI test failures
