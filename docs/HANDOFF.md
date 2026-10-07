@@ -3,7 +3,7 @@
 Read this first in a new session, then `CLAUDE.md`. Last updated 2026-10-06.
 
 ## What this is
-**blt.ai** (Budugu Learns Tamil): an iOS 27 / SwiftUI app that teaches colloquial Tamil to Telugu speakers who are fluent in English. **v1 is text-only multiple choice** (English prompt, four romanised-Tamil options, feedback, scheduling); voice is v2. Portfolio project, not distributed. Repo: `github.com/darshan-r27/blt.ai` (private), workspace `~/dev/blt.ai`.
+**blt.ai** (Budugu Learns Tamil): an iOS 27 / SwiftUI app that teaches colloquial Tamil to Telugu speakers who are fluent in English. **v1 is text-only multiple choice** (English prompt, four romanised-Tamil options, feedback, scheduling); voice is v2. Portfolio project, not distributed. Repo: `github.com/darshan-r27/blt.ai` (public from 2026-10-06), workspace `~/dev/blt.ai`.
 
 Product rules that matter: two spoken registers only (casual `nee/da/di`, respectful `neenga`; no written/literary Tamil); common English loanwords stay English; never red; no network, audio or speech in v1; the only personal data is a display name stored on the device (ADR 030).
 
