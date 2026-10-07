@@ -34,26 +34,30 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i02",
       "sourcePrompt": "That's too expensive.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "romba jaasthi",
+      "canonical": "vela romba jaasthi",
       "acceptedAnswers": [
-        "romba jaasthi",
-        "idhu romba jaasthi",
+        "vela romba jaasthi",
+        "idhoda vela romba jaasthi",
         "romba costly"
       ],
       "registerVariant": null,
       "distractors": [
-        "romba kammi",
-        "romba nalla irukku",
-        "romba periya size"
+        "vela romba kammi",
+        "vela romba nalla irukku",
+        "vela romba periya size"
       ],
       "tokens": [
+        {
+          "tamil": "vela",
+          "english": "price"
+        },
         {
           "tamil": "romba",
           "english": "very"
@@ -64,26 +68,30 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i03",
       "sourcePrompt": "Please reduce the price. (to a shopkeeper)",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "konjam kammi pannunga",
+      "canonical": "vela konjam kammi pannunga",
       "acceptedAnswers": [
-        "konjam kammi pannunga",
-        "konjam kammiya kudunga",
-        "kammi pannunga",
-        "konjam kammi pannunga!"
+        "vela konjam kammi pannunga",
+        "vela konjam kammiya kudunga",
+        "vela kammi pannunga",
+        "vela konjam kammi pannunga!"
       ],
-      "registerVariant": "konjam kammi pannu",
+      "registerVariant": "vela konjam kammi pannu",
       "distractors": [
-        "konjam jaasthi pannunga",
-        "konjam mella pannunga"
+        "vela konjam jaasthi pannunga",
+        "vela konjam mella pannunga"
       ],
       "tokens": [
+        {
+          "tamil": "vela",
+          "english": "price"
+        },
         {
           "tamil": "konjam",
           "english": "a little"
@@ -98,7 +106,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i04",
@@ -129,7 +137,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i05",
@@ -159,8 +167,8 @@
           "english": "I'll take"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "kudunga - give (respectful)",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i06",
@@ -172,7 +180,8 @@
         "enakku venaam",
         "enakku vendaam",
         "venaam",
-        "enaku venaam"
+        "enaku venaam",
+        "enaku vendam"
       ],
       "registerVariant": null,
       "distractors": [
@@ -190,8 +199,8 @@
           "english": "not wanted"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "vena would also work",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i07",
@@ -226,7 +235,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i08",
@@ -260,7 +269,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i09",
@@ -295,45 +304,45 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i10",
       "sourcePrompt": "Can I try it on?",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "pottu paakkalaama?",
+      "canonical": "try panlama?",
       "acceptedAnswers": [
-        "pottu paakkalaama?",
+        "try panlama?",
         "pottu paakalaama?",
         "pottu paakkalaamaa?",
         "try pannalaama?"
       ],
       "registerVariant": null,
       "distractors": [
-        "pottu paakka maatten",
+        "try panna maatten",
         "pottu paarunga",
         "vaangikkalaama?"
       ],
       "tokens": [
         {
-          "tamil": "pottu",
+          "tamil": "try",
           "english": "putting on"
         },
         {
-          "tamil": "paakkalaama",
-          "english": "may I see?"
+          "tamil": "panlama?",
+          "english": "can i do?"
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i11",
       "sourcePrompt": "Where do I pay?",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "enga kaasu kudukkanum?",
+      "canonical": "enga pay pannanum?",
       "acceptedAnswers": [
         "enga kaasu kudukkanum?",
         "enga pay pannanum?",
@@ -342,8 +351,8 @@
       "registerVariant": null,
       "distractors": [
         "yaarukku kaasu kudukkanum?",
-        "eppo kaasu kudukkanum?",
-        "evlo kaasu kudukkanum?"
+        "eppo pay pannanum?",
+        "evlo pay pannanum?"
       ],
       "tokens": [
         {
@@ -351,16 +360,16 @@
           "english": "where"
         },
         {
-          "tamil": "kaasu",
-          "english": "money"
+          "tamil": "pay",
+          "english": "paying money"
         },
         {
-          "tamil": "kudukkanum",
+          "tamil": "pannanum",
           "english": "should give"
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i12",
@@ -390,19 +399,20 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i13",
       "sourcePrompt": "Can I pay by GPay?",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "GPay-la pay pannalaama?",
+      "canonical": "GPay panlama?",
       "acceptedAnswers": [
-        "GPay-la pay pannalaama?",
+        "GPay pay pannalaama?",
         "GPay la pay pannalaama?",
         "Gpay-la pay pannalaamaa?",
-        "GPay-la kudukkalaama?"
+        "GPay-la kudukkalaama?",
+        "GPay panlama?"
       ],
       "registerVariant": null,
       "distractors": [
@@ -412,16 +422,16 @@
       ],
       "tokens": [
         {
-          "tamil": "GPay-la",
+          "tamil": "GPay",
           "english": "by GPay"
         },
         {
-          "tamil": "pay pannalaama",
+          "tamil": "panlama?",
           "english": "may I pay?"
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i14",
@@ -451,7 +461,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i15",
@@ -462,7 +472,7 @@
       "acceptedAnswers": [
         "bag irukkaa?",
         "bag irukka?",
-        "bag irukkunga?"
+        "bag irukkungala?"
       ],
       "registerVariant": null,
       "distractors": [
@@ -481,17 +491,17 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i16",
       "sourcePrompt": "What time does the shop open?",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "kadai eppo thirakkum?",
+      "canonical": "kadai eppo thorakum?",
       "acceptedAnswers": [
         "kadai eppo thirakkum?",
-        "kadai eppo thorakkum?",
+        "kadai eppo thorakum?",
         "kadai eppa thirakkum?",
         "kadai eppo open aagum?"
       ],
@@ -511,12 +521,12 @@
           "english": "when"
         },
         {
-          "tamil": "thirakkum",
+          "tamil": "thorakum",
           "english": "will open"
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i17",
@@ -550,7 +560,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i18",
@@ -581,7 +591,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i19",
@@ -611,18 +621,18 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s04-i20",
       "sourcePrompt": "I'll come back later.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "naan appuram varen",
+      "canonical": "naan aprom varen",
       "acceptedAnswers": [
-        "naan appuram varen",
-        "naan appuram varein",
-        "nan appuram varen"
+        "naan aprom varen",
+        "naan aprom varein",
+        "nan aprom varen"
       ],
       "registerVariant": null,
       "distractors": [
@@ -636,7 +646,7 @@
           "english": "I"
         },
         {
-          "tamil": "appuram",
+          "tamil": "aprom",
           "english": "later"
         },
         {
@@ -645,7 +655,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     }
   ]
 }

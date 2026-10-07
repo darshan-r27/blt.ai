@@ -34,7 +34,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i02",
@@ -45,7 +45,7 @@
       "acceptedAnswers": [
         "enakku thaagamaa irukku",
         "enakku dhaagamaa irukku",
-        "enakku thaagam"
+        "thaagam ah iruku"
       ],
       "registerVariant": null,
       "distractors": [
@@ -68,7 +68,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i03",
@@ -98,7 +98,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i04",
@@ -132,7 +132,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i05",
@@ -161,45 +161,46 @@
           "english": "is there (respectful)"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "To add before the option:\nsapudrathuku - to eat\nkudikurathuku - to drink",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i06",
       "sourcePrompt": "What do you want to eat? (to a female friend)",
       "register": "casual",
       "addressee": "female",
-      "canonical": "enna saapda pora di?",
+      "canonical": "unnaku enna venum saapda?",
       "acceptedAnswers": [
         "enna saapda pora di?",
         "enna saapda poora di?",
-        "enna saapda pora di"
+        "enna saapda pora di",
+        "unnaku enna venum saapda?"
       ],
-      "registerVariant": "enna saapda poreenga?",
+      "registerVariant": "ungaluku enna venum saapda?",
       "distractors": [
-        "enga saapda poora di?",
-        "eppo saapda poora di?"
+        "unnaku enga venum saapda?",
+        "ungaluku eppo venum saapda?"
       ],
       "tokens": [
+        {
+          "tamil": "unnaku",
+          "english": "for you (casual)"
+        },
         {
           "tamil": "enna",
           "english": "what"
         },
         {
+          "tamil": "venum",
+          "english": "want"
+        },
+        {
           "tamil": "saapda",
           "english": "to eat"
-        },
-        {
-          "tamil": "pora",
-          "english": "are you going (casual)"
-        },
-        {
-          "tamil": "di",
-          "english": "friendly address to a woman"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "unnaku is informal\nungaluku is formal / plural",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i07",
@@ -237,7 +238,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i08",
@@ -270,8 +271,8 @@
           "english": "put (respectful)"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "pannunga - make (respectful)",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i09",
@@ -306,7 +307,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i10",
@@ -344,7 +345,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i11",
@@ -379,7 +380,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i12",
@@ -409,7 +410,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i13",
@@ -437,24 +438,22 @@
           "english": "give (respectful)"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "kudu. -give (casual)",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i14",
       "sourcePrompt": "How much is it?",
-      "register": "neutral",
+      "register": "casual",
       "addressee": "any",
       "canonical": "evlo aachu?",
       "acceptedAnswers": [
         "evlo aachu?",
         "evlo aachu",
-        "evlo achu?",
-        "evlo aachunga?"
+        "evlo achu?"
       ],
-      "registerVariant": null,
+      "registerVariant": "evlo aachunga?",
       "distractors": [
-        "evlo irukku?",
         "enna aachu?",
         "evlo venum?"
       ],
@@ -468,29 +467,29 @@
           "english": "has it become"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "aachunga - respectful (notice -nga)",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i15",
       "sourcePrompt": "Keep the change.",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "chillarai vechukonga",
+      "canonical": "change ah vechukonga",
       "acceptedAnswers": [
-        "chillarai vechukonga",
-        "chillara vechukonga",
-        "chillarai vechikonga",
+        "change vechukonga",
+        "change vechukonga",
+        "change ah vechukonga",
         "meethi vechukonga"
       ],
-      "registerVariant": "chillarai vechukko",
+      "registerVariant": "change ah vechukko",
       "distractors": [
-        "chillarai kudunga",
-        "chillarai irukka?"
+        "change kudunga",
+        "change irukka?"
       ],
       "tokens": [
         {
-          "tamil": "chillarai",
+          "tamil": "change",
           "english": "change"
         },
         {
@@ -498,17 +497,17 @@
           "english": "keep (respectful)"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "meethi - balance",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i16",
       "sourcePrompt": "Do you have change?",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "chillarai irukkaa?",
+      "canonical": "change irukkaa?",
       "acceptedAnswers": [
-        "chillarai irukkaa?",
+        "change irukkaa?",
         "chillarai irukka?",
         "chillara irukka?"
       ],
@@ -520,7 +519,7 @@
       ],
       "tokens": [
         {
-          "tamil": "chillarai",
+          "tamil": "change",
           "english": "change"
         },
         {
@@ -529,18 +528,19 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i17",
       "sourcePrompt": "I only eat vegetarian food.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "naan veg thaan saapduven",
+      "canonical": "naan veg mattum thaan saapduven",
       "acceptedAnswers": [
         "naan veg thaan saapduven",
         "naan veg dhaan saapduven",
-        "naan veg mattum saapduven"
+        "naan veg mattum saapduven",
+        "naan veg mattum thaan saapduven"
       ],
       "registerVariant": null,
       "distractors": [
@@ -558,7 +558,7 @@
           "english": "vegetarian"
         },
         {
-          "tamil": "thaan",
+          "tamil": "mattum thaan",
           "english": "only"
         },
         {
@@ -567,7 +567,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i18",
@@ -598,7 +598,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i19",
@@ -630,7 +630,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s03-i20",
@@ -664,7 +664,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     }
   ]
 }
