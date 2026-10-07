@@ -3,9 +3,9 @@ import XCTest
 /// `performAccessibilityAudit()` on every screen at the default text size and at the largest
 /// accessibility size, plus checks that the key controls can still be reached at that size.
 ///
-/// A finding fails the test and goes in the report. The two narrow exceptions are documented on
-/// `isSystemToolbarButtonDynamicTypeIssue` and `isOccludedByContinueBar`; the name screens are audited with the
-/// system keyboard dismissed (see `dismissKeyboard`).
+/// A finding fails the test and goes in the report. The three narrow exceptions are documented on
+/// `isSystemToolbarButtonDynamicTypeIssue`, `isOccludedByContinueBar` and `isSettingsTextBehindSheet`; the name
+/// screens are audited with the system keyboard dismissed (see `dismissKeyboard`).
 @MainActor
 final class AccessibilityUITests: BLTUITestCase {
     private enum Screen {
@@ -107,6 +107,18 @@ final class AccessibilityUITests: BLTUITestCase {
         return element.frame.intersects(bar)
     }
 
+    /// The third ignored case: on the Change name sheet, a contrast issue on the Settings screen's "About the
+    /// content" text, which sits behind the sheet. The audit still walks the screen underneath a sheet, and the
+    /// text is hidden by the sheet, so the audit finds no text pixels to measure. On GitHub's runner it reports
+    /// this on some runs and not others, on the same build (never seen locally on a clean simulator). It is not
+    /// part of the sheet and VoiceOver cannot focus it while the sheet is up; the same text is audited on its own
+    /// screen by `testSettingsAudit` and `testSettingsAuditAtXXXL`. Matched by audit type AND the text's two
+    /// possible openings (see `SettingsViewModel.contentStatement`), and only when auditing the Change name sheet.
+    private static func isSettingsTextBehindSheet(_ issue: XCUIAccessibilityAuditIssue, onSheet: Bool) -> Bool {
+        guard onSheet, issue.auditType == .contrast, let label = issue.element?.label else { return false }
+        return label.hasPrefix("These lessons were drafted") || label.hasPrefix("Every lesson was checked")
+    }
+
     /// The two name screens focus their field on arrival, so the system keyboard is up when the audit starts.
     /// That keyboard is Apple's, not ours, and it makes the audit report things we cannot fix: its empty
     /// prediction cells have no label (seen on a GitHub runner), and at the largest text size it covers the
@@ -136,11 +148,12 @@ final class AccessibilityUITests: BLTUITestCase {
         let continueBar = screen == .feedback ? app.buttons[AXID.continueButton].frame : .zero
         // Keep going after the first finding so one run reports every issue on the screen.
         continueAfterFailure = true
-        try app.performAccessibilityAudit { issue in
-            // Apart from the two narrow cases above, every issue is recorded as a failure with the element it
+        let handleIssue: (XCUIAccessibilityAuditIssue) -> Bool = { issue in
+            // Apart from the three narrow cases above, every issue is recorded as a failure with the element it
             // points at. (Returning true only means "handled"; the XCTFail is what fails the test.)
             if Self.isSystemToolbarButtonDynamicTypeIssue(issue)
-                || Self.isOccludedByContinueBar(issue, bar: continueBar) {
+                || Self.isOccludedByContinueBar(issue, bar: continueBar)
+                || Self.isSettingsTextBehindSheet(issue, onSheet: screen == .changeName) {
                 return true
             }
             let element = issue.element
@@ -152,6 +165,19 @@ final class AccessibilityUITests: BLTUITestCase {
             )
             return true
         }
+        do {
+            try app.performAccessibilityAudit(handleIssue)
+        } catch let error as NSError where Self.isAuditTimeout(error) {
+            // On a loaded runner the audit of the Change name sheet can run out of its own time limit (it took 80
+            // to 100 seconds there). That is the audit tool giving up, not a finding, so it gets one more attempt;
+            // a second timeout fails the test.
+            try app.performAccessibilityAudit(handleIssue)
+        }
+    }
+
+    /// "Audit failed to complete in time" (domain `com.apple.xcode.xctest.accessibilityAudit`, code -56).
+    private static func isAuditTimeout(_ error: NSError) -> Bool {
+        error.domain == "com.apple.xcode.xctest.accessibilityAudit" && error.code == -56
     }
 
     // MARK: Default text size
