@@ -126,6 +126,11 @@ struct SettingsImportViewModelTests {
                 "Nothing was imported: the file did not pass the lesson checks (3 problems). "
                     + "Your lessons are unchanged."
             ),
+            (
+                .invalid(issueCount: 1),
+                "Nothing was imported: the file did not pass the lesson checks (1 problem). "
+                    + "Your lessons are unchanged."
+            ),
             (.couldNotSave, "The lessons could not be saved. Your lessons are unchanged.")
         ]
         for (failure, message) in failures {

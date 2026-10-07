@@ -54,7 +54,8 @@ public final class SettingsViewModel {
         case .failed(.unreadable):
             return "A file could not be read. If it is in iCloud Drive, download it first."
         case .failed(.invalid(let issueCount)):
-            return "Nothing was imported: the file did not pass the lesson checks (\(issueCount) problems). "
+            let problems = issueCount == 1 ? "1 problem" : "\(issueCount) problems"
+            return "Nothing was imported: the file did not pass the lesson checks (\(problems)). "
                 + "Your lessons are unchanged."
         case .failed(.couldNotSave):
             return "The lessons could not be saved. Your lessons are unchanged."

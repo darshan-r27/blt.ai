@@ -12,21 +12,29 @@ struct BLTAppMain: App {
 
     var body: some Scene {
         WindowGroup {
-            if let composed {
-                RootView(
-                    dependencies: composed.dependencies,
-                    profileStore: composed.profileStore,
-                    lessonImporter: composed.lessonImporter,
-                    onLessonsChanged: { change in lessonsDidChange(change, from: composed) }
-                )
-                .id(generation)
-                .alert(notice ?? "", isPresented: noticeIsShown) {
+            content
+                // On the container, not on the root view: the root gets a new identity after an import, and an
+                // alert attached to a view that is being replaced is never shown.
+                .alert("Lessons", isPresented: noticeIsShown) {
                     Button("OK") { notice = nil }
+                } message: {
+                    Text(notice ?? "")
                 }
-            } else {
-                ProgressView()
-                    .task { composed = await CompositionRoot().compose() }
-            }
+        }
+    }
+
+    @ViewBuilder private var content: some View {
+        if let composed {
+            RootView(
+                dependencies: composed.dependencies,
+                profileStore: composed.profileStore,
+                lessonImporter: composed.lessonImporter,
+                onLessonsChanged: { change in lessonsDidChange(change, from: composed) }
+            )
+            .id(generation)
+        } else {
+            ProgressView()
+                .task { composed = await CompositionRoot().compose() }
         }
     }
 

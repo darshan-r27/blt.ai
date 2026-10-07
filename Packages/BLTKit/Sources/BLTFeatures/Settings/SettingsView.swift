@@ -65,7 +65,9 @@ public struct SettingsView: View {
             isPresented: $viewModel.isConfirmingRemoveImported,
             titleVisibility: .visible
         ) {
-            Button("Remove imported lessons", role: .destructive) {
+            // Not a destructive role: nothing is lost (progress is kept, the files can be imported again),
+            // and the system draws that role in red, which this app does not use.
+            Button("Remove imported lessons") {
                 Task { await viewModel.removeImported() }
             }
             Button("Cancel", role: .cancel) { viewModel.isConfirmingRemoveImported = false }
