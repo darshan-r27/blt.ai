@@ -96,6 +96,7 @@ Treat bundled content JSON as untrusted. It's authored by you today; it may be a
 - [ ] Content JSON is schema-validated at load. Phoneme spans bounds-checked against string length.
 - [ ] Audio filenames from JSON are resolved against the bundle by identifier lookup, never by string-concatenating a path. A `../` in a filename must not be able to reach outside the bundle.
 - [ ] Malformed item in release: skipped and counted, not crashed on, not rendered.
+- [ ] Imported lessons (DECISIONS 036) get the same schema validation as bundled content, all or nothing; stored with `.completeFileProtection` under a hashed name (never the user's file name); no `UIFileSharingEnabled`, no document types, no network API.
 - [ ] No `try!` or force-unwrap on anything derived from file contents.
 
 ## Concurrency

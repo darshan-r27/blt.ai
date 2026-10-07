@@ -39,6 +39,7 @@ Only those two spoken registers are taught. Literary forms are left out on purpo
 - **Spaced repetition.** An SM-2 scheduler decides what comes back and when. A wrong answer is due again immediately, and a phrase counts as complete only when your latest answer was correct.
 - **Shuffled sessions.** Each session samples up to ten phrases and shuffles questions and options, so you cannot pass by remembering positions.
 - **Never red.** Mistakes are shown in a neutral tone. The app is meant to feel like practice, not a test.
+- **Lessons can be updated on the phone.** Settings has an "Import lessons" action: pick lesson files from the Files app and the app validates them (all or nothing) and starts using them straight away. See below.
 - **Private by construction.** The only personal data is a display name, stored on the device. There is no account, no network code, and no analytics.
 
 ## How it is built
@@ -104,6 +105,18 @@ The first runs the package's unit tests. The second builds the app and runs the 
 ### Continuous integration
 
 [The workflow](.github/workflows/ci.yml) runs the same four checks on every push and pull request. Because the app targets iOS 27, it uses GitHub's `xcode-27` runner image, which is still a public preview: runs may queue or fail for reasons on GitHub's side. If a runner lacks the iOS 27 SDK the job fails with a message saying so, and the tests are never skipped quietly. The local commands above are the reference.
+
+## Updating lessons without Xcode
+
+The lessons are the JSON files in [`content/`](content/). They ship inside the app, but they can also be replaced on the phone, so a change to the lessons does not need a rebuild:
+
+1. Send the `content/*.json` files you want to the phone (AirDrop works) and save them to the Files app.
+2. In blt.ai, open Settings, tap **Import lessons**, and choose the files (up to 10).
+3. The app checks every file with the same rules as the bundled lessons. If all pass, they take effect at once and your progress is kept. If any file fails, nothing changes and the app says so.
+
+An imported file replaces the bundled lesson set with the same `scenarioId`, or adds a new one. **Remove imported lessons** in Settings goes back to the lessons that came with the app. If a newer build ships different bundled lessons for a scenario, the older import is ignored. The design and its safety rules are in [`docs/DECISIONS.md`](docs/DECISIONS.md) (036).
+
+This does not remove the 7-day limit of installing with a free Apple ID: the app itself still has to be re-signed from Xcode every week. Only a paid developer programme (TestFlight) or a sideload refresher changes that.
 
 ## How it was made
 

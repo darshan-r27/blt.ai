@@ -41,9 +41,12 @@ Merged on `main` and verified (package tests, lint, guard, app build, Release bu
 2. **Content review (owner, by hand):** edits are being saved straight into `content/*.json` and are **uncommitted** (`scenario-01`, `scenario-02` at last check). All 100 items are still `unreviewed`. Commit them only when the owner says they are done.
 3. **Settings statement** flips to "Every lesson was checked by a native Tamil speaker…" only when all items are `reviewed` (ADR 035). Use the editor's "Mark reviewed" for that.
 
+**Lesson import (DECISIONS 036): merged.** Settings > Import lessons (Files picker, up to 10 `.json`, all or nothing, applied at once; Remove imported lessons undoes it). Verified on the iPhone 17 simulator with a real file in Files (import, relaunch, remove, and a broken file). Not yet verified on a real iPhone: AirDrop the `content/*.json` files, Save to Files, import. It does not remove the weekly Xcode re-sign on a free Apple ID.
+
 **Known gaps and watch-items**
 - Not visually verified by a human: shimmer on a device, VoiceOver, largest Dynamic Type on every screen, damaged-profile "Start over" screen, Progress screen on lilac.
 - Progress screen still shows due/learned/attempt counts (only Home cards were simplified).
+- The Reset progress confirmation draws its destructive button in system red (seen on iOS 27); the Remove imported lessons dialog avoids that by using no destructive role. Decide whether to do the same for Reset.
 - System UI (keyboard return key) stays blue; the reset button and some dialogs use a destructive role that could render red on some iOS versions.
 - `.completeFileProtection` is not enforced in Simulator: check on a device.
 - CI (`.github/workflows/ci.yml`) runs on GitHub's `xcode-27` preview image and is green on `main` as of 2026-10-07 (SwiftLint SHA-256 and checkout pinned). That image intermittently hangs a UI query for 2 to 7 minutes in a different test each run ("Timed out while evaluating UI query"), so the UI step uses `-retry-tests-on-failure -test-iterations 3`; a run takes 12 to 45 minutes. A failing run prints each failed test's message ("Summarise UI test failures" step). macOS minutes are free now the repo is public.

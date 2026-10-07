@@ -317,3 +317,18 @@ Each scenario card shows its title, subtitle and one completion percent with a b
 The owner wants Settings to say that every lesson is checked by a native Tamil speaker before the learner sees it. The statement is therefore data-driven: when every item's `reviewStatus` is `reviewed` it reads "Every lesson was checked by a native Tamil speaker before it was added to the app." and the "n of N reviewed" line is hidden; until then it keeps the honest draft wording and the count. It flips automatically once the owner marks items reviewed (content editor, "Mark reviewed"). The per-item "Unreviewed draft" badge is unchanged and disappears item by item.
 
 **Why not an unconditional claim:** with 0 of 100 items marked reviewed the app would assert something its own data contradicts, which is exactly what 025 exists to prevent.
+
+## 036 — Lessons can be imported from the Files app
+**Status:** active
+
+**Decision:** Settings has an "Import lessons" action (system Files picker, `.json`, up to 10 files) so reviewed content reaches a phone without a rebuild. A chosen file uses the same schema as `content/*.json`. An imported scenario replaces the bundled scenario with the same `scenarioId`, or is added when the id is new. The app applies it at once (it rebuilds its root with the new catalog; progress is untouched) and "Remove imported lessons" returns to the bundled content.
+
+**Safety:** imported files are untrusted input. They go through the same `ContentLoader` validator as bundled content, **all or nothing**: if any chosen file has any issue, nothing changes and the learner sees a plain message (no partial imports, no silently dropped items). Validation runs against the catalog the learner would end up with, so duplicate item or scenario ids across files are rejected. Accepted files are written to `Application Support/BLT/content/` with `.completeFileProtection`; the stored name is a hash of the scenario id, never the user's file name. A manifest, written last, says which files are active, so a crash mid-import leaves the previous state. The picker returns a user-chosen local file: no network API is involved and the constraints in CLAUDE.md still hold. No Info.plist keys are added (`UIFileSharingEnabled` and `LSSupportsOpeningDocumentsInPlace` stay banned).
+
+**Stale imports:** the manifest records the hash of the bundled file an import replaced. If a newer build ships a different bundled file for that scenario, the import is ignored and the bundled one wins, so a reinstall never leaves older imported lessons shadowing newer bundled ones. Imports of new scenario ids are kept.
+
+**What this does not do:** it does not remove the weekly Xcode run on a free Apple ID. That run renews the app's 7-day signature, which no in-app feature can do; only a paid developer programme or a sideload refresher changes that. The import only means content can change between runs. One-tap AirDrop ("Open in blt.ai") was left out on purpose: it needs a custom Info.plist document type, and files saved to Files and picked in-app work without it.
+
+**Threat note:** a person who imports a hostile file could show offensive text to themselves. Content is plain text only and import is deliberate and local, so this is accepted.
+
+**Implementation notes:** the root view is rebuilt with a new identity after an import or removal (the learner lands on Home) and the "Lessons" alert is attached to the stable container above it, because an alert on a view being replaced is never shown. The Remove confirmation uses no destructive role: nothing is lost, and the system draws that role in red.
