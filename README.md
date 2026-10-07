@@ -1,43 +1,140 @@
-# BLT.ai
+# blt.ai
 
-"Budugu Learns Tamil" — an iOS app teaching **colloquial** Tamil to Telugu speakers. Voice-first, on-device, no gamification.
+**Budugu Learns Tamil.** An iOS app that teaches the Tamil people actually speak, to Telugu speakers who are fluent in English.
 
-Portfolio project. Not shipping to the App Store.
+[![CI](https://github.com/darshan-r27/blt.ai/actions/workflows/ci.yml/badge.svg)](https://github.com/darshan-r27/blt.ai/actions/workflows/ci.yml)
+
+<p>
+  <img src="docs/images/intro.png" width="200" alt="Intro screen: blt.ai, learn the Tamil people actually speak">
+  <img src="docs/images/home.png" width="200" alt="Home screen: a greeting and five scenario cards with completion bars">
+  <img src="docs/images/question.png" width="200" alt="Question screen: an English prompt and four Tamil options">
+  <img src="docs/images/feedback.png" width="200" alt="Feedback screen: the correct phrase with a word-by-word gloss">
+</p>
+
+This is a portfolio project. It runs on a simulator or your own iPhone; it is not on the App Store.
 
 ## The problem
 
-Tamil is strongly diglossic: written Tamil (செந்தமிழ்) and spoken Tamil (கொடுந்தமிழ்) differ in verb morphology, pronouns, and case endings. Every mainstream app teaches the written register, so a learner finishes able to read a signboard and unable to hold a conversation. They sound like a newsreader.
+Tamil has two forms that differ far more than "formal" and "informal" English do. Written Tamil is what textbooks, news readers and almost every language app teach. Spoken Tamil is what people use at a bus stop, in a shop, and at home, and its verbs, pronouns and endings are different.
 
-## The thesis
+A learner who finishes a mainstream course can read a signboard and still cannot hold a conversation. When they do speak, they sound like a news bulletin.
 
-Tamil and Telugu are both Dravidian — shared SOV order, agglutinative case suffixing, dative-subject constructions, a large shared lexicon. A Telugu speaker already owns the grammar.
+## The idea
 
-So skip grammar entirely and spend all learner effort on lexical substitution, register, and listening at natural speed. The app's distinctive feature follows directly: a classifier that detects when a learner produced the *textbook* form and shows them what a 25-year-old would actually say.
+Tamil and Telugu are both Dravidian languages. They share word order, the way endings stack onto words, and a large part of their vocabulary. A Telugu speaker already owns the grammar.
+
+So blt.ai skips grammar lessons entirely and spends the learner's effort on two things:
+
+- **Words.** Which Tamil word replaces the Telugu one.
+- **Register.** Whether you are talking to a friend (`nee`, `da`, `di`) or to an elder or a stranger (`neenga`).
+
+Only those two spoken registers are taught. Literary forms are left out on purpose, and English words that Tamil speakers use every day (phone, bus, ticket, bill) stay in English.
+
+## What v1 does
+
+- **Five everyday scenarios, 100 phrases:** greetings, getting around, food, shopping, and home and family.
+- **Multiple choice.** An English prompt, four options in romanised Tamil.
+- **Feedback that teaches.** Each answer shows the phrase, a word-by-word gloss, and a note on who you would say it to.
+- **Three outcomes, not two.** "Right sentence, wrong register" is its own result, so saying the casual form to an elder is corrected without being marked simply wrong.
+- **Spaced repetition.** An SM-2 scheduler decides what comes back and when. A wrong answer is due again immediately, and a phrase counts as complete only when your latest answer was correct.
+- **Shuffled sessions.** Each session samples up to ten phrases and shuffles questions and options, so you cannot pass by remembering positions.
+- **Never red.** Mistakes are shown in a neutral tone. The app is meant to feel like practice, not a test.
+- **Private by construction.** The only personal data is a display name, stored on the device. There is no account, no network code, and no analytics.
+
+## How it is built
+
+Swift 6 with strict concurrency, SwiftUI, iOS 27. All logic lives in a local Swift package, and the app target is a thin shell around it.
+
+```mermaid
+graph TD
+    App[BLTApp: app shell and composition root] --> Features
+    Features[BLTFeatures: screens and view models] --> Session
+    Features --> Design[BLTDesign: theme and components]
+    Features --> Progress
+    Session[BLTSession: question builder, planner, state machine] --> Catalog
+    Session --> Progress[BLTProgress: scheduler, progress and profile stores]
+    Catalog[BLTCatalog: content loader and validator] --> Core
+    Progress --> Core[BLTCore: identifiers, register, outcome]
+    Design --> Core
+```
+
+A few choices worth a look:
+
+- **Content is data, not code.** The phrases live in [`content/`](content/) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures.
+- **"No network" is enforced, not promised.** [`scripts/check-forbidden-apis.sh`](scripts/check-forbidden-apis.sh) fails the build if networking, audio or speech APIs, network entitlements or permission strings appear in the source. [`scripts/check-binary.sh`](scripts/check-binary.sh) then inspects the compiled app for the same thing.
+- **Storage is two small JSON files**, written atomically with complete file protection. A damaged file is reported to the user and never silently overwritten.
+- **No dependencies.** Nothing third-party is linked.
+- **Warnings are errors**, in the package and in the test script, and SwiftLint runs in strict mode.
+- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 35 decisions, including the ones that were later reversed and why.
+
+## Where the content stands
+
+The 100 phrases were drafted by an AI and are being checked by hand by a Tamil speaker. Every phrase carries a review status in its data file, and the app shows an "Unreviewed draft" label on any phrase that has not been checked. The Settings screen says the lessons are native-reviewed only when every phrase is marked reviewed; the statement is computed from the data, not typed in.
+
+[`tools/content-editor/`](tools/content-editor/) is a single offline HTML page for that review: it walks through every phrase and applies the same validation rules as the app.
+
+## Run it
+
+You need Xcode 27 and an iOS 27 simulator. The examples use iPhone 17.
+
+```bash
+open BLTApp/BLTApp.xcodeproj
+```
+
+Choose the **BLTApp** scheme and press Run. To run the checks from the repository root:
+
+```bash
+BLT_SIM="iPhone 17" scripts/test.sh package
+```
+
+```bash
+BLT_SIM="iPhone 17" scripts/test.sh app
+```
+
+```bash
+swiftlint lint --config .swiftlint.yml --strict
+```
+
+```bash
+bash scripts/check-forbidden-apis.sh
+```
+
+The first runs the package's unit tests, and the second builds the app and runs the UI tests.
+
+### Continuous integration
+
+[The workflow](.github/workflows/ci.yml) runs the same four checks on every push and pull request. Because the app targets iOS 27, it uses GitHub's `xcode-27` runner image, which is still a public preview: runs may queue or fail for reasons on GitHub's side. If a runner lacks the iOS 27 SDK the job fails with a message saying so, and the tests are never skipped quietly. The local commands above are the reference.
+
+## How it was made
+
+The app was built with Claude Code, with the author acting as product owner and reviewer. One planning session produced a set of frozen interfaces; small, separately owned pieces were then built in parallel by agents in isolated git worktrees, merged one at a time, and verified after each merge. [`docs/MVP_PLAN.md`](docs/MVP_PLAN.md) is the plan, [`docs/WORKFLOW.md`](docs/WORKFLOW.md) describes the review process, and [`CLAUDE.md`](CLAUDE.md) holds the standing rules the agents worked under.
+
+## Roadmap
+
+**v2: voice.** This is the original thesis, and v1 is the foundation for it.
+
+- Hear each phrase at natural speed, recorded by native speakers.
+- Answer by speaking. Recognition runs on the device; audio is deleted as soon as it has been scored.
+- A classifier that notices when you produced the textbook form and shows you what a 25-year-old would actually say.
+- Pronunciation is measured and shown as advice. It never blocks progress.
+
+**v1.5: optional telemetry.** Off by default, opt-in, and confined to one module. The design and threat model are in [`docs/BACKEND.md`](docs/BACKEND.md).
+
+**Later.** More scenarios, Tamil script alongside romanisation, and the same approach for speakers of Kannada and Malayalam.
 
 ## Documents
 
-Read in this order.
-
 | Document | What it is |
 | --- | --- |
-| `docs/PRD.md` | Product spec. Problem, thesis, non-goals, screens, scoring design. |
-| `docs/BUILD_PLAN.md` | Sequenced tasks with acceptance criteria. One task = one PR. |
-| `docs/DECISIONS.md` | ADR log, including superseded decisions. Start here if you want the reasoning. |
-| `docs/OPEN_ITEMS.md` | Unresolved, and decided-but-not-applied. Check before starting work. |
-| `docs/SECURITY.md` | Review rubric. Audio handling, telemetry, supply chain. |
-| `docs/BACKEND.md` | v1.5 telemetry and diagnostics design. Threat model, data classification. |
-| `docs/RECORDING_GUIDE.md` | How to elicit colloquial Tamil without producing formal register. |
-| `docs/WORKFLOW.md` | How this gets built with an AI coding agent, and how to review it. |
-| `CLAUDE.md` | Standing instructions for the agent. Read automatically each session. |
+| [`docs/MVP_PLAN.md`](docs/MVP_PLAN.md) | The v1 plan: interfaces, work breakdown, review checklist. |
+| [`docs/DECISIONS.md`](docs/DECISIONS.md) | The decision log. Start here for the reasoning. |
+| [`docs/PRD.md`](docs/PRD.md) | The full product specification, written for the voice version. |
+| [`docs/BUILD_PLAN.md`](docs/BUILD_PLAN.md) | The original task sequence, including the v2 voice phases. |
+| [`docs/SECURITY.md`](docs/SECURITY.md) | The security review rubric. |
+| [`docs/BACKEND.md`](docs/BACKEND.md) | The telemetry design for v1.5. |
+| [`docs/RECORDING_GUIDE.md`](docs/RECORDING_GUIDE.md) | How to record colloquial Tamil without drifting into the formal register. |
+| [`docs/HANDOFF.md`](docs/HANDOFF.md) | Current status and how to pick the work up. |
 
-## Three decisions worth reading
+## Licence
 
-**Pronunciation is measured but never gates progression.** It was in scope, cut as pedagogically wrong, then restored as measurement-without-gating on a progressive tolerance ladder. The final design is better *because* it went through the cut. `DECISIONS.md` 006–007.
-
-**Identity went anonymous → absent → named.** The middle step is what revealed the privacy machinery was solving a problem this project doesn't have. `DECISIONS.md` 014.
-
-**Breadcrumbs are a closed enum, not strings.** A diagnostics breadcrumb containing a transcript would leak exactly what the privacy claim forbids, through a path nobody watches. Enforcing it in the type system rather than in review is the difference between a property and a policy. `DECISIONS.md` 017.
-
-## What this is not
-
-Not a cohort study. Expected user count is two, so telemetry has no statistical value — it exists as a longitudinal case study of one learner and as an infrastructure artifact. Any chart built on seeded data is labelled synthetic in the chart itself.
+[MIT](LICENSE).

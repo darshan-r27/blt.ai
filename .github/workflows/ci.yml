@@ -1,6 +1,14 @@
+---
 name: CI
 
 # Runs the repo guardrails, SwiftLint, package tests and app tests (docs/MVP_PLAN.md C1, section 7).
+# The same four checks run locally: see "Run it" in README.md.
+#
+# Runner: the app targets iOS 27 (docs/DECISIONS.md 029), so the jobs need Xcode 27. GitHub offers that
+# as the `xcode-27` image, which is still a public preview (actions/runner-images issue 14404): expect
+# queueing and the occasional image-side failure. `macos-latest` is macOS 26 with Xcode 26 and cannot
+# build this project. If the image loses the iOS 27 SDK the "Toolchain" step fails loudly; the tests
+# are never skipped silently.
 
 on:
   pull_request:
@@ -15,23 +23,22 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # TODO(human, H4): pin the SwiftLint release you have reviewed. 0.65.1 is the version used locally;
-  # take the SHA-256 of portable_swiftlint.zip from that release's page. Do NOT guess this value.
+  # Same SwiftLint version as local development. The SHA-256 is the digest GitHub publishes for the
+  # portable_swiftlint.zip asset of that release; the install step refuses anything that differs.
   SWIFTLINT_VERSION: "0.65.1"
-  SWIFTLINT_SHA256: "TODO_REPLACE_WITH_SHA256_OF_portable_swiftlint.zip"
+  SWIFTLINT_SHA256: "c1e429b0599cf1b516f369a2d9ec04eaf0e436f3c12b637df8851fa52ff694d0"
   BLT_SIM: "iPhone 17"
 
 jobs:
-  checks:
-    # TODO(human): confirm a runner image that ships an Xcode with the iOS 27 SDK and an iPhone 17
-    # simulator runtime, then pin it by label (and select the Xcode version with a step if needed).
-    runs-on: macos-latest
-    timeout-minutes: 60
+  guardrails:
+    name: Guardrails and lint
+    runs-on: xcode-27
+    timeout-minutes: 15
     steps:
-      # TODO(human, H4): pin every action below by full commit SHA (`uses: owner/repo@<40-hex-sha> # vX.Y.Z`).
-      # The tag is a placeholder because commit SHAs cannot be looked up offline.
       - name: Checkout
-        uses: actions/checkout@v4 # TODO(human): replace tag with commit SHA
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Forbidden-API guard self-test
         run: bash scripts/check-forbidden-apis.sh --self-test
@@ -42,9 +49,6 @@ jobs:
       - name: Install SwiftLint (pinned, SHA-256 verified)
         run: |
           set -euo pipefail
-          case "$SWIFTLINT_SHA256" in
-            TODO*) echo "SWIFTLINT_SHA256 is still a placeholder; set it in .github/workflows/ci.yml" >&2; exit 1 ;;
-          esac
           url="https://github.com/realm/SwiftLint/releases/download/${SWIFTLINT_VERSION}/portable_swiftlint.zip"
           curl --fail --silent --show-error --location --output "$RUNNER_TEMP/swiftlint.zip" "$url"
           echo "${SWIFTLINT_SHA256}  $RUNNER_TEMP/swiftlint.zip" | shasum -a 256 --check -
@@ -58,18 +62,31 @@ jobs:
           swiftlint version
           swiftlint lint --strict --config .swiftlint.yml
 
-      - name: Package tests
-        run: |
-          if [ -f Packages/BLTKit/Package.swift ]; then
-            scripts/test.sh package
-          else
-            echo "Packages/BLTKit not present yet; skipping package tests."
-          fi
+  tests:
+    name: Package and app tests
+    runs-on: xcode-27
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - name: App tests
+      - name: Toolchain
         run: |
-          if [ -d BLTApp/BLTApp.xcodeproj ]; then
-            scripts/test.sh app
-          else
-            echo "BLTApp/BLTApp.xcodeproj not present; skipping app tests."
+          set -euo pipefail
+          xcodebuild -version
+          if ! xcodebuild -showsdks | grep -q "iphonesimulator27"; then
+            echo "::error::This runner has no iOS 27 simulator SDK, so the tests cannot run here." >&2
+            exit 1
           fi
+          xcrun simctl list devices available | grep -F "$BLT_SIM" || {
+            echo "::error::No '$BLT_SIM' simulator on this runner." >&2
+            exit 1
+          }
+
+      - name: Package tests
+        run: scripts/test.sh package
+
+      - name: App build and UI tests
+        run: scripts/test.sh app
