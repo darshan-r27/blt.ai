@@ -40,8 +40,10 @@ public struct SettingsView: View {
                     Text("Your progress stays on this device.")
                 }
                 section("Your progress") {
-                    Button("Reset progress", role: .destructive) { viewModel.requestReset() }
-                        .buttonStyle(.bordered)
+                    Button(role: .destructive, action: { viewModel.requestReset() }, label: {
+                        Label("Reset progress", systemImage: "exclamationmark.triangle")
+                    })
+                        .buttonStyle(.bltWarning)
                         .disabled(viewModel.isResetting)
                         .accessibilityIdentifier(AccessibilityID.settingsReset)
                     resetStatus(palette: palette)

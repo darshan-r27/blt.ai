@@ -1,7 +1,9 @@
 import SwiftUI
 
 /// Explicit light/dark palette. There is deliberately no red: feedback colour comes only from
-/// `FeedbackTone`, and tones read as affirming (green), gentle (amber) and calm (blue-grey).
+/// `FeedbackTone`, and tones read as affirming (green), gentle (amber) and calm (blue-grey). The one
+/// exception is `destructive`, used only for Reset progress so it always looks like a warning (DECISIONS 037);
+/// it is kept out of `allColors`, which the no-red test covers.
 /// The page background is a light lilac in light mode and a deep muted purple-grey in dark mode;
 /// cards (`surface`) are a step lighter than the page in both. The app accent is a deep purple (a lighter
 /// purple with dark text in dark mode); it fills primary buttons and tints links, toolbar icons and cursors.
@@ -42,6 +44,8 @@ public struct Palette: Sendable, Equatable {
     public let affirm: TonePair
     public let nudge: TonePair
     public let neutral: TonePair
+    /// Deep red on a pale red tint, for Reset progress only. Not a feedback tone and never used for answers.
+    public let destructive: TonePair
 
     public static let light = Palette(scheme: .light)
     public static let dark = Palette(scheme: .dark)
@@ -61,6 +65,7 @@ public struct Palette: Sendable, Equatable {
             affirm = TonePair(background: DesignRGB(hex: 0xCAE8D4), foreground: DesignRGB(hex: 0x14462A))
             nudge = TonePair(background: DesignRGB(hex: 0xF6E0B0), foreground: DesignRGB(hex: 0x5C3A00))
             neutral = TonePair(background: DesignRGB(hex: 0xD3DEEE), foreground: DesignRGB(hex: 0x22344F))
+            destructive = TonePair(background: DesignRGB(hex: 0xFBE4E1), foreground: DesignRGB(hex: 0x8F1D14))
         case .dark:
             background = DesignRGB(hex: 0x1A1821)
             surface = DesignRGB(hex: 0x24212D)
@@ -73,6 +78,7 @@ public struct Palette: Sendable, Equatable {
             affirm = TonePair(background: DesignRGB(hex: 0x173825), foreground: DesignRGB(hex: 0xBDEBC8))
             nudge = TonePair(background: DesignRGB(hex: 0x3B2A0A), foreground: DesignRGB(hex: 0xFFDDA0))
             neutral = TonePair(background: DesignRGB(hex: 0x1F2A3B), foreground: DesignRGB(hex: 0xCCDAF0))
+            destructive = TonePair(background: DesignRGB(hex: 0x3D1A17), foreground: DesignRGB(hex: 0xFFB4AB))
         }
     }
 

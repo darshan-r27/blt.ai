@@ -333,8 +333,9 @@ The owner wants Settings to say that every lesson is checked by a native Tamil s
 
 **Implementation notes:** the root view is rebuilt with a new identity after an import or removal (the learner lands on Home) and the "Lessons" alert is attached to the stable container above it, because an alert on a view being replaced is never shown. The Remove confirmation uses no destructive role: nothing is lost, and the system draws that role in red.
 
-## 037 — The Reset confirmation may be red
+## 037 — Reset progress looks like a warning everywhere
 **Status:** active — an exception to the "never red" rule
 
-The owner wants Reset progress to look like a warning: a learner must not erase their progress by accident. The Reset confirmation dialog therefore keeps the system's destructive role, which iOS draws in red, and its message says the reset cannot be undone. Reset stays a two-step action (the Settings button, then the dialog). This is the only place red is allowed. Everything else stays red-free: wrong answers and feedback use the neutral and nudge tones, and the "Remove imported lessons" dialog uses no destructive role because nothing is lost (progress is kept and the files can be imported again).
+The owner wants Reset progress to look like a warning wherever it appears, so a learner cannot erase their progress by accident. Both in-page Reset buttons (Settings, and Home's error state) use `BLTWarningButtonStyle`: deep red text and outline on a pale red tint, a bold label and a warning triangle, so the warning is never colour alone. The colours are `Palette.destructive` (light `#8F1D14` on `#FBE4E1`, dark `#FFB4AB` on `#3D1A17`), tested to meet 4.5:1 against their own tint and against the page and cards. The confirmation dialog keeps the system's destructive button, which iOS draws in red, and its message says the reset cannot be undone. Reset stays a two-step action.
 
+This is the only place red is allowed. `destructive` is deliberately kept out of `Palette.allColors`, which the no-red test covers, so every other colour is still checked red-free; wrong answers and feedback keep the neutral and nudge tones. The "Remove imported lessons" dialog uses no destructive role because nothing is lost (progress is kept and the files can be imported again).

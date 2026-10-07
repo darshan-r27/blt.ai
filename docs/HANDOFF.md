@@ -46,7 +46,7 @@ Merged on `main` and verified (package tests, lint, guard, app build, Release bu
 **Known gaps and watch-items**
 - Not visually verified by a human: shimmer on a device, VoiceOver, largest Dynamic Type on every screen, damaged-profile "Start over" screen, Progress screen on lilac.
 - Progress screen still shows due/learned/attempt counts (only Home cards were simplified).
-- The Reset progress confirmation keeps the system's red destructive button on purpose (DECISIONS 037): it is the one place red is allowed, so nobody erases their progress by accident. It is a two-step action: the Settings button, then a dialog that says it cannot be undone.
+- Reset progress is the one deliberately red control (DECISIONS 037): the in-page buttons use `BLTWarningButtonStyle` (red on pale red, with a triangle) and the confirmation uses the system destructive button. Everything else stays red-free.
 - System UI (keyboard return key) stays blue; the reset button and some dialogs use a destructive role that could render red on some iOS versions.
 - `.completeFileProtection` is not enforced in Simulator: check on a device.
 - CI (`.github/workflows/ci.yml`) runs on GitHub's `xcode-27` preview image and is green on `main` as of 2026-10-07 (SwiftLint SHA-256 and checkout pinned). That image intermittently hangs a UI query for 2 to 7 minutes in a different test each run ("Timed out while evaluating UI query"), so the UI step uses `-retry-tests-on-failure -test-iterations 3`; a run takes 12 to 45 minutes. A failing run prints each failed test's message ("Summarise UI test failures" step). macOS minutes are free now the repo is public.

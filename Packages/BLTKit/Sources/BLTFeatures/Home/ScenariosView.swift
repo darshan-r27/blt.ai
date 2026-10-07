@@ -128,8 +128,10 @@ public struct ScenariosView: View {
                         .background(palette.nudge.backgroundColor, in: RoundedRectangle(cornerRadius: 10))
                 }
                 if viewModel.canOfferReset {
-                    Button("Reset progress…", role: .destructive) { viewModel.requestReset() }
-                        .buttonStyle(.bltPrimary)
+                    Button(role: .destructive, action: { viewModel.requestReset() }, label: {
+                        Label("Reset progress…", systemImage: "exclamationmark.triangle")
+                    })
+                        .buttonStyle(.bltWarning(fillsWidth: true))
                         .accessibilityIdentifier(AccessibilityID.settingsReset)
                 } else {
                     Button("Try again") { Task { await viewModel.load() } }

@@ -14,6 +14,25 @@ struct PaletteTests {
         }
     }
 
+    /// The one deliberate red: Reset progress (DECISIONS 037). It must read as a warning and stay legible.
+    @Test(arguments: Palette.Scheme.allCases)
+    func destructivePairIsRedAndMeetsWCAGAA(scheme: Palette.Scheme) {
+        let palette = Palette(scheme: scheme)
+        let pair = palette.destructive
+        #expect(pair.foreground.isRed, "the warning text colour should be red in \(scheme)")
+        #expect(pair.foreground.contrastRatio(with: pair.background) >= 4.5)
+        // The outline is the foreground colour, so it must also stand out from the page itself.
+        #expect(pair.foreground.contrastRatio(with: palette.background) >= 4.5)
+        #expect(pair.foreground.contrastRatio(with: palette.surface) >= 4.5)
+    }
+
+    @Test func destructiveColoursAreNotPartOfTheRedFreePalette() {
+        for scheme in Palette.Scheme.allCases {
+            let names = Palette(scheme: scheme).allColors.map(\.name)
+            #expect(!names.contains { $0.hasPrefix("destructive") })
+        }
+    }
+
     @Test func redDetectorFlagsRedAndAllowsGrey() {
         #expect(DesignRGB(hex: 0xFF0000).isRed)
         #expect(DesignRGB(hex: 0xD03050).isRed)
