@@ -3,8 +3,8 @@ import XCTest
 /// `performAccessibilityAudit()` on every screen at the default text size and at the largest
 /// accessibility size, plus checks that the key controls can still be reached at that size.
 ///
-/// A finding fails the test and goes in the report. The two narrow exceptions are documented on
-/// `isSystemToolbarButtonDynamicTypeIssue` and `isOccludedByContinueBar`.
+/// A finding fails the test and goes in the report. The three narrow exceptions are documented on
+/// `isSystemToolbarButtonDynamicTypeIssue`, `isOccludedByContinueBar` and `isSystemKeyboardPredictionCell`.
 @MainActor
 final class AccessibilityUITests: BLTUITestCase {
     private enum Screen {
@@ -106,6 +106,16 @@ final class AccessibilityUITests: BLTUITestCase {
         return element.frame.intersects(bar)
     }
 
+    /// The third ignored case: "Element has no description" on the system keyboard's predictive-text bar.
+    /// On a GitHub runner the on-screen keyboard shows its three suggestion cells, and the audit reports each
+    /// empty `TUIPredictionViewCell` as having no label (seen on the name-entry and Change name screens, where a
+    /// text field has focus). Those cells are Apple's, not ours, and the app cannot label them. Matched by audit
+    /// type AND the system class named in the issue, so a missing label on any of our own elements still fails.
+    private static func isSystemKeyboardPredictionCell(_ issue: XCUIAccessibilityAuditIssue) -> Bool {
+        guard issue.auditType == .sufficientElementDescription else { return false }
+        return issue.detailedDescription.contains("TUIPredictionViewCell")
+    }
+
     private func audit(_ screen: Screen, largestText: Bool) throws {
         let app = open(screen, largestText: largestText)
         // Only the feedback screen has a Continue bar; reading its frame elsewhere would fail the lookup.
@@ -113,10 +123,11 @@ final class AccessibilityUITests: BLTUITestCase {
         // Keep going after the first finding so one run reports every issue on the screen.
         continueAfterFailure = true
         try app.performAccessibilityAudit { issue in
-            // Apart from the two narrow cases above, every issue is recorded as a failure with the element it
+            // Apart from the three narrow cases above, every issue is recorded as a failure with the element it
             // points at. (Returning true only means "handled"; the XCTFail is what fails the test.)
             if Self.isSystemToolbarButtonDynamicTypeIssue(issue)
-                || Self.isOccludedByContinueBar(issue, bar: continueBar) {
+                || Self.isOccludedByContinueBar(issue, bar: continueBar)
+                || Self.isSystemKeyboardPredictionCell(issue) {
                 return true
             }
             let element = issue.element
