@@ -20,6 +20,8 @@ struct CompositionRoot {
     struct Composed: Sendable {
         let dependencies: AppDependencies
         let profileStore: any ProfileStore
+        /// `nil` when the lessons cannot be imported (Settings then hides the Lessons section).
+        let lessonImporter: (any LessonImporting)?
     }
 
     /// Async because a UI-test launch may have to erase its files before anything reads them.
@@ -39,29 +41,60 @@ struct CompositionRoot {
             .appending(path: fileName, directoryHint: .notDirectory)
     }
 
+    /// Rebuilds only `AppDependencies`, with the catalog loaded again so lessons the learner just imported
+    /// (or removed) take effect. The progress store, scheduler, clock, profile store and importer are reused,
+    /// and nothing is erased or re-seeded, so progress and the saved name are untouched.
+    ///
+    /// A UI-test launch uses a fixed fixture catalog and keeps it.
+    func reloaded(_ composed: Composed) -> Composed {
+        #if DEBUG
+        if arguments.contains(UITestLaunch.fixturesArgument) { return composed }
+        #endif
+        let old = composed.dependencies
+        return Composed(
+            dependencies: AppDependencies(
+                catalog: loadCatalog(),
+                store: old.store,
+                scheduler: old.scheduler,
+                now: old.now
+            ),
+            profileStore: composed.profileStore,
+            lessonImporter: composed.lessonImporter
+        )
+    }
+
     private func makeShippingComposition() -> Composed {
         Composed(
             dependencies: AppDependencies(
-                catalog: loadBundledCatalog(),
+                catalog: loadCatalog(),
                 store: FileProgressStore(fileURL: Self.supportFileURL(named: "progress.json")),
                 scheduler: SM2Scheduler(),
                 now: { Date.now }
             ),
-            profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json"))
+            profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json")),
+            lessonImporter: ImportedContentStore(
+                directory: Self.importedContentDirectory,
+                bundledDirectory: Bundle.main.url(forResource: "content", withExtension: nil)
+            )
         )
     }
 
-    /// Loads `content/*.json` from the app bundle. In DEBUG any problem stops the app so a bad content
-    /// change is noticed immediately; in release the valid items are used and the problem is logged
-    /// (counts, and item IDs marked private).
-    private func loadBundledCatalog() -> Catalog {
-        let result = BundleContentLoader().load(bundle: .main)
-        if result.hasProblems {
-            ContentBootstrapReporter().report(result)
-            #if DEBUG
+    /// Where imported lesson files live, beside the progress and profile files.
+    static var importedContentDirectory: URL { supportFileURL(named: "content") }
+
+    /// Loads `content/*.json` from the app bundle with any imported lessons layered over it. A problem is
+    /// logged (counts, and item IDs marked private) and the valid items are used. In DEBUG a problem in the
+    /// bundled files alone also stops the app, so a bad content change is noticed immediately; problems in
+    /// imported files are skipped files the learner chose, so they never assert.
+    private func loadCatalog() -> Catalog {
+        #if DEBUG
+        let bundledOnly = BundleContentLoader().load(bundle: .main)
+        if bundledOnly.hasProblems {
             assertionFailure("Bundled content has problems; see the 'content' log category.")
-            #endif
         }
+        #endif
+        let result = BundleContentLoader().load(bundle: .main, importedDirectory: Self.importedContentDirectory)
+        ContentBootstrapReporter().report(result)
         return result.catalog
     }
 }

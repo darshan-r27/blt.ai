@@ -25,6 +25,9 @@ enum AXID {
     static let changeNameField = "changeName.field"
     static let changeNameSave = "changeName.save"
     static let changeNameCancel = "changeName.cancel"
+    static let settingsImportLessons = "settings.importLessons"
+    static let settingsRemoveImported = "settings.removeImported"
+    static let settingsImportStatus = "settings.importStatus"
     /// Mirrors `AccessibilityID.scenarioCard("zz-scenario")`, the only scenario in the fixture catalog.
     static let fixtureScenarioCard = "scenario.card.zz-scenario"
 }

@@ -20,6 +20,9 @@ public enum AccessibilityID {
     public static let changeNameField = "changeName.field"
     public static let changeNameSave = "changeName.save"
     public static let changeNameCancel = "changeName.cancel"
+    public static let settingsImportLessons = "settings.importLessons"
+    public static let settingsRemoveImported = "settings.removeImported"
+    public static let settingsImportStatus = "settings.importStatus"
 
     public static func scenarioCard(_ scenarioID: String) -> String {
         "scenario.card.\(scenarioID)"
