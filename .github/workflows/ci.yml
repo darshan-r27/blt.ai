@@ -65,7 +65,7 @@ jobs:
   tests:
     name: Package and app tests
     runs-on: xcode-27
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -88,8 +88,13 @@ jobs:
       - name: Package tests
         run: scripts/test.sh package
 
+      # The xcode-27 image is a preview, and on it a UI query sometimes hangs for several minutes ("Timed out while
+      # evaluating UI query") in a different test each run, while the same test takes seconds on a good run.
+      # A failed test gets up to two more tries; a test that fails every time still fails the job.
       - name: App build and UI tests
-        run: scripts/test.sh app -resultBundlePath "$RUNNER_TEMP/app.xcresult"
+        run: |
+          scripts/test.sh app -resultBundlePath "$RUNNER_TEMP/app.xcresult" \
+            -retry-tests-on-failure -test-iterations 3
 
       # The xcodebuild log omits what an accessibility audit objected to; the result bundle has it.
       - name: Summarise UI test failures
