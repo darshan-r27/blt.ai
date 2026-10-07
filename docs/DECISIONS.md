@@ -332,3 +332,9 @@ The owner wants Settings to say that every lesson is checked by a native Tamil s
 **Threat note:** a person who imports a hostile file could show offensive text to themselves. Content is plain text only and import is deliberate and local, so this is accepted.
 
 **Implementation notes:** the root view is rebuilt with a new identity after an import or removal (the learner lands on Home) and the "Lessons" alert is attached to the stable container above it, because an alert on a view being replaced is never shown. The Remove confirmation uses no destructive role: nothing is lost, and the system draws that role in red.
+
+## 037 — The Reset confirmation may be red
+**Status:** active — an exception to the "never red" rule
+
+The owner wants Reset progress to look like a warning: a learner must not erase their progress by accident. The Reset confirmation dialog therefore keeps the system's destructive role, which iOS draws in red, and its message says the reset cannot be undone. Reset stays a two-step action (the Settings button, then the dialog). This is the only place red is allowed. Everything else stays red-free: wrong answers and feedback use the neutral and nudge tones, and the "Remove imported lessons" dialog uses no destructive role because nothing is lost (progress is kept and the files can be imported again).
+
