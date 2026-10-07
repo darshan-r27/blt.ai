@@ -20,6 +20,7 @@ struct IntroView: View {
                     .font(.largeTitle.bold())
                     .foregroundStyle(palette.textPrimaryColor)
                     .multilineTextAlignment(.center)
+                    .accessibilityLabel("B L T dot A I")
                     .accessibilityAddTraits(.isHeader)
                 Text("Learn the Tamil people actually speak.")
                     .font(.title3)
