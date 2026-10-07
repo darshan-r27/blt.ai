@@ -8,16 +8,16 @@
     {
       "id": "s02-i01",
       "sourcePrompt": "Where is the bus stand? (asking a stranger)",
-      "register": "respectful",
+      "register": "casual",
       "addressee": "any",
-      "canonical": "bus stand enga irukkunga?",
+      "canonical": "bus stand enga irukku?",
       "acceptedAnswers": [
-        "bus stand enga irukkunga?",
-        "bus stand enga irukunga?",
-        "bus stand enga irukku nga?",
-        "bus stand enga irukkunga"
+        "bus stand enga irukku?",
+        "bus stand enga iruku?",
+        "bus stand enga irukku?",
+        "bus stand enga irukku"
       ],
-      "registerVariant": "bus stand enga irukku?",
+      "registerVariant": "bus stand enga irukkunga?",
       "distractors": [
         "bus stand eppo varum?",
         "bus enga poguthu?"
@@ -32,12 +32,12 @@
           "english": "where"
         },
         {
-          "tamil": "irukkunga",
-          "english": "is it (respectful)"
+          "tamil": "irukku",
+          "english": "is it "
         }
       ],
       "note": "-nga adds respect when asking a stranger.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i02",
@@ -76,7 +76,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i03",
@@ -107,7 +107,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i04",
@@ -145,7 +145,7 @@
         }
       ],
       "note": "kudunga is respectful; kudu is casual.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i05",
@@ -179,7 +179,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i06",
@@ -213,7 +213,7 @@
         }
       ],
       "note": "poreenga is the respectful form.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i07",
@@ -248,7 +248,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i08",
@@ -278,7 +278,7 @@
         }
       ],
       "note": "niruthu is casual, for friends.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i09",
@@ -308,7 +308,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i10",
@@ -338,7 +338,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i11",
@@ -369,7 +369,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i12",
@@ -404,7 +404,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i13",
@@ -435,7 +435,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i14",
@@ -470,7 +470,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i15",
@@ -500,19 +500,20 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i16",
       "sourcePrompt": "Is this the right bus?",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "idhu sariyaana bus-aa?",
+      "canonical": "idhu correct bus-aa?",
       "acceptedAnswers": [
         "idhu sariyaana bus-aa?",
         "idhu sariyana busaa?",
-        "idhu correct bus-aa?",
-        "idhu sariyaana bus a?"
+        "idhu correct aana bus-aa?",
+        "idhu sariyaana bus a?",
+        "idhu correct bus-aa?"
       ],
       "registerVariant": null,
       "distractors": [
@@ -526,7 +527,7 @@
           "english": "this"
         },
         {
-          "tamil": "sariyaana",
+          "tamil": "correct",
           "english": "right"
         },
         {
@@ -535,7 +536,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i17",
@@ -568,7 +569,7 @@
         }
       ],
       "note": "wait pannu uses the English word the way speakers do.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i18",
@@ -580,7 +581,8 @@
         "five minutes-la varen",
         "five minutes la varen",
         "five mins-la varen",
-        "anju nimishathula varen"
+        "anju nimishathula varen",
+        "five mins la vanthuruven"
       ],
       "registerVariant": null,
       "distractors": [
@@ -598,8 +600,8 @@
           "english": "I come"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "vanthuruven would also work here",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i19",
@@ -636,7 +638,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s02-i20",
@@ -671,7 +673,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     }
   ]
 }

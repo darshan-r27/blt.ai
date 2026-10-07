@@ -36,7 +36,7 @@
         }
       ],
       "note": "da is the friendly address between male friends; use it only with close male friends.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "male"
     },
     {
@@ -66,7 +66,7 @@
         }
       ],
       "note": "Use -eenga with elders and strangers.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -108,7 +108,7 @@
         }
       ],
       "note": "di is the friendly address to a female friend; da is for a male friend.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "female"
     },
     {
@@ -138,7 +138,7 @@
         }
       ],
       "note": "vaanga is respectful; vaa is for friends and kids.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -164,7 +164,7 @@
         }
       ],
       "note": "-unga marks respect; ukkaaru is casual.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -198,7 +198,7 @@
         }
       ],
       "note": "ungaloda is the respectful your; un is casual.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -233,7 +233,7 @@
         }
       ],
       "note": "No register change needed when talking about yourself.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -247,7 +247,7 @@
         "neenga enga irunthu vareenga",
         "neenga enga irundhu varinga?"
       ],
-      "registerVariant": "nee enga irundhu varra?",
+      "registerVariant": "enga irundhu vareenga?",
       "distractors": [
         "neenga enga poreenga?",
         "neenga eppo vareenga?"
@@ -267,7 +267,7 @@
         }
       ],
       "note": "neenga ... vareenga for elders and strangers.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -305,7 +305,7 @@
         }
       ],
       "note": "ungala is respectful; unna is casual.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -331,7 +331,7 @@
         }
       ],
       "note": "A common way to greet someone.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -361,7 +361,7 @@
         }
       ],
       "note": "-iya is the casual question ending.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "male"
     },
     {
@@ -395,7 +395,7 @@
         }
       ],
       "note": "panra is casual; panreenga is respectful.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "female"
     },
     {
@@ -426,7 +426,7 @@
         }
       ],
       "note": "Tamil speakers say go-and-come when leaving.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -457,7 +457,7 @@
         }
       ],
       "note": "Speakers say thanks in every register; the English word is normal.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -482,7 +482,7 @@
         }
       ],
       "note": "-unga respectful, plain mannichidu casual.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -513,7 +513,7 @@
         }
       ],
       "note": "Spoken negative -ala.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -547,7 +547,7 @@
         }
       ],
       "note": "pesunga is respectful; pesu is casual.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -580,7 +580,7 @@
         }
       ],
       "note": "unakku casual; ungalukku respectful.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -619,7 +619,7 @@
         }
       ],
       "note": "A useful line to say early in any conversation.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     },
     {
@@ -650,7 +650,7 @@
         }
       ],
       "note": "The casual way to part.",
-      "reviewStatus": "unreviewed",
+      "reviewStatus": "reviewed",
       "addressee": "any"
     }
   ]
