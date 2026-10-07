@@ -164,6 +164,7 @@ function validate(item, allIds) {
   acc.forEach((a, i) => reqStr(`Accepted spelling ${i + 1}`, a));
   const accN = acc.map(norm);
   if (!accN.includes(norm(item.canonical))) e.push('The correct answer must also be listed in the accepted spellings.');
+  accN.forEach((a, i) => { if (a !== '' && accN.indexOf(a) !== i) e.push(`“${acc[i]}” is listed more than once in the accepted spellings.`); });
   const options = [item.canonical, ...(neutral ? [] : [variant]), ...dis].map(norm);
   if (options.length === 4 && new Set(options).size !== 4) e.push('The four options must all be different from each other.');
   [...(neutral ? [] : [variant]), ...dis].forEach((o) => {
