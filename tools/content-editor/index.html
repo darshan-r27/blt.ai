@@ -86,13 +86,11 @@
   <button id="btnSave" class="primary" disabled>Save changes</button>
 </header>
 <div id="reviewbar" hidden>
-  <button id="rvBack">← Back</button>
+  <button id="rvBack">← Previous</button>
   <div id="rvPos" aria-live="polite"></div>
   <button id="rvNext">Next →</button>
-  <button id="rvOk" class="primary" title="Bookmark this item as checked (kept in this browser only, not written to the file) and go to the next one">✓ Looks right · Next</button>
-  <button id="rvReviewed" title="Bookmark it AND write reviewStatus: reviewed into the file (the app then hides its Unreviewed draft badge for this item)">Mark reviewed · Next</button>
+  <button id="rvReviewed" class="primary" title="Write reviewStatus: reviewed into this item (the app then hides its Unreviewed draft badge) and go to the next item">Mark reviewed</button>
   <label><input type="checkbox" id="rvAuto" checked> <span id="rvAutoText">Auto-save when moving on</span></label>
-  <button id="rvReset" class="small" title="Forget which items you have checked">Reset checks</button>
   <div id="rvBar"><i></i></div>
 </div>
 </div>
@@ -108,15 +106,14 @@
     </div>
     <div id="list"></div>
   </aside>
-  <section id="editor"><div class="empty">Open the <code>content</code> folder to start. You will step through every item with Back / Next (Alt+→ / Alt+←; Alt+Shift+→ marks it checked).<br>Chrome and Edge can save straight back to the files. In Safari or Firefox, use “Open files…”; saving then downloads the edited files for you to move into <code>content/</code>.</div></section>
+  <section id="editor"><div class="empty">Open the <code>content</code> folder to start. You will step through every item with Previous / Next (Alt+← / Alt+→) and press Mark reviewed (Alt+Shift+→) on each item you have checked.<br>Chrome and Edge can save straight back to the files. In Safari or Firefox, use “Open files…”; saving then downloads the edited files for you to move into <code>content/</code>.</div></section>
 </main>
 
 <script>
 'use strict';
 const TAMIL = /[஀-௿]/;
-const state = { files: [], dir: null, sel: null, checked: new Set() };
-try { state.checked = new Set(JSON.parse(localStorage.getItem('blt-editor-checked') || '[]')); } catch (_) { /* storage unavailable */ }
-function persistChecked() { try { localStorage.setItem('blt-editor-checked', JSON.stringify([...state.checked])); } catch (_) { /* ignore */ } }
+const state = { files: [], dir: null, sel: null };
+const isReviewed = (item) => item.reviewStatus === 'reviewed';
 
 // ---------- helpers ----------
 const $ = (id) => document.getElementById(id);
@@ -197,7 +194,7 @@ async function ingest(entries) {
   files.sort((a, b) => a.name.localeCompare(b.name));
   state.files = files;
   const fl = flat();
-  state.sel = fl.find((p) => !state.checked.has(state.files[p.f].data.items[p.i].id)) || fl[0] || null;
+  state.sel = fl.find((p) => !isReviewed(state.files[p.f].data.items[p.i])) || fl[0] || null;
   $('rvAuto').disabled = !files.some((f) => f.handle?.createWritable);
   $('rvAutoText').textContent = $('rvAuto').disabled ? 'Auto-save (needs Chrome/Edge folder mode)' : 'Auto-save when moving on';
   renderAll();
@@ -272,7 +269,6 @@ function renderList() {
           item.id + ' · ' + item.register + ' ',
           problems ? h('span', { class: 'badge b-bad', text: `${problems} problem${problems > 1 ? 's' : ''}` }) : null,
           itemDirty(f, item) ? h('span', { class: 'badge b-edit', text: 'edited' }) : null,
-          state.checked.has(item.id) ? h('span', { class: 'badge b-chk', text: '✓ checked' }) : null,
           item.reviewStatus === 'reviewed' ? h('span', { class: 'badge b-ok', text: 'reviewed' }) : null)));
     });
     if (rows.length) list.append(h('div', { class: 'scenario-title', text: `${f.data.title || f.name}${fileDirty(f) ? ' • edited' : ''}` }), ...rows);
@@ -291,7 +287,7 @@ async function writeFile(f) {
 }
 async function step(delta, mark) {
   const cur = current(); if (!cur) return;
-  if (mark) { if (mark === 'reviewed') cur.item.reviewStatus = 'reviewed'; state.checked.add(cur.item.id); persistChecked(); }
+  if (mark === 'reviewed') cur.item.reviewStatus = 'reviewed';
   if ($('rvAuto').checked && cur.f.handle?.createWritable && fileDirty(cur.f)) {
     try { await writeFile(cur.f); $('status').textContent = `Auto-saved ${cur.f.name}.`; } catch (err) { alert('Auto-save failed: ' + err.message); return; }
   }
@@ -305,9 +301,9 @@ function updateReviewBar() {
   if (bar.hidden) return;
   const { fl, idx } = position(); const cur = current(); if (!cur) return;
   const items = cur.f.data.items; const k = state.sel.i + 1;
-  const total = fl.length; const done = fl.filter((p) => state.checked.has(state.files[p.f].data.items[p.i].id)).length;
+  const total = fl.length; const done = fl.filter((p) => isReviewed(state.files[p.f].data.items[p.i])).length;
   const sIdx = state.files.indexOf(cur.f) + 1;
-  const pos = $('rvPos'); pos.replaceChildren(document.createTextNode(`Item ${idx + 1} of ${total}${state.checked.has(cur.item.id) ? '  ✓ checked' : ''}`), h('small', { text: `Scenario ${sIdx} of ${state.files.length}: ${cur.f.data.title || cur.f.name} · item ${k} of ${items.length} · ${done} of ${total} checked` }));
+  const pos = $('rvPos'); pos.replaceChildren(document.createTextNode(`Item ${idx + 1} of ${total}${isReviewed(cur.item) ? '  ✓ reviewed' : ''}`), h('small', { text: `Scenario ${sIdx} of ${state.files.length}: ${cur.f.data.title || cur.f.name} · item ${k} of ${items.length} · ${done} of ${total} reviewed` }));
   $('rvBack').disabled = idx <= 0; $('rvNext').disabled = idx >= total - 1;
   $('rvBar').firstElementChild.style.width = (100 * done / total) + '%';
 }
@@ -404,7 +400,7 @@ function refreshDerived() {
   $('status').textContent = `${state.files.length} file(s) · ${state.files.reduce((n, f) => n + f.data.items.length, 0)} items · ${bad} with problems · ${dirtyFiles} edited`;
   $('btnSave').disabled = dirtyFiles === 0;
   $('btnSave').textContent = dirtyFiles ? `Save changes (${dirtyFiles} file${dirtyFiles > 1 ? 's' : ''})` : 'No unsaved changes';
-  $('btnSave').title = dirtyFiles ? 'Write the edited files' : 'Everything you edited is already saved. “✓ checked” is only a bookmark in this browser; use “Mark reviewed · Next” to record a verdict in the file.';
+  $('btnSave').title = dirtyFiles ? 'Write the edited files' : 'Everything you edited is already saved. Previous and Next only move between items; “Mark reviewed” is what records a verdict in the file.';
   updateReviewBar();
 }
 function renderAll() {
@@ -414,12 +410,10 @@ function renderAll() {
 ['fSearch', 'fRegister', 'fStatus', 'fIssues'].forEach((id) => $(id).addEventListener('input', renderList));
 $('rvBack').addEventListener('click', () => step(-1));
 $('rvNext').addEventListener('click', () => step(1));
-$('rvOk').addEventListener('click', () => step(1, 'ok'));
 $('rvReviewed').addEventListener('click', () => step(1, 'reviewed'));
-$('rvReset').addEventListener('click', () => { if (confirm('Forget which items you have checked?')) { state.checked.clear(); persistChecked(); renderAll(); } });
 document.addEventListener('keydown', (ev) => {
   if (!ev.altKey || ev.metaKey || ev.ctrlKey) return;
-  if (ev.key === 'ArrowRight') { ev.preventDefault(); step(1, ev.shiftKey ? 'ok' : undefined); }
+  if (ev.key === 'ArrowRight') { ev.preventDefault(); step(1, ev.shiftKey ? 'reviewed' : undefined); }
   if (ev.key === 'ArrowLeft') { ev.preventDefault(); step(-1); }
 });
 (function capabilityCheck() {
