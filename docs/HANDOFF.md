@@ -37,7 +37,7 @@ Merged on `main` and verified (package tests, lint, guard, app build, Release bu
 - UI changes: lilac theme, deep-purple accent, "blt.ai" intro, name-only onboarding, "Hi <name>" shimmer greeting on Home, completion-% cards, End-session control, randomised sessions (sampled + shuffled), Settings statement that follows the data, app icon "Two voices".
 
 **In flight / not done**
-1. **C11 UI tests** (onboarding, feedback flow, end session, persistence, accessibility audits): the agent was interrupted by a rate limit and resumed. Its work is in the worktree `.claude/worktrees/agent-ac36e04d770fc4b77` (branch `worktree-agent-ac36e04d770fc4b77`). It must commit, `git merge main`, delete `DebugTmpUITests.swift`, and report. Until it is merged there are no real UI tests (the template ones are fine).
+1. **C11 UI tests** (onboarding, feedback flow, end session, persistence, accessibility audits): the agent was interrupted by a rate limit and resumed; its last completed full run (2026-10-06 16:47) still had failures, mostly accessibility audits, and it was re-running. Do not run UI tests in its worktree or on iPhone 17 while it is alive (`pgrep -fl 'xcodebuild test'`). When it merges, restore "including accessibility audits" in the README's Run it section. Its work is in the worktree `.claude/worktrees/agent-ac36e04d770fc4b77` (branch `worktree-agent-ac36e04d770fc4b77`). It must commit, `git merge main`, delete `DebugTmpUITests.swift`, and report. Until it is merged there are no real UI tests (the template ones are fine).
 2. **Content review (owner, by hand):** edits are being saved straight into `content/*.json` and are **uncommitted** (`scenario-01`, `scenario-02` at last check). All 100 items are still `unreviewed`. Commit them only when the owner says they are done.
 3. **Settings statement** flips to "Every lesson was checked by a native Tamil speaker…" only when all items are `reviewed` (ADR 035). Use the editor's "Mark reviewed" for that.
 
@@ -46,7 +46,7 @@ Merged on `main` and verified (package tests, lint, guard, app build, Release bu
 - Progress screen still shows due/learned/attempt counts (only Home cards were simplified).
 - System UI (keyboard return key) stays blue; the reset button and some dialogs use a destructive role that could render red on some iOS versions.
 - `.completeFileProtection` is not enforced in Simulator: check on a device.
-- CI (`.github/workflows/ci.yml`) has TODOs: SwiftLint SHA-256, actions pinned by commit SHA, a runner with an iOS 27 SDK. It has never run.
+- CI (`.github/workflows/ci.yml`) is pinned (SwiftLint SHA-256, checkout by commit SHA) and targets GitHub's `xcode-27` preview image, the only hosted image with the iOS 27 SDK. First run is the push of 2026-10-06: check its result before trusting it. macOS minutes are billed at 10x while the repo is private.
 - Package content tests read the live `content/` folder: if the editor saves mid-run they can fail transiently; rerun before suspecting code.
 - The owner's v2 (voice) plan is deferred: see ADR 024 and `docs/BUILD_PLAN.md` phases 1.3+, 3.x.
 
@@ -65,7 +65,6 @@ Merged on `main` and verified (package tests, lint, guard, app build, Release bu
 - Whether to simplify the Progress screen to match Home.
 - Whether to add a filled Save in Change name (currently a tinted toolbar button).
 - When to commit the content edits and mark items `reviewed`.
-- Whether to enable CI (needs the TODOs above).
 
 ## Token/quota hygiene
 Start a fresh session at milestones using this file; do not let one session grow past ~60% of its window. Batch requests into one complete message; keep agent reports short; run UI tests only at milestones.
