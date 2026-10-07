@@ -15,11 +15,22 @@ import SwiftUI
 public struct RootView: View {
     private let dependencies: AppDependencies
     private let profileStore: any ProfileStore
+    private let lessonImporter: (any LessonImporting)?
+    private let onLessonsChanged: @MainActor (LessonChange) -> Void
     @State private var gate: ProfileGateViewModel
 
-    public init(dependencies: AppDependencies, profileStore: any ProfileStore) {
+    /// `lessonImporter` turns on the Lessons section in Settings. After an import or a removal,
+    /// `onLessonsChanged` tells the owner of the catalog to load it again and build a new root.
+    public init(
+        dependencies: AppDependencies,
+        profileStore: any ProfileStore,
+        lessonImporter: (any LessonImporting)? = nil,
+        onLessonsChanged: @escaping @MainActor (LessonChange) -> Void = { _ in }
+    ) {
         self.dependencies = dependencies
         self.profileStore = profileStore
+        self.lessonImporter = lessonImporter
+        self.onLessonsChanged = onLessonsChanged
         _gate = State(initialValue: ProfileGateViewModel(store: profileStore))
     }
 
@@ -45,7 +56,9 @@ public struct RootView: View {
                 dependencies: dependencies,
                 profileStore: profileStore,
                 name: profile.name,
-                onNameChanged: { gate.profileDidChange($0) }
+                onNameChanged: { gate.profileDidChange($0) },
+                lessonImporter: lessonImporter,
+                onLessonsChanged: onLessonsChanged
             )
         }
     }
@@ -72,6 +85,8 @@ private struct HomeFlow: View {
     private let profileStore: any ProfileStore
     private let name: String
     private let onNameChanged: @MainActor (UserProfile) -> Void
+    private let lessonImporter: (any LessonImporting)?
+    private let onLessonsChanged: @MainActor (LessonChange) -> Void
     @State private var home: HomeViewModel
     @State private var path: [Destination] = []
     @State private var session: SessionSelection?
@@ -80,12 +95,16 @@ private struct HomeFlow: View {
         dependencies: AppDependencies,
         profileStore: any ProfileStore,
         name: String,
-        onNameChanged: @escaping @MainActor (UserProfile) -> Void
+        onNameChanged: @escaping @MainActor (UserProfile) -> Void,
+        lessonImporter: (any LessonImporting)?,
+        onLessonsChanged: @escaping @MainActor (LessonChange) -> Void
     ) {
         self.dependencies = dependencies
         self.profileStore = profileStore
         self.name = name
         self.onNameChanged = onNameChanged
+        self.lessonImporter = lessonImporter
+        self.onLessonsChanged = onLessonsChanged
         _home = State(initialValue: HomeViewModel(dependencies: dependencies))
     }
 
@@ -108,7 +127,9 @@ private struct HomeFlow: View {
                         profileStore: profileStore,
                         name: name,
                         onDidReset: reloadHome,
-                        onDidChangeName: onNameChanged
+                        onDidChangeName: onNameChanged,
+                        lessonImporter: lessonImporter,
+                        onDidChangeLessons: onLessonsChanged
                     )
                 }
             }
@@ -155,14 +176,18 @@ private struct SettingsDestination: View {
         profileStore: any ProfileStore,
         name: String,
         onDidReset: @escaping @MainActor () -> Void,
-        onDidChangeName: @escaping @MainActor (UserProfile) -> Void
+        onDidChangeName: @escaping @MainActor (UserProfile) -> Void,
+        lessonImporter: (any LessonImporting)?,
+        onDidChangeLessons: @escaping @MainActor (LessonChange) -> Void
     ) {
         _viewModel = State(initialValue: SettingsViewModel(
             dependencies: dependencies,
             profileStore: profileStore,
             profileName: name,
             onDidReset: onDidReset,
-            onDidChangeName: onDidChangeName
+            onDidChangeName: onDidChangeName,
+            lessonImporter: lessonImporter,
+            onDidChangeLessons: onDidChangeLessons
         ))
     }
 

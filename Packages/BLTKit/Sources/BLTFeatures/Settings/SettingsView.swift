@@ -1,11 +1,14 @@
+import BLTCore
 import BLTDesign
 import BLTProgress
 import SwiftUI
+import UniformTypeIdentifiers
 
 /// Settings has no preferences in v1: the saved name with Change name, plain statements, and Reset progress.
 public struct SettingsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Bindable private var viewModel: SettingsViewModel
+    @State private var isChoosingFiles = false
 
     public init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -21,6 +24,9 @@ public struct SettingsView: View {
                         Text("\(viewModel.reviewedCount) of \(viewModel.totalCount) reviewed")
                             .font(.headline)
                     }
+                }
+                if viewModel.canImportLessons {
+                    lessonsSection(palette: palette)
                 }
                 section("Your name") {
                     Text(viewModel.profileName)
@@ -46,6 +52,26 @@ public struct SettingsView: View {
         }
         .bltScreenBackground()
         .navigationTitle("Settings")
+        .task { await viewModel.refreshImportedSummary() }
+        .fileImporter(
+            isPresented: $isChoosingFiles,
+            allowedContentTypes: [.json],
+            allowsMultipleSelection: true
+        ) { result in
+            Task { await viewModel.importLessons(from: result) }
+        }
+        .confirmationDialog(
+            "Remove imported lessons?",
+            isPresented: $viewModel.isConfirmingRemoveImported,
+            titleVisibility: .visible
+        ) {
+            Button("Remove imported lessons", role: .destructive) {
+                Task { await viewModel.removeImported() }
+            }
+            Button("Cancel", role: .cancel) { viewModel.isConfirmingRemoveImported = false }
+        } message: {
+            Text("The lessons that came with the app are used again. Your progress is kept.")
+        }
         .sheet(item: nameEditorBinding) { editor in
             ChangeNameView(viewModel: editor, onCancel: { viewModel.cancelChangeName() })
         }
@@ -80,20 +106,54 @@ public struct SettingsView: View {
     private func resetStatus(palette: Palette) -> some View {
         switch viewModel.resetOutcome {
         case .succeeded:
-            Text("Progress was reset.")
-                .font(.body)
-                .foregroundStyle(palette.affirm.foregroundColor)
-                .padding(12)
-                .background(palette.affirm.backgroundColor, in: RoundedRectangle(cornerRadius: 10))
+            statusText("Progress was reset.", tone: palette.affirm)
         case .failed:
-            Text("Reset did not finish. Your progress may be unchanged. You can try again.")
-                .font(.body)
-                .foregroundStyle(palette.nudge.foregroundColor)
-                .padding(12)
-                .background(palette.nudge.backgroundColor, in: RoundedRectangle(cornerRadius: 10))
+            statusText("Reset did not finish. Your progress may be unchanged. You can try again.", tone: palette.nudge)
         case nil:
             EmptyView()
         }
+    }
+
+    private func lessonsSection(palette: Palette) -> some View {
+        section("Lessons") {
+            Button("Import lessons") { isChoosingFiles = true }
+                .buttonStyle(.bordered)
+                .disabled(viewModel.isImporting)
+                .accessibilityIdentifier(AccessibilityID.settingsImportLessons)
+            Text("Choose lesson files (.json) from the Files app. Your progress is kept.")
+            importStatus(palette: palette)
+            if let countMessage = viewModel.importedCountMessage {
+                Text(countMessage)
+                Button("Remove imported lessons", role: .destructive) { viewModel.requestRemoveImported() }
+                    .buttonStyle(.bordered)
+                    .disabled(viewModel.isImporting)
+                    .accessibilityIdentifier(AccessibilityID.settingsRemoveImported)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func importStatus(palette: Palette) -> some View {
+        if let message = viewModel.importStatusMessage {
+            switch viewModel.importOutcome {
+            case .succeeded:
+                statusText(message, tone: palette.affirm)
+                    .accessibilityIdentifier(AccessibilityID.settingsImportStatus)
+            case .failed:
+                statusText(message, tone: palette.nudge)
+                    .accessibilityIdentifier(AccessibilityID.settingsImportStatus)
+            case nil:
+                EmptyView()
+            }
+        }
+    }
+
+    private func statusText(_ text: String, tone: Palette.TonePair) -> some View {
+        Text(text)
+            .font(.body)
+            .foregroundStyle(tone.foregroundColor)
+            .padding(12)
+            .background(tone.backgroundColor, in: RoundedRectangle(cornerRadius: 10))
     }
 
     private func section(_ title: String, @ViewBuilder content: () -> some View) -> some View {
@@ -110,14 +170,30 @@ public struct SettingsView: View {
 }
 
 #if DEBUG
+/// Pretends to import: nothing is read or written. Fake ids only.
+private struct PreviewLessonImporter: LessonImporting {
+    let active: [ScenarioID]
+
+    func importFiles(_ urls: [URL]) async throws(ContentImportFailure) -> ImportedContentSummary {
+        ImportedContentSummary(scenarioIDs: [ScenarioID(rawValue: "zz-imported")])
+    }
+
+    func removeAll() async throws(ContentImportFailure) {}
+
+    func currentSummary() async -> ImportedContentSummary {
+        ImportedContentSummary(scenarioIDs: active)
+    }
+}
+
 private struct SettingsPreviewHost: View {
     @State private var viewModel: SettingsViewModel
 
-    init(_ dependencies: AppDependencies) {
+    init(_ dependencies: AppDependencies, importer: PreviewLessonImporter? = nil) {
         _viewModel = State(initialValue: SettingsViewModel(
             dependencies: dependencies,
             profileStore: InMemoryProfileStore(initial: UserProfile(name: "zz Sample")),
-            profileName: "zz Sample"
+            profileName: "zz Sample",
+            lessonImporter: importer
         ))
     }
 
@@ -130,6 +206,13 @@ private struct SettingsPreviewHost: View {
 
 #Preview("Settings, with name") {
     SettingsPreviewHost(PreviewDependencies.withData())
+}
+
+#Preview("Settings, with Lessons section") {
+    SettingsPreviewHost(
+        PreviewDependencies.withData(),
+        importer: PreviewLessonImporter(active: [ScenarioID(rawValue: "zz-imported")])
+    )
 }
 
 #Preview("Settings, dark") {

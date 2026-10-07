@@ -17,6 +17,7 @@ struct UITestLaunch {
     static let namePrefix = "--uitest-name="
     static let progressFileName = "uitest-progress.json"
     static let profileFileName = "uitest-profile.json"
+    static let importedFolderName = "uitest-content"
 
     private static let logger = Logger(subsystem: "ai.blt.app", category: "uitest")
 
@@ -40,9 +41,16 @@ struct UITestLaunch {
         }
         let progressStore = FileProgressStore(fileURL: CompositionRoot.supportFileURL(named: Self.progressFileName))
         let profileStore = FileProfileStore(fileURL: CompositionRoot.supportFileURL(named: Self.profileFileName))
+        // A real store over a separate folder with no bundled folder, so Settings shows the Lessons section
+        // without the test ever touching the real imported lessons.
+        let importer = ImportedContentStore(
+            directory: CompositionRoot.supportFileURL(named: Self.importedFolderName),
+            bundledDirectory: nil
+        )
         if wantsReset {
             await erase(progressStore)
             await erase(profileStore)
+            await erase(importer)
         }
         if let seedName {
             await seed(profileStore, name: seedName)
@@ -54,8 +62,18 @@ struct UITestLaunch {
                 scheduler: SM2Scheduler(),
                 now: { Date.now }
             ),
-            profileStore: profileStore
+            profileStore: profileStore,
+            lessonImporter: importer
         )
+    }
+
+    private func erase(_ importer: ImportedContentStore) async {
+        do throws(ContentImportFailure) {
+            try await importer.removeAll()
+        } catch {
+            Self.logger.error("UI-test imported lessons could not be removed.")
+            assertionFailure("UI-test reset failed; the test would start from stale imported lessons.")
+        }
     }
 
     private func erase(_ store: FileProgressStore) async {
