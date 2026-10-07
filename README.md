@@ -99,7 +99,7 @@ swiftlint lint --config .swiftlint.yml --strict
 bash scripts/check-forbidden-apis.sh
 ```
 
-The first runs the package's unit tests, and the second builds the app and runs the UI tests.
+The first runs the package's unit tests. The second builds the app and runs the UI tests, including accessibility audits at the default and the largest text size. The full UI suite is slow (about 50 minutes on a busy machine), so run it per class when iterating, for example `scripts/test.sh app -only-testing:BLTAppUITests/HomeUITests`.
 
 ### Continuous integration
 
