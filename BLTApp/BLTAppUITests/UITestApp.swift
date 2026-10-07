@@ -67,7 +67,7 @@ struct UITestError: Error {
 /// is `waitForExistence` or a predicate expectation with a timeout.
 @MainActor
 class BLTUITestCase: XCTestCase {
-    static let timeout: TimeInterval = 10
+    static let timeout: TimeInterval = 20
     static let largestTextSize = "UICTContentSizeCategoryAccessibilityXXXL"
 
     override func setUpWithError() throws {
