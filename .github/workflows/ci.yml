@@ -39,6 +39,16 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0 # the commit identity check reads every commit, not just the tip
+
+      - name: Commit identity self-test
+        run: bash scripts/check-identity.sh --self-test
+
+      # Every commit must use a no-reply email, so a machine name or real address is never published
+      # (docs/SECURITY.md). Skipped for pull requests from forks: outside contributors' emails are theirs.
+      - name: Commit identity
+        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+        run: bash scripts/check-identity.sh
 
       - name: Forbidden-API guard self-test
         run: bash scripts/check-forbidden-apis.sh --self-test

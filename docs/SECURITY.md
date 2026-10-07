@@ -118,6 +118,8 @@ Swift 6 strict concurrency is a security control here, not just hygiene — the 
 ## Repo hygiene
 
 - [ ] No API keys, no provisioning profiles, no `.p12`, no team identifiers in tracked files.
+- [ ] Commit identity: every commit's author and committer email is a GitHub no-reply address. Git invents `<user>@<host>.local` when no email is configured, and a machine name published in history is hard to take back (an in-place rewrite still leaves the old commits reachable through merged pull request refs). Run `scripts/check-identity.sh` before a repo goes public and after any history change; it also runs in CI, and `git config core.hooksPath scripts/githooks` turns on the pre-push hook. Set `git config --global user.useConfigOnly true` so git never guesses.
+- [ ] Before a repo goes public: the tree and the whole history (`git log --all -p`) scanned for credentials, `git log --all --format='%ae %ce' | sort -u` shows only no-reply addresses, image metadata (screenshots, icons) carries no paths or device names, and no personal paths or team IDs appear in tracked text.
 - [ ] `.gitignore` covers `xcuserdata`, `DerivedData`, `*.xcconfig`, `*.mobileprovision`.
 - [ ] Secret scanning enabled on the GitHub repo.
 - [ ] No raw participant audio from the calibration study committed. Consent forms for those recordings stored outside the repo. If you publish the calibration data, it's de-identified and consented for that use.

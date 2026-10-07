@@ -28,6 +28,8 @@ BLT_SIM="iPhone 17" scripts/test.sh app       # build + UI tests (slow: minutes)
 swiftlint lint --config .swiftlint.yml --strict
 bash scripts/check-forbidden-apis.sh          # also: --self-test
 bash scripts/check-binary.sh <path to built .app>
+bash scripts/check-identity.sh                 # every commit uses a no-reply email (also in CI; --self-test too)
+git config core.hooksPath scripts/githooks    # once per clone: pre-push hook runs the same check
 ```
 Standard simulator: **iPhone 17** (only an iOS 27 runtime is installed). Parallel runs need *different* devices (`xcrun simctl list devices available`). Debug-only launch arguments for UI tests: `--uitest-fixtures`, `--uitest-reset`, `--uitest-name=<Name>`.
 

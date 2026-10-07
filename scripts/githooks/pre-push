@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# git pre-push hook: refuses to push commits whose author or committer email is not an allowed
+# no-reply address (scripts/check-identity.sh). Turn it on once per clone:
+#   git config core.hooksPath scripts/githooks
+set -euo pipefail
+
+root=$(git rev-parse --show-toplevel)
+zero=0000000000000000000000000000000000000000
+status=0
+
+# stdin: one line per ref being pushed: <local ref> <local sha> <remote ref> <remote sha>
+while read -r _ local_sha _ remote_sha; do
+  [[ "$local_sha" == "$zero" ]] && continue   # deleting a branch: nothing to check
+  if [[ "$remote_sha" != "$zero" ]] && git cat-file -e "${remote_sha}^{commit}" 2>/dev/null; then
+    "$root/scripts/check-identity.sh" "${remote_sha}..${local_sha}" || status=1
+  else
+    # New branch, or a remote tip this clone has not fetched: check everything not already on a remote.
+    "$root/scripts/check-identity.sh" "$local_sha" --not --remotes || status=1
+  fi
+done
+
+if [[ $status -ne 0 ]]; then
+  echo "pre-push: push blocked. Fix the commit email first (see the message above)." >&2
+fi
+exit $status
