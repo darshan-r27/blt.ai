@@ -1,3 +1,4 @@
+import BLTContentStore
 import BLTCore
 import BLTDesign
 import BLTProgress

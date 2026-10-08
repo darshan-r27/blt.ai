@@ -1,4 +1,5 @@
 #if DEBUG
+import BLTContentStore
 import BLTFeatures
 import BLTProgress
 import Foundation

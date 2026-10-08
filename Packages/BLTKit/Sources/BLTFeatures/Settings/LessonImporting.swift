@@ -1,3 +1,4 @@
+import BLTContentStore
 import Foundation
 
 /// What Settings needs to import lesson files, so the view model can be tested with a fake.

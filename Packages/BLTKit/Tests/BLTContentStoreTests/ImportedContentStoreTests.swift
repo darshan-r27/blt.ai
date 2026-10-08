@@ -1,6 +1,6 @@
 import BLTCatalog
 import BLTCore
-@testable import BLTFeatures
+@testable import BLTContentStore
 import Foundation
 import Testing
 
