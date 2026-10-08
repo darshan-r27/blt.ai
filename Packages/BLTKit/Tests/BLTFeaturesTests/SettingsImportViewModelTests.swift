@@ -1,4 +1,5 @@
 import BLTCatalog
+import BLTContentStore
 import BLTCore
 import BLTFeatures
 import BLTProgress

@@ -9,6 +9,7 @@ let package = Package(
     products: [
         .library(name: "BLTCore", targets: ["BLTCore"]),
         .library(name: "BLTCatalog", targets: ["BLTCatalog"]),
+        .library(name: "BLTContentStore", targets: ["BLTContentStore"]),
         .library(name: "BLTProgress", targets: ["BLTProgress"]),
         .library(name: "BLTSession", targets: ["BLTSession"]),
         .library(name: "BLTDesign", targets: ["BLTDesign"]),
@@ -17,12 +18,13 @@ let package = Package(
     targets: [
         .target(name: "BLTCore", swiftSettings: strictWarnings),
         .target(name: "BLTCatalog", dependencies: ["BLTCore"], swiftSettings: strictWarnings),
+        .target(name: "BLTContentStore", dependencies: ["BLTCore", "BLTCatalog"], swiftSettings: strictWarnings),
         .target(name: "BLTProgress", dependencies: ["BLTCore"], swiftSettings: strictWarnings),
         .target(name: "BLTSession", dependencies: ["BLTCore", "BLTCatalog", "BLTProgress"], swiftSettings: strictWarnings),
         .target(name: "BLTDesign", dependencies: ["BLTCore"], swiftSettings: strictWarnings),
         .target(
             name: "BLTFeatures",
-            dependencies: ["BLTCore", "BLTCatalog", "BLTProgress", "BLTSession", "BLTDesign"],
+            dependencies: ["BLTCore", "BLTCatalog", "BLTContentStore", "BLTProgress", "BLTSession", "BLTDesign"],
             swiftSettings: strictWarnings
         ),
         .testTarget(name: "BLTCoreTests", dependencies: ["BLTCore"], swiftSettings: strictWarnings),
@@ -41,7 +43,12 @@ let package = Package(
         .testTarget(name: "BLTDesignTests", dependencies: ["BLTDesign", "BLTCore"], swiftSettings: strictWarnings),
         .testTarget(
             name: "BLTFeaturesTests",
-            dependencies: ["BLTFeatures", "BLTCatalog", "BLTCore", "BLTProgress", "BLTSession", "BLTDesign"],
+            dependencies: ["BLTFeatures", "BLTCatalog", "BLTContentStore", "BLTCore", "BLTProgress", "BLTSession", "BLTDesign"],
+            swiftSettings: strictWarnings
+        ),
+        .testTarget(
+            name: "BLTContentStoreTests",
+            dependencies: ["BLTContentStore", "BLTCatalog", "BLTCore"],
             swiftSettings: strictWarnings
         ),
         .testTarget(name: "BLTContentTests", dependencies: ["BLTCatalog", "BLTCore"], swiftSettings: strictWarnings),
