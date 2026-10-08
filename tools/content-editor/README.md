@@ -11,7 +11,7 @@ A single offline HTML file for reviewing and editing `content/*.json`. No networ
 
 Safari and Firefox cannot write into folders: use **Open files…**, and saving downloads the edited files to move into `content/`.
 
-**Checks** (the same rules as the app's loader, `docs/MVP_PLAN.md` section 2): four distinct options; the correct answer is in the accepted spellings and no wrong option is; casual and respectful items need the other-register version and two wrong options, neutral items need three; 3 to 6 accepted spellings; every gloss word appears in the correct answer; romanised Tamil only (no Tamil script).
+**Checks** (the same rules as the app's loader, `docs/MVP_PLAN.md` section 2): four distinct options; the correct answer is in the accepted spellings and no wrong option is; casual and respectful items need the other-register version and two wrong options, neutral items need three; 3 to 6 accepted spellings, none listed twice (ignoring case and spaces); every gloss word appears in the correct answer; romanised Tamil only (no Tamil script).
 
 **Review sheet:** **Export review sheet (CSV)** produces a spreadsheet with a blank "reviewer verdict" and "correction" column for a native speaker.
 
