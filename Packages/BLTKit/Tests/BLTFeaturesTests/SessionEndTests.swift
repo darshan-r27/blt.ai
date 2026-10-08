@@ -1,10 +1,11 @@
 import BLTCatalog
 import BLTCore
-import BLTFeatures
 import BLTProgress
 import BLTSession
 import Foundation
 import Testing
+
+@testable import BLTFeatures
 
 /// Counts how many times the host's Done closure ran.
 @MainActor

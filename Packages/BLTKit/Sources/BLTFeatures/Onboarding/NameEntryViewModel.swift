@@ -9,25 +9,25 @@ import Observation
 /// user where they are with their text intact.
 @MainActor
 @Observable
-public final class NameEntryViewModel: Identifiable {
+final class NameEntryViewModel: Identifiable {
     /// Why the last submit did not finish.
-    public enum Problem: Equatable, Sendable {
+    enum Problem: Equatable, Sendable {
         case invalid(ProfileNameError)
         case saveFailed(ProfileStoreError)
     }
 
-    public nonisolated var id: ObjectIdentifier { ObjectIdentifier(self) }
+    nonisolated var id: ObjectIdentifier { ObjectIdentifier(self) }
 
     /// The text in the field.
-    public private(set) var name: String
-    public private(set) var problem: Problem?
-    public private(set) var isSaving = false
+    private(set) var name: String
+    private(set) var problem: Problem?
+    private(set) var isSaving = false
 
     private let store: any ProfileStore
     private let onSaved: @MainActor (UserProfile) -> Void
 
     /// `onSaved` runs once, after the profile has been written, with exactly what was written.
-    public init(
+    init(
         store: any ProfileStore,
         initialName: String = "",
         onSaved: @escaping @MainActor (UserProfile) -> Void
@@ -38,7 +38,7 @@ public final class NameEntryViewModel: Identifiable {
     }
 
     /// Calm, plain wording for the current problem, or `nil` when there is none.
-    public var problemMessage: String? {
+    var problemMessage: String? {
         switch problem {
         case nil: nil
         case .invalid(.empty): "Please enter a name."
@@ -50,14 +50,14 @@ public final class NameEntryViewModel: Identifiable {
 
     /// Called as the user types. Text beyond `ProfileNameValidator.maximumLength` is cut off and the
     /// length message is shown at once, so a long paste is never shortened silently.
-    public func updateName(_ text: String) {
+    func updateName(_ text: String) {
         let limited = String(text.prefix(ProfileNameValidator.maximumLength))
         name = limited
         problem = limited.count < text.count ? .invalid(.tooLong) : nil
     }
 
     /// Validates, saves, then reports. Does nothing while a save is already running.
-    public func submit() async {
+    func submit() async {
         guard !isSaving else { return }
         let validName: String
         switch ProfileNameValidator.validate(name) {

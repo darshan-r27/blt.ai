@@ -1,6 +1,7 @@
 import BLTCatalog
-import BLTFeatures
 import Testing
+
+@testable import BLTFeatures
 
 struct PreviewCatalogTests {
     @Test func everyPreviewStringIsObviouslyFake() {

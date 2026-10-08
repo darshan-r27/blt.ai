@@ -3,15 +3,15 @@ import BLTProgress
 import SwiftUI
 
 /// One learner's own practice figures. No charts, ranks, streaks or comparisons.
-public struct ProgressScreen: View {
+struct ProgressScreen: View {
     @Environment(\.colorScheme) private var colorScheme
     private let viewModel: ProgressViewModel
 
-    public init(viewModel: ProgressViewModel) {
+    init(viewModel: ProgressViewModel) {
         self.viewModel = viewModel
     }
 
-    public var body: some View {
+    var body: some View {
         let palette = Palette(colorScheme)
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {

@@ -1,8 +1,9 @@
 import BLTCore
-import BLTFeatures
 import BLTProgress
 import Foundation
 import Testing
+
+@testable import BLTFeatures
 
 /// A profile store that records every call and can be told to fail. Shared by the onboarding and
 /// settings tests; fake names only.

@@ -5,7 +5,7 @@ import SwiftUI
 
 /// The home screen: a calm list of scenarios. Navigation is injected; the owner decides what the
 /// closures do.
-public struct ScenariosView: View {
+struct ScenariosView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Bindable private var viewModel: HomeViewModel
 
@@ -14,7 +14,7 @@ public struct ScenariosView: View {
     private let onOpenProgress: () -> Void
     private let onOpenSettings: () -> Void
 
-    public init(
+    init(
         viewModel: HomeViewModel,
         name: String?,
         onSelectScenario: @escaping (ScenarioID) -> Void,
@@ -28,7 +28,7 @@ public struct ScenariosView: View {
         self.onOpenSettings = onOpenSettings
     }
 
-    public var body: some View {
+    var body: some View {
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .bltScreenBackground()

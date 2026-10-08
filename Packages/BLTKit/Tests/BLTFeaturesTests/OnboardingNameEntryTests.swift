@@ -1,7 +1,8 @@
-import BLTFeatures
 import BLTProgress
 import Foundation
 import Testing
+
+@testable import BLTFeatures
 
 /// Collects what `onSaved` was called with.
 @MainActor

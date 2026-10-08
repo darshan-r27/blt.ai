@@ -4,11 +4,11 @@ import BLTCore
 
 /// Obviously fake content for previews and UI tests. Every string starts with "zz".
 public enum PreviewCatalog {
-    public static let scenarioID = ScenarioID(rawValue: "zz-scenario")
+    static let scenarioID = ScenarioID(rawValue: "zz-scenario")
 
     public static let catalog = Catalog(scenarios: [scenario], issues: [])
 
-    public static let scenario = Scenario(
+    static let scenario = Scenario(
         id: scenarioID,
         title: "zz scenario",
         subtitle: "zz subtitle",
@@ -16,7 +16,7 @@ public enum PreviewCatalog {
         items: [respectfulItem, neutralItem]
     )
 
-    public static let respectfulItem = Item(
+    static let respectfulItem = Item(
         id: ItemID(rawValue: "zz-item-1"),
         scenarioID: scenarioID,
         sourcePrompt: "zz prompt one (to an elder)",
@@ -31,7 +31,7 @@ public enum PreviewCatalog {
         reviewStatus: .unreviewed
     )
 
-    public static let neutralItem = Item(
+    static let neutralItem = Item(
         id: ItemID(rawValue: "zz-item-2"),
         scenarioID: scenarioID,
         sourcePrompt: "zz prompt two",

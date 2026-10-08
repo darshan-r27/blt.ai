@@ -1,9 +1,10 @@
 import BLTCatalog
 import BLTCore
-import BLTFeatures
 import BLTProgress
 import Foundation
 import Testing
+
+@testable import BLTFeatures
 
 /// Counts erase calls and can be told to fail them.
 private actor SettingsStubStore: ProgressStore {

@@ -1,10 +1,11 @@
 import BLTCatalog
 import BLTCore
-import BLTFeatures
 import BLTProgress
 import BLTSession
 import Foundation
 import Testing
+
+@testable import BLTFeatures
 
 /// A store whose `record` always fails, to prove the session surfaces the failure and carries on.
 struct FailingRecordStore: ProgressStore {
