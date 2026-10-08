@@ -1,5 +1,7 @@
 # BLT.ai — product requirements
 
+> **Status (2026-10-07): this is the v2 (voice) design.** v1 shipped as text-only multiple choice. For what exists, read [`ARCHITECTURE.md`](ARCHITECTURE.md), [`MVP_PLAN.md`](MVP_PLAN.md) and `DECISIONS.md` 024 to 037.
+
 **Name:** BLT.ai — "Budugu Learns Tamil"
 **Owner:** Darshan
 **Status:** Draft v7

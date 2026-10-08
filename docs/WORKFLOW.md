@@ -1,5 +1,7 @@
 # BLT.ai — how to actually build this
 
+> This is the original build guide, written before v1 was scoped down. The workflow that was actually used (a planning session, small chunks built in parallel by agents in worktrees, merged one at a time) is summarised in [`HANDOFF.md`](HANDOFF.md).
+
 Written for someone who has not built an iOS app or used an agentic coding tool before. It assumes you're comfortable in a terminal and understand git conceptually.
 
 ---

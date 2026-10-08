@@ -11,15 +11,16 @@ Product rules that matter: two spoken registers only (casual `nee/da/di`, respec
 | Path | What |
 |---|---|
 | `CLAUDE.md` | Standing rules (read automatically). |
+| `docs/ARCHITECTURE.md` | How the code is organised (modules, data flow, storage, enforcement). |
 | `docs/MVP_PLAN.md` | The v1 plan: frozen contracts (§5, §6a, §6b), chunks, review checklist (§7). |
-| `docs/DECISIONS.md` | ADRs 001-035. Newest decisions win; 024-035 define v1. |
+| `docs/DECISIONS.md` | ADRs 001-037. Newest decisions win; 024-037 define v1. |
 | `docs/OPEN_ITEMS.md` | Older open questions (some now decided). |
-| `Packages/BLTKit/` | Swift package: BLTCore, BLTCatalog, BLTProgress, BLTSession, BLTDesign, BLTFeatures + tests. |
+| `Packages/BLTKit/` | Swift package: BLTCore, BLTCatalog, BLTProgress, BLTSession, BLTDesign, BLTContentStore, BLTFeatures + tests. |
 | `BLTApp/BLTApp.xcodeproj` | App shell. Sources in `BLTApp/BLTApp/`; UI tests in `BLTApp/BLTAppUITests/`. Links only the `BLTFeatures` product. |
 | `content/scenario-0N-*.json` | 5 scenarios x 20 items, Claude-drafted, bundled into the app as a folder reference. |
 | `tools/content-editor/index.html` | Offline review/edit tool for the content (open in **Chrome**). See its README. |
 | `tools/app-icon/` | SVG sources + `render.sh` for the app icon (light, dark, tinted). |
-| `scripts/` | `test.sh`, `check-forbidden-apis.sh`, `check-binary.sh`. |
+| `scripts/` | `test.sh`, `check-forbidden-apis.sh`, `check-binary.sh`, `check-identity.sh`, `githooks/pre-push`. |
 
 ## Commands (run from the repo root)
 ```bash
