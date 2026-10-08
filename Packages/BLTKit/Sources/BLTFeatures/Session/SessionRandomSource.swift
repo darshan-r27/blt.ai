@@ -4,18 +4,18 @@
 ///
 /// Production uses `.system`. Tests and previews use `.seeded(_:)` (SplitMix64) so option order
 /// is reproducible.
-public struct SessionRandomSource: RandomNumberGenerator, Sendable {
+struct SessionRandomSource: RandomNumberGenerator, Sendable {
     private var seededState: UInt64?
 
     /// The system generator. Not reproducible.
-    public static let system = SessionRandomSource(seededState: nil)
+    static let system = SessionRandomSource(seededState: nil)
 
     /// A deterministic generator: the same seed always produces the same sequence.
-    public static func seeded(_ seed: UInt64) -> SessionRandomSource {
+    static func seeded(_ seed: UInt64) -> SessionRandomSource {
         SessionRandomSource(seededState: seed)
     }
 
-    public mutating func next() -> UInt64 {
+    mutating func next() -> UInt64 {
         guard var state = seededState else {
             var system = SystemRandomNumberGenerator()
             return system.next()

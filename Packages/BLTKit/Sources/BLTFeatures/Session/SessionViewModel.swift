@@ -18,9 +18,9 @@ import Observation
 /// Pronunciation does not exist in v1 and nothing here reads it (CLAUDE.md constraint 5).
 @MainActor
 @Observable
-public final class SessionViewModel {
+final class SessionViewModel {
     /// What the session view should show right now.
-    public enum Screen: Equatable {
+    enum Screen: Equatable {
         case loading
         /// The progress file could not be read. The session does not start on an empty guess.
         case loadFailed
@@ -31,19 +31,19 @@ public final class SessionViewModel {
         case session(SessionState)
     }
 
-    public static let saveFailedMessage = "Your progress could not be saved. You can keep going."
+    static let saveFailedMessage = "Your progress could not be saved. You can keep going."
 
-    public let scenario: Scenario
+    let scenario: Scenario
 
     /// True once any save has failed. Visible, non-blocking, never cleared during a session.
-    public private(set) var saveFailed = false
+    private(set) var saveFailed = false
 
     /// Bumps on every screen change; the view keys its crossfade on it.
-    public private(set) var beat = 0
+    private(set) var beat = 0
 
     /// True from the moment `endSession()` is first called. Once set, the session accepts no
     /// further answers, so nothing new can be written after the learner has left.
-    public private(set) var hasEnded = false
+    private(set) var hasEnded = false
 
     private enum Phase {
         case loading
@@ -70,7 +70,7 @@ public final class SessionViewModel {
     /// (it requeues at most twice, so the third wrong answer is the last).
     private static let wrongAnswersBeforeNoRequeue = 3
 
-    public init(
+    init(
         scenario: Scenario,
         dependencies: AppDependencies,
         random: SessionRandomSource = .system
@@ -82,7 +82,7 @@ public final class SessionViewModel {
 
     // MARK: Reading state
 
-    public var screen: Screen {
+    var screen: Screen {
         switch phase {
         case .loading: .loading
         case .loadFailed: .loadFailed
@@ -95,16 +95,16 @@ public final class SessionViewModel {
 
     /// 1-based position of the current item in the plan, counting each item once. A requeued
     /// item keeps its original number.
-    public var currentPosition: Int? {
+    var currentPosition: Int? {
         guard let id = currentItemID, let index = plannedOrder.firstIndex(of: id) else { return nil }
         return index + 1
     }
 
     /// Number of distinct items in this session.
-    public var plannedCount: Int { plannedOrder.count }
+    var plannedCount: Int { plannedOrder.count }
 
     /// Whether the item in the current feedback will be asked again this session.
-    public var currentItemWillReturn: Bool {
+    var currentItemWillReturn: Bool {
         guard let id = currentItemID else { return false }
         return wrongCounts[id, default: 0] < Self.wrongAnswersBeforeNoRequeue
     }
@@ -113,27 +113,27 @@ public final class SessionViewModel {
 
     /// Loads progress and plans the session. Safe to call again (for example from `.task`); only
     /// the first call does anything. Use `retry()` after a load failure.
-    public func start() async {
+    func start() async {
         guard !hasStarted else { return }
         hasStarted = true
         await load()
     }
 
-    public func retry() async {
+    func retry() async {
         guard !hasEnded else { return }
         setPhase(.loading)
         await load()
     }
 
     /// Starts a session from the earliest-due items when nothing was due or new.
-    public func startReviewAnyway() {
+    func startReviewAnyway() {
         guard phase == .nothingDue, !hasEnded else { return }
         begin(with: reviewAnywayItems)
     }
 
     /// Answers the current question. Only the first presentation of an item yields an
     /// `AttemptRecord`, so a requeued presentation schedules and writes nothing.
-    public func choose(_ optionID: Int) {
+    func choose(_ optionID: Int) {
         guard !hasEnded, var current = machine else { return }
         let before = current.state
         var rng = random
@@ -152,7 +152,7 @@ public final class SessionViewModel {
     }
 
     /// Moves from feedback to the next question, or to the summary.
-    public func advance() {
+    func advance() {
         guard !hasEnded, var current = machine else { return }
         let before = current.state
         var rng = random
@@ -166,7 +166,7 @@ public final class SessionViewModel {
 
     /// Registers the closure `endSession()` calls to leave the session. The view sets this from
     /// its `onDone`. It is called at most once.
-    public func setDoneHandler(_ handler: @escaping @MainActor () -> Void) {
+    func setDoneHandler(_ handler: @escaping @MainActor () -> Void) {
         doneHandler = handler
     }
 
@@ -174,7 +174,7 @@ public final class SessionViewModel {
     /// persisted, then calls the done handler exactly once. The unanswered current item records
     /// nothing, and after the first call the session ignores answers, so repeated calls (a
     /// double tap) do nothing.
-    public func endSession() async {
+    func endSession() async {
         guard !hasEnded else { return }
         hasEnded = true
         await waitForPendingSaves()
@@ -185,7 +185,7 @@ public final class SessionViewModel {
 
     /// Waits until every queued save has finished. For tests, and for a host that wants to be
     /// sure nothing is in flight before it tears the session down.
-    public func waitForPendingSaves() async {
+    func waitForPendingSaves() async {
         await saveTask?.value
     }
 

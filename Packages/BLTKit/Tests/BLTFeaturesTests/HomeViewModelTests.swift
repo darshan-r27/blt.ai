@@ -1,9 +1,10 @@
 import BLTCatalog
 import BLTCore
-import BLTFeatures
 import BLTProgress
 import Foundation
 import Testing
+
+@testable import BLTFeatures
 
 /// A store for tests that can fail on load or erase, and counts how often it was asked to erase.
 private actor HomeStubStore: ProgressStore {

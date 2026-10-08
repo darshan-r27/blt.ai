@@ -5,7 +5,7 @@ import BLTSession
 import SwiftUI
 
 /// Binds a `SessionViewModel` to the question, feedback and summary screens.
-public struct SessionView: View {
+struct SessionView: View {
     @State private var viewModel: SessionViewModel
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -15,12 +15,12 @@ public struct SessionView: View {
     /// Length of the crossfade between beats. Replaced by an instant cut under Reduce Motion.
     private static let crossfadeDuration = 0.15
 
-    public init(viewModel: SessionViewModel, onDone: @escaping @MainActor () -> Void) {
+    init(viewModel: SessionViewModel, onDone: @escaping @MainActor () -> Void) {
         _viewModel = State(initialValue: viewModel)
         viewModel.setDoneHandler(onDone)
     }
 
-    public var body: some View {
+    var body: some View {
         VStack(spacing: 0) {
             // First in reading order, and outside the crossfade so it does not flicker between beats.
             if showsEndControl {

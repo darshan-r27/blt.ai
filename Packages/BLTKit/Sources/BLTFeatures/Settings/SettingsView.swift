@@ -6,16 +6,16 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 /// Settings has no preferences in v1: the saved name with Change name, plain statements, and Reset progress.
-public struct SettingsView: View {
+struct SettingsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Bindable private var viewModel: SettingsViewModel
     @State private var isChoosingFiles = false
 
-    public init(viewModel: SettingsViewModel) {
+    init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
     }
 
-    public var body: some View {
+    var body: some View {
         let palette = Palette(colorScheme)
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {

@@ -1,10 +1,11 @@
 import BLTCatalog
 import BLTContentStore
 import BLTCore
-import BLTFeatures
 import BLTProgress
 import Foundation
 import Testing
+
+@testable import BLTFeatures
 
 /// A fake importer: returns what it is told to and counts the calls. Fake ids only.
 private actor FakeLessonImporter: LessonImporting {
