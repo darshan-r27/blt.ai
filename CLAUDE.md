@@ -2,7 +2,7 @@
 
 iOS app teaching colloquial Tamil to Telugu speakers. v1 is text-only multiple choice; voice is v2 (ADR 024). On-device, no backend.
 
-Start every new session by reading `@docs/HANDOFF.md` (current status, commands, how we work). Read `@docs/PRD.md` before any product decision. Read `@docs/BUILD_PLAN.md` for the task you're on. Read `@docs/SECURITY.md` before touching audio, file storage, `Info.plist`, or dependencies. Read `@docs/BACKEND.md` before any telemetry work.
+Start every new session by reading `@docs/HANDOFF.md` (current status, commands, how we work). Read `@docs/ARCHITECTURE.md` for how the code is organised. Read `@docs/PRD.md` before any product decision (it describes the v2 voice product; v1 is defined by `@docs/MVP_PLAN.md` and DECISIONS 024 to 037). Read `@docs/BUILD_PLAN.md` for v2 tasks. Read `@docs/SECURITY.md` before touching audio, file storage, `Info.plist`, or dependencies. Read `@docs/BACKEND.md` before any telemetry work.
 
 ## Hard constraints
 
@@ -39,7 +39,7 @@ Speech and microphone APIs **do not work in Simulator.** Anything touching `Audi
 
 - Swift 6, strict concurrency `complete`, iOS 27 deployment target
 - SwiftUI only. No UIKit unless there is no alternative, and then say why
-- Module structure per PRD §7: `Catalog`, `Session`, `Audio`, `Scoring`, `Progress`, `DesignSystem`
+- Module structure (see `docs/ARCHITECTURE.md`): `BLTCore`, `BLTCatalog`, `BLTProgress`, `BLTSession`, `BLTDesign`, `BLTContentStore`, `BLTFeatures`; the `Audio` and `Scoring` modules from PRD §7 arrive with v2
 - One type per file, named for the type
 - Dependency injection at the composition root. No singletons, no `shared`
 - Protocols for anything with more than one implementation, especially `ScoringEngine`
@@ -47,7 +47,7 @@ Speech and microphone APIs **do not work in Simulator.** Anything touching `Audi
 
 ## How to work here
 
-**One task at a time.** Tasks come from `docs/BUILD_PLAN.md` and each has acceptance criteria. Do not start the next task, do not do "while I'm here" refactors, do not fix unrelated things you notice. Mention them instead.
+**One task at a time.** Tasks come from `docs/MVP_PLAN.md` (v1) or `docs/BUILD_PLAN.md` (v2) and each has acceptance criteria. Do not start the next task, do not do "while I'm here" refactors, do not fix unrelated things you notice. Mention them instead.
 
 **Plan before writing.** For any task touching more than one file, outline the approach and wait for approval.
 

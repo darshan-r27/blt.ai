@@ -51,12 +51,15 @@ graph TD
     App[BLTApp: app shell and composition root] --> Features
     Features[BLTFeatures: screens and view models] --> Session
     Features --> Design[BLTDesign: theme and components]
+    Features --> ContentStore[BLTContentStore: bundled and imported lesson loading]
     Features --> Progress
     Session[BLTSession: question builder, planner, state machine] --> Catalog
     Session --> Progress[BLTProgress: scheduler, progress and profile stores]
+    ContentStore --> Catalog
     Catalog[BLTCatalog: content loader and validator] --> Core
     Progress --> Core[BLTCore: identifiers, register, outcome]
     Design --> Core
+    ContentStore --> Core
 ```
 
 A few choices worth a look:
@@ -139,9 +142,10 @@ The app was built with Claude Code, with the author acting as product owner and 
 
 | Document | What it is |
 | --- | --- |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How the code is organised: modules, data flow, storage, and what enforces the rules. |
 | [`docs/MVP_PLAN.md`](docs/MVP_PLAN.md) | The v1 plan: interfaces, work breakdown, review checklist. |
 | [`docs/DECISIONS.md`](docs/DECISIONS.md) | The decision log. Start here for the reasoning. |
-| [`docs/PRD.md`](docs/PRD.md) | The full product specification, written for the voice version. |
+| [`docs/PRD.md`](docs/PRD.md) | The full product specification, written for the voice version (v2). |
 | [`docs/BUILD_PLAN.md`](docs/BUILD_PLAN.md) | The original task sequence, including the v2 voice phases. |
 | [`docs/SECURITY.md`](docs/SECURITY.md) | The security review rubric. |
 | [`docs/BACKEND.md`](docs/BACKEND.md) | The telemetry design for v1.5. |

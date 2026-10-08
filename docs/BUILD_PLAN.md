@@ -1,5 +1,7 @@
 # BLT.ai — 0 to 1
 
+> **Status (2026-10-07): this is the v2 (voice) design.** v1 shipped as text-only multiple choice. For what exists, read [`ARCHITECTURE.md`](ARCHITECTURE.md), [`MVP_PLAN.md`](MVP_PLAN.md) and `DECISIONS.md` 024 to 037.
+
 Sequenced build plan. Each task is one PR, has explicit acceptance criteria, and is sized for a single Claude Code session. Work them in order; the dependency chain is real.
 
 **Aligned to PRD v7.** Phase 6 is the opt-in telemetry backend, and is v1.5 — do not start it before Phase 5 ships.

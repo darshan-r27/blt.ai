@@ -1,5 +1,7 @@
 # BLT.ai — open items
 
+> **Status (2026-10-07):** the v1 text app is built, so the items below that mention speech, recordings, scoring or the voice wireframes belong to **v2**. The v1 source-language question was settled by DECISIONS 024, and the Scenarios, Progress and Settings screens now exist. Current status is in [`HANDOFF.md`](HANDOFF.md).
+
 Things not yet settled, or settled but not yet applied. Review this before starting any task; several of these would change work in progress.
 
 ---
