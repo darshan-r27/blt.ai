@@ -339,3 +339,35 @@ The owner wants Settings to say that every lesson is checked by a native Tamil s
 The owner wants Reset progress to look like a warning wherever it appears, so a learner cannot erase their progress by accident. Both in-page Reset buttons (Settings, and Home's error state) use `BLTWarningButtonStyle`: deep red text and outline on a pale red tint, a bold label and a warning triangle, so the warning is never colour alone. The colours are `Palette.destructive` (light `#8F1D14` on `#FBE4E1`, dark `#FFB4AB` on `#3D1A17`), tested to meet 4.5:1 against their own tint and against the page and cards. The confirmation dialog keeps the system's destructive button, which iOS draws in red, and its message says the reset cannot be undone. Reset stays a two-step action.
 
 This is the only place red is allowed. `destructive` is deliberately kept out of `Palette.allColors`, which the no-red test covers, so every other colour is still checked red-free; wrong answers and feedback keep the neutral and nudge tones. The "Remove imported lessons" dialog uses no destructive role because nothing is lost (progress is kept and the files can be imported again).
+
+## 038 — No duplicate prompts or answers across the course
+**Status:** pending — agreed with the owner; applied with the catalog format change (plan.md, chunk C1)
+
+The course grows from 100 to 2,000 phrases (`docs/COURSE_SYLLABUS.md`), drafted over months. Without a rule, the same sentence would be written twice. Three checks. Across the catalog, ignoring case, spacing and punctuation: no two items share a `sourcePrompt`, and no two items share a `canonical`. Inside one item, ignoring only case and surrounding spaces: no accepted spelling is listed twice. The narrower comparison inside an item is deliberate: accepted spellings often differ only by a question mark, a hyphen or a space, and those variants are wanted. Wrong options may repeat across items, because a good wrong option is often reused.
+
+The checks live in the validator, so bundled lessons, imported lessons and the editor all apply the same rule. The catalog-wide checks run against the catalog the learner would end up with, like the existing duplicate-id checks (036). `scripts/content-index.sh` lists every existing prompt and answer so a drafter can avoid repeats before writing.
+
+## 039 — The course has levels; lessons carry their level
+**Status:** pending — agreed with the owner; applied in plan.md chunks C1, C4 and C5
+
+The 100 lessons are grouped into 8 levels taken in order (`docs/COURSE_SYLLABUS.md`). Each lesson file gains an optional `level` object: `number`, `title`, and `position` (its place within the level). `position` is needed because the first five lessons keep their original ids, which would otherwise sort after the new ones. A file without `level` (an older import) is listed under "Other lessons". The same level number must always carry the same title.
+
+New lessons are named `content/l03-u07-<slug>.json` with `scenarioId` `l03-u07` and item ids `l03-u07-i01`. The first five keep their ids so saved progress survives.
+
+Home groups lessons by level and suggests the next unfinished one. **Nothing is locked**: the owner chose an ordered course the learner can move around in, because a locked level strands a learner who is stuck on one lesson. This replaces "exactly 5 files" in `docs/MVP_PLAN.md` (chunk C3) with: at least 5 files, exactly 20 items each, level numbers with no gaps. A separate course manifest file was rejected because the loader and the import treat every `content/*.json` as a lesson. The import limit rises from 10 to 20 files so a whole level can be imported at once (amends 036).
+
+## 040 — New phrases carry a Tamil-script spelling
+**Status:** pending — agreed with the owner; applied in plan.md chunk C1
+
+Each item gains an optional `tamilScript` field: the canonical answer written in Tamil script. It exists so audio can be generated later without a second review of 2,000 phrases, since speech voices read Tamil script and not the informal Latin spelling. It is optional so the first 100 phrases stay valid; every lesson written under the new naming must have it, and the first 100 are backfilled later.
+
+When present it must contain Tamil-script characters and no Latin letters. **Tamil script stays banned in every other field**, and in all Swift code and test fixtures. The app does not display the field yet; the product stays romanised (001, 024). It is drafted by Claude and reviewed by the owner with the rest of the item (025).
+
+## 041 — A final exam of 100 questions, pass at 75
+**Status:** pending — agreed with the owner; built in plan.md chunks E1 to E4
+
+When every level is complete, Home offers a final exam: 100 questions in one sitting, no feedback until the end, pass at 75. About 70 are sentences the learner has not seen, built only from words and patterns the course taught; about 30 are taken from the lessons by id. The blueprint is in `docs/COURSE_SYLLABUS.md` section 6. The paper is written last, after Level 8 is reviewed.
+
+**Scoring:** only the canonical answer counts. The same sentence in the other register is not a correct exam answer, matching Home completion (033). **The exam never touches scheduling:** exam answers write no review records, and results are stored in their own file, so the frozen `ProgressStore` contract is unchanged. Reset progress clears exam results too.
+
+**What a pass means:** the questions are multiple choice, so a pass shows the learner recognises natural spoken Tamil in unfamiliar sentences. It does not show they can say it. The exam screen states this, and speaking stays with the voice work (024).
