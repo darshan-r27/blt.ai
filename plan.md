@@ -24,7 +24,8 @@ of the whole project. The app keeps showing "Unreviewed draft" on anything not y
 ## Decisions most likely to change
 1. **Level count and sizes.** 100 subcategories as 8 levels of 12 or 13. The existing five become part of
    Level 1. The syllabus (chunk S0) fixes the final split and needs owner approval before any drafting.
-2. **Where level information lives.** Each lesson file gains an optional `level: { "number": 3, "title": "..." }`.
+2. **Where level information lives.** Each lesson file gains an optional `level: { "number": 3, "title": "...", "position": 7 }`
+   (`position` orders lessons inside a level, because the first five keep ids that sort after the new ones).
    Files without it (old imports) appear under "Other lessons". Alternative rejected: a separate course manifest
    file, because the loader and the import treat every `content/*.json` as a lesson.
 3. **`tamilScript` is optional per item.** New phrases must have it (enforced by the shipped-content test for
