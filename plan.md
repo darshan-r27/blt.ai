@@ -30,9 +30,9 @@ of the whole project. The app keeps showing "Unreviewed draft" on anything not y
    file, because the loader and the import treat every `content/*.json` as a lesson.
 3. **`tamilScript` is optional per item.** New phrases must have it (enforced by the shipped-content test for
    Level 1 new units onward); the existing 100 are backfilled later. Tamil script stays banned in every other field.
-4. **Duplicate rules (catalog-wide, case, spacing and punctuation ignored):** no two items share a
-   `sourcePrompt`; no two items share a `canonical`; no accepted spelling listed twice in one item (the pending
-   rule). Distractors may repeat across items.
+4. **Duplicate rules.** Catalog-wide, ignoring case, spacing and punctuation: no two items share a
+   `sourcePrompt`; no two items share a `canonical`. Inside one item, ignoring only case and surrounding spaces
+   (the editor's existing rule): no accepted spelling listed twice. Punctuation variants are wanted there. Distractors may repeat across items.
 5. **Exam scoring:** only the canonical answer counts. Picking the other register is not a correct exam answer
    (same rule as Home completion, ADR 033). Pass is 75 of 100. Retakes any time, order reshuffled.
 6. **Exam does not touch scheduling.** Exam answers write no SM-2 records. Results go in a new `exam.json`,

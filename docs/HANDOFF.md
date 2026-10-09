@@ -18,8 +18,10 @@ What each must do is in `plan.md` under "Wave 1". The details that are easy to g
   - Lesson: `level` = `{ number, title, position }`. Same `number` must always have the same `title`.
   - Item: `tamilScript`. When present it must contain Tamil-script characters (U+0B80 to U+0BFF) and no Latin
     letters. Tamil script stays an error in every other field.
-  - Duplicates, ignoring case, spacing and punctuation: no two items in the catalog share a `sourcePrompt`; no two
-    share a `canonical`; no accepted spelling twice in one item. Add them as new `ContentIssue.Rule` cases; the
+  - Duplicates. Catalog-wide, ignoring case, spacing and punctuation: no two items share a `sourcePrompt`; no two
+    share a `canonical`. Inside one item, ignoring **only** case and surrounding spaces (same as the editor's
+    `norm`): no accepted spelling twice. Do not ignore punctuation there: about 50 reviewed items list variants
+    that differ only by a question mark, hyphen or space, on purpose. Add them as new `ContentIssue.Rule` cases; the
     catalog-wide ones go where the existing cross-file id checks run.
   - Fixtures are fake `zz` text. A Tamil-script fixture is one letter repeated, never a real word.
   - `Scenario` and `Item` are part of the frozen contracts (`docs/MVP_PLAN.md` section 5): add fields with defaults
@@ -28,8 +30,9 @@ What each must do is in `plan.md` under "Wave 1". The details that are easy to g
 - **C2** mirrors C1's rules in the editor's `validate`, and runs the duplicate rules across every loaded file.
 - **C3** is also added to CI's guardrail job later, in Wave 2 chunk C4 (not now).
 
-**Blocker for C1 (owner).** `content/scenario-05-home-family.json` still has two duplicated accepted spellings
-(`s05-i05`, `s05-i10`) and the owner's review edits to that file are uncommitted. The new duplicate rule makes the
+**Blocker for C1 (owner).** Four items still list an accepted spelling twice: `s01-i07`, `s01-i19`, `s05-i05`
+(each a capital-letter variant) and `s05-i10` (an exact repeat). The owner's review edits to
+`content/scenario-05-home-family.json` are also uncommitted. The new duplicate rule makes the
 shipped-content test fail until the owner fixes them. Do not edit or commit that file: ask the owner. C2 and C3 are
 not blocked.
 

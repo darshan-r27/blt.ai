@@ -343,7 +343,7 @@ This is the only place red is allowed. `destructive` is deliberately kept out of
 ## 038 — No duplicate prompts or answers across the course
 **Status:** pending — agreed with the owner; applied with the catalog format change (plan.md, chunk C1)
 
-The course grows from 100 to 2,000 phrases (`docs/COURSE_SYLLABUS.md`), drafted over months. Without a rule, the same sentence would be written twice. Three checks, all ignoring case, spacing and punctuation: no two items in the catalog share a `sourcePrompt`; no two items share a `canonical`; no accepted spelling is listed twice inside one item. Wrong options may repeat across items, because a good wrong option is often reused.
+The course grows from 100 to 2,000 phrases (`docs/COURSE_SYLLABUS.md`), drafted over months. Without a rule, the same sentence would be written twice. Three checks. Across the catalog, ignoring case, spacing and punctuation: no two items share a `sourcePrompt`, and no two items share a `canonical`. Inside one item, ignoring only case and surrounding spaces: no accepted spelling is listed twice. The narrower comparison inside an item is deliberate: accepted spellings often differ only by a question mark, a hyphen or a space, and those variants are wanted. Wrong options may repeat across items, because a good wrong option is often reused.
 
 The checks live in the validator, so bundled lessons, imported lessons and the editor all apply the same rule. The catalog-wide checks run against the catalog the learner would end up with, like the existing duplicate-id checks (036). `scripts/content-index.sh` lists every existing prompt and answer so a drafter can avoid repeats before writing.
 
