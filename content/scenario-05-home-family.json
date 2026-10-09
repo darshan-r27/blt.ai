@@ -38,7 +38,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i02",
@@ -73,7 +73,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i03",
@@ -83,7 +83,7 @@
       "canonical": "unga veetla evlo peru irukkeenga?",
       "acceptedAnswers": [
         "unga veetla evlo peru irukkeenga?",
-        "unga veetla evlo peru irukkeenga",
+        "unga veetla evlo peru irukkaanga",
         "unga veettula evlo peru irukkeenga?"
       ],
       "registerVariant": "un veetla evlo peru?",
@@ -109,8 +109,8 @@
           "english": "are there"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "irukaanga would also work",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i04",
@@ -147,7 +147,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i05",
@@ -182,7 +182,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i06",
@@ -216,19 +216,20 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i07",
       "sourcePrompt": "I work in an office.",
       "register": "neutral",
       "addressee": "any",
-      "canonical": "naan office-la velai pannuren",
+      "canonical": "naan office-la velai seiyuren",
       "acceptedAnswers": [
         "naan office-la velai pannuren",
-        "naan office la velai pannuren",
-        "naan office-la work pannuren",
-        "naan officela velai panren"
+        "naan office la velai seiyuren",
+        "naan office-la work seiyuren",
+        "naan officela velai panren",
+        "naan office-la velai seiyuren"
       ],
       "registerVariant": null,
       "distractors": [
@@ -246,12 +247,12 @@
           "english": "in an office"
         },
         {
-          "tamil": "velai pannuren",
+          "tamil": "velai seiyuren",
           "english": "work"
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i08",
@@ -286,7 +287,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i09",
@@ -315,7 +316,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i10",
@@ -350,18 +351,19 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i11",
       "sourcePrompt": "Is anyone at home? (calling out at a door)",
       "register": "respectful",
       "addressee": "any",
-      "canonical": "veetla yaaraachum irukkeengala?",
+      "canonical": "veetla yaaraavathu irukkeengala?",
       "acceptedAnswers": [
         "veetla yaaraachum irukkeengala?",
         "veetla yaaravadhu irukkeengala?",
-        "yaaraachum irukkeengala?"
+        "yaaraachum irukkeengala?",
+        "veetla yaaraavathu irukkeengala?"
       ],
       "registerVariant": "veetla yaaraachum irukkiya?",
       "distractors": [
@@ -374,7 +376,7 @@
           "english": "at home"
         },
         {
-          "tamil": "yaaraachum",
+          "tamil": "yaaraavathu",
           "english": "anyone"
         },
         {
@@ -383,7 +385,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i12",
@@ -412,7 +414,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i13",
@@ -441,7 +443,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i14",
@@ -471,7 +473,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i15",
@@ -510,7 +512,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i16",
@@ -540,8 +542,8 @@
           "english": "is falling"
         }
       ],
-      "note": null,
-      "reviewStatus": "unreviewed"
+      "note": "can also pronounce it as malaie / malay",
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i17",
@@ -574,7 +576,7 @@
         }
       ],
       "note": "vaa is casual; vaanga is respectful.",
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i18",
@@ -608,7 +610,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i19",
@@ -638,7 +640,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     },
     {
       "id": "s05-i20",
@@ -672,7 +674,7 @@
         }
       ],
       "note": null,
-      "reviewStatus": "unreviewed"
+      "reviewStatus": "reviewed"
     }
   ]
 }
