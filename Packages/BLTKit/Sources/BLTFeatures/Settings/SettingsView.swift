@@ -5,7 +5,8 @@ import BLTProgress
 import SwiftUI
 import UniformTypeIdentifiers
 
-/// Settings has no preferences in v1: the saved name with Change name, plain statements, and Reset progress.
+/// Settings has one preference, the language being learned, plus the saved name with Change name,
+/// plain statements, and Reset progress.
 struct SettingsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Bindable private var viewModel: SettingsViewModel
@@ -19,6 +20,7 @@ struct SettingsView: View {
         let palette = Palette(colorScheme)
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
+                languageSection(palette: palette)
                 section("About the content") {
                     Text(viewModel.contentStatement)
                     if !viewModel.allContentReviewed {
@@ -81,7 +83,22 @@ struct SettingsView: View {
             ChangeNameView(viewModel: editor, onCancel: { viewModel.cancelChangeName() })
         }
         .confirmationDialog(
-            "Reset all progress?",
+            viewModel.languageChangeTitle,
+            isPresented: $viewModel.isConfirmingLanguageChange,
+            titleVisibility: .visible
+        ) {
+            // Not a destructive role: nothing is lost, and the system draws that role in red.
+            Button("Switch") {
+                Task { await viewModel.confirmLanguageChange() }
+            }
+            .accessibilityIdentifier(AccessibilityID.settingsLanguageConfirm)
+            Button("Cancel", role: .cancel) { viewModel.cancelLanguageChange() }
+                .accessibilityIdentifier(AccessibilityID.settingsLanguageCancel)
+        } message: {
+            Text(viewModel.languageChangeMessage)
+        }
+        .confirmationDialog(
+            viewModel.resetTitle,
             isPresented: $viewModel.isConfirmingReset,
             titleVisibility: .visible
         ) {
@@ -90,11 +107,47 @@ struct SettingsView: View {
             }
             Button("Cancel", role: .cancel) { viewModel.cancelReset() }
         } message: {
-            Text(
-                "This erases your review schedule and answer history on this device. "
-                    + "It cannot be undone. Your name is not erased."
-            )
+            Text(viewModel.resetMessage)
         }
+    }
+
+    private func languageSection(palette: Palette) -> some View {
+        section("Language I'm learning") {
+            Button(action: { viewModel.toggleLanguageChoice() }, label: {
+                HStack {
+                    Text(viewModel.learningLanguageLabel)
+                        .font(.headline)
+                    Spacer(minLength: 8)
+                    Image(systemName: viewModel.isChoosingLanguage ? "chevron.up" : "chevron.down")
+                        .accessibilityHidden(true)
+                }
+                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+            })
+            .buttonStyle(.bordered)
+            .disabled(viewModel.isChangingLanguage)
+            .accessibilityLabel("Language I'm learning: \(viewModel.learningLanguageLabel)")
+            .accessibilityHint(viewModel.isChoosingLanguage ? "Hides the languages" : "Shows the languages")
+            .accessibilityIdentifier(AccessibilityID.settingsLanguage)
+            if viewModel.isChoosingLanguage {
+                ForEach(viewModel.languageOptions, id: \.self) { language in
+                    languageOption(language)
+                }
+            }
+            if viewModel.languageChangeFailed {
+                statusText(viewModel.languageChangeFailureMessage, tone: palette.nudge)
+            }
+        }
+    }
+
+    private func languageOption(_ language: CourseLanguage) -> some View {
+        let isCurrent = language == viewModel.learningLanguage
+        return Button(action: { viewModel.chooseLanguage(language) }, label: {
+            Label(language.displayName, systemImage: isCurrent ? "checkmark.circle.fill" : "circle")
+                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+        })
+        .buttonStyle(.bordered)
+        .accessibilityValue(isCurrent ? "Current language" : "")
+        .accessibilityIdentifier(AccessibilityID.settingsLanguageOption(language.rawValue))
     }
 
     /// Dismissing the sheet by swiping it away counts as Cancel.
@@ -193,13 +246,23 @@ private struct PreviewLessonImporter: LessonImporting {
 private struct SettingsPreviewHost: View {
     @State private var viewModel: SettingsViewModel
 
-    init(_ dependencies: AppDependencies, importer: PreviewLessonImporter? = nil) {
-        _viewModel = State(initialValue: SettingsViewModel(
+    init(
+        _ dependencies: AppDependencies,
+        importer: PreviewLessonImporter? = nil,
+        language: CourseLanguage? = nil,
+        showingChoice: Bool = false,
+        confirming: CourseLanguage? = nil
+    ) {
+        let model = SettingsViewModel(
             dependencies: dependencies,
-            profileStore: InMemoryProfileStore(initial: UserProfile(name: "zz Sample")),
+            profileStore: InMemoryProfileStore(initial: UserProfile(name: "zz Sample", learningLanguage: language)),
             profileName: "zz Sample",
-            lessonImporter: importer
-        ))
+            lessonImporter: importer,
+            learningLanguage: language
+        )
+        model.isChoosingLanguage = showingChoice
+        if let confirming { model.chooseLanguage(confirming) }
+        _viewModel = State(initialValue: model)
     }
 
     var body: some View {
@@ -227,6 +290,34 @@ private struct SettingsPreviewHost: View {
 
 #Preview("Settings, largest accessibility size") {
     SettingsPreviewHost(PreviewDependencies.withData())
+        .environment(\.dynamicTypeSize, .accessibility5)
+}
+
+#Preview("Settings, language row") {
+    SettingsPreviewHost(PreviewDependencies.withData(), language: .telugu)
+}
+
+#Preview("Settings, language not chosen") {
+    SettingsPreviewHost(PreviewDependencies.withData())
+}
+
+#Preview("Settings, choosing a language, dark") {
+    SettingsPreviewHost(PreviewDependencies.withData(), language: .tamil, showingChoice: true)
+        .preferredColorScheme(.dark)
+}
+
+#Preview("Settings, switch confirmation") {
+    SettingsPreviewHost(PreviewDependencies.withData(), language: .tamil, confirming: .telugu)
+}
+
+#Preview("Settings, switch confirmation, dark, largest size") {
+    SettingsPreviewHost(PreviewDependencies.withData(), language: .tamil, confirming: .telugu)
+        .preferredColorScheme(.dark)
+        .environment(\.dynamicTypeSize, .accessibility5)
+}
+
+#Preview("Settings, language choice, largest size") {
+    SettingsPreviewHost(PreviewDependencies.withData(), language: .telugu, showingChoice: true)
         .environment(\.dynamicTypeSize, .accessibility5)
 }
 #endif
