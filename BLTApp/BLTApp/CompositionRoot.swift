@@ -4,6 +4,7 @@ import BLTCore
 import BLTFeatures
 import BLTProgress
 import Foundation
+import os
 
 /// The one composition root: the only place that chooses concrete types and builds `AppDependencies`.
 /// Everything below it receives what it needs by injection.
@@ -16,6 +17,8 @@ struct CompositionRoot {
 
     /// Folder of Application Support/BLT that holds one folder per language.
     static let coursesFolderName = "courses"
+
+    private static let logger = Logger(subsystem: "ai.blt.app", category: "storage")
 
     private let arguments: [String]
 
@@ -43,17 +46,19 @@ struct CompositionRoot {
         return makeShippingComposition()
     }
 
+    /// `Application Support/BLT`, the folder that holds every file the app writes.
+    static var supportDirectory: URL {
+        URL.applicationSupportDirectory.appending(path: supportFolderName, directoryHint: .isDirectory)
+    }
+
     /// `Application Support/BLT/<fileName>`. The folder is created on first write.
     static func supportFileURL(named fileName: String) -> URL {
-        URL.applicationSupportDirectory
-            .appending(path: supportFolderName, directoryHint: .isDirectory)
-            .appending(path: fileName, directoryHint: .notDirectory)
+        supportDirectory.appending(path: fileName, directoryHint: .notDirectory)
     }
 
     /// `Application Support/BLT/courses/<language>/`: everything that belongs to one language.
     static func courseDirectory(for language: CourseLanguage) -> URL {
-        URL.applicationSupportDirectory
-            .appending(path: supportFolderName, directoryHint: .isDirectory)
+        supportDirectory
             .appending(path: coursesFolderName, directoryHint: .isDirectory)
             .appending(path: language.rawValue, directoryHint: .isDirectory)
     }
@@ -68,7 +73,10 @@ struct CompositionRoot {
         courseDirectory(for: language).appending(path: "content", directoryHint: .isDirectory)
     }
 
+    /// Only the shipping composition runs the clean-up: a UI-test launch returns from `compose()` before it gets
+    /// here, so a test can never remove real files.
     private func makeShippingComposition() -> Composed {
+        sweepLegacyFiles()
         let stores = CourseStores { FileProgressStore(fileURL: Self.progressFileURL(for: $0)) }
         return Composed(
             profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json")),
@@ -88,6 +96,20 @@ struct CompositionRoot {
                     )
                 )
             }
+        )
+    }
+
+    /// Removes, once, the single-course build's `progress.json` and imported `content/` folder (DECISIONS 043).
+    /// Nothing is migrated. A second launch finds nothing. Only counts are logged.
+    private func sweepLegacyFiles() {
+        let report = LegacyStorageSweep(directory: Self.supportDirectory).run()
+        guard !report.foundNothing else { return }
+        Self.logger.info(
+            """
+            Old single-course files removed: progress file \(report.removedProgressFile, privacy: .public), \
+            imported lessons folder \(report.removedImportedFolder, privacy: .public) \
+            (\(report.importedEntryCount, privacy: .public) entries), failures \(report.failedCount, privacy: .public).
+            """
         )
     }
 
