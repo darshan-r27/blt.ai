@@ -40,9 +40,13 @@ and stay labelled "Unreviewed draft" until the partner checks them.
      (Tamil U+0B80 to U+0BFF, Telugu U+0C00 to U+0C7F). Either script stays banned in every other field.
    - `level: { number, title, position }` and the duplicate rules as already decided (038, 039).
 4. **Layout and ids.** `content/tamil/*.json` and `content/telugu/*.json`. Paired lessons share a key:
-   `ta-l02-u03` and `te-l02-u03`. The five existing Tamil lessons keep their ids so saved progress survives.
+   `ta-l02-u03` and `te-l02-u03`. The five existing Tamil lessons are renamed to this scheme (`ta-l01-u01` to
+   `ta-l01-u05`, files and item ids to match) when they move in chunk B1. They stay `reviewed`. The owner
+   confirmed on 2026-10-09 that no learner has progress on them, so nothing needs to survive the rename.
 5. **Storage on the phone.** `Application Support/BLT/courses/<language>/` holds `progress.json`, imported
-   lessons and the exam result. Existing Tamil data is moved there once at launch (tested, all or nothing).
+   lessons and the exam result. **Nothing is migrated:** there is no learner progress to keep, and the old
+   lesson ids no longer exist. The old build's `progress.json` and imported `content/` folder are removed once
+   at the first launch of the new build (tested), so no orphaned files are left behind.
 6. **Mirroring is checked, not forced.** `scripts/content-index.sh --mirror` lists paired lessons whose English
    prompts differ. Differences are allowed where a sentence does not work in one language.
 7. **The Telugu reviewer works on their own computer** (decided). They get the editor and the
@@ -93,11 +97,38 @@ per-language index and the `--mirror` report.
 - `UserProfile.learningLanguage` (optional), profile file schema 2, schema 1 files load with no language.
 - Proof for all: `BLT_SIM="iPhone 17" scripts/test.sh package`; A2 by headless Chrome; A3 by its self-test.
 
+## Test suite reshape (chunk Q1; runs beside Wave 1, must finish before Wave 4 adds UI tests)
+**Why.** The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and the preview runner hangs a
+UI query at random, so every PR waits half an hour and is retried up to three times. Wave 4 would add more.
+
+**Q1.** Files: `BLTApp/BLTAppUITests/*`, `.github/workflows/ci.yml`, `scripts/test.sh`, new DECISIONS 045,
+`docs/ARCHITECTURE.md` (Testing section), `docs/HANDOFF.md` (commands).
+1. **Measure first.** Record each UI test's duration and retry count from the result bundles of the last few
+   CI runs. Put the table in the PR. Nothing is cut on a guess.
+2. **Move logic down.** A UI test that only checks a rule (completion figures, what a reset clears, what a
+   wrong answer does) is replaced by a view-model test in the package, where it runs in milliseconds. A UI
+   test is kept only where the screen itself is the thing under test.
+3. **Two tiers.**
+   - *PR tier (required check):* one happy path per screen and the accessibility audits at the default text
+     size. Target: the whole PR check under 15 minutes.
+   - *Full tier:* everything, including the audits at the largest text size. Runs on every merge to `main`,
+     nightly, and on demand. A failure there is reported, and is fixed before the next content or code PR.
+4. **Build once.** Build for testing in one step and run tests without rebuilding; package tests and UI tests
+   run as parallel jobs.
+5. **Faster tests.** Animations and the shimmer off under the UI-test launch arguments; fixtures instead of
+   real lessons everywhere.
+6. **Flakes are visible.** Retries stay, but the summary step lists every test that needed one.
+- Constraint: nothing about accessibility is dropped, only moved to the full tier. Branch protection names the
+  required checks, so the owner updates it if job names change (the PR says exactly what to set).
+- Proof: three PR runs in a row under 15 minutes; the full tier green on `main`; package test count has grown
+  by at least the number of UI tests removed.
+
 ## Wave 2: content and storage (needs Wave 1; B1 and B2 merge as one PR)
 Moving the lesson files and teaching the loader the new folders must land together, or the app would load no
 lessons. The two chunks are built in parallel on different files and merged as a single PR.
 
-**B1 Existing content and its tests.** Move the five files to `content/tamil/` and add `level`. `Tests/BLTContentTests/*`: per language, at least 5 Tamil files, 20 items each, levels
+**B1 Existing content and its tests.** Move the five files to `content/tamil/`, rename them and their ids to
+`ta-l01-u01` to `ta-l01-u05`, and add `level`. Lesson text and review status do not change. `Tests/BLTContentTests/*`: per language, at least 5 Tamil files, 20 items each, levels
 with no gaps, `script` required on every new-style lesson, no Tamil or Telugu script in any Swift file.
 `.github/workflows/ci.yml` runs A3's check. The Xcode folder reference already bundles subfolders, so the
 project file is not touched.
@@ -119,7 +150,7 @@ right language; Reset wording says which language it clears. Reset keeps `BLTWar
 ## Wave 4: wiring and UI tests (needs Waves 2 and 3)
 **D1.** `BLTFeatures/{AppDependencies,RootView}.swift`, `BLTApp/BLTApp/{CompositionRoot,BLTAppMain,UITestLaunch}.swift`,
 `BLTApp/BLTAppUITests/*`.
-- Build dependencies for the chosen language; per-language paths; the one-time move of existing Tamil data;
+- Build dependencies for the chosen language; per-language paths; the one-time removal of the old build's files;
   switching language reuses the reload used after a lesson import (`CompositionRoot.reloaded`, root `.id`).
 - New launch argument `--uitest-language=<tamil|telugu>`. UI tests: choose a language at onboarding, switch
   in Settings and see separate progress, reset one language only, old profile is asked for a language.
@@ -155,7 +186,6 @@ The `script` field on every new phrase exists so v2 does not need a second revie
 
 ## Not planned
 - A third language, or learning both languages at once on one Home screen.
-- Reshaping the slow UI test suite.
 
 ## Verification
 1. `BLT_SIM="iPhone 17" scripts/test.sh package`
@@ -163,7 +193,7 @@ The `script` field on every new phrase exists so v2 does not need a second revie
 3. `swiftlint lint --config .swiftlint.yml --strict`, `bash scripts/check-forbidden-apis.sh`,
    `bash scripts/content-index.sh --check`
 4. Simulator: fresh install picks Telugu and sees Telugu lessons; switch to Tamil and back with progress intact;
-   reset clears one language; an upgraded install keeps its Tamil progress and is asked for a language.
-5. Owner's iPhone: upgrade over the current install (progress must survive); import a Telugu lesson file into
+   reset clears one language; an upgraded install starts clean, keeps its name, and is asked for a language.
+5. Owner's iPhone: upgrade over the current install (name kept, old files gone); import a Telugu lesson file into
    the Telugu course and confirm a Tamil file is refused there.
 6. CI green on each PR.

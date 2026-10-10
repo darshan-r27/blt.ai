@@ -392,7 +392,7 @@ The app began as colloquial Tamil for a Telugu speaker (001). The owner's real c
 
 The profile gains the language being learned. Onboarding asks for it after the name. It can be changed later in Settings.
 
-- **Separate data per language.** Progress, imported lessons and the exam result are stored per language under `Application Support/BLT/courses/<language>/`. Switching language loses nothing, and one phone can hold both partners' courses. Data from before this change is Tamil's and is moved into place once at launch, all or nothing.
+- **Separate data per language.** Progress, imported lessons and the exam result are stored per language under `Application Support/BLT/courses/<language>/`. Switching language loses nothing, and one phone can hold both partners' courses. Nothing is migrated from before this change: the owner confirmed on 2026-10-09 that no learner has progress yet, and the lesson ids change (044). The old build's progress file and imported lessons are removed once at the first launch of the new build.
 - **No assumed language.** A profile saved before this change has no language. The app shows the language step; it does not default to Tamil. A wrong guess here would silently show a learner the wrong course.
 - **Reset progress clears only the language being learned,** and the confirmation says which. It keeps the warning style of 037.
 - **Switching reuses the lesson-import reload** (036): the root is rebuilt with the other language's catalog and stores.
@@ -402,8 +402,20 @@ The profile gains the language being learned. Onboarding asks for it after the n
 **Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunks A1, A2 and B1. Amends 038 to 040 and rewrites `docs/MVP_PLAN.md` section 2
 
 - **`language`** (`tamil` or `telugu`) is required on every lesson file. A lesson in the wrong course is rejected, bundled or imported, so a Telugu file cannot land in the Tamil course.
-- **Folders and ids.** `content/tamil/` and `content/telugu/`. Paired lessons share a key: `ta-l02-u03` and `te-l02-u03`, with items `ta-l02-u03-i01`. The five original Tamil lessons keep their ids so saved progress survives.
+- **Folders and ids.** `content/tamil/` and `content/telugu/`. Paired lessons share a key: `ta-l02-u03` and `te-l02-u03`, with items `ta-l02-u03-i01`. The five original Tamil lessons are renamed to this scheme (`ta-l01-u01` to `ta-l01-u05`) and stay `reviewed`; this reverses the "keep their ids" part of 039, because there is no saved progress to protect.
 - **The word-gloss key `tokens[].tamil` becomes `tokens[].word`.** The five existing files are rewritten once; afterwards the old key is an error and is never read as a fallback. Lesson files imported before this change must be re-exported.
 - **`tamilScript` (040, built but not yet used by any lesson) becomes `script`:** the answer in the lesson language's own script (Tamil U+0B80 to U+0BFF, Telugu U+0C00 to U+0C7F), with no Latin letters. Both scripts stay banned in every other field and in all Swift code.
 - `level` and the duplicate rules are as decided in 038 and 039. The import limit is 20 files.
+
+## 045 — Two tiers of UI tests: a short required set, and the full set off the PR path
+**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunk Q1
+
+The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and GitHub's preview runner hangs a UI query at random, so every pull request waits and retries. The suite is reshaped before more UI tests are added.
+
+- **Rules are tested in the package.** A UI test that only checks a rule is replaced by a view-model test. A UI test stays only where the screen itself is under test.
+- **PR tier, required:** one happy path per screen and the accessibility audits at the default text size, aiming at under 15 minutes for the whole check.
+- **Full tier, not blocking a PR:** every UI test, including audits at the largest text size, on every merge to `main`, nightly and on demand. A failure there is fixed before the next PR merges.
+- The decision is made from measured durations and retry counts, not guesses. Retries stay, and every retried test is listed.
+
+**Trade-off accepted:** a largest-text-size regression can reach `main` and be caught minutes later instead of before the merge. Accessibility coverage is moved, not reduced.
 

@@ -18,9 +18,10 @@ to 044 first.
 | **A1 Catalog format** | `Packages/BLTKit/Sources/BLTCatalog/*`, `Tests/BLTCatalogTests/*`, the five `content/*.json` files (format only) | package tests |
 | **A2 Editor** | `tools/content-editor/index.html` and its README | headless Chrome run of the editor's checks |
 | **A3 Drafting aid** | `scripts/content-index.sh` (exists; add per-language index and `--mirror`) | its `--check` and `--self-test` |
+| **Q1 Test suite reshape** | `BLTApp/BLTAppUITests/*`, `.github/workflows/ci.yml`, `scripts/test.sh`, DECISIONS 045 (see `plan.md`) | three PR runs under 15 minutes; full tier green on `main` |
 | **A4 Profile** | `Packages/BLTKit/Sources/BLTProgress/Profile/*` and its tests | package tests |
 
-A1 to A4 run in parallel after T1, as Sonnet agents in separate worktrees, one PR each. Details that are easy
+A1 to A4 and Q1 run in parallel after T1 (at most three agents at a time), as Sonnet agents in separate worktrees, one PR each. Details that are easy
 to get wrong:
 - **A1.** Lesson: add the required `language` (`tamil`/`telugu`); `level` already exists. Item: rename
   `tamilScript` to `script`, which must contain characters of the lesson language's script (Tamil U+0B80 to
@@ -55,7 +56,7 @@ Product rules that matter: two spoken registers only per language (casual and re
 | `docs/REVIEWER_GUIDE.md` | How a native speaker reviews a course (written for the Telugu reviewer). |
 | `docs/ARCHITECTURE.md` | How the code is organised (modules, data flow, storage, enforcement). |
 | `docs/MVP_PLAN.md` | The v1 plan: frozen contracts (§5, §6a, §6b), chunks, review checklist (§7). |
-| `docs/DECISIONS.md` | ADRs 001-044. Newest decisions win; 024-037 define v1; 038-044 are pending (two courses). |
+| `docs/DECISIONS.md` | ADRs 001-045. Newest decisions win; 024-037 define v1; 039, 041-045 are pending (two courses, test tiers). |
 | `Packages/BLTKit/` | Swift package: BLTCore, BLTCatalog, BLTProgress, BLTSession, BLTDesign, BLTContentStore, BLTFeatures + tests. |
 | `BLTApp/BLTApp.xcodeproj` | App shell. Sources in `BLTApp/BLTApp/`; UI tests in `BLTApp/BLTAppUITests/`. Links only the `BLTFeatures` product. |
 | `content/scenario-0N-*.json` | 5 lessons x 20 items, Claude-drafted, bundled into the app as a folder reference. |

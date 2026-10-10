@@ -18,6 +18,10 @@
 - Thesis rewritten in `README.md`, `CLAUDE.md`, `docs/PRD.md` (note at the top), `docs/ARCHITECTURE.md` (planned section), `docs/BUILD_PLAN.md`, `docs/MVP_PLAN.md` (pending note), `docs/HANDOFF.md`.
 - `docs/COURSE_SYLLABUS.md` widened to two courses; DECISIONS 042 to 044 added; `docs/REVIEWER_GUIDE.md` added.
 
+## Plan changes requested by the owner (2026-10-09)
+- The five reviewed Tamil lessons are renamed to the new id scheme in chunk B1; no learner progress exists, so nothing is migrated and the old build's files are removed at first launch.
+- New chunk Q1 and DECISIONS 045: reshape the slow UI test suite into a short required tier and a full tier.
+
 ## Deviations
 - `plan.md` chunks A1 to A3 were rewritten as deltas after finding that the old plan's Wave 1 was already merged.
 - PR #14 (handoff for the old plan's Wave 2) is superseded by this work and should be closed, not merged.

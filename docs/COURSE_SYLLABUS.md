@@ -118,7 +118,7 @@ Each course has the same shape.
 ## 5. The lessons
 
 Both courses use this list. Paired lessons share a key: `ta-l02-u03` in the Tamil course and `te-l02-u03` in the
-Telugu course (DECISIONS 044). The first five Tamil lessons keep their original ids so saved progress survives.
+Telugu course (DECISIONS 044). The first five Tamil lessons are renamed to this scheme (`ta-l01-u01` to `ta-l01-u05`).
 "Exists in Tamil" marks the five lessons already written and reviewed for the Tamil course.
 
 ### Level 1: Survival
