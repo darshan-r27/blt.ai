@@ -9,6 +9,15 @@ for a couple who share English.** The owner approved `plan.md` on 2026-10-09. Wa
 to #13) and is reused: optional `level` and `tamilScript`, the three duplicate rules, the editor fields, and
 `scripts/content-index.sh`. So A1 to A3 below are deltas on that work, not new builds.
 
+**Which branch to start from.** The Wave 0 documents are PR #15 (branch `two-way-thesis`), set to squash-merge
+by itself when CI is green. Wave 1 may start before it merges:
+- If `git log origin/main` shows the "Thesis: blt.ai becomes a two-way course" commit, start from `origin/main`.
+- If not, start every Wave 1 branch from `origin/two-way-thesis` (it already contains `main`).
+- **Do not open a Wave 1 PR until #15 has merged.** Then move each branch onto `main` with
+  `git rebase --onto origin/main origin/two-way-thesis <branch>`, rerun its proof, push, and open the PR. PR #15
+  is squashed, so a plain rebase or merge would replay its commits and conflict; `--onto` avoids that.
+- Never push to `two-way-thesis`: a push restarts its 40-minute CI and delays the merge.
+
 **Next task: chunk T1 of `plan.md`, then Wave 1.** Read `plan.md`, `docs/COURSE_SYLLABUS.md` and DECISIONS 038
 to 044 first.
 
