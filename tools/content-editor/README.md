@@ -11,16 +11,22 @@ A single offline HTML file for reviewing and editing `content/*.json`. No networ
 
 Safari and Firefox cannot write into folders: use **Open files…**, and saving downloads the edited files to move into `content/`.
 
-**Checks** (the same rules as the app's loader, `docs/MVP_PLAN.md` section 2 and `docs/DECISIONS.md` 038 to 040): four distinct options; the correct answer is in the accepted spellings and no wrong option is; casual and respectful items need the other-register version and two wrong options, neutral items need three; 3 to 6 accepted spellings, none listed twice (ignoring case and spaces); every gloss word appears in the correct answer; romanised Tamil only (no Tamil script, except in the Tamil script box below).
+**Checks** (the same rules as the app's loader, `docs/MVP_PLAN.md` section 2 and `docs/DECISIONS.md` 038 to 040): four distinct options; the correct answer is in the accepted spellings and no wrong option is; casual and respectful items need the other-register version and two wrong options, neutral items need three; 3 to 6 accepted spellings, none listed twice (ignoring case and spaces); every gloss word appears in the correct answer; romanised text only (no Tamil or Telugu script, except in the script box below).
 
-**Duplicates:** across all loaded files, no two items may share a prompt and no two may share a correct answer. Capitals, spaces and punctuation are ignored, so "Where is it?" and "where is it" count as the same. The message names the other item. Inside one item the rule is narrower: accepted spellings are only compared ignoring case and outer spaces, so spellings that differ by a question mark or a hyphen are fine.
+**Duplicates:** across all loaded files **of the same language**, no two items may share a prompt and no two may share a correct answer. Capitals, spaces and punctuation are ignored, so "Where is it?" and "where is it" count as the same. A Tamil lesson and a Telugu lesson are separate courses, so they never count as duplicates of each other. The message names the other item. Inside one item the rule is narrower: accepted spellings are only compared ignoring case and outer spaces, so spellings that differ by a question mark or a hyphen are fine.
 
-**Level (optional, per lesson):** three boxes at the top of each lesson: level number, level title, position in the level. Number and position are whole numbers, 1 or more; the title cannot be empty. Fill in all three or leave all three empty (an empty level is not written to the file; **Remove level** deletes an existing one). Every lesson with the same level number must use the same title; the editor flags it on every file involved, so open all the files together.
+**Level (optional, per lesson):** three boxes at the top of each lesson: level number, level title, position in the level. Number and position are whole numbers, 1 or more; the title cannot be empty. Fill in all three or leave all three empty (an empty level is not written to the file; **Remove level** deletes an existing one). Every lesson of the same language with the same level number must use the same title (each language numbers its own levels); the editor flags it on every file involved, so open all the files together.
 
-**Tamil script (optional, per item):** a box under "Correct answer" for the answer written in Tamil script, for generating audio later. If filled it needs at least one Tamil letter and no English letters. This is the only box where Tamil script is accepted; every other field still rejects it. The app does not show it yet.
+**Language (required, per lesson):** a Language box at the top of each lesson: Tamil or Telugu. The editor never guesses it: a file with no language, or an unknown one, shows an error on the lesson until you choose. It is written to the file right after `scenarioId`. The sidebar shows each file's language, and labels and messages use it.
 
-Saving keeps everything else in the file as it was: unknown keys, key order, and files with neither new field are written exactly as before.
+**Script (optional, per item):** a box under "Correct answer" for the answer written in the lesson language's own script ("Tamil script" or "Telugu script"), for generating audio later. If filled it needs at least one letter of that language's script and no English letters. This is the only box where Tamil or Telugu script is accepted; every other field rejects both. The app does not show it yet. The key is `script`; a leftover `tamilScript` key from the earlier format is not read or changed, it is kept in the file as an unknown key.
 
-**Review sheet:** **Export review sheet (CSV)** produces a spreadsheet with a blank "reviewer verdict" and "correction" column for a native speaker.
+**Gloss words:** the word-by-word gloss uses the key `word`. A lesson that still uses the old key `tamil` is shown as an error ("old format: this lesson was exported before the two-language change; re-export it or rename the key"). The editor never reads the old key as a stand-in.
+
+**If you review Telugu:** the editor works the same way for Telugu lessons. Set the lesson's Language to Telugu if it is not already, and follow `docs/REVIEWER_GUIDE.md` for how to get the files, what "reviewed" means and how to send them back.
+
+Saving keeps everything else in the file as it was: unknown keys and key order are kept, and a file you did not change is written exactly as it was read.
+
+**Review sheet:** **Export review sheet (CSV)** produces a spreadsheet (with language and script columns) plus blank "reviewer verdict" and "correction" columns for a native speaker.
 
 After editing, run `scripts/test.sh package` (the content-conformance test loads every file with the real loader), then commit.
