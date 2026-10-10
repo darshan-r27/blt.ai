@@ -46,5 +46,50 @@ public enum PreviewCatalog {
         note: nil,
         reviewStatus: .reviewed
     )
+
+    // MARK: Levels
+
+    /// A catalog with levels, for the Home previews and tests (the UI-test fixture above has none).
+    /// Level 1 has two lessons, listed out of order on purpose. Level 2 has two lessons. One lesson has no level.
+    static let leveledCatalog = Catalog(
+        scenarios: [
+            lesson("zz-l2-b", title: "zz lesson L2 B", level: Level(number: 2, title: "zz Now", position: 2)),
+            lesson("zz-l1-b", title: "zz lesson L1 B", level: Level(number: 1, title: "zz Survival", position: 2)),
+            lesson("zz-loose", title: "zz lesson without level", level: nil),
+            lesson("zz-l2-a", title: "zz lesson L2 A", level: Level(number: 2, title: "zz Now", position: 1)),
+            lesson("zz-l1-a", title: "zz lesson L1 A", level: Level(number: 1, title: "zz Survival", position: 1))
+        ],
+        issues: []
+    )
+
+    /// Four fake items per lesson, ids `<lesson>-i1` to `<lesson>-i4`.
+    static func lesson(_ id: String, title: String, level: Level?) -> Scenario {
+        let scenarioID = ScenarioID(rawValue: id)
+        let items = (1...4).map { number in
+            Item(
+                id: ItemID(rawValue: "\(id)-i\(number)"),
+                scenarioID: scenarioID,
+                sourcePrompt: "zz prompt \(id) \(number)",
+                register: .neutral,
+                addressee: .any,
+                canonical: "zz canonical \(id) \(number)",
+                acceptedAnswers: ["zz canonical \(id) \(number)", "zz alt a \(id) \(number)", "zz alt b \(id)"],
+                registerVariant: nil,
+                distractors: ["zz wrong a", "zz wrong b", "zz wrong c"],
+                tokens: [Token(word: "zz", english: "zz gloss")],
+                note: nil,
+                reviewStatus: .unreviewed
+            )
+        }
+        return Scenario(
+            id: scenarioID,
+            title: title,
+            subtitle: "zz subtitle \(id)",
+            romanisationNote: nil,
+            items: items,
+            level: level,
+            language: .tamil
+        )
+    }
 }
 #endif

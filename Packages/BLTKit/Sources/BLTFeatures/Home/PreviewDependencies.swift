@@ -20,6 +20,16 @@ enum PreviewDependencies {
         make(store: InMemoryProgressStore(initial: snapshot))
     }
 
+    /// The leveled catalog: level 1 finished, level 2 started, one lesson with no level.
+    static func withLevels() -> AppDependencies {
+        AppDependencies(
+            catalog: PreviewCatalog.leveledCatalog,
+            store: InMemoryProgressStore(initial: leveledSnapshot),
+            scheduler: SM2Scheduler(),
+            now: { now }
+        )
+    }
+
     static func empty() -> AppDependencies {
         make(store: InMemoryProgressStore())
     }
@@ -60,6 +70,29 @@ enum PreviewDependencies {
         ]
         let byID = Dictionary(uniqueKeysWithValues: reviews.map { ($0.itemID, $0) })
         return ProgressSnapshot(reviews: byID, attempts: attempts)
+    }
+
+    /// Every item of both level 1 lessons correct; two of the four items of "zz-l2-a" correct.
+    static var leveledSnapshot: ProgressSnapshot {
+        let day: TimeInterval = 86_400
+        let correct = (
+            ["zz-l1-a", "zz-l1-b"].flatMap { lesson in (1...4).map { "\(lesson)-i\($0)" } }
+                + ["zz-l2-a-i1", "zz-l2-a-i2"]
+        ).map { id in
+            ReviewState(
+                itemID: ItemID(rawValue: id),
+                repetitions: 1,
+                intervalDays: 1,
+                easeFactor: 2.5,
+                due: now.addingTimeInterval(day),
+                lastOutcome: .correct,
+                lastReviewed: now.addingTimeInterval(-day)
+            )
+        }
+        return ProgressSnapshot(
+            reviews: Dictionary(uniqueKeysWithValues: correct.map { ($0.itemID, $0) }),
+            attempts: []
+        )
     }
 }
 #endif
