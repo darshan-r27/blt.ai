@@ -13,8 +13,8 @@ import XCTest
 @MainActor
 class AccessibilityAuditCase: BLTUITestCase {
     enum Screen {
-        case intro, nameEntry, language, languageChosen, home, question, feedback, progress, settings, settingsLanguageChoice
-        case changeName
+        case intro, nameEntry, language, languageChosen, home, question, feedback, progress
+        case settings, settingsLanguageChoice, changeName
     }
 
     /// Launches fresh and navigates to `screen`.
