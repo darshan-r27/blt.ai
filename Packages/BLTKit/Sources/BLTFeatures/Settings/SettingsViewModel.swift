@@ -103,11 +103,22 @@ final class SettingsViewModel {
             let problems = issueCount == 1 ? "1 problem" : "\(issueCount) problems"
             return "Nothing was imported: the file did not pass the lesson checks (\(problems)). "
                 + "Your lessons are unchanged."
+        case .failed(.wrongLanguage):
+            return wrongLanguageMessage
         case .failed(.couldNotSave):
             return "The lessons could not be saved. Your lessons are unchanged."
         case nil:
             return nil
         }
+    }
+    /// Names the language the file is for and the one being learned. With no language chosen it stays neutral.
+    private var wrongLanguageMessage: String {
+        let outcome = "Nothing was imported and your lessons are unchanged."
+        guard let current = learningLanguage,
+              let other = CourseLanguage.allCases.first(where: { $0 != current }) else {
+            return "That file is for the other language. \(outcome)"
+        }
+        return "That file is for \(other.displayName), not \(current.displayName). \(outcome)"
     }
     /// The count line under Import lessons, or `nil` when nothing is imported.
     var importedCountMessage: String? {

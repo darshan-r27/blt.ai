@@ -79,7 +79,7 @@ struct ImportedContentLanguageTests {
 
         let result = attempt(store, [url])
 
-        #expect(result == .failure(.invalid(issueCount: 1)))
+        #expect(result == .failure(.wrongLanguage))
         #expect(world.importedFileNames().isEmpty)
         #expect(store.currentSummary().scenarioIDs.isEmpty)
         #expect(world.layered(language: .tamil).catalog.scenarios.map(\.title) == ["zz bundled"])
@@ -94,7 +94,7 @@ struct ImportedContentLanguageTests {
 
         let result = attempt(store, [url])
 
-        #expect(result == .failure(.invalid(issueCount: 1)))
+        #expect(result == .failure(.wrongLanguage))
         #expect(world.importedFileNames().isEmpty)
         #expect(store.currentSummary().scenarioIDs.isEmpty)
     }
@@ -106,11 +106,22 @@ struct ImportedContentLanguageTests {
         let good = try world.pickScenario("zz-s8", language: .telugu, items: ["zz-k1"])
         let wrong = try world.pickScenario("zz-s9", language: .tamil, items: ["zz-j1"])
 
-        #expect(isInvalid(attempt(store, [good, wrong])))
+        #expect(attempt(store, [good, wrong]) == .failure(.wrongLanguage))
         #expect(world.importedFileNames().isEmpty)
 
         // The same batch without the wrong file imports.
         #expect(try store.importFiles([good]).scenarioIDs == [ScenarioID(rawValue: "zz-s8")])
+    }
+
+    @Test func aWrongLanguageFileBesideAnotherProblemIsReportedAsInvalidNotAsWrongLanguage() throws {
+        let world = try ImportWorld()
+        defer { world.remove() }
+        let store = world.store(language: .telugu)
+        let wrong = try world.pickScenario("zz-s9", language: .tamil, items: ["zz-j1"])
+        let broken = try world.pick("zz-broken.json", "{ not json")
+
+        #expect(attempt(store, [wrong, broken]) == .failure(.invalid(issueCount: 2)))
+        #expect(world.importedFileNames().isEmpty)
     }
 
     @Test func aFileOfTheCoursesOwnLanguageImports() throws {

@@ -55,7 +55,8 @@ private struct PickerFailure: Error {}
 @MainActor
 private func makeModel(
     importer: (any LessonImporting)?,
-    log: LessonChangeLog = LessonChangeLog()
+    log: LessonChangeLog = LessonChangeLog(),
+    language: CourseLanguage? = nil
 ) -> SettingsViewModel {
     SettingsViewModel(
         dependencies: AppDependencies(
@@ -68,7 +69,8 @@ private func makeModel(
         profileStore: InMemoryProfileStore(initial: UserProfile(name: "zz Sample")),
         profileName: "zz Sample",
         lessonImporter: importer,
-        onDidChangeLessons: { log.record($0) }
+        onDidChangeLessons: { log.record($0) },
+        learningLanguage: language
     )
 }
 
@@ -144,6 +146,36 @@ struct SettingsImportViewModelTests {
             #expect(model.importStatusMessage == message)
             #expect(model.importedCount == 0)
             #expect(model.isImporting == false)
+            #expect(log.changes.isEmpty)
+        }
+    }
+
+    @Test func aFileForTheOtherLanguageIsNamedPlainlyAndChangesNothing() async {
+        let cases: [(CourseLanguage?, String)] = [
+            (
+                .tamil,
+                "That file is for Telugu, not Tamil. Nothing was imported and your lessons are unchanged."
+            ),
+            (
+                .telugu,
+                "That file is for Tamil, not Telugu. Nothing was imported and your lessons are unchanged."
+            ),
+            (
+                nil,
+                "That file is for the other language. Nothing was imported and your lessons are unchanged."
+            )
+        ]
+        for (language, message) in cases {
+            let log = LessonChangeLog()
+            let model = makeModel(
+                importer: FakeLessonImporter(importResult: .failure(.wrongLanguage)),
+                log: log,
+                language: language
+            )
+            await model.importLessons(from: .success([pickedFile]))
+            #expect(model.importOutcome == .failed(.wrongLanguage))
+            #expect(model.importStatusMessage == message)
+            #expect(model.importedCount == 0)
             #expect(log.changes.isEmpty)
         }
     }
