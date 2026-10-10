@@ -3,14 +3,14 @@
 Read this first in a new session, then `CLAUDE.md`. Last updated 2026-10-09 (end of the Wave 1 session).
 
 ## Start here (next session)
-**Where the course work stands (2026-10-09).** Wave 1 of `plan.md` is built. Merged: #11 (`scripts/content-index.sh`) and #12 (editor: `level`, `tamilScript`, duplicate checks). **#13 (C1: catalog format and validator rules) is open and its CI was still running when this was written.** The owner told the previous session: "merge them once CI is green". Check first: `git fetch && git log --oneline origin/main -3` and `gh pr list`. If #13 is open and `gh pr checks 13` is all green with `mergeStateStatus` CLEAN, squash-merge it (`gh pr merge 13 --squash --delete-branch`). If CI fails, read the failure ("Summarise UI test failures" step prints messages), fix on the PR branch, and do not merge red.
+**Where the course work stands (2026-10-09).** Wave 1 of `plan.md` is built and merged: #11 (`scripts/content-index.sh`), #12 (editor: `level`, `tamilScript`, duplicate checks) and #13 (C1: catalog format and validator rules). The full check on the merged `main` passed (package tests, lint, guard, `content-index.sh --check`). **Next: finish the tidy-up below, then Wave 2.**
 
-**After #13 is merged**
-1. `git switch main && git pull --ff-only`, then run the full check: `BLT_SIM="iPhone 17" scripts/test.sh package`, `swiftlint lint --config .swiftlint.yml --strict`, `bash scripts/check-forbidden-apis.sh`, `bash scripts/content-index.sh --check`.
-2. Update `progress.md` (done, decisions, deviations, next action) and remove the three finished agent worktrees (`git worktree list`; `git worktree remove` the `agent-aee0692f924af5bdb`, `agent-a238e319db7773c75`, `agent-ad900df867829901c` ones).
+**Tidy-up, then report**
+1. `git switch main && git pull --ff-only`. Re-run the full check if anything changed: `BLT_SIM="iPhone 17" scripts/test.sh package`, `swiftlint lint --config .swiftlint.yml --strict`, `bash scripts/check-forbidden-apis.sh`, `bash scripts/content-index.sh --check`.
+2. Remove the three finished agent worktrees (`git worktree list`; `git worktree remove` the `agent-aee0692f924af5bdb`, `agent-a238e319db7773c75`, `agent-ad900df867829901c` ones).
 3. Stop and report to the owner (TL;DR first) before starting Wave 2.
 
-**Wave 2 (in `plan.md`; needs #13).** Three chunks on different files, so they can run in parallel as Sonnet agents in worktrees:
+**Wave 2 (in `plan.md`; its prerequisite #13 is merged).** Three chunks on different files, so they can run in parallel as Sonnet agents in worktrees:
 - **C4 Shipped content and tests.** Add `level` 1 to the five lesson files (`number` 1, title from `docs/COURSE_SYLLABUS.md`, `position` 1 to 5 in lesson order; this edits owner-reviewed files, so show the owner the diff first and change nothing else in them). Replace "exactly 5 files" in `Tests/BLTContentTests/ShippedContentTests.swift` with: at least 5 files, every file exactly 20 items, level numbers with no gaps, zero issues; any lesson id of the form `lNN-uNN` must have `tamilScript` on every item. Add `bash scripts/content-index.sh --check` and its `--self-test` to the guardrail job in `.github/workflows/ci.yml`; document the script in `docs/MVP_PLAN.md` and the README scripts list.
 - **C5 Home grouped by level.** `BLTFeatures/Home/*`, accessibility ids, `HomeUITests`, `PreviewCatalog`. Sections per level with completion, a "Continue" suggestion, collapsed finished levels, "Other lessons" for files without a level; nothing locked. Flip DECISIONS 039 to active when it lands.
 - **C6 Import limit 10 to 20** in `BLTContentStore/ImportedContentStore.swift`, its tests and the README import section (amends 036).
@@ -42,7 +42,7 @@ Product rules that matter: two spoken registers only (casual `nee/da/di`, respec
 | `docs/COURSE_SYLLABUS.md` | Owner-approved syllabus: 8 levels, 100 lessons, exam blueprint. English only. |
 | `docs/ARCHITECTURE.md` | How the code is organised (modules, data flow, storage, enforcement). |
 | `docs/MVP_PLAN.md` | The v1 plan: frozen contracts (§5, §6a, §6b), chunks, review checklist (§7). |
-| `docs/DECISIONS.md` | ADRs 001-041. Newest decisions win; 024-037 define v1; 038 and 040 are active once #13 merges (the duplicate rules, `tamilScript`); 039 (levels) and 041 (exam) are pending. |
+| `docs/DECISIONS.md` | ADRs 001-041. Newest decisions win; 024-037 define v1; 038 and 040 are active (the duplicate rules, `tamilScript`); 039 (levels) and 041 (exam) are pending. |
 | `Packages/BLTKit/` | Swift package: BLTCore, BLTCatalog, BLTProgress, BLTSession, BLTDesign, BLTContentStore, BLTFeatures + tests. |
 | `BLTApp/BLTApp.xcodeproj` | App shell. Sources in `BLTApp/BLTApp/`; UI tests in `BLTApp/BLTAppUITests/`. Links only the `BLTFeatures` product. |
 | `content/scenario-0N-*.json` | 5 lessons x 20 items, Claude-drafted, bundled into the app as a folder reference. |
@@ -64,7 +64,7 @@ Standard simulator: **iPhone 17** (only an iOS 27 runtime is installed). Paralle
 ## Status
 **Shipped on `main`:** the whole v1 app (onboarding, Home, sessions, Progress, Settings), lesson import from Files (036), Reset progress as a warning (037), the `BLTContentStore` module split, a narrowed `BLTFeatures` public API, `docs/ARCHITECTURE.md`, identity guard and CI.
 
-**Course plan (merged):** `plan.md`, `progress.md`, `docs/COURSE_SYLLABUS.md`, DECISIONS 038 to 041 (#8). Wave 1 chunks: #11 and #12 merged, #13 open (see "Start here").
+**Course plan (merged):** `plan.md`, `progress.md`, `docs/COURSE_SYLLABUS.md`, DECISIONS 038 to 041 (#8). Wave 1 chunks #11, #12 and #13 are merged (see "Start here").
 
 **Content review (owner, in the editor):** all five lessons (100 items) are reviewed and merged (#9, which also removed four repeated accepted spellings). Settings > About the content now reads "Every lesson was checked by a native Tamil speaker". New lessons from the course are drafted `unreviewed`, one level at a time.
 

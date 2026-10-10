@@ -3,7 +3,7 @@
 ## Done
 - Plan approved and merged (#8): `plan.md`, `docs/COURSE_SYLLABUS.md` (owner-approved 2026-10-09), DECISIONS 038 to 041.
 - Content: all five lessons (100 items) reviewed and merged (#9); four repeated accepted spellings removed.
-- Wave 1 (parallel Sonnet agents): C3 `scripts/content-index.sh` merged (#11); C2 editor `level`, `tamilScript` and duplicate checks merged (#12); C1 catalog format and validator rules open as #13 (CI running; owner said merge when green).
+- Wave 1 (parallel Sonnet agents): C3 `scripts/content-index.sh` merged (#11); C2 editor `level`, `tamilScript` and duplicate checks merged (#12); C1 catalog format and validator rules merged (#13). Full check on merged `main` passed.
 
 ## Decisions
 - Graded course of 8 levels; one level drafted and reviewed at a time; exam about 70 new plus 30 from the bank; levels ordered, not locked; `tamilScript` on new phrases.
@@ -21,4 +21,4 @@
 - Decide the drafting model for the Tamil (before Wave 3) and whether to add a `tamilScript` column to the CSV review sheet.
 
 ## Next action
-- Merge #13 when green, run the full check, update this file, report. Then Wave 2: C4 shipped content and tests (and `content-index.sh` in CI), C5 Home grouped by level, C6 import limit 20. Details in `docs/HANDOFF.md`.
+- Wave 2: C4 shipped content and tests (and `content-index.sh` in CI), C5 Home grouped by level, C6 import limit 20. Details in `docs/HANDOFF.md`.
