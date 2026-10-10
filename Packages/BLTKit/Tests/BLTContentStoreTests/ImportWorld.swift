@@ -71,7 +71,8 @@ struct ImportWorld {
     static func scenarioJSON(_ scenarioID: String, title: String = "zz title", rawItems: [String]) -> String {
         let body = rawItems.joined(separator: ",")
         return """
-        {"scenarioId": "\(scenarioID)", "title": "\(title)", "subtitle": "zz subtitle", "items": [\(body)]}
+        {"scenarioId": "\(scenarioID)", "language": "tamil", "title": "\(title)", "subtitle": "zz subtitle",
+         "items": [\(body)]}
         """
     }
 
@@ -86,7 +87,7 @@ struct ImportWorld {
         {"id": "\(id)", "sourcePrompt": "\(sourcePrompt ?? "zz prompt \(id)")", "register": "respectful",
          "addressee": "any", "canonical": "zz canonical \(id)", "acceptedAnswers": \(accepted),
          "registerVariant": "zz casual",
-         "distractors": \(distractors), "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+         "distractors": \(distractors), "tokens": [{"word": "zz", "english": "zz gloss"}],
          "note": null, "reviewStatus": "unreviewed"}
         """
     }

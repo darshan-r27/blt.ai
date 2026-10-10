@@ -50,7 +50,8 @@ struct SessionPlannerTests {
             title: "zz",
             subtitle: "zz",
             romanisationNote: nil,
-            items: (0..<count).map { item($0 + 1) }
+            items: (0..<count).map { item($0 + 1) },
+            language: .tamil
         )
     }
 
@@ -197,7 +198,8 @@ struct SessionPlannerTests {
             title: "zz",
             subtitle: "zz",
             romanisationNote: nil,
-            items: []
+            items: [],
+            language: .tamil
         )
         #expect(plan(none, .empty).isEmpty)
         #expect(reviewAnyway(none, .empty).isEmpty)

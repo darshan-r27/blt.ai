@@ -1,20 +1,25 @@
 import BLTCatalog
+import BLTCore
 import Foundation
 import Testing
 
 /// Content lives in `content/*.json` only (DECISIONS 025). No Swift source may carry shipped content as a string
-/// literal or any Tamil-script code point. This file is scanned too (it holds no content strings by construction:
+/// literal or any native-script (Tamil or Telugu) code point. This file is scanned too (it holds no content strings by construction:
 /// the comparison data is built at runtime from the JSON).
 struct NoContentInCodeTests {
     private let minimumLiteralLength = 5
-    private let tamilScalars: ClosedRange<UInt32> = 0x0B80...0x0BFF
+    private let nativeScriptRanges = CourseLanguage.allCases.map(\.scriptRange)
+
+    private func isNativeScriptScalar(_ scalar: Unicode.Scalar) -> Bool {
+        nativeScriptRanges.contains { $0.contains(scalar.value) }
+    }
 
     private struct Violation {
         let file: String
         let line: Int
-        let isTamilScript: Bool
+        let isNativeScript: Bool
 
-        var reason: String { isTamilScript ? "Tamil-script code point" : "shipped content string literal" }
+        var reason: String { isNativeScript ? "native-script code point" : "shipped content string literal" }
     }
 
     private var repoRoot: URL {
@@ -100,11 +105,11 @@ struct NoContentInCodeTests {
         var violations: [Violation] = []
         for (offset, line) in text.split(separator: "\n", omittingEmptySubsequences: false).enumerated() {
             let lineText = String(line)
-            if lineText.unicodeScalars.contains(where: { tamilScalars.contains($0.value) }) {
-                violations.append(Violation(file: relative, line: offset + 1, isTamilScript: true))
+            if lineText.unicodeScalars.contains(where: isNativeScriptScalar) {
+                violations.append(Violation(file: relative, line: offset + 1, isNativeScript: true))
             }
             if literals(in: lineText).contains(where: { content.contains($0) }) {
-                violations.append(Violation(file: relative, line: offset + 1, isTamilScript: false))
+                violations.append(Violation(file: relative, line: offset + 1, isNativeScript: false))
             }
         }
         return violations
@@ -124,12 +129,12 @@ struct NoContentInCodeTests {
         let content = try shippedStrings()
         var violations: [Violation] = []
         for file in swiftFiles() {
-            violations.append(contentsOf: try scan(file, content: content).filter { !$0.isTamilScript })
+            violations.append(contentsOf: try scan(file, content: content).filter { !$0.isNativeScript })
         }
         #expect(violations.isEmpty, report(violations))
     }
 
-    @Test func noSwiftFileContainsTamilScript() throws {
+    @Test func noSwiftFileContainsNativeScript() throws {
         var violations: [Violation] = []
         for file in swiftFiles() {
             violations.append(contentsOf: try scan(file, content: []))

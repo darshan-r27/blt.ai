@@ -2,7 +2,7 @@ import BLTCatalog
 import BLTCore
 
 /// All feedback wording in one place so it is easy to edit. Plain strings only; nothing here is
-/// Tamil content (the item data carries that).
+/// lesson content (the item data carries that).
 struct SessionFeedbackCopy: Equatable {
     let headline: String
     let detail: String

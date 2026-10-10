@@ -1,13 +1,13 @@
 import SwiftUI
 
-/// Word-by-word gloss: small Tamil/English pairs in a wrapping layout. Takes plain strings so
+/// Word-by-word gloss: small word/English pairs in a wrapping layout. Takes plain strings so
 /// BLTDesign does not depend on the catalog.
 public struct GlossView: View {
-    private let pairs: [(tamil: String, english: String)]
+    private let pairs: [(word: String, english: String)]
 
     @Environment(\.colorScheme) private var colorScheme
 
-    public init(_ pairs: [(tamil: String, english: String)]) {
+    public init(_ pairs: [(word: String, english: String)]) {
         self.pairs = pairs
     }
 
@@ -16,7 +16,7 @@ public struct GlossView: View {
         DesignWrappingLayout(horizontalSpacing: 12, verticalSpacing: 10) {
             ForEach(Array(pairs.enumerated()), id: \.offset) { _, pair in
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(pair.tamil)
+                    Text(pair.word)
                         .font(.body)
                         .foregroundStyle(palette.textPrimaryColor)
                     Text(pair.english)
@@ -32,7 +32,7 @@ public struct GlossView: View {
                         .strokeBorder(palette.outlineColor, lineWidth: 1)
                 )
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel("\(pair.tamil), meaning \(pair.english)")
+                .accessibilityLabel("\(pair.word), meaning \(pair.english)")
             }
         }
         .accessibilityElement(children: .contain)
@@ -40,12 +40,12 @@ public struct GlossView: View {
     }
 }
 
-private let previewPairs: [(tamil: String, english: String)] = [
-    (tamil: "zz-one", english: "first word"),
-    (tamil: "zz-two", english: "second"),
-    (tamil: "zz-three-longer", english: "a longer meaning that wraps onto more than one line"),
-    (tamil: "zz-four", english: "fourth"),
-    (tamil: "zz-five", english: "fifth word")
+private let previewPairs: [(word: String, english: String)] = [
+    (word: "zz-one", english: "first word"),
+    (word: "zz-two", english: "second"),
+    (word: "zz-three-longer", english: "a longer meaning that wraps onto more than one line"),
+    (word: "zz-four", english: "fourth"),
+    (word: "zz-five", english: "fifth word")
 ]
 
 #Preview("Default, light") {

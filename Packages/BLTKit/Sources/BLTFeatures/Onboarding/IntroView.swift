@@ -22,7 +22,7 @@ struct IntroView: View {
                     .multilineTextAlignment(.center)
                     .accessibilityLabel("B L T dot A I")
                     .accessibilityAddTraits(.isHeader)
-                Text("Learn the Tamil people actually speak.")
+                Text("Learn the Tamil / Telugu people actually speak.")
                     .font(.title3)
                     .foregroundStyle(palette.textSecondaryColor)
                     .multilineTextAlignment(.center)

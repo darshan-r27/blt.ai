@@ -13,7 +13,8 @@ public enum PreviewCatalog {
         title: "zz scenario",
         subtitle: "zz subtitle",
         romanisationNote: nil,
-        items: [respectfulItem, neutralItem]
+        items: [respectfulItem, neutralItem],
+        language: .tamil
     )
 
     static let respectfulItem = Item(
@@ -26,7 +27,7 @@ public enum PreviewCatalog {
         acceptedAnswers: ["zz canonical one", "zz canonical uno", "zz canonical eins"],
         registerVariant: "zz casual one",
         distractors: ["zz wrong one", "zz wrong two"],
-        tokens: [Token(tamil: "zz", english: "zz gloss")],
+        tokens: [Token(word: "zz", english: "zz gloss")],
         note: "zz note",
         reviewStatus: .unreviewed
     )
@@ -41,7 +42,7 @@ public enum PreviewCatalog {
         acceptedAnswers: ["zz canonical two", "zz canonical dos", "zz canonical zwei"],
         registerVariant: nil,
         distractors: ["zz wrong three", "zz wrong four", "zz wrong five"],
-        tokens: [Token(tamil: "zz", english: "zz gloss")],
+        tokens: [Token(word: "zz", english: "zz gloss")],
         note: nil,
         reviewStatus: .reviewed
     )

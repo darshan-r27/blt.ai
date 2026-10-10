@@ -1,5 +1,6 @@
 {
   "scenarioId": "zz-a-first",
+  "language": "tamil",
   "title": "zz a",
   "subtitle": "zz subtitle",
   "items": [
@@ -12,7 +13,7 @@
       "acceptedAnswers": ["zz a canonical", "zz a two", "zz a three"],
       "registerVariant": null,
       "distractors": ["zz wrong a", "zz wrong b", "zz wrong c"],
-      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "tokens": [{"word": "zz", "english": "zz gloss"}],
       "note": null,
       "reviewStatus": "unreviewed"
     }

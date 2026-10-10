@@ -35,7 +35,8 @@ private struct ContentFolder {
     static func scenarioJSON(scenarioID: String, itemIDs: [String]) -> String {
         let items = itemIDs.map { itemJSON(id: $0) }.joined(separator: ",")
         return """
-        {"scenarioId": "\(scenarioID)", "title": "zz title", "subtitle": "zz subtitle", "items": [\(items)]}
+        {"scenarioId": "\(scenarioID)", "language": "tamil", "title": "zz title", "subtitle": "zz subtitle",
+         "items": [\(items)]}
         """
     }
 
@@ -45,7 +46,7 @@ private struct ContentFolder {
         return """
         {"id": "\(id)", "sourcePrompt": "zz prompt \(id)", "register": "respectful", "addressee": "any",
          "canonical": "zz canonical \(id)", "acceptedAnswers": \(accepted), "registerVariant": "zz casual",
-         "distractors": ["zz wrong a", "zz wrong b"], "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+         "distractors": ["zz wrong a", "zz wrong b"], "tokens": [{"word": "zz", "english": "zz gloss"}],
          "note": null, "reviewStatus": "unreviewed"}
         """
     }
@@ -118,7 +119,7 @@ struct BootstrapTests {
         let folder = try ContentFolder()
         defer { folder.remove() }
         let mixed = """
-        {"scenarioId": "zz-s1", "title": "zz title", "subtitle": "zz subtitle",
+        {"scenarioId": "zz-s1", "language": "tamil", "title": "zz title", "subtitle": "zz subtitle",
          "items": [\(ContentFolder.itemJSON(id: "zz-good")), \(ContentFolder.itemJSON(id: "zz-bad", broken: true))]}
         """
         try folder.write("zz-1.json", mixed)

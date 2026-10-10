@@ -399,7 +399,7 @@ The profile gains the language being learned. Onboarding asks for it after the n
 - `AppDependencies` gains the language so screens can name it in their wording. Nothing else in the engine reads it.
 
 ## 044 — One lesson format for both languages
-**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunks A1, A2 and B1. Amends 038 to 040 and rewrites `docs/MVP_PLAN.md` section 2
+**Status:** active — agreed with the owner on 2026-10-09; built in plan.md chunks A1, A2 and B1. Amends 038 to 040 and rewrites `docs/MVP_PLAN.md` section 2. Chunk A1 applied the catalog format (required `language`, `script`, `word`, wrong-course rejection) and updated the five shipped lessons in place.
 
 - **`language`** (`tamil` or `telugu`) is required on every lesson file. A lesson in the wrong course is rejected, bundled or imported, so a Telugu file cannot land in the Tamil course.
 - **Folders and ids.** `content/tamil/` and `content/telugu/`. Paired lessons share a key: `ta-l02-u03` and `te-l02-u03`, with items `ta-l02-u03-i01`. The five original Tamil lessons are renamed to this scheme (`ta-l01-u01` to `ta-l01-u05`) and stay `reviewed`; this reverses the "keep their ids" part of 039, because there is no saved progress to protect.

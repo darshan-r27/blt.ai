@@ -1,5 +1,6 @@
 {
   "scenarioId": "s04",
+  "language": "tamil",
   "title": "Shopping and bargaining",
   "subtitle": "Prices, sizes, paying and polite haggling",
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
@@ -25,11 +26,11 @@
       ],
       "tokens": [
         {
-          "tamil": "idhu",
+          "word": "idhu",
           "english": "this"
         },
         {
-          "tamil": "evlo",
+          "word": "evlo",
           "english": "how much"
         }
       ],
@@ -55,15 +56,15 @@
       ],
       "tokens": [
         {
-          "tamil": "vela",
+          "word": "vela",
           "english": "price"
         },
         {
-          "tamil": "romba",
+          "word": "romba",
           "english": "very"
         },
         {
-          "tamil": "jaasthi",
+          "word": "jaasthi",
           "english": "too much"
         }
       ],
@@ -89,19 +90,19 @@
       ],
       "tokens": [
         {
-          "tamil": "vela",
+          "word": "vela",
           "english": "price"
         },
         {
-          "tamil": "konjam",
+          "word": "konjam",
           "english": "a little"
         },
         {
-          "tamil": "kammi",
+          "word": "kammi",
           "english": "less"
         },
         {
-          "tamil": "pannunga",
+          "word": "pannunga",
           "english": "do (respectful)"
         }
       ],
@@ -128,11 +129,11 @@
       ],
       "tokens": [
         {
-          "tamil": "last price",
+          "word": "last price",
           "english": "final price"
         },
         {
-          "tamil": "evlo",
+          "word": "evlo",
           "english": "how much"
         }
       ],
@@ -159,11 +160,11 @@
       ],
       "tokens": [
         {
-          "tamil": "rendu",
+          "word": "rendu",
           "english": "two"
         },
         {
-          "tamil": "eduthukkuren",
+          "word": "eduthukkuren",
           "english": "I'll take"
         }
       ],
@@ -191,11 +192,11 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "venaam",
+          "word": "venaam",
           "english": "not wanted"
         }
       ],
@@ -222,15 +223,15 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "idhu",
+          "word": "idhu",
           "english": "this"
         },
         {
-          "tamil": "pidichirukku",
+          "word": "pidichirukku",
           "english": "is liked"
         }
       ],
@@ -256,15 +257,15 @@
       ],
       "tokens": [
         {
-          "tamil": "periya",
+          "word": "periya",
           "english": "big"
         },
         {
-          "tamil": "size",
+          "word": "size",
           "english": "size"
         },
         {
-          "tamil": "irukkaa",
+          "word": "irukkaa",
           "english": "do you have?"
         }
       ],
@@ -291,15 +292,15 @@
       ],
       "tokens": [
         {
-          "tamil": "vera",
+          "word": "vera",
           "english": "other"
         },
         {
-          "tamil": "colour",
+          "word": "colour",
           "english": "colour"
         },
         {
-          "tamil": "irukkaa",
+          "word": "irukkaa",
           "english": "do you have?"
         }
       ],
@@ -326,11 +327,11 @@
       ],
       "tokens": [
         {
-          "tamil": "try",
+          "word": "try",
           "english": "putting on"
         },
         {
-          "tamil": "panlama?",
+          "word": "panlama?",
           "english": "can i do?"
         }
       ],
@@ -356,15 +357,15 @@
       ],
       "tokens": [
         {
-          "tamil": "enga",
+          "word": "enga",
           "english": "where"
         },
         {
-          "tamil": "pay",
+          "word": "pay",
           "english": "paying money"
         },
         {
-          "tamil": "pannanum",
+          "word": "pannanum",
           "english": "should give"
         }
       ],
@@ -390,11 +391,11 @@
       ],
       "tokens": [
         {
-          "tamil": "card",
+          "word": "card",
           "english": "card"
         },
         {
-          "tamil": "accept pannuveengala",
+          "word": "accept pannuveengala",
           "english": "will you accept?"
         }
       ],
@@ -422,11 +423,11 @@
       ],
       "tokens": [
         {
-          "tamil": "GPay",
+          "word": "GPay",
           "english": "by GPay"
         },
         {
-          "tamil": "panlama?",
+          "word": "panlama?",
           "english": "may I pay?"
         }
       ],
@@ -452,11 +453,11 @@
       ],
       "tokens": [
         {
-          "tamil": "pack",
+          "word": "pack",
           "english": "pack"
         },
         {
-          "tamil": "pannunga",
+          "word": "pannunga",
           "english": "do (respectful)"
         }
       ],
@@ -482,11 +483,11 @@
       ],
       "tokens": [
         {
-          "tamil": "bag",
+          "word": "bag",
           "english": "bag"
         },
         {
-          "tamil": "irukkaa",
+          "word": "irukkaa",
           "english": "do you have?"
         }
       ],
@@ -513,15 +514,15 @@
       ],
       "tokens": [
         {
-          "tamil": "kadai",
+          "word": "kadai",
           "english": "shop"
         },
         {
-          "tamil": "eppo",
+          "word": "eppo",
           "english": "when"
         },
         {
-          "tamil": "thorakum",
+          "word": "thorakum",
           "english": "will open"
         }
       ],
@@ -547,15 +548,15 @@
       ],
       "tokens": [
         {
-          "tamil": "arai",
+          "word": "arai",
           "english": "half"
         },
         {
-          "tamil": "kilo",
+          "word": "kilo",
           "english": "kilo"
         },
         {
-          "tamil": "kudunga",
+          "word": "kudunga",
           "english": "give (respectful)"
         }
       ],
@@ -582,11 +583,11 @@
       ],
       "tokens": [
         {
-          "tamil": "oru kilo",
+          "word": "oru kilo",
           "english": "one kilo"
         },
         {
-          "tamil": "evlo",
+          "word": "evlo",
           "english": "how much"
         }
       ],
@@ -612,11 +613,11 @@
       ],
       "tokens": [
         {
-          "tamil": "discount",
+          "word": "discount",
           "english": "discount"
         },
         {
-          "tamil": "irukkaa",
+          "word": "irukkaa",
           "english": "is there?"
         }
       ],
@@ -642,15 +643,15 @@
       ],
       "tokens": [
         {
-          "tamil": "naan",
+          "word": "naan",
           "english": "I"
         },
         {
-          "tamil": "aprom",
+          "word": "aprom",
           "english": "later"
         },
         {
-          "tamil": "varen",
+          "word": "varen",
           "english": "I come"
         }
       ],

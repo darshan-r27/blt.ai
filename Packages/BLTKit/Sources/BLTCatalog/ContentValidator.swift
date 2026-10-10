@@ -11,16 +11,26 @@ struct ContentValidator: Sendable {
 
     /// Validates one scenario file. `registry` carries what earlier files already claimed (ids, prompts,
     /// canonical answers, level titles), so a repeat is rejected here and the earlier file wins.
-    func validate(_ raw: RawScenario, fileIndex: Int, registry: inout CatalogRegistry) -> Validation {
+    func validate(
+        _ raw: RawScenario,
+        fileIndex: Int,
+        registry: inout CatalogRegistry,
+        expectedLanguage: CourseLanguage? = nil
+    ) -> Validation {
         var header = Checker(limits: limits, fileIndex: fileIndex, malformed: raw.malformed)
         let rawID = header.string(raw.scenarioId, .scenarioId)
         header.scenarioID = rawID.map { ScenarioID(rawValue: $0) }
+        let language: CourseLanguage? = header.enumValue(raw.language, .language)
         let title = header.string(raw.title, .title)
         let subtitle = header.string(raw.subtitle, .subtitle)
         let romanisationNote = header.string(raw.romanisationNote, .note, required: false)
         let level = header.level(raw.level)
-        guard header.issues.isEmpty, let scenarioID = header.scenarioID, let title, let subtitle else {
+        guard header.issues.isEmpty, let scenarioID = header.scenarioID, let language, let title, let subtitle else {
             return (nil, header.issues)
+        }
+        // Before anything is claimed in the registry: a lesson from the other course leaves no trace.
+        if let expectedLanguage, language != expectedLanguage {
+            return (nil, [header.issue(.wrongLanguage)])
         }
         guard registry.scenarioIDs.insert(scenarioID).inserted else {
             return (nil, [header.issue(.duplicateScenarioID)])
@@ -36,7 +46,7 @@ struct ContentValidator: Sendable {
         }
 
         var (items, issues) = acceptedItems(
-            rawItems, scenarioID: scenarioID, fileIndex: fileIndex, registry: &registry
+            rawItems, scenarioID: scenarioID, language: language, fileIndex: fileIndex, registry: &registry
         )
         guard !items.isEmpty else {
             issues.append(header.issue(.emptyScenario))
@@ -49,7 +59,8 @@ struct ContentValidator: Sendable {
             subtitle: subtitle,
             romanisationNote: romanisationNote,
             items: items,
-            level: level
+            level: level,
+            language: language
         )
         return (scenario, issues)
     }
@@ -58,13 +69,14 @@ struct ContentValidator: Sendable {
     private func acceptedItems(
         _ rawItems: [RawItem],
         scenarioID: ScenarioID,
+        language: CourseLanguage,
         fileIndex: Int,
         registry: inout CatalogRegistry
     ) -> (items: [Item], issues: [ContentIssue]) {
         var items: [Item] = []
         var issues: [ContentIssue] = []
         for rawItem in rawItems {
-            let result = validateItem(rawItem, scenarioID: scenarioID, fileIndex: fileIndex)
+            let result = validateItem(rawItem, scenarioID: scenarioID, language: language, fileIndex: fileIndex)
             issues.append(contentsOf: result.issues)
             guard let item = result.item else { continue }
             let clashes = registry.clashes(for: item)
@@ -83,6 +95,7 @@ struct ContentValidator: Sendable {
     private func validateItem(
         _ raw: RawItem,
         scenarioID: ScenarioID,
+        language: CourseLanguage,
         fileIndex: Int
     ) -> (item: Item?, issues: [ContentIssue]) {
         var checker = Checker(limits: limits, fileIndex: fileIndex, malformed: raw.malformed)
@@ -101,7 +114,7 @@ struct ContentValidator: Sendable {
         let tokens = checker.tokens(raw.tokens)
         let note = checker.string(raw.note, .note, required: false)
         let reviewStatus: ReviewStatus? = checker.enumValue(raw.reviewStatus, .reviewStatus)
-        let tamilScript = checker.tamilScript(raw.tamilScript)
+        let script = checker.script(raw.script, in: language)
 
         guard checker.issues.isEmpty,
               let itemID = checker.itemID, let sourcePrompt, let register, let addressee, let canonical,
@@ -121,7 +134,7 @@ struct ContentValidator: Sendable {
             tokens: tokens,
             note: note,
             reviewStatus: reviewStatus,
-            tamilScript: tamilScript
+            script: script
         )
         let rules = Self.relationRules(for: item)
         guard rules.isEmpty else { return (nil, rules.map { checker.issue($0) }) }
@@ -143,7 +156,7 @@ struct ContentValidator: Sendable {
         if (item.register == .neutral) != (item.registerVariant == nil) { rules.append(.registerVariantMismatch) }
         if item.distractors.count != (item.registerVariant == nil ? 3 : 2) { rules.append(.wrongDistractorCount) }
         let tokenMissing = item.tokens.contains {
-            item.canonical.range(of: normalised($0.tamil), options: .caseInsensitive) == nil
+            item.canonical.range(of: normalised($0.word), options: .caseInsensitive) == nil
         }
         if tokenMissing { rules.append(.tokenNotInCanonical) }
         return rules
@@ -163,9 +176,6 @@ extension ContentValidator {
         var scenarioID: ScenarioID?
         var itemID: ItemID?
         var issues: [ContentIssue] = []
-
-        /// Tamil script block, U+0B80 to U+0BFF.
-        private static let tamilBlock: ClosedRange<UInt32> = 0x0B80...0x0BFF
 
         init(limits: ContentLoader.Limits, fileIndex: Int, malformed: Set<ContentIssue.Field>) {
             self.limits = limits
@@ -205,30 +215,30 @@ extension ContentValidator {
             return Level(number: number, title: trimmed, position: position)
         }
 
-        /// The optional Tamil-script spelling. It is the one field where Tamil script is required and
-        /// Latin letters are banned, so it skips `accept`, which rejects Tamil script.
-        mutating func tamilScript(_ value: String?) -> String? {
-            if malformed.contains(.tamilScript) {
-                report(.unknownValue(.tamilScript))
+        /// The optional native-script spelling. It is the one field where the lesson language's script is
+        /// required and Latin letters are banned, so it skips `accept`, which rejects both scripts.
+        mutating func script(_ value: String?, in language: CourseLanguage) -> String? {
+            if malformed.contains(.script) {
+                report(.unknownValue(.script))
                 return nil
             }
             guard let value else { return nil }
             if value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                report(.emptyField(.tamilScript))
+                report(.emptyField(.script))
                 return nil
             }
             if value.count > limits.maxStringLength {
-                report(.fieldTooLong(.tamilScript))
+                report(.fieldTooLong(.script))
                 return nil
             }
-            let hasTamil = value.unicodeScalars.contains { Self.tamilBlock.contains($0.value) }
+            let hasNative = value.unicodeScalars.contains { language.isScriptScalar($0) }
             let hasLatin = value.unicodeScalars.contains { ("A"..."Z").contains($0) || ("a"..."z").contains($0) }
-            if !hasTamil { report(.tamilScriptMissingTamil) }
-            if hasLatin { report(.latinLettersInTamilScript) }
-            return hasTamil && !hasLatin ? value : nil
+            if !hasNative { report(.scriptMissingNativeLetters) }
+            if hasLatin { report(.latinLettersInScript) }
+            return hasNative && !hasLatin ? value : nil
         }
 
-        /// A required (or optional) string field. A present but empty, over-long or Tamil-script value is
+        /// A required (or optional) string field. A present but empty, over-long or native-script value is
         /// an issue; an absent optional field is not.
         mutating func string(_ value: String?, _ field: ContentIssue.Field, required: Bool = true) -> String? {
             if malformed.contains(field) {
@@ -289,10 +299,10 @@ extension ContentValidator {
                 report(.unknownValue(.tokens))
                 return nil
             }
-            let tamil = present(entry.tamil, .tokens, required: true)
+            let word = present(entry.word, .tokens, required: true)
             let english = present(entry.english, .tokens, required: true)
-            guard let tamil, let english else { return nil }
-            return Token(tamil: tamil, english: english)
+            guard let word, let english else { return nil }
+            return Token(word: word, english: english)
         }
 
         private mutating func present(_ value: String?, _ field: ContentIssue.Field, required: Bool) -> String? {
@@ -312,9 +322,12 @@ extension ContentValidator {
                 report(.fieldTooLong(field))
                 return nil
             }
-            // Tamil script block, U+0B80 to U+0BFF: content is romanised, never script.
-            if value.unicodeScalars.contains(where: { Self.tamilBlock.contains($0.value) }) {
-                report(.tamilScriptInField(field))
+            // Content is romanised: a scalar of any course language's script block is rejected here.
+            // Only `script` is allowed native letters, and it does not come through this function.
+            if value.unicodeScalars.contains(where: { scalar in
+                CourseLanguage.allCases.contains { $0.isScriptScalar(scalar) }
+            }) {
+                report(.nativeScriptInField(field))
                 return nil
             }
             return value

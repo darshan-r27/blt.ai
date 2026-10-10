@@ -1,5 +1,6 @@
 {
   "scenarioId": "zz-tolerant",
+  "language": "tamil",
   "title": "zz tolerant",
   "subtitle": "zz subtitle",
   "registerPolicy": "zz policy text the loader must ignore",
@@ -15,7 +16,7 @@
       "acceptedAnswers": ["zz one canonical", "zz one b", "zz one c"],
       "registerVariant": "zz one respectful",
       "distractors": ["zz one wrong a", "zz one wrong b"],
-      "tokens": [{"tamil": "ZZ", "english": "zz gloss", "extraTokenKey": true}],
+      "tokens": [{"word": "ZZ", "english": "zz gloss", "extraTokenKey": true}],
       "note": "zz note",
       "reviewStatus": "reviewed",
       "extraItemKey": "zz ignored"
@@ -29,7 +30,7 @@
       "acceptedAnswers": ["zz two canonical", "zz two b", "zz two c"],
       "registerVariant": null,
       "distractors": ["zz two wrong a", "zz two wrong b", "zz two wrong c"],
-      "tokens": [{"tamil": "zz two", "english": "zz gloss"}],
+      "tokens": [{"word": "zz two", "english": "zz gloss"}],
       "note": null,
       "reviewStatus": "unreviewed"
     }

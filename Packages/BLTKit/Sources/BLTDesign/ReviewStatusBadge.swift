@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Small badge shown wherever an unreviewed item's Tamil appears (DECISIONS 025).
+/// Small badge shown wherever an unreviewed item's text appears (DECISIONS 025).
 public struct ReviewStatusBadge: View {
     @Environment(\.colorScheme) private var colorScheme
 

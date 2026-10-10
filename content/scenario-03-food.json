@@ -1,5 +1,6 @@
 {
   "scenarioId": "s03",
+  "language": "tamil",
   "title": "Food and eating out",
   "subtitle": "Ordering, tasting and paying at a restaurant or stall",
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
@@ -25,11 +26,11 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "pasikkuthu",
+          "word": "pasikkuthu",
           "english": "hunger is felt"
         }
       ],
@@ -55,15 +56,15 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "thaagamaa",
+          "word": "thaagamaa",
           "english": "thirsty"
         },
         {
-          "tamil": "irukku",
+          "word": "irukku",
           "english": "is"
         }
       ],
@@ -89,11 +90,11 @@
       ],
       "tokens": [
         {
-          "tamil": "thanni",
+          "word": "thanni",
           "english": "water"
         },
         {
-          "tamil": "kudunga",
+          "word": "kudunga",
           "english": "give (respectful)"
         }
       ],
@@ -119,15 +120,15 @@
       ],
       "tokens": [
         {
-          "tamil": "oru",
+          "word": "oru",
           "english": "one"
         },
         {
-          "tamil": "tea",
+          "word": "tea",
           "english": "tea"
         },
         {
-          "tamil": "kudunga",
+          "word": "kudunga",
           "english": "give (respectful)"
         }
       ],
@@ -153,11 +154,11 @@
       ],
       "tokens": [
         {
-          "tamil": "enna",
+          "word": "enna",
           "english": "what"
         },
         {
-          "tamil": "irukkunga",
+          "word": "irukkunga",
           "english": "is there (respectful)"
         }
       ],
@@ -183,19 +184,19 @@
       ],
       "tokens": [
         {
-          "tamil": "unnaku",
+          "word": "unnaku",
           "english": "for you (casual)"
         },
         {
-          "tamil": "enna",
+          "word": "enna",
           "english": "what"
         },
         {
-          "tamil": "venum",
+          "word": "venum",
           "english": "want"
         },
         {
-          "tamil": "saapda",
+          "word": "saapda",
           "english": "to eat"
         }
       ],
@@ -221,19 +222,19 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "oru",
+          "word": "oru",
           "english": "one"
         },
         {
-          "tamil": "dosa",
+          "word": "dosa",
           "english": "dosa"
         },
         {
-          "tamil": "kudunga",
+          "word": "kudunga",
           "english": "give (respectful)"
         }
       ],
@@ -259,15 +260,15 @@
       ],
       "tokens": [
         {
-          "tamil": "kaaram",
+          "word": "kaaram",
           "english": "spice"
         },
         {
-          "tamil": "kammiya",
+          "word": "kammiya",
           "english": "less"
         },
         {
-          "tamil": "podunga",
+          "word": "podunga",
           "english": "put (respectful)"
         }
       ],
@@ -294,15 +295,15 @@
       ],
       "tokens": [
         {
-          "tamil": "idhu",
+          "word": "idhu",
           "english": "this"
         },
         {
-          "tamil": "kaaramaa",
+          "word": "kaaramaa",
           "english": "spicy"
         },
         {
-          "tamil": "irukkumaa",
+          "word": "irukkumaa",
           "english": "will it be?"
         }
       ],
@@ -328,19 +329,19 @@
       ],
       "tokens": [
         {
-          "tamil": "innum",
+          "word": "innum",
           "english": "more"
         },
         {
-          "tamil": "konjam",
+          "word": "konjam",
           "english": "a little"
         },
         {
-          "tamil": "saadham",
+          "word": "saadham",
           "english": "rice"
         },
         {
-          "tamil": "podunga",
+          "word": "podunga",
           "english": "put (respectful)"
         }
       ],
@@ -367,15 +368,15 @@
       ],
       "tokens": [
         {
-          "tamil": "romba",
+          "word": "romba",
           "english": "very"
         },
         {
-          "tamil": "nalla",
+          "word": "nalla",
           "english": "good"
         },
         {
-          "tamil": "irukku",
+          "word": "irukku",
           "english": "is"
         }
       ],
@@ -401,11 +402,11 @@
       ],
       "tokens": [
         {
-          "tamil": "uppu",
+          "word": "uppu",
           "english": "salt"
         },
         {
-          "tamil": "jaasthi",
+          "word": "jaasthi",
           "english": "too much"
         }
       ],
@@ -430,11 +431,11 @@
       ],
       "tokens": [
         {
-          "tamil": "bill",
+          "word": "bill",
           "english": "bill"
         },
         {
-          "tamil": "kudunga",
+          "word": "kudunga",
           "english": "give (respectful)"
         }
       ],
@@ -459,11 +460,11 @@
       ],
       "tokens": [
         {
-          "tamil": "evlo",
+          "word": "evlo",
           "english": "how much"
         },
         {
-          "tamil": "aachu",
+          "word": "aachu",
           "english": "has it become"
         }
       ],
@@ -488,11 +489,11 @@
       ],
       "tokens": [
         {
-          "tamil": "change",
+          "word": "change",
           "english": "change"
         },
         {
-          "tamil": "vechukonga",
+          "word": "vechukonga",
           "english": "keep (respectful)"
         }
       ],
@@ -518,11 +519,11 @@
       ],
       "tokens": [
         {
-          "tamil": "change",
+          "word": "change",
           "english": "change"
         },
         {
-          "tamil": "irukkaa",
+          "word": "irukkaa",
           "english": "do you have?"
         }
       ],
@@ -549,19 +550,19 @@
       ],
       "tokens": [
         {
-          "tamil": "naan",
+          "word": "naan",
           "english": "I"
         },
         {
-          "tamil": "veg",
+          "word": "veg",
           "english": "vegetarian"
         },
         {
-          "tamil": "mattum thaan",
+          "word": "mattum thaan",
           "english": "only"
         },
         {
-          "tamil": "saapduven",
+          "word": "saapduven",
           "english": "will eat"
         }
       ],
@@ -588,11 +589,11 @@
       ],
       "tokens": [
         {
-          "tamil": "idhu",
+          "word": "idhu",
           "english": "this"
         },
         {
-          "tamil": "veg-aa",
+          "word": "veg-aa",
           "english": "vegetarian?"
         }
       ],
@@ -620,11 +621,11 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "pothum",
+          "word": "pothum",
           "english": "enough"
         }
       ],
@@ -650,15 +651,15 @@
       ],
       "tokens": [
         {
-          "tamil": "saappaadu",
+          "word": "saappaadu",
           "english": "food"
         },
         {
-          "tamil": "romba nalla",
+          "word": "romba nalla",
           "english": "very good"
         },
         {
-          "tamil": "irundhuchu",
+          "word": "irundhuchu",
           "english": "it was"
         }
       ],

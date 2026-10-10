@@ -42,7 +42,8 @@ struct ItemContractTests {
             title: "zz",
             subtitle: "zz",
             romanisationNote: nil,
-            items: [item]
+            items: [item],
+            language: .tamil
         )
         let catalog = Catalog(scenarios: [scenario], issues: [])
         #expect(catalog.item(id) == item)

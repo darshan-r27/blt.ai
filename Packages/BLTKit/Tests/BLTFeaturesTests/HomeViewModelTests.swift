@@ -53,7 +53,7 @@ private func makeItem(_ id: String, scenario: String, status: ReviewStatus, hasV
         acceptedAnswers: ["zz canonical \(id)", "zz alt a \(id)", "zz alt b \(id)"],
         registerVariant: hasVariant ? "zz variant \(id)" : nil,
         distractors: (1...distractorCount).map { "zz wrong \($0) \(id)" },
-        tokens: [Token(tamil: "zz", english: "zz gloss")],
+        tokens: [Token(word: "zz", english: "zz gloss")],
         note: nil,
         reviewStatus: status
     )
@@ -70,7 +70,8 @@ private func makeCatalog() -> Catalog {
             makeItem("zz-a2", scenario: "zz-a", status: .unreviewed, hasVariant: true),
             makeItem("zz-a3", scenario: "zz-a", status: .reviewed, hasVariant: false),
             makeItem("zz-a4", scenario: "zz-a", status: .unreviewed, hasVariant: false)
-        ]
+        ],
+        language: .tamil
     )
     let second = Scenario(
         id: ScenarioID(rawValue: "zz-b"),
@@ -80,7 +81,8 @@ private func makeCatalog() -> Catalog {
         items: [
             makeItem("zz-b1", scenario: "zz-b", status: .reviewed, hasVariant: false),
             makeItem("zz-b2", scenario: "zz-b", status: .unreviewed, hasVariant: false)
-        ]
+        ],
+        language: .tamil
     )
     return Catalog(scenarios: [first, second], issues: [])
 }
@@ -220,7 +222,8 @@ struct HomeViewModelTests {
                 title: "zz P",
                 subtitle: "zz sub P",
                 romanisationNote: nil,
-                items: items
+                items: items,
+                language: .tamil
             )
             let reviews = items.prefix(completed).map {
                 review($0.id.rawValue, repetitions: 1, due: now, outcome: .correct)
@@ -244,7 +247,8 @@ struct HomeViewModelTests {
             title: "zz None",
             subtitle: "zz sub",
             romanisationNote: nil,
-            items: []
+            items: [],
+            language: .tamil
         )
         let summary = ScenarioSummary(scenario: scenario, snapshot: .empty)
         #expect(summary.totalCount == 0)

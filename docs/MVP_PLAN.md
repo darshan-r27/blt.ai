@@ -35,27 +35,43 @@ Feedback also shows the word-by-word gloss (`tokens`) and `note`. The gloss is n
 
 ## 2. Content schema (frozen; the loader reads exactly this)
 
-> **Pending changes (not yet applied; the text below matches the code).** DECISIONS 042 to 044 make the lesson format serve two languages: a required `language` on a lesson, `tamilScript` renamed `script` and checked against the lesson language's own script, `tokens[].tamil` renamed `tokens[].word`, lessons moved into `content/tamil/` and `content/telugu/`, and the learner's language added to `UserProfile` and `AppDependencies` (section 5). "Exactly 5 files" in chunk C3 is also still to be replaced (039). See `docs/COURSE_SYLLABUS.md` and `plan.md`.
+One lesson format serves both courses, Tamil and Telugu (DECISIONS 044). The loader reads exactly this; the
+learner's course is chosen elsewhere (DECISIONS 042, 043).
+
+> Not yet applied elsewhere in this plan: lessons moving into `content/tamil/` and `content/telugu/`, the learner's language on `UserProfile` and `AppDependencies` (section 5), and replacing "exactly 5 files" in chunk C3 (DECISIONS 039). See `docs/COURSE_SYLLABUS.md` and `plan.md`. Section 5 still shows the Wave 0 contract text; where it differs from this section, this section wins.
 
 ```json
-{ "scenarioId": "s01-greetings", "title": "", "subtitle": "",
-  "registerPolicy": "", "romanisationNote": "",
+{ "scenarioId": "ta-l01-u01", "language": "tamil | telugu",
+  "title": "", "subtitle": "", "romanisationNote": "",
   "level": { "number": 1, "title": "", "position": 1 },
   "items": [{
-    "id": "s01-i01", "sourcePrompt": "",
+    "id": "ta-l01-u01-i01", "sourcePrompt": "",
     "register": "casual | respectful | neutral",
     "addressee": "male | female | any",
     "canonical": "", "acceptedAnswers": ["3 to 6, includes canonical"],
     "registerVariant": "string, or null iff register is neutral",
     "distractors": ["2 when registerVariant exists, else 3"],
-    "tokens": [{"tamil": "", "english": ""}],
+    "tokens": [{"word": "", "english": ""}],
     "note": "string or null", "reviewStatus": "unreviewed | reviewed",
-    "tamilScript": "optional: the canonical answer in Tamil script" }] }
+    "script": "optional: the canonical answer in the lesson language's own script" }] }
 ```
 
-`level` is optional and describes the file as a whole (DECISIONS 039): `number` and `position` are integers of at least 1, `title` is a non-empty string. A file without `level` is valid. `tamilScript` is optional on each item (DECISIONS 040). `Scenario.level` and `Item.tamilScript` are `nil` when the key is absent; both are added as the last, defaulted initializer parameters, so existing call sites are unchanged.
+`language` is required on every lesson (`tamil` or `telugu`); a file never defaults it. `Scenario.language` is a `CourseLanguage` and is the last initializer parameter; it has no default, so every call site names the language. The loader takes an optional `expectedLanguage` (the course being loaded): when it is set, a lesson in the other language is rejected with `wrongLanguage` and contributes nothing, not even to the duplicate checks; when it is `nil` either language is accepted.
 
-Validation rules: exactly 4 distinct options (case-insensitive, trimmed); `canonical` in `acceptedAnswers`; no option other than `canonical` in `acceptedAnswers`; `registerVariant == null` iff `register == neutral`; 3–6 accepted answers; `tokens` non-empty; every `tokens[].tamil` word appears (case-insensitive) in `canonical`; no Tamil-script code points (this is Latin-script English words and romanised Tamil only); `tamilScript`, when present, is non-empty, contains at least one Tamil-script code point (U+0B80 to U+0BFF), contains no ASCII letters, and is the only field where Tamil script is allowed; a `level` with `number` or `position` below 1, or an empty title, is an error, and the same level number must always carry the same title (compared exactly after trimming; the earlier file wins); no two items in the catalog share a `sourcePrompt`, and no two share a `canonical`, ignoring case, spacing and punctuation (the later item is dropped; DECISIONS 038); inside one item no accepted answer appears twice, ignoring only case and surrounding spaces, so variants that differ only by punctuation stay valid; wrong options may repeat across items; unknown keys ignored; unknown `reviewStatus` is an error, never defaulted; ≤ 200 items per file, ≤ 1 MB per file, ≤ 500 characters per string.
+`level` is optional and describes the file as a whole (DECISIONS 039): `number` and `position` are integers of at least 1, `title` is a non-empty string. A file without `level` is valid. `script` is optional on each item (DECISIONS 040, 044). `Scenario.level` and `Item.script` are `nil` when the key is absent; `Item.script` is the last, defaulted initializer parameter. The gloss key is `tokens[].word`; `Token.word` holds it.
+
+Validation rules:
+
+- Required header fields: `scenarioId`, `language`, `title`, `subtitle`. A missing one is a missing-field issue, an unrecognised `language` is an unknown-value issue, and the lesson is dropped.
+- Exactly 4 distinct options per item (case-insensitive, trimmed); `canonical` is in `acceptedAnswers`; no option other than `canonical` is in `acceptedAnswers`; `registerVariant == null` iff `register == neutral`; 3 to 6 accepted answers; `tokens` non-empty.
+- Every `tokens[].word` appears (case-insensitive) in `canonical`. The old key `tokens[].tamil` is an error (the token has no `word`), never read as a fallback.
+- No Tamil-script code point (U+0B80 to U+0BFF) and no Telugu-script code point (U+0C00 to U+0C7F) in any field except `script`: content is romanised English and romanised Tamil or Telugu.
+- `script`, when present, is non-empty, contains at least one code point of the lesson's own script (Tamil U+0B80 to U+0BFF in a Tamil lesson, Telugu U+0C00 to U+0C7F in a Telugu lesson), and contains no ASCII letters. It is the only field where native script is allowed. The old key `tamilScript` is an unknown key and is ignored.
+- A `level` with `number` or `position` below 1, or an empty title, is an error. The same level number must always carry the same title (compared exactly after trimming; the earlier file wins).
+- No two items share a `sourcePrompt`, and no two share a `canonical`, ignoring case, spacing and punctuation (the later item is dropped; DECISIONS 038). Inside one item no accepted answer appears twice, ignoring only case and surrounding spaces, so variants that differ only by punctuation stay valid. Wrong options may repeat across items. These rules apply to each load, which is one course at a time.
+- A duplicate `scenarioId` or item id is dropped; the earlier file wins.
+- Unknown keys are ignored. An unknown `reviewStatus` is an error, never defaulted.
+- At most 200 items per file, 1 MB per file and 500 characters per string.
 
 ## 3. Human-gated items (with defaults)
 
@@ -97,7 +113,7 @@ public enum Verdict: Sendable, Equatable {
 }
 
 // BLTCatalog (domain types are not Codable; only C2's Raw* types decode)
-public struct Token: Sendable, Equatable { public let tamil: String; public let english: String }
+public struct Token: Sendable, Equatable { public let word: String; public let english: String }
 public struct Item: Sendable, Equatable, Identifiable {
     public let id: ItemID; public let scenarioID: ScenarioID
     public let sourcePrompt: String; public let register: Register; public let addressee: Addressee
@@ -120,7 +136,7 @@ public struct ContentIssue: Sendable, Hashable {   // closed: no free text, no p
              acceptedAnswers, registerVariant, distractors, tokens, note, reviewStatus }
     public enum Rule: Sendable, Hashable {
         case notAFileURL, unreadableFile, fileTooLarge, malformedJSON
-        case missingField(Field), emptyField(Field), fieldTooLong(Field), tamilScriptInField(Field), unknownValue(Field)
+        case missingField(Field), emptyField(Field), fieldTooLong(Field), nativeScriptInField(Field), unknownValue(Field)
         case wrongDistractorCount, registerVariantMismatch, canonicalNotAccepted, otherOptionAccepted
         case wrongAcceptedCount, duplicateOptionText, duplicateItemID, duplicateScenarioID
         case tokenNotInCanonical, tooManyItems, emptyScenario }
