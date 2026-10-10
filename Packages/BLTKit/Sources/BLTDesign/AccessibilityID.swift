@@ -24,7 +24,29 @@ public enum AccessibilityID {
     public static let settingsRemoveImported = "settings.removeImported"
     public static let settingsImportStatus = "settings.importStatus"
 
+    // Two-way course (DECISIONS 042, 043). Added up front so the onboarding, Home and Settings chunks
+    // do not collide on this file. A language is passed as its raw value (`CourseLanguage.rawValue`).
+    public static let languageContinue = "language.continue"
+    public static let homeLanguage = "home.language"
+    public static let homeContinueLesson = "home.continueLesson"
+    public static let homeOtherLessons = "home.otherLessons"
+    public static let settingsLanguage = "settings.language"
+    public static let settingsLanguageConfirm = "settings.language.confirm"
+    public static let settingsLanguageCancel = "settings.language.cancel"
+
     public static func scenarioCard(_ scenarioID: String) -> String {
         "scenario.card.\(scenarioID)"
+    }
+
+    public static func languageOption(_ language: String) -> String {
+        "language.option.\(language)"
+    }
+
+    public static func homeLevel(_ number: Int) -> String {
+        "home.level.\(number)"
+    }
+
+    public static func settingsLanguageOption(_ language: String) -> String {
+        "settings.language.option.\(language)"
     }
 }
