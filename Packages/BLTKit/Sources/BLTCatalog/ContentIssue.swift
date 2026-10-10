@@ -4,7 +4,7 @@ import BLTCore
 public struct ContentIssue: Sendable, Hashable {
     public enum Field: String, Sendable, Hashable, CaseIterable {
         case scenarioId, title, subtitle, id, sourcePrompt, register, addressee, canonical
-        case acceptedAnswers, registerVariant, distractors, tokens, note, reviewStatus, level, tamilScript
+        case acceptedAnswers, registerVariant, distractors, tokens, note, reviewStatus, level, language, script
     }
 
     public enum Rule: Sendable, Hashable {
@@ -16,7 +16,9 @@ public struct ContentIssue: Sendable, Hashable {
         case tokenNotInCanonical, tooManyItems, emptyScenario
         case duplicateSourcePrompt, duplicateCanonical, duplicateAcceptedAnswer
         case invalidLevelNumber, invalidLevelPosition, levelTitleMismatch
-        case tamilScriptMissingTamil, latinLettersInTamilScript
+        case scriptMissingNativeLetters, latinLettersInScript
+        /// The lesson's `language` is not the course being loaded (DECISIONS 044).
+        case wrongLanguage
     }
 
     public let fileIndex: Int

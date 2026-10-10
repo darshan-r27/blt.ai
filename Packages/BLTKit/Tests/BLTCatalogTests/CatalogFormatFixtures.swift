@@ -1,13 +1,16 @@
 import BLTCatalog
+import BLTCore
 import Foundation
 
-/// Builders shared by the catalog-format tests. Everything is obviously fake ("zz"); the Tamil-script fixture
+/// Builders shared by the catalog-format tests. Everything is obviously fake ("zz"); a native-script fixture
 /// is one letter repeated, written as an escape, never a real word.
 enum CatalogFormatFixtures {
     typealias JSONObject = [String: Any]
 
     /// One Tamil letter repeated: obviously not a real word.
     static let fakeTamil = "\u{0B85}\u{0B85}\u{0B85}"
+    /// One Telugu letter repeated: obviously not a real word.
+    static let fakeTelugu = "\u{0C05}\u{0C05}\u{0C05}"
 
     static func item(
         id: String,
@@ -25,7 +28,7 @@ enum CatalogFormatFixtures {
             "acceptedAnswers": accepted ?? [canonical, "zz b \(id)", "zz c \(id)"],
             "registerVariant": "zz casual \(id)",
             "distractors": ["zz wrong a", "zz wrong b"],
-            "tokens": [["tamil": "zz", "english": "zz gloss"]],
+            "tokens": [["word": "zz", "english": "zz gloss"]],
             "note": NSNull(),
             "reviewStatus": "unreviewed"
         ]
@@ -33,10 +36,12 @@ enum CatalogFormatFixtures {
 
     static func scenario(
         id: String = "zz-scenario",
+        language: String? = "tamil",
         level: JSONObject? = nil,
         items: [JSONObject]
     ) -> JSONObject {
         var raw: JSONObject = ["scenarioId": id, "title": "zz title", "subtitle": "zz subtitle", "items": items]
+        if let language { raw["language"] = language }
         if let level { raw["level"] = level }
         return raw
     }
@@ -45,7 +50,7 @@ enum CatalogFormatFixtures {
         ["number": number, "title": title, "position": position]
     }
 
-    static func load(_ scenarios: [JSONObject]) throws -> Catalog {
+    static func load(_ scenarios: [JSONObject], expectedLanguage: CourseLanguage? = nil) throws -> Catalog {
         let directory = FileManager.default.temporaryDirectory
             .appending(path: "zz-blt-format-\(UUID().uuidString)", directoryHint: .isDirectory)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
@@ -54,6 +59,6 @@ enum CatalogFormatFixtures {
             try JSONSerialization.data(withJSONObject: object).write(to: url)
             return url
         }
-        return ContentLoader().load(files: urls)
+        return ContentLoader().load(files: urls, expectedLanguage: expectedLanguage)
     }
 }

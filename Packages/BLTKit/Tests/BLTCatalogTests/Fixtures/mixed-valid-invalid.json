@@ -1,5 +1,6 @@
 {
   "scenarioId": "zz-mixed",
+  "language": "tamil",
   "title": "zz mixed",
   "subtitle": "zz subtitle",
   "items": [
@@ -12,7 +13,7 @@
       "acceptedAnswers": ["zz good one", "zz good b", "zz good c"],
       "registerVariant": "zz good casual",
       "distractors": ["zz wrong a", "zz wrong b"],
-      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "tokens": [{"word": "zz", "english": "zz gloss"}],
       "note": null,
       "reviewStatus": "unreviewed"
     },
@@ -24,7 +25,7 @@
       "acceptedAnswers": ["zz a", "zz b", "zz c"],
       "registerVariant": "zz casual",
       "distractors": ["zz wrong a", "zz wrong b"],
-      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "tokens": [{"word": "zz", "english": "zz gloss"}],
       "note": null,
       "reviewStatus": "unreviewed"
     },
@@ -37,7 +38,7 @@
       "acceptedAnswers": ["zz bad status", "zz b", "zz c"],
       "registerVariant": "zz casual",
       "distractors": ["zz wrong a", "zz wrong b"],
-      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "tokens": [{"word": "zz", "english": "zz gloss"}],
       "note": null,
       "reviewStatus": "zz-not-a-status"
     },
@@ -50,7 +51,7 @@
       "acceptedAnswers": ["zz good three", "zz three b", "zz three c"],
       "registerVariant": null,
       "distractors": ["zz wrong a", "zz wrong b", "zz wrong c"],
-      "tokens": [{"tamil": "zz", "english": "zz gloss"}],
+      "tokens": [{"word": "zz", "english": "zz gloss"}],
       "note": "zz note",
       "reviewStatus": "reviewed"
     }

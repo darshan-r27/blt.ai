@@ -23,14 +23,14 @@ struct ContentValidatorTests {
             "acceptedAnswers": ["zz canonical\(tag)", "zz canonical b\(tag)", "zz canonical c\(tag)"],
             "registerVariant": "zz casual",
             "distractors": ["zz wrong a", "zz wrong b"],
-            "tokens": [["tamil": "zz", "english": "zz gloss"]],
+            "tokens": [["word": "zz", "english": "zz gloss"]],
             "note": NSNull(),
             "reviewStatus": "unreviewed"
         ]
     }
 
     private static func scenario(id: String = "zz-scenario", items: [JSONObject]) -> JSONObject {
-        ["scenarioId": id, "title": "zz title", "subtitle": "zz subtitle", "items": items]
+        ["scenarioId": id, "language": "tamil", "title": "zz title", "subtitle": "zz subtitle", "items": items]
     }
 
     private static func write(_ object: JSONObject) throws -> URL {
@@ -126,7 +126,7 @@ struct ContentValidatorTests {
     @Test func fieldOfTheWrongJSONTypeIsReportedAndSiblingsSurvive() throws {
         try Self.expectRejected([.unknownValue(.id)]) { $0["id"] = 5 }
         try Self.expectRejected([.unknownValue(.distractors)]) { $0["distractors"] = "zz not an array" }
-        try Self.expectRejected([.unknownValue(.tokens)]) { $0["tokens"] = [["tamil": "zz", "english": 7]] }
+        try Self.expectRejected([.unknownValue(.tokens)]) { $0["tokens"] = [["word": "zz", "english": 7]] }
     }
 
     @Test func itemThatIsNotAnObjectIsReportedAndSiblingsSurvive() throws {
@@ -149,7 +149,7 @@ extension ContentValidatorTests {
         try Self.expectRejected([.tamilScriptInField(.distractors)]) { $0["distractors"] = [tamil, "zz wrong b"] }
         try Self.expectRejected([.tamilScriptInField(.registerVariant)]) { $0["registerVariant"] = tamil }
         try Self.expectRejected([.tamilScriptInField(.tokens)]) {
-            $0["tokens"] = [["tamil": "zz", "english": tamil]]
+            $0["tokens"] = [["word": "zz", "english": tamil]]
         }
     }
 
@@ -157,8 +157,8 @@ extension ContentValidatorTests {
         for scalar in ["\u{0B80}", "\u{0BFF}"] {
             try Self.expectRejected([.tamilScriptInField(.sourcePrompt)]) { $0["sourcePrompt"] = "zz \(scalar)" }
         }
-        // Just outside the block: the scalar below it and the first Telugu scalar are not Tamil script.
-        for scalar in ["\u{0B7F}", "\u{0C00}"] {
+        // Just outside both blocks: the scalar below Tamil and the scalar above Telugu are not native script.
+        for scalar in ["\u{0B7F}", "\u{0C80}"] {
             var item = Self.baseItem()
             item["sourcePrompt"] = "zz \(scalar)"
             let catalog = try Self.load([Self.scenario(items: [item])])
@@ -170,7 +170,7 @@ extension ContentValidatorTests {
         var item = Self.baseItem()
         item["canonical"] = "zz bus GPay phone"
         item["acceptedAnswers"] = ["zz bus GPay phone", "zz bus GPay phone b", "zz bus GPay phone c"]
-        item["tokens"] = [["tamil": "bus", "english": "bus"], ["tamil": "gpay", "english": "GPay"]]
+        item["tokens"] = [["word": "bus", "english": "bus"], ["word": "gpay", "english": "GPay"]]
         let catalog = try Self.load([Self.scenario(items: [item])])
         #expect(catalog.issues.isEmpty)
         #expect(catalog.scenarios.first?.items.count == 1)
@@ -266,13 +266,13 @@ extension ContentValidatorTests {
 
     @Test func tokenWordAbsentFromCanonicalIsReported() throws {
         try Self.expectRejected([.tokenNotInCanonical]) {
-            $0["tokens"] = [["tamil": "zz", "english": "zz gloss"], ["tamil": "qq", "english": "zz gloss"]]
+            $0["tokens"] = [["word": "zz", "english": "zz gloss"], ["word": "qq", "english": "zz gloss"]]
         }
     }
 
     @Test func tokenWordMatchesCanonicalIgnoringCase() throws {
         var item = Self.baseItem()
-        item["tokens"] = [["tamil": "CANONICAL", "english": "zz gloss"]]
+        item["tokens"] = [["word": "CANONICAL", "english": "zz gloss"]]
         let catalog = try Self.load([Self.scenario(items: [item])])
         #expect(catalog.issues.isEmpty)
     }
@@ -346,7 +346,7 @@ extension ContentValidatorTests {
         var second = Self.baseItem(id: "zz-same")
         second["canonical"] = "zz second canonical"
         second["acceptedAnswers"] = ["zz second canonical", "zz second b", "zz second c"]
-        second["tokens"] = [["tamil": "zz second", "english": "zz gloss"]]
+        second["tokens"] = [["word": "zz second", "english": "zz gloss"]]
         let catalog = try Self.load([Self.scenario(items: [Self.baseItem(id: "zz-same"), second])])
         #expect(catalog.issues.map(\.rule) == [.duplicateItemID])
         #expect(catalog.scenarios.first?.items.map(\.canonical) == ["zz canonical zz-same"])

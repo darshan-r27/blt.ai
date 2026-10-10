@@ -1,5 +1,6 @@
 {
   "scenarioId": "s02",
+  "language": "tamil",
   "title": "Getting around",
   "subtitle": "Buses, autos, directions and asking the way",
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
@@ -23,15 +24,15 @@
       ],
       "tokens": [
         {
-          "tamil": "bus stand",
+          "word": "bus stand",
           "english": "bus stand"
         },
         {
-          "tamil": "enga",
+          "word": "enga",
           "english": "where"
         },
         {
-          "tamil": "irukku",
+          "word": "irukku",
           "english": "is it "
         }
       ],
@@ -58,19 +59,19 @@
       ],
       "tokens": [
         {
-          "tamil": "station-ku",
+          "word": "station-ku",
           "english": "to the station"
         },
         {
-          "tamil": "entha",
+          "word": "entha",
           "english": "which"
         },
         {
-          "tamil": "bus",
+          "word": "bus",
           "english": "bus"
         },
         {
-          "tamil": "pogum",
+          "word": "pogum",
           "english": "goes"
         }
       ],
@@ -97,11 +98,11 @@
       ],
       "tokens": [
         {
-          "tamil": "ticket",
+          "word": "ticket",
           "english": "ticket"
         },
         {
-          "tamil": "evlo",
+          "word": "evlo",
           "english": "how much"
         }
       ],
@@ -127,19 +128,19 @@
       ],
       "tokens": [
         {
-          "tamil": "Chennai-ku",
+          "word": "Chennai-ku",
           "english": "to Chennai"
         },
         {
-          "tamil": "oru",
+          "word": "oru",
           "english": "one"
         },
         {
-          "tamil": "ticket",
+          "word": "ticket",
           "english": "ticket"
         },
         {
-          "tamil": "kudunga",
+          "word": "kudunga",
           "english": "give (respectful)"
         }
       ],
@@ -165,15 +166,15 @@
       ],
       "tokens": [
         {
-          "tamil": "bus",
+          "word": "bus",
           "english": "bus"
         },
         {
-          "tamil": "eppo",
+          "word": "eppo",
           "english": "when"
         },
         {
-          "tamil": "varum",
+          "word": "varum",
           "english": "will come"
         }
       ],
@@ -199,15 +200,15 @@
       ],
       "tokens": [
         {
-          "tamil": "enga",
+          "word": "enga",
           "english": "where"
         },
         {
-          "tamil": "pora",
+          "word": "pora",
           "english": "are you going (casual)"
         },
         {
-          "tamil": "da",
+          "word": "da",
           "english": "friendly address to a man"
         }
       ],
@@ -234,15 +235,15 @@
       ],
       "tokens": [
         {
-          "tamil": "naan",
+          "word": "naan",
           "english": "I"
         },
         {
-          "tamil": "market-ku",
+          "word": "market-ku",
           "english": "to the market"
         },
         {
-          "tamil": "poren",
+          "word": "poren",
           "english": "am going"
         }
       ],
@@ -268,11 +269,11 @@
       ],
       "tokens": [
         {
-          "tamil": "inga",
+          "word": "inga",
           "english": "here"
         },
         {
-          "tamil": "niruthunga",
+          "word": "niruthunga",
           "english": "please stop (respectful)"
         }
       ],
@@ -298,11 +299,11 @@
       ],
       "tokens": [
         {
-          "tamil": "straight-a",
+          "word": "straight-a",
           "english": "straight"
         },
         {
-          "tamil": "ponga",
+          "word": "ponga",
           "english": "go (respectful)"
         }
       ],
@@ -328,11 +329,11 @@
       ],
       "tokens": [
         {
-          "tamil": "right-la",
+          "word": "right-la",
           "english": "to the right"
         },
         {
-          "tamil": "thirumbunga",
+          "word": "thirumbunga",
           "english": "turn (respectful)"
         }
       ],
@@ -359,11 +360,11 @@
       ],
       "tokens": [
         {
-          "tamil": "evlo",
+          "word": "evlo",
           "english": "how much"
         },
         {
-          "tamil": "dhooram",
+          "word": "dhooram",
           "english": "distance"
         }
       ],
@@ -390,15 +391,15 @@
       ],
       "tokens": [
         {
-          "tamil": "evlo",
+          "word": "evlo",
           "english": "how much"
         },
         {
-          "tamil": "neram",
+          "word": "neram",
           "english": "time"
         },
         {
-          "tamil": "aagum",
+          "word": "aagum",
           "english": "will take"
         }
       ],
@@ -425,11 +426,11 @@
       ],
       "tokens": [
         {
-          "tamil": "romba",
+          "word": "romba",
           "english": "very"
         },
         {
-          "tamil": "dhooramaa",
+          "word": "dhooramaa",
           "english": "far?"
         }
       ],
@@ -456,15 +457,15 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "vazhi",
+          "word": "vazhi",
           "english": "way"
         },
         {
-          "tamil": "theriyala",
+          "word": "theriyala",
           "english": "not known"
         }
       ],
@@ -490,11 +491,11 @@
       ],
       "tokens": [
         {
-          "tamil": "vazhi",
+          "word": "vazhi",
           "english": "way"
         },
         {
-          "tamil": "sollunga",
+          "word": "sollunga",
           "english": "tell (respectful)"
         }
       ],
@@ -522,15 +523,15 @@
       ],
       "tokens": [
         {
-          "tamil": "idhu",
+          "word": "idhu",
           "english": "this"
         },
         {
-          "tamil": "correct",
+          "word": "correct",
           "english": "right"
         },
         {
-          "tamil": "bus-aa",
+          "word": "bus-aa",
           "english": "bus?"
         }
       ],
@@ -555,15 +556,15 @@
       ],
       "tokens": [
         {
-          "tamil": "inga",
+          "word": "inga",
           "english": "here"
         },
         {
-          "tamil": "wait pannu",
+          "word": "wait pannu",
           "english": "wait (casual)"
         },
         {
-          "tamil": "da",
+          "word": "da",
           "english": "friendly address to a man"
         }
       ],
@@ -591,11 +592,11 @@
       ],
       "tokens": [
         {
-          "tamil": "five minutes-la",
+          "word": "five minutes-la",
           "english": "in five minutes"
         },
         {
-          "tamil": "varen",
+          "word": "varen",
           "english": "I come"
         }
       ],
@@ -624,15 +625,15 @@
       ],
       "tokens": [
         {
-          "tamil": "naan",
+          "word": "naan",
           "english": "I"
         },
         {
-          "tamil": "inga",
+          "word": "inga",
           "english": "here"
         },
         {
-          "tamil": "iranguren",
+          "word": "iranguren",
           "english": "get off"
         }
       ],
@@ -659,15 +660,15 @@
       ],
       "tokens": [
         {
-          "tamil": "auto",
+          "word": "auto",
           "english": "auto-rickshaw"
         },
         {
-          "tamil": "enga",
+          "word": "enga",
           "english": "where"
         },
         {
-          "tamil": "kidaikkum",
+          "word": "kidaikkum",
           "english": "will be available"
         }
       ],

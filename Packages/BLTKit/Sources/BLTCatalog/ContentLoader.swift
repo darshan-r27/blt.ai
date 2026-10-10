@@ -31,7 +31,11 @@ public struct ContentLoader: Sendable {
 
     /// Loads every file in order. `ContentIssue.fileIndex` is the index into `files`.
     /// Scenarios in the result are sorted by id; when ids, prompts or answers collide the earlier file wins.
-    public func load(files: [URL]) -> Catalog {
+    ///
+    /// `expectedLanguage` is the course being loaded. When it is set, a lesson whose `language` differs is
+    /// rejected with `.wrongLanguage` and contributes nothing, not even to the duplicate checks. `nil`
+    /// accepts a lesson of either language.
+    public func load(files: [URL], expectedLanguage: CourseLanguage? = nil) -> Catalog {
         let validator = ContentValidator(limits: limits)
         var scenarios: [Scenario] = []
         var issues: [ContentIssue] = []
@@ -40,7 +44,9 @@ public struct ContentLoader: Sendable {
         for (index, url) in files.enumerated() {
             do {
                 let raw = try readScenario(at: url)
-                let result = validator.validate(raw, fileIndex: index, registry: &registry)
+                let result = validator.validate(
+                    raw, fileIndex: index, registry: &registry, expectedLanguage: expectedLanguage
+                )
                 if let scenario = result.scenario { scenarios.append(scenario) }
                 issues.append(contentsOf: result.issues)
             } catch {

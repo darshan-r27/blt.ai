@@ -6,9 +6,9 @@ import BLTCore
 /// A present field of the wrong JSON type is recorded in `malformed` instead of failing the whole file,
 /// so one bad item cannot take its valid siblings down with it.
 struct RawItem: Decodable {
-    /// A `{tamil, english}` gloss entry, decoded with the same leniency as its parent.
+    /// A `{word, english}` gloss entry, decoded with the same leniency as its parent.
     struct TokenEntry: Decodable {
-        var tamil: String?
+        var word: String?
         var english: String?
         var isMalformed = false
 
@@ -18,14 +18,14 @@ struct RawItem: Decodable {
                 return
             }
             var wrongType: Set<ContentIssue.Field> = []
-            tamil = container.lenient(String.self, forKey: .tamil, field: .tokens, malformed: &wrongType)
+            word = container.lenient(String.self, forKey: .word, field: .tokens, malformed: &wrongType)
             english = container.lenient(String.self, forKey: .english, field: .tokens, malformed: &wrongType)
             isMalformed = !wrongType.isEmpty
         }
     }
 
     /// Keys of a gloss entry; declared here because types may nest only one level deep.
-    private enum TokenKeys: String, CodingKey { case tamil, english }
+    private enum TokenKeys: String, CodingKey { case word, english }
 
     var id: String?
     var sourcePrompt: String?
@@ -38,7 +38,7 @@ struct RawItem: Decodable {
     var tokens: [TokenEntry]?
     var note: String?
     var reviewStatus: String?
-    var tamilScript: String?
+    var script: String?
     /// Fields that were present but had the wrong JSON type.
     var malformed: Set<ContentIssue.Field> = []
     /// The array element was not a JSON object at all.
@@ -46,7 +46,7 @@ struct RawItem: Decodable {
 
     private enum CodingKeys: String, CodingKey {
         case id, sourcePrompt, register, addressee, canonical, acceptedAnswers
-        case registerVariant, distractors, tokens, note, reviewStatus, tamilScript
+        case registerVariant, distractors, tokens, note, reviewStatus, script
     }
 
     init(from decoder: any Decoder) throws {
@@ -75,8 +75,8 @@ struct RawItem: Decodable {
         reviewStatus = container.lenient(
             String.self, forKey: .reviewStatus, field: .reviewStatus, malformed: &malformed
         )
-        tamilScript = container.lenient(
-            String.self, forKey: .tamilScript, field: .tamilScript, malformed: &malformed
+        script = container.lenient(
+            String.self, forKey: .script, field: .script, malformed: &malformed
         )
     }
 }

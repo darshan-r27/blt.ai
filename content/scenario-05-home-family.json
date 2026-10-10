@@ -1,5 +1,6 @@
 {
   "scenarioId": "s05",
+  "language": "tamil",
   "title": "Home, family and daily routine",
   "subtitle": "Introducing family and everyday home talk",
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
@@ -25,15 +26,15 @@
       ],
       "tokens": [
         {
-          "tamil": "ivanga",
+          "word": "ivanga",
           "english": "she (polite)"
         },
         {
-          "tamil": "en",
+          "word": "en",
           "english": "my"
         },
         {
-          "tamil": "amma",
+          "word": "amma",
           "english": "mother"
         }
       ],
@@ -60,15 +61,15 @@
       ],
       "tokens": [
         {
-          "tamil": "idhu",
+          "word": "idhu",
           "english": "this"
         },
         {
-          "tamil": "en",
+          "word": "en",
           "english": "my"
         },
         {
-          "tamil": "friend",
+          "word": "friend",
           "english": "friend"
         }
       ],
@@ -93,19 +94,19 @@
       ],
       "tokens": [
         {
-          "tamil": "unga",
+          "word": "unga",
           "english": "your (respectful)"
         },
         {
-          "tamil": "veetla",
+          "word": "veetla",
           "english": "at home"
         },
         {
-          "tamil": "evlo peru",
+          "word": "evlo peru",
           "english": "how many people"
         },
         {
-          "tamil": "irukkeenga",
+          "word": "irukkeenga",
           "english": "are there"
         }
       ],
@@ -130,19 +131,19 @@
       ],
       "tokens": [
         {
-          "tamil": "unga",
+          "word": "unga",
           "english": "your (respectful)"
         },
         {
-          "tamil": "veedu",
+          "word": "veedu",
           "english": "house"
         },
         {
-          "tamil": "enga",
+          "word": "enga",
           "english": "where"
         },
         {
-          "tamil": "irukku",
+          "word": "irukku",
           "english": "is"
         }
       ],
@@ -168,15 +169,15 @@
       ],
       "tokens": [
         {
-          "tamil": "naan",
+          "word": "naan",
           "english": "I"
         },
         {
-          "tamil": "Hyderabad-la",
+          "word": "Hyderabad-la",
           "english": "in Hyderabad"
         },
         {
-          "tamil": "irukken",
+          "word": "irukken",
           "english": "live"
         }
       ],
@@ -202,15 +203,15 @@
       ],
       "tokens": [
         {
-          "tamil": "neenga",
+          "word": "neenga",
           "english": "you (respectful)"
         },
         {
-          "tamil": "enna velai",
+          "word": "enna velai",
           "english": "what work"
         },
         {
-          "tamil": "pannureenga",
+          "word": "pannureenga",
           "english": "do"
         }
       ],
@@ -238,15 +239,15 @@
       ],
       "tokens": [
         {
-          "tamil": "naan",
+          "word": "naan",
           "english": "I"
         },
         {
-          "tamil": "office-la",
+          "word": "office-la",
           "english": "in an office"
         },
         {
-          "tamil": "velai seiyuren",
+          "word": "velai seiyuren",
           "english": "work"
         }
       ],
@@ -273,15 +274,15 @@
       ],
       "tokens": [
         {
-          "tamil": "enakku",
+          "word": "enakku",
           "english": "to me"
         },
         {
-          "tamil": "thookkam",
+          "word": "thookkam",
           "english": "sleep"
         },
         {
-          "tamil": "varudhu",
+          "word": "varudhu",
           "english": "is coming"
         }
       ],
@@ -306,11 +307,11 @@
       ],
       "tokens": [
         {
-          "tamil": "nalla",
+          "word": "nalla",
           "english": "well"
         },
         {
-          "tamil": "thoongunga",
+          "word": "thoongunga",
           "english": "sleep (respectful)"
         }
       ],
@@ -336,15 +337,15 @@
       ],
       "tokens": [
         {
-          "tamil": "raathiri",
+          "word": "raathiri",
           "english": "night"
         },
         {
-          "tamil": "saappaadu",
+          "word": "saappaadu",
           "english": "meal"
         },
         {
-          "tamil": "enna",
+          "word": "enna",
           "english": "what"
         }
       ],
@@ -370,15 +371,15 @@
       ],
       "tokens": [
         {
-          "tamil": "veetla",
+          "word": "veetla",
           "english": "at home"
         },
         {
-          "tamil": "yaaraavathu",
+          "word": "yaaraavathu",
           "english": "anyone"
         },
         {
-          "tamil": "irukkeengala",
+          "word": "irukkeengala",
           "english": "are you there?"
         }
       ],
@@ -403,11 +404,11 @@
       ],
       "tokens": [
         {
-          "tamil": "kadhava",
+          "word": "kadhava",
           "english": "the door"
         },
         {
-          "tamil": "thoranga",
+          "word": "thoranga",
           "english": "open (respectful)"
         }
       ],
@@ -432,11 +433,11 @@
       ],
       "tokens": [
         {
-          "tamil": "kadhava",
+          "word": "kadhava",
           "english": "the door"
         },
         {
-          "tamil": "moodunga",
+          "word": "moodunga",
           "english": "close (respectful)"
         }
       ],
@@ -462,11 +463,11 @@
       ],
       "tokens": [
         {
-          "tamil": "light-a",
+          "word": "light-a",
           "english": "the light"
         },
         {
-          "tamil": "on pannunga",
+          "word": "on pannunga",
           "english": "turn on (respectful)"
         }
       ],
@@ -493,19 +494,19 @@
       ],
       "tokens": [
         {
-          "tamil": "innikku",
+          "word": "innikku",
           "english": "today"
         },
         {
-          "tamil": "romba",
+          "word": "romba",
           "english": "very"
         },
         {
-          "tamil": "sudaa",
+          "word": "sudaa",
           "english": "hot"
         },
         {
-          "tamil": "irukku",
+          "word": "irukku",
           "english": "is"
         }
       ],
@@ -532,11 +533,11 @@
       ],
       "tokens": [
         {
-          "tamil": "mazhai",
+          "word": "mazhai",
           "english": "rain"
         },
         {
-          "tamil": "peiyudhu",
+          "word": "peiyudhu",
           "english": "is falling"
         }
       ],
@@ -561,15 +562,15 @@
       ],
       "tokens": [
         {
-          "tamil": "seekirama",
+          "word": "seekirama",
           "english": "quickly"
         },
         {
-          "tamil": "vaa",
+          "word": "vaa",
           "english": "come (casual)"
         },
         {
-          "tamil": "di",
+          "word": "di",
           "english": "friendly address to a woman"
         }
       ],
@@ -595,15 +596,15 @@
       ],
       "tokens": [
         {
-          "tamil": "enna",
+          "word": "enna",
           "english": "what"
         },
         {
-          "tamil": "aachu",
+          "word": "aachu",
           "english": "happened"
         },
         {
-          "tamil": "da",
+          "word": "da",
           "english": "friendly address to a man"
         }
       ],
@@ -629,11 +630,11 @@
       ],
       "tokens": [
         {
-          "tamil": "kavala",
+          "word": "kavala",
           "english": "worry"
         },
         {
-          "tamil": "padaadheenga",
+          "word": "padaadheenga",
           "english": "don't feel (respectful)"
         }
       ],
@@ -659,15 +660,15 @@
       ],
       "tokens": [
         {
-          "tamil": "naan",
+          "word": "naan",
           "english": "I"
         },
         {
-          "tamil": "veetuku",
+          "word": "veetuku",
           "english": "to home"
         },
         {
-          "tamil": "vandhuten",
+          "word": "vandhuten",
           "english": "have arrived"
         }
       ],

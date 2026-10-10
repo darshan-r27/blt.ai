@@ -1,5 +1,6 @@
 {
   "scenarioId": "zz-loanwords",
+  "language": "tamil",
   "title": "zz loanwords",
   "subtitle": "zz subtitle",
   "items": [
@@ -12,7 +13,7 @@
       "acceptedAnswers": ["zz bus GPay pannu", "zz bus GPay pannu da", "zz GPay bus pannu"],
       "registerVariant": "zz bus GPay pannunga",
       "distractors": ["zz train UPI pannu", "zz cab Paytm pannu"],
-      "tokens": [{"tamil": "bus", "english": "bus"}, {"tamil": "gpay", "english": "GPay"}],
+      "tokens": [{"word": "bus", "english": "bus"}, {"word": "gpay", "english": "GPay"}],
       "note": "zz English loanwords stay in Latin script",
       "reviewStatus": "unreviewed"
     }
