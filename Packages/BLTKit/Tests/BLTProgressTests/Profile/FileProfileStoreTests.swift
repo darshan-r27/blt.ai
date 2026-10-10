@@ -48,6 +48,18 @@ struct FileProfileStoreTests {
         try await withStore { store, _ in try await Contract.checkSaveAfterEraseStartsFresh(store) }
     }
 
+    @Test func roundTripKeepsEachLanguage() async throws {
+        try await withStore { store, _ in try await Contract.checkRoundTripKeepsEachLanguage(store) }
+    }
+
+    @Test func profileWithoutLanguageStaysWithout() async throws {
+        try await withStore { store, _ in try await Contract.checkProfileWithoutLanguageStaysWithout(store) }
+    }
+
+    @Test func changingLanguageKeepsTheName() async throws {
+        try await withStore { store, _ in try await Contract.checkChangingLanguageKeepsTheName(store) }
+    }
+
     // MARK: File behaviour
 
     @Test func missingFileLoadsNilAndIsNotCreatedByLoad() async throws {
@@ -80,14 +92,26 @@ struct FileProfileStoreTests {
         }
     }
 
-    @Test func fileIsJSONWithSchemaVersionOneAndOnlyTheName() async throws {
+    @Test func fileIsJSONWithSchemaVersionTwoAndTheLanguage() async throws {
+        try await withStore { store, fileURL in
+            try await store.save(UserProfile(name: "zz-name", learningLanguage: .telugu))
+
+            let data = try bytes(of: fileURL)
+            let object = try #require(try JSONSerialization.jsonObject(with: data) as? [String: Any])
+            #expect(object["schemaVersion"] as? Int == 2)
+            #expect(object["name"] as? String == "zz-name")
+            #expect(object["learningLanguage"] as? String == "telugu")
+            #expect(Set(object.keys) == ["schemaVersion", "name", "learningLanguage"])
+        }
+    }
+
+    @Test func fileWithoutALanguageOmitsTheKey() async throws {
         try await withStore { store, fileURL in
             try await store.save(UserProfile(name: "zz-name"))
 
             let data = try bytes(of: fileURL)
             let object = try #require(try JSONSerialization.jsonObject(with: data) as? [String: Any])
-            #expect(object["schemaVersion"] as? Int == 1)
-            #expect(object["name"] as? String == "zz-name")
+            #expect(object["schemaVersion"] as? Int == 2)
             #expect(Set(object.keys) == ["schemaVersion", "name"])
         }
     }
@@ -101,7 +125,9 @@ struct FileProfileStoreTests {
         "{}",
         "{\"schemaVersion\":1}",
         "{\"schemaVersion\":1,\"name\":42}",
-        "{\"schemaVersion\":\"1\",\"name\":\"zz\"}"
+        "{\"schemaVersion\":\"1\",\"name\":\"zz\"}",
+        "{\"schemaVersion\":2}",
+        "{\"schemaVersion\":2,\"name\":42}"
     ])
     func undecodableFileThrowsCorruptAndIsNeverTouched(contents: String) async throws {
         try await withStore { store, fileURL in
@@ -116,10 +142,10 @@ struct FileProfileStoreTests {
 
     @Test func futureSchemaVersionIsRejectedAndNeverTouched() async throws {
         try await withStore { store, fileURL in
-            try write("{\"schemaVersion\":2,\"name\":\"zz\",\"extra\":true}", to: fileURL)
+            try write("{\"schemaVersion\":3,\"name\":\"zz\",\"extra\":true}", to: fileURL)
             let before = try bytes(of: fileURL)
 
-            await #expect(throws: ProfileStoreError.unsupportedSchemaVersion(2)) { _ = try await store.load() }
+            await #expect(throws: ProfileStoreError.unsupportedSchemaVersion(3)) { _ = try await store.load() }
             let after = try bytes(of: fileURL)
             #expect(after == before)
         }
@@ -147,10 +173,10 @@ struct FileProfileStoreTests {
 
     @Test func saveOnFutureSchemaFileThrowsAndDoesNotOverwrite() async throws {
         try await withStore { store, fileURL in
-            try write("{\"schemaVersion\":2,\"name\":\"zz\"}", to: fileURL)
+            try write("{\"schemaVersion\":3,\"name\":\"zz\"}", to: fileURL)
             let before = try bytes(of: fileURL)
 
-            await #expect(throws: ProfileStoreError.unsupportedSchemaVersion(2)) {
+            await #expect(throws: ProfileStoreError.unsupportedSchemaVersion(3)) {
                 try await store.save(UserProfile(name: "zz-new"))
             }
             let after = try bytes(of: fileURL)
