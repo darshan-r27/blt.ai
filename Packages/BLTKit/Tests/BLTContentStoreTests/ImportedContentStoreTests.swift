@@ -87,7 +87,7 @@ struct ImportedContentStoreTests {
 
         #expect(isInvalid(result))
         #expect(world.importedFileNames().isEmpty)
-        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled))
+        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled, language: .tamil))
     }
 
     @Test func rejectsAFileOverTheLoadersSizeLimit() throws {
@@ -134,14 +134,14 @@ struct ImportedContentStoreTests {
         #expect(world.importedFileNames().isEmpty)
     }
 
-    @Test func rejectsMoreThanTenFiles() throws {
+    @Test func rejectsMoreThanTwentyFiles() throws {
         let world = try ImportWorld()
         defer { world.remove() }
-        let urls = try (1...11).map { index in
+        let urls = try (1...21).map { index in
             try world.pickScenario("zz-n\(index)", items: ["zz-n\(index)-i"])
         }
         let result = attempt(world.store(), urls)
-        #expect(result == .failure(.tooManyFiles(limit: 10)))
+        #expect(result == .failure(.tooManyFiles(limit: 20)))
         #expect(world.importedFileNames().isEmpty)
     }
 

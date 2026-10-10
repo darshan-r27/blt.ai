@@ -25,14 +25,17 @@ public enum ContentImportFailure: Error, Sendable, Equatable {
     case couldNotSave
 }
 
-/// Lesson files the learner imported, kept in `directory` (Application Support/BLT/content) and
-/// layered over the bundled content by `BundleContentLoader`.
+/// Lesson files the learner imported into one course, kept in `directory` and layered over that
+/// course's bundled content by `BundleContentLoader`.
+///
+/// A store is built for one course. A file written for the other course fails the whole import with
+/// `invalid` (the validator reports `wrongLanguage`) and nothing changes.
 ///
 /// Imported files are untrusted input: they go through the same `ContentLoader` validator as the
 /// bundled files, the whole batch is rejected if any file has any issue, and the stored file name is
 /// a hash of the scenario id, never the learner's file name or the id's own characters.
 public struct ImportedContentStore: Sendable {
-    public static let maxFilesPerImport = 10
+    public static let maxFilesPerImport = 20
 
     /// Hard ceiling on what is read into memory, whatever limits the loader was given.
     private static let readCeiling = ContentLoader.Limits.default.maxFileBytes
@@ -40,13 +43,24 @@ public struct ImportedContentStore: Sendable {
 
     private let directory: URL
     private let bundledDirectory: URL?
+    private let language: CourseLanguage?
     private let loader: ContentLoader
 
-    /// `directory` is created on the first write. `bundledDirectory` is the bundled `content` folder
-    /// (`nil` if missing, in which case nothing is replaced).
-    public init(directory: URL, bundledDirectory: URL?, loader: ContentLoader = ContentLoader()) {
+    /// `directory` is created on the first write. `bundledDirectory` is the course's bundled folder
+    /// (`content/<language>`; `nil` if missing, in which case nothing is replaced).
+    ///
+    /// `language` is the course the store imports into. `nil` accepts lessons of either course and
+    /// exists only until the app reads the language from the profile (plan.md chunk D1); the app should
+    /// always pass one.
+    public init(
+        directory: URL,
+        bundledDirectory: URL?,
+        language: CourseLanguage? = nil,
+        loader: ContentLoader = ContentLoader()
+    ) {
         self.directory = directory
         self.bundledDirectory = bundledDirectory
+        self.language = language
         self.loader = loader
     }
 
@@ -135,7 +149,7 @@ public struct ImportedContentStore: Sendable {
         var ids: [ScenarioID] = []
         var issueCount = 0
         for url in staged {
-            let alone = loader.load(files: [url])
+            let alone = loader.load(files: [url], expectedLanguage: language)
             issueCount += alone.issues.count
             if let scenario = alone.scenarios.first {
                 ids.append(scenario.id)
@@ -152,13 +166,13 @@ public struct ImportedContentStore: Sendable {
             guard let id = file.scenarioID else { return true }
             return !replaced.contains(id)
         }.map(\.url)
-        let combined = loader.load(files: staged + keptBundled)
+        let combined = loader.load(files: staged + keptBundled, expectedLanguage: language)
 
         let ownIssues = combined.issues.filter { $0.fileIndex < staged.count }.count
         // The bundled files come later, so an import that collides with them shows up as a new issue
         // on the bundled side. Issues the bundled files already had on their own are not the
         // importer's concern.
-        let alreadyThere = Set(loader.load(files: keptBundled).issues)
+        let alreadyThere = Set(loader.load(files: keptBundled, expectedLanguage: language).issues)
         let causedByImport = combined.issues.filter { issue in
             guard issue.fileIndex >= staged.count else { return false }
             let shifted = ContentIssue(
@@ -238,6 +252,6 @@ public struct ImportedContentStore: Sendable {
 
     private func bundledIndex() -> [BundledContentFile] {
         guard let bundledDirectory, let urls = BundleContentLoader.jsonFiles(in: bundledDirectory) else { return [] }
-        return BundledContentFile.index(urls, loader: loader)
+        return BundledContentFile.index(urls, loader: loader, language: language)
     }
 }

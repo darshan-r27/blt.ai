@@ -28,8 +28,8 @@ struct ImportWorld {
         try? FileManager.default.removeItem(at: root)
     }
 
-    func store(loader: ContentLoader = ContentLoader()) -> ImportedContentStore {
-        ImportedContentStore(directory: imported, bundledDirectory: bundled, loader: loader)
+    func store(language: CourseLanguage? = .tamil, loader: ContentLoader = ContentLoader()) -> ImportedContentStore {
+        ImportedContentStore(directory: imported, bundledDirectory: bundled, language: language, loader: loader)
     }
 
     @discardableResult
@@ -40,8 +40,13 @@ struct ImportWorld {
     }
 
     @discardableResult
-    func writeBundledScenario(_ id: String, title: String = "zz title", items: [String]) throws -> URL {
-        try writeBundled("\(id).json", Self.scenarioJSON(id, title: title, items: items))
+    func writeBundledScenario(
+        _ id: String,
+        title: String = "zz title",
+        language: CourseLanguage = .tamil,
+        items: [String]
+    ) throws -> URL {
+        try writeBundled("\(id).json", Self.scenarioJSON(id, title: title, language: language, items: items))
     }
 
     func pick(_ name: String, _ text: String) throws -> URL {
@@ -51,12 +56,17 @@ struct ImportWorld {
     }
 
     /// Picks a valid one-item-per-id scenario file named after its id.
-    func pickScenario(_ id: String, title: String = "zz title", items: [String]) throws -> URL {
-        try pick("\(id)-picked.json", Self.scenarioJSON(id, title: title, items: items))
+    func pickScenario(
+        _ id: String,
+        title: String = "zz title",
+        language: CourseLanguage = .tamil,
+        items: [String]
+    ) throws -> URL {
+        try pick("\(id)-picked.json", Self.scenarioJSON(id, title: title, language: language, items: items))
     }
 
-    func layered() -> ContentBootstrapResult {
-        BundleContentLoader().load(directory: bundled, importedDirectory: imported)
+    func layered(language: CourseLanguage = .tamil) -> ContentBootstrapResult {
+        BundleContentLoader().load(directory: bundled, language: language, importedDirectory: imported)
     }
 
     func importedFileNames() -> [String] {
@@ -64,15 +74,25 @@ struct ImportWorld {
         return names.sorted()
     }
 
-    static func scenarioJSON(_ scenarioID: String, title: String = "zz title", items: [String]) -> String {
-        scenarioJSON(scenarioID, title: title, rawItems: items.map { itemJSON(id: $0) })
+    static func scenarioJSON(
+        _ scenarioID: String,
+        title: String = "zz title",
+        language: CourseLanguage = .tamil,
+        items: [String]
+    ) -> String {
+        scenarioJSON(scenarioID, title: title, language: language, rawItems: items.map { itemJSON(id: $0) })
     }
 
-    static func scenarioJSON(_ scenarioID: String, title: String = "zz title", rawItems: [String]) -> String {
+    static func scenarioJSON(
+        _ scenarioID: String,
+        title: String = "zz title",
+        language: CourseLanguage = .tamil,
+        rawItems: [String]
+    ) -> String {
         let body = rawItems.joined(separator: ",")
         return """
-        {"scenarioId": "\(scenarioID)", "language": "tamil", "title": "\(title)", "subtitle": "zz subtitle",
-         "items": [\(body)]}
+        {"scenarioId": "\(scenarioID)", "language": "\(language.rawValue)", "title": "\(title)",
+         "subtitle": "zz subtitle", "items": [\(body)]}
         """
     }
 
