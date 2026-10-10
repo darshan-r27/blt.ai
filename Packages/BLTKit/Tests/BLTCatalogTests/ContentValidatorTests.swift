@@ -71,7 +71,7 @@ struct ContentValidatorTests {
         #expect(item.addressee == .any)
         #expect(item.registerVariant == "zz casual")
         #expect(item.distractors == ["zz wrong a", "zz wrong b"])
-        #expect(item.tokens == [Token(tamil: "zz", english: "zz gloss")])
+        #expect(item.tokens == [Token(word: "zz", english: "zz gloss")])
         #expect(item.note == nil)
         #expect(item.reviewStatus == .unreviewed)
     }
@@ -139,23 +139,23 @@ struct ContentValidatorTests {
 }
 
 extension ContentValidatorTests {
-    // MARK: Tamil script
+    // MARK: Native script
 
-    @Test func tamilScriptCodePointIsReportedInEveryKindOfField() throws {
-        let tamil = "zz\u{0B85}"
-        try Self.expectRejected([.tamilScriptInField(.sourcePrompt)]) { $0["sourcePrompt"] = tamil }
-        try Self.expectRejected([.tamilScriptInField(.canonical)]) { $0["canonical"] = tamil }
-        try Self.expectRejected([.tamilScriptInField(.note)]) { $0["note"] = tamil }
-        try Self.expectRejected([.tamilScriptInField(.distractors)]) { $0["distractors"] = [tamil, "zz wrong b"] }
-        try Self.expectRejected([.tamilScriptInField(.registerVariant)]) { $0["registerVariant"] = tamil }
-        try Self.expectRejected([.tamilScriptInField(.tokens)]) {
-            $0["tokens"] = [["word": "zz", "english": tamil]]
+    @Test func nativeScriptCodePointIsReportedInEveryKindOfField() throws {
+        let script = "zz\u{0B85}"
+        try Self.expectRejected([.nativeScriptInField(.sourcePrompt)]) { $0["sourcePrompt"] = script }
+        try Self.expectRejected([.nativeScriptInField(.canonical)]) { $0["canonical"] = script }
+        try Self.expectRejected([.nativeScriptInField(.note)]) { $0["note"] = script }
+        try Self.expectRejected([.nativeScriptInField(.distractors)]) { $0["distractors"] = [script, "zz wrong b"] }
+        try Self.expectRejected([.nativeScriptInField(.registerVariant)]) { $0["registerVariant"] = script }
+        try Self.expectRejected([.nativeScriptInField(.tokens)]) {
+            $0["tokens"] = [["word": "zz", "english": script]]
         }
     }
 
-    @Test func tamilBlockBoundariesAreExact() throws {
+    @Test func nativeScriptBlockBoundariesAreExact() throws {
         for scalar in ["\u{0B80}", "\u{0BFF}"] {
-            try Self.expectRejected([.tamilScriptInField(.sourcePrompt)]) { $0["sourcePrompt"] = "zz \(scalar)" }
+            try Self.expectRejected([.nativeScriptInField(.sourcePrompt)]) { $0["sourcePrompt"] = "zz \(scalar)" }
         }
         // Just outside both blocks: the scalar below Tamil and the scalar above Telugu are not native script.
         for scalar in ["\u{0B7F}", "\u{0C80}"] {
@@ -303,7 +303,7 @@ extension ContentValidatorTests {
         raw["romanisationNote"] = "zz\u{0B85}"
         let rejected = try Self.load([raw])
         #expect(rejected.scenarios.isEmpty)
-        #expect(rejected.issues.map(\.rule) == [.tamilScriptInField(.note)])
+        #expect(rejected.issues.map(\.rule) == [.nativeScriptInField(.note)])
     }
 
     @Test func scenarioWithNoValidItemsIsDroppedWithAnEmptyScenarioIssue() throws {

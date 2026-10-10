@@ -90,7 +90,8 @@ struct SessionViewModelTests {
             title: "zz",
             subtitle: "zz",
             romanisationNote: nil,
-            items: [PreviewCatalog.respectfulItem]
+            items: [PreviewCatalog.respectfulItem],
+            language: .tamil
         )
         let model = makeModel(store: store, scenario: single)
         await model.start()
@@ -266,7 +267,8 @@ struct SessionViewModelTests {
             title: "zz empty",
             subtitle: "zz",
             romanisationNote: nil,
-            items: []
+            items: [],
+            language: .tamil
         )
         let model = makeModel(store: InMemoryProgressStore(), scenario: empty)
         await model.start()
@@ -344,7 +346,8 @@ extension SessionViewModelTests {
             title: "zz",
             subtitle: "zz",
             romanisationNote: nil,
-            items: items
+            items: items,
+            language: .tamil
         )
     }
 

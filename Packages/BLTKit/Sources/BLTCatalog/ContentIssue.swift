@@ -10,7 +10,7 @@ public struct ContentIssue: Sendable, Hashable {
     public enum Rule: Sendable, Hashable {
         case notAFileURL, unreadableFile, fileTooLarge, malformedJSON
         case missingField(Field), emptyField(Field), fieldTooLong(Field)
-        case tamilScriptInField(Field), unknownValue(Field)
+        case nativeScriptInField(Field), unknownValue(Field)
         case wrongDistractorCount, registerVariantMismatch, canonicalNotAccepted, otherOptionAccepted
         case wrongAcceptedCount, duplicateOptionText, duplicateItemID, duplicateScenarioID
         case tokenNotInCanonical, tooManyItems, emptyScenario

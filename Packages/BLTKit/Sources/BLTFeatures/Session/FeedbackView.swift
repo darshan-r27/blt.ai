@@ -53,7 +53,7 @@ struct FeedbackView: View {
                 }
 
                 if !item.tokens.isEmpty {
-                    GlossView(item.tokens.map { (tamil: $0.tamil, english: $0.english) })
+                    GlossView(item.tokens.map { (word: $0.word, english: $0.english) })
                 }
 
                 if let note = item.note {

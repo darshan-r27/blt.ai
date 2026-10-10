@@ -238,7 +238,7 @@ extension ContentValidator {
             return hasNative && !hasLatin ? value : nil
         }
 
-        /// A required (or optional) string field. A present but empty, over-long or Tamil-script value is
+        /// A required (or optional) string field. A present but empty, over-long or native-script value is
         /// an issue; an absent optional field is not.
         mutating func string(_ value: String?, _ field: ContentIssue.Field, required: Bool = true) -> String? {
             if malformed.contains(field) {
@@ -327,7 +327,7 @@ extension ContentValidator {
             if value.unicodeScalars.contains(where: { scalar in
                 CourseLanguage.allCases.contains { $0.isScriptScalar(scalar) }
             }) {
-                report(.tamilScriptInField(field))
+                report(.nativeScriptInField(field))
                 return nil
             }
             return value

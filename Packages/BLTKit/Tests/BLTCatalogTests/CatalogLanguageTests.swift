@@ -123,7 +123,6 @@ struct CatalogLanguageTests {
         #expect(catalog.issues.isEmpty)
         let token = try #require(catalog.item(ItemID(rawValue: "zz-1"))?.tokens.first)
         #expect(token.word == "zz")
-        #expect(token.tamil == "zz")
     }
 
     @Test func theOldTamilGlossKeyIsAnErrorNotAFallback() throws {

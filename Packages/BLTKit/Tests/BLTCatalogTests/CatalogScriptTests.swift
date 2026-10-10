@@ -51,7 +51,7 @@ struct CatalogScriptTests {
                 var item = Fix.item(id: "zz-2")
                 item["note"] = letters
                 let catalog = try Fix.load([Fix.scenario(language: language, items: [item, Fix.item(id: "zz-good")])])
-                #expect(catalog.issues.map(\.rule) == [.tamilScriptInField(.note)])
+                #expect(catalog.issues.map(\.rule) == [.nativeScriptInField(.note)])
                 #expect(catalog.allItemIDs == [ItemID(rawValue: "zz-good")])
             }
         }
@@ -71,14 +71,14 @@ struct CatalogScriptTests {
             var item = Fix.item(id: "zz-2")
             edit(&item)
             let catalog = try Fix.load([Fix.scenario(language: "telugu", items: [item, Fix.item(id: "zz-good")])])
-            #expect(catalog.issues.map(\.rule) == [.tamilScriptInField(field)])
+            #expect(catalog.issues.map(\.rule) == [.nativeScriptInField(field)])
             #expect(catalog.allItemIDs == [ItemID(rawValue: "zz-good")])
         }
         for scalar in ["\u{0C00}", "\u{0C7F}"] {
             var item = Fix.item(id: "zz-2")
             item["sourcePrompt"] = "zz \(scalar)"
             let catalog = try Fix.load([Fix.scenario(items: [item, Fix.item(id: "zz-good")])])
-            #expect(catalog.issues.map(\.rule) == [.tamilScriptInField(.sourcePrompt)])
+            #expect(catalog.issues.map(\.rule) == [.nativeScriptInField(.sourcePrompt)])
         }
     }
 

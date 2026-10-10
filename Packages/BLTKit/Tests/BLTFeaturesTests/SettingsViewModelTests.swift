@@ -67,7 +67,8 @@ private func makeDependencies(store: any ProgressStore, allReviewed: Bool = fals
         title: "zz S",
         subtitle: "zz sub",
         romanisationNote: nil,
-        items: items
+        items: items,
+        language: .tamil
     )
     return AppDependencies(
         catalog: Catalog(scenarios: [scenario], issues: []),
@@ -88,7 +89,7 @@ private func makeItem(_ id: String, status: ReviewStatus) -> Item {
         acceptedAnswers: ["zz canonical", "zz alt a", "zz alt b"],
         registerVariant: nil,
         distractors: ["zz wrong a", "zz wrong b", "zz wrong c"],
-        tokens: [Token(tamil: "zz", english: "zz gloss")],
+        tokens: [Token(word: "zz", english: "zz gloss")],
         note: nil,
         reviewStatus: status
     )

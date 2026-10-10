@@ -18,9 +18,7 @@ public struct Scenario: Sendable, Equatable, Identifiable {
         romanisationNote: String?,
         items: [Item],
         level: Level? = nil,
-        // The default exists only so call sites written before `language` existed still compile. Lesson
-        // files never default: a file without `language` is rejected by the validator.
-        language: CourseLanguage = .tamil
+        language: CourseLanguage
     ) {
         self.id = id
         self.title = title

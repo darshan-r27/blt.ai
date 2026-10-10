@@ -35,11 +35,11 @@ struct CatalogLevelTests {
         #expect(catalog.issues.map(\.rule) == [.invalidLevelPosition])
     }
 
-    @Test func levelWithAnEmptyOrOverLongOrTamilTitleIsReported() throws {
+    @Test func levelWithAnEmptyOrOverLongOrNativeScriptTitleIsReported() throws {
         let cases: [(String, ContentIssue.Rule)] = [
             ("   ", .emptyField(.level)),
             (String(repeating: "a", count: 501), .fieldTooLong(.level)),
-            ("zz\u{0B85}", .tamilScriptInField(.level))
+            ("zz\u{0B85}", .nativeScriptInField(.level))
         ]
         for (title, rule) in cases {
             let raw = Fix.scenario(level: Fix.level(title: title), items: [Fix.item(id: "zz-1")])

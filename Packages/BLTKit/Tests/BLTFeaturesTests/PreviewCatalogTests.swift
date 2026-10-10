@@ -10,7 +10,7 @@ struct PreviewCatalogTests {
             #expect(scenario.title.hasPrefix("zz"))
             for item in scenario.items {
                 let strings = [item.id.rawValue, item.sourcePrompt, item.canonical, item.registerVariant ?? "zz"]
-                    + item.acceptedAnswers + item.distractors + item.tokens.flatMap { [$0.tamil, $0.english] }
+                    + item.acceptedAnswers + item.distractors + item.tokens.flatMap { [$0.word, $0.english] }
                 for text in strings { #expect(text.hasPrefix("zz")) }
             }
         }
