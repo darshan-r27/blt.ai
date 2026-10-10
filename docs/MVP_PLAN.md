@@ -56,7 +56,7 @@ learner's course is chosen elsewhere (DECISIONS 042, 043).
     "script": "optional: the canonical answer in the lesson language's own script" }] }
 ```
 
-`language` is required on every lesson (`tamil` or `telugu`); a file never defaults it. `Scenario.language` is a `CourseLanguage` and is the last initializer parameter, defaulted to `.tamil` only so Swift call sites written before the field existed still compile. The loader takes an optional `expectedLanguage` (the course being loaded): when it is set, a lesson in the other language is rejected with `wrongLanguage` and contributes nothing, not even to the duplicate checks; when it is `nil` either language is accepted.
+`language` is required on every lesson (`tamil` or `telugu`); a file never defaults it. `Scenario.language` is a `CourseLanguage` and is the last initializer parameter; it has no default, so every call site names the language. The loader takes an optional `expectedLanguage` (the course being loaded): when it is set, a lesson in the other language is rejected with `wrongLanguage` and contributes nothing, not even to the duplicate checks; when it is `nil` either language is accepted.
 
 `level` is optional and describes the file as a whole (DECISIONS 039): `number` and `position` are integers of at least 1, `title` is a non-empty string. A file without `level` is valid. `script` is optional on each item (DECISIONS 040, 044). `Scenario.level` and `Item.script` are `nil` when the key is absent; `Item.script` is the last, defaulted initializer parameter. The gloss key is `tokens[].word`; `Token.word` holds it.
 
@@ -113,7 +113,7 @@ public enum Verdict: Sendable, Equatable {
 }
 
 // BLTCatalog (domain types are not Codable; only C2's Raw* types decode)
-public struct Token: Sendable, Equatable { public let tamil: String; public let english: String }
+public struct Token: Sendable, Equatable { public let word: String; public let english: String }
 public struct Item: Sendable, Equatable, Identifiable {
     public let id: ItemID; public let scenarioID: ScenarioID
     public let sourcePrompt: String; public let register: Register; public let addressee: Addressee
@@ -136,7 +136,7 @@ public struct ContentIssue: Sendable, Hashable {   // closed: no free text, no p
              acceptedAnswers, registerVariant, distractors, tokens, note, reviewStatus }
     public enum Rule: Sendable, Hashable {
         case notAFileURL, unreadableFile, fileTooLarge, malformedJSON
-        case missingField(Field), emptyField(Field), fieldTooLong(Field), tamilScriptInField(Field), unknownValue(Field)
+        case missingField(Field), emptyField(Field), fieldTooLong(Field), nativeScriptInField(Field), unknownValue(Field)
         case wrongDistractorCount, registerVariantMismatch, canonicalNotAccepted, otherOptionAccepted
         case wrongAcceptedCount, duplicateOptionText, duplicateItemID, duplicateScenarioID
         case tokenNotInCanonical, tooManyItems, emptyScenario }
