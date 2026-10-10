@@ -77,13 +77,15 @@ struct ImportWorld {
 
     static func itemJSON(
         id: String,
-        sourcePrompt: String = "zz prompt",
-        accepted: String = #"["zz canonical", "zz canonical b", "zz canonical c"]"#,
+        sourcePrompt: String? = nil,
+        accepted: String? = nil,
         distractors: String = #"["zz wrong a", "zz wrong b"]"#
     ) -> String {
-        """
-        {"id": "\(id)", "sourcePrompt": "\(sourcePrompt)", "register": "respectful", "addressee": "any",
-         "canonical": "zz canonical", "acceptedAnswers": \(accepted), "registerVariant": "zz casual",
+        let accepted = accepted ?? #"["zz canonical \#(id)", "zz canonical b \#(id)", "zz canonical c \#(id)"]"#
+        return """
+        {"id": "\(id)", "sourcePrompt": "\(sourcePrompt ?? "zz prompt \(id)")", "register": "respectful",
+         "addressee": "any", "canonical": "zz canonical \(id)", "acceptedAnswers": \(accepted),
+         "registerVariant": "zz casual",
          "distractors": \(distractors), "tokens": [{"tamil": "zz", "english": "zz gloss"}],
          "note": null, "reviewStatus": "unreviewed"}
         """

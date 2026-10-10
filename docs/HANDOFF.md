@@ -5,7 +5,9 @@ Read this first in a new session, then `CLAUDE.md`. Last updated 2026-10-09.
 ## Start here (next session)
 **blt.ai is now a two-way course (DECISIONS 042): Tamil for the Telugu speaker and Telugu for the Tamil speaker,
 for a couple who share English.** The owner approved `plan.md` on 2026-10-09. Wave 0 (the documents) is done.
-No code for it exists yet: `main` is still the Tamil-only app described below.
+`main` is still the Tamil-only app described below. The earlier single-course plan's Wave 1 is merged (PRs #11
+to #13) and is reused: optional `level` and `tamilScript`, the three duplicate rules, the editor fields, and
+`scripts/content-index.sh`. So A1 to A3 below are deltas on that work, not new builds.
 
 **Next task: chunk T1 of `plan.md`, then Wave 1.** Read `plan.md`, `docs/COURSE_SYLLABUS.md` and DECISIONS 038
 to 044 first.
@@ -13,26 +15,25 @@ to 044 first.
 | Chunk | Owns (touch nothing else) | Proof |
 |---|---|---|
 | **T1** (main session, merge first) | new `Packages/BLTKit/Sources/BLTCore/CourseLanguage.swift` + test; `BLTDesign/AccessibilityID.swift` (ids for Waves 3 and 4) | package tests |
-| **A1 Catalog format** | `Packages/BLTKit/Sources/BLTCatalog/*` (new `Level.swift`), `Tests/BLTCatalogTests/*` | package tests |
+| **A1 Catalog format** | `Packages/BLTKit/Sources/BLTCatalog/*`, `Tests/BLTCatalogTests/*`, the five `content/*.json` files (format only) | package tests |
 | **A2 Editor** | `tools/content-editor/index.html` and its README | headless Chrome run of the editor's checks |
-| **A3 Drafting aid** | `scripts/content-index.sh` (new; Python 3 standard library only) | its `--check` and `--self-test` |
+| **A3 Drafting aid** | `scripts/content-index.sh` (exists; add per-language index and `--mirror`) | its `--check` and `--self-test` |
 | **A4 Profile** | `Packages/BLTKit/Sources/BLTProgress/Profile/*` and its tests | package tests |
 
 A1 to A4 run in parallel after T1, as Sonnet agents in separate worktrees, one PR each. Details that are easy
 to get wrong:
-- **A1.** Lesson: required `language` (`tamil`/`telugu`), optional `level` `{ number, title, position }`.
-  Item: optional `script`, which must contain characters of the lesson language's script (Tamil U+0B80 to
+- **A1.** Lesson: add the required `language` (`tamil`/`telugu`); `level` already exists. Item: rename
+  `tamilScript` to `script`, which must contain characters of the lesson language's script (Tamil U+0B80 to
   U+0BFF, Telugu U+0C00 to U+0C7F) and no Latin letters. Both scripts stay errors in every other field. The
   gloss key is `word`; the old key `tamil` is an error, never a fallback.
-- **A1 duplicates.** Catalog-wide, ignoring case, spacing and punctuation: no two items share a `sourcePrompt`
-  or a `canonical`. Inside one item, ignoring **only** case and surrounding spaces: no accepted spelling twice.
-  Do not ignore punctuation there: about 50 reviewed items list variants that differ only by punctuation.
+- **Duplicates are already built** (catalog-wide prompt and answer checks; no accepted spelling twice in one
+  item). Leave them as they are; they apply to each course separately.
 - **A1 also updates the five shipped files in place** (adds `language`, renames the gloss key to `word`), in
   the same PR, so the shipped-content tests stay green. It changes no lesson text and no review status. The
   files move to `content/tamil/` later, in Wave 2.
 - `Scenario`, `Item`, `UserProfile` and `AppDependencies` are frozen contracts (`docs/MVP_PLAN.md` section 5):
   add fields with defaults so existing call sites compile. When A1 lands, rewrite `MVP_PLAN.md` section 2 and
-  flip DECISIONS 038 to 040 and 044 from pending to active.
+  flip DECISION 044 from pending to active.
 - Fixtures are fake `zz` text; a script fixture is one letter repeated. No Tamil or Telugu in Swift or docs.
 - **A4.** `learningLanguage` is optional. A schema-1 profile loads with no language; nothing defaults to Tamil.
 

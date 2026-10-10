@@ -38,6 +38,7 @@ struct RawItem: Decodable {
     var tokens: [TokenEntry]?
     var note: String?
     var reviewStatus: String?
+    var tamilScript: String?
     /// Fields that were present but had the wrong JSON type.
     var malformed: Set<ContentIssue.Field> = []
     /// The array element was not a JSON object at all.
@@ -45,7 +46,7 @@ struct RawItem: Decodable {
 
     private enum CodingKeys: String, CodingKey {
         case id, sourcePrompt, register, addressee, canonical, acceptedAnswers
-        case registerVariant, distractors, tokens, note, reviewStatus
+        case registerVariant, distractors, tokens, note, reviewStatus, tamilScript
     }
 
     init(from decoder: any Decoder) throws {
@@ -73,6 +74,9 @@ struct RawItem: Decodable {
         note = container.lenient(String.self, forKey: .note, field: .note, malformed: &malformed)
         reviewStatus = container.lenient(
             String.self, forKey: .reviewStatus, field: .reviewStatus, malformed: &malformed
+        )
+        tamilScript = container.lenient(
+            String.self, forKey: .tamilScript, field: .tamilScript, malformed: &malformed
         )
     }
 }

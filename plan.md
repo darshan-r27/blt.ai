@@ -1,7 +1,8 @@
 # blt.ai becomes a two-way course: Tamil and Telugu, for a couple learning each other's language
 
-On approval this replaces `plan.md` in the repo root (the single-course plan it supersedes was never built past
-its syllabus). Progress is tracked in `progress.md`.
+This replaces the single-course plan. That plan's Wave 1 was built and merged (PRs #11 to #13: `level`,
+`tamilScript`, the duplicate rules, the editor fields and `scripts/content-index.sh`) and is reused here; its
+later waves are replaced by this plan. Progress is tracked in `progress.md`.
 
 ## Context
 Today blt.ai teaches colloquial Tamil to a Telugu speaker. The owner wants a new thesis: **BLT = Budugu Learns
@@ -76,15 +77,18 @@ and stay labelled "Unreviewed draft" until the partner checks them.
 - `CourseLanguage`: `tamil`, `telugu`, display name, script range. Proof: package tests.
 
 ## Wave 1: format, tools, profile (parallel, different files)
-**A1 Catalog format.** `Packages/BLTKit/Sources/BLTCatalog/*` (new `Level.swift`), `Tests/BLTCatalogTests/*`.
-- Everything in decision 3, plus the duplicate rules: catalog-wide prompt and answer checks ignore case, spacing
-  and punctuation; inside one item only case and surrounding spaces are ignored.
+**A1 Catalog format (a delta: `level`, `tamilScript` and the duplicate rules already exist).**
+`Packages/BLTKit/Sources/BLTCatalog/*`, `Tests/BLTCatalogTests/*`.
+- Add the required `language`; rename `tamilScript` to `script` and check it against the lesson language's
+  script; rename the gloss key to `word`; reject a lesson whose language is not the course's. The duplicate
+  rules stay as built.
 - Fixtures are fake `zz` text; a script fixture is one letter repeated.
 - **Also updates the five shipped files in place** (adds `language`, renames the gloss key), in the same PR, so
   the shipped-content tests never go red. The files do not move yet.
-**A2 Editor.** `tools/content-editor/index.html`, its README. Same rules, language-aware labels and script check.
-**A3 Drafting aid.** `scripts/content-index.sh` (new, Python 3 standard library): per-language index,
-`--check` for duplicates, `--mirror` report, `--self-test`.
+**A2 Editor (a delta).** `tools/content-editor/index.html`, its README. The same three changes, with
+language-aware labels and script check.
+**A3 Drafting aid (a delta).** `scripts/content-index.sh` exists with `--check` and `--self-test`. Add a
+per-language index and the `--mirror` report.
 **A4 Profile.** `Packages/BLTKit/Sources/BLTProgress/Profile/*`, its tests.
 - `UserProfile.learningLanguage` (optional), profile file schema 2, schema 1 files load with no language.
 - Proof for all: `BLT_SIM="iPhone 17" scripts/test.sh package`; A2 by headless Chrome; A3 by its self-test.

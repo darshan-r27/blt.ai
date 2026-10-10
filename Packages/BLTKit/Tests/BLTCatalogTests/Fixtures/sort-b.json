@@ -5,7 +5,7 @@
   "items": [
     {
       "id": "zz-b-1",
-      "sourcePrompt": "zz prompt",
+      "sourcePrompt": "zz b prompt",
       "register": "neutral",
       "addressee": "any",
       "canonical": "zz b canonical",

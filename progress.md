@@ -2,8 +2,10 @@
 
 ## Done
 - Single-course plan, syllabus and DECISIONS 038 to 041 merged (PR #8). All 100 Tamil phrases reviewed (PR #9).
-- 2026-10-09: owner approved the two-way plan (Tamil and Telugu). It replaces the single-course plan, which was
-  never built past its syllabus. `plan.md` holds the new plan.
+- Single-course plan Wave 1 built and merged in another session (PRs #11 to #13): `level`, `tamilScript`, the
+  duplicate rules, editor fields, `scripts/content-index.sh`. Reused by the new plan.
+- 2026-10-09: owner approved the two-way plan (Tamil and Telugu). It replaces the single-course plan's later
+  waves. `plan.md` holds the new plan.
 
 ## Decisions
 - Owner reviews Tamil; partner reviews Telugu on their own computer; reviewed files return by AirDrop and are
@@ -17,6 +19,8 @@
 - `docs/COURSE_SYLLABUS.md` widened to two courses; DECISIONS 042 to 044 added; `docs/REVIEWER_GUIDE.md` added.
 
 ## Deviations
+- `plan.md` chunks A1 to A3 were rewritten as deltas after finding that the old plan's Wave 1 was already merged.
+- PR #14 (handoff for the old plan's Wave 2) is superseded by this work and should be closed, not merged.
 - Sequencing fixed in `plan.md` after approval: A1 also updates the five shipped files in place (so tests stay green), and B1 and B2 merge as one PR (moving the files and changing the loader must land together).
 - Documents that describe the built app (README, ARCHITECTURE, HANDOFF) say what exists today and mark the two-course work as planned, instead of describing it as done.
 - The PRD body was not rewritten: a note at the top says how to read it for two languages.

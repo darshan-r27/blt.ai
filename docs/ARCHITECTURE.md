@@ -86,7 +86,7 @@ Settings can import lesson files from the Files app ([`DECISIONS.md`](DECISIONS.
 |---|---|---|
 | Language | Implicitly Tamil | `CourseLanguage` (`tamil`, `telugu`) in `BLTCore`, chosen at onboarding, stored on the profile, switchable in Settings |
 | Lessons | `content/*.json`, 5 files | `content/tamil/` and `content/telugu/`, 100 lessons each in 8 levels; each file names its `language` and `level` |
-| Lesson format | Gloss key `tamil`; no script | Gloss key `word`; optional `script` in the language's own script; duplicate rules |
+| Lesson format | Gloss key `tamil`; optional `level` and `tamilScript`; duplicate rules | Required `language`; gloss key `word`; `tamilScript` becomes `script`, checked against the language's own script |
 | Data on the device | `progress.json`, `content/` | `courses/<language>/` holding progress, imports and the exam result; existing data moved once |
 | Composition | One catalog | Dependencies built for the chosen language; switching reuses the post-import reload |
 | Home | Flat list | Grouped by level, with a next-lesson suggestion |

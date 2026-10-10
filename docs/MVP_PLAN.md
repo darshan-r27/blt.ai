@@ -35,11 +35,12 @@ Feedback also shows the word-by-word gloss (`tokens`) and `note`. The gloss is n
 
 ## 2. Content schema (frozen; the loader reads exactly this)
 
-> **Pending changes (not yet applied; the text below still matches the code).** DECISIONS 038 to 044 add duplicate-prompt and duplicate-answer rules, a required `language` and an optional `level` object on a lesson, an optional `script` field on an item, rename `tokens[].tamil` to `tokens[].word`, move lessons into `content/tamil/` and `content/telugu/`, add the learner's language to `UserProfile` and `AppDependencies` (section 5), and replace "exactly 5 files" in chunk C3. See `docs/COURSE_SYLLABUS.md` and `plan.md`. This section is rewritten when chunk A1 lands.
+> **Pending changes (not yet applied; the text below matches the code).** DECISIONS 042 to 044 make the lesson format serve two languages: a required `language` on a lesson, `tamilScript` renamed `script` and checked against the lesson language's own script, `tokens[].tamil` renamed `tokens[].word`, lessons moved into `content/tamil/` and `content/telugu/`, and the learner's language added to `UserProfile` and `AppDependencies` (section 5). "Exactly 5 files" in chunk C3 is also still to be replaced (039). See `docs/COURSE_SYLLABUS.md` and `plan.md`.
 
 ```json
 { "scenarioId": "s01-greetings", "title": "", "subtitle": "",
   "registerPolicy": "", "romanisationNote": "",
+  "level": { "number": 1, "title": "", "position": 1 },
   "items": [{
     "id": "s01-i01", "sourcePrompt": "",
     "register": "casual | respectful | neutral",
@@ -48,10 +49,13 @@ Feedback also shows the word-by-word gloss (`tokens`) and `note`. The gloss is n
     "registerVariant": "string, or null iff register is neutral",
     "distractors": ["2 when registerVariant exists, else 3"],
     "tokens": [{"tamil": "", "english": ""}],
-    "note": "string or null", "reviewStatus": "unreviewed | reviewed" }] }
+    "note": "string or null", "reviewStatus": "unreviewed | reviewed",
+    "tamilScript": "optional: the canonical answer in Tamil script" }] }
 ```
 
-Validation rules: exactly 4 distinct options (case-insensitive, trimmed); `canonical` in `acceptedAnswers`; no option other than `canonical` in `acceptedAnswers`; `registerVariant == null` iff `register == neutral`; 3–6 accepted answers; `tokens` non-empty; every `tokens[].tamil` word appears (case-insensitive) in `canonical`; no Tamil-script code points (this is Latin-script English words and romanised Tamil only); unknown keys ignored; unknown `reviewStatus` is an error, never defaulted; ≤ 200 items per file, ≤ 1 MB per file, ≤ 500 characters per string.
+`level` is optional and describes the file as a whole (DECISIONS 039): `number` and `position` are integers of at least 1, `title` is a non-empty string. A file without `level` is valid. `tamilScript` is optional on each item (DECISIONS 040). `Scenario.level` and `Item.tamilScript` are `nil` when the key is absent; both are added as the last, defaulted initializer parameters, so existing call sites are unchanged.
+
+Validation rules: exactly 4 distinct options (case-insensitive, trimmed); `canonical` in `acceptedAnswers`; no option other than `canonical` in `acceptedAnswers`; `registerVariant == null` iff `register == neutral`; 3–6 accepted answers; `tokens` non-empty; every `tokens[].tamil` word appears (case-insensitive) in `canonical`; no Tamil-script code points (this is Latin-script English words and romanised Tamil only); `tamilScript`, when present, is non-empty, contains at least one Tamil-script code point (U+0B80 to U+0BFF), contains no ASCII letters, and is the only field where Tamil script is allowed; a `level` with `number` or `position` below 1, or an empty title, is an error, and the same level number must always carry the same title (compared exactly after trimming; the earlier file wins); no two items in the catalog share a `sourcePrompt`, and no two share a `canonical`, ignoring case, spacing and punctuation (the later item is dropped; DECISIONS 038); inside one item no accepted answer appears twice, ignoring only case and surrounding spaces, so variants that differ only by punctuation stay valid; wrong options may repeat across items; unknown keys ignored; unknown `reviewStatus` is an error, never defaulted; ≤ 200 items per file, ≤ 1 MB per file, ≤ 500 characters per string.
 
 ## 3. Human-gated items (with defaults)
 

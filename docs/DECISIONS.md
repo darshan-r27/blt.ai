@@ -341,14 +341,14 @@ The owner wants Reset progress to look like a warning wherever it appears, so a 
 This is the only place red is allowed. `destructive` is deliberately kept out of `Palette.allColors`, which the no-red test covers, so every other colour is still checked red-free; wrong answers and feedback keep the neutral and nudge tones. The "Remove imported lessons" dialog uses no destructive role because nothing is lost (progress is kept and the files can be imported again).
 
 ## 038 — No duplicate prompts or answers across the course
-**Status:** pending — agreed with the owner; applied with the catalog format change (plan.md, chunk A1). Applies to each course separately (042)
+**Status:** active — applied in the catalog validator (plan.md, chunk C1). Applies to each course separately (042)
 
 The course grows from 100 to 2,000 phrases (`docs/COURSE_SYLLABUS.md`), drafted over months. Without a rule, the same sentence would be written twice. Three checks. Across the catalog, ignoring case, spacing and punctuation: no two items share a `sourcePrompt`, and no two items share a `canonical`. Inside one item, ignoring only case and surrounding spaces: no accepted spelling is listed twice. The narrower comparison inside an item is deliberate: accepted spellings often differ only by a question mark, a hyphen or a space, and those variants are wanted. Wrong options may repeat across items, because a good wrong option is often reused.
 
 The checks live in the validator, so bundled lessons, imported lessons and the editor all apply the same rule. The catalog-wide checks run against the catalog the learner would end up with, like the existing duplicate-id checks (036). `scripts/content-index.sh` lists every existing prompt and answer so a drafter can avoid repeats before writing.
 
 ## 039 — The course has levels; lessons carry their level
-**Status:** pending — agreed with the owner; applied in plan.md chunks A1, B1 and C2. Lesson naming and folders are amended by 044
+**Status:** pending — the `level` field and its validation are applied (chunk C1); Home grouping and lesson naming land in Wave 2 (chunks C4 and C5). Lesson naming and folders are amended by 044
 
 The 100 lessons are grouped into 8 levels taken in order (`docs/COURSE_SYLLABUS.md`). Each lesson file gains an optional `level` object: `number`, `title`, and `position` (its place within the level). `position` is needed because the first five lessons keep their original ids, which would otherwise sort after the new ones. A file without `level` (an older import) is listed under "Other lessons". The same level number must always carry the same title.
 
@@ -357,7 +357,7 @@ New lessons are named `content/l03-u07-<slug>.json` with `scenarioId` `l03-u07` 
 Home groups lessons by level and suggests the next unfinished one. **Nothing is locked**: the owner chose an ordered course the learner can move around in, because a locked level strands a learner who is stuck on one lesson. This replaces "exactly 5 files" in `docs/MVP_PLAN.md` (chunk C3) with: at least 5 files, exactly 20 items each, level numbers with no gaps. A separate course manifest file was rejected because the loader and the import treat every `content/*.json` as a lesson. The import limit rises from 10 to 20 files so a whole level can be imported at once (amends 036).
 
 ## 040 — New phrases carry a Tamil-script spelling
-**Status:** pending — agreed with the owner; applied in plan.md chunk A1. The field is renamed `script` and covers Telugu by 044
+**Status:** active — applied in the catalog validator (plan.md, chunk C1). The field is renamed `script` and covers Telugu by 044 (pending)
 
 Each item gains an optional `tamilScript` field: the canonical answer written in Tamil script. It exists so audio can be generated later without a second review of 2,000 phrases, since speech voices read Tamil script and not the informal Latin spelling. It is optional so the first 100 phrases stay valid; every lesson written under the new naming must have it, and the first 100 are backfilled later.
 
@@ -404,6 +404,6 @@ The profile gains the language being learned. Onboarding asks for it after the n
 - **`language`** (`tamil` or `telugu`) is required on every lesson file. A lesson in the wrong course is rejected, bundled or imported, so a Telugu file cannot land in the Tamil course.
 - **Folders and ids.** `content/tamil/` and `content/telugu/`. Paired lessons share a key: `ta-l02-u03` and `te-l02-u03`, with items `ta-l02-u03-i01`. The five original Tamil lessons keep their ids so saved progress survives.
 - **The word-gloss key `tokens[].tamil` becomes `tokens[].word`.** The five existing files are rewritten once; afterwards the old key is an error and is never read as a fallback. Lesson files imported before this change must be re-exported.
-- **`tamilScript` (040, never built) becomes `script`:** the answer in the lesson language's own script (Tamil U+0B80 to U+0BFF, Telugu U+0C00 to U+0C7F), with no Latin letters. Both scripts stay banned in every other field and in all Swift code.
+- **`tamilScript` (040, built but not yet used by any lesson) becomes `script`:** the answer in the lesson language's own script (Tamil U+0B80 to U+0BFF, Telugu U+0C00 to U+0C7F), with no Latin letters. Both scripts stay banned in every other field and in all Swift code.
 - `level` and the duplicate rules are as decided in 038 and 039. The import limit is 20 files.
 

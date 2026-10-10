@@ -4,7 +4,7 @@ import BLTCore
 public struct ContentIssue: Sendable, Hashable {
     public enum Field: String, Sendable, Hashable, CaseIterable {
         case scenarioId, title, subtitle, id, sourcePrompt, register, addressee, canonical
-        case acceptedAnswers, registerVariant, distractors, tokens, note, reviewStatus
+        case acceptedAnswers, registerVariant, distractors, tokens, note, reviewStatus, level, tamilScript
     }
 
     public enum Rule: Sendable, Hashable {
@@ -14,6 +14,9 @@ public struct ContentIssue: Sendable, Hashable {
         case wrongDistractorCount, registerVariantMismatch, canonicalNotAccepted, otherOptionAccepted
         case wrongAcceptedCount, duplicateOptionText, duplicateItemID, duplicateScenarioID
         case tokenNotInCanonical, tooManyItems, emptyScenario
+        case duplicateSourcePrompt, duplicateCanonical, duplicateAcceptedAnswer
+        case invalidLevelNumber, invalidLevelPosition, levelTitleMismatch
+        case tamilScriptMissingTamil, latinLettersInTamilScript
     }
 
     public let fileIndex: Int
