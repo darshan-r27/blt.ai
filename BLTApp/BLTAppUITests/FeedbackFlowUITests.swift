@@ -1,23 +1,16 @@
 import XCTest
 
-/// The question, feedback and summary beats of a session on the fake catalog (two items, shuffled).
+/// The feedback screens for the two answers that are not simply correct, and the unreviewed badge, full tier
+/// (DECISIONS 045). The correct-answer and summary happy path is in `HappyPathUITests`; which option leads to which
+/// feedback, and that a missed item comes back, are checked in the package (`SessionCompletionFlowTests`,
+/// `SessionViewModelTests`, `FeedbackRoutingTests`). These tests stay because the screen itself is under test: the
+/// right feedback view with the right identifier on screen.
 @MainActor
 final class FeedbackFlowUITests: BLTUITestCase {
     private func launchSession() -> XCUIApplication {
         let app = launchHome()
         openFixtureScenario(app)
         return app
-    }
-
-    func testCanonicalOptionReachesCorrectFeedback() throws {
-        let app = launchSession()
-        let question = try currentQuestion(app)
-
-        choose(question.canonical, in: app)
-
-        requireExists(app.element(AXID.feedbackCorrect), "correct feedback")
-        XCTAssertFalse(app.element(AXID.feedbackWrongRegister).exists)
-        XCTAssertFalse(app.element(AXID.feedbackNotQuite).exists)
     }
 
     func testOtherRegisterOptionReachesWrongRegisterFeedback() throws {
@@ -42,22 +35,6 @@ final class FeedbackFlowUITests: BLTUITestCase {
         XCTAssertFalse(app.element(AXID.feedbackWrongRegister).exists)
     }
 
-    func testWrongItemReappearsLaterInTheSameSession() throws {
-        let app = launchSession()
-        let missed = try currentQuestion(app)
-        choose(missed.wrongOptions[0], in: app)
-        requireExists(app.element(AXID.feedbackNotQuite), "not-quite feedback")
-        tapContinue(app)
-
-        // The other item comes next, then the missed one again, before the session can finish.
-        let other = try currentQuestion(app)
-        XCTAssertNotEqual(other, missed)
-        try answerCorrectlyAndContinue(app)
-        XCTAssertFalse(app.staticTexts["Session finished"].exists, "The session must not finish with a missed item")
-        let again = try currentQuestion(app)
-        XCTAssertEqual(again, missed, "The missed item must be asked again")
-    }
-
     func testUnreviewedBadgeShowsOnUnreviewedItemOnlyOnQuestionAndFeedback() throws {
         let app = launchSession()
 
@@ -70,19 +47,5 @@ final class FeedbackFlowUITests: BLTUITestCase {
             XCTAssertEqual(badge.exists, question.isUnreviewed, "Badge on feedback for '\(question.prompt)'")
             tapContinue(app)
         }
-    }
-
-    func testFinishedSummaryAppearsAfterLastItemAndDoneReturnsHome() throws {
-        let app = launchSession()
-
-        try answerCorrectlyAndContinue(app)
-        XCTAssertFalse(app.staticTexts["Session finished"].exists, "One item is still to come")
-        try answerCorrectlyAndContinue(app)
-
-        requireExists(app.staticTexts["Session finished"], "the finished summary")
-        XCTAssertFalse(app.buttons[AXID.endSessionButton].exists, "The summary has its own Done")
-        tap(app.buttons["Done"], "Done")
-        requireExists(app.element(AXID.greeting), "Home after Done")
-        XCTAssertFalse(app.staticTexts["Session finished"].exists)
     }
 }

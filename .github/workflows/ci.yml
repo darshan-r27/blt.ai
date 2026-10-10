@@ -2,9 +2,20 @@
 name: CI
 
 # Runs the repo guardrails, SwiftLint, package tests and app tests (docs/MVP_PLAN.md C1, section 7).
-# The same four checks run locally: see "Run it" in README.md.
+# The same checks run locally: see "Run it" in README.md.
 #
-# Runner: the app targets iOS 27 (docs/DECISIONS.md 029), so the jobs need Xcode 27. GitHub offers that
+# Two tiers of UI tests (docs/DECISIONS.md 045):
+#   pull request            PR tier: one happy path per screen and the accessibility audits at the default text
+#                           size. This is the required check, and is meant to finish in under 15 minutes.
+#   push to main, nightly   full tier: every UI test, including the audits at the largest text size. A failure
+#   (cron), manual run      there does not block a pull request; it is fixed before the next one merges.
+# The classes in each tier are listed in scripts/test.sh (`scripts/test.sh tiers` prints them).
+#
+# Required checks for branch protection are the two job names "Guardrails and lint" and "Package and app tests".
+# The second is a small gate job that passes only when both real test jobs ("Package tests" and "UI tests")
+# passed, so the required name did not change when the tests were split into parallel jobs.
+#
+# Runner: the app targets iOS 27 (docs/DECISIONS.md 029), so the test jobs need Xcode 27. GitHub offers that
 # as the `xcode-27` image, which is still a public preview (actions/runner-images issue 14404): expect
 # queueing and the occasional image-side failure. `macos-latest` is macOS 26 with Xcode 26 and cannot
 # build this project. If the image loses the iOS 27 SDK the "Toolchain" step fails loudly; the tests
@@ -14,12 +25,22 @@ on:
   pull_request:
   push:
     branches: [main]
+  schedule:
+    - cron: "17 3 * * *" # nightly, full tier, 03:17 UTC on the default branch
+  workflow_dispatch:
+    inputs:
+      tier:
+        description: "UI test tier to run"
+        type: choice
+        options: [full, pr]
+        default: full
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
+  # The event name is part of the group so the nightly run never cancels (or is cancelled by) a push to main.
+  group: ci-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -28,6 +49,8 @@ env:
   SWIFTLINT_VERSION: "0.65.1"
   SWIFTLINT_SHA256: "c1e429b0599cf1b516f369a2d9ec04eaf0e436f3c12b637df8851fa52ff694d0"
   BLT_SIM: "iPhone 17"
+  # Pull requests run the short tier; everything else runs the full one unless a manual run asks for the short one.
+  UI_TIER: ${{ github.event_name == 'pull_request' && 'pr' || (github.event_name == 'workflow_dispatch' && inputs.tier || 'full') }}
 
 jobs:
   guardrails:
@@ -47,7 +70,7 @@ jobs:
       # Every commit must use a no-reply email, so a machine name or real address is never published
       # (docs/SECURITY.md). Skipped for pull requests from forks: outside contributors' emails are theirs.
       - name: Commit identity
-        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         run: bash scripts/check-identity.sh
 
       - name: Forbidden-API guard self-test
@@ -72,10 +95,10 @@ jobs:
           swiftlint version
           swiftlint lint --strict --config .swiftlint.yml
 
-  tests:
-    name: Package and app tests
+  package-tests:
+    name: Package tests
     runs-on: xcode-27
-    timeout-minutes: 90
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -98,13 +121,64 @@ jobs:
       - name: Package tests
         run: scripts/test.sh package
 
+  ui-tests:
+    name: UI tests
+    runs-on: xcode-27
+    # The PR tier is expected to take well under 15 minutes; the limit leaves room for a queue and one hung retry.
+    timeout-minutes: ${{ github.event_name == 'pull_request' && 40 || 90 }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Toolchain
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          if ! xcodebuild -showsdks | grep -q "iphonesimulator27"; then
+            echo "::error::This runner has no iOS 27 simulator SDK, so the tests cannot run here." >&2
+            exit 1
+          fi
+          xcrun simctl list devices available | grep -F "$BLT_SIM" || {
+            echo "::error::No '$BLT_SIM' simulator on this runner." >&2
+            exit 1
+          }
+
+      - name: Selected tier
+        run: |
+          echo "UI tier: $UI_TIER"
+          scripts/test.sh tiers "$UI_TIER"
+
+      # The app and the UI tests are built once here; the next step runs them without building again.
+      - name: Build app for testing
+        run: scripts/test.sh app --tier "$UI_TIER" --build-only
+
       # The xcode-27 image is a preview, and on it a UI query sometimes hangs for several minutes ("Timed out while
       # evaluating UI query") in a different test each run, while the same test takes seconds on a good run.
-      # A failed test gets up to two more tries; a test that fails every time still fails the job.
-      - name: App build and UI tests
+      # A failed test gets up to two more tries; a test that fails every time still fails the job. No per-test time
+      # limit is set (BLT_TEST_TIMEOUT): measured locally, xcodebuild does not retry a test that hits the limit, so a
+      # limit would turn a hung attempt that passes on retry into a failed job (docs/TEST_TIMINGS.md).
+      - name: UI tests
         run: |
-          scripts/test.sh app -resultBundlePath "$RUNNER_TEMP/app.xcresult" \
-            -retry-tests-on-failure -test-iterations 3
+          set -euo pipefail
+          scripts/test.sh app --tier "$UI_TIER" --no-build \
+            -resultBundlePath "$RUNNER_TEMP/app.xcresult" \
+            -retry-tests-on-failure -test-iterations 3 2>&1 | tee "$RUNNER_TEMP/ui-tests.log"
+
+      # A test that failed and then passed on a retry does not fail the job, so it would go unseen. List it.
+      - name: Tests that needed a retry
+        if: always()
+        run: |
+          set -euo pipefail
+          [ -f "$RUNNER_TEMP/ui-tests.log" ] || exit 0
+          scripts/test.sh flakes "$RUNNER_TEMP/ui-tests.log" | tee "$RUNNER_TEMP/flakes.txt"
+          {
+            echo "### UI tests that failed an attempt (tier: $UI_TIER)"
+            echo '```'
+            cat "$RUNNER_TEMP/flakes.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       # The xcodebuild log omits what an accessibility audit objected to; the result bundle has it.
       - name: Summarise UI test failures
@@ -117,3 +191,21 @@ jobs:
               print("FAILED", f.get("testName"))
               print("   ", f.get("failureText"))
           PY
+
+  # The name the branch protection rule requires. It adds nothing to the tests; it only reports one result for
+  # the two test jobs, and fails when either failed, was cancelled or was skipped.
+  tests:
+    name: Package and app tests
+    needs: [package-tests, ui-tests]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Both test jobs must have passed
+        env:
+          PACKAGE_RESULT: ${{ needs.package-tests.result }}
+          UI_RESULT: ${{ needs.ui-tests.result }}
+        run: |
+          echo "Package tests: $PACKAGE_RESULT"
+          echo "UI tests:      $UI_RESULT"
+          [ "$PACKAGE_RESULT" = "success" ] && [ "$UI_RESULT" = "success" ]

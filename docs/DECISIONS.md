@@ -408,7 +408,7 @@ The profile gains the language being learned. Onboarding asks for it after the n
 - `level` and the duplicate rules are as decided in 038 and 039. The import limit is 20 files.
 
 ## 045 — Two tiers of UI tests: a short required set, and the full set off the PR path
-**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunk Q1
+**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunk Q1. It becomes active when three pull-request runs in a row finish under 15 minutes and the full tier is green on `main` (the checklist is at the end of this entry). Nothing below has run on GitHub yet.
 
 The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and GitHub's preview runner hangs a UI query at random, so every pull request waits and retries. The suite is reshaped before more UI tests are added.
 
@@ -418,4 +418,28 @@ The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and GitH
 - The decision is made from measured durations and retry counts, not guesses. Retries stay, and every retried test is listed.
 
 **Trade-off accepted:** a largest-text-size regression can reach `main` and be caught minutes later instead of before the merge. Accessibility coverage is moved, not reduced.
+
+**What was built (chunk Q1)**
+
+- **Measured first.** Ten completed CI runs, 50 tests: `docs/TEST_TIMINGS.md`. The whole job took 21 to 60 minutes (median about 34), the UI step 16.5 to 52. Six attempts failed and passed on retry; three of those had hung for 251 to 889 seconds, which is where the 45 and 60 minute runs came from.
+- **Ten UI tests removed**, each after a package test of the same rule passed (405 package tests became 424): completion after right, wrong and other-register answers, a missed item coming back, an answer given before ending, option-to-feedback routing, a cancelled Reset, and what is saved or erased. 40 UI tests remain. The table is in `docs/TEST_TIMINGS.md`.
+- **Tiers are chosen by test class**, so a tier cannot drift by method name. PR tier: `AccessibilityUITests` (the eight default-size audits) and `HappyPathUITests` (one happy path per screen), 13 tests. Everything else, including the new `AccessibilityLargeTextUITests` (the eight largest-size audits and the five reachability checks, moved unchanged), is full tier only. `scripts/test.sh app --tier pr|full` selects them and `scripts/test.sh tiers` prints the lists. A check moves tier; none was dropped or weakened.
+- **Build once.** `scripts/test.sh app --build-only` (build-for-testing) then `--no-build` (test-without-building). Package tests and UI tests are separate parallel jobs.
+- **Required check names are unchanged:** `Guardrails and lint` and `Package and app tests`. The second is now a small gate job (on `ubuntu-latest`) that passes only if the new `Package tests` and `UI tests` jobs both pass. Branch protection needs no change; the two new job names must not be added as required checks, or they would also block on the full tier.
+- **Triggers.** Pull request: PR tier. Push to `main`, a nightly cron (03:17 UTC) and `workflow_dispatch` (tier chosen, default full): full tier. The concurrency group includes the event name so the nightly run does not cancel a push run.
+- **No per-test time limit.** It was tried (`-test-timeouts-enabled`, 240 seconds, kept as the opt-in `BLT_TEST_TIMEOUT`): a test that hit the limit was failed after 4 minutes and was **not** retried, so it would turn a hung attempt that passes on retry into a failed job. A hang therefore still costs up to 15 minutes on the runner; the 13-test PR tier gives it fewer chances to happen.
+- **Retries stay** (`-retry-tests-on-failure -test-iterations 3`). A step lists every test that failed an attempt (`scripts/test.sh flakes <log>`) in the job summary, so a test that only passes on retry is visible.
+
+**Not done, and why.** Turning off animations and the shimmer under the UI-test launch arguments needs a change to the app target (`UITestLaunch.swift` or the shimmer view), which this chunk may not touch: a follow-up. A shared `.xctestplan` would be tidier than class lists but needs the project file, which is not committed.
+
+**Checked locally on a shared Mac (iPhone 17), not on GitHub.** Package tests 424 pass. Each full-tier class passed run alone (Home, SettingsImport, Persistence, EndSession, FeedbackFlow, Onboarding, HappyPath). The two accessibility classes pass except the two name-entry audits (`testNameEntryAudit`, `testNameEntryAuditAtXXXL`), which fail here with "The keyboard did not dismiss"; the unchanged pre-reshape test fails the same way on this Mac, so it is a local simulator keyboard difference, not caused by the reshape, and it passed in all ten recorded CI runs. The PR tier took 17 minutes here, of which 5 were a hung `testHomeAudit` that passed on retry and 5 were the name-entry audit failing three times; its passing tests add up to about 3 minutes per simulator clone. Those numbers say nothing about the runner.
+
+**To check once pull requests can open (the proof is still owed)**
+
+1. Three pull-request runs in a row, each with `Guardrails and lint`, `Package tests`, `UI tests` and `Package and app tests` green and the `UI tests` job under 15 minutes (the build, the 13 tests, queueing excluded).
+2. A push to `main` runs the full tier (40 tests) green, and the nightly run starts on schedule and does not cancel a push run.
+3. In the job summary, "UI tests that failed an attempt" appears and lists any retried test.
+4. A `workflow_dispatch` run with tier `pr` runs only the 13 tests.
+5. Branch protection still shows exactly the two required checks and merging is not blocked by the gate job.
+6. Note how often a hung UI query still costs a run more than 15 minutes (the "tests that needed a retry" summary and the step duration). If it happens in more than one of the three runs, the next step is a job-level rerun of only the failed tests, not a per-test limit.
 

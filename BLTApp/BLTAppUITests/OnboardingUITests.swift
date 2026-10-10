@@ -1,23 +1,11 @@
 import XCTest
 
-/// First launch: intro, name entry, Home greeting, and the saved name on later launches.
+/// First launch details: the intro, the route to name entry, the empty-name error, and the saved name on later
+/// launches. Full tier (DECISIONS 045). The whole first-launch path is the happy path in `HappyPathUITests`; the
+/// name rules (validation, saving) are checked in the package.
 @MainActor
 final class OnboardingUITests: BLTUITestCase {
     private let enteredName = "ZzPerson"
-
-    /// Fresh launch, past the intro, on the name entry screen.
-    private func launchToNameEntry() -> XCUIApplication {
-        let app = launch(reset: true)
-        tap(app.element(AXID.introStart), "Get started")
-        requireExists(app.textFields[AXID.nameField], "the name field")
-        return app
-    }
-
-    private func enterName(_ name: String, in app: XCUIApplication) {
-        let field = app.textFields[AXID.nameField]
-        field.tap()
-        field.typeText(name)
-    }
 
     func testFreshLaunchShowsIntro() {
         let app = launch(reset: true)
@@ -50,18 +38,6 @@ final class OnboardingUITests: BLTUITestCase {
         XCTAssertFalse(app.element(AXID.greeting).exists, "Must not reach Home without a name")
     }
 
-    func testEnteringNameProceedsToHomeWithGreeting() {
-        let app = launchToNameEntry()
-
-        enterName(enteredName, in: app)
-        tap(app.element(AXID.nameContinue), "Continue")
-
-        let greeting = app.element(AXID.greeting)
-        requireExists(greeting, "the Home greeting")
-        requireGreetingText("Hi \(enteredName)", in: app)
-        XCTAssertFalse(app.textFields[AXID.nameField].exists)
-    }
-
     func testRelaunchAfterOnboardingGoesStraightToHome() {
         let app = launchToNameEntry()
         enterName(enteredName, in: app)
@@ -74,15 +50,5 @@ final class OnboardingUITests: BLTUITestCase {
         requireExists(greeting, "the Home greeting after relaunch")
         requireGreetingText("Hi \(enteredName)", in: app)
         XCTAssertFalse(app.element(AXID.introStart).exists, "Onboarding must not repeat")
-    }
-
-    func testSeededNameSkipsOnboarding() {
-        let app = launch(reset: true, name: "ZzTest")
-
-        let greeting = app.element(AXID.greeting)
-        requireExists(greeting, "the Home greeting")
-        requireGreetingText("Hi ZzTest", in: app)
-        XCTAssertFalse(app.element(AXID.introStart).exists)
-        XCTAssertFalse(app.textFields[AXID.nameField].exists)
     }
 }
