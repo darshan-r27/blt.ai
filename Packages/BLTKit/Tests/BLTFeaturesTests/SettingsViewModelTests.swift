@@ -113,7 +113,7 @@ struct SettingsViewModelTests {
     @Test func contentStatementClaimsNativeReviewOnlyWhenEveryItemIsReviewed() {
         let model = makeModel(store: SettingsStubStore(), allReviewed: true)
         #expect(model.allContentReviewed)
-        #expect(model.contentStatement.hasPrefix("Every lesson was checked by a native Tamil speaker"))
+        #expect(model.contentStatement.hasPrefix("Every lesson was checked by a native Tamil / Telugu speaker"))
     }
 
     @Test func requestingResetDoesNotErase() async {

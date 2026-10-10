@@ -21,16 +21,16 @@ final class SettingsViewModel {
 
     let reviewedCount: Int
     let totalCount: Int
-    /// True only when the catalog has items and every one is marked `reviewed` (a native Tamil speaker
+    /// True only when the catalog has items and every one is marked `reviewed` (a native Tamil / Telugu speaker
     /// checked it). The statement below follows the data, so the app never claims more than the content says.
     var allContentReviewed: Bool { totalCount > 0 && reviewedCount == totalCount }
 
     /// The "About the content" statement for the current content.
     var contentStatement: String {
         allContentReviewed
-            ? "Every lesson was checked by a native Tamil speaker before it was added to the app."
+            ? "Every lesson was checked by a native Tamil / Telugu speaker before it was added to the app."
             : "These lessons were drafted by an AI. Each item shows its review status, "
-                + "and an item counts as reviewed only after a native Tamil speaker has checked it."
+                + "and an item counts as reviewed only after a native Tamil / Telugu speaker has checked it."
     }
 
     private(set) var resetOutcome: ResetOutcome?
