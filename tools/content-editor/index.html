@@ -137,8 +137,9 @@ function h(tag, props = {}, ...kids) {
 const norm = (s) => String(s ?? '').trim().toLowerCase();
 const serialize = (data) => JSON.stringify(data, null, 2); // no trailing newline: matches the checked-in files
 
-// ---------- validation (mirrors docs/MVP_PLAN.md section 2 and the app's ContentLoader) ----------
-function validate(item, allIds) {
+// ---------- validation (mirrors docs/MVP_PLAN.md section 2, docs/DECISIONS.md 038 to 040, and the app's ContentLoader) ----------
+// ctx comes from buildCtx(): every item id, plus every prompt and correct answer in all loaded files (for the duplicate checks).
+function validate(item, ctx) {
   const e = [];
   const reqStr = (name, v) => {
     if (typeof v !== 'string' || v.trim() === '') e.push(`${name} is empty.`);
@@ -147,6 +148,22 @@ function validate(item, allIds) {
   };
   reqStr('Prompt', item.sourcePrompt);
   reqStr('Correct answer', item.canonical);
+  // Optional Tamil-script spelling. This is the ONLY field where Tamil script is allowed (every other field still rejects it above).
+  if (item.tamilScript != null && item.tamilScript !== '') {
+    const t = item.tamilScript;
+    if (typeof t !== 'string') e.push('Tamil script must be text.');
+    else {
+      if (t.length > 500) e.push('Tamil script is longer than 500 characters.');
+      if (!TAMIL.test(t)) e.push('Tamil script must contain at least one Tamil letter. Leave the box empty if you have no Tamil script yet.');
+      if (/[A-Za-z]/.test(t)) e.push('Tamil script must not contain English (Latin) letters. Write the Tamil script only; the romanised spelling goes in “Correct answer”.');
+    }
+  }
+  // Duplicates across every loaded file: ignoring capitals, spaces and punctuation (docs/DECISIONS.md 038).
+  const dupOthers = (map, value) => (value === '' ? [] : (map.get(value) || []).filter((x) => x !== item).map((x) => x.id));
+  const dupPrompt = dupOthers(ctx.prompts, dupKey(item.sourcePrompt));
+  if (dupPrompt.length) e.push(`Another item already has this prompt: ${dupPrompt.join(', ')} (capitals, spaces and punctuation are ignored). Every prompt in the course must be different.`);
+  const dupCanon = dupOthers(ctx.canons, dupKey(item.canonical));
+  if (dupCanon.length) e.push(`Another item already has this correct answer: ${dupCanon.join(', ')} (capitals, spaces and punctuation are ignored). Every correct answer in the course must be different.`);
   if (!['casual', 'respectful', 'neutral'].includes(item.register)) e.push('Register must be casual, respectful or neutral.');
   if (!['male', 'female', 'any'].includes(item.addressee)) e.push('Addressee must be male, female or any.');
   if (!['unreviewed', 'reviewed'].includes(item.reviewStatus)) e.push('Review status must be unreviewed or reviewed.');
@@ -178,10 +195,56 @@ function validate(item, allIds) {
   });
   if (item.note != null && String(item.note).length > 500) e.push('Note is longer than 500 characters.');
   if (item.note != null && TAMIL.test(item.note)) e.push('Note contains Tamil script.');
-  if (allIds.filter((x) => x === item.id).length > 1) e.push(`The id “${item.id}” is used more than once.`);
+  if (ctx.ids.filter((x) => x === item.id).length > 1) e.push(`The id “${item.id}” is used more than once.`);
   return e;
 }
-const allIds = () => state.files.flatMap((f) => f.data.items.map((i) => i.id));
+// Same comparison as the duplicate rule in the app: lowercase, then drop everything that is not a letter or a digit.
+const dupKey = (s) => String(s ?? '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+function buildCtx() {
+  const ids = [], prompts = new Map(), canons = new Map();
+  const add = (map, key, item) => { if (key === '') return; if (!map.has(key)) map.set(key, []); map.get(key).push(item); };
+  state.files.forEach((f) => f.data.items.forEach((i) => { ids.push(i.id); add(prompts, dupKey(i.sourcePrompt), i); add(canons, dupKey(i.canonical), i); }));
+  return { ids, prompts, canons };
+}
+
+// ---------- lesson-level checks: the optional level {number, title, position} ----------
+const isWhole = (v) => typeof v === 'number' && Number.isInteger(v) && v >= 1;
+const filled = (v) => v != null && String(v).trim() !== '';
+function validateLesson(f) {
+  const e = [];
+  const lv = f.data.level;
+  if (lv == null) return e;
+  if (typeof lv !== 'object' || Array.isArray(lv)) return ['Level must be a group with a number, a title and a position.'];
+  const have = ['number', 'title', 'position'].filter((k) => filled(lv[k]));
+  if (have.length === 0) return ['Level is present but empty. Fill in all three boxes, or press “Remove level”.'];
+  if (have.length < 3) e.push('Level is only partly filled in. Fill in all three boxes (number, title, position), or press “Remove level”.');
+  if (filled(lv.number) && !isWhole(lv.number)) e.push('Level number must be a whole number, 1 or more.');
+  if (filled(lv.position) && !isWhole(lv.position)) e.push('Position in the level must be a whole number, 1 or more.');
+  if (lv.title != null && typeof lv.title !== 'string') e.push('Level title must be text.');
+  // The same level number must carry the same title in every loaded file.
+  if (isWhole(lv.number) && typeof lv.title === 'string' && lv.title.trim() !== '') {
+    const clash = new Map();
+    state.files.forEach((g) => {
+      const o = g.data.level;
+      if (g === f || !o || typeof o !== 'object' || o.number !== lv.number || typeof o.title !== 'string' || o.title.trim() === '' || o.title === lv.title) return;
+      if (!clash.has(o.title)) clash.set(o.title, []);
+      clash.get(o.title).push(g.name);
+    });
+    clash.forEach((names, title) => e.push(`Level ${lv.number} is called “${lv.title}” here but “${title}” in ${names.join(', ')}. Every lesson in a level must use the same title.`));
+  }
+  return e;
+}
+// Set (or, when value is undefined, remove) a key without disturbing the order of the other keys.
+// A new key goes right after the first of afterKeys that exists; if none does, at the start (atStart) or the end.
+function setKey(obj, key, value, afterKeys = [], atStart = false) {
+  if (value === undefined) { delete obj[key]; return; }
+  if (key in obj) { obj[key] = value; return; }
+  const entries = Object.entries(obj);
+  const after = afterKeys.map((k) => entries.findIndex(([n]) => n === k)).find((i) => i >= 0);
+  entries.splice(after !== undefined ? after + 1 : atStart ? 0 : entries.length, 0, [key, value]);
+  for (const k of Object.keys(obj)) delete obj[k];
+  for (const [k, v] of entries) obj[k] = v;
+}
 function fileDirty(f) { return serialize(f.data) !== f.original; }
 function itemDirty(f, item) {
   const o = f.originalData.items.find((x) => x.id === item.id);
@@ -228,9 +291,9 @@ function download(name, text, type) {
   document.body.append(a); a.click(); a.remove();
 }
 $('btnSave').addEventListener('click', async () => {
-  const ids = allIds(); let blocked = 0;
-  state.files.forEach((f) => f.data.items.forEach((i) => { if (validate(i, ids).length) blocked++; }));
-  if (blocked && !confirm(`${blocked} item(s) still have problems and the app will reject them. Save anyway?`)) return;
+  const ctx = buildCtx(); let blocked = 0;
+  state.files.forEach((f) => { if (validateLesson(f).length) blocked++; f.data.items.forEach((i) => { if (validate(i, ctx).length) blocked++; }); });
+  if (blocked && !confirm(`${blocked} item(s) or lesson(s) still have problems and the app will reject them. Save anyway?`)) return;
   let saved = 0, downloaded = 0;
   for (const f of state.files.filter(fileDirty)) {
     const text = serialize(f.data);
@@ -248,26 +311,26 @@ $('btnCsv').addEventListener('click', () => {
 });
 
 // ---------- rendering ----------
-function matches(item) {
+function matches(item, ctx) {
   const q = norm($('fSearch').value);
   if (q) {
-    const hay = [item.id, item.sourcePrompt, item.canonical, item.registerVariant, ...(item.distractors || []), ...(item.acceptedAnswers || [])].map(norm).join(' ');
+    const hay = [item.id, item.sourcePrompt, item.canonical, item.tamilScript, item.registerVariant, ...(item.distractors || []), ...(item.acceptedAnswers || [])].map(norm).join(' ');
     if (!hay.includes(q)) return false;
   }
   if ($('fRegister').value !== 'all' && item.register !== $('fRegister').value) return false;
   if ($('fStatus').value !== 'all' && item.reviewStatus !== $('fStatus').value) return false;
-  if ($('fIssues').checked && validate(item, allIds()).length === 0) return false;
+  if ($('fIssues').checked && validate(item, ctx).length === 0) return false;
   return true;
 }
 function renderList() {
   const list = $('list'); list.replaceChildren();
-  const ids = allIds(); let shown = 0;
+  const ctx = buildCtx(); let shown = 0;
   state.files.forEach((f, fi) => {
     const rows = [];
     f.data.items.forEach((item, ii) => {
-      if (!matches(item)) return;
+      if (!matches(item, ctx)) return;
       shown++;
-      const problems = validate(item, ids).length;
+      const problems = validate(item, ctx).length;
       const sel = state.sel && state.sel.f === fi && state.sel.i === ii;
       rows.push(h('div', { class: 'item-row' + (sel ? ' sel' : ''), tabindex: 0, onclick: () => select(fi, ii), onkeydown: (ev) => { if (ev.key === 'Enter') select(fi, ii); } },
         h('div', { text: item.sourcePrompt || '(empty prompt)' }),
@@ -277,7 +340,8 @@ function renderList() {
           itemDirty(f, item) ? h('span', { class: 'badge b-edit', text: 'edited' }) : null,
           item.reviewStatus === 'reviewed' ? h('span', { class: 'badge b-ok', text: 'reviewed' }) : null)));
     });
-    if (rows.length) list.append(h('div', { class: 'scenario-title', text: `${f.data.title || f.name}${fileDirty(f) ? ' • edited' : ''}` }), ...rows);
+    const lessonBad = validateLesson(f).length;
+    if (rows.length) list.append(h('div', { class: 'scenario-title' }, `${f.data.title || f.name}${fileDirty(f) ? ' • edited' : ''} `, lessonBad ? h('span', { class: 'badge b-bad', text: 'level problem' }) : null), ...rows);
   });
   if (!shown) list.append(h('div', { class: 'empty', text: state.files.length ? 'No items match the filters.' : '' }));
 }
@@ -348,6 +412,30 @@ function renderEditor() {
   if (!cur) { ed.append(h('div', { class: 'empty', text: 'Select an item on the left.' })); return; }
   const { f, item } = cur; const touch = () => {};
   ed.append(h('div', { id: 'problems' }));
+  // Lesson header: the optional level group. All three boxes empty means no "level" key is written.
+  const lv = () => (f.data.level && typeof f.data.level === 'object' ? f.data.level : null);
+  const setLevel = (key, raw) => {
+    const t = raw.trim();
+    const value = key === 'title' ? (raw === '' ? undefined : raw) : t === '' ? undefined : /^\d+$/.test(t) ? Number(t) : t;
+    const obj = lv() || {};
+    setKey(obj, key, value, key === 'position' ? ['title', 'number'] : key === 'title' ? ['number'] : [], true);
+    if (Object.keys(obj).length === 0) setKey(f.data, 'level', undefined);
+    else setKey(f.data, 'level', obj, ['subtitle', 'title', 'scenarioId']);
+    refreshDerived();
+  };
+  const levelBox = (key, label, placeholder, narrow) => {
+    const input = h('input', { type: 'text', placeholder, 'aria-label': label });
+    input.value = lv()?.[key] ?? '';
+    input.addEventListener('input', () => setLevel(key, input.value));
+    return h('div', { style: narrow ? 'width:110px' : 'flex:1;min-width:200px' }, h('label', { class: 'f', text: label }), input);
+  };
+  ed.append(h('div', { class: 'card' },
+    h('h2', { text: `Lesson: ${f.data.title || f.name}` }),
+    h('p', { class: 'help', text: 'Level (optional). Leave all three boxes empty for a lesson with no level; otherwise fill in all three. Lessons in the same level must use the same level title.' }),
+    h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end' },
+      levelBox('number', 'Level number', 'e.g. 3', true), levelBox('title', 'Level title', 'e.g. a short name', false), levelBox('position', 'Position in level', 'e.g. 2', true),
+      h('button', { class: 'small', title: 'Delete the level from this lesson', onclick: () => { setKey(f.data, 'level', undefined); renderEditor(); refreshDerived(); }, text: 'Remove level' })),
+    h('div', { id: 'lessonProblems', style: 'margin-top:8px' })));
   ed.append(h('div', { class: 'card' },
     h('h2', { text: `${item.id} · ${f.data.title || f.name}` }),
     h('p', { class: 'help', text: 'What the learner sees and the answers behind it. Everything auto-checks as you type.' }),
@@ -356,6 +444,8 @@ function renderEditor() {
       selectField('Register', item.register, ['casual', 'respectful', 'neutral'], (v) => { item.register = v; if (v === 'neutral') item.registerVariant = null; else if (item.registerVariant == null) item.registerVariant = ''; }),
       selectField('Addressee', item.addressee, ['any', 'male', 'female'], (v) => { item.addressee = v; })),
     textField('Correct answer (the one the learner should choose)', item.canonical, (v) => { item.canonical = v; }),
+    textField('Tamil script (for audio later, optional)', item.tamilScript ?? '', (v) => { if (v === '') setKey(item, 'tamilScript', undefined); else setKey(item, 'tamilScript', v, ['canonical']); },
+      { help: 'The correct answer written in Tamil script. Not shown in the app yet. This is the only box where Tamil script is allowed; leave it empty if you do not have it.' }),
     textField('Same sentence in the OTHER register (shown as the “wrong register” option)', item.registerVariant ?? '', (v) => { item.registerVariant = v; },
       { disabled: item.register === 'neutral', help: item.register === 'neutral' ? 'Not used: a neutral item has no register choice.' : 'Casual item → give the respectful version; respectful item → give the casual version.' })));
   ed.append(h('div', { class: 'card' },
@@ -402,15 +492,18 @@ function renderEditor() {
     textField('Note (optional, shown after answering)', item.note ?? '', (v) => { item.note = v === '' ? null : v; }, { multiline: true }),
     h('div', { class: 'grid2' },
       selectField('Review status', item.reviewStatus, ['unreviewed', 'reviewed'], (v) => { item.reviewStatus = v; }),
-      h('div', {}, h('label', { class: 'f', text: ' ' }), h('button', { onclick: () => { const o = f.originalData.items.find((x) => x.id === item.id); if (o) { Object.assign(item, JSON.parse(JSON.stringify(o))); renderEditor(); refreshDerived(); } }, text: 'Revert this item' })))));
+      h('div', {}, h('label', { class: 'f', text: ' ' }), h('button', { onclick: () => { const o = f.originalData.items.find((x) => x.id === item.id); if (o) { for (const k of Object.keys(item)) delete item[k]; Object.assign(item, JSON.parse(JSON.stringify(o))); renderEditor(); refreshDerived(); } }, text: 'Revert this item' })))));
   ed.append(h('div', { class: 'card', id: 'preview' }));
   refreshDerived();
 }
 
 function refreshDerived() {
   const cur = current(); if (!cur) return;
-  const { item } = cur; const ids = allIds();
-  const problems = validate(item, ids);
+  const { f, item } = cur; const ctx = buildCtx();
+  const problems = validate(item, ctx);
+  const lessonProblems = validateLesson(f);
+  const lp = $('lessonProblems');
+  if (lp) lp.replaceChildren(...lessonProblems.map((p) => h('div', { class: 'msg err', text: p })));
   const pb = $('problems');
   if (pb) { pb.replaceChildren(...(problems.length ? problems.map((p) => h('div', { class: 'msg err', text: p })) : [h('div', { class: 'msg good', text: 'This item passes every check.' })])); }
   const pv = $('preview');
@@ -422,13 +515,15 @@ function refreshDerived() {
       ...opts.map(([t, k, c]) => h('div', { class: 'opt' }, h('span', { text: t || '(empty)' }), h('span', { class: 'kind ' + c, text: k }))),
       h('h2', { text: 'After answering, the learner sees' }),
       h('div', { class: 'help', text: 'Correct form: ' + (item.canonical || '') }),
+      ...(item.tamilScript ? [h('div', { class: 'help', text: 'Tamil script (not shown in the app yet): ' + item.tamilScript })] : []),
       h('div', { class: 'gloss' }, (item.tokens || []).map((t) => h('span', {}, h('b', { text: t.tamil || '…' }), ' ' + (t.english || '…')))),
       ...(item.note ? [h('p', { class: 'help', text: item.note })] : []));
   }
   renderList();
   const dirtyFiles = state.files.filter(fileDirty).length;
-  const bad = state.files.reduce((n, f) => n + f.data.items.filter((i) => validate(i, ids).length).length, 0);
-  $('status').textContent = `${state.files.length} file(s) · ${state.files.reduce((n, f) => n + f.data.items.length, 0)} items · ${bad} with problems · ${dirtyFiles} edited`;
+  const bad = state.files.reduce((n, g) => n + g.data.items.filter((i) => validate(i, ctx).length).length, 0);
+  const lessonBad = state.files.filter((g) => validateLesson(g).length).length;
+  $('status').textContent = `${state.files.length} file(s) · ${state.files.reduce((n, g) => n + g.data.items.length, 0)} items · ${bad} with problems${lessonBad ? ` · ${lessonBad} lesson level problem(s)` : ''} · ${dirtyFiles} edited`;
   $('btnSave').disabled = dirtyFiles === 0;
   $('btnSave').textContent = dirtyFiles ? `Save changes (${dirtyFiles} file${dirtyFiles > 1 ? 's' : ''})` : 'No unsaved changes';
   $('btnSave').title = dirtyFiles ? 'Write the edited files' : 'Everything you edited is already saved. Previous and Next only move between items; “Mark reviewed” is what records a verdict in the file.';
