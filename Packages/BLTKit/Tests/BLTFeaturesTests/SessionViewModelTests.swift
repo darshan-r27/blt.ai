@@ -35,6 +35,7 @@ struct SessionViewModelTests {
         let fixedNow = now
         return AppDependencies(
             catalog: PreviewCatalog.catalog,
+            language: .tamil,
             store: store,
             scheduler: SM2Scheduler(),
             now: { fixedNow }

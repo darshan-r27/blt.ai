@@ -6,7 +6,25 @@ import BLTCore
 public enum PreviewCatalog {
     static let scenarioID = ScenarioID(rawValue: "zz-scenario")
 
+    /// The UI-test fixture for the Tamil course. Its ids are what the Tamil UI tests rely on.
     public static let catalog = Catalog(scenarios: [scenario], issues: [])
+
+    /// The fixture for a course: the Tamil one above, or the Telugu one below. Both are fake `zz` text whose
+    /// lessons carry their own course's `language`, so a lesson can never sit in the wrong course.
+    public static func catalog(for language: CourseLanguage) -> Catalog {
+        switch language {
+        case .tamil: catalog
+        case .telugu: teluguCatalog
+        }
+    }
+
+    /// The scenario id of the fixture for a course (`zz-scenario` for Tamil).
+    public static func scenarioID(for language: CourseLanguage) -> ScenarioID {
+        switch language {
+        case .tamil: scenarioID
+        case .telugu: teluguScenarioID
+        }
+    }
 
     static let scenario = Scenario(
         id: scenarioID,
@@ -42,6 +60,51 @@ public enum PreviewCatalog {
         acceptedAnswers: ["zz canonical two", "zz canonical dos", "zz canonical zwei"],
         registerVariant: nil,
         distractors: ["zz wrong three", "zz wrong four", "zz wrong five"],
+        tokens: [Token(word: "zz", english: "zz gloss")],
+        note: nil,
+        reviewStatus: .reviewed
+    )
+
+    // MARK: Telugu fixture
+
+    static let teluguScenarioID = ScenarioID(rawValue: "zz-scenario-telugu")
+
+    static let teluguCatalog = Catalog(scenarios: [teluguScenario], issues: [])
+
+    static let teluguScenario = Scenario(
+        id: teluguScenarioID,
+        title: "zz telugu scenario",
+        subtitle: "zz telugu subtitle",
+        romanisationNote: nil,
+        items: [teluguFirstItem, teluguSecondItem],
+        language: .telugu
+    )
+
+    static let teluguFirstItem = Item(
+        id: ItemID(rawValue: "zz-telugu-item-1"),
+        scenarioID: teluguScenarioID,
+        sourcePrompt: "zz telugu prompt one (to an elder)",
+        register: .respectful,
+        addressee: .any,
+        canonical: "zz telugu canonical one",
+        acceptedAnswers: ["zz telugu canonical one", "zz telugu canonical uno", "zz telugu canonical eins"],
+        registerVariant: "zz telugu casual one",
+        distractors: ["zz telugu wrong one", "zz telugu wrong two"],
+        tokens: [Token(word: "zz", english: "zz gloss")],
+        note: "zz telugu note",
+        reviewStatus: .unreviewed
+    )
+
+    static let teluguSecondItem = Item(
+        id: ItemID(rawValue: "zz-telugu-item-2"),
+        scenarioID: teluguScenarioID,
+        sourcePrompt: "zz telugu prompt two",
+        register: .neutral,
+        addressee: .any,
+        canonical: "zz telugu canonical two",
+        acceptedAnswers: ["zz telugu canonical two", "zz telugu canonical dos", "zz telugu canonical zwei"],
+        registerVariant: nil,
+        distractors: ["zz telugu wrong three", "zz telugu wrong four", "zz telugu wrong five"],
         tokens: [Token(word: "zz", english: "zz gloss")],
         note: nil,
         reviewStatus: .reviewed

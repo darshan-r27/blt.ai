@@ -129,11 +129,11 @@ struct ImportedContentLanguageTests {
         let world = try ImportWorld()
         defer { world.remove() }
         try world.writeBundledScenario("zz-s1", title: "zz bundled", language: .tamil, items: ["zz-i1"])
-        // A store with no course accepts either language (the transitional default), so this puts a
-        // Telugu file into the import folder that a Tamil load must then refuse to show.
-        let anyCourse = world.store(language: nil)
-        let other = try world.pickScenario("zz-s1", title: "zz imported", language: .telugu, items: ["zz-j1"])
-        _ = try anyCourse.importFiles([other])
+        // A Telugu store over the same folders puts a Telugu file into the import folder, as an older build
+        // or a hand-edited folder could, and a Tamil load must then refuse to show it.
+        let teluguStore = world.store(language: .telugu)
+        let other = try world.pickScenario("zz-s2", title: "zz imported", language: .telugu, items: ["zz-j1"])
+        _ = try teluguStore.importFiles([other])
 
         let result = world.layered(language: .tamil)
 

@@ -55,6 +55,7 @@ private func makeDependencies(allReviewed: Bool) -> AppDependencies {
     )
     return AppDependencies(
         catalog: Catalog(scenarios: [scenario], issues: []),
+        language: .tamil,
         store: InMemoryProgressStore(initial: .empty),
         scheduler: SM2Scheduler(),
         now: { Date(timeIntervalSince1970: 1_000_000) }

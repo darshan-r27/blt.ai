@@ -60,6 +60,7 @@ private func makeModel(
     SettingsViewModel(
         dependencies: AppDependencies(
             catalog: Catalog(scenarios: [], issues: []),
+            language: .tamil,
             store: InMemoryProgressStore(),
             scheduler: SM2Scheduler(),
             now: { Date(timeIntervalSince1970: 1_000_000) }
@@ -221,7 +222,7 @@ struct SettingsImportViewModelTests {
         let directory = FileManager.default.temporaryDirectory
             .appending(path: "zz-import-\(UUID().uuidString)", directoryHint: .isDirectory)
         defer { try? FileManager.default.removeItem(at: directory) }
-        let importer: any LessonImporting = ImportedContentStore(directory: directory, bundledDirectory: nil)
+        let importer: any LessonImporting = ImportedContentStore(directory: directory, bundledDirectory: nil, language: .tamil)
         #expect(await importer.currentSummary().scenarioIDs.isEmpty)
         do {
             _ = try await importer.importFiles([])

@@ -126,7 +126,7 @@ private func seededSnapshot() -> ProgressSnapshot {
 }
 
 private func makeDependencies(store: any ProgressStore) -> AppDependencies {
-    AppDependencies(catalog: makeCatalog(), store: store, scheduler: SM2Scheduler(), now: { now })
+    AppDependencies(catalog: makeCatalog(), language: .tamil, store: store, scheduler: SM2Scheduler(), now: { now })
 }
 
 @MainActor

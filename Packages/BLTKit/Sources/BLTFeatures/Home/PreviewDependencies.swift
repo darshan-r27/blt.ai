@@ -3,13 +3,26 @@ import BLTCore
 import BLTProgress
 import Foundation
 
+/// Fake courses for the root previews: one per language, each with its own fake catalog and progress (the Tamil one has some).
+enum PreviewCourses {
+    static func make(_ language: CourseLanguage) -> CourseServices {
+        CourseServices(
+            dependencies: language == .tamil
+                ? PreviewDependencies.withData()
+                : PreviewDependencies.make(store: InMemoryProgressStore(), language: language),
+            lessonImporter: nil
+        )
+    }
+}
+
 /// Fake dependencies for the previews of Home, Progress and Settings. Built only from `PreviewCatalog`.
 enum PreviewDependencies {
     static let now = Date(timeIntervalSince1970: 1_800_000_000)
 
-    static func make(store: any ProgressStore) -> AppDependencies {
+    static func make(store: any ProgressStore, language: CourseLanguage = .tamil) -> AppDependencies {
         AppDependencies(
-            catalog: PreviewCatalog.catalog,
+            catalog: PreviewCatalog.catalog(for: language),
+            language: language,
             store: store,
             scheduler: SM2Scheduler(),
             now: { now }
@@ -24,6 +37,7 @@ enum PreviewDependencies {
     static func withLevels() -> AppDependencies {
         AppDependencies(
             catalog: PreviewCatalog.leveledCatalog,
+            language: .tamil,
             store: InMemoryProgressStore(initial: leveledSnapshot),
             scheduler: SM2Scheduler(),
             now: { now }

@@ -5,8 +5,9 @@ import SwiftUI
 struct BLTAppMain: App {
     /// `nil` only for the instant it takes the composition root to finish.
     @State private var composed: CompositionRoot.Composed?
-    /// Changing it gives the root view a new identity, so the whole tree is built again on the new catalog.
-    /// That returns the learner to Home, which is accepted after an import or a removal.
+    /// Changing it gives the root view a new identity, so the whole tree is built again and asks the
+    /// composition root for the current language's course, which loads that language's catalog afresh. That
+    /// returns the learner to Home, which is accepted after an import or a removal.
     @State private var generation = 0
     @State private var notice: String?
 
@@ -26,10 +27,9 @@ struct BLTAppMain: App {
     @ViewBuilder private var content: some View {
         if let composed {
             RootView(
-                dependencies: composed.dependencies,
                 profileStore: composed.profileStore,
-                lessonImporter: composed.lessonImporter,
-                onLessonsChanged: { change in lessonsDidChange(change, from: composed) }
+                makeCourse: composed.makeCourse,
+                onLessonsChanged: { change in lessonsDidChange(change) }
             )
             .id(generation)
         } else {
@@ -47,8 +47,10 @@ struct BLTAppMain: App {
         )
     }
 
-    private func lessonsDidChange(_ change: LessonChange, from current: CompositionRoot.Composed) {
-        composed = CompositionRoot().reloaded(current)
+    /// Nothing to rebuild here: `Composed.makeCourse` loads the catalog each time it is asked, so a new root
+    /// picks up the lessons just imported or removed, for the language read from the profile. The progress
+    /// stores and the profile are the ones already in `composed`, so nothing is erased.
+    private func lessonsDidChange(_ change: LessonChange) {
         generation += 1
         switch change {
         case .imported(let count):

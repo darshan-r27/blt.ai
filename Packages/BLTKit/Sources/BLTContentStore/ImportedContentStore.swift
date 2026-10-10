@@ -43,19 +43,18 @@ public struct ImportedContentStore: Sendable {
 
     private let directory: URL
     private let bundledDirectory: URL?
-    private let language: CourseLanguage?
+    private let language: CourseLanguage
     private let loader: ContentLoader
 
     /// `directory` is created on the first write. `bundledDirectory` is the course's bundled folder
     /// (`content/<language>`; `nil` if missing, in which case nothing is replaced).
     ///
-    /// `language` is the course the store imports into. `nil` accepts lessons of either course and
-    /// exists only until the app reads the language from the profile (plan.md chunk D1); the app should
-    /// always pass one.
+    /// `language` is the course the store imports into. It is required: a store that accepted either course
+    /// could put a lesson in the wrong one.
     public init(
         directory: URL,
         bundledDirectory: URL?,
-        language: CourseLanguage? = nil,
+        language: CourseLanguage,
         loader: ContentLoader = ContentLoader()
     ) {
         self.directory = directory

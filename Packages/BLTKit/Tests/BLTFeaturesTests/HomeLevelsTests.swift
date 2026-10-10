@@ -40,6 +40,7 @@ private func allItems(of lessons: [String]) -> [String] {
 private func loadedModel(_ scenarios: [Scenario], progress: ProgressSnapshot = .empty) async -> HomeViewModel {
     let dependencies = AppDependencies(
         catalog: Catalog(scenarios: scenarios, issues: []),
+        language: .tamil,
         store: InMemoryProgressStore(initial: progress),
         scheduler: SM2Scheduler(),
         now: { now }
