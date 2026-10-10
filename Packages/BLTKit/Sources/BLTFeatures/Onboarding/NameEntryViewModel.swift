@@ -70,8 +70,12 @@ final class NameEntryViewModel: Identifiable {
 
         isSaving = true
         defer { isSaving = false }
-        let profile = UserProfile(name: validName)
+        let profile: UserProfile
         do throws(ProfileStoreError) {
+            // Changing the name must never drop the language already chosen (DECISIONS 043), so the saved
+            // language is read back and carried over. On first launch there is nothing saved yet.
+            let existing = try await store.load()
+            profile = UserProfile(name: validName, learningLanguage: existing?.learningLanguage)
             try await store.save(profile)
         } catch {
             problem = .saveFailed(error)

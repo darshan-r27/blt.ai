@@ -49,6 +49,8 @@ public struct RootView: View {
                 .bltScreenBackground()
         case .needsOnboarding:
             OnboardingFlow(gate: gate)
+        case .needsLanguage(let profile):
+            LanguageChoiceView(gate: gate, profile: profile)
         case .loadFailed(let error):
             ProfileLoadProblemView(gate: gate, error: error)
         case .ready(let profile):
