@@ -74,9 +74,13 @@ Settings can import lesson files from the Files app ([`DECISIONS.md`](DECISIONS.
 ## Testing
 
 - **Package tests** (Swift Testing): fast and deterministic, with in-memory stores and fake `zz` fixtures. This is where almost all behaviour is checked.
-- **UI tests** (XCUITest): the critical flows plus accessibility audits at the default and the largest text size. They are slow, so run them per class.
+- **Rules live in the package.** What a wrong answer does, what Home's completion figure counts, what Reset clears and keeps, what survives a relaunch: view-model and store tests (for example `SessionCompletionFlowTests` and `ProgressSurvivesAndResetsFlowTests`), which run in milliseconds. A UI test checks a rule only when the screen or the real app process is the thing under test (DECISIONS 045).
+- **UI tests** (XCUITest) come in two tiers, chosen by test class (`scripts/test.sh tiers` prints them):
+  - *PR tier:* `AccessibilityUITests` (an accessibility audit of each screen at the default text size) and `HappyPathUITests` (one happy path per screen). This is what a pull request runs.
+  - *Full tier:* every class, which adds the audits and reachability checks at the largest text size (`AccessibilityLargeTextUITests`) and the detailed screen tests (onboarding, Home card, End session, feedback screens, persistence, settings). It runs on every push to `main`, nightly and on demand.
+  - A new screen gets one happy-path test and one default-size audit in the PR tier, and its largest-size audit in the full tier. The shared audit code and its few documented exceptions are in `AccessibilityAuditCase`.
 - **Content conformance tests** read the real `content/` folder and fail if any shipped item is invalid.
-- **CI** (GitHub Actions on the `xcode-27` preview image) runs the guardrails, lint, package tests and UI tests. Changes reach `main` through pull requests with these checks required.
+- **CI** (GitHub Actions on the `xcode-27` preview image) runs the guardrails and lint, the package tests, and the UI tests as separate parallel jobs; the app is built once (`build-for-testing`) and the tests run without rebuilding. A small gate job named `Package and app tests` reports both test jobs as one required check. Changes reach `main` through pull requests with `Guardrails and lint` and `Package and app tests` required. UI tests retry up to three times, and the job summary lists every test that needed a retry. Measurements behind the tiers: [`TEST_TIMINGS.md`](TEST_TIMINGS.md).
 
 ## Planned: two courses (not built yet)
 

@@ -1,6 +1,8 @@
 import XCTest
 
-/// The always-visible End session control, its confirmation, and what ending does to saved answers.
+/// The always-visible End session control and its confirmation, full tier (DECISIONS 045). Ending and landing on
+/// Home is the happy path in `HappyPathUITests`; what ending does to saved answers is checked in the package
+/// (`SessionEndTests`, `SessionCompletionFlowTests`).
 @MainActor
 final class EndSessionUITests: BLTUITestCase {
     private func launchSession() -> XCUIApplication {
@@ -46,25 +48,5 @@ final class EndSessionUITests: BLTUITestCase {
         XCTAssertEqual(try currentQuestion(app), question, "Keep going must not change the question")
         XCTAssertTrue(app.buttons[question.canonical].exists, "The options must still be there")
         XCTAssertTrue(app.buttons[AXID.endSessionButton].isHittable, "Must still be in the session")
-    }
-
-    func testConfirmingEndReturnsHome() {
-        let app = launchSession()
-
-        confirmEndSession(app)
-
-        requireExists(app.element(AXID.fixtureScenarioCard), "the scenario card on Home")
-        XCTAssertFalse(app.buttons[AXID.endSessionButton].exists)
-    }
-
-    func testAnswerGivenBeforeEndingIsCounted() throws {
-        let app = launchSession()
-        let question = try currentQuestion(app)
-        choose(question.canonical, in: app)
-        requireExists(app.element(AXID.feedbackCorrect), "correct feedback")
-
-        confirmEndSession(app)
-
-        requireCompletion(percent: 50, in: app)
     }
 }

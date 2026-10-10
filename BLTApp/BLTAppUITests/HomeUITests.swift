@@ -1,27 +1,10 @@
 import XCTest
 
-/// Home: greeting above the Scenarios label, and the completion percent on the scenario card.
-/// An item counts as complete only when its latest recorded outcome is correct.
+/// Home, full tier (DECISIONS 045): what a scenario card shows. The layout happy path is in `HappyPathUITests`.
+/// The completion rules (an item counts as complete only when its latest recorded outcome is correct) are checked
+/// in the package, in `SessionCompletionFlowTests` and `HomeViewModelTests`.
 @MainActor
 final class HomeUITests: BLTUITestCase {
-    private func launchSession() -> XCUIApplication {
-        let app = launchHome()
-        openFixtureScenario(app)
-        return app
-    }
-
-    func testGreetingIsAboveTheScenariosLabel() {
-        let app = launchHome()
-
-        // The identifier sits on the greeting's container; the words are its static text child.
-        requireGreetingText("Hi ZzTest", in: app)
-        let greeting = app.staticTexts["Hi ZzTest"]
-        let label = app.staticTexts["Scenarios"]
-        requireExists(label, "the Scenarios label")
-        XCTAssertLessThanOrEqual(greeting.frame.maxY, label.frame.minY, "The greeting must sit above 'Scenarios'")
-        XCTAssertLessThan(label.frame.minY, app.element(AXID.fixtureScenarioCard).frame.minY)
-    }
-
     func testCardShowsOnlyCompletionNotTheOldCounts() {
         let app = launchHome()
 
@@ -33,61 +16,5 @@ final class HomeUITests: BLTUITestCase {
         )
         XCTAssertEqual(app.staticTexts.matching(oldLines).count, 0, "The old count lines must be gone")
         XCTAssertFalse(app.staticTexts["Nothing is due for review right now."].exists)
-    }
-
-    func testCorrectAnswersRaiseTheCompletionPercent() throws {
-        let app = launchSession()
-
-        try answerCorrectlyAndContinue(app)
-        confirmEndSession(app)
-        requireCompletion(percent: 50, in: app)
-
-        // The other item is the only unseen one, so the next session asks it.
-        openFixtureScenario(app)
-        try answerCorrectlyAndContinue(app)
-        requireExists(app.staticTexts["Session finished"], "the finished summary")
-        tap(app.buttons["Done"], "Done")
-        requireCompletion(percent: 100, in: app)
-    }
-
-    func testWrongAnswerDoesNotCompleteTheItem() throws {
-        let app = launchSession()
-        let question = try currentQuestion(app)
-        choose(question.wrongOptions[0], in: app)
-        requireExists(app.element(AXID.feedbackNotQuite), "not-quite feedback")
-
-        confirmEndSession(app)
-
-        requireCompletion(percent: 0, in: app)
-    }
-
-    func testOtherRegisterAnswerDoesNotCompleteTheItem() throws {
-        let app = launchSession()
-        // If the neutral item comes first it is answered correctly on the way (50%); otherwise nothing is.
-        let expectedPercent = try currentQuestion(app) == .respectful ? 0 : 50
-        try advance(app, toQuestion: .respectful)
-        choose("zz casual one", in: app)
-        requireExists(app.element(AXID.feedbackWrongRegister), "wrong-register feedback")
-
-        confirmEndSession(app)
-
-        requireCompletion(percent: expectedPercent, in: app)
-    }
-
-    func testMissedItemAskedAgainStaysIncompleteAfterTheSessionFinishes() throws {
-        let app = launchSession()
-        let missed = try currentQuestion(app)
-        choose(missed.wrongOptions[0], in: app)
-        requireExists(app.element(AXID.feedbackNotQuite), "not-quite feedback")
-        tapContinue(app)
-        try answerCorrectlyAndContinue(app)
-
-        // The missed item comes back and is answered correctly, but only the first attempt is recorded.
-        XCTAssertEqual(try currentQuestion(app), missed)
-        try answerCorrectlyAndContinue(app)
-        requireExists(app.staticTexts["Session finished"], "the finished summary")
-        tap(app.buttons["Done"], "Done")
-
-        requireCompletion(percent: 50, in: app)
     }
 }

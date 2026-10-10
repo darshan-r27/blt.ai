@@ -75,7 +75,11 @@ Product rules that matter: two spoken registers only per language (casual and re
 ## Commands (run from the repo root)
 ```bash
 BLT_SIM="iPhone 17" scripts/test.sh package   # package tests (warnings are errors)
-BLT_SIM="iPhone 17" scripts/test.sh app       # build + UI tests (slow: run per class, see below)
+BLT_SIM="iPhone 17" scripts/test.sh app --tier pr    # UI tests, PR tier: happy paths + default-size audits (13 tests)
+BLT_SIM="iPhone 17" scripts/test.sh app --tier full  # every UI test (40; slow, so run per class, see below)
+scripts/test.sh app --tier pr --build-only           # build once; then run with --no-build (what CI does)
+scripts/test.sh tiers                                # which classes are in which tier (runs nothing)
+scripts/test.sh flakes <xcodebuild log>              # list UI tests that failed an attempt in a log
 swiftlint lint --config .swiftlint.yml --strict
 bash scripts/check-forbidden-apis.sh          # also: --self-test
 bash scripts/check-binary.sh <path to built .app>

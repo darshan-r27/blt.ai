@@ -1,7 +1,8 @@
 import XCTest
 
-/// Settings, Lessons section. The system Files picker is out of process and cannot be driven by XCUITest,
-/// so these tests cover what the app itself shows around it. Importing and removing are covered by the
+/// Settings, Lessons section, full tier (DECISIONS 045). The system Files picker is out of process and cannot be
+/// driven by XCUITest, so these tests cover what the app itself shows around it. The Import lessons button and its
+/// helper text are the Settings happy path in `HappyPathUITests`. Importing and removing are covered by the
 /// view-model tests and the import-engine tests in the package.
 @MainActor
 final class SettingsImportUITests: BLTUITestCase {
@@ -10,18 +11,6 @@ final class SettingsImportUITests: BLTUITestCase {
         tap(app.buttons["Settings"], "the Settings button")
         requireExists(app.element(AXID.settingsReset), "Settings")
         return app
-    }
-
-    func testSettingsOffersImportLessonsWithItsHelperText() {
-        let app = openSettings()
-
-        let importButton = app.buttons[AXID.settingsImportLessons]
-        requireExists(importButton, "the Import lessons button")
-        XCTAssertEqual(importButton.label, "Import lessons")
-        requireExists(
-            app.staticTexts["Choose lesson files (.json) from the Files app. Your progress is kept."],
-            "the Import lessons helper text"
-        )
     }
 
     func testNothingImportedShowsNoRemoveButtonAndNoStatus() {

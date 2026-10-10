@@ -1,6 +1,9 @@
 import XCTest
 
-/// Answers survive a terminate and relaunch; the reset launch argument and Settings' Reset progress clear them.
+/// Full tier (DECISIONS 045): the two flows that need the real app process. Answers survive a terminate and
+/// relaunch, and confirming Reset progress in Settings clears them through the real dialog. The rules behind both
+/// (what is saved, what Reset clears and keeps, that cancelling changes nothing) are checked in the package, in
+/// `ProgressSurvivesAndResetsFlowTests` and `ProgressReopenTests`.
 @MainActor
 final class PersistenceUITests: BLTUITestCase {
     /// Answers one item correctly and ends the session, leaving the app on Home.
@@ -40,38 +43,6 @@ final class PersistenceUITests: BLTUITestCase {
         requireCompletion(percent: 50, in: app)
         openProgress(app)
         requireLabel(of: attemptsRow(app), containing: "1")
-    }
-
-    func testResetLaunchArgumentClearsProgress() throws {
-        let app = launchHome()
-        try answerOneItemAndEndSession(app)
-
-        app.terminate()
-        let fresh = launch(reset: true, name: "ZzTest")
-
-        requireCompletion(percent: 0, in: fresh)
-        openProgress(fresh)
-        requireLabel(of: attemptsRow(fresh), containing: "0")
-    }
-
-    func testResetProgressCancelChangesNothing() throws {
-        let app = launchHome()
-        try answerOneItemAndEndSession(app)
-        openSettings(app)
-
-        tap(app.element(AXID.settingsReset), "Reset progress")
-        // On iPhone this dialog appears as a popover anchored to the button. It has only the destructive
-        // button (no Cancel button); cancelling is a tap outside it, which the system exposes as this region.
-        let confirmation = app.sheets["Reset all progress?"]
-        requireExists(confirmation, "the reset confirmation")
-        let outside = app.otherElements["PopoverDismissRegion"].firstMatch
-        requireExists(outside, "the area outside the confirmation")
-        outside.tap()
-
-        requireGone(confirmation, "the confirmation")
-        XCTAssertFalse(app.staticTexts["Progress was reset."].exists)
-        app.navigationBars.buttons.firstMatch.tap()
-        requireCompletion(percent: 50, in: app)
     }
 
     func testConfirmedResetClearsProgressButKeepsTheName() throws {

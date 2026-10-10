@@ -118,6 +118,20 @@ class BLTUITestCase: XCTestCase {
         return app
     }
 
+    /// Fresh launch, past the intro, on the name entry screen.
+    func launchToNameEntry() -> XCUIApplication {
+        let app = launch(reset: true)
+        tap(app.element(AXID.introStart), "Get started")
+        requireExists(app.textFields[AXID.nameField], "the name field")
+        return app
+    }
+
+    func enterName(_ name: String, in app: XCUIApplication) {
+        let field = app.textFields[AXID.nameField]
+        field.tap()
+        field.typeText(name)
+    }
+
     // MARK: Waiting
 
     func requireExists(
