@@ -13,7 +13,7 @@
 
 This is a portfolio project. It runs on a simulator or your own iPhone; it is not on the App Store.
 
-> **Where it stands.** The app and the first part of the Tamil course are built and described below. The Telugu course, the language choice at first launch, and the full 2,000-phrase courses are planned and in progress: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots show the current, Tamil-only build.
+> **Where it stands.** The app and the first part of the Tamil course are built and described below. The language choice (first launch and Settings) is built. The Telugu lessons and the full 2,000-phrase courses are planned and in progress: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots show the current, Tamil-only build.
 
 ## Who it is for
 
@@ -122,10 +122,10 @@ The first runs the package's unit tests. The second builds the app and runs the 
 The lessons are the JSON files in [`content/tamil/`](content/tamil/) and `content/telugu/`. They ship inside the app, but they can also be replaced on the phone, so a change to the lessons does not need a rebuild:
 
 1. Send the `content/tamil/*.json` or `content/telugu/*.json` files you want to the phone (AirDrop works) and save them to the Files app.
-2. In blt.ai, open Settings, tap **Import lessons**, and choose the files (up to 10).
+2. In blt.ai, open Settings, tap **Import lessons**, and choose the files (up to 20).
 3. The app checks every file with the same rules as the bundled lessons. If all pass, they take effect at once and your progress is kept. If any file fails, nothing changes and the app says so.
 
-An imported file replaces the bundled lesson set with the same `scenarioId`, or adds a new one. **Remove imported lessons** in Settings goes back to the lessons that came with the app. If a newer build ships different bundled lessons for a scenario, the older import is ignored. The design and its safety rules are in [`docs/DECISIONS.md`](docs/DECISIONS.md) (036).
+Each language has its own lessons, progress and imports: a file is checked against the language you are learning and refused if it is for the other one, and switching language in Settings loses nothing. An imported file replaces the bundled lesson set with the same `scenarioId`, or adds a new one. **Remove imported lessons** in Settings goes back to the lessons that came with the app. If a newer build ships different bundled lessons for a scenario, the older import is ignored. The design and its safety rules are in [`docs/DECISIONS.md`](docs/DECISIONS.md) (036).
 
 This does not remove the 7-day limit of installing with a free Apple ID: the app itself still has to be re-signed from Xcode every week. Only a paid developer programme (TestFlight) or a sideload refresher changes that.
 

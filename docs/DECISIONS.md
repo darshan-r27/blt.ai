@@ -348,7 +348,7 @@ The course grows from 100 to 2,000 phrases (`docs/COURSE_SYLLABUS.md`), drafted 
 The checks live in the validator, so bundled lessons, imported lessons and the editor all apply the same rule. The catalog-wide checks run against the catalog the learner would end up with, like the existing duplicate-id checks (036). `scripts/content-index.sh` lists every existing prompt and answer so a drafter can avoid repeats before writing.
 
 ## 039 — The course has levels; lessons carry their level
-**Status:** pending — the `level` field and its validation are applied (chunk C1); Home grouping and lesson naming land in Wave 2 (chunks C4 and C5). Lesson naming and folders are amended by 044
+**Status:** active — the `level` field and its validation (chunk C1) and Home grouped by level with a Continue suggestion (chunk C2) are built. Lesson naming and folders are amended by 044
 
 The 100 lessons are grouped into 8 levels taken in order (`docs/COURSE_SYLLABUS.md`). Each lesson file gains an optional `level` object: `number`, `title`, and `position` (its place within the level). `position` is needed because the first five lessons keep their original ids, which would otherwise sort after the new ones. A file without `level` (an older import) is listed under "Other lessons". The same level number must always carry the same title.
 
@@ -388,7 +388,7 @@ The app began as colloquial Tamil for a Telugu speaker (001). The owner's real c
 **What this costs.** Little code, because lessons are data and the engine never looks at the language. A lot of content: 3,900 phrases to draft and about 65 hours of review between two people.
 
 ## 043 — The learner's language lives on the profile; each language has its own data
-**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunks A4, B2, C1, C3 and D1. Changes the frozen `UserProfile` and `AppDependencies`
+**Status:** active — built in plan.md chunks A4, B2, C1, C3 and D1. Changes the frozen `UserProfile` and `AppDependencies` (`AppDependencies.language` is a required parameter). Per-language data lives under `Application Support/BLT/courses/<language>/`; the old build's `progress.json` and `content/` are removed once at launch (`LegacyStorageSweep`)
 
 The profile gains the language being learned. Onboarding asks for it after the name. It can be changed later in Settings.
 
