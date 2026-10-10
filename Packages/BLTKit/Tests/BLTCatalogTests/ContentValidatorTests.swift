@@ -11,14 +11,16 @@ struct ContentValidatorTests {
 
     // MARK: Builders
 
+    /// Items other than the default `zz-bad` get their own prompt and canonical, so siblings stay distinct.
     private static func baseItem(id: String = "zz-bad") -> JSONObject {
-        [
+        let tag = id == "zz-bad" ? "" : " \(id)"
+        return [
             "id": id,
-            "sourcePrompt": "zz prompt",
+            "sourcePrompt": "zz prompt\(tag)",
             "register": "respectful",
             "addressee": "any",
-            "canonical": "zz canonical",
-            "acceptedAnswers": ["zz canonical", "zz canonical b", "zz canonical c"],
+            "canonical": "zz canonical\(tag)",
+            "acceptedAnswers": ["zz canonical\(tag)", "zz canonical b\(tag)", "zz canonical c\(tag)"],
             "registerVariant": "zz casual",
             "distractors": ["zz wrong a", "zz wrong b"],
             "tokens": [["tamil": "zz", "english": "zz gloss"]],
@@ -255,7 +257,7 @@ extension ContentValidatorTests {
 
     @Test func acceptedAnswerCountOfThreeAndSixIsAccepted() throws {
         var six = Self.baseItem(id: "zz-six")
-        six["acceptedAnswers"] = ["zz canonical", "zz b", "zz c", "zz d", "zz e", "zz f"]
+        six["acceptedAnswers"] = ["zz canonical zz-six", "zz b", "zz c", "zz d", "zz e", "zz f"]
         let catalog = try Self.load([Self.scenario(items: [Self.baseItem(id: "zz-three"), six])])
         #expect(catalog.issues.isEmpty)
     }
@@ -347,7 +349,7 @@ extension ContentValidatorTests {
         second["tokens"] = [["tamil": "zz second", "english": "zz gloss"]]
         let catalog = try Self.load([Self.scenario(items: [Self.baseItem(id: "zz-same"), second])])
         #expect(catalog.issues.map(\.rule) == [.duplicateItemID])
-        #expect(catalog.scenarios.first?.items.map(\.canonical) == ["zz canonical"])
+        #expect(catalog.scenarios.first?.items.map(\.canonical) == ["zz canonical zz-same"])
     }
 
     @Test func duplicateItemIDAcrossFilesKeepsTheEarlierFile() throws {
