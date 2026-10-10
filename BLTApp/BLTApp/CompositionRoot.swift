@@ -1,5 +1,6 @@
 import BLTCatalog
 import BLTContentStore
+import BLTCore
 import BLTFeatures
 import BLTProgress
 import Foundation
@@ -75,10 +76,14 @@ struct CompositionRoot {
             profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json")),
             lessonImporter: ImportedContentStore(
                 directory: Self.importedContentDirectory,
-                bundledDirectory: Bundle.main.url(forResource: "content", withExtension: nil)
+                bundledDirectory: BundleContentLoader.bundledDirectory(in: .main, language: Self.course),
+                language: Self.course
             )
         )
     }
+
+    /// The course being built. Fixed to Tamil until plan.md chunk D1 reads the language from the profile.
+    private static let course = CourseLanguage.tamil
 
     /// Where imported lesson files live, beside the progress and profile files.
     static var importedContentDirectory: URL { supportFileURL(named: "content") }
@@ -89,12 +94,16 @@ struct CompositionRoot {
     /// imported files are skipped files the learner chose, so they never assert.
     private func loadCatalog() -> Catalog {
         #if DEBUG
-        let bundledOnly = BundleContentLoader().load(bundle: .main)
+        let bundledOnly = BundleContentLoader().load(bundle: .main, language: Self.course)
         if bundledOnly.hasProblems {
             assertionFailure("Bundled content has problems; see the 'content' log category.")
         }
         #endif
-        let result = BundleContentLoader().load(bundle: .main, importedDirectory: Self.importedContentDirectory)
+        let result = BundleContentLoader().load(
+            bundle: .main,
+            language: Self.course,
+            importedDirectory: Self.importedContentDirectory
+        )
         ContentBootstrapReporter().report(result)
         return result.catalog
     }

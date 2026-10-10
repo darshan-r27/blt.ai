@@ -12,13 +12,14 @@ struct BundledContentFile: Sendable {
     /// `nil` when the file yields no scenario (it is broken); such a file can never be replaced.
     let scenarioID: ScenarioID?
 
-    /// Hashes and identifies each file. Files are loaded one at a time so each id is known.
-    static func index(_ urls: [URL], loader: ContentLoader) -> [BundledContentFile] {
+    /// Hashes and identifies each file. Files are loaded one at a time so each id is known. A file of
+    /// the other course yields no scenario (it is broken for this course), so it is never replaced.
+    static func index(_ urls: [URL], loader: ContentLoader, language: CourseLanguage?) -> [BundledContentFile] {
         urls.map { url in
             BundledContentFile(
                 url: url,
                 sha256: ImportedContentManifest.sha256Hex(ofFileAt: url),
-                scenarioID: loader.load(files: [url]).scenarios.first?.id
+                scenarioID: loader.load(files: [url], expectedLanguage: language).scenarios.first?.id
             )
         }
     }

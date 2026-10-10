@@ -3,9 +3,9 @@ import BLTCore
 import Foundation
 import Testing
 
-/// Content lives in `content/*.json` only (DECISIONS 025). No Swift source may carry shipped content as a string
-/// literal or any native-script (Tamil or Telugu) code point. This file is scanned too (it holds no content strings by construction:
-/// the comparison data is built at runtime from the JSON).
+/// Content lives in `content/<language>/*.json` only (DECISIONS 025, 044). No Swift source may carry shipped content
+/// as a string literal or any native-script (Tamil or Telugu) code point. This file is scanned too (it holds no
+/// content strings by construction: the comparison data is built at runtime from the JSON).
 struct NoContentInCodeTests {
     private let minimumLiteralLength = 5
     private let nativeScriptRanges = CourseLanguage.allCases.map(\.scriptRange)
@@ -28,18 +28,17 @@ struct NoContentInCodeTests {
         return url
     }
 
-    private func contentFiles() throws -> [URL] {
-        let directory = repoRoot.appending(path: "content", directoryHint: .isDirectory)
-        return try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
-            .filter { $0.isFileURL && $0.pathExtension == "json" }
-            .sorted { $0.lastPathComponent < $1.lastPathComponent }
-    }
-
     /// Every canonical, registerVariant, acceptedAnswers entry and distractor of 5+ characters.
     private func shippedStrings() throws -> Set<String> {
-        let catalog = ContentLoader(limits: .default).load(files: try contentFiles())
+        // One load per course, so a phrase shared by both courses is not dropped as a duplicate.
+        var items: [Item] = []
+        for language in CourseLanguage.allCases {
+            let files = try ShippedContentFiles.files(for: language)
+            let catalog = ContentLoader(limits: .default).load(files: files, expectedLanguage: language)
+            items += catalog.scenarios.flatMap(\.items)
+        }
         var strings: Set<String> = []
-        for item in catalog.scenarios.flatMap(\.items) {
+        for item in items {
             var candidates = [item.canonical]
             candidates.append(contentsOf: item.acceptedAnswers)
             candidates.append(contentsOf: item.distractors)
@@ -117,7 +116,7 @@ struct NoContentInCodeTests {
 
     private func report(_ violations: [Violation]) -> Comment {
         let lines = violations.map { "\($0.file):\($0.line): \($0.reason)" }
-        return Comment(rawValue: "Content must stay in content/*.json:\n" + lines.joined(separator: "\n"))
+        return Comment(rawValue: "Content must stay in content/<language>/*.json:\n" + lines.joined(separator: "\n"))
     }
 
     @Test func scanHasSomethingToCompareAgainstAndScan() throws {

@@ -1,13 +1,18 @@
 {
-  "scenarioId": "s02",
+  "scenarioId": "ta-l01-u02",
   "language": "tamil",
   "title": "Getting around",
   "subtitle": "Buses, autos, directions and asking the way",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 2
+  },
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
   "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
   "items": [
     {
-      "id": "s02-i01",
+      "id": "ta-l01-u02-i01",
       "sourcePrompt": "Where is the bus stand? (asking a stranger)",
       "register": "casual",
       "addressee": "any",
@@ -40,7 +45,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i02",
+      "id": "ta-l01-u02-i02",
       "sourcePrompt": "Which bus goes to the station?",
       "register": "neutral",
       "addressee": "any",
@@ -79,7 +84,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i03",
+      "id": "ta-l01-u02-i03",
       "sourcePrompt": "How much is the ticket?",
       "register": "neutral",
       "addressee": "any",
@@ -110,7 +115,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i04",
+      "id": "ta-l01-u02-i04",
       "sourcePrompt": "One ticket to Chennai, please. (to the conductor)",
       "register": "respectful",
       "addressee": "any",
@@ -148,7 +153,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i05",
+      "id": "ta-l01-u02-i05",
       "sourcePrompt": "When will the bus come?",
       "register": "neutral",
       "addressee": "any",
@@ -182,7 +187,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i06",
+      "id": "ta-l01-u02-i06",
       "sourcePrompt": "Where are you going? (to a male friend)",
       "register": "casual",
       "addressee": "male",
@@ -216,7 +221,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i07",
+      "id": "ta-l01-u02-i07",
       "sourcePrompt": "I'm going to the market.",
       "register": "neutral",
       "addressee": "any",
@@ -251,7 +256,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i08",
+      "id": "ta-l01-u02-i08",
       "sourcePrompt": "Please stop here. (to an auto driver)",
       "register": "respectful",
       "addressee": "any",
@@ -281,7 +286,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i09",
+      "id": "ta-l01-u02-i09",
       "sourcePrompt": "Go straight. (to an auto driver)",
       "register": "respectful",
       "addressee": "any",
@@ -311,7 +316,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i10",
+      "id": "ta-l01-u02-i10",
       "sourcePrompt": "Turn right. (to an auto driver)",
       "register": "respectful",
       "addressee": "any",
@@ -341,7 +346,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i11",
+      "id": "ta-l01-u02-i11",
       "sourcePrompt": "How far is it?",
       "register": "neutral",
       "addressee": "any",
@@ -372,7 +377,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i12",
+      "id": "ta-l01-u02-i12",
       "sourcePrompt": "How long will it take?",
       "register": "neutral",
       "addressee": "any",
@@ -407,7 +412,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i13",
+      "id": "ta-l01-u02-i13",
       "sourcePrompt": "Is it far?",
       "register": "neutral",
       "addressee": "any",
@@ -438,7 +443,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i14",
+      "id": "ta-l01-u02-i14",
       "sourcePrompt": "I don't know the way.",
       "register": "neutral",
       "addressee": "any",
@@ -473,7 +478,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i15",
+      "id": "ta-l01-u02-i15",
       "sourcePrompt": "Please tell me the way. (to a stranger)",
       "register": "respectful",
       "addressee": "any",
@@ -503,7 +508,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i16",
+      "id": "ta-l01-u02-i16",
       "sourcePrompt": "Is this the right bus?",
       "register": "neutral",
       "addressee": "any",
@@ -539,7 +544,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i17",
+      "id": "ta-l01-u02-i17",
       "sourcePrompt": "Wait here. (to a male friend)",
       "register": "casual",
       "addressee": "male",
@@ -572,7 +577,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i18",
+      "id": "ta-l01-u02-i18",
       "sourcePrompt": "I'll be there in five minutes.",
       "register": "neutral",
       "addressee": "any",
@@ -604,7 +609,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i19",
+      "id": "ta-l01-u02-i19",
       "sourcePrompt": "I'll get off here.",
       "register": "neutral",
       "addressee": "any",
@@ -641,7 +646,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s02-i20",
+      "id": "ta-l01-u02-i20",
       "sourcePrompt": "Where can I get an auto?",
       "register": "neutral",
       "addressee": "any",

@@ -79,6 +79,13 @@ jobs:
       - name: Forbidden-API guard scan
         run: bash scripts/check-forbidden-apis.sh
 
+      # The lesson files must be valid and free of repeated prompts, answers and ids, per course (docs/DECISIONS.md 038, 044).
+      - name: Content index self-test and check
+        run: |
+          set -euo pipefail
+          bash scripts/content-index.sh --self-test
+          bash scripts/content-index.sh --check
+
       - name: Install SwiftLint (pinned, SHA-256 verified)
         run: |
           set -euo pipefail

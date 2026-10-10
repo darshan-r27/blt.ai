@@ -6,6 +6,10 @@ import Foundation
 ///
 /// Only regular files whose name ends in `.json` are loaded, in file-name order, so a run is
 /// reproducible. Anything else in the folder is ignored. The folder must be a file URL.
+///
+/// Each course has its own folder (`content/<language>/`, DECISIONS 044) and every load names the
+/// course it is for: a lesson whose `language` is the other course is rejected, so a file in the
+/// wrong folder can never reach the learner.
 public struct BundleContentLoader: Sendable {
     private let loader: ContentLoader
 
@@ -13,28 +17,45 @@ public struct BundleContentLoader: Sendable {
         self.loader = loader
     }
 
-    /// Loads `content/*.json` (or another folder name) from a bundle's resources. A bundle without
-    /// that folder reports `directoryReadable == false`.
-    public func load(bundle: Bundle, folder: String = "content") -> ContentBootstrapResult {
-        guard let directory = bundle.url(forResource: folder, withExtension: nil) else {
-            return Self.unreadable
-        }
-        return load(directory: directory)
+    /// The folder holding one course's bundled lessons, `<bundle>/<folder>/<language>`; `nil` when the
+    /// bundle has none. The app also gives this folder to `ImportedContentStore`.
+    public static func bundledDirectory(
+        in bundle: Bundle,
+        language: CourseLanguage,
+        folder: String = "content"
+    ) -> URL? {
+        bundle.url(forResource: language.rawValue, withExtension: nil, subdirectory: folder)
     }
 
-    public func load(directory: URL) -> ContentBootstrapResult {
+    /// Loads `content/<language>/*.json` (or another top folder name) from a bundle's resources. A bundle
+    /// without that folder reports `directoryReadable == false` and an empty catalog.
+    public func load(bundle: Bundle, language: CourseLanguage, folder: String = "content") -> ContentBootstrapResult {
+        guard let directory = Self.bundledDirectory(in: bundle, language: language, folder: folder) else {
+            return Self.unreadable
+        }
+        return load(directory: directory, language: language)
+    }
+
+    /// Loads one course's lesson folder. A lesson written for the other course is reported as
+    /// `wrongLanguage` and contributes nothing.
+    public func load(directory: URL, language: CourseLanguage) -> ContentBootstrapResult {
         guard let files = Self.jsonFiles(in: directory) else { return Self.unreadable }
-        let catalog = loader.load(files: files)
+        let catalog = loader.load(files: files, expectedLanguage: language)
         return ContentBootstrapResult(catalog: catalog, fileCount: files.count, directoryReadable: true)
     }
 
-    /// Like `load(bundle:folder:)`, with lesson files the learner imported layered over the bundled
-    /// ones. See `load(directory:importedDirectory:)`.
-    public func load(bundle: Bundle, importedDirectory: URL, folder: String = "content") -> ContentBootstrapResult {
-        guard let directory = bundle.url(forResource: folder, withExtension: nil) else {
+    /// Like `load(bundle:language:folder:)`, with lesson files the learner imported layered over the
+    /// bundled ones. See `load(directory:language:importedDirectory:)`.
+    public func load(
+        bundle: Bundle,
+        language: CourseLanguage,
+        importedDirectory: URL,
+        folder: String = "content"
+    ) -> ContentBootstrapResult {
+        guard let directory = Self.bundledDirectory(in: bundle, language: language, folder: folder) else {
             return Self.unreadable
         }
-        return load(directory: directory, importedDirectory: importedDirectory)
+        return load(directory: directory, language: language, importedDirectory: importedDirectory)
     }
 
     /// Loads the bundled files with imported lessons layered on top.
@@ -43,21 +64,25 @@ public struct BundleContentLoader: Sendable {
     /// are loaded first so they win any id collision. An import is ignored (the bundled scenario wins)
     /// when it replaced a bundled file that has since changed or gone, or when a new id has since
     /// been taken by a bundled scenario. An imported file that no longer validates is skipped and its
-    /// issues are reported in the result. With nothing active the result is exactly `load(directory:)`.
-    public func load(directory: URL, importedDirectory: URL) -> ContentBootstrapResult {
+    /// issues are reported in the result (that includes an imported lesson of the other course). With
+    /// nothing active the result is exactly `load(directory:language:)`.
+    ///
+    /// `directory` is the course's bundled folder and `importedDirectory` is that course's import folder,
+    /// so the stale-override rule compares against this language's bundled files only.
+    public func load(directory: URL, language: CourseLanguage, importedDirectory: URL) -> ContentBootstrapResult {
         guard let bundledFiles = Self.jsonFiles(in: directory) else { return Self.unreadable }
         let manifest = ImportedContentManifest.read(from: importedDirectory)
-        guard !manifest.entries.isEmpty else { return load(directory: directory) }
+        guard !manifest.entries.isEmpty else { return load(directory: directory, language: language) }
 
-        let bundled = BundledContentFile.index(bundledFiles, loader: loader)
+        let bundled = BundledContentFile.index(bundledFiles, loader: loader, language: language)
         let active = manifest.activeEntries(bundled: bundled, in: importedDirectory)
-        guard !active.isEmpty else { return load(directory: directory) }
+        guard !active.isEmpty else { return load(directory: directory, language: language) }
 
         var skippedIssues: [ContentIssue] = []
         var importedURLs: [URL] = []
         var importedIDs: Set<ScenarioID> = []
         for (position, candidate) in active.enumerated() {
-            let alone = loader.load(files: [candidate.url])
+            let alone = loader.load(files: [candidate.url], expectedLanguage: language)
             let carriesExpectedID = alone.scenarios.first?.id.rawValue == candidate.entry.scenarioId
             if alone.issues.isEmpty && carriesExpectedID {
                 importedURLs.append(candidate.url)
@@ -67,7 +92,7 @@ public struct BundleContentLoader: Sendable {
             }
         }
         guard !importedURLs.isEmpty else {
-            let plain = load(directory: directory)
+            let plain = load(directory: directory, language: language)
             let catalog = Catalog(scenarios: plain.catalog.scenarios, issues: skippedIssues + plain.catalog.issues)
             return ContentBootstrapResult(catalog: catalog, fileCount: plain.fileCount, directoryReadable: true)
         }
@@ -77,7 +102,7 @@ public struct BundleContentLoader: Sendable {
             return !importedIDs.contains(id)
         }
         let files = importedURLs + keptBundled.map(\.url)
-        let loaded = loader.load(files: files)
+        let loaded = loader.load(files: files, expectedLanguage: language)
         let catalog = Catalog(scenarios: loaded.scenarios, issues: skippedIssues + loaded.issues)
         return ContentBootstrapResult(catalog: catalog, fileCount: files.count, directoryReadable: true)
     }

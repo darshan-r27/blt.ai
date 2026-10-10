@@ -17,7 +17,7 @@ struct ImportedContentLayeringTests {
 
         #expect(store.currentSummary().scenarioIDs.isEmpty)
         let result = world.layered()
-        #expect(result == BundleContentLoader().load(directory: world.bundled))
+        #expect(result == BundleContentLoader().load(directory: world.bundled, language: .tamil))
         #expect(result.catalog.scenarios.first?.title == "zz title")
     }
 
@@ -30,7 +30,7 @@ struct ImportedContentLayeringTests {
         try FileManager.default.removeItem(at: ImportedContentManifest.url(in: world.imported))
 
         #expect(store.currentSummary().scenarioIDs.isEmpty)
-        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled))
+        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled, language: .tamil))
     }
 
     @Test func aManifestEntryWithAnUnsafeFileNameIsIgnored() throws {
@@ -43,7 +43,7 @@ struct ImportedContentLayeringTests {
         try Data(manifest.utf8).write(to: ImportedContentManifest.url(in: world.imported))
 
         #expect(world.store().currentSummary().scenarioIDs.isEmpty)
-        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled))
+        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled, language: .tamil))
     }
 
     // MARK: Stale overrides
@@ -127,7 +127,7 @@ struct ImportedContentLayeringTests {
 
         #expect(world.importedFileNames().isEmpty)
         #expect(store.currentSummary().scenarioIDs.isEmpty)
-        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled))
+        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled, language: .tamil))
     }
 
     @Test func removeAllToleratesMissingFilesAndAnEmptyStore() throws {
@@ -154,7 +154,7 @@ struct ImportedContentLayeringTests {
         try world.writeBundled("zz-2.json", "not json")
 
         // The import folder does not exist at all.
-        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled))
+        #expect(world.layered() == BundleContentLoader().load(directory: world.bundled, language: .tamil))
         #expect(world.layered().hasProblems)
     }
 
@@ -162,7 +162,7 @@ struct ImportedContentLayeringTests {
         let world = try ImportWorld()
         defer { world.remove() }
         let missing = world.root.appending(path: "zz-nothing", directoryHint: .isDirectory)
-        let result = BundleContentLoader().load(directory: missing, importedDirectory: world.imported)
+        let result = BundleContentLoader().load(directory: missing, language: .tamil, importedDirectory: world.imported)
         #expect(!result.directoryReadable)
     }
 

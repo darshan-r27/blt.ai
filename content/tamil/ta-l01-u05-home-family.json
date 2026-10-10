@@ -1,13 +1,18 @@
 {
-  "scenarioId": "s05",
+  "scenarioId": "ta-l01-u05",
   "language": "tamil",
   "title": "Home, family and daily routine",
   "subtitle": "Introducing family and everyday home talk",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 5
+  },
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
   "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
   "items": [
     {
-      "id": "s05-i01",
+      "id": "ta-l01-u05-i01",
       "sourcePrompt": "This is my mother.",
       "register": "neutral",
       "addressee": "any",
@@ -42,7 +47,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i02",
+      "id": "ta-l01-u05-i02",
       "sourcePrompt": "This is my friend.",
       "register": "neutral",
       "addressee": "any",
@@ -77,7 +82,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i03",
+      "id": "ta-l01-u05-i03",
       "sourcePrompt": "How many people are in your family? (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -114,7 +119,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i04",
+      "id": "ta-l01-u05-i04",
       "sourcePrompt": "Where is your house? (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -151,7 +156,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i05",
+      "id": "ta-l01-u05-i05",
       "sourcePrompt": "I live in Hyderabad.",
       "register": "neutral",
       "addressee": "any",
@@ -185,7 +190,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i06",
+      "id": "ta-l01-u05-i06",
       "sourcePrompt": "What work do you do? (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -219,7 +224,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i07",
+      "id": "ta-l01-u05-i07",
       "sourcePrompt": "I work in an office.",
       "register": "neutral",
       "addressee": "any",
@@ -255,7 +260,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i08",
+      "id": "ta-l01-u05-i08",
       "sourcePrompt": "I'm sleepy.",
       "register": "neutral",
       "addressee": "any",
@@ -290,7 +295,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i09",
+      "id": "ta-l01-u05-i09",
       "sourcePrompt": "Sleep well. (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -319,7 +324,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i10",
+      "id": "ta-l01-u05-i10",
       "sourcePrompt": "What's for dinner?",
       "register": "neutral",
       "addressee": "any",
@@ -353,7 +358,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i11",
+      "id": "ta-l01-u05-i11",
       "sourcePrompt": "Is anyone at home? (calling out at a door)",
       "register": "respectful",
       "addressee": "any",
@@ -387,7 +392,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i12",
+      "id": "ta-l01-u05-i12",
       "sourcePrompt": "Please open the door. (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -416,7 +421,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i13",
+      "id": "ta-l01-u05-i13",
       "sourcePrompt": "Please close the door. (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -445,7 +450,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i14",
+      "id": "ta-l01-u05-i14",
       "sourcePrompt": "Turn on the light. (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -475,7 +480,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i15",
+      "id": "ta-l01-u05-i15",
       "sourcePrompt": "It's very hot today.",
       "register": "neutral",
       "addressee": "any",
@@ -514,7 +519,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i16",
+      "id": "ta-l01-u05-i16",
       "sourcePrompt": "It's raining.",
       "register": "neutral",
       "addressee": "any",
@@ -545,7 +550,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i17",
+      "id": "ta-l01-u05-i17",
       "sourcePrompt": "Come quickly. (to a female friend)",
       "register": "casual",
       "addressee": "female",
@@ -578,7 +583,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i18",
+      "id": "ta-l01-u05-i18",
       "sourcePrompt": "What happened? (to a male friend)",
       "register": "casual",
       "addressee": "male",
@@ -612,7 +617,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i19",
+      "id": "ta-l01-u05-i19",
       "sourcePrompt": "Don't worry. (to an elder)",
       "register": "respectful",
       "addressee": "any",
@@ -642,7 +647,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s05-i20",
+      "id": "ta-l01-u05-i20",
       "sourcePrompt": "I've reached home.",
       "register": "neutral",
       "addressee": "any",

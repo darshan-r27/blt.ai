@@ -75,7 +75,7 @@ struct BootstrapTests {
         try folder.makeSubfolder("zz-folder.json")
         let files = try #require(BundleContentLoader.jsonFiles(in: folder.url))
         #expect(files.map(\.lastPathComponent) == ["zz-a.json"])
-        let result = BundleContentLoader().load(directory: folder.url)
+        let result = BundleContentLoader().load(directory: folder.url, language: .tamil)
         #expect(result.fileCount == 1)
         #expect(result.catalog.scenarios.map(\.id.rawValue) == ["zz-s1"])
         #expect(!result.hasProblems)
@@ -85,7 +85,7 @@ struct BootstrapTests {
         let folder = try ContentFolder()
         defer { folder.remove() }
         try folder.write("zz-readme.txt", "not json at all {")
-        let result = BundleContentLoader().load(directory: folder.url)
+        let result = BundleContentLoader().load(directory: folder.url, language: .tamil)
         #expect(result.fileCount == 0)
         #expect(result.catalog.scenarios.isEmpty)
         #expect(result.issues.isEmpty)
@@ -96,7 +96,7 @@ struct BootstrapTests {
     @Test func emptyDirectoryGivesAnEmptyCatalog() throws {
         let folder = try ContentFolder()
         defer { folder.remove() }
-        let result = BundleContentLoader().load(directory: folder.url)
+        let result = BundleContentLoader().load(directory: folder.url, language: .tamil)
         #expect(result.catalog.scenarios.isEmpty)
         #expect(result.issues.isEmpty)
         #expect(result.fileCount == 0)
@@ -108,7 +108,7 @@ struct BootstrapTests {
         defer { folder.remove() }
         try folder.write("zz-2.json", ContentFolder.scenarioJSON(scenarioID: "zz-s2", itemIDs: ["zz-i3"]))
         try folder.write("zz-1.json", ContentFolder.scenarioJSON(scenarioID: "zz-s1", itemIDs: ["zz-i1", "zz-i2"]))
-        let result = BundleContentLoader().load(directory: folder.url)
+        let result = BundleContentLoader().load(directory: folder.url, language: .tamil)
         #expect(result.fileCount == 2)
         #expect(result.catalog.scenarios.map(\.id.rawValue) == ["zz-s1", "zz-s2"])
         #expect(result.catalog.allItemIDs.count == 3)
@@ -124,7 +124,7 @@ struct BootstrapTests {
         """
         try folder.write("zz-1.json", mixed)
         try folder.write("zz-2.json", "this is not json")
-        let result = BundleContentLoader().load(directory: folder.url)
+        let result = BundleContentLoader().load(directory: folder.url, language: .tamil)
         #expect(result.hasProblems)
         #expect(result.directoryReadable)
         #expect(result.catalog.allItemIDs == [ItemID(rawValue: "zz-good")])
@@ -152,7 +152,7 @@ struct BootstrapTests {
     @Test func missingDirectoryIsReportedNotTreatedAsEmptyContent() throws {
         let folder = try ContentFolder()
         folder.remove()
-        let result = BundleContentLoader().load(directory: folder.url)
+        let result = BundleContentLoader().load(directory: folder.url, language: .tamil)
         #expect(!result.directoryReadable)
         #expect(result.hasProblems)
         #expect(result.catalog.scenarios.isEmpty)
@@ -160,13 +160,13 @@ struct BootstrapTests {
 
     @Test func nonFileURLIsRejected() throws {
         let remote = try #require(URL(string: "zz-scheme://zz-host/zz-content"))
-        let result = BundleContentLoader().load(directory: remote)
+        let result = BundleContentLoader().load(directory: remote, language: .tamil)
         #expect(!result.directoryReadable)
         #expect(result.fileCount == 0)
     }
 
     @Test func bundleWithoutContentFolderIsReportedUnreadable() {
-        let result = BundleContentLoader().load(bundle: .main, folder: "zz-no-such-folder")
+        let result = BundleContentLoader().load(bundle: .main, language: .tamil, folder: "zz-no-such-folder")
         #expect(!result.directoryReadable)
         #expect(result.hasProblems)
     }

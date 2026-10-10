@@ -1,13 +1,18 @@
 {
-  "scenarioId": "s03",
+  "scenarioId": "ta-l01-u03",
   "language": "tamil",
   "title": "Food and eating out",
   "subtitle": "Ordering, tasting and paying at a restaurant or stall",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 3
+  },
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
   "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
   "items": [
     {
-      "id": "s03-i01",
+      "id": "ta-l01-u03-i01",
       "sourcePrompt": "I'm hungry.",
       "register": "neutral",
       "addressee": "any",
@@ -38,7 +43,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i02",
+      "id": "ta-l01-u03-i02",
       "sourcePrompt": "I'm thirsty.",
       "register": "neutral",
       "addressee": "any",
@@ -72,7 +77,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i03",
+      "id": "ta-l01-u03-i03",
       "sourcePrompt": "Water, please. (to a waiter)",
       "register": "respectful",
       "addressee": "any",
@@ -102,7 +107,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i04",
+      "id": "ta-l01-u03-i04",
       "sourcePrompt": "One tea, please. (to a server)",
       "register": "respectful",
       "addressee": "any",
@@ -136,7 +141,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i05",
+      "id": "ta-l01-u03-i05",
       "sourcePrompt": "What do you have? (asking the waiter)",
       "register": "respectful",
       "addressee": "any",
@@ -166,7 +171,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i06",
+      "id": "ta-l01-u03-i06",
       "sourcePrompt": "What do you want to eat? (to a female friend)",
       "register": "casual",
       "addressee": "female",
@@ -204,7 +209,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i07",
+      "id": "ta-l01-u03-i07",
       "sourcePrompt": "One dosa for me, please. (to a waiter)",
       "register": "respectful",
       "addressee": "any",
@@ -242,7 +247,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i08",
+      "id": "ta-l01-u03-i08",
       "sourcePrompt": "Less spicy, please. (to the cook)",
       "register": "respectful",
       "addressee": "any",
@@ -276,7 +281,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i09",
+      "id": "ta-l01-u03-i09",
       "sourcePrompt": "Is it spicy?",
       "register": "neutral",
       "addressee": "any",
@@ -311,7 +316,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i10",
+      "id": "ta-l01-u03-i10",
       "sourcePrompt": "A little more rice, please. (to a server)",
       "register": "respectful",
       "addressee": "any",
@@ -349,7 +354,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i11",
+      "id": "ta-l01-u03-i11",
       "sourcePrompt": "It's very tasty.",
       "register": "neutral",
       "addressee": "any",
@@ -384,7 +389,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i12",
+      "id": "ta-l01-u03-i12",
       "sourcePrompt": "It's too salty.",
       "register": "neutral",
       "addressee": "any",
@@ -414,7 +419,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i13",
+      "id": "ta-l01-u03-i13",
       "sourcePrompt": "The bill, please. (to a waiter)",
       "register": "respectful",
       "addressee": "any",
@@ -443,7 +448,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i14",
+      "id": "ta-l01-u03-i14",
       "sourcePrompt": "How much is it?",
       "register": "casual",
       "addressee": "any",
@@ -472,7 +477,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i15",
+      "id": "ta-l01-u03-i15",
       "sourcePrompt": "Keep the change.",
       "register": "respectful",
       "addressee": "any",
@@ -501,7 +506,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i16",
+      "id": "ta-l01-u03-i16",
       "sourcePrompt": "Do you have change?",
       "register": "neutral",
       "addressee": "any",
@@ -531,7 +536,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i17",
+      "id": "ta-l01-u03-i17",
       "sourcePrompt": "I only eat vegetarian food.",
       "register": "neutral",
       "addressee": "any",
@@ -570,7 +575,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i18",
+      "id": "ta-l01-u03-i18",
       "sourcePrompt": "Is this vegetarian?",
       "register": "neutral",
       "addressee": "any",
@@ -601,7 +606,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i19",
+      "id": "ta-l01-u03-i19",
       "sourcePrompt": "I've had enough.",
       "register": "neutral",
       "addressee": "any",
@@ -633,7 +638,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s03-i20",
+      "id": "ta-l01-u03-i20",
       "sourcePrompt": "The food was delicious.",
       "register": "neutral",
       "addressee": "any",
