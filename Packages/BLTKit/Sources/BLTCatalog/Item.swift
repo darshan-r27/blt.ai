@@ -15,6 +15,9 @@ public struct Item: Sendable, Equatable, Identifiable {
     public let tokens: [Token]
     public let note: String?
     public let reviewStatus: ReviewStatus
+    /// The canonical answer in Tamil script, kept so audio can be generated later (docs/DECISIONS.md 040).
+    /// Not shown in the app. `nil` for content that predates the field.
+    public let tamilScript: String?
 
     public init(
         id: ItemID,
@@ -28,7 +31,8 @@ public struct Item: Sendable, Equatable, Identifiable {
         distractors: [String],
         tokens: [Token],
         note: String?,
-        reviewStatus: ReviewStatus
+        reviewStatus: ReviewStatus,
+        tamilScript: String? = nil
     ) {
         self.id = id
         self.scenarioID = scenarioID
@@ -42,5 +46,6 @@ public struct Item: Sendable, Equatable, Identifiable {
         self.tokens = tokens
         self.note = note
         self.reviewStatus = reviewStatus
+        self.tamilScript = tamilScript
     }
 }

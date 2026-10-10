@@ -8,11 +8,12 @@ struct RawScenario: Decodable {
     var subtitle: String?
     var romanisationNote: String?
     var items: [RawItem]?
+    var level: RawLevel?
     /// Header fields that were present but had the wrong JSON type. `romanisationNote` is reported as `.note`.
     var malformed: Set<ContentIssue.Field> = []
 
     private enum CodingKeys: String, CodingKey {
-        case scenarioId, title, subtitle, romanisationNote, items
+        case scenarioId, title, subtitle, romanisationNote, items, level
     }
 
     /// Throws when the root is not a JSON object, which the loader reports as `malformedJSON`.
@@ -24,6 +25,11 @@ struct RawScenario: Decodable {
         romanisationNote = container.lenient(
             String.self, forKey: .romanisationNote, field: .note, malformed: &malformed
         )
+        do {
+            level = try container.decodeIfPresent(RawLevel.self, forKey: .level)
+        } catch {
+            malformed.insert(.level)
+        }
         // A non-array `items` is left nil, which the validator reports as an empty scenario.
         items = try? container.decodeIfPresent([RawItem].self, forKey: .items)
     }

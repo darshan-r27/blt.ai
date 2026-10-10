@@ -9,25 +9,24 @@ struct ContentValidator: Sendable {
 
     typealias Validation = (scenario: Scenario?, issues: [ContentIssue])
 
-    /// Validates one scenario file. `scenarioIDs` and `itemIDs` carry ids already accepted from earlier
-    /// files, so a repeated id is rejected here and the earlier file wins.
-    func validate(
-        _ raw: RawScenario,
-        fileIndex: Int,
-        scenarioIDs: inout Set<ScenarioID>,
-        itemIDs: inout Set<ItemID>
-    ) -> Validation {
+    /// Validates one scenario file. `registry` carries what earlier files already claimed (ids, prompts,
+    /// canonical answers, level titles), so a repeat is rejected here and the earlier file wins.
+    func validate(_ raw: RawScenario, fileIndex: Int, registry: inout CatalogRegistry) -> Validation {
         var header = Checker(limits: limits, fileIndex: fileIndex, malformed: raw.malformed)
         let rawID = header.string(raw.scenarioId, .scenarioId)
         header.scenarioID = rawID.map { ScenarioID(rawValue: $0) }
         let title = header.string(raw.title, .title)
         let subtitle = header.string(raw.subtitle, .subtitle)
         let romanisationNote = header.string(raw.romanisationNote, .note, required: false)
+        let level = header.level(raw.level)
         guard header.issues.isEmpty, let scenarioID = header.scenarioID, let title, let subtitle else {
             return (nil, header.issues)
         }
-        guard scenarioIDs.insert(scenarioID).inserted else {
+        guard registry.scenarioIDs.insert(scenarioID).inserted else {
             return (nil, [header.issue(.duplicateScenarioID)])
+        }
+        if let level, let known = registry.levelTitles[level.number], known != level.title {
+            return (nil, [header.issue(.levelTitleMismatch)])
         }
         guard let rawItems = raw.items, !rawItems.isEmpty else {
             return (nil, [header.issue(.emptyScenario)])
@@ -36,28 +35,49 @@ struct ContentValidator: Sendable {
             return (nil, [header.issue(.tooManyItems)])
         }
 
+        var (items, issues) = acceptedItems(
+            rawItems, scenarioID: scenarioID, fileIndex: fileIndex, registry: &registry
+        )
+        guard !items.isEmpty else {
+            issues.append(header.issue(.emptyScenario))
+            return (nil, issues)
+        }
+        if let level { registry.levelTitles[level.number] = level.title }
+        let scenario = Scenario(
+            id: scenarioID,
+            title: title,
+            subtitle: subtitle,
+            romanisationNote: romanisationNote,
+            items: items,
+            level: level
+        )
+        return (scenario, issues)
+    }
+
+    /// Validates each raw item, then checks the survivors against what earlier items already claimed.
+    private func acceptedItems(
+        _ rawItems: [RawItem],
+        scenarioID: ScenarioID,
+        fileIndex: Int,
+        registry: inout CatalogRegistry
+    ) -> (items: [Item], issues: [ContentIssue]) {
         var items: [Item] = []
         var issues: [ContentIssue] = []
         for rawItem in rawItems {
             let result = validateItem(rawItem, scenarioID: scenarioID, fileIndex: fileIndex)
             issues.append(contentsOf: result.issues)
             guard let item = result.item else { continue }
-            if itemIDs.insert(item.id).inserted {
+            let clashes = registry.clashes(for: item)
+            if clashes.isEmpty {
+                registry.accept(item)
                 items.append(item)
             } else {
-                issues.append(ContentIssue(
-                    fileIndex: fileIndex, scenarioID: scenarioID, itemID: item.id, rule: .duplicateItemID
-                ))
+                issues.append(contentsOf: clashes.map {
+                    ContentIssue(fileIndex: fileIndex, scenarioID: scenarioID, itemID: item.id, rule: $0)
+                })
             }
         }
-        guard !items.isEmpty else {
-            issues.append(header.issue(.emptyScenario))
-            return (nil, issues)
-        }
-        let scenario = Scenario(
-            id: scenarioID, title: title, subtitle: subtitle, romanisationNote: romanisationNote, items: items
-        )
-        return (scenario, issues)
+        return (items, issues)
     }
 
     private func validateItem(
@@ -81,6 +101,7 @@ struct ContentValidator: Sendable {
         let tokens = checker.tokens(raw.tokens)
         let note = checker.string(raw.note, .note, required: false)
         let reviewStatus: ReviewStatus? = checker.enumValue(raw.reviewStatus, .reviewStatus)
+        let tamilScript = checker.tamilScript(raw.tamilScript)
 
         guard checker.issues.isEmpty,
               let itemID = checker.itemID, let sourcePrompt, let register, let addressee, let canonical,
@@ -99,7 +120,8 @@ struct ContentValidator: Sendable {
             distractors: distractors,
             tokens: tokens,
             note: note,
-            reviewStatus: reviewStatus
+            reviewStatus: reviewStatus,
+            tamilScript: tamilScript
         )
         let rules = Self.relationRules(for: item)
         guard rules.isEmpty else { return (nil, rules.map { checker.issue($0) }) }
@@ -114,6 +136,7 @@ struct ContentValidator: Sendable {
         let options = [item.canonical] + others
 
         if !(3...6).contains(item.acceptedAnswers.count) { rules.append(.wrongAcceptedCount) }
+        if accepted.count != item.acceptedAnswers.count { rules.append(.duplicateAcceptedAnswer) }
         if !accepted.contains(normalised(item.canonical)) { rules.append(.canonicalNotAccepted) }
         if others.contains(where: { accepted.contains(normalised($0)) }) { rules.append(.otherOptionAccepted) }
         if Set(options.map(normalised)).count != options.count { rules.append(.duplicateOptionText) }
@@ -141,6 +164,9 @@ extension ContentValidator {
         var itemID: ItemID?
         var issues: [ContentIssue] = []
 
+        /// Tamil script block, U+0B80 to U+0BFF.
+        private static let tamilBlock: ClosedRange<UInt32> = 0x0B80...0x0BFF
+
         init(limits: ContentLoader.Limits, fileIndex: Int, malformed: Set<ContentIssue.Field>) {
             self.limits = limits
             self.fileIndex = fileIndex
@@ -153,6 +179,53 @@ extension ContentValidator {
 
         mutating func report(_ rule: ContentIssue.Rule) {
             issues.append(issue(rule))
+        }
+
+        /// The optional `level` object. Absent is valid; any problem inside it is reported and yields `nil`.
+        /// The title is stored trimmed, so "same title for the same number" is an exact comparison.
+        mutating func level(_ raw: RawLevel?) -> Level? {
+            if malformed.contains(.level) {
+                report(.unknownValue(.level))
+                return nil
+            }
+            guard let raw else { return nil }
+            guard !raw.isMalformed else {
+                report(.unknownValue(.level))
+                return nil
+            }
+            guard let number = raw.number, let position = raw.position, let rawTitle = raw.title else {
+                report(.missingField(.level))
+                return nil
+            }
+            let title = string(rawTitle, .level)
+            if number < 1 { report(.invalidLevelNumber) }
+            if position < 1 { report(.invalidLevelPosition) }
+            guard let title, number >= 1, position >= 1 else { return nil }
+            let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
+            return Level(number: number, title: trimmed, position: position)
+        }
+
+        /// The optional Tamil-script spelling. It is the one field where Tamil script is required and
+        /// Latin letters are banned, so it skips `accept`, which rejects Tamil script.
+        mutating func tamilScript(_ value: String?) -> String? {
+            if malformed.contains(.tamilScript) {
+                report(.unknownValue(.tamilScript))
+                return nil
+            }
+            guard let value else { return nil }
+            if value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                report(.emptyField(.tamilScript))
+                return nil
+            }
+            if value.count > limits.maxStringLength {
+                report(.fieldTooLong(.tamilScript))
+                return nil
+            }
+            let hasTamil = value.unicodeScalars.contains { Self.tamilBlock.contains($0.value) }
+            let hasLatin = value.unicodeScalars.contains { ("A"..."Z").contains($0) || ("a"..."z").contains($0) }
+            if !hasTamil { report(.tamilScriptMissingTamil) }
+            if hasLatin { report(.latinLettersInTamilScript) }
+            return hasTamil && !hasLatin ? value : nil
         }
 
         /// A required (or optional) string field. A present but empty, over-long or Tamil-script value is
@@ -240,7 +313,7 @@ extension ContentValidator {
                 return nil
             }
             // Tamil script block, U+0B80 to U+0BFF: content is romanised, never script.
-            if value.unicodeScalars.contains(where: { (0x0B80...0x0BFF).contains($0.value) }) {
+            if value.unicodeScalars.contains(where: { Self.tamilBlock.contains($0.value) }) {
                 report(.tamilScriptInField(field))
                 return nil
             }
