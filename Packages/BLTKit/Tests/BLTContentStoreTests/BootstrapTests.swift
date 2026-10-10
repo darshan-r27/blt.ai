@@ -41,10 +41,10 @@ private struct ContentFolder {
 
     /// A valid item, or an invalid one (no accepted answers) when `broken` is true.
     static func itemJSON(id: String, broken: Bool = false) -> String {
-        let accepted = broken ? "[]" : #"["zz canonical", "zz canonical b", "zz canonical c"]"#
+        let accepted = broken ? "[]" : #"["zz canonical \#(id)", "zz canonical b \#(id)", "zz canonical c \#(id)"]"#
         return """
-        {"id": "\(id)", "sourcePrompt": "zz prompt", "register": "respectful", "addressee": "any",
-         "canonical": "zz canonical", "acceptedAnswers": \(accepted), "registerVariant": "zz casual",
+        {"id": "\(id)", "sourcePrompt": "zz prompt \(id)", "register": "respectful", "addressee": "any",
+         "canonical": "zz canonical \(id)", "acceptedAnswers": \(accepted), "registerVariant": "zz casual",
          "distractors": ["zz wrong a", "zz wrong b"], "tokens": [{"tamil": "zz", "english": "zz gloss"}],
          "note": null, "reviewStatus": "unreviewed"}
         """
