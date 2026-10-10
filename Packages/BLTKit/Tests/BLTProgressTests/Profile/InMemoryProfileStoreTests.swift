@@ -28,6 +28,18 @@ struct InMemoryProfileStoreTests {
         try await Contract.checkSaveAfterEraseStartsFresh(InMemoryProfileStore())
     }
 
+    @Test func roundTripKeepsEachLanguage() async throws {
+        try await Contract.checkRoundTripKeepsEachLanguage(InMemoryProfileStore())
+    }
+
+    @Test func profileWithoutLanguageStaysWithout() async throws {
+        try await Contract.checkProfileWithoutLanguageStaysWithout(InMemoryProfileStore())
+    }
+
+    @Test func changingLanguageKeepsTheName() async throws {
+        try await Contract.checkChangingLanguageKeepsTheName(InMemoryProfileStore())
+    }
+
     @Test func initialProfileIsLoaded() async throws {
         let profile = UserProfile(name: "zz")
         let loaded = try await InMemoryProfileStore(initial: profile).load()

@@ -1,3 +1,4 @@
+import BLTCore
 import BLTProgress
 import Foundation
 import Testing
@@ -61,5 +62,37 @@ enum ProfileStoreContract {
         try await store.save(UserProfile(name: "zz-two"))
         let loaded = try await store.load()
         #expect(loaded == UserProfile(name: "zz-two"))
+    }
+
+    static func checkRoundTripKeepsEachLanguage(_ store: any ProfileStore) async throws {
+        for language in CourseLanguage.allCases {
+            let profile = UserProfile(name: "zz", learningLanguage: language)
+            try await store.save(profile)
+            let loaded = try await store.load()
+            #expect(loaded == profile)
+            #expect(loaded?.learningLanguage == language)
+        }
+    }
+
+    static func checkProfileWithoutLanguageStaysWithout(_ store: any ProfileStore) async throws {
+        try await store.save(UserProfile(name: "zz"))
+        let loaded = try await store.load()
+        #expect(loaded?.name == "zz")
+        #expect(loaded?.learningLanguage == nil)
+    }
+
+    static func checkChangingLanguageKeepsTheName(_ store: any ProfileStore) async throws {
+        let first = UserProfile(name: "zz-name", learningLanguage: .tamil)
+        try await store.save(first)
+        let loadedFirst = try #require(try await store.load())
+
+        try await store.save(loadedFirst.withLearningLanguage(.telugu))
+        let changed = try #require(try await store.load())
+        #expect(changed.name == "zz-name")
+        #expect(changed.learningLanguage == .telugu)
+
+        try await store.save(changed.withLearningLanguage(nil))
+        let cleared = try #require(try await store.load())
+        #expect(cleared == UserProfile(name: "zz-name"))
     }
 }
