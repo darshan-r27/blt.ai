@@ -35,7 +35,7 @@ Feedback also shows the word-by-word gloss (`tokens`) and `note`. The gloss is n
 
 ## 2. Content schema (frozen; the loader reads exactly this)
 
-> **Pending changes (not yet applied; the text below still matches the code).** DECISIONS 038 to 041 add duplicate-prompt and duplicate-answer rules, an optional `level` object on a lesson, an optional `tamilScript` field on an item, and replace "exactly 5 files" in chunk C3. See `docs/COURSE_SYLLABUS.md` and `plan.md`. This section is rewritten when chunk C1 lands.
+> **Pending changes (not yet applied; the text below still matches the code).** DECISIONS 038 to 044 add duplicate-prompt and duplicate-answer rules, a required `language` and an optional `level` object on a lesson, an optional `script` field on an item, rename `tokens[].tamil` to `tokens[].word`, move lessons into `content/tamil/` and `content/telugu/`, add the learner's language to `UserProfile` and `AppDependencies` (section 5), and replace "exactly 5 files" in chunk C3. See `docs/COURSE_SYLLABUS.md` and `plan.md`. This section is rewritten when chunk A1 lands.
 
 ```json
 { "scenarioId": "s01-greetings", "title": "", "subtitle": "",

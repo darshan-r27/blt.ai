@@ -1,34 +1,40 @@
 # BLT.ai course syllabus
 
-**Status: approved by the owner on 2026-10-09.** Lessons are drafted from this document, one level at a time.
-The decisions behind it are DECISIONS 038 to 041 (all pending).
+**Status: approved by the owner on 2026-10-09; widened to two languages the same day (DECISIONS 042).**
+Lessons are drafted from this document, one level at a time. The decisions behind it are DECISIONS 038 to 044.
 
-This document is English only. It names what each lesson teaches; it contains no Tamil. The Tamil lives only in
-`content/*.json` (DECISIONS 025).
+This document is English only. It names what each lesson teaches; it contains no Tamil or Telugu. The lesson
+text lives only in `content/` (DECISIONS 025, 042).
 
 ## 1. What the course is for
 
-A Telugu speaker who finishes all 100 lessons and passes the final exam should be able to follow, and choose the
-right thing to say in, everyday colloquial Tamil conversations: at home, in shops, on the street, at work, and
+blt.ai is for a couple: one partner speaks Tamil, the other Telugu, and they share English. There are two
+courses built from this one syllabus:
+
+- **The Tamil course**, for the Telugu speaker.
+- **The Telugu course**, for the Tamil speaker.
+
+A learner who finishes all 100 lessons of their course and passes its final exam should be able to follow, and
+choose the right thing to say in, everyday spoken conversations: at home, in shops, on the street, at work, and
 with relatives.
 
 **What it does not prove.** Every question is multiple choice. Passing shows the learner *recognises* natural
-spoken Tamil, including sentences they have never seen. It does not show they can *say* it. Speaking practice is
-separate voice work (see `docs/PRD.md`). The exam screen will say this in plain words.
+spoken language, including sentences they have never seen. It does not show they can *say* it. Speaking practice
+is the voice work planned for v2 (see `docs/PRD.md`). The exam screen will say this in plain words.
 
 ## 2. Shape
 
-| | |
+Each course has the same shape.
+
+| | Per course |
 |---|---|
 | Lessons | 100, of 20 phrases each: 2,000 phrases |
-| Already written | 5 lessons, 100 phrases (they become the first five lessons of Level 1) |
-| To write | 95 lessons, 1,900 phrases |
 | Levels | 8, taken in order but never locked |
 | Final exam | 100 questions, pass at 75 |
 
-| Level | Theme | Lessons | New phrases |
+| Level | Theme | Lessons | Phrases |
 |---|---|---|---|
-| 1 | Survival | 12 (5 exist) | 140 |
+| 1 | Survival | 12 | 240 |
 | 2 | Now: doing, having, wanting | 12 | 240 |
 | 3 | The past | 12 | 240 |
 | 4 | Future, ability and obligation | 13 | 260 |
@@ -36,39 +42,57 @@ separate voice work (see `docs/PRD.md`). The exam screen will say this in plain 
 | 6 | Joining ideas | 13 | 260 |
 | 7 | Real-life conversations | 13 | 260 |
 | 8 | Fluency | 12 | 240 |
-| | **Total** | **100** | **1,900** |
+| | **Total** | **100** | **2,000** |
+
+**Where each course stands.** Tamil: the first five lessons of Level 1 (100 phrases) are written and reviewed;
+1,900 remain. Telugu: nothing is written; 2,000 remain. Together: 3,900 phrases to draft.
+
+**Who reviews.** The owner reviews Tamil. The owner's partner, a native Telugu speaker, reviews Telugu
+(`docs/REVIEWER_GUIDE.md`).
 
 ## 3. Rules for every lesson
 
 1. **20 phrases.** About 14 teach the lesson's own patterns. About 6 reuse words and patterns from earlier
    lessons in new sentences, so earlier material keeps coming back.
-2. **No repeats.** No English prompt and no Tamil answer appears twice anywhere in the course (DECISIONS 038).
-   A reused pattern must be a different sentence.
-3. **Two spoken registers only**, casual and respectful, as in the existing lessons. Roughly 40% casual,
-   40% respectful and 20% with no you-form. No written or literary forms.
-4. **Sentences grow.** Level 1 answers are 2 to 4 words. Each level allows about one more word, up to about
+2. **Mirrored.** The English prompts for a lesson are written once and used in both courses wherever that is
+   natural, so the couple learn the same sentences in each other's language. A prompt may differ where a
+   sentence does not work in one language (a name, a place, a custom, an idiom). The differences are listed by
+   a script and looked at; they are not forbidden.
+3. **No repeats within a course.** No English prompt and no answer appears twice in the same course
+   (DECISIONS 038). A reused pattern must be a different sentence.
+4. **Two spoken registers only,** casual and respectful. Roughly 40% casual, 40% respectful and 20% with no
+   you-form. No written or literary forms in either language.
+5. **Sentences grow.** Level 1 answers are 2 to 4 words. Each level allows about one more word, up to about
    10 words in Level 8.
-5. **Vocabulary budget.** About 120 new words a level, about 1,000 by the end. A phrase introduces at most two
+6. **Vocabulary budget.** About 120 new words a level, about 1,000 by the end. A phrase introduces at most two
    new words.
-6. **Wrong options teach something.** A wrong option is a real, natural sentence that means something else,
+7. **Wrong options teach something.** A wrong option is a real, natural sentence that means something else,
    and from Level 2 onward at least one wrong option per phrase differs from the answer only by the pattern
    being taught (wrong tense, wrong ending, wrong person).
-7. **Loanwords as spoken.** English words that Tamil speakers actually use are kept.
-8. **Every new phrase has a Tamil-script spelling** (DECISIONS 040) and starts as `unreviewed`.
+8. **Loanwords as spoken.** English words that speakers actually use are kept.
+9. **Every new phrase has a spelling in the language's own script** (DECISIONS 040, 044) and starts as
+   `unreviewed`.
 
-## 4. Notes for a Telugu speaker
+**Language varieties.**
+- *Tamil:* everyday spoken Tamil, as in the existing lessons.
+- *Telugu:* the standard spoken Telugu of Coastal Andhra, the variety closest to films and television
+  (DECISIONS 042). Where a common word differs by region, the Coastal Andhra form is the answer and other
+  common forms may be accepted spellings.
 
-*These are the drafter's working assumptions. The owner, as the native reviewer, should correct any that are wrong.*
+## 4. Notes for each learner
 
-**What carries over (teach quickly, lean on it):**
+*These are the drafter's working assumptions. Each native reviewer should correct any that are wrong.*
+
+**What carries over in both directions (teach quickly, lean on it):**
 - Word order: the verb comes last in both languages.
 - Endings on nouns do the work of English prepositions in both.
 - "To me it is liked / wanted / known" sentences work the same way.
 - Both have two words for "we": one that includes the listener and one that does not.
 - Chaining actions with a "having done" verb form exists in both.
+- Both separate a casual "you" from a respectful one.
 - A large shared and similar vocabulary.
 
-**What differs (give extra phrases):**
+### 4a. For the Telugu speaker learning Tamil (extra phrases on these)
 - Sounds: the Tamil retroflex "zh" has no Telugu equivalent. Tamil does not use the breathy (aspirated)
   consonants that Telugu has, and whether a consonant sounds voiced depends on its position in the word.
 - He, she and it: Tamil keeps three separate forms and verb endings. Telugu groups "she" with "it" in the
@@ -78,24 +102,38 @@ separate voice work (see `docs/PRD.md`). The exam screen will say this in plain 
   spoken forms.
 - False friends: words that look alike but mean something different get a note on the phrase.
 
+### 4b. For the Tamil speaker learning Telugu (extra phrases on these)
+*To be checked by the Telugu reviewer before Level 1 is drafted.*
+- Sounds: in Telugu, voiced and unvoiced consonants (and the breathy ones) are different sounds that change
+  the meaning. A Tamil speaker has to learn to hear and choose between them.
+- He, she and it: Telugu verb endings treat "she" like "it" in the singular. The Tamil habit of a separate
+  "she" ending has to be unlearned.
+- Word endings: most Telugu words end in a vowel, and endings added to a word often change their vowel to
+  match it.
+- Vocabulary: everyday Telugu uses many Sanskrit-derived words where Tamil uses a native one, so fewer words
+  can be guessed than the shared grammar suggests.
+- Respect is marked more widely: on "you", on "he" and "she", and in verb endings.
+- False friends, as above.
+
 ## 5. The lessons
 
-Lesson ids: the existing five keep their current ids so saved progress survives. New lessons are
-`l01-u06`, `l02-u01` and so on (DECISIONS 039).
+Both courses use this list. Paired lessons share a key: `ta-l02-u03` in the Tamil course and `te-l02-u03` in the
+Telugu course (DECISIONS 044). The first five Tamil lessons keep their original ids so saved progress survives.
+"Exists in Tamil" marks the five lessons already written and reviewed for the Tamil course.
 
 ### Level 1: Survival
 The learner can get through a first day: greet, ask, buy, eat, and say they don't understand.
 
 | # | Lesson | Situation | Teaches |
 |---|---|---|---|
-| 1 | Greetings and small talk *(exists)* | Meeting people | Greetings, how are you, casual and respectful "you" |
-| 2 | Getting around *(exists)* | Buses, autos, directions | Where is, how far, stop here |
-| 3 | Food and eating out *(exists)* | Restaurant or stall | Ordering, tasting, the bill |
-| 4 | Shopping and bargaining *(exists)* | Shops and markets | Prices, sizes, haggling |
-| 5 | Home, family and daily routine *(exists)* | At home | Family words, everyday home talk |
+| 1 | Greetings and small talk *(exists in Tamil)* | Meeting people | Greetings, how are you, casual and respectful "you" |
+| 2 | Getting around *(exists in Tamil)* | Buses, autos, directions | Where is, how far, stop here |
+| 3 | Food and eating out *(exists in Tamil)* | Restaurant or stall | Ordering, tasting, the bill |
+| 4 | Shopping and bargaining *(exists in Tamil)* | Shops and markets | Prices, sizes, haggling |
+| 5 | Home, family and daily routine *(exists in Tamil)* | At home | Family words, everyday home talk |
 | 6 | Numbers, money and counting | Paying, counting, phone numbers | Numbers 1 to 1,000, how many, how much |
 | 7 | Time, days and dates | Fixing a time | Clock times, days, today, tomorrow, yesterday |
-| 8 | Introducing yourself | Meeting someone new | Name, home town, job, languages, "I am learning Tamil" |
+| 8 | Introducing yourself | Meeting someone new | Name, home town, job, languages, "I am learning" the language |
 | 9 | Asking for help | Lost or confused | I don't understand, say it again, slowly, what does this mean |
 | 10 | Yes, no and polite words | Any short exchange | Yes, no, okay, please, thanks, sorry, agreeing and declining |
 | 11 | People and pronouns | Talking about others | I, you, he, she, they, both kinds of "we", this and that |
@@ -233,11 +271,15 @@ The learner sounds natural, not just correct.
 
 ## 6. Final exam blueprint
 
+One exam per course, with the same blueprint.
+
 - **100 questions, one sitting, no feedback until the end.** Pass at 75.
 - **Only the exact right answer scores.** Choosing the same sentence in the other register does not.
 - **About 70 are sentences the learner has never seen,** built only from words and patterns the course taught.
-  About 30 come straight from the lessons.
-- The exam is written last, after Level 8 is reviewed, so it cannot use anything the course did not teach.
+  About 30 come straight from the lessons. The new-sentence prompts are shared between the two exams where
+  natural.
+- Each exam is written last, after that course's Level 8 is reviewed, so it cannot use anything the course did
+  not teach.
 - Exam answers never change the review schedule of the lessons.
 
 | Level | From the lessons | New sentences | Total |
@@ -259,10 +301,16 @@ Other balance rules:
 
 ## 7. How a level gets written
 
-1. The drafter writes the level's lessons from this syllabus. Everything is `unreviewed`.
-2. The validator, the duplicate check and the shipped-content tests must pass.
-3. The owner reviews in the content editor.
-4. The owner's corrections become rules in `docs/content/STYLE_NOTES.md`, and the next level is drafted with them.
-5. The next level starts only when the owner says the current one is done.
+1. The English prompts for each lesson of the level are written once.
+2. The drafter writes both courses' lessons from those prompts. Everything is `unreviewed`. For Level 1 the
+   Tamil course needs 7 new lessons; the Telugu course needs all 12, the first five mirroring the existing
+   Tamil ones.
+3. The validator, the duplicate check and the shipped-content tests must pass. The mirror report is read.
+4. Each native speaker reviews their language in the content editor.
+5. Corrections become rules in `docs/content/STYLE_NOTES_TAMIL.md` and `docs/content/STYLE_NOTES_TELUGU.md`,
+   and the next level is drafted with them.
+6. A course's next level starts only when its reviewer says the current one is done. The two courses may move
+   at different speeds.
 
-At about a minute a phrase, the owner's review is roughly 4 hours a level and 33 hours for the course.
+At about a minute a phrase, review is roughly 4 hours a level: about 32 hours for the rest of the Tamil course
+and about 33 hours for the Telugu course.

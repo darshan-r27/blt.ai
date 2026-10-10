@@ -1,6 +1,6 @@
 # BLT.ai — 0 to 1
 
-> **Status (2026-10-07): this is the v2 (voice) design.** v1 shipped as text-only multiple choice. For what exists, read [`ARCHITECTURE.md`](ARCHITECTURE.md), [`MVP_PLAN.md`](MVP_PLAN.md) and `DECISIONS.md` 024 to 037.
+> **Status (2026-10-07): this is the v2 (voice) design.** v1 shipped as text-only multiple choice. For what exists, read [`ARCHITECTURE.md`](ARCHITECTURE.md), [`MVP_PLAN.md`](MVP_PLAN.md) and `DECISIONS.md` 024 to 037. Since 2026-10-09 the product has two courses, Tamil and Telugu (DECISIONS 042): the voice phases below apply to both languages, and the work in progress is `plan.md` in the repo root.
 
 Sequenced build plan. Each task is one PR, has explicit acceptance criteria, and is sized for a single Claude Code session. Work them in order; the dependency chain is real.
 

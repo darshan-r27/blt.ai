@@ -1,8 +1,8 @@
 # BLT.ai
 
-iOS app teaching colloquial Tamil to Telugu speakers. v1 is text-only multiple choice; voice is v2 (ADR 024). On-device, no backend.
+iOS app for a couple learning each other's language: colloquial Tamil for the Telugu speaker and colloquial Telugu for the Tamil speaker, with English as the shared medium (ADR 042). Text-only multiple choice; voice is v2 (ADR 024). On-device, no backend. Today only the Tamil course is built; `plan.md` is the plan for the rest.
 
-Start every new session by reading `@docs/HANDOFF.md` (current status, commands, how we work). Read `@docs/ARCHITECTURE.md` for how the code is organised. Read `@docs/PRD.md` before any product decision (it describes the v2 voice product; v1 is defined by `@docs/MVP_PLAN.md` and DECISIONS 024 to 037). Read `@docs/BUILD_PLAN.md` for v2 tasks. Read `@docs/SECURITY.md` before touching audio, file storage, `Info.plist`, or dependencies. Read `@docs/BACKEND.md` before any telemetry work.
+Start every new session by reading `@docs/HANDOFF.md` (current status, commands, how we work). Read `@docs/ARCHITECTURE.md` for how the code is organised. Read `@docs/PRD.md` before any product decision (it describes the v2 voice product; v1 is defined by `@docs/MVP_PLAN.md` and DECISIONS 024 to 037, and the two-course plan by `plan.md`, `@docs/COURSE_SYLLABUS.md` and DECISIONS 038 to 044). Read `@docs/BUILD_PLAN.md` for v2 tasks. Read `@docs/SECURITY.md` before touching audio, file storage, `Info.plist`, or dependencies. Read `@docs/BACKEND.md` before any telemetry work.
 
 ## Hard constraints
 
@@ -47,7 +47,7 @@ Speech and microphone APIs **do not work in Simulator.** Anything touching `Audi
 
 ## How to work here
 
-**One task at a time.** Tasks come from `docs/MVP_PLAN.md` (v1) or `docs/BUILD_PLAN.md` (v2) and each has acceptance criteria. Do not start the next task, do not do "while I'm here" refactors, do not fix unrelated things you notice. Mention them instead.
+**One task at a time.** Tasks come from `plan.md` (the current two-course work), `docs/MVP_PLAN.md` (v1) or `docs/BUILD_PLAN.md` (v2) and each has acceptance criteria. Do not start the next task, do not do "while I'm here" refactors, do not fix unrelated things you notice. Mention them instead.
 
 **Plan before writing.** For any task touching more than one file, outline the approach and wait for approval.
 
@@ -67,7 +67,7 @@ Guessing wastes more of the human's time than asking does. He is reviewing for s
 - Do not write code that silently falls back — to a network path, a default value, a cloud recognizer. Surface the error.
 - Do not add a dependency to avoid writing forty lines.
 - Do not restructure existing modules as a side effect of a feature task.
-- Do not generate Tamil content outside the v1 content task. Per DECISIONS 025, v1 text content is Claude-drafted, must carry `reviewStatus: unreviewed`, and lives only in the content data files. Code and test fixtures never contain real Tamil phrases; fixtures must be obviously fake. v2 audio content still comes from native speakers.
+- Do not generate Tamil or Telugu content outside a content task in `plan.md`. Per DECISIONS 025 and 042, lesson text is Claude-drafted, must carry `reviewStatus: unreviewed` until that language's native reviewer checks it, and lives only in the content data files. Code, test fixtures and documents never contain real Tamil or Telugu phrases; fixtures must be obviously fake. v2 audio content still comes from native speakers.
 
 ## Context
 

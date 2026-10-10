@@ -1,6 +1,6 @@
 # BLT.ai architecture (v1, as built)
 
-blt.ai is a text-only, multiple-choice SwiftUI app that teaches colloquial Tamil to Telugu speakers. Everything runs on the device: there is no backend, no account, and no network code. This page describes what exists today. The voice product in [`PRD.md`](PRD.md) and [`BUILD_PLAN.md`](BUILD_PLAN.md) is the v2 plan, not the current code.
+blt.ai is a text-only, multiple-choice SwiftUI app. Today it teaches colloquial Tamil to Telugu speakers; it is being widened into a two-way course, Tamil and Telugu, for a couple learning each other's language (see "Planned: two courses" below). Everything runs on the device: there is no backend, no account, and no network code. Unless a section says "planned", this page describes what exists today. The voice product in [`PRD.md`](PRD.md) and [`BUILD_PLAN.md`](BUILD_PLAN.md) is the v2 plan, not the current code.
 
 ## Module map
 
@@ -68,7 +68,7 @@ Settings can import lesson files from the Files app ([`DECISIONS.md`](DECISIONS.
 | No network, audio or speech APIs, no new Info.plist permissions | `scripts/check-forbidden-apis.sh` (source and project files) and `scripts/check-binary.sh` (the built app) |
 | Warnings are errors, strict concurrency | `Package.swift` settings, `scripts/test.sh`, SwiftLint strict |
 | No machine name or real email in commit history | `scripts/check-identity.sh` in CI and as a pre-push hook |
-| Tamil text only in `content/*.json`; test fixtures are obviously fake | content conformance tests and review |
+| Lesson text (Tamil today, Telugu planned) only in `content/`; test fixtures are obviously fake | content conformance tests and review |
 | Imported and bundled lessons are untrusted input | the same validator for both |
 
 ## Testing
@@ -78,10 +78,24 @@ Settings can import lesson files from the Files app ([`DECISIONS.md`](DECISIONS.
 - **Content conformance tests** read the real `content/` folder and fail if any shipped item is invalid.
 - **CI** (GitHub Actions on the `xcode-27` preview image) runs the guardrails, lint, package tests and UI tests. Changes reach `main` through pull requests with these checks required.
 
+## Planned: two courses (not built yet)
+
+[`DECISIONS.md`](DECISIONS.md) 042 to 044 and `plan.md` describe the change. The engine does not look at the language, so the module map stays as it is. What changes:
+
+| Area | Today | Planned |
+|---|---|---|
+| Language | Implicitly Tamil | `CourseLanguage` (`tamil`, `telugu`) in `BLTCore`, chosen at onboarding, stored on the profile, switchable in Settings |
+| Lessons | `content/*.json`, 5 files | `content/tamil/` and `content/telugu/`, 100 lessons each in 8 levels; each file names its `language` and `level` |
+| Lesson format | Gloss key `tamil`; no script | Gloss key `word`; optional `script` in the language's own script; duplicate rules |
+| Data on the device | `progress.json`, `content/` | `courses/<language>/` holding progress, imports and the exam result; existing data moved once |
+| Composition | One catalog | Dependencies built for the chosen language; switching reuses the post-import reload |
+| Home | Flat list | Grouped by level, with a next-lesson suggestion |
+| Exam | None | One 100-question paper per language |
+
 ## Where v2 (voice) plugs in
 
 `Outcome` and the session state machine are deliberately independent of how an answer is produced, so spoken answers can feed the same scheduler. The audio and scoring modules described in the PRD do not exist yet and would be new modules beside these. Their constraints (on-device speech only, audio deleted after each attempt) are written down in `CLAUDE.md` and [`SECURITY.md`](SECURITY.md) so they apply from the first line.
 
 ## Decisions
 
-The reasoning behind each choice is in [`DECISIONS.md`](DECISIONS.md), including the ones that were reversed. Decisions 024 to 037 define v1.
+The reasoning behind each choice is in [`DECISIONS.md`](DECISIONS.md), including the ones that were reversed. Decisions 024 to 037 define v1; 038 to 044 define the two-course plan.
