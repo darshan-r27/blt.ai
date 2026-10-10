@@ -8,6 +8,7 @@ final class AccessibilityUITests: AccessibilityAuditCase {
     func testIntroAudit() throws { try audit(.intro, largestText: false) }
     func testNameEntryAudit() throws { try audit(.nameEntry, largestText: false) }
     func testLanguageStepAudit() throws { try audit(.language, largestText: false) }
+    func testLanguageStepWithAChoiceAudit() throws { try audit(.languageChosen, largestText: false) }
     func testHomeAudit() throws { try audit(.home, largestText: false) }
     func testQuestionAudit() throws { try audit(.question, largestText: false) }
     func testFeedbackAudit() throws { try audit(.feedback, largestText: false) }

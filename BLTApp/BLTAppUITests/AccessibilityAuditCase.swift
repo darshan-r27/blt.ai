@@ -6,13 +6,14 @@ import XCTest
 /// `AccessibilityLargeTextUITests` (the largest accessibility size, on `main`, nightly and on demand). Nothing
 /// is dropped by that split; a check only runs in the tier named for it.
 ///
-/// A finding fails the test and goes in the report. The three narrow exceptions are documented on
-/// `isSystemToolbarButtonDynamicTypeIssue`, `isOccludedByContinueBar` and `isSettingsTextBehindSheet`; the name
+/// A finding fails the test and goes in the report. The four narrow exceptions are documented on
+/// `isSystemToolbarButtonDynamicTypeIssue`, `isOccludedByContinueBar`, `isSettingsTextBehindSheet` and
+/// `isDisabledLanguageContinue`; the name
 /// screens are audited with the system keyboard dismissed (see `dismissKeyboard`).
 @MainActor
 class AccessibilityAuditCase: BLTUITestCase {
     enum Screen {
-        case intro, nameEntry, language, home, question, feedback, progress, settings, settingsLanguageChoice
+        case intro, nameEntry, language, languageChosen, home, question, feedback, progress, settings, settingsLanguageChoice
         case changeName
     }
 
@@ -30,6 +31,12 @@ class AccessibilityAuditCase: BLTUITestCase {
             return app
         case .language:
             return launchToLanguageStep(largestText: largestText)
+        case .languageChosen:
+            // A choice made: one row is selected and Continue is enabled.
+            let app = launchToLanguageStep(largestText: largestText)
+            tap(app.buttons[AXID.languageOption(.telugu)], "the Telugu option")
+            XCTAssertTrue(app.buttons[AXID.languageContinue].isEnabled, "Continue must enable after a choice")
+            return app
         case .home:
             return launchHome(largestText: largestText)
         case .question, .feedback:
@@ -130,6 +137,16 @@ class AccessibilityAuditCase: BLTUITestCase {
         return label.hasPrefix("These lessons were drafted") || label.hasPrefix("Every lesson was checked")
     }
 
+    /// The fourth ignored case: a contrast issue on the language step's Continue button while it is disabled
+    /// (nothing chosen yet). A disabled control is exempt from the contrast requirement (WCAG 1.4.3, inactive
+    /// user interface components) and the system dims it on purpose, but the audit still measures it. Matched by
+    /// audit type, the identifier AND `isEnabled == false`, so once a language is chosen the same button is
+    /// audited in full by `testLanguageStepWithAChoiceAudit`.
+    private static func isDisabledLanguageContinue(_ issue: XCUIAccessibilityAuditIssue) -> Bool {
+        guard issue.auditType == .contrast, let element = issue.element else { return false }
+        return element.identifier == AXID.languageContinue && !element.isEnabled
+    }
+
     /// The two name screens focus their field on arrival, so the system keyboard is up when the audit starts.
     /// That keyboard is Apple's, not ours, and it makes the audit report things we cannot fix: its empty
     /// prediction cells have no label (seen on a GitHub runner), and at the largest text size it covers the
@@ -160,11 +177,12 @@ class AccessibilityAuditCase: BLTUITestCase {
         // Keep going after the first finding so one run reports every issue on the screen.
         continueAfterFailure = true
         let handleIssue: (XCUIAccessibilityAuditIssue) -> Bool = { issue in
-            // Apart from the three narrow cases above, every issue is recorded as a failure with the element it
+            // Apart from the four narrow cases above, every issue is recorded as a failure with the element it
             // points at. (Returning true only means "handled"; the XCTFail is what fails the test.)
             if Self.isSystemToolbarButtonDynamicTypeIssue(issue)
                 || Self.isOccludedByContinueBar(issue, bar: continueBar)
-                || Self.isSettingsTextBehindSheet(issue, onSheet: screen == .changeName) {
+                || Self.isSettingsTextBehindSheet(issue, onSheet: screen == .changeName)
+                || Self.isDisabledLanguageContinue(issue) {
                 return true
             }
             let element = issue.element

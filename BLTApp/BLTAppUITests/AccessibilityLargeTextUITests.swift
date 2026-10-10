@@ -12,6 +12,7 @@ final class AccessibilityLargeTextUITests: AccessibilityAuditCase {
     func testIntroAuditAtXXXL() throws { try audit(.intro, largestText: true) }
     func testNameEntryAuditAtXXXL() throws { try audit(.nameEntry, largestText: true) }
     func testLanguageStepAuditAtXXXL() throws { try audit(.language, largestText: true) }
+    func testLanguageStepWithAChoiceAuditAtXXXL() throws { try audit(.languageChosen, largestText: true) }
     func testHomeAuditAtXXXL() throws { try audit(.home, largestText: true) }
     func testQuestionAuditAtXXXL() throws { try audit(.question, largestText: true) }
     func testFeedbackAuditAtXXXL() throws { try audit(.feedback, largestText: true) }
