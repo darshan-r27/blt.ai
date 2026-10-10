@@ -17,4 +17,17 @@ final class HomeUITests: BLTUITestCase {
         XCTAssertEqual(app.staticTexts.matching(oldLines).count, 0, "The old count lines must be gone")
         XCTAssertFalse(app.staticTexts["Nothing is due for review right now."].exists)
     }
+
+    func testFixtureLessonSitsUnderOtherLessonsWithAContinueCardAndTheLanguageLine() {
+        let app = launchHome(language: .telugu)
+
+        requireLabel(of: app.element(AXID.homeLanguage), containing: "Telugu")
+        requireExists(app.element(AXID.homeOtherLessons), "the Other lessons heading (the fixture has no level)")
+        requireExists(app.element(AXID.homeContinueLesson), "the Continue card")
+        XCTAssertEqual(
+            app.element(AXID.fixtureScenarioCardTelugu).label,
+            "zz telugu scenario, zz telugu subtitle, 0 percent complete"
+        )
+        XCTAssertFalse(app.element(AXID.fixtureScenarioCard).exists, "The other course's lesson must not be listed")
+    }
 }

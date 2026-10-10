@@ -11,11 +11,13 @@ final class AccessibilityLargeTextUITests: AccessibilityAuditCase {
 
     func testIntroAuditAtXXXL() throws { try audit(.intro, largestText: true) }
     func testNameEntryAuditAtXXXL() throws { try audit(.nameEntry, largestText: true) }
+    func testLanguageStepAuditAtXXXL() throws { try audit(.language, largestText: true) }
     func testHomeAuditAtXXXL() throws { try audit(.home, largestText: true) }
     func testQuestionAuditAtXXXL() throws { try audit(.question, largestText: true) }
     func testFeedbackAuditAtXXXL() throws { try audit(.feedback, largestText: true) }
     func testProgressAuditAtXXXL() throws { try audit(.progress, largestText: true) }
     func testSettingsAuditAtXXXL() throws { try audit(.settings, largestText: true) }
+    func testSettingsLanguageChoiceAuditAtXXXL() throws { try audit(.settingsLanguageChoice, largestText: true) }
     func testChangeNameSheetAuditAtXXXL() throws { try audit(.changeName, largestText: true) }
 
     // MARK: Reachability at the largest size
@@ -28,6 +30,18 @@ final class AccessibilityLargeTextUITests: AccessibilityAuditCase {
         XCTAssertTrue(app.textFields[AXID.nameField].isHittable, "Name field")
         scrollIntoView(app.element(AXID.nameContinue), in: app)
         XCTAssertTrue(app.element(AXID.nameContinue).isHittable, "Continue")
+    }
+
+    func testLanguageStepControlsAreReachableAtXXXL() {
+        let app = open(.language, largestText: true)
+        for language in UITestLanguage.allCases {
+            let option = app.buttons[AXID.languageOption(language)]
+            scrollIntoView(option, in: app)
+            XCTAssertTrue(option.isHittable, "\(language.displayName) option")
+        }
+        app.buttons[AXID.languageOption(.tamil)].tap()
+        scrollIntoView(app.buttons[AXID.languageContinue], in: app)
+        XCTAssertTrue(app.buttons[AXID.languageContinue].isHittable, "Continue")
     }
 
     func testHomeControlsAreReachableAtXXXL() {
@@ -53,6 +67,7 @@ final class AccessibilityLargeTextUITests: AccessibilityAuditCase {
 
     func testSettingsControlsAreReachableAtXXXL() {
         let app = open(.settings, largestText: true)
+        XCTAssertTrue(app.buttons[AXID.settingsLanguage].isHittable, "Language I'm learning")
         scrollIntoView(app.element(AXID.settingsChangeName), in: app)
         XCTAssertTrue(app.element(AXID.settingsChangeName).isHittable, "Change name")
         scrollIntoView(app.element(AXID.settingsReset), in: app)

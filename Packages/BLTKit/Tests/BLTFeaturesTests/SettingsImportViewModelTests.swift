@@ -254,7 +254,11 @@ struct SettingsImportViewModelTests {
         let directory = FileManager.default.temporaryDirectory
             .appending(path: "zz-import-\(UUID().uuidString)", directoryHint: .isDirectory)
         defer { try? FileManager.default.removeItem(at: directory) }
-        let importer: any LessonImporting = ImportedContentStore(directory: directory, bundledDirectory: nil, language: .tamil)
+        let importer: any LessonImporting = ImportedContentStore(
+            directory: directory,
+            bundledDirectory: nil,
+            language: .tamil
+        )
         #expect(await importer.currentSummary().scenarioIDs.isEmpty)
         do {
             _ = try await importer.importFiles([])

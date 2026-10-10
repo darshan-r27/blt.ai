@@ -44,16 +44,18 @@ final class SettingsViewModel {
     var languageOptions: [CourseLanguage] { CourseLanguage.allCases }
     /// True while the two languages are shown under the row. Showing them changes nothing.
     var isChoosingLanguage = false
-    /// The language the learner picked and has not yet confirmed. Non-nil exactly while the confirmation shows.
+    /// The language the learner picked and has not yet confirmed. Set when the confirmation opens and cleared by
+    /// Cancel and by a confirmed switch. A dismissal of the dialog by the system leaves it set: it is read only by
+    /// `confirmLanguageChange()`, which only the Switch button calls.
     private(set) var pendingLanguage: CourseLanguage?
     /// True after a switch could not be saved. Nothing was changed. Cleared by the next attempt.
     private(set) var languageChangeFailed = false
     private(set) var isChangingLanguage = false
-    /// Bound to the Switch confirmation. Setting it to false is a cancel; only `confirmLanguageChange()` saves.
-    var isConfirmingLanguageChange: Bool {
-        get { pendingLanguage != nil }
-        set { if !newValue { cancelLanguageChange() } }
-    }
+    /// Bound to the Switch confirmation. Setting it to false only hides the dialog and saves nothing; only
+    /// `confirmLanguageChange()` saves. It is a flag of its own, not derived from `pendingLanguage`, because the
+    /// system sets the binding to false as the Switch button is tapped, and that must not discard the language
+    /// the button is about to switch to.
+    var isConfirmingLanguageChange = false
     var languageChangeTitle: String {
         pendingLanguage.map { "Switch to \($0.displayName)?" } ?? "Switch language?"
     }
@@ -185,11 +187,13 @@ final class SettingsViewModel {
         guard language != learningLanguage else { return }
         languageChangeFailed = false
         pendingLanguage = language
+        isConfirmingLanguageChange = true
     }
 
     /// Closes the confirmation. Nothing is saved and the language is unchanged.
     func cancelLanguageChange() {
         pendingLanguage = nil
+        isConfirmingLanguageChange = false
     }
 
     /// Wired only to the confirmation's Switch button. Writes the stored profile with the new language and
@@ -197,6 +201,7 @@ final class SettingsViewModel {
     func confirmLanguageChange() async {
         guard let language = pendingLanguage, !isChangingLanguage else { return }
         pendingLanguage = nil
+        isConfirmingLanguageChange = false
         isChangingLanguage = true
         defer { isChangingLanguage = false }
         languageChangeFailed = false

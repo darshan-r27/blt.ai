@@ -150,12 +150,28 @@ struct SettingsLanguageTests {
         #expect(await profileStore.saveCount == 0)
     }
 
-    @Test func dismissingTheConfirmationCountsAsCancel() {
-        let model = makeModel(language: .tamil)
+    @Test func dismissingTheConfirmationSavesNothing() async {
+        let profileStore = OnboardingStubProfileStore(profile: UserProfile(name: "zz Sample", learningLanguage: .tamil))
+        let model = makeModel(language: .tamil, profileStore: profileStore)
         model.chooseLanguage(.telugu)
         model.isConfirmingLanguageChange = false
-        #expect(model.pendingLanguage == nil)
+        #expect(model.isConfirmingLanguageChange == false)
         #expect(model.learningLanguage == .tamil)
+        #expect(await profileStore.saveCount == 0)
+    }
+
+    /// The system sets the dialog's binding to false as the Switch button is tapped, before or as its action runs.
+    /// The switch must still happen (found by the UI test that switches language in Settings).
+    @Test func switchStillHappensWhenTheDialogIsDismissedAsSwitchIsTapped() async {
+        let profileStore = OnboardingStubProfileStore(profile: UserProfile(name: "zz Sample", learningLanguage: .tamil))
+        let counter = LanguageCounter()
+        let model = makeModel(language: .tamil, profileStore: profileStore, onDidChangeLanguage: { counter.record($0) })
+        model.chooseLanguage(.telugu)
+        model.isConfirmingLanguageChange = false
+        await model.confirmLanguageChange()
+        #expect(await profileStore.savedProfile == UserProfile(name: "zz Sample", learningLanguage: .telugu))
+        #expect(counter.profiles.count == 1)
+        #expect(model.learningLanguage == .telugu)
     }
 
     @Test func choosingTheCurrentLanguageDoesNothing() async {

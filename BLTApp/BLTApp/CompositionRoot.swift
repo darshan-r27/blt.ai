@@ -114,13 +114,15 @@ struct CompositionRoot {
     }
 
     /// Loads `content/<language>/*.json` from the app bundle with that language's imported lessons layered over
-    /// it. A problem is logged (counts, and item IDs marked private) and the valid items are used. In DEBUG a
-    /// problem in the bundled files alone also stops the app, so a bad content change is noticed immediately;
-    /// problems in imported files are skipped files the learner chose, so they never assert.
+    /// it. A problem is logged (counts, and item IDs marked private) and the valid items are used. In DEBUG an
+    /// invalid bundled lesson also stops the app, so a bad content change is noticed immediately; problems in
+    /// imported files are skipped files the learner chose, so they never assert. A language whose bundled folder
+    /// does not exist yet (Telugu, until its first lessons are drafted) is not a problem to stop for: it loads
+    /// as an empty course, which Home explains, and the shipped-content tests guard the folders that must exist.
     private static func loadCatalog(for language: CourseLanguage) -> Catalog {
         #if DEBUG
         let bundledOnly = BundleContentLoader().load(bundle: .main, language: language)
-        if bundledOnly.hasProblems {
+        if bundledOnly.directoryReadable && !bundledOnly.issues.isEmpty {
             assertionFailure("Bundled content has problems; see the 'content' log category.")
         }
         #endif

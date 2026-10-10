@@ -6,18 +6,23 @@ import XCTest
 /// in the package, not here; the detailed screen tests are in the other classes and run in the full tier.
 @MainActor
 final class HappyPathUITests: BLTUITestCase {
-    /// Intro, name entry and Home: first launch through to the greeting.
-    func testEnteringNameProceedsToHomeWithGreeting() {
+    /// Intro, name entry, language step and Home: first launch through to the greeting and the course shown.
+    func testOnboardingGoesFromIntroThroughNameAndLanguageToHome() {
         let enteredName = "ZzPerson"
         let app = launchToNameEntry()
 
         enterName(enteredName, in: app)
         tap(app.element(AXID.nameContinue), "Continue")
 
-        let greeting = app.element(AXID.greeting)
-        requireExists(greeting, "the Home greeting")
+        requireExists(app.element(AXID.languageContinue), "the language step")
+        XCTAssertFalse(app.element(AXID.greeting).exists, "Home must not show before a language is chosen")
+        XCTAssertFalse(app.buttons[AXID.languageContinue].isEnabled, "Continue waits for a choice")
+        chooseLanguageAndContinue(.telugu, in: app)
+
         requireGreetingText("Hi \(enteredName)", in: app)
+        requireLabel(of: app.element(AXID.homeLanguage), containing: "Telugu")
         XCTAssertFalse(app.textFields[AXID.nameField].exists)
+        XCTAssertFalse(app.element(AXID.languageContinue).exists)
     }
 
     /// Home: the greeting sits above the Scenarios label, which sits above the first card.
@@ -30,6 +35,7 @@ final class HappyPathUITests: BLTUITestCase {
         let label = app.staticTexts["Scenarios"]
         requireExists(label, "the Scenarios label")
         XCTAssertLessThanOrEqual(greeting.frame.maxY, label.frame.minY, "The greeting must sit above 'Scenarios'")
+        // The fixture lesson has no level, so it is listed under "Other lessons", below the Scenarios label.
         XCTAssertLessThan(label.frame.minY, app.element(AXID.fixtureScenarioCard).frame.minY)
     }
 

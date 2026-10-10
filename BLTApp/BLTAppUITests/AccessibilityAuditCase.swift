@@ -12,7 +12,8 @@ import XCTest
 @MainActor
 class AccessibilityAuditCase: BLTUITestCase {
     enum Screen {
-        case intro, nameEntry, home, question, feedback, progress, settings, changeName
+        case intro, nameEntry, language, home, question, feedback, progress, settings, settingsLanguageChoice
+        case changeName
     }
 
     /// Launches fresh and navigates to `screen`.
@@ -27,6 +28,8 @@ class AccessibilityAuditCase: BLTUITestCase {
             tap(app.element(AXID.introStart), "Get started")
             requireExists(app.textFields[AXID.nameField], "the name field")
             return app
+        case .language:
+            return launchToLanguageStep(largestText: largestText)
         case .home:
             return launchHome(largestText: largestText)
         case .question, .feedback:
@@ -36,7 +39,7 @@ class AccessibilityAuditCase: BLTUITestCase {
             tap(app.buttons["Progress"], "the Progress button")
             requireExists(app.element(AXID.progressLearned), "the Progress figures")
             return app
-        case .settings, .changeName:
+        case .settings, .settingsLanguageChoice, .changeName:
             return openSettingsScreen(screen, largestText: largestText)
         }
     }
@@ -71,6 +74,11 @@ class AccessibilityAuditCase: BLTUITestCase {
         let app = launchHome(largestText: largestText)
         tap(app.buttons["Settings"], "the Settings button")
         requireExists(app.element(AXID.settingsReset), "Settings")
+        if screen == .settingsLanguageChoice {
+            // The row with the two languages shown under it, as a learner sees it while choosing.
+            tap(app.buttons[AXID.settingsLanguage], "the Language I'm learning row")
+            requireExists(app.buttons[AXID.settingsLanguageOption(.telugu)], "the language options")
+        }
         if screen == .changeName {
             let change = app.element(AXID.settingsChangeName)
             scrollIntoView(change, in: app)
