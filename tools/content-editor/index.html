@@ -116,7 +116,16 @@
 
 <script>
 'use strict';
-const TAMIL = /[஀-௿]/;
+// The two course languages and the Unicode block of each one's own script (numeric ranges, never literal text).
+const LANGS = {
+  tamil: { name: 'Tamil', block: /[\u0B80-\u0BFF]/ },   // Tamil U+0B80 to U+0BFF
+  telugu: { name: 'Telugu', block: /[\u0C00-\u0C7F]/ }, // Telugu U+0C00 to U+0C7F
+};
+const langInfo = (v) => (typeof v === 'string' && Object.hasOwn(LANGS, v) ? LANGS[v] : null);
+const langKey = (f) => (typeof f.data.language === 'string' ? f.data.language : '');   // '' = missing; unknown values group together
+const langName = (f) => langInfo(f.data.language)?.name ?? '';
+// Which script, if any, a piece of text contains. Either script is banned in every field except `script`.
+const scriptIn = (v) => Object.values(LANGS).find((L) => L.block.test(String(v ?? ''))) ?? null;
 const state = { files: [], dir: null, sel: null };
 const isReviewed = (item) => item.reviewStatus === 'reviewed';
 
@@ -138,31 +147,39 @@ const norm = (s) => String(s ?? '').trim().toLowerCase();
 const serialize = (data) => JSON.stringify(data, null, 2); // no trailing newline: matches the checked-in files
 
 // ---------- validation (mirrors docs/MVP_PLAN.md section 2, docs/DECISIONS.md 038 to 040, and the app's ContentLoader) ----------
-// ctx comes from buildCtx(): every item id, plus every prompt and correct answer in all loaded files (for the duplicate checks).
-function validate(item, ctx) {
+// ctx comes from buildCtx(): per language, every item id plus every prompt and correct answer (for the duplicate checks).
+// f is the lesson file the item belongs to; its `language` decides which script `script` must use and which course the duplicates are counted in.
+function validate(item, ctx, f) {
   const e = [];
+  const L = langInfo(f.data.language);
+  const scriptWord = L ? `${L.name} script` : 'Script';
+  const mine = ctx.by.get(langKey(f)) || { ids: [], prompts: new Map(), canons: new Map() };
   const reqStr = (name, v) => {
     if (typeof v !== 'string' || v.trim() === '') e.push(`${name} is empty.`);
     else if (v.length > 500) e.push(`${name} is longer than 500 characters.`);
-    else if (TAMIL.test(v)) e.push(`${name} contains Tamil script. Use romanised Tamil only.`);
+    else if (scriptIn(v)) e.push(`${name} contains ${scriptIn(v).name} script. Use romanised text (Latin letters) only; ${L ? `${L.name} script` : 'native script'} belongs in the script box.`);
   };
   reqStr('Prompt', item.sourcePrompt);
   reqStr('Correct answer', item.canonical);
-  // Optional Tamil-script spelling. This is the ONLY field where Tamil script is allowed (every other field still rejects it above).
-  if (item.tamilScript != null && item.tamilScript !== '') {
-    const t = item.tamilScript;
-    if (typeof t !== 'string') e.push('Tamil script must be text.');
+  // Optional spelling in the lesson language's own script. This is the ONLY field where native script is allowed (every other field still rejects it above).
+  // A leftover `tamilScript` key from the earlier format is just an unknown key: it is kept untouched and not checked.
+  if (item.script != null && item.script !== '') {
+    const t = item.script;
+    if (typeof t !== 'string') e.push(`${scriptWord} must be text.`);
     else {
-      if (t.length > 500) e.push('Tamil script is longer than 500 characters.');
-      if (!TAMIL.test(t)) e.push('Tamil script must contain at least one Tamil letter. Leave the box empty if you have no Tamil script yet.');
-      if (/[A-Za-z]/.test(t)) e.push('Tamil script must not contain English (Latin) letters. Write the Tamil script only; the romanised spelling goes in “Correct answer”.');
+      if (t.length > 500) e.push(`${scriptWord} is longer than 500 characters.`);
+      if (L && !L.block.test(t)) e.push(`${scriptWord} must contain at least one ${L.name} letter (this lesson is ${L.name}). Leave the box empty if you have no ${L.name} script yet.`);
+      const other = L && Object.values(LANGS).find((o) => o !== L && o.block.test(t));
+      if (other) e.push(`${scriptWord} contains ${other.name} letters, but this lesson is ${L.name}. Use ${L.name} script only.`);
+      if (/[A-Za-z]/.test(t)) e.push(`${scriptWord} must not contain English (Latin) letters. Write the ${L ? L.name + ' ' : ''}script only; the romanised spelling goes in “Correct answer”.`);
     }
   }
-  // Duplicates across every loaded file: ignoring capitals, spaces and punctuation (docs/DECISIONS.md 038).
+  // Duplicates across every loaded file OF THE SAME LANGUAGE: ignoring capitals, spaces and punctuation (docs/DECISIONS.md 038 and 044).
+  // A Tamil lesson and a Telugu lesson are separate courses and never count as duplicates of each other.
   const dupOthers = (map, value) => (value === '' ? [] : (map.get(value) || []).filter((x) => x !== item).map((x) => x.id));
-  const dupPrompt = dupOthers(ctx.prompts, dupKey(item.sourcePrompt));
+  const dupPrompt = dupOthers(mine.prompts, dupKey(item.sourcePrompt));
   if (dupPrompt.length) e.push(`Another item already has this prompt: ${dupPrompt.join(', ')} (capitals, spaces and punctuation are ignored). Every prompt in the course must be different.`);
-  const dupCanon = dupOthers(ctx.canons, dupKey(item.canonical));
+  const dupCanon = dupOthers(mine.canons, dupKey(item.canonical));
   if (dupCanon.length) e.push(`Another item already has this correct answer: ${dupCanon.join(', ')} (capitals, spaces and punctuation are ignored). Every correct answer in the course must be different.`);
   if (!['casual', 'respectful', 'neutral'].includes(item.register)) e.push('Register must be casual, respectful or neutral.');
   if (!['male', 'female', 'any'].includes(item.addressee)) e.push('Addressee must be male, female or any.');
@@ -189,48 +206,61 @@ function validate(item, ctx) {
   });
   const tokens = item.tokens || [];
   if (tokens.length === 0) e.push('Add at least one word in the word-by-word gloss.');
+  // The gloss key is `word`. The old key `tamil` is an error, never read as a fallback (docs/DECISIONS.md 044).
+  const oldGloss = tokens.filter((t) => t && 'tamil' in t && !('word' in t)).length;
+  if (oldGloss) e.push(`Old format: ${oldGloss === 1 ? 'a gloss row uses' : oldGloss + ' gloss rows use'} the key “tamil”. This lesson was exported before the two-language change; re-export it or rename the key “tamil” to “word”.`);
   tokens.forEach((t, i) => {
-    if (!t.tamil?.trim() || !t.english?.trim()) e.push(`Gloss row ${i + 1} has an empty side.`);
-    else if (!norm(item.canonical).includes(norm(t.tamil))) e.push(`Gloss word “${t.tamil}” does not appear in the correct answer.`);
+    if (t && 'tamil' in t && !('word' in t)) return;
+    if (typeof t?.word !== 'string' || !t.word.trim() || typeof t?.english !== 'string' || !t.english.trim()) e.push(`Gloss row ${i + 1} has an empty side.`);
+    else if (!norm(item.canonical).includes(norm(t.word))) e.push(`Gloss word “${t.word}” does not appear in the correct answer.`);
   });
   if (item.note != null && String(item.note).length > 500) e.push('Note is longer than 500 characters.');
-  if (item.note != null && TAMIL.test(item.note)) e.push('Note contains Tamil script.');
-  if (ctx.ids.filter((x) => x === item.id).length > 1) e.push(`The id “${item.id}” is used more than once.`);
+  if (item.note != null && scriptIn(item.note)) e.push(`Note contains ${scriptIn(item.note).name} script.`);
+  if (mine.ids.filter((x) => x === item.id).length > 1) e.push(`The id “${item.id}” is used more than once.`);
   return e;
 }
 // Same comparison as the duplicate rule in the app: lowercase, then drop everything that is not a letter or a digit.
 const dupKey = (s) => String(s ?? '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 function buildCtx() {
-  const ids = [], prompts = new Map(), canons = new Map();
+  // One bucket per language: ids and the duplicate checks only look inside the lesson's own course.
+  const by = new Map();
   const add = (map, key, item) => { if (key === '') return; if (!map.has(key)) map.set(key, []); map.get(key).push(item); };
-  state.files.forEach((f) => f.data.items.forEach((i) => { ids.push(i.id); add(prompts, dupKey(i.sourcePrompt), i); add(canons, dupKey(i.canonical), i); }));
-  return { ids, prompts, canons };
+  state.files.forEach((f) => {
+    const k = langKey(f);
+    if (!by.has(k)) by.set(k, { ids: [], prompts: new Map(), canons: new Map() });
+    const b = by.get(k);
+    f.data.items.forEach((i) => { b.ids.push(i.id); add(b.prompts, dupKey(i.sourcePrompt), i); add(b.canons, dupKey(i.canonical), i); });
+  });
+  return { by };
 }
 
-// ---------- lesson-level checks: the optional level {number, title, position} ----------
+// ---------- lesson-level checks: the required language, then the optional level {number, title, position} ----------
 const isWhole = (v) => typeof v === 'number' && Number.isInteger(v) && v >= 1;
 const filled = (v) => v != null && String(v).trim() !== '';
 function validateLesson(f) {
   const e = [];
+  // The language is required and is never guessed (docs/DECISIONS.md 044).
+  if (f.data.language == null || f.data.language === '') e.push('This lesson has no language. Choose Tamil or Telugu in the Language box above; the editor does not guess it.');
+  else if (!langInfo(f.data.language)) e.push(`The language “${String(f.data.language)}” is not recognised. Choose Tamil or Telugu in the Language box above.`);
   const lv = f.data.level;
   if (lv == null) return e;
-  if (typeof lv !== 'object' || Array.isArray(lv)) return ['Level must be a group with a number, a title and a position.'];
+  if (typeof lv !== 'object' || Array.isArray(lv)) return [...e, 'Level must be a group with a number, a title and a position.'];
   const have = ['number', 'title', 'position'].filter((k) => filled(lv[k]));
-  if (have.length === 0) return ['Level is present but empty. Fill in all three boxes, or press “Remove level”.'];
+  if (have.length === 0) return [...e, 'Level is present but empty. Fill in all three boxes, or press “Remove level”.'];
   if (have.length < 3) e.push('Level is only partly filled in. Fill in all three boxes (number, title, position), or press “Remove level”.');
   if (filled(lv.number) && !isWhole(lv.number)) e.push('Level number must be a whole number, 1 or more.');
   if (filled(lv.position) && !isWhole(lv.position)) e.push('Position in the level must be a whole number, 1 or more.');
   if (lv.title != null && typeof lv.title !== 'string') e.push('Level title must be text.');
-  // The same level number must carry the same title in every loaded file.
+  // The same level number must carry the same title in every loaded file of the same language (each course numbers its own levels).
   if (isWhole(lv.number) && typeof lv.title === 'string' && lv.title.trim() !== '') {
     const clash = new Map();
     state.files.forEach((g) => {
       const o = g.data.level;
-      if (g === f || !o || typeof o !== 'object' || o.number !== lv.number || typeof o.title !== 'string' || o.title.trim() === '' || o.title === lv.title) return;
+      if (g === f || langKey(g) !== langKey(f) || !o || typeof o !== 'object' || o.number !== lv.number || typeof o.title !== 'string' || o.title.trim() === '' || o.title === lv.title) return;
       if (!clash.has(o.title)) clash.set(o.title, []);
       clash.get(o.title).push(g.name);
     });
-    clash.forEach((names, title) => e.push(`Level ${lv.number} is called “${lv.title}” here but “${title}” in ${names.join(', ')}. Every lesson in a level must use the same title.`));
+    clash.forEach((names, title) => e.push(`Level ${lv.number} is called “${lv.title}” here but “${title}” in ${names.join(', ')}. Every ${langName(f) ? langName(f) + ' ' : ''}lesson in a level must use the same title.`));
   }
   return e;
 }
@@ -292,7 +322,7 @@ function download(name, text, type) {
 }
 $('btnSave').addEventListener('click', async () => {
   const ctx = buildCtx(); let blocked = 0;
-  state.files.forEach((f) => { if (validateLesson(f).length) blocked++; f.data.items.forEach((i) => { if (validate(i, ctx).length) blocked++; }); });
+  state.files.forEach((f) => { if (validateLesson(f).length) blocked++; f.data.items.forEach((i) => { if (validate(i, ctx, f).length) blocked++; }); });
   if (blocked && !confirm(`${blocked} item(s) or lesson(s) still have problems and the app will reject them. Save anyway?`)) return;
   let saved = 0, downloaded = 0;
   for (const f of state.files.filter(fileDirty)) {
@@ -305,21 +335,21 @@ $('btnSave').addEventListener('click', async () => {
 });
 function csvCell(v) { return '"' + String(v ?? '').replace(/"/g, '""') + '"'; }
 $('btnCsv').addEventListener('click', () => {
-  const rows = [['id', 'prompt', 'register', 'addressee', 'correct answer', 'other-register version', 'wrong options', 'accepted spellings', 'gloss', 'note', 'status', 'reviewer verdict (ok / fix)', 'reviewer correction']];
-  state.files.forEach((f) => f.data.items.forEach((i) => rows.push([i.id, i.sourcePrompt, i.register, i.addressee, i.canonical, i.registerVariant ?? '', (i.distractors || []).join(' | '), (i.acceptedAnswers || []).join(' | '), (i.tokens || []).map((t) => `${t.tamil}=${t.english}`).join(' | '), i.note ?? '', i.reviewStatus, '', ''])));
+  const rows = [['id', 'language', 'prompt', 'register', 'addressee', 'correct answer', 'script', 'other-register version', 'wrong options', 'accepted spellings', 'gloss', 'note', 'status', 'reviewer verdict (ok / fix)', 'reviewer correction']];
+  state.files.forEach((f) => f.data.items.forEach((i) => rows.push([i.id, langName(f), i.sourcePrompt, i.register, i.addressee, i.canonical, i.script ?? '', i.registerVariant ?? '', (i.distractors || []).join(' | '), (i.acceptedAnswers || []).join(' | '), (i.tokens || []).map((t) => `${t.word}=${t.english}`).join(' | '), i.note ?? '', i.reviewStatus, '', ''])));
   download('blt-content-review-sheet.csv', '﻿' + rows.map((r) => r.map(csvCell).join(',')).join('\n'), 'text/csv');
 });
 
 // ---------- rendering ----------
-function matches(item, ctx) {
+function matches(item, ctx, f) {
   const q = norm($('fSearch').value);
   if (q) {
-    const hay = [item.id, item.sourcePrompt, item.canonical, item.tamilScript, item.registerVariant, ...(item.distractors || []), ...(item.acceptedAnswers || [])].map(norm).join(' ');
+    const hay = [item.id, item.sourcePrompt, item.canonical, item.script, item.registerVariant, ...(item.distractors || []), ...(item.acceptedAnswers || [])].map(norm).join(' ');
     if (!hay.includes(q)) return false;
   }
   if ($('fRegister').value !== 'all' && item.register !== $('fRegister').value) return false;
   if ($('fStatus').value !== 'all' && item.reviewStatus !== $('fStatus').value) return false;
-  if ($('fIssues').checked && validate(item, ctx).length === 0) return false;
+  if ($('fIssues').checked && validate(item, ctx, f).length === 0) return false;
   return true;
 }
 function renderList() {
@@ -328,9 +358,9 @@ function renderList() {
   state.files.forEach((f, fi) => {
     const rows = [];
     f.data.items.forEach((item, ii) => {
-      if (!matches(item, ctx)) return;
+      if (!matches(item, ctx, f)) return;
       shown++;
-      const problems = validate(item, ctx).length;
+      const problems = validate(item, ctx, f).length;
       const sel = state.sel && state.sel.f === fi && state.sel.i === ii;
       rows.push(h('div', { class: 'item-row' + (sel ? ' sel' : ''), tabindex: 0, onclick: () => select(fi, ii), onkeydown: (ev) => { if (ev.key === 'Enter') select(fi, ii); } },
         h('div', { text: item.sourcePrompt || '(empty prompt)' }),
@@ -341,7 +371,9 @@ function renderList() {
           item.reviewStatus === 'reviewed' ? h('span', { class: 'badge b-ok', text: 'reviewed' }) : null)));
     });
     const lessonBad = validateLesson(f).length;
-    if (rows.length) list.append(h('div', { class: 'scenario-title' }, `${f.data.title || f.name}${fileDirty(f) ? ' • edited' : ''} `, lessonBad ? h('span', { class: 'badge b-bad', text: 'level problem' }) : null), ...rows);
+    if (rows.length) list.append(h('div', { class: 'scenario-title' }, `${f.data.title || f.name}${fileDirty(f) ? ' • edited' : ''} `,
+      h('span', { class: 'badge ' + (langInfo(f.data.language) ? 'b-edit' : 'b-bad'), text: langName(f) || 'language missing' }),
+      lessonBad ? h('span', { class: 'badge b-bad', text: 'lesson problem' }) : null), ...rows);
   });
   if (!shown) list.append(h('div', { class: 'empty', text: state.files.length ? 'No items match the filters.' : '' }));
 }
@@ -423,6 +455,15 @@ function renderEditor() {
     else setKey(f.data, 'level', obj, ['subtitle', 'title', 'scenarioId']);
     refreshDerived();
   };
+  const languageSelect = () => {
+    const cur = f.data.language;
+    const opts = [['', '(choose a language)'], ...Object.entries(LANGS).map(([k, L]) => [k, L.name])];
+    if (cur != null && cur !== '' && !langInfo(cur)) opts.push([String(cur), `unknown: ${String(cur)}`]);
+    const sel = h('select', { 'aria-label': 'Language' }, opts.map(([v, t]) => h('option', { value: v, text: t })));
+    sel.value = cur == null ? '' : String(cur);
+    sel.addEventListener('change', () => { setKey(f.data, 'language', sel.value === '' ? undefined : sel.value, ['scenarioId']); renderEditor(); refreshDerived(); });
+    return h('div', {}, h('label', { class: 'f', text: 'Language' }), sel);
+  };
   const levelBox = (key, label, placeholder, narrow) => {
     const input = h('input', { type: 'text', placeholder, 'aria-label': label });
     input.value = lv()?.[key] ?? '';
@@ -431,7 +472,9 @@ function renderEditor() {
   };
   ed.append(h('div', { class: 'card' },
     h('h2', { text: `Lesson: ${f.data.title || f.name}` }),
-    h('p', { class: 'help', text: 'Level (optional). Leave all three boxes empty for a lesson with no level; otherwise fill in all three. Lessons in the same level must use the same level title.' }),
+    h('div', { style: 'max-width:260px' }, languageSelect()),
+    h('p', { class: 'help', text: 'Language is required: every lesson is either Tamil or Telugu, and the editor never guesses it. Duplicates and level titles are checked within one language only.' }),
+    h('p', { class: 'help', text: 'Level (optional). Leave all three boxes empty for a lesson with no level; otherwise fill in all three. Lessons in the same level of the same language must use the same level title.' }),
     h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end' },
       levelBox('number', 'Level number', 'e.g. 3', true), levelBox('title', 'Level title', 'e.g. a short name', false), levelBox('position', 'Position in level', 'e.g. 2', true),
       h('button', { class: 'small', title: 'Delete the level from this lesson', onclick: () => { setKey(f.data, 'level', undefined); renderEditor(); refreshDerived(); }, text: 'Remove level' })),
@@ -444,8 +487,8 @@ function renderEditor() {
       selectField('Register', item.register, ['casual', 'respectful', 'neutral'], (v) => { item.register = v; if (v === 'neutral') item.registerVariant = null; else if (item.registerVariant == null) item.registerVariant = ''; }),
       selectField('Addressee', item.addressee, ['any', 'male', 'female'], (v) => { item.addressee = v; })),
     textField('Correct answer (the one the learner should choose)', item.canonical, (v) => { item.canonical = v; }),
-    textField('Tamil script (for audio later, optional)', item.tamilScript ?? '', (v) => { if (v === '') setKey(item, 'tamilScript', undefined); else setKey(item, 'tamilScript', v, ['canonical']); },
-      { help: 'The correct answer written in Tamil script. Not shown in the app yet. This is the only box where Tamil script is allowed; leave it empty if you do not have it.' }),
+    textField(`${langName(f) || 'Native'} script (for audio later, optional)`, item.script ?? '', (v) => { if (v === '') setKey(item, 'script', undefined); else setKey(item, 'script', v, ['canonical']); },
+      { help: `The correct answer written in ${langName(f) ? langName(f) + ' ' : ''}script. Not shown in the app yet. This is the only box where native script is allowed; leave it empty if you do not have it.` }),
     textField('Same sentence in the OTHER register (shown as the “wrong register” option)', item.registerVariant ?? '', (v) => { item.registerVariant = v; },
       { disabled: item.register === 'neutral', help: item.register === 'neutral' ? 'Not used: a neutral item has no register choice.' : 'Casual item → give the respectful version; respectful item → give the casual version.' })));
   ed.append(h('div', { class: 'card' },
@@ -460,7 +503,7 @@ function renderEditor() {
   };
   // Put the words in the order they first appear in the correct answer; words not found keep their relative order at the end.
   const sortByAnswer = () => {
-    const at = (t) => { const k = norm(item.canonical).indexOf(norm(t.tamil)); return k < 0 || !t.tamil?.trim() ? Infinity : k; };
+    const at = (t) => { const k = norm(item.canonical).indexOf(norm(t.word)); return k < 0 || !t.word?.trim() ? Infinity : k; };
     const order = item.tokens.map((t, i) => ({ t, i, k: at(t) })).sort((x, y) => (x.k === y.k ? x.i - y.i : x.k - y.k));
     item.tokens.splice(0, item.tokens.length, ...order.map((o) => o.t));
     drawTok(); refreshDerived();
@@ -468,9 +511,9 @@ function renderEditor() {
   const drawTok = () => {
     tokBox.replaceChildren();
     item.tokens.forEach((t, i) => {
-      const a = h('input', { type: 'text', placeholder: 'word in the answer' }); a.value = t.tamil;
+      const a = h('input', { type: 'text', placeholder: 'word in the answer' }); a.value = t.word ?? '';
       const b = h('input', { type: 'text', placeholder: 'English meaning' }); b.value = t.english;
-      a.addEventListener('input', () => { t.tamil = a.value; refreshDerived(); }); b.addEventListener('input', () => { t.english = b.value; refreshDerived(); });
+      a.addEventListener('input', () => { t.word = a.value; refreshDerived(); }); b.addEventListener('input', () => { t.english = b.value; refreshDerived(); });
       const up = h('button', { class: 'small', title: 'Move this word earlier', 'aria-label': `Move word ${i + 1} up`, onclick: () => moveTok(i, i - 1), text: '↑' });
       const down = h('button', { class: 'small', title: 'Move this word later', 'aria-label': `Move word ${i + 1} down`, onclick: () => moveTok(i, i + 1), text: '↓' });
       up.disabled = i === 0; down.disabled = i === item.tokens.length - 1;
@@ -484,7 +527,7 @@ function renderEditor() {
       tokBox.append(row);
     });
     tokBox.append(h('div', { class: 'tokactions' },
-      h('button', { class: 'small', onclick: () => { item.tokens.push({ tamil: '', english: '' }); drawTok(); refreshDerived(); }, text: '+ Add word' }),
+      h('button', { class: 'small', onclick: () => { item.tokens.push({ word: '', english: '' }); drawTok(); refreshDerived(); }, text: '+ Add word' }),
       h('button', { class: 'small', title: 'Sort the words in the order they appear in the correct answer', onclick: sortByAnswer, text: 'Sort by answer order' })));
   };
   drawTok();
@@ -500,7 +543,7 @@ function renderEditor() {
 function refreshDerived() {
   const cur = current(); if (!cur) return;
   const { f, item } = cur; const ctx = buildCtx();
-  const problems = validate(item, ctx);
+  const problems = validate(item, ctx, f);
   const lessonProblems = validateLesson(f);
   const lp = $('lessonProblems');
   if (lp) lp.replaceChildren(...lessonProblems.map((p) => h('div', { class: 'msg err', text: p })));
@@ -515,15 +558,15 @@ function refreshDerived() {
       ...opts.map(([t, k, c]) => h('div', { class: 'opt' }, h('span', { text: t || '(empty)' }), h('span', { class: 'kind ' + c, text: k }))),
       h('h2', { text: 'After answering, the learner sees' }),
       h('div', { class: 'help', text: 'Correct form: ' + (item.canonical || '') }),
-      ...(item.tamilScript ? [h('div', { class: 'help', text: 'Tamil script (not shown in the app yet): ' + item.tamilScript })] : []),
-      h('div', { class: 'gloss' }, (item.tokens || []).map((t) => h('span', {}, h('b', { text: t.tamil || '…' }), ' ' + (t.english || '…')))),
+      ...(item.script ? [h('div', { class: 'help', text: `${langName(f) || 'Native'} script (not shown in the app yet): ` + item.script })] : []),
+      h('div', { class: 'gloss' }, (item.tokens || []).map((t) => h('span', {}, h('b', { text: t.word || '…' }), ' ' + (t.english || '…')))),
       ...(item.note ? [h('p', { class: 'help', text: item.note })] : []));
   }
   renderList();
   const dirtyFiles = state.files.filter(fileDirty).length;
-  const bad = state.files.reduce((n, g) => n + g.data.items.filter((i) => validate(i, ctx).length).length, 0);
+  const bad = state.files.reduce((n, g) => n + g.data.items.filter((i) => validate(i, ctx, g).length).length, 0);
   const lessonBad = state.files.filter((g) => validateLesson(g).length).length;
-  $('status').textContent = `${state.files.length} file(s) · ${state.files.reduce((n, g) => n + g.data.items.length, 0)} items · ${bad} with problems${lessonBad ? ` · ${lessonBad} lesson level problem(s)` : ''} · ${dirtyFiles} edited`;
+  $('status').textContent = `${state.files.length} file(s) · ${state.files.reduce((n, g) => n + g.data.items.length, 0)} items · ${bad} with problems${lessonBad ? ` · ${lessonBad} lesson problem(s)` : ''} · ${dirtyFiles} edited`;
   $('btnSave').disabled = dirtyFiles === 0;
   $('btnSave').textContent = dirtyFiles ? `Save changes (${dirtyFiles} file${dirtyFiles > 1 ? 's' : ''})` : 'No unsaved changes';
   $('btnSave').title = dirtyFiles ? 'Write the edited files' : 'Everything you edited is already saved. Previous and Next only move between items; “Mark reviewed” is what records a verdict in the file.';
