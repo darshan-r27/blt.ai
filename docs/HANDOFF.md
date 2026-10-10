@@ -75,7 +75,7 @@ Product rules that matter: two spoken registers only per language (casual and re
 ## Commands (run from the repo root)
 ```bash
 BLT_SIM="iPhone 17" scripts/test.sh package   # package tests (warnings are errors)
-BLT_SIM="iPhone 17" scripts/test.sh app --tier pr    # UI tests, PR tier: happy paths + default-size audits (13 tests)
+BLT_SIM="iPhone 17" scripts/test.sh app --tier pr    # UI tests, PR tier: happy paths + default-size audits (16 tests)
 BLT_SIM="iPhone 17" scripts/test.sh app --tier full  # every UI test (40; slow, so run per class, see below)
 scripts/test.sh app --tier pr --build-only           # build once; then run with --no-build (what CI does)
 scripts/test.sh tiers                                # which classes are in which tier (runs nothing)

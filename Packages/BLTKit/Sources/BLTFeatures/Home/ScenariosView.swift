@@ -149,10 +149,11 @@ struct ScenariosView: View {
     }
 
     private var emptyState: some View {
-        ContentUnavailableView(
-            "No scenarios",
+        let copy = HomeViewModel.emptyStateCopy(for: language)
+        return ContentUnavailableView(
+            copy.title,
             systemImage: "tray",
-            description: Text("This copy of the app has no lesson content to show.")
+            description: Text(copy.description)
         )
     }
 

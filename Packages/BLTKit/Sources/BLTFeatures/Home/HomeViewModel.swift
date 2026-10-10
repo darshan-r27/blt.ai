@@ -41,6 +41,19 @@ final class HomeViewModel {
         language.map { "Learning \($0.displayName)" }
     }
 
+    /// What Home says when the catalog has no lessons. A named language gets a plain, specific line (a course
+    /// with no lessons yet is normal while its content is being written); with none the line stays general.
+    static func emptyStateCopy(for language: CourseLanguage?) -> (title: String, description: String) {
+        guard let language else {
+            return ("No scenarios", "This copy of the app has no lesson content to show.")
+        }
+        return (
+            "No \(language.displayName) lessons yet",
+            "There are no \(language.displayName) lessons in this copy of the app yet. "
+                + "They will appear here once they are added."
+        )
+    }
+
     /// Lessons that carry a level, grouped by level number in ascending order. Lessons inside a level are sorted
     /// by `level.position`, then by id. Nothing is locked: every lesson can be opened (DECISIONS 039).
     var levelSections: [HomeLevelSection] {
