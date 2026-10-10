@@ -1,13 +1,18 @@
 {
-  "scenarioId": "s01-greetings",
+  "scenarioId": "ta-l01-u01",
   "language": "tamil",
   "title": "Greetings and small talk",
   "subtitle": "Meeting people and getting by in everyday conversation",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 1
+  },
   "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
   "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
   "items": [
     {
-      "id": "s01-i01",
+      "id": "ta-l01-u01-i01",
       "sourcePrompt": "How are you? (to a male friend)",
       "register": "casual",
       "canonical": "eppadi irukka da?",
@@ -41,7 +46,7 @@
       "addressee": "male"
     },
     {
-      "id": "s01-i02",
+      "id": "ta-l01-u01-i02",
       "sourcePrompt": "How are you? (to an elder)",
       "register": "respectful",
       "canonical": "eppadi irukkeenga?",
@@ -71,7 +76,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i03",
+      "id": "ta-l01-u01-i03",
       "sourcePrompt": "I'm fine, and you? (to a female friend)",
       "register": "casual",
       "canonical": "naan nalla irukken di, nee?",
@@ -113,7 +118,7 @@
       "addressee": "female"
     },
     {
-      "id": "s01-i04",
+      "id": "ta-l01-u01-i04",
       "sourcePrompt": "Come in! (to a guest)",
       "register": "respectful",
       "canonical": "ulla vaanga",
@@ -143,7 +148,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i05",
+      "id": "ta-l01-u01-i05",
       "sourcePrompt": "Please sit. (to an elder or guest)",
       "register": "respectful",
       "canonical": "ukkaarunga",
@@ -169,7 +174,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i06",
+      "id": "ta-l01-u01-i06",
       "sourcePrompt": "What's your name? (to someone you've just met)",
       "register": "respectful",
       "canonical": "ungaloda peru enna?",
@@ -203,7 +208,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i07",
+      "id": "ta-l01-u01-i07",
       "sourcePrompt": "My name is Ravi.",
       "register": "neutral",
       "canonical": "en peru Ravi",
@@ -237,7 +242,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i08",
+      "id": "ta-l01-u01-i08",
       "sourcePrompt": "Where have you come from? (to a stranger)",
       "register": "respectful",
       "canonical": "neenga enga irundhu vareenga?",
@@ -271,7 +276,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i09",
+      "id": "ta-l01-u01-i09",
       "sourcePrompt": "Nice to meet you.",
       "register": "respectful",
       "canonical": "ungala paathathula romba santhosham",
@@ -309,7 +314,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i10",
+      "id": "ta-l01-u01-i10",
       "sourcePrompt": "Have you eaten? (to an elder)",
       "register": "respectful",
       "canonical": "saapteengala?",
@@ -335,7 +340,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i11",
+      "id": "ta-l01-u01-i11",
       "sourcePrompt": "Have you eaten? (to a male friend)",
       "register": "casual",
       "canonical": "saaptiya da?",
@@ -365,7 +370,7 @@
       "addressee": "male"
     },
     {
-      "id": "s01-i12",
+      "id": "ta-l01-u01-i12",
       "sourcePrompt": "What are you doing? (to a female friend)",
       "register": "casual",
       "canonical": "enna panra di?",
@@ -399,7 +404,7 @@
       "addressee": "female"
     },
     {
-      "id": "s01-i13",
+      "id": "ta-l01-u01-i13",
       "sourcePrompt": "I'm leaving now. (I'll be back)",
       "register": "neutral",
       "canonical": "poitu varen",
@@ -430,7 +435,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i14",
+      "id": "ta-l01-u01-i14",
       "sourcePrompt": "Thank you very much.",
       "register": "neutral",
       "canonical": "romba thanks",
@@ -461,7 +466,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i15",
+      "id": "ta-l01-u01-i15",
       "sourcePrompt": "Sorry, please forgive me. (to an elder)",
       "register": "respectful",
       "canonical": "mannichidunga",
@@ -486,7 +491,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i16",
+      "id": "ta-l01-u01-i16",
       "sourcePrompt": "I don't understand.",
       "register": "neutral",
       "canonical": "enakku puriyala",
@@ -517,7 +522,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i17",
+      "id": "ta-l01-u01-i17",
       "sourcePrompt": "Please speak slowly. (to an elder or stranger)",
       "register": "respectful",
       "canonical": "konjam medhuvaa pesunga",
@@ -551,7 +556,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i18",
+      "id": "ta-l01-u01-i18",
       "sourcePrompt": "Do you know English? (to a friend)",
       "register": "casual",
       "canonical": "unakku English theriyumaa?",
@@ -584,7 +589,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i19",
+      "id": "ta-l01-u01-i19",
       "sourcePrompt": "I know a little Tamil.",
       "register": "neutral",
       "canonical": "enakku konjam Tamil theriyum",
@@ -622,7 +627,7 @@
       "addressee": "any"
     },
     {
-      "id": "s01-i20",
+      "id": "ta-l01-u01-i20",
       "sourcePrompt": "See you tomorrow.",
       "register": "neutral",
       "canonical": "naalaikku paakkalam",

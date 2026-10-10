@@ -1,13 +1,18 @@
 {
-  "scenarioId": "s04",
+  "scenarioId": "ta-l01-u04",
   "language": "tamil",
   "title": "Shopping and bargaining",
   "subtitle": "Prices, sizes, paying and polite haggling",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 4
+  },
   "registerPolicy": "Two spoken registers only: casual (nee, un-, endings -a/-iya, da for a male friend, di for a female friend) and respectful (neenga, unga-, endings -eenga/-unga). Written or formal-literary forms are out of scope. 'neutral' = no you-form, so no register choice. Common English loanwords (phone, bus, ticket, bill, thanks, sorry) are used as speakers use them.",
   "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
   "items": [
     {
-      "id": "s04-i01",
+      "id": "ta-l01-u04-i01",
       "sourcePrompt": "How much is this?",
       "register": "neutral",
       "addressee": "any",
@@ -38,7 +43,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i02",
+      "id": "ta-l01-u04-i02",
       "sourcePrompt": "That's too expensive.",
       "register": "neutral",
       "addressee": "any",
@@ -72,7 +77,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i03",
+      "id": "ta-l01-u04-i03",
       "sourcePrompt": "Please reduce the price. (to a shopkeeper)",
       "register": "respectful",
       "addressee": "any",
@@ -110,7 +115,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i04",
+      "id": "ta-l01-u04-i04",
       "sourcePrompt": "What's the final price?",
       "register": "neutral",
       "addressee": "any",
@@ -141,7 +146,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i05",
+      "id": "ta-l01-u04-i05",
       "sourcePrompt": "I'll take two.",
       "register": "neutral",
       "addressee": "any",
@@ -172,7 +177,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i06",
+      "id": "ta-l01-u04-i06",
       "sourcePrompt": "I don't want it.",
       "register": "neutral",
       "addressee": "any",
@@ -204,7 +209,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i07",
+      "id": "ta-l01-u04-i07",
       "sourcePrompt": "I like this.",
       "register": "neutral",
       "addressee": "any",
@@ -239,7 +244,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i08",
+      "id": "ta-l01-u04-i08",
       "sourcePrompt": "Do you have a bigger size?",
       "register": "neutral",
       "addressee": "any",
@@ -273,7 +278,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i09",
+      "id": "ta-l01-u04-i09",
       "sourcePrompt": "Do you have another colour?",
       "register": "neutral",
       "addressee": "any",
@@ -308,7 +313,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i10",
+      "id": "ta-l01-u04-i10",
       "sourcePrompt": "Can I try it on?",
       "register": "neutral",
       "addressee": "any",
@@ -339,7 +344,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i11",
+      "id": "ta-l01-u04-i11",
       "sourcePrompt": "Where do I pay?",
       "register": "neutral",
       "addressee": "any",
@@ -373,7 +378,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i12",
+      "id": "ta-l01-u04-i12",
       "sourcePrompt": "Do you take cards? (to a shopkeeper)",
       "register": "respectful",
       "addressee": "any",
@@ -403,7 +408,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i13",
+      "id": "ta-l01-u04-i13",
       "sourcePrompt": "Can I pay by GPay?",
       "register": "neutral",
       "addressee": "any",
@@ -435,7 +440,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i14",
+      "id": "ta-l01-u04-i14",
       "sourcePrompt": "Please pack it. (to a shopkeeper)",
       "register": "respectful",
       "addressee": "any",
@@ -465,7 +470,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i15",
+      "id": "ta-l01-u04-i15",
       "sourcePrompt": "Do you have a bag?",
       "register": "neutral",
       "addressee": "any",
@@ -495,7 +500,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i16",
+      "id": "ta-l01-u04-i16",
       "sourcePrompt": "What time does the shop open?",
       "register": "neutral",
       "addressee": "any",
@@ -530,7 +535,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i17",
+      "id": "ta-l01-u04-i17",
       "sourcePrompt": "Half a kilo, please. (to a shopkeeper)",
       "register": "respectful",
       "addressee": "any",
@@ -564,7 +569,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i18",
+      "id": "ta-l01-u04-i18",
       "sourcePrompt": "How much per kilo?",
       "register": "neutral",
       "addressee": "any",
@@ -595,7 +600,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i19",
+      "id": "ta-l01-u04-i19",
       "sourcePrompt": "Is there a discount?",
       "register": "neutral",
       "addressee": "any",
@@ -625,7 +630,7 @@
       "reviewStatus": "reviewed"
     },
     {
-      "id": "s04-i20",
+      "id": "ta-l01-u04-i20",
       "sourcePrompt": "I'll come back later.",
       "register": "neutral",
       "addressee": "any",

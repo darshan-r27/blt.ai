@@ -40,7 +40,7 @@ The argument runs both ways, which is why one syllabus serves both courses. Only
 
 The Tamil course's first five lessons, and everything around them:
 
-- **Five everyday scenarios, 100 phrases:** greetings, getting around, food, shopping, and home and family.
+- **Five everyday lessons (Level 1), 100 phrases:** greetings, getting around, food, shopping, and home and family.
 - **Multiple choice.** An English prompt, four options in romanised Tamil.
 - **Feedback that teaches.** Each answer shows the phrase, a word-by-word gloss, and a note on who you would say it to.
 - **Three outcomes, not two.** "Right sentence, wrong register" is its own result, so saying the casual form to an elder is corrected without being marked simply wrong.
@@ -72,7 +72,7 @@ graph TD
 
 A few choices worth a look:
 
-- **Content is data, not code.** The phrases live in [`content/`](content/) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures. This is what makes a second language a content job more than a code job.
+- **Content is data, not code.** The phrases live in [`content/tamil/`](content/tamil/) and `content/telugu/` (one folder per course) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures. This is what makes a second language a content job more than a code job.
 - **"No network" is enforced, not promised.** [`scripts/check-forbidden-apis.sh`](scripts/check-forbidden-apis.sh) fails the build if networking, audio or speech APIs, network entitlements or permission strings appear in the source. [`scripts/check-binary.sh`](scripts/check-binary.sh) then inspects the compiled app for the same thing.
 - **Storage is two small JSON files**, written atomically with complete file protection. A damaged file is reported to the user and never silently overwritten.
 - **No dependencies.** Nothing third-party is linked.
@@ -119,9 +119,9 @@ The first runs the package's unit tests. The second builds the app and runs the 
 
 ## Updating lessons without Xcode
 
-The lessons are the JSON files in [`content/`](content/). They ship inside the app, but they can also be replaced on the phone, so a change to the lessons does not need a rebuild:
+The lessons are the JSON files in [`content/tamil/`](content/tamil/) and `content/telugu/`. They ship inside the app, but they can also be replaced on the phone, so a change to the lessons does not need a rebuild:
 
-1. Send the `content/*.json` files you want to the phone (AirDrop works) and save them to the Files app.
+1. Send the `content/tamil/*.json` or `content/telugu/*.json` files you want to the phone (AirDrop works) and save them to the Files app.
 2. In blt.ai, open Settings, tap **Import lessons**, and choose the files (up to 10).
 3. The app checks every file with the same rules as the bundled lessons. If all pass, they take effect at once and your progress is kept. If any file fails, nothing changes and the app says so.
 
