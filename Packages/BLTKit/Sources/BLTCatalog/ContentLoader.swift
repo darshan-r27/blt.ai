@@ -30,20 +30,17 @@ public struct ContentLoader: Sendable {
     }
 
     /// Loads every file in order. `ContentIssue.fileIndex` is the index into `files`.
-    /// Scenarios in the result are sorted by id; when ids collide the earlier file wins.
+    /// Scenarios in the result are sorted by id; when ids, prompts or answers collide the earlier file wins.
     public func load(files: [URL]) -> Catalog {
         let validator = ContentValidator(limits: limits)
         var scenarios: [Scenario] = []
         var issues: [ContentIssue] = []
-        var scenarioIDs: Set<ScenarioID> = []
-        var itemIDs: Set<ItemID> = []
+        var registry = CatalogRegistry()
 
         for (index, url) in files.enumerated() {
             do {
                 let raw = try readScenario(at: url)
-                let result = validator.validate(
-                    raw, fileIndex: index, scenarioIDs: &scenarioIDs, itemIDs: &itemIDs
-                )
+                let result = validator.validate(raw, fileIndex: index, registry: &registry)
                 if let scenario = result.scenario { scenarios.append(scenario) }
                 issues.append(contentsOf: result.issues)
             } catch {
