@@ -2,7 +2,11 @@
 
 > **Status (2026-10-07): this is the v2 (voice) design.** v1 shipped as text-only multiple choice. For what exists, read [`ARCHITECTURE.md`](ARCHITECTURE.md), [`MVP_PLAN.md`](MVP_PLAN.md) and `DECISIONS.md` 024 to 037.
 
-**Name:** BLT.ai — "Budugu Learns Tamil"
+> **Thesis update (2026-10-09, DECISIONS 042): blt.ai is a two-way course.** It is for a couple, one Tamil speaker and one Telugu speaker, who share English. Each learns the other's language in the same app: the learner gives a name and picks Tamil or Telugu. BLT reads "Budugu Learns Tamil / Telugu". Both courses follow one syllabus ([`COURSE_SYLLABUS.md`](COURSE_SYLLABUS.md)) and mirror each other. The current build plan is `plan.md` in the repo root.
+>
+> **How to read the rest of this document.** It was written for one direction (Tamil for a Telugu speaker) and for voice. Read "Tamil" as "the language being learned" and "Telugu speaker" as "the learner": every argument below about spoken versus written forms, register, and leaning on shared Dravidian grammar applies in mirror image to Telugu for a Tamil speaker. The voice features (hearing each phrase, speaking answers, pronunciation feedback) are v2 for both languages, and the per-phrase `script` field (DECISIONS 044) exists so v2 audio needs no second content review. Section numbers are unchanged.
+
+**Name:** BLT.ai — "Budugu Learns Tamil / Telugu" (originally "Budugu Learns Tamil")
 **Owner:** Darshan
 **Status:** Draft v7
 **Type:** Portfolio project. Not shipping to the App Store.

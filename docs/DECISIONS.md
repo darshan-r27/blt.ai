@@ -341,14 +341,14 @@ The owner wants Reset progress to look like a warning wherever it appears, so a 
 This is the only place red is allowed. `destructive` is deliberately kept out of `Palette.allColors`, which the no-red test covers, so every other colour is still checked red-free; wrong answers and feedback keep the neutral and nudge tones. The "Remove imported lessons" dialog uses no destructive role because nothing is lost (progress is kept and the files can be imported again).
 
 ## 038 — No duplicate prompts or answers across the course
-**Status:** active — applied in the catalog validator (plan.md, chunk C1)
+**Status:** active — applied in the catalog validator (plan.md, chunk C1). Applies to each course separately (042)
 
 The course grows from 100 to 2,000 phrases (`docs/COURSE_SYLLABUS.md`), drafted over months. Without a rule, the same sentence would be written twice. Three checks. Across the catalog, ignoring case, spacing and punctuation: no two items share a `sourcePrompt`, and no two items share a `canonical`. Inside one item, ignoring only case and surrounding spaces: no accepted spelling is listed twice. The narrower comparison inside an item is deliberate: accepted spellings often differ only by a question mark, a hyphen or a space, and those variants are wanted. Wrong options may repeat across items, because a good wrong option is often reused.
 
 The checks live in the validator, so bundled lessons, imported lessons and the editor all apply the same rule. The catalog-wide checks run against the catalog the learner would end up with, like the existing duplicate-id checks (036). `scripts/content-index.sh` lists every existing prompt and answer so a drafter can avoid repeats before writing.
 
 ## 039 — The course has levels; lessons carry their level
-**Status:** pending — the `level` field and its validation are applied (chunk C1); Home grouping and lesson naming land in Wave 2 (chunks C4 and C5)
+**Status:** pending — the `level` field and its validation are applied (chunk C1); Home grouping and lesson naming land in Wave 2 (chunks C4 and C5). Lesson naming and folders are amended by 044
 
 The 100 lessons are grouped into 8 levels taken in order (`docs/COURSE_SYLLABUS.md`). Each lesson file gains an optional `level` object: `number`, `title`, and `position` (its place within the level). `position` is needed because the first five lessons keep their original ids, which would otherwise sort after the new ones. A file without `level` (an older import) is listed under "Other lessons". The same level number must always carry the same title.
 
@@ -357,17 +357,65 @@ New lessons are named `content/l03-u07-<slug>.json` with `scenarioId` `l03-u07` 
 Home groups lessons by level and suggests the next unfinished one. **Nothing is locked**: the owner chose an ordered course the learner can move around in, because a locked level strands a learner who is stuck on one lesson. This replaces "exactly 5 files" in `docs/MVP_PLAN.md` (chunk C3) with: at least 5 files, exactly 20 items each, level numbers with no gaps. A separate course manifest file was rejected because the loader and the import treat every `content/*.json` as a lesson. The import limit rises from 10 to 20 files so a whole level can be imported at once (amends 036).
 
 ## 040 — New phrases carry a Tamil-script spelling
-**Status:** active — applied in the catalog validator (plan.md, chunk C1)
+**Status:** active — applied in the catalog validator (plan.md, chunk C1). The field is renamed `script` and covers Telugu by 044 (pending)
 
 Each item gains an optional `tamilScript` field: the canonical answer written in Tamil script. It exists so audio can be generated later without a second review of 2,000 phrases, since speech voices read Tamil script and not the informal Latin spelling. It is optional so the first 100 phrases stay valid; every lesson written under the new naming must have it, and the first 100 are backfilled later.
 
 When present it must contain Tamil-script characters and no Latin letters. **Tamil script stays banned in every other field**, and in all Swift code and test fixtures. The app does not display the field yet; the product stays romanised (001, 024). It is drafted by Claude and reviewed by the owner with the rest of the item (025).
 
 ## 041 — A final exam of 100 questions, pass at 75
-**Status:** pending — agreed with the owner; built in plan.md chunks E1 to E4
+**Status:** pending — agreed with the owner; built in plan.md's exam chunks. One exam per course (042)
 
 When every level is complete, Home offers a final exam: 100 questions in one sitting, no feedback until the end, pass at 75. About 70 are sentences the learner has not seen, built only from words and patterns the course taught; about 30 are taken from the lessons by id. The blueprint is in `docs/COURSE_SYLLABUS.md` section 6. The paper is written last, after Level 8 is reviewed.
 
 **Scoring:** only the canonical answer counts. The same sentence in the other register is not a correct exam answer, matching Home completion (033). **The exam never touches scheduling:** exam answers write no review records, and results are stored in their own file, so the frozen `ProgressStore` contract is unchanged. Reset progress clears exam results too.
 
 **What a pass means:** the questions are multiple choice, so a pass shows the learner recognises natural spoken Tamil in unfamiliar sentences. It does not show they can say it. The exam screen states this, and speaking stays with the voice work (024).
+
+## 042 — blt.ai is a two-way course for a couple: Tamil and Telugu
+**Status:** pending — agreed with the owner on 2026-10-09; built by plan.md. Reframes 001 and extends 025
+
+The app began as colloquial Tamil for a Telugu speaker (001). The owner's real case is a couple, one Tamil speaker and one Telugu speaker, who share English. So the thesis becomes: **one app, two courses, each partner learns the other's language, English is the common medium.** BLT now reads "Budugu Learns Tamil / Telugu". The learner gives a name and picks the language they want to learn.
+
+**What stays the same.** Everything 001 argued for Tamil holds for Telugu in mirror image: the two languages share word order, stacked endings and a large vocabulary, so the course spends its effort on words and on register and teaches no grammar terms. Each course teaches the spoken language only, in two registers (casual and respectful). Text-only multiple choice, three outcomes, spaced repetition, review labels, lesson import and every hard constraint in `CLAUDE.md` are unchanged. Voice stays in v2 (024), now for both languages.
+
+**The two courses mirror each other.** One syllabus (`docs/COURSE_SYLLABUS.md`): 8 levels, 100 lessons, 2,000 phrases per course, and wherever it is natural the same English prompt answered in Tamil in one course and in Telugu in the other. The couple learn the same things and can practise on each other. Prompts differ only where a sentence does not work in one language; a script lists the differences, it does not forbid them. The duplicate rules (038) and the final exam (041) apply to each course separately.
+
+**Telugu variety.** Standard spoken Telugu of Coastal Andhra, the variety closest to films and television, chosen by the owner because it is the most widely understood. Written and literary forms are out of scope, as for Tamil.
+
+**Review.** Each course is checked by its native speaker: the owner reviews Tamil, the owner's partner reviews Telugu. Telugu content is Claude-drafted and `unreviewed` until then (025 applies to both languages). The rule "no real Tamil text in code or test fixtures" now covers Telugu too.
+
+**What this costs.** Little code, because lessons are data and the engine never looks at the language. A lot of content: 3,900 phrases to draft and about 65 hours of review between two people.
+
+## 043 — The learner's language lives on the profile; each language has its own data
+**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunks A4, B2, C1, C3 and D1. Changes the frozen `UserProfile` and `AppDependencies`
+
+The profile gains the language being learned. Onboarding asks for it after the name. It can be changed later in Settings.
+
+- **Separate data per language.** Progress, imported lessons and the exam result are stored per language under `Application Support/BLT/courses/<language>/`. Switching language loses nothing, and one phone can hold both partners' courses. Nothing is migrated from before this change: the owner confirmed on 2026-10-09 that no learner has progress yet, and the lesson ids change (044). The old build's progress file and imported lessons are removed once at the first launch of the new build.
+- **No assumed language.** A profile saved before this change has no language. The app shows the language step; it does not default to Tamil. A wrong guess here would silently show a learner the wrong course.
+- **Reset progress clears only the language being learned,** and the confirmation says which. It keeps the warning style of 037.
+- **Switching reuses the lesson-import reload** (036): the root is rebuilt with the other language's catalog and stores.
+- `AppDependencies` gains the language so screens can name it in their wording. Nothing else in the engine reads it.
+
+## 044 — One lesson format for both languages
+**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunks A1, A2 and B1. Amends 038 to 040 and rewrites `docs/MVP_PLAN.md` section 2
+
+- **`language`** (`tamil` or `telugu`) is required on every lesson file. A lesson in the wrong course is rejected, bundled or imported, so a Telugu file cannot land in the Tamil course.
+- **Folders and ids.** `content/tamil/` and `content/telugu/`. Paired lessons share a key: `ta-l02-u03` and `te-l02-u03`, with items `ta-l02-u03-i01`. The five original Tamil lessons are renamed to this scheme (`ta-l01-u01` to `ta-l01-u05`) and stay `reviewed`; this reverses the "keep their ids" part of 039, because there is no saved progress to protect.
+- **The word-gloss key `tokens[].tamil` becomes `tokens[].word`.** The five existing files are rewritten once; afterwards the old key is an error and is never read as a fallback. Lesson files imported before this change must be re-exported.
+- **`tamilScript` (040, built but not yet used by any lesson) becomes `script`:** the answer in the lesson language's own script (Tamil U+0B80 to U+0BFF, Telugu U+0C00 to U+0C7F), with no Latin letters. Both scripts stay banned in every other field and in all Swift code.
+- `level` and the duplicate rules are as decided in 038 and 039. The import limit is 20 files.
+
+## 045 — Two tiers of UI tests: a short required set, and the full set off the PR path
+**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunk Q1
+
+The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and GitHub's preview runner hangs a UI query at random, so every pull request waits and retries. The suite is reshaped before more UI tests are added.
+
+- **Rules are tested in the package.** A UI test that only checks a rule is replaced by a view-model test. A UI test stays only where the screen itself is under test.
+- **PR tier, required:** one happy path per screen and the accessibility audits at the default text size, aiming at under 15 minutes for the whole check.
+- **Full tier, not blocking a PR:** every UI test, including audits at the largest text size, on every merge to `main`, nightly and on demand. A failure there is fixed before the next PR merges.
+- The decision is made from measured durations and retry counts, not guesses. Retries stay, and every retried test is listed.
+
+**Trade-off accepted:** a largest-text-size regression can reach `main` and be caught minutes later instead of before the merge. Accessibility coverage is moved, not reduced.
+

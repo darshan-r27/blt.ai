@@ -1,142 +1,199 @@
-# Full course: 1,900 more phrases in 8 graded levels, plus a 100-question final exam
+# blt.ai becomes a two-way course: Tamil and Telugu, for a couple learning each other's language
 
-On approval this file is copied to `plan.md` in the repo root, and progress is tracked in `progress.md`.
+This replaces the single-course plan. That plan's Wave 1 was built and merged (PRs #11 to #13: `level`,
+`tamilScript`, the duplicate rules, the editor fields and `scripts/content-index.sh`) and is reused here; its
+later waves are replaced by this plan. Progress is tracked in `progress.md`.
 
 ## Context
-The app ships 5 lesson files of 20 phrases (100 total). The owner wants a multi-month course that takes a
-Telugu speaker to holding everyday conversations in colloquial Tamil: 1,900 more phrases (95 subcategories of 20),
-deduplicated against the existing 100, and a 100-question final exam with a 75% pass mark.
+Today blt.ai teaches colloquial Tamil to a Telugu speaker. The owner wants a new thesis: **BLT = Budugu Learns
+Tamil / Telugu**, one app for a cross-language couple, each learning the other's language with English as the
+shared medium. The learner gives a name and picks the language they want to learn; everything else (lessons,
+progress, exam, import, review labels) works the same for either language.
 
 Decided with the owner:
-- **Graded course:** about 8 levels taken in order, each adding sentence patterns through everyday situations.
-- **One level at a time:** Claude drafts a level, the owner reviews it, corrections feed the next level.
-- **Exam:** about 70 unseen sentences plus about 30 from the bank.
-- **Levels are ordered but not locked.** The exam unlocks when every level is complete.
-- **Tamil script:** each new phrase carries a Tamil-script spelling (for later audio). The app does not show it yet.
+- **Reviewers:** the owner reviews Tamil; the owner's partner, a native Telugu speaker, reviews Telugu.
+- **Size:** both courses are 2,000 phrases (100 lessons, 8 levels), drafted one level at a time.
+- **Telugu variety:** standard Coastal Andhra spoken Telugu, casual and respectful registers, romanised.
+- **Switching:** the language can be changed in Settings; each language keeps its own progress.
+- **Mirrored:** one syllabus, and wherever natural the same English prompt in both courses.
+- Carried over from the approved course plan: graded levels that are ordered but not locked, duplicate rules,
+  a native-script field per phrase, and a 100-question exam with a pass mark of 75 (now one per language).
 
-**What a pass will and won't prove.** The app is multiple choice, so a 75% pass shows the learner recognises
-correct colloquial Tamil for sentences they have not memorised. It does not prove they can say it. Speaking
-practice is the separate voice work (v1.2). The syllabus and the exam screen will say this plainly.
+**Why this is mostly not a rewrite.** Lessons are data files and the engine never looks at the language, so
+the code change is: a language on the profile, per-language content and storage, a language step in
+onboarding, and copy. The large cost is content: 3,900 phrases to draft and about 65 hours of review split
+between two people (about 32 hours Tamil, 33 hours Telugu).
 
-**Review cost.** 2,000 phrases at about a minute each is roughly 33 hours of owner review. This sets the pace
-of the whole project. The app keeps showing "Unreviewed draft" on anything not yet checked (ADR 035).
+**Limits to state plainly.** Multiple choice proves recognition, not speech. Telugu drafts are Claude-written
+and stay labelled "Unreviewed draft" until the partner checks them.
 
 ## Decisions most likely to change
-1. **Level count and sizes.** 100 subcategories as 8 levels of 12 or 13. The existing five become part of
-   Level 1. The syllabus (chunk S0) fixes the final split and needs owner approval before any drafting.
-2. **Where level information lives.** Each lesson file gains an optional `level: { "number": 3, "title": "...", "position": 7 }`
-   (`position` orders lessons inside a level, because the first five keep ids that sort after the new ones).
-   Files without it (old imports) appear under "Other lessons". Alternative rejected: a separate course manifest
-   file, because the loader and the import treat every `content/*.json` as a lesson.
-3. **`tamilScript` is optional per item.** New phrases must have it (enforced by the shipped-content test for
-   Level 1 new units onward); the existing 100 are backfilled later. Tamil script stays banned in every other field.
-4. **Duplicate rules.** Catalog-wide, ignoring case, spacing and punctuation: no two items share a
-   `sourcePrompt`; no two items share a `canonical`. Inside one item, ignoring only case and surrounding spaces
-   (the editor's existing rule): no accepted spelling listed twice. Punctuation variants are wanted there. Distractors may repeat across items.
-5. **Exam scoring:** only the canonical answer counts. Picking the other register is not a correct exam answer
-   (same rule as Home completion, ADR 033). Pass is 75 of 100. Retakes any time, order reshuffled.
-6. **Exam does not touch scheduling.** Exam answers write no SM-2 records. Results go in a new `exam.json`,
-   so the frozen `ProgressStore` contract is unchanged.
-7. **File and id naming for new lessons:** `content/l03-u07-<slug>.json`, `scenarioId` `l03-u07`, items
-   `l03-u07-i01`. Existing five keep their ids so saved progress survives.
-8. **Import limit** rises from 10 to 20 files so a whole level can be imported at once.
-9. **Model for drafting Tamil.** Recommend the strongest available model for drafting content; Sonnet for code.
+1. **Reset progress clears only the language being learned** (and says so in the confirmation). The other
+   language's progress is untouched.
+2. **Old profiles ask again.** A profile saved before this change has no language; the app shows the language
+   step rather than assuming Tamil (no silent default).
+3. **Lesson file changes** (one format for both languages):
+   - New required `language`: `tamil` or `telugu`. A file in the wrong course is rejected, including imports.
+   - Word-gloss key `tokens[].tamil` is renamed `tokens[].word`. The five existing files are rewritten once;
+     the old key is an error afterwards.
+   - The planned `tamilScript` becomes `script`, checked against the lesson language's own script
+     (Tamil U+0B80 to U+0BFF, Telugu U+0C00 to U+0C7F). Either script stays banned in every other field.
+   - `level: { number, title, position }` and the duplicate rules as already decided (038, 039).
+4. **Layout and ids.** `content/tamil/*.json` and `content/telugu/*.json`. Paired lessons share a key:
+   `ta-l02-u03` and `te-l02-u03`. The five existing Tamil lessons are renamed to this scheme (`ta-l01-u01` to
+   `ta-l01-u05`, files and item ids to match) when they move in chunk B1. They stay `reviewed`. The owner
+   confirmed on 2026-10-09 that no learner has progress on them, so nothing needs to survive the rename.
+5. **Storage on the phone.** `Application Support/BLT/courses/<language>/` holds `progress.json`, imported
+   lessons and the exam result. **Nothing is migrated:** there is no learner progress to keep, and the old
+   lesson ids no longer exist. The old build's `progress.json` and imported `content/` folder are removed once
+   at the first launch of the new build (tested), so no orphaned files are left behind.
+6. **Mirroring is checked, not forced.** `scripts/content-index.sh --mirror` lists paired lessons whose English
+   prompts differ. Differences are allowed where a sentence does not work in one language.
+7. **The Telugu reviewer works on their own computer** (decided). They get the editor and the
+   `content/telugu` folder by downloading the public repo (no account or tools needed; the editor is one
+   offline HTML page opened in Chrome). Reviewed files come back to the owner by AirDrop, the owner checks the
+   full diff, and they are committed through a PR. Either phone picks up new lessons through the existing
+   Settings > Import lessons (AirDrop to Files, then import), so neither person waits for a rebuild.
+8. **Model for drafting.** Strongest available for Tamil and Telugu content; Sonnet for code.
 
-## Preconditions (owner)
-- Clear the two duplicates in S05 (`s05-i05`, `s05-i10`) and say when S05 is done. The new duplicate rule
-  makes CI fail otherwise.
-- `BLTApp.xcodeproj/project.pbxproj` has a local signing change (team ID). It must not be committed.
+## Frozen contracts and rules that change (ADRs written in Wave 0)
+- **042 Two-course thesis** (replaces the framing of 001; extends 025 "no real Tamil in code" to Telugu).
+- **043 Language on the profile, per-language storage, switching, reset scope** (changes `UserProfile`, adds
+  `language` to `AppDependencies`).
+- **044 Lesson format for two languages** (amends 038 to 040; rewrites `docs/MVP_PLAN.md` section 2).
+- 041 (exam) becomes one exam per language.
+- `CLAUDE.md`: headline, the content rule, and the module notes. No hard constraint is relaxed: no network,
+  no audio, no speech, no third-party SDK.
 
-## Changes to frozen documents (need ADRs, written in S0)
-- ADR 038 duplicate rules; ADR 039 course levels and lesson naming; ADR 040 `tamilScript` field;
-  ADR 041 final exam. `docs/MVP_PLAN.md` section 2 (schema) and chunk C3 ("exactly 5 files") are amended to match.
+## Wave 0: thesis and documents (main session, no code)
+**T0.** Files: `docs/PRD.md` (new thesis section at the top), `docs/DECISIONS.md` (042 to 044),
+`docs/COURSE_SYLLABUS.md`, `docs/ARCHITECTURE.md`, `docs/MVP_PLAN.md`, `docs/HANDOFF.md`, `README.md`,
+`CLAUDE.md`, `docs/BUILD_PLAN.md`, `docs/REVIEWER_GUIDE.md` (new), `plan.md`, `progress.md`.
+- Syllabus: the 100 lessons stay as approved and now serve both courses. Section 4 splits into "Notes for a
+  Telugu speaker learning Tamil" and "Notes for a Tamil speaker learning Telugu" (the second is for the
+  partner to correct). Adds the Telugu register policy and the mirroring rule. English only.
+- Adds `docs/REVIEWER_GUIDE.md`: one page for the Telugu reviewer (get the files, open the editor, what
+  "reviewed" means, how to send files back, how to import on the phone).
+- Done when the owner approves the docs PR.
 
-## Wave 0: syllabus (main session, no code)
-**S0 Syllabus and decisions.** Files: `docs/COURSE_SYLLABUS.md` (new), `docs/DECISIONS.md`, `docs/MVP_PLAN.md`.
-- 8 levels, 100 subcategory titles, and for each: the situation, the sentence patterns it introduces, and what
-  it reuses. Outline: L1 survival topics (existing five plus numbers, time, help, introductions); L2 present
-  tense, having, liking, wanting, where things are; L3 past; L4 future, can, must, permission; L5 negatives,
-  requests, if; L6 joining ideas (because, but, and then, "he said that"); L7 long real-life conversations
-  (doctor, bank, office, landlord, travel, relatives); L8 opinions, stories, idioms and slang.
-- Notes for a Telugu speaker: sounds and patterns that differ from Telugu get extra items.
-- Exam blueprint: questions per level and per pattern (about 70 new, 30 from the bank).
-- English only. No Tamil phrases in this document.
-- Done when: the owner approves the syllabus. **Stop here for approval.**
+**T1 (tiny, merged before Wave 1).** Files: new `Packages/BLTKit/Sources/BLTCore/CourseLanguage.swift` + test,
+`BLTDesign/AccessibilityID.swift` (all new ids for Waves 3 and 4, added up front so later chunks do not collide).
+- `CourseLanguage`: `tamil`, `telugu`, display name, script range. Proof: package tests.
 
-## Wave 1: format and tools (parallel, different files)
-**C1 Catalog format.** Files: `Packages/BLTKit/Sources/BLTCatalog/{RawScenario,Scenario,RawItem,Item,ContentIssue,ContentValidator}.swift`,
-new `Level.swift`, `Tests/BLTCatalogTests/*`.
-- Add optional `level` and `tamilScript`. `tamilScript`, when present, must contain Tamil-script characters and
-  no Latin letters. Same level number must always carry the same title.
-- Add the three duplicate rules as catalog-level issues (the validator already does catalog-level id checks).
-- Fixtures stay obviously fake (`zz` text); the Tamil-script fixture uses a repeated single letter, not a word.
-- Proof: `BLT_SIM="iPhone 17" scripts/test.sh package`.
+## Wave 1: format, tools, profile (parallel, different files)
+**A1 Catalog format (a delta: `level`, `tamilScript` and the duplicate rules already exist).**
+`Packages/BLTKit/Sources/BLTCatalog/*`, `Tests/BLTCatalogTests/*`.
+- Add the required `language`; rename `tamilScript` to `script` and check it against the lesson language's
+  script; rename the gloss key to `word`; reject a lesson whose language is not the course's. The duplicate
+  rules stay as built.
+- Fixtures are fake `zz` text; a script fixture is one letter repeated.
+- **Also updates the five shipped files in place** (adds `language`, renames the gloss key), in the same PR, so
+  the shipped-content tests never go red. The files do not move yet.
+**A2 Editor (a delta).** `tools/content-editor/index.html`, its README. The same three changes, with
+language-aware labels and script check.
+**A3 Drafting aid (a delta).** `scripts/content-index.sh` exists with `--check` and `--self-test`. Add a
+per-language index and the `--mirror` report.
+**A4 Profile.** `Packages/BLTKit/Sources/BLTProgress/Profile/*`, its tests.
+- `UserProfile.learningLanguage` (optional), profile file schema 2, schema 1 files load with no language.
+- Proof for all: `BLT_SIM="iPhone 17" scripts/test.sh package`; A2 by headless Chrome; A3 by its self-test.
 
-**C2 Editor.** Files: `tools/content-editor/index.html`, `tools/content-editor/README.md`.
-- Level number and title on the lesson; a Tamil-script box per item with the same checks; the three duplicate
-  rules across all loaded files.
-- Proof: headless Chrome run of the editor's checks against `content/*.json` (as done for earlier editor work).
+## Test suite reshape (chunk Q1; runs beside Wave 1, must finish before Wave 4 adds UI tests)
+**Why.** The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and the preview runner hangs a
+UI query at random, so every PR waits half an hour and is retried up to three times. Wave 4 would add more.
 
-**C3 Drafting aid.** File: `scripts/content-index.sh` (new, Python 3 standard library only).
-- Prints every existing prompt and canonical answer (normalised) and fails on duplicates. Used before each
-  drafting round and in CI's guardrail job.
-- Proof: `bash scripts/content-index.sh --check` exits 0 on main; a `--self-test` plants a duplicate and fails.
+**Q1.** Files: `BLTApp/BLTAppUITests/*`, `.github/workflows/ci.yml`, `scripts/test.sh`, new DECISIONS 045,
+`docs/ARCHITECTURE.md` (Testing section), `docs/HANDOFF.md` (commands).
+1. **Measure first.** Record each UI test's duration and retry count from the result bundles of the last few
+   CI runs. Put the table in the PR. Nothing is cut on a guess.
+2. **Move logic down.** A UI test that only checks a rule (completion figures, what a reset clears, what a
+   wrong answer does) is replaced by a view-model test in the package, where it runs in milliseconds. A UI
+   test is kept only where the screen itself is the thing under test.
+3. **Two tiers.**
+   - *PR tier (required check):* one happy path per screen and the accessibility audits at the default text
+     size. Target: the whole PR check under 15 minutes.
+   - *Full tier:* everything, including the audits at the largest text size. Runs on every merge to `main`,
+     nightly, and on demand. A failure there is reported, and is fixed before the next content or code PR.
+4. **Build once.** Build for testing in one step and run tests without rebuilding; package tests and UI tests
+   run as parallel jobs.
+5. **Faster tests.** Animations and the shimmer off under the UI-test launch arguments; fixtures instead of
+   real lessons everywhere.
+6. **Flakes are visible.** Retries stay, but the summary step lists every test that needed one.
+- Constraint: nothing about accessibility is dropped, only moved to the full tier. Branch protection names the
+  required checks, so the owner updates it if job names change (the PR says exactly what to set).
+- Proof: three PR runs in a row under 15 minutes; the full tier green on `main`; package test count has grown
+  by at least the number of UI tests removed.
 
-## Wave 2: app and existing content (parallel; needs C1)
-**C4 Shipped content and its tests.** Files: `content/scenario-0{1..5}-*.json` (add `level` 1 only),
-`Tests/BLTContentTests/ShippedContentTests.swift`, `.github/workflows/ci.yml` (add C3 check).
-- Replace "exactly 5 files" with: at least 5 files, every file exactly 20 items, level numbers contiguous from 1,
-  every `l..-u..` lesson has `tamilScript` on all items, zero validator issues.
-- Proof: `BLT_SIM="iPhone 17" scripts/test.sh package`.
+## Wave 2: content and storage (needs Wave 1; B1 and B2 merge as one PR)
+Moving the lesson files and teaching the loader the new folders must land together, or the app would load no
+lessons. The two chunks are built in parallel on different files and merged as a single PR.
 
-**C5 Home grouped by level.** Files: `Packages/BLTKit/Sources/BLTFeatures/Home/*`,
-`BLTDesign/AccessibilityID.swift`, `BLTApp/BLTAppUITests/HomeUITests.swift`, `PreviewCatalog.swift`.
-- Sections per level with a level completion figure, a "Continue" suggestion for the next unfinished lesson,
-  collapsed finished levels, "Other lessons" for files without a level. Nothing is locked.
-- Reuses `CatalogProgress` and `ScenarioCard`.
-- Proof: `scripts/test.sh app -only-testing:BLTAppUITests/HomeUITests` and the Home accessibility audits.
+**B1 Existing content and its tests.** Move the five files to `content/tamil/`, rename them and their ids to
+`ta-l01-u01` to `ta-l01-u05`, and add `level`. Lesson text and review status do not change. `Tests/BLTContentTests/*`: per language, at least 5 Tamil files, 20 items each, levels
+with no gaps, `script` required on every new-style lesson, no Tamil or Telugu script in any Swift file.
+`.github/workflows/ci.yml` runs A3's check. The Xcode folder reference already bundles subfolders, so the
+project file is not touched.
+**B2 Content store.** `Packages/BLTKit/Sources/BLTContentStore/*`, its tests.
+- Load and import per language directory; reject a lesson whose `language` is not the course's; import limit
+  10 to 20. Reuses the existing manifest and all-or-nothing import.
+- The one call site in `BLTApp/BLTApp/CompositionRoot.swift` passes `.tamil` explicitly until chunk D1 reads
+  the language from the profile. That is the only app-target line this chunk may touch.
 
-**C6 Import limit.** Files: `BLTContentStore/ImportedContentStore.swift` and its tests, README import section.
-- `maxFilesPerImport` 10 to 20. Proof: package tests.
+## Wave 3: screens (parallel; different folders; needs Wave 1)
+**C1 Onboarding.** `BLTFeatures/Onboarding/*`: intro copy for the new thesis; after the name, a language step
+with two clear choices; the gate shows that step when a profile has no language.
+**C2 Home.** `BLTFeatures/Home/*`, `PreviewCatalog.swift`: lessons grouped by level, next-lesson suggestion,
+"Other lessons" group, and which language is being learned. Reuses `CatalogProgress` and `ScenarioCard`.
+**C3 Settings.** `BLTFeatures/Settings/*`: "Language I'm learning" switch; the content statement names the
+right language; Reset wording says which language it clears. Reset keeps `BLTWarningButtonStyle` (037).
+- Proof: package tests for the view models; UI tests come with Wave 4.
 
-After Wave 2: full check (`scripts/test.sh package`, `scripts/test.sh app`, `swiftlint lint --strict`,
-`bash scripts/check-forbidden-apis.sh`), one PR per chunk, update `progress.md`.
+## Wave 4: wiring and UI tests (needs Waves 2 and 3)
+**D1.** `BLTFeatures/{AppDependencies,RootView}.swift`, `BLTApp/BLTApp/{CompositionRoot,BLTAppMain,UITestLaunch}.swift`,
+`BLTApp/BLTAppUITests/*`.
+- Build dependencies for the chosen language; per-language paths; the one-time removal of the old build's files;
+  switching language reuses the reload used after a lesson import (`CompositionRoot.reloaded`, root `.id`).
+- New launch argument `--uitest-language=<tamil|telugu>`. UI tests: choose a language at onboarding, switch
+  in Settings and see separate progress, reset one language only, old profile is asked for a language.
+  Accessibility audits for the new and changed screens at default and largest text size.
+- Proof: `scripts/test.sh app` per class, then the full check and a Release build with `check-binary.sh`.
 
-## Wave 3 onward: content, one level at a time (repeats 8 times)
-For each level N (Level 1 needs only its 7 new subcategories):
-1. **Draft.** Claude drafts the level's lesson files from the syllabus, all `reviewStatus: unreviewed`, with
-   `tamilScript`, using `scripts/content-index.sh` output and `docs/content/STYLE_NOTES.md` as inputs.
-2. **Check.** Validator, duplicate check and shipped-content tests pass. PR merges the drafts.
-3. **Owner review** in the editor. The learner can already use the drafts, labelled as unreviewed.
-4. **Learn.** Claude turns the owner's corrections into rules in `docs/content/STYLE_NOTES.md` (spelling
-   choices, register preferences, words to avoid) and shows the full `git diff content/` before committing.
-5. **Gate.** The next level is drafted only after the owner says the current one is done.
-- Proof per level: `BLT_SIM="iPhone 17" scripts/test.sh package` and `bash scripts/content-index.sh --check`.
+## Content: one level at a time, both languages together (repeats 8 times)
+1. **Prompts first.** For each lesson of the level, write the 20 English prompts once.
+2. **Draft both.** Tamil and Telugu answers, wrong options, word glosses and `script`, all `unreviewed`.
+   Level 1: Tamil needs 7 new lessons; Telugu needs all 12, the first five mirroring the existing Tamil ones.
+3. **Check.** Validator, duplicate check, mirror report, shipped-content tests. One PR per language per level.
+4. **Review.** Owner reviews Tamil, partner reviews Telugu, in the editor.
+5. **Learn.** Corrections become rules in `docs/content/STYLE_NOTES_TAMIL.md` and `STYLE_NOTES_TELUGU.md`.
+   The full `git diff content/` is shown before any commit of review edits.
+6. **Gate.** A language's next level is drafted only after its reviewer says the current one is done. The two
+   languages may move at different speeds.
 
-## Exam (can be built any time after Wave 2; content comes last)
-**E1 Exam engine.** Files: new `BLTSession/Exam{Machine,Result,Paper}.swift`, tests.
-- Fixed paper, shuffled order and options, no per-question feedback, score and per-level breakdown at the end.
-**E2 Exam storage.** Files: new `BLTProgress/Exam/{ExamResultStore,FileExamResultStore}.swift`, tests.
-- `exam.json` in Application Support with `.completeFileProtection`. No SM-2 writes. Cleared by Reset progress.
-**E3 Exam screen and wiring** (later wave; needs E1, E2). Files: new `BLTFeatures/Exam/*`, `RootView.swift`,
-`CompositionRoot.swift`, UI tests.
-- Entry on Home, enabled when every level is complete. Result screen: score, pass or not, weakest levels.
-**E4 Exam paper** (after Level 8 is reviewed). File: `content/exam/final.json`, loader support in `BLTContentStore`.
-- About 70 new items in the normal item format, plus about 30 references to bank item ids (no copied text).
-  New items use only patterns and words the course taught, and pass the same duplicate rules.
-- A subfolder keeps it out of the lesson list (the lesson loader reads only files directly in `content/`).
-- Proof: package tests, `scripts/test.sh app`, and an owner walkthrough on the simulator.
+## Exam (code any time after Wave 4; papers last)
+As in the approved plan (engine, storage, screen), with one paper per language at
+`content/<language>/exam/final.json`, each written after that language's Level 8 is reviewed. New-sentence
+prompts are shared between the two papers where natural.
 
-## Not in this plan
-- Audio clips, pronunciation scoring and showing Tamil script in the app (the v1.1 and v1.2 work discussed).
-- Backfilling `tamilScript` on the existing 100 phrases (a later content pass).
-- Reshaping the slow UI test suite.
+## Deferred to v2 (planned, not dropped)
+This plan is v1.x: text-only multiple choice for two languages. Voice stays in v2, as already decided (024).
+The `script` field on every new phrase exists so v2 does not need a second review of 4,000 phrases.
+- **Audio:** each phrase spoken aloud. Clips are generated or recorded on the Mac from `script`, approved in
+  the editor by that language's reviewer, and bundled. No model or network in the app.
+- **Pronunciation scoring:** the learner speaks and gets feedback. Needs the experiment discussed earlier
+  (which on-device model can tell good from bad for colloquial Tamil and Telugu) before any build, and an
+  owner decision on whether a score may affect progress (today it may not: hard constraint 5).
+- **Native script in the app:** showing the Tamil or Telugu spelling beside the romanised answer.
+`docs/PRD.md` and `docs/BUILD_PLAN.md` are updated in Wave 0 so the v2 sections cover both languages.
+
+## Not planned
+- A third language, or learning both languages at once on one Home screen.
 
 ## Verification
 1. `BLT_SIM="iPhone 17" scripts/test.sh package`
-2. `BLT_SIM="iPhone 17" scripts/test.sh app`
-3. `swiftlint lint --config .swiftlint.yml --strict`
-4. `bash scripts/check-forbidden-apis.sh` and `bash scripts/content-index.sh --check`
-5. Simulator: Home shows levels, the next-lesson suggestion works, an imported level appears in its level.
-6. Owner's iPhone: import a reviewed level through Files; confirm labels follow `reviewStatus`.
-7. CI green on each PR.
+2. `BLT_SIM="iPhone 17" scripts/test.sh app` (per class), then a Release build and `scripts/check-binary.sh`
+3. `swiftlint lint --config .swiftlint.yml --strict`, `bash scripts/check-forbidden-apis.sh`,
+   `bash scripts/content-index.sh --check`
+4. Simulator: fresh install picks Telugu and sees Telugu lessons; switch to Tamil and back with progress intact;
+   reset clears one language; an upgraded install starts clean, keeps its name, and is asked for a language.
+5. Owner's iPhone: upgrade over the current install (name kept, old files gone); import a Telugu lesson file into
+   the Telugu course and confirm a Tamil file is refused there.
+6. CI green on each PR.

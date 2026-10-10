@@ -35,6 +35,8 @@ Feedback also shows the word-by-word gloss (`tokens`) and `note`. The gloss is n
 
 ## 2. Content schema (frozen; the loader reads exactly this)
 
+> **Pending changes (not yet applied; the text below matches the code).** DECISIONS 042 to 044 make the lesson format serve two languages: a required `language` on a lesson, `tamilScript` renamed `script` and checked against the lesson language's own script, `tokens[].tamil` renamed `tokens[].word`, lessons moved into `content/tamil/` and `content/telugu/`, and the learner's language added to `UserProfile` and `AppDependencies` (section 5). "Exactly 5 files" in chunk C3 is also still to be replaced (039). See `docs/COURSE_SYLLABUS.md` and `plan.md`.
+
 ```json
 { "scenarioId": "s01-greetings", "title": "", "subtitle": "",
   "registerPolicy": "", "romanisationNote": "",

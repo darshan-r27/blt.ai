@@ -1,6 +1,6 @@
 # blt.ai
 
-**Budugu Learns Tamil.** An iOS app that teaches the Tamil people actually speak, to Telugu speakers who are fluent in English.
+**Budugu Learns Tamil / Telugu.** An iOS app for a couple who speak different languages at home: one learns the Tamil people actually speak, the other the Telugu people actually speak, with English as the language they share.
 
 [![CI](https://github.com/darshan-r27/blt.ai/actions/workflows/ci.yml/badge.svg)](https://github.com/darshan-r27/blt.ai/actions/workflows/ci.yml)
 
@@ -13,11 +13,17 @@
 
 This is a portfolio project. It runs on a simulator or your own iPhone; it is not on the App Store.
 
+> **Where it stands.** The app and the first part of the Tamil course are built and described below. The Telugu course, the language choice at first launch, and the full 2,000-phrase courses are planned and in progress: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots show the current, Tamil-only build.
+
+## Who it is for
+
+A couple where one partner grew up speaking Tamil and the other Telugu. They talk to each other in English, and neither can follow the other's family at the dinner table. Each wants the other's everyday spoken language, not the textbook one. blt.ai gives each of them a course in the other's language, built from the same syllabus, so they learn the same sentences and can practise on each other.
+
 ## The problem
 
 Tamil has two forms that differ far more than "formal" and "informal" English do. Written Tamil is what textbooks, news readers and almost every language app teach. Spoken Tamil is what people use at a bus stop, in a shop, and at home, and its verbs, pronouns and endings are different.
 
-A learner who finishes a mainstream course can read a signboard and still cannot hold a conversation. When they do speak, they sound like a news bulletin.
+A learner who finishes a mainstream course can read a signboard and still cannot hold a conversation. When they do speak, they sound like a news bulletin. Telugu has the same gap between the written language and everyday speech, in a milder form.
 
 ## The idea
 
@@ -25,12 +31,14 @@ Tamil and Telugu are both Dravidian languages. They share word order, the way en
 
 So blt.ai skips grammar lessons entirely and spends the learner's effort on two things:
 
-- **Words.** Which Tamil word replaces the Telugu one.
-- **Register.** Whether you are talking to a friend (`nee`, `da`, `di`) or to an elder or a stranger (`neenga`).
+- **Words.** Which word in the new language replaces the one you already know.
+- **Register.** Whether you are talking to a friend or to an elder or a stranger. In Tamil that is `nee`, `da`, `di` against `neenga`; Telugu draws the same line.
 
-Only those two spoken registers are taught. Literary forms are left out on purpose, and English words that Tamil speakers use every day (phone, bus, ticket, bill) stay in English.
+The argument runs both ways, which is why one syllabus serves both courses. Only those two spoken registers are taught. Literary forms are left out on purpose, and English words that Tamil speakers use every day (phone, bus, ticket, bill) stay in English.
 
-## What v1 does
+## What is built today
+
+The Tamil course's first five lessons, and everything around them:
 
 - **Five everyday scenarios, 100 phrases:** greetings, getting around, food, shopping, and home and family.
 - **Multiple choice.** An English prompt, four options in romanised Tamil.
@@ -64,16 +72,16 @@ graph TD
 
 A few choices worth a look:
 
-- **Content is data, not code.** The phrases live in [`content/`](content/) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures.
+- **Content is data, not code.** The phrases live in [`content/`](content/) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures. This is what makes a second language a content job more than a code job.
 - **"No network" is enforced, not promised.** [`scripts/check-forbidden-apis.sh`](scripts/check-forbidden-apis.sh) fails the build if networking, audio or speech APIs, network entitlements or permission strings appear in the source. [`scripts/check-binary.sh`](scripts/check-binary.sh) then inspects the compiled app for the same thing.
 - **Storage is two small JSON files**, written atomically with complete file protection. A damaged file is reported to the user and never silently overwritten.
 - **No dependencies.** Nothing third-party is linked.
 - **Warnings are errors**, in the package and in the test script, and SwiftLint runs in strict mode.
-- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 35 decisions, including the ones that were later reversed and why.
+- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 44 decisions, including the ones that were later reversed and why.
 
 ## Where the content stands
 
-The 100 phrases were drafted by an AI and are being checked by hand by a Tamil speaker. Every phrase carries a review status in its data file, and the app shows an "Unreviewed draft" label on any phrase that has not been checked. The Settings screen says the lessons are native-reviewed only when every phrase is marked reviewed; the statement is computed from the data, not typed in.
+The 100 Tamil phrases were drafted by an AI and have all been checked by hand by a native Tamil speaker. Telugu lessons will be drafted the same way and checked by a native Telugu speaker ([`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md)). Every phrase carries a review status in its data file, and the app shows an "Unreviewed draft" label on any phrase that has not been checked. The Settings screen says the lessons are native-reviewed only when every phrase is marked reviewed; the statement is computed from the data, not typed in.
 
 [`tools/content-editor/`](tools/content-editor/) is a single offline HTML page for that review: it walks through every phrase and applies the same validation rules as the app.
 
@@ -127,7 +135,14 @@ The app was built with Claude Code, with the author acting as product owner and 
 
 ## Roadmap
 
-**v2: voice.** This is the original thesis, and v1 is the foundation for it.
+**Now: two courses.** The plan is [`plan.md`](plan.md); the reasoning is decisions 038 to 044.
+
+- Pick the language you are learning after entering your name; switch in Settings with each language's progress kept.
+- A Telugu course beside the Tamil one, from one syllabus: 8 levels, 100 lessons and 2,000 phrases each, sharing English prompts wherever that is natural.
+- Home grouped by level, checks against duplicate phrases, and a 100-question final exam per language with a pass mark of 75.
+- Each course reviewed by its native speaker, one level at a time.
+
+**v2: voice.** This is the original thesis, and v1 is the foundation for it. It applies to both languages.
 
 - Hear each phrase at natural speed, recorded by native speakers.
 - Answer by speaking. Recognition runs on the device; audio is deleted as soon as it has been scored.
@@ -136,13 +151,16 @@ The app was built with Claude Code, with the author acting as product owner and 
 
 **v1.5: optional telemetry.** Off by default, opt-in, and confined to one module. The design and threat model are in [`docs/BACKEND.md`](docs/BACKEND.md).
 
-**Later.** More scenarios, Tamil script alongside romanisation, and the same approach for speakers of Kannada and Malayalam.
+**Later.** Native script alongside romanisation, and the same approach for other pairs of related languages.
 
 ## Documents
 
 | Document | What it is |
 | --- | --- |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How the code is organised: modules, data flow, storage, and what enforces the rules. |
+| [`plan.md`](plan.md) | The current plan: two courses, Tamil and Telugu. |
+| [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md) | The syllabus both courses follow: 8 levels, 100 lessons, exam blueprint. |
+| [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) | How a native speaker reviews a course's lessons. |
 | [`docs/MVP_PLAN.md`](docs/MVP_PLAN.md) | The v1 plan: interfaces, work breakdown, review checklist. |
 | [`docs/DECISIONS.md`](docs/DECISIONS.md) | The decision log. Start here for the reasoning. |
 | [`docs/PRD.md`](docs/PRD.md) | The full product specification, written for the voice version (v2). |

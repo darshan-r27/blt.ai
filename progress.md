@@ -1,19 +1,33 @@
-# Progress: full course plan (plan.md)
+# Progress: two-way course plan (plan.md)
 
 ## Done
-- Plan approved and saved as `plan.md` (PR #8, branch `course-plan`).
-- S0 drafted: `docs/COURSE_SYLLABUS.md`, DECISIONS 038 to 041 (pending), pending-change note in `docs/MVP_PLAN.md` section 2.
+- Single-course plan, syllabus and DECISIONS 038 to 041 merged (PR #8). All 100 Tamil phrases reviewed (PR #9).
+- Single-course plan Wave 1 built and merged in another session (PRs #11 to #13): `level`, `tamilScript`, the
+  duplicate rules, editor fields, `scripts/content-index.sh`. Reused by the new plan.
+- 2026-10-09: owner approved the two-way plan (Tamil and Telugu). It replaces the single-course plan's later
+  waves. `plan.md` holds the new plan.
 
 ## Decisions
-- Graded course of 8 levels; one level drafted and reviewed at a time; exam about 70 new plus 30 from the bank; levels ordered, not locked; `tamilScript` on new phrases.
+- Owner reviews Tamil; partner reviews Telugu on their own computer; reviewed files return by AirDrop and are
+  committed through a PR; phones get lessons through Settings > Import lessons.
+- Both courses 2,000 phrases in 8 levels, one level at a time; standard Coastal Andhra Telugu; language
+  switchable in Settings with separate progress; one syllabus and shared English prompts where natural.
+- Audio, pronunciation scoring and native script in the app are v2.
 
-## Deviations from the plan
-- `level` gains a `position` field (orders lessons inside a level; the first five keep ids that sort last).
-- `docs/MVP_PLAN.md` section 2 got a pending-change note instead of a rewrite, so the doc still matches the code until chunk C1 lands.
+## Wave 0 (done 2026-10-09, awaiting the owner's approval of the docs PR)
+- Thesis rewritten in `README.md`, `CLAUDE.md`, `docs/PRD.md` (note at the top), `docs/ARCHITECTURE.md` (planned section), `docs/BUILD_PLAN.md`, `docs/MVP_PLAN.md` (pending note), `docs/HANDOFF.md`.
+- `docs/COURSE_SYLLABUS.md` widened to two courses; DECISIONS 042 to 044 added; `docs/REVIEWER_GUIDE.md` added.
 
-## Waiting on the owner
-- (done 2026-10-09) Syllabus approved.
-- Clear S05 duplicates `s05-i05`, `s05-i10`; say when S05 is done.
+## Plan changes requested by the owner (2026-10-09)
+- The five reviewed Tamil lessons are renamed to the new id scheme in chunk B1; no learner progress exists, so nothing is migrated and the old build's files are removed at first launch.
+- New chunk Q1 and DECISIONS 045: reshape the slow UI test suite into a short required tier and a full tier.
+
+## Deviations
+- `plan.md` chunks A1 to A3 were rewritten as deltas after finding that the old plan's Wave 1 was already merged.
+- PR #14 (handoff for the old plan's Wave 2) is superseded by this work and should be closed, not merged.
+- Sequencing fixed in `plan.md` after approval: A1 also updates the five shipped files in place (so tests stay green), and B1 and B2 merge as one PR (moving the files and changing the loader must land together).
+- Documents that describe the built app (README, ARCHITECTURE, HANDOFF) say what exists today and mark the two-course work as planned, instead of describing it as done.
+- The PRD body was not rewritten: a note at the top says how to read it for two languages.
 
 ## Next action
-- After syllabus approval: Wave 1 (C1 catalog format, C2 editor, C3 drafting aid), in parallel.
+- Owner approves the Wave 0 PR. Then chunk T1 and Wave 1 in a fresh Sonnet session. See `docs/HANDOFF.md`, "Start here".
