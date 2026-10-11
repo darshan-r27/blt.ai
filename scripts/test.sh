@@ -142,7 +142,13 @@ case "$sub" in
 
     selection=()
     timeouts=()
+    serial=()
     if [[ "$action" != build-for-testing ]]; then
+      # One simulator, no clones. With parallel testing on, xcodebuild boots "Clone N of <device>" simulators, and on
+      # GitHub's preview runner the test runner in a clone sometimes crashes while bootstrapping (an XCTWaiter
+      # stall); xcodebuild then waits 600 seconds to collect diagnostics before the retry (352 and 794 seconds were
+      # measured on one test). Serial runs avoid the clones; see docs/TEST_TIMINGS.md.
+      serial=(-parallel-testing-enabled NO)
       if [[ "$tier" == pr ]]; then
         check_pr_classes
         for class in "${PR_CLASSES[@]}"; do selection+=("-only-testing:$UI_TARGET/$class"); done
@@ -164,6 +170,7 @@ case "$sub" in
       SWIFT_TREAT_WARNINGS_AS_ERRORS=YES \
       ${selection[@]+"${selection[@]}"} \
       ${timeouts[@]+"${timeouts[@]}"} \
+      ${serial[@]+"${serial[@]}"} \
       "$@"
     ;;
   tiers)

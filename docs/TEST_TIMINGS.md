@@ -139,3 +139,22 @@ Also written, with the UI tests that stay (relaunch persistence, confirmed Reset
 theCompletionFigureAndAttemptCountSurviveReopeningTheFile and aConfirmedResetClearsProgressButKeepsTheName.
 Package tests went from 405 to 424 as counted by the Swift Testing runner (19 new test functions), against 10 UI
 tests removed.
+
+## 2026-10-11: why one test kept "hanging", and the fix
+
+After the reshape, PR UI jobs still took 26 to 38 minutes (goal: under 15). The slow runs had one thing in common:
+the first test of a simulator clone failed once and passed on retry: `HappyPathUITests.testConfirmingEndReturnsHome`
+failed after 352 seconds in one run and 794 seconds in another, then passed in about 30 seconds.
+
+What the logs show (CI runs of PRs #22 and #26): the failure is not in the test. xcodebuild reports "the test runner
+crashed while preparing to run tests ... at -[XCTWaiter(StallHandling) handleStalledWait:]" and "Early unexpected
+exit, operation never finished bootstrapping", the clone logs "unable to connect to
+com.apple.instruments.deviceservice.lockdown", and xcodebuild then waits 600 seconds ("Failure collecting diagnostics
+from simulator: Timed out after 600.0 seconds") before the retry. That test is only the first one run in the clone.
+`scripts/test.sh` let xcodebuild run classes in parallel, which boots "Clone N of iPhone 17" simulators.
+
+Fix: `scripts/test.sh app` passes `-parallel-testing-enabled NO` (one simulator, no clones), and the CI UI job boots the
+simulator and waits for it before the tests start. Measured locally on a quiet Mac: the 16 PR-tier tests passed in
+279 seconds of test time (366 seconds including the app build). CI timings after the change are recorded in DECISIONS 045
+when three runs are in.
+
