@@ -166,6 +166,13 @@ jobs:
       # A failed test gets up to two more tries; a test that fails every time still fails the job. No per-test time
       # limit is set (BLT_TEST_TIMEOUT): measured locally, xcodebuild does not retry a test that hits the limit, so a
       # limit would turn a hung attempt that passes on retry into a failed job (docs/TEST_TIMINGS.md).
+      # Boot the one simulator and wait until it is ready, so the first test does not pay for a cold start.
+      - name: Boot the simulator
+        run: |
+          set -euo pipefail
+          xcrun simctl boot "$BLT_SIM" || true
+          xcrun simctl bootstatus "$BLT_SIM" -b
+
       - name: UI tests
         run: |
           set -euo pipefail
