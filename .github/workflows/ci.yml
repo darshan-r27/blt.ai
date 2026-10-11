@@ -11,6 +11,10 @@ name: CI
 #   (cron), manual run      there does not block a pull request; it is fixed before the next one merges.
 # The classes in each tier are listed in scripts/test.sh (`scripts/test.sh tiers` prints them).
 #
+# A pull request that changes only lessons, documents or the editor skips the UI job (docs/DECISIONS.md 045): the
+# package tests already validate every lesson file, and the full tier runs on every push to main and nightly.
+# The "changes" job decides; anything that touches app code, the UI tests, the test script or this file runs them.
+#
 # Required checks for branch protection are the two job names "Guardrails and lint" and "Package and app tests".
 # The second is a small gate job that passes only when both real test jobs ("Package tests" and "UI tests")
 # passed, so the required name did not change when the tests were split into parallel jobs.
@@ -102,6 +106,40 @@ jobs:
           swiftlint version
           swiftlint lint --strict --config .swiftlint.yml
 
+  changes:
+    name: Which tests this change needs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      ui: ${{ steps.filter.outputs.ui }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      # Only pull requests are filtered. Every other trigger runs the UI tests.
+      - name: Decide whether the UI tests are needed
+        id: filter
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" != "pull_request" ]; then
+            echo "ui=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git diff --name-only "$BASE_SHA"...HEAD | tee "$RUNNER_TEMP/changed.txt"
+          # App code, the UI tests, the test script and the workflow itself can change what the UI does.
+          if grep -Eq '^(Packages/|BLTApp/|scripts/test\.sh$|\.github/workflows/ci\.yml$)' "$RUNNER_TEMP/changed.txt"; then
+            echo "ui=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ui=false" >> "$GITHUB_OUTPUT"
+            echo "No app code changed, so the UI tests are skipped (full tier still runs on main and nightly)." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
   package-tests:
     name: Package tests
     runs-on: xcode-27
@@ -130,6 +168,8 @@ jobs:
 
   ui-tests:
     name: UI tests
+    needs: changes
+    if: needs.changes.outputs.ui == 'true'
     runs-on: xcode-27
     # The PR tier is expected to take well under 15 minutes; the limit leaves room for a queue and one hung retry.
     timeout-minutes: ${{ github.event_name == 'pull_request' && 40 || 90 }}
@@ -210,7 +250,7 @@ jobs:
   # the two test jobs, and fails when either failed, was cancelled or was skipped.
   tests:
     name: Package and app tests
-    needs: [package-tests, ui-tests]
+    needs: [changes, package-tests, ui-tests]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -219,7 +259,10 @@ jobs:
         env:
           PACKAGE_RESULT: ${{ needs.package-tests.result }}
           UI_RESULT: ${{ needs.ui-tests.result }}
+          UI_NEEDED: ${{ needs.changes.outputs.ui }}
         run: |
           echo "Package tests: $PACKAGE_RESULT"
-          echo "UI tests:      $UI_RESULT"
-          [ "$PACKAGE_RESULT" = "success" ] && [ "$UI_RESULT" = "success" ]
+          echo "UI tests:      $UI_RESULT (needed: $UI_NEEDED)"
+          [ "$PACKAGE_RESULT" = "success" ] || exit 1
+          # Skipped is fine only when the changes job said the UI tests were not needed.
+          [ "$UI_RESULT" = "success" ] || { [ "$UI_NEEDED" = "false" ] && [ "$UI_RESULT" = "skipped" ]; }
