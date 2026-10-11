@@ -1,0 +1,655 @@
+{
+  "scenarioId": "ta-l01-u06",
+  "language": "tamil",
+  "title": "Numbers, money and counting",
+  "subtitle": "Paying, counting and sharing a phone number",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 6
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l01-u06-i01",
+      "sourcePrompt": "How many are there?",
+      "register": "neutral",
+      "canonical": "ethana irukku?",
+      "acceptedAnswers": [
+        "ethana irukku?",
+        "ethanai irukku?",
+        "ethana irukku",
+        "yethana irukku?"
+      ],
+      "distractors": [
+        "evlo irukku?",
+        "enga irukku?",
+        "eppo irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "ethana",
+          "english": "how many"
+        },
+        {
+          "word": "irukku",
+          "english": "are there"
+        }
+      ],
+      "script": "எத்தனை இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i02",
+      "sourcePrompt": "There are ten.",
+      "register": "neutral",
+      "canonical": "pathu irukku",
+      "acceptedAnswers": [
+        "pathu irukku",
+        "paththu irukku",
+        "patthu irukku",
+        "pathu irukkuthu"
+      ],
+      "distractors": [
+        "onnu irukku",
+        "irubadhu irukku",
+        "pathu illa"
+      ],
+      "tokens": [
+        {
+          "word": "pathu",
+          "english": "ten"
+        },
+        {
+          "word": "irukku",
+          "english": "there are"
+        }
+      ],
+      "script": "பத்து இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i03",
+      "sourcePrompt": "Give me five, please. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "anju kudunga",
+      "acceptedAnswers": [
+        "anju kudunga",
+        "anju kodunga",
+        "aindhu kudunga",
+        "anju tharunga"
+      ],
+      "registerVariant": "anju kudu",
+      "distractors": [
+        "moonu kudunga",
+        "pathu kudunga"
+      ],
+      "tokens": [
+        {
+          "word": "anju",
+          "english": "five"
+        },
+        {
+          "word": "kudunga",
+          "english": "please give"
+        }
+      ],
+      "script": "அஞ்சு குடுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i04",
+      "sourcePrompt": "Twenty rupees.",
+      "register": "neutral",
+      "canonical": "irubadhu roobaa",
+      "acceptedAnswers": [
+        "irubadhu roobaa",
+        "irubathu rooba",
+        "irubadhu rupaa",
+        "irubadhu rubaa"
+      ],
+      "distractors": [
+        "pathu roobaa",
+        "muppadhu roobaa",
+        "irunooru roobaa"
+      ],
+      "tokens": [
+        {
+          "word": "irubadhu",
+          "english": "twenty"
+        },
+        {
+          "word": "roobaa",
+          "english": "rupees"
+        }
+      ],
+      "script": "இருபது ரூபா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i05",
+      "sourcePrompt": "Fifty rupees only.",
+      "register": "neutral",
+      "canonical": "ambadhu roobaa thaan",
+      "acceptedAnswers": [
+        "ambadhu roobaa thaan",
+        "ambathu rooba thaan",
+        "aimbadhu roobaa mattum",
+        "ambadhu rooba mattum"
+      ],
+      "distractors": [
+        "naarpadhu roobaa thaan",
+        "ambadhu roobaa kammi",
+        "arubadhu roobaa thaan"
+      ],
+      "tokens": [
+        {
+          "word": "ambadhu",
+          "english": "fifty"
+        },
+        {
+          "word": "roobaa",
+          "english": "rupees"
+        },
+        {
+          "word": "thaan",
+          "english": "only"
+        }
+      ],
+      "script": "அம்பது ரூபா தான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i06",
+      "sourcePrompt": "It's a hundred rupees.",
+      "register": "neutral",
+      "canonical": "nooru roobaa",
+      "acceptedAnswers": [
+        "nooru roobaa",
+        "nooru rooba",
+        "nuru roobaa",
+        "nooru rupaa"
+      ],
+      "distractors": [
+        "irunooru roobaa",
+        "pathu roobaa",
+        "aayiram roobaa"
+      ],
+      "tokens": [
+        {
+          "word": "nooru",
+          "english": "hundred"
+        },
+        {
+          "word": "roobaa",
+          "english": "rupees"
+        }
+      ],
+      "script": "நூறு ரூபா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i07",
+      "sourcePrompt": "It's five hundred rupees.",
+      "register": "neutral",
+      "canonical": "ainooru roobaa",
+      "acceptedAnswers": [
+        "ainooru roobaa",
+        "anju nooru roobaa",
+        "ainnooru rooba",
+        "ainooru rupaa"
+      ],
+      "distractors": [
+        "moonu nooru roobaa",
+        "anju roobaa",
+        "aayiram roobaa"
+      ],
+      "tokens": [
+        {
+          "word": "ainooru",
+          "english": "five hundred"
+        },
+        {
+          "word": "roobaa",
+          "english": "rupees"
+        }
+      ],
+      "script": "ஐநூறு ரூபா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i08",
+      "sourcePrompt": "It's a thousand rupees.",
+      "register": "neutral",
+      "canonical": "aayiram roobaa",
+      "acceptedAnswers": [
+        "aayiram roobaa",
+        "aayiram rooba",
+        "aayiram rupaa",
+        "ayiram roobaa"
+      ],
+      "distractors": [
+        "nooru roobaa",
+        "pathu aayiram roobaa",
+        "irunooru roobaa"
+      ],
+      "tokens": [
+        {
+          "word": "aayiram",
+          "english": "thousand"
+        },
+        {
+          "word": "roobaa",
+          "english": "rupees"
+        }
+      ],
+      "script": "ஆயிரம் ரூபா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i09",
+      "sourcePrompt": "What's the total?",
+      "register": "neutral",
+      "canonical": "mothama evlo?",
+      "acceptedAnswers": [
+        "mothama evlo?",
+        "mothama evlo",
+        "total evlo?",
+        "motham evlo?"
+      ],
+      "distractors": [
+        "mothama ethana?",
+        "mothama enga?",
+        "mothama eppo?"
+      ],
+      "tokens": [
+        {
+          "word": "mothama",
+          "english": "in total"
+        },
+        {
+          "word": "evlo",
+          "english": "how much"
+        }
+      ],
+      "script": "மொத்தமா எவ்ளோ?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i10",
+      "sourcePrompt": "What's your phone number? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungaloda phone number enna?",
+      "acceptedAnswers": [
+        "ungaloda phone number enna?",
+        "unga phone number enna?",
+        "ungaloda number enna?",
+        "unga number enna?"
+      ],
+      "registerVariant": "unnoda phone number enna?",
+      "distractors": [
+        "ungaloda phone enga?",
+        "ungaloda phone evlo?"
+      ],
+      "tokens": [
+        {
+          "word": "ungaloda",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "phone number",
+          "english": "phone number"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        }
+      ],
+      "script": "உங்களோட போன் நம்பர் என்ன?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i11",
+      "sourcePrompt": "Please note down my number. (to an elder)",
+      "register": "respectful",
+      "canonical": "en number ezhudhikkonga",
+      "acceptedAnswers": [
+        "en number ezhudhikkonga",
+        "en number ezhudhikkunga",
+        "en number ezhuthikkonga",
+        "en number note pannikkonga"
+      ],
+      "registerVariant": "en number ezhudhikko",
+      "distractors": [
+        "en number sollunga",
+        "en number kudunga"
+      ],
+      "tokens": [
+        {
+          "word": "en",
+          "english": "my"
+        },
+        {
+          "word": "number",
+          "english": "number"
+        },
+        {
+          "word": "ezhudhikkonga",
+          "english": "please write down"
+        }
+      ],
+      "script": "என் நம்பர் எழுதிக்கோங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i12",
+      "sourcePrompt": "I don't have any change.",
+      "register": "neutral",
+      "canonical": "enkitta chillarai illa",
+      "acceptedAnswers": [
+        "enkitta chillarai illa",
+        "ennitta chillarai illa",
+        "enakku chillarai illa",
+        "enkitta change illa"
+      ],
+      "distractors": [
+        "enkitta chillarai irukku",
+        "enkitta bag illa",
+        "enkitta thanni illa"
+      ],
+      "tokens": [
+        {
+          "word": "enkitta",
+          "english": "with me"
+        },
+        {
+          "word": "chillarai",
+          "english": "small change"
+        },
+        {
+          "word": "illa",
+          "english": "not"
+        }
+      ],
+      "script": "என்கிட்ட சில்லறை இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i13",
+      "sourcePrompt": "Please count them all. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "ellaathaiyum ennunga",
+      "acceptedAnswers": [
+        "ellaathaiyum ennunga",
+        "ellathaiyum ennunga",
+        "ellaathaiyum enni paarunga",
+        "ellathaiyum enni paarunga"
+      ],
+      "registerVariant": "ellaathaiyum ennu",
+      "distractors": [
+        "ellaathaiyum kudunga",
+        "ellaathaiyum maathunga"
+      ],
+      "tokens": [
+        {
+          "word": "ellaathaiyum",
+          "english": "everything"
+        },
+        {
+          "word": "ennunga",
+          "english": "please count"
+        }
+      ],
+      "script": "எல்லாத்தையும் எண்ணுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i14",
+      "sourcePrompt": "There are three of us.",
+      "register": "neutral",
+      "canonical": "naanga moonu peru",
+      "acceptedAnswers": [
+        "naanga moonu peru",
+        "naanga moonu peru irukkom",
+        "naanga moonu per",
+        "naanga moonu pere"
+      ],
+      "distractors": [
+        "naanga rendu peru",
+        "naanga naalu peru",
+        "naan moonu peru"
+      ],
+      "tokens": [
+        {
+          "word": "naanga",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "moonu",
+          "english": "three"
+        },
+        {
+          "word": "peru",
+          "english": "people"
+        }
+      ],
+      "script": "நாங்க மூணு பேரு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i15",
+      "sourcePrompt": "I need two more.",
+      "register": "neutral",
+      "canonical": "innum rendu venum",
+      "acceptedAnswers": [
+        "innum rendu venum",
+        "inum rendu venum",
+        "innum rendu vena",
+        "innum 2 venum"
+      ],
+      "distractors": [
+        "innum rendu vendaam",
+        "innum onnu venum",
+        "innum konjam venum"
+      ],
+      "tokens": [
+        {
+          "word": "innum",
+          "english": "more"
+        },
+        {
+          "word": "rendu",
+          "english": "two"
+        },
+        {
+          "word": "venum",
+          "english": "needed"
+        }
+      ],
+      "script": "இன்னும் ரெண்டு வேணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i16",
+      "sourcePrompt": "Is that all?",
+      "register": "neutral",
+      "canonical": "avlo thaanaa?",
+      "acceptedAnswers": [
+        "avlo thaanaa?",
+        "avlo thaana?",
+        "ithu thaanaa?",
+        "avlo dhaanaa?"
+      ],
+      "distractors": [
+        "innum irukkaa?",
+        "avlo evlo?",
+        "avlo pothumaa?"
+      ],
+      "tokens": [
+        {
+          "word": "avlo",
+          "english": "that much"
+        },
+        {
+          "word": "thaanaa",
+          "english": "only?"
+        }
+      ],
+      "script": "அவ்ளோ தானா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i17",
+      "sourcePrompt": "Here is the money.",
+      "register": "neutral",
+      "canonical": "idho kaasu",
+      "acceptedAnswers": [
+        "idho kaasu",
+        "itho kaasu",
+        "ithaa kaasu",
+        "idhaa kaasu"
+      ],
+      "distractors": [
+        "kaasu illa",
+        "kaasu evlo?",
+        "kaasu kudunga"
+      ],
+      "tokens": [
+        {
+          "word": "idho",
+          "english": "here you are"
+        },
+        {
+          "word": "kaasu",
+          "english": "money"
+        }
+      ],
+      "script": "இதோ காசு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i18",
+      "sourcePrompt": "I'll pay two hundred.",
+      "register": "neutral",
+      "canonical": "irunooru kudukkuren",
+      "acceptedAnswers": [
+        "irunooru kudukkuren",
+        "irunooru tharen",
+        "irunooru kudupen",
+        "irunooru kudukren"
+      ],
+      "distractors": [
+        "moonu nooru kudukkuren",
+        "irunooru venaam",
+        "irunooru illa"
+      ],
+      "tokens": [
+        {
+          "word": "irunooru",
+          "english": "two hundred"
+        },
+        {
+          "word": "kudukkuren",
+          "english": "I will give"
+        }
+      ],
+      "script": "இருநூறு குடுக்குறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i19",
+      "sourcePrompt": "How many people are coming?",
+      "register": "neutral",
+      "canonical": "ethana peru varaanga?",
+      "acceptedAnswers": [
+        "ethana peru varaanga?",
+        "ethana per varaanga?",
+        "ethana peru varanga?",
+        "evlo peru varaanga?"
+      ],
+      "distractors": [
+        "yaaru varaanga?",
+        "eppo varaanga?",
+        "enga varaanga?"
+      ],
+      "tokens": [
+        {
+          "word": "ethana",
+          "english": "how many"
+        },
+        {
+          "word": "peru",
+          "english": "people"
+        },
+        {
+          "word": "varaanga",
+          "english": "are coming"
+        }
+      ],
+      "script": "எத்தன பேரு வராங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u06-i20",
+      "sourcePrompt": "One, two, three, four, five.",
+      "register": "neutral",
+      "canonical": "onnu, rendu, moonu, naalu, anju",
+      "acceptedAnswers": [
+        "onnu, rendu, moonu, naalu, anju",
+        "onnu rendu moonu naalu anju",
+        "onnu rendu moonu naalu aindhu",
+        "onnu, rendu, moonu, naalu, aindhu"
+      ],
+      "distractors": [
+        "anju, naalu, moonu, rendu, onnu",
+        "onnu, moonu, anju, ezhu, onbadhu",
+        "rendu, naalu, aaru, ettu, pathu"
+      ],
+      "tokens": [
+        {
+          "word": "onnu",
+          "english": "one"
+        },
+        {
+          "word": "rendu",
+          "english": "two"
+        },
+        {
+          "word": "moonu",
+          "english": "three"
+        },
+        {
+          "word": "naalu",
+          "english": "four"
+        },
+        {
+          "word": "anju",
+          "english": "five"
+        }
+      ],
+      "script": "ஒண்ணு, ரெண்டு, மூணு, நாலு, அஞ்சு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

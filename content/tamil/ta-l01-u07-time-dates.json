@@ -1,0 +1,659 @@
+{
+  "scenarioId": "ta-l01-u07",
+  "language": "tamil",
+  "title": "Time, days and dates",
+  "subtitle": "Telling the time, naming the day and fixing when to meet",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 7
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l01-u07-i01",
+      "sourcePrompt": "What time is it?",
+      "register": "neutral",
+      "canonical": "ippo time enna?",
+      "acceptedAnswers": [
+        "ippo time enna?",
+        "ippo mani enna?",
+        "ippo time enna",
+        "time enna?"
+      ],
+      "distractors": [
+        "ippo enga?",
+        "ippo evlo?",
+        "ippo yaaru?"
+      ],
+      "tokens": [
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "time",
+          "english": "time"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        }
+      ],
+      "script": "இப்போ டைம் என்ன?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i02",
+      "sourcePrompt": "It's ten o'clock.",
+      "register": "neutral",
+      "canonical": "pathu mani",
+      "acceptedAnswers": [
+        "pathu mani",
+        "pathu mani aachu",
+        "paththu mani",
+        "pathu mani aagudhu"
+      ],
+      "distractors": [
+        "pathu nimisham",
+        "onnu mani",
+        "pathu naal"
+      ],
+      "tokens": [
+        {
+          "word": "pathu",
+          "english": "ten"
+        },
+        {
+          "word": "mani",
+          "english": "o'clock"
+        }
+      ],
+      "script": "பத்து மணி",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i03",
+      "sourcePrompt": "It's half past four.",
+      "register": "neutral",
+      "canonical": "naalarai mani",
+      "acceptedAnswers": [
+        "naalarai mani",
+        "naalarai",
+        "naalara mani",
+        "naalu mani muppadhu"
+      ],
+      "distractors": [
+        "naalu mani",
+        "anjarai mani",
+        "moonarai mani"
+      ],
+      "tokens": [
+        {
+          "word": "naalarai",
+          "english": "half past four"
+        },
+        {
+          "word": "mani",
+          "english": "o'clock"
+        }
+      ],
+      "script": "நாலரை மணி",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i04",
+      "sourcePrompt": "Come at six o'clock. (to a friend)",
+      "register": "casual",
+      "canonical": "aaru manikku vaa",
+      "acceptedAnswers": [
+        "aaru manikku vaa",
+        "aaru mani-ku vaa",
+        "aaru manikku vaada",
+        "6 manikku vaa"
+      ],
+      "registerVariant": "aaru manikku vaanga",
+      "distractors": [
+        "ezhu manikku vaa",
+        "aaru manikku po"
+      ],
+      "tokens": [
+        {
+          "word": "aaru",
+          "english": "six"
+        },
+        {
+          "word": "manikku",
+          "english": "at o'clock"
+        },
+        {
+          "word": "vaa",
+          "english": "come"
+        }
+      ],
+      "script": "ஆறு மணிக்கு வா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i05",
+      "sourcePrompt": "Today is Monday.",
+      "register": "neutral",
+      "canonical": "innikku thingal kizhamai",
+      "acceptedAnswers": [
+        "innikku thingal kizhamai",
+        "innaikku thingal kilamai",
+        "innikku thingalkizhamai",
+        "innikku Monday"
+      ],
+      "distractors": [
+        "innikku sevvaai kizhamai",
+        "naalaikku thingal kizhamai",
+        "innikku njaayiru kizhamai"
+      ],
+      "tokens": [
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "thingal kizhamai",
+          "english": "Monday"
+        }
+      ],
+      "script": "இன்னிக்கு திங்கள் கிழமை",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i06",
+      "sourcePrompt": "Tomorrow is Sunday.",
+      "register": "neutral",
+      "canonical": "naalaikku njaayiru",
+      "acceptedAnswers": [
+        "naalaikku njaayiru",
+        "naalaikku njayiru",
+        "naalaikku Sunday",
+        "naalaikku njaayitrukizhamai"
+      ],
+      "distractors": [
+        "innikku njaayiru",
+        "naalaikku sani",
+        "naalaikku velli"
+      ],
+      "tokens": [
+        {
+          "word": "naalaikku",
+          "english": "tomorrow"
+        },
+        {
+          "word": "njaayiru",
+          "english": "Sunday"
+        }
+      ],
+      "script": "நாளைக்கு ஞாயிறு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i07",
+      "sourcePrompt": "Yesterday I was at home.",
+      "register": "neutral",
+      "canonical": "nethu naan veetla irundhen",
+      "acceptedAnswers": [
+        "nethu naan veetla irundhen",
+        "netru naan veetla irundhen",
+        "nethu naan veetula irundhen",
+        "nethu naan veetla irunthen"
+      ],
+      "distractors": [
+        "nethu naan veetla irukken",
+        "naalaikku naan veetla irupen",
+        "nethu naan veetla illa"
+      ],
+      "tokens": [
+        {
+          "word": "nethu",
+          "english": "yesterday"
+        },
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "veetla",
+          "english": "at home"
+        },
+        {
+          "word": "irundhen",
+          "english": "I was"
+        }
+      ],
+      "script": "நேத்து நான் வீட்ல இருந்தேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i08",
+      "sourcePrompt": "What day is it today?",
+      "register": "neutral",
+      "canonical": "innikku enna kizhamai?",
+      "acceptedAnswers": [
+        "innikku enna kizhamai?",
+        "innikku enna kilamai?",
+        "innikku enna naal?",
+        "innaikku enna kizhamai?"
+      ],
+      "distractors": [
+        "innikku enna time?",
+        "innikku enna thethi?",
+        "naalaikku enna kizhamai?"
+      ],
+      "tokens": [
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "kizhamai",
+          "english": "day of the week"
+        }
+      ],
+      "script": "இன்னிக்கு என்ன கிழமை?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i09",
+      "sourcePrompt": "What's the date today?",
+      "register": "neutral",
+      "canonical": "innikku enna thethi?",
+      "acceptedAnswers": [
+        "innikku enna thethi?",
+        "innaikku enna date?",
+        "innikku enna date?",
+        "innikku thethi enna?"
+      ],
+      "distractors": [
+        "innikku enna kizhamai?",
+        "innikku enna time?",
+        "innikku evlo?"
+      ],
+      "tokens": [
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "thethi",
+          "english": "date"
+        }
+      ],
+      "script": "இன்னிக்கு என்ன தேதி?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i10",
+      "sourcePrompt": "The meeting is on Friday.",
+      "register": "neutral",
+      "canonical": "meeting velli kizhamai",
+      "acceptedAnswers": [
+        "meeting velli kizhamai",
+        "meeting velli kilamai",
+        "meeting Friday",
+        "meeting velli-kizhamai"
+      ],
+      "distractors": [
+        "meeting sani kizhamai",
+        "meeting naalaikku illa",
+        "meeting eppo?"
+      ],
+      "tokens": [
+        {
+          "word": "meeting",
+          "english": "meeting"
+        },
+        {
+          "word": "velli kizhamai",
+          "english": "Friday"
+        }
+      ],
+      "script": "மீட்டிங் வெள்ளிக்கிழமை",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i11",
+      "sourcePrompt": "I'll come in the morning.",
+      "register": "neutral",
+      "canonical": "naan kaalaila varen",
+      "acceptedAnswers": [
+        "naan kaalaila varen",
+        "naan kaalaiyila varen",
+        "kaalaila varen",
+        "naan kaalaila varuven"
+      ],
+      "distractors": [
+        "naan saayangaalam varen",
+        "naan raathiri varen",
+        "naan kaalaila vandhen"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "kaalaila",
+          "english": "in the morning"
+        },
+        {
+          "word": "varen",
+          "english": "I will come"
+        }
+      ],
+      "script": "நான் காலைல வரேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i12",
+      "sourcePrompt": "Let's meet in the evening.",
+      "register": "neutral",
+      "canonical": "saayangaalam paakkalam",
+      "acceptedAnswers": [
+        "saayangaalam paakkalam",
+        "saayankaalam paakkalaam",
+        "sayangalam paakkalam",
+        "saayangaalam kalaam"
+      ],
+      "distractors": [
+        "kaalaila paakkalam",
+        "saayangaalam paakka maattaen",
+        "saayangaalam vandhen"
+      ],
+      "tokens": [
+        {
+          "word": "saayangaalam",
+          "english": "evening"
+        },
+        {
+          "word": "paakkalam",
+          "english": "let's meet"
+        }
+      ],
+      "script": "சாயங்காலம் பாக்கலாம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i13",
+      "sourcePrompt": "I get up at six.",
+      "register": "neutral",
+      "canonical": "naan aaru manikku ezhundhiruppen",
+      "acceptedAnswers": [
+        "naan aaru manikku ezhundhiruppen",
+        "naan aaru manikku ezhundhirippen",
+        "naan aaru manikku ezhunthiruppen",
+        "aaru manikku ezhundhiruppen"
+      ],
+      "distractors": [
+        "naan aaru manikku thoongiduven",
+        "naan aaru manikku saappiduven",
+        "naan aaru manikku ezhundhirikka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "aaru manikku",
+          "english": "at six"
+        },
+        {
+          "word": "ezhundhiruppen",
+          "english": "get up"
+        }
+      ],
+      "script": "நான் ஆறு மணிக்கு எழுந்திருப்பேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i14",
+      "sourcePrompt": "What time does it start?",
+      "register": "neutral",
+      "canonical": "ethana manikku aarambikkum?",
+      "acceptedAnswers": [
+        "ethana manikku aarambikkum?",
+        "enna time-ku aarambikkum?",
+        "ethana manikku start aagum?",
+        "eppo aarambikkum?"
+      ],
+      "distractors": [
+        "ethana manikku mudiyum?",
+        "enga aarambikkum?",
+        "evlo neram aagum?"
+      ],
+      "tokens": [
+        {
+          "word": "ethana manikku",
+          "english": "at what time"
+        },
+        {
+          "word": "aarambikkum",
+          "english": "will start"
+        }
+      ],
+      "script": "எத்தன மணிக்கு ஆரம்பிக்கும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i15",
+      "sourcePrompt": "I'm late.",
+      "register": "neutral",
+      "canonical": "enakku late aachu",
+      "acceptedAnswers": [
+        "enakku late aachu",
+        "enakku late aayiduchu",
+        "enakku late aagiduchu",
+        "enakku neram aachu"
+      ],
+      "distractors": [
+        "enakku late-aa venaam",
+        "naan munnaadi vandhuten",
+        "enakku neram irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "late",
+          "english": "late"
+        },
+        {
+          "word": "aachu",
+          "english": "has become"
+        }
+      ],
+      "script": "எனக்கு லேட் ஆச்சு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i16",
+      "sourcePrompt": "We have time.",
+      "register": "neutral",
+      "canonical": "namakku neram irukku",
+      "acceptedAnswers": [
+        "namakku neram irukku",
+        "namakku time irukku",
+        "nammakku neram irukku",
+        "namma kitta time irukku"
+      ],
+      "distractors": [
+        "namakku neram illa",
+        "namakku neram venaam",
+        "namakku neram evlo?"
+      ],
+      "tokens": [
+        {
+          "word": "namakku",
+          "english": "for us (including you)"
+        },
+        {
+          "word": "neram",
+          "english": "time"
+        },
+        {
+          "word": "irukku",
+          "english": "there is"
+        }
+      ],
+      "script": "நமக்கு நேரம் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i17",
+      "sourcePrompt": "Wait five minutes. (to a friend)",
+      "register": "casual",
+      "canonical": "anju nimisham wait pannu",
+      "acceptedAnswers": [
+        "anju nimisham wait pannu",
+        "anju nimisham wait pannu da",
+        "five minutes wait pannu",
+        "anju nimisham kaathiru"
+      ],
+      "registerVariant": "anju nimisham wait pannunga",
+      "distractors": [
+        "anju nimisham munnaadi vaa",
+        "anju nimisham aachu"
+      ],
+      "tokens": [
+        {
+          "word": "anju nimisham",
+          "english": "five minutes"
+        },
+        {
+          "word": "wait pannu",
+          "english": "wait (do)"
+        }
+      ],
+      "script": "அஞ்சு நிமிஷம் வெயிட் பண்ணு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i18",
+      "sourcePrompt": "What time will you come? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga ethana manikku varuveenga?",
+      "acceptedAnswers": [
+        "neenga ethana manikku varuveenga?",
+        "neenga ethana manikku varuveenga",
+        "neenga eppo varuveenga?",
+        "neenga enna time-ku varuveenga?"
+      ],
+      "registerVariant": "nee ethana manikku varuva?",
+      "distractors": [
+        "neenga ethana manikku poveenga?",
+        "neenga evlo neram irupeenga?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "ethana manikku",
+          "english": "at what time"
+        },
+        {
+          "word": "varuveenga",
+          "english": "will come"
+        }
+      ],
+      "script": "நீங்க எத்தன மணிக்கு வருவீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i19",
+      "sourcePrompt": "For how many days?",
+      "register": "neutral",
+      "canonical": "ethana naal?",
+      "acceptedAnswers": [
+        "ethana naal?",
+        "ethana naalu?",
+        "ethana naalaikku?",
+        "evlo naal?"
+      ],
+      "distractors": [
+        "ethana mani?",
+        "ethana peru?",
+        "ethana varusham?"
+      ],
+      "tokens": [
+        {
+          "word": "ethana",
+          "english": "how many"
+        },
+        {
+          "word": "naal",
+          "english": "days"
+        }
+      ],
+      "script": "எத்தன நாள்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u07-i20",
+      "sourcePrompt": "Next week.",
+      "register": "neutral",
+      "canonical": "adutha vaaram",
+      "acceptedAnswers": [
+        "adutha vaaram",
+        "adutha week",
+        "adhutha vaaram",
+        "adutha vaarathula"
+      ],
+      "distractors": [
+        "pona vaaram",
+        "adutha maasam",
+        "innikku"
+      ],
+      "tokens": [
+        {
+          "word": "adutha",
+          "english": "next"
+        },
+        {
+          "word": "vaaram",
+          "english": "week"
+        }
+      ],
+      "script": "அடுத்த வாரம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

@@ -1,0 +1,715 @@
+{
+  "scenarioId": "ta-l01-u08",
+  "language": "tamil",
+  "title": "Introducing yourself",
+  "subtitle": "Name, home town, work, languages and a little about you",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 8
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l01-u08-i01",
+      "sourcePrompt": "My hometown is Vijayawada.",
+      "register": "neutral",
+      "canonical": "en ooru Vijayawada",
+      "acceptedAnswers": [
+        "en ooru Vijayawada",
+        "en ooru Vijayawada thaan",
+        "enga ooru Vijayawada",
+        "en sondha ooru Vijayawada"
+      ],
+      "distractors": [
+        "en peru Vijayawada",
+        "en ooru Madurai",
+        "en veedu Vijayawada-la illa"
+      ],
+      "tokens": [
+        {
+          "word": "en",
+          "english": "my"
+        },
+        {
+          "word": "ooru",
+          "english": "hometown"
+        },
+        {
+          "word": "Vijayawada",
+          "english": "Vijayawada"
+        }
+      ],
+      "script": "என் ஊரு விஜயவாடா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i02",
+      "sourcePrompt": "Where is your hometown? (to an elder)",
+      "register": "respectful",
+      "canonical": "unga ooru enga?",
+      "acceptedAnswers": [
+        "unga ooru enga?",
+        "unga sondha ooru enga?",
+        "ungaloda ooru enga?",
+        "unga ooru enga irukku?"
+      ],
+      "registerVariant": "un ooru enga?",
+      "distractors": [
+        "unga ooru enna?",
+        "unga ooru evlo?"
+      ],
+      "tokens": [
+        {
+          "word": "unga",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "ooru",
+          "english": "town"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        }
+      ],
+      "script": "உங்க ஊரு எங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i03",
+      "sourcePrompt": "I'm a teacher.",
+      "register": "neutral",
+      "canonical": "naan oru teacher",
+      "acceptedAnswers": [
+        "naan oru teacher",
+        "naan teacher",
+        "naan oru aasiriyar",
+        "naan oru teacher-a irukken"
+      ],
+      "distractors": [
+        "naan oru doctor",
+        "naan oru student",
+        "naan teacher illa"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "oru",
+          "english": "a"
+        },
+        {
+          "word": "teacher",
+          "english": "teacher"
+        }
+      ],
+      "script": "நான் ஒரு டீச்சர்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i04",
+      "sourcePrompt": "I'm a student.",
+      "register": "neutral",
+      "canonical": "naan oru student",
+      "acceptedAnswers": [
+        "naan oru student",
+        "naan student",
+        "naan oru maanavar",
+        "naan college student"
+      ],
+      "distractors": [
+        "naan oru teacher",
+        "naan oru driver",
+        "naan student illa"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "oru",
+          "english": "a"
+        },
+        {
+          "word": "student",
+          "english": "student"
+        }
+      ],
+      "script": "நான் ஒரு ஸ்டூடென்ட்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i05",
+      "sourcePrompt": "What do you do for work? (to a friend)",
+      "register": "casual",
+      "canonical": "nee enna velai paakkura?",
+      "acceptedAnswers": [
+        "nee enna velai paakkura?",
+        "nee enna velai pakkura?",
+        "un velai enna?",
+        "nee enna job pannura?"
+      ],
+      "registerVariant": "neenga enna velai paakkureenga?",
+      "distractors": [
+        "nee enga velai paakkura?",
+        "nee enna saappidura?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "velai paakkura",
+          "english": "do work"
+        }
+      ],
+      "script": "நீ என்ன வேலை பாக்குற?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i06",
+      "sourcePrompt": "I work in a bank.",
+      "register": "neutral",
+      "canonical": "naan bank-la velai paakkuren",
+      "acceptedAnswers": [
+        "naan bank-la velai paakkuren",
+        "naan bank la velai pakkuren",
+        "naan bank-la velai seiyuren",
+        "naan bank-la velai pannuren"
+      ],
+      "distractors": [
+        "naan bank-ku poren",
+        "naan bank-la irundhu varen",
+        "naan bank-la saappiduren"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "bank-la",
+          "english": "in a bank"
+        },
+        {
+          "word": "velai paakkuren",
+          "english": "work"
+        }
+      ],
+      "script": "நான் பேங்க்ல வேலை பாக்குறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i07",
+      "sourcePrompt": "I speak Telugu and a little Tamil.",
+      "register": "neutral",
+      "canonical": "naan Telugu pesuven, konjam Tamil pesuven",
+      "acceptedAnswers": [
+        "naan Telugu pesuven, konjam Tamil pesuven",
+        "naan Telugu pesuven konjam Tamil pesuven",
+        "naan Telugu pesuven, konjam Tamil-um pesuven",
+        "naan Telugu-um konjam Tamil-um pesuven"
+      ],
+      "distractors": [
+        "naan Tamil pesuven, konjam Telugu pesuven",
+        "naan Telugu pesa maatten",
+        "naan Telugu-um Hindi-um pesuven"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "Telugu",
+          "english": "Telugu"
+        },
+        {
+          "word": "pesuven",
+          "english": "I speak"
+        },
+        {
+          "word": "konjam",
+          "english": "a little"
+        },
+        {
+          "word": "Tamil",
+          "english": "Tamil"
+        }
+      ],
+      "script": "நான் தெலுங்கு பேசுவேன், கொஞ்சம் தமிழ் பேசுவேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i08",
+      "sourcePrompt": "I'm learning Tamil.",
+      "register": "neutral",
+      "canonical": "naan Tamil kathukkittu irukken",
+      "acceptedAnswers": [
+        "naan Tamil kathukkittu irukken",
+        "naan Tamil kathukitu irukken",
+        "naan Tamil katthukkitu irukken",
+        "naan Tamil kathukkuren"
+      ],
+      "distractors": [
+        "naan Tamil sollikkodukkuren",
+        "naan Tamil pesa maatten",
+        "naan Tamil kathukitten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "Tamil",
+          "english": "Tamil"
+        },
+        {
+          "word": "kathukkittu irukken",
+          "english": "am learning"
+        }
+      ],
+      "script": "நான் தமிழ் கத்துக்கிட்டு இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i09",
+      "sourcePrompt": "My friend is teaching me.",
+      "register": "neutral",
+      "canonical": "en friend enakku solli tharaanga",
+      "acceptedAnswers": [
+        "en friend enakku solli tharaanga",
+        "en friend enakku solli kudukkaanga",
+        "en friend enakku kathu tharaanga",
+        "en friend enakku solli tharanga"
+      ],
+      "distractors": [
+        "en friend enakku solli thara maattaanga",
+        "naan en friend-ku solli tharen",
+        "en friend enakku kaasu tharaanga"
+      ],
+      "tokens": [
+        {
+          "word": "en friend",
+          "english": "my friend"
+        },
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "solli tharaanga",
+          "english": "is teaching"
+        }
+      ],
+      "script": "என் ஃபிரண்ட் எனக்கு சொல்லி தராங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i10",
+      "sourcePrompt": "Nice to meet you too.",
+      "register": "neutral",
+      "canonical": "enakkum santhosham",
+      "acceptedAnswers": [
+        "enakkum santhosham",
+        "enakkum romba santhosham",
+        "enakkum magizhchi",
+        "enakkum sandhosham"
+      ],
+      "distractors": [
+        "enakku theriyala",
+        "enakkum kopam",
+        "enakku santhosham illa"
+      ],
+      "tokens": [
+        {
+          "word": "enakkum",
+          "english": "to me too"
+        },
+        {
+          "word": "santhosham",
+          "english": "happiness"
+        }
+      ],
+      "script": "எனக்கும் சந்தோஷம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i11",
+      "sourcePrompt": "I'm twenty-eight years old.",
+      "register": "neutral",
+      "canonical": "enakku irubathettu vayasu",
+      "acceptedAnswers": [
+        "enakku irubathettu vayasu",
+        "enakku irubaththettu vayasu",
+        "enakku 28 vayasu",
+        "enakku irubathettu"
+      ],
+      "distractors": [
+        "enakku irubathu vayasu",
+        "enakku muppathu vayasu",
+        "enakku irubathettu naal"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "irubathettu",
+          "english": "twenty-eight"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "எனக்கு இருபத்தெட்டு வயசு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i12",
+      "sourcePrompt": "Are you married? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku kalyaanam aayiducha?",
+      "acceptedAnswers": [
+        "unakku kalyaanam aayiducha?",
+        "unakku kalyaanam aachaa?",
+        "unakku kalyanam aayiducha?",
+        "nee married-aa?"
+      ],
+      "registerVariant": "ungalukku kalyaanam aayiducha?",
+      "distractors": [
+        "unakku kalyaanam venumaa?",
+        "unakku vayasu evlo?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "kalyaanam",
+          "english": "wedding"
+        },
+        {
+          "word": "aayiducha",
+          "english": "has it happened?"
+        }
+      ],
+      "script": "உனக்கு கல்யாணம் ஆயிடுச்சா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i13",
+      "sourcePrompt": "I have an elder brother and a younger sister.",
+      "register": "neutral",
+      "canonical": "enakku oru annan, oru thangachi irukkaanga",
+      "acceptedAnswers": [
+        "enakku oru annan, oru thangachi irukkaanga",
+        "enakku oru annan oru thangachi irukkaanga",
+        "enakku oru annan, oru thangai irukkaanga",
+        "enakku annan thangachi irukkaanga"
+      ],
+      "distractors": [
+        "enakku akka thambi irukkaanga",
+        "enakku annan thangachi illa",
+        "enakku oru annan, oru thangachi venum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "oru annan",
+          "english": "an elder brother"
+        },
+        {
+          "word": "oru thangachi",
+          "english": "a younger sister"
+        },
+        {
+          "word": "irukkaanga",
+          "english": "there are"
+        }
+      ],
+      "script": "எனக்கு ஒரு அண்ணன், ஒரு தங்கச்சி இருக்காங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i14",
+      "sourcePrompt": "I like cricket.",
+      "register": "neutral",
+      "canonical": "enakku cricket pidikkum",
+      "acceptedAnswers": [
+        "enakku cricket pidikkum",
+        "enakku cricket romba pidikkum",
+        "enakku cricket pudikkum",
+        "enakku cricket pidikkudhu"
+      ],
+      "distractors": [
+        "enakku cricket theriyaadhu",
+        "enakku cricket pidikkaadhu",
+        "enakku football pidikkum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "cricket",
+          "english": "cricket"
+        },
+        {
+          "word": "pidikkum",
+          "english": "likes"
+        }
+      ],
+      "script": "எனக்கு கிரிக்கெட் பிடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i15",
+      "sourcePrompt": "Do you like it here? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku inga pidichirukkaa?",
+      "acceptedAnswers": [
+        "ungalukku inga pidichirukkaa?",
+        "ungalukku inga pudichirukka?",
+        "ungalukku inga pidichirukkaa",
+        "ungalukku inga nalla irukkaa?"
+      ],
+      "registerVariant": "unakku inga pidichirukkaa?",
+      "distractors": [
+        "ungalukku inga theriyumaa?",
+        "ungalukku inga eppo vandheenga?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "pidichirukkaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "உங்களுக்கு இங்க பிடிச்சிருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i16",
+      "sourcePrompt": "I came here last year.",
+      "register": "neutral",
+      "canonical": "naan poona varusham inga vandhen",
+      "acceptedAnswers": [
+        "naan poona varusham inga vandhen",
+        "naan pona varusham inga vandhen",
+        "naan poona varusham inga vandhuten",
+        "naan kadantha varusham inga vandhen"
+      ],
+      "distractors": [
+        "naan adutha varusham inga varuven",
+        "naan inga irukken",
+        "naan poona varusham inga illa"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "poona varusham",
+          "english": "last year"
+        },
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "vandhen",
+          "english": "came"
+        }
+      ],
+      "script": "நான் போன வருஷம் இங்க வந்தேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i17",
+      "sourcePrompt": "How long have you lived here? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga inga evlo naala irukkeenga?",
+      "acceptedAnswers": [
+        "neenga inga evlo naala irukkeenga?",
+        "neenga inga evlo naala irukeenga?",
+        "neenga evlo naala inga irukkeenga?",
+        "neenga inga evlo kaalama irukkeenga?"
+      ],
+      "registerVariant": "nee inga evlo naala irukka?",
+      "distractors": [
+        "neenga inga eppo vandheenga?",
+        "neenga enga irukkeenga?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "evlo naala",
+          "english": "for how long"
+        },
+        {
+          "word": "irukkeenga",
+          "english": "are staying"
+        }
+      ],
+      "script": "நீங்க இங்க எவ்ளோ நாளா இருக்கீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i18",
+      "sourcePrompt": "Let me introduce myself.",
+      "register": "neutral",
+      "canonical": "naan ennai arimugam pannikkuren",
+      "acceptedAnswers": [
+        "naan ennai arimugam pannikkuren",
+        "naan enna arimugam pannikuren",
+        "naan ennai arimugam pannikiren",
+        "naan arimugam pannikkuren"
+      ],
+      "distractors": [
+        "naan unnai arimugam pannuren",
+        "naan arimugam pannaama poren",
+        "naan arimugam venaam"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "ennai",
+          "english": "myself"
+        },
+        {
+          "word": "arimugam pannikkuren",
+          "english": "introduce"
+        }
+      ],
+      "script": "நான் என்னை அறிமுகம் பண்ணிக்கிறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i19",
+      "sourcePrompt": "These are my parents.",
+      "register": "neutral",
+      "canonical": "ivanga en amma, appa",
+      "acceptedAnswers": [
+        "ivanga en amma, appa",
+        "ivanga en amma appa",
+        "ivanga en parents",
+        "idhu en amma appa"
+      ],
+      "distractors": [
+        "ivanga en akka, annan",
+        "ivanga en paati, thaatha",
+        "ivanga en amma illa"
+      ],
+      "tokens": [
+        {
+          "word": "ivanga",
+          "english": "these people"
+        },
+        {
+          "word": "en",
+          "english": "my"
+        },
+        {
+          "word": "amma",
+          "english": "mother"
+        },
+        {
+          "word": "appa",
+          "english": "father"
+        }
+      ],
+      "script": "இவங்க என் அம்மா, அப்பா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u08-i20",
+      "sourcePrompt": "It's nice to be here.",
+      "register": "neutral",
+      "canonical": "inga irukkardhu santhosham",
+      "acceptedAnswers": [
+        "inga irukkardhu santhosham",
+        "inga irukkardhu romba santhosham",
+        "inga irukkaradhu santhosham",
+        "inga iruppadhu santhosham"
+      ],
+      "distractors": [
+        "inga irukkardhu kashtam",
+        "inga irukkardhu late",
+        "inga irukkardhu illa"
+      ],
+      "tokens": [
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "irukkardhu",
+          "english": "being"
+        },
+        {
+          "word": "santhosham",
+          "english": "happiness"
+        }
+      ],
+      "script": "இங்க இருக்கறது சந்தோஷம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

@@ -1,0 +1,659 @@
+{
+  "scenarioId": "ta-l01-u11",
+  "language": "tamil",
+  "title": "People and pronouns",
+  "subtitle": "I, you, he, she, they, both kinds of we, this and that",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 11
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l01-u11-i01",
+      "sourcePrompt": "I am here.",
+      "register": "neutral",
+      "canonical": "naan inga irukken",
+      "acceptedAnswers": [
+        "naan inga irukken",
+        "naan inga thaan irukken",
+        "naan inga iruken",
+        "naan ingae irukken"
+      ],
+      "distractors": [
+        "naan inga illa",
+        "naan inga varuven",
+        "naan inga vandhen"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "irukken",
+          "english": "am"
+        }
+      ],
+      "script": "நான் இங்க இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i02",
+      "sourcePrompt": "You're right. (to a friend)",
+      "register": "casual",
+      "canonical": "nee solradhu sari",
+      "acceptedAnswers": [
+        "nee solradhu sari",
+        "nee solrathu sari",
+        "nee sonnadhu sari",
+        "nee solradhu correct"
+      ],
+      "registerVariant": "neenga solradhu sari",
+      "distractors": [
+        "nee solradhu thappu",
+        "nee solradhu puriyala"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "solradhu",
+          "english": "what you say"
+        },
+        {
+          "word": "sari",
+          "english": "right"
+        }
+      ],
+      "script": "நீ சொல்றது சரி",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i03",
+      "sourcePrompt": "He is my brother.",
+      "register": "neutral",
+      "canonical": "avan en annan",
+      "acceptedAnswers": [
+        "avan en annan",
+        "avan en annan thaan",
+        "avar en annan",
+        "avan en anna"
+      ],
+      "distractors": [
+        "avan en thambi",
+        "avan en appa",
+        "avan en nanban"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "en",
+          "english": "my"
+        },
+        {
+          "word": "annan",
+          "english": "elder brother"
+        }
+      ],
+      "script": "அவன் என் அண்ணன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i04",
+      "sourcePrompt": "She is my sister.",
+      "register": "neutral",
+      "canonical": "ava en thangachi",
+      "acceptedAnswers": [
+        "ava en thangachi",
+        "aval en thangachi",
+        "ava en thangai",
+        "ava en sister"
+      ],
+      "distractors": [
+        "ava en akka",
+        "ava en amma",
+        "ava en friend"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "en",
+          "english": "my"
+        },
+        {
+          "word": "thangachi",
+          "english": "younger sister"
+        }
+      ],
+      "script": "அவ என் தங்கச்சி",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i05",
+      "sourcePrompt": "They are my neighbours.",
+      "register": "neutral",
+      "canonical": "avanga en neighbours",
+      "acceptedAnswers": [
+        "avanga en neighbours",
+        "avanga en neighbour",
+        "avanga enga neighbours",
+        "avanga en pakkathu veettukkaaranga"
+      ],
+      "distractors": [
+        "avanga en friends",
+        "avanga en relatives",
+        "avanga en teachers"
+      ],
+      "tokens": [
+        {
+          "word": "avanga",
+          "english": "they"
+        },
+        {
+          "word": "en",
+          "english": "my"
+        },
+        {
+          "word": "neighbours",
+          "english": "neighbours"
+        }
+      ],
+      "script": "அவங்க என் நெய்பர்ஸ்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i06",
+      "sourcePrompt": "Let's go. (both of us)",
+      "register": "neutral",
+      "canonical": "naama pogalaam",
+      "acceptedAnswers": [
+        "naama pogalaam",
+        "naama pogalam",
+        "naama poyidalaam",
+        "naama kelambalaam"
+      ],
+      "distractors": [
+        "naanga pogalaam",
+        "naama poga maattom",
+        "naama vandhom"
+      ],
+      "tokens": [
+        {
+          "word": "naama",
+          "english": "we (including you)"
+        },
+        {
+          "word": "pogalaam",
+          "english": "let's go"
+        }
+      ],
+      "script": "நாம போகலாம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i07",
+      "sourcePrompt": "We are going. (not including you)",
+      "register": "neutral",
+      "canonical": "naanga porom",
+      "acceptedAnswers": [
+        "naanga porom",
+        "naanga poroom",
+        "naanga poromm",
+        "naanga poreom"
+      ],
+      "distractors": [
+        "naama pogalaam",
+        "naanga vandhom",
+        "naanga poga maattom"
+      ],
+      "tokens": [
+        {
+          "word": "naanga",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "porom",
+          "english": "are going"
+        }
+      ],
+      "script": "நாங்க போறோம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i08",
+      "sourcePrompt": "Are you coming? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga varreengala?",
+      "acceptedAnswers": [
+        "neenga varreengala?",
+        "neenga varreengala",
+        "neenga varuveengala?",
+        "neenga vareengala?"
+      ],
+      "registerVariant": "nee varriyaa?",
+      "distractors": [
+        "neenga poreengala?",
+        "neenga vandheengala?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "varreengala",
+          "english": "are you coming?"
+        }
+      ],
+      "script": "நீங்க வர்றீங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i09",
+      "sourcePrompt": "This is mine.",
+      "register": "neutral",
+      "canonical": "idhu ennodadhu",
+      "acceptedAnswers": [
+        "idhu ennodadhu",
+        "idhu ennoda",
+        "idhu en-dhu",
+        "idhu enakku"
+      ],
+      "distractors": [
+        "idhu ungaloda",
+        "idhu avanoda",
+        "idhu yaarodadhu?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "ennodadhu",
+          "english": "mine"
+        }
+      ],
+      "script": "இது என்னோடது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i10",
+      "sourcePrompt": "That is yours. (to a friend)",
+      "register": "casual",
+      "canonical": "adhu unnodadhu",
+      "acceptedAnswers": [
+        "adhu unnodadhu",
+        "adhu unnoda",
+        "adhu un-dhu",
+        "athu unnodadhu"
+      ],
+      "registerVariant": "adhu ungalodadhu",
+      "distractors": [
+        "adhu ennodadhu",
+        "adhu avanoda"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "unnodadhu",
+          "english": "yours (casual)"
+        }
+      ],
+      "script": "அது உன்னோடது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i11",
+      "sourcePrompt": "Who is that man?",
+      "register": "neutral",
+      "canonical": "avar yaaru?",
+      "acceptedAnswers": [
+        "avar yaaru?",
+        "avar yaaru",
+        "avaru yaaru?",
+        "avanga yaaru?"
+      ],
+      "distractors": [
+        "avar enga?",
+        "avar enna?",
+        "avar eppo?"
+      ],
+      "tokens": [
+        {
+          "word": "avar",
+          "english": "he (respectful)"
+        },
+        {
+          "word": "yaaru",
+          "english": "who"
+        }
+      ],
+      "script": "அவர் யாரு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i12",
+      "sourcePrompt": "Who is that woman?",
+      "register": "neutral",
+      "canonical": "ava yaaru?",
+      "acceptedAnswers": [
+        "ava yaaru?",
+        "aval yaaru?",
+        "avanga yaaru?",
+        "ava yaaru"
+      ],
+      "distractors": [
+        "ava enga?",
+        "ava enna?",
+        "ava eppo?"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "yaaru",
+          "english": "who"
+        }
+      ],
+      "script": "அவ யாரு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i13",
+      "sourcePrompt": "Whose is this?",
+      "register": "neutral",
+      "canonical": "idhu yaarodadhu?",
+      "acceptedAnswers": [
+        "idhu yaarodadhu?",
+        "idhu yaaroda?",
+        "idhu yaarudhu?",
+        "idhu yaarukku?"
+      ],
+      "distractors": [
+        "idhu ennodadhu",
+        "idhu enga?",
+        "idhu eppo?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "yaarodadhu",
+          "english": "whose"
+        }
+      ],
+      "script": "இது யாரோடது?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i14",
+      "sourcePrompt": "I know him.",
+      "register": "neutral",
+      "canonical": "enakku avana theriyum",
+      "acceptedAnswers": [
+        "enakku avana theriyum",
+        "enakku avara theriyum",
+        "naan avana ariven",
+        "enakku avan theriyum"
+      ],
+      "distractors": [
+        "enakku avana theriyaadhu",
+        "enakku ava theriyum",
+        "enakku avanga theriyum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "avana",
+          "english": "him"
+        },
+        {
+          "word": "theriyum",
+          "english": "know"
+        }
+      ],
+      "script": "எனக்கு அவனை தெரியும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i15",
+      "sourcePrompt": "I don't know her.",
+      "register": "neutral",
+      "canonical": "enakku avala theriyaadhu",
+      "acceptedAnswers": [
+        "enakku avala theriyaadhu",
+        "enakku avala theriyadhu",
+        "enakku aval theriyaadhu",
+        "enakku avala theriyala"
+      ],
+      "distractors": [
+        "enakku avala theriyum",
+        "enakku avana theriyaadhu",
+        "enakku avanga theriyaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "avala",
+          "english": "her"
+        },
+        {
+          "word": "theriyaadhu",
+          "english": "don't know"
+        }
+      ],
+      "script": "எனக்கு அவளை தெரியாது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i16",
+      "sourcePrompt": "They are not here.",
+      "register": "neutral",
+      "canonical": "avanga inga illa",
+      "acceptedAnswers": [
+        "avanga inga illa",
+        "avanga ingae illa",
+        "avanga inga illai",
+        "avanga inga irukkala"
+      ],
+      "distractors": [
+        "avanga inga irukkaanga",
+        "avanga anga illa",
+        "avanga inga varuvaanga"
+      ],
+      "tokens": [
+        {
+          "word": "avanga",
+          "english": "they"
+        },
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "illa",
+          "english": "not"
+        }
+      ],
+      "script": "அவங்க இங்க இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i17",
+      "sourcePrompt": "Both of us are tired.",
+      "register": "neutral",
+      "canonical": "naanga rendu perum tired-a irukkom",
+      "acceptedAnswers": [
+        "naanga rendu perum tired-a irukkom",
+        "naanga rendu perum tired-aa irukkom",
+        "naanga rendu perum kalaippaa irukkom",
+        "naanga rendu perum tired"
+      ],
+      "distractors": [
+        "naanga rendu perum saappiduvom",
+        "naanga rendu perum tired-aa illa",
+        "naanga rendu perum ponom"
+      ],
+      "tokens": [
+        {
+          "word": "naanga",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "rendu perum",
+          "english": "both"
+        },
+        {
+          "word": "tired-a",
+          "english": "tired"
+        },
+        {
+          "word": "irukkom",
+          "english": "are"
+        }
+      ],
+      "script": "நாங்க ரெண்டு பேரும் டயர்டா இருக்கோம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i18",
+      "sourcePrompt": "Is this yours? (to an elder)",
+      "register": "respectful",
+      "canonical": "idhu ungalodadhaa?",
+      "acceptedAnswers": [
+        "idhu ungalodadhaa?",
+        "idhu ungalodadha?",
+        "idhu ungaloda dhaa?",
+        "idhu ungaloda-nga?"
+      ],
+      "registerVariant": "idhu unnodadhaa?",
+      "distractors": [
+        "idhu ungalukku venumaa?",
+        "idhu ungaloda enna?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "ungalodadhaa",
+          "english": "is it yours (respectful)?"
+        }
+      ],
+      "script": "இது உங்களோடதா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i19",
+      "sourcePrompt": "He is a good person.",
+      "register": "neutral",
+      "canonical": "avar nalla manushan",
+      "acceptedAnswers": [
+        "avar nalla manushan",
+        "avan nalla manushan",
+        "avar nalla aalu",
+        "avar romba nalla manushar"
+      ],
+      "distractors": [
+        "avar romba periyavar",
+        "avar nalla velai",
+        "avar kettavar"
+      ],
+      "tokens": [
+        {
+          "word": "avar",
+          "english": "he (respectful)"
+        },
+        {
+          "word": "nalla",
+          "english": "good"
+        },
+        {
+          "word": "manushan",
+          "english": "person"
+        }
+      ],
+      "script": "அவர் நல்ல மனுஷன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u11-i20",
+      "sourcePrompt": "Who is there?",
+      "register": "neutral",
+      "canonical": "yaaru anga?",
+      "acceptedAnswers": [
+        "yaaru anga?",
+        "anga yaaru?",
+        "yaaru adhu?",
+        "yaaru anga irukkaanga?"
+      ],
+      "distractors": [
+        "enna anga?",
+        "enga anga?",
+        "evlo anga?"
+      ],
+      "tokens": [
+        {
+          "word": "yaaru",
+          "english": "who"
+        },
+        {
+          "word": "anga",
+          "english": "there"
+        }
+      ],
+      "script": "யாரு அங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
