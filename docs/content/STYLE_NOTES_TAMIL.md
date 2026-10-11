@@ -59,3 +59,21 @@ something new. This document holds no Tamil: examples are cited by item id, so o
 - Whether the casual share is too low in Level 1 (about 8% casual, 26% respectful, 66% with no you-form against
   the syllabus target of 40/40/20). Level 1 is dominated by statements; from Level 2 on, more questions to a
   friend will be written to move the mix.
+
+## Level 2 drafting notes (2026-10-12, unreviewed)
+
+Level 2 (`ta-l02-u01` to `ta-l02-u12`, 240 phrases) was drafted before Level 1 was reviewed, at the owner's request,
+so it follows the rules above as they stood and may repeat any mistake you correct in Level 1. When you review
+Level 1, expect the same corrections to apply to Level 2 and add them here.
+
+- **Pattern wrong options.** From Level 2 each item has at least one wrong option that differs only by the
+  pattern taught (past or future instead of present, a negative, the other person or gender). Check these first:
+  a pattern option that is also a natural correct answer must be changed.
+- **Register mix.** Level 2 is about 20% casual, 14% respectful and 66% with no you-form against the syllabus
+  target of 40/40/20 (Level 1 was 8/26/66). Statements about things and people have no you-form, so the
+  share cannot reach the target unless more questions to a friend or an elder are written; say if you want
+  Level 3 skewed that way.
+- **Loanwords used as spoken** (phone, bus, shirt, weather, boss, charger, parking, ATM, exit, jacket and
+  similar) with the usual light verbs; correct any that you would say in Tamil.
+- Items I am least sure of: ta-l02-u01-i04 to i06, ta-l02-u02-i15, ta-l02-u04-i11, ta-l02-u06-i06 and i12,
+  ta-l02-u08-i03 and i20, ta-l02-u09-i04, i07 and i20, ta-l02-u12-i03, i10 and i18.

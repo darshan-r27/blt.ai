@@ -1,0 +1,731 @@
+{
+  "scenarioId": "ta-l02-u06",
+  "language": "tamil",
+  "title": "Likes and dislikes",
+  "subtitle": "Food, films and places: what you like and what you cannot stand",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 6
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u06-i01",
+      "sourcePrompt": "Do you like spicy food? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku kaaram pidikkumaa?",
+      "acceptedAnswers": [
+        "unakku kaaram pidikkumaa?",
+        "unakku kaaram pudikkumaa?",
+        "unakku kaaram pidikkuma?",
+        "unakku kaaramaa saapda pidikkumaa?"
+      ],
+      "registerVariant": "ungalukku kaaram pidikkumaa?",
+      "distractors": [
+        "unakku kaaram pidichirundhucha?",
+        "unakku kaaram pidikkaadhaa?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "kaaram",
+          "english": "spice"
+        },
+        {
+          "word": "pidikkumaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "உனக்கு காரம் புடிக்குமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i02",
+      "sourcePrompt": "I like spicy food.",
+      "register": "neutral",
+      "canonical": "enakku kaaram pidikkum",
+      "acceptedAnswers": [
+        "enakku kaaram pidikkum",
+        "enakku kaaram pudikkum",
+        "enakku kaaram romba pidikkum",
+        "enakku kaaramaa irundha pidikkum"
+      ],
+      "distractors": [
+        "enakku kaaram pidikkaadhu",
+        "enakku kaaram pidichadhu",
+        "enakku kaaram venum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "kaaram",
+          "english": "spice"
+        },
+        {
+          "word": "pidikkum",
+          "english": "likes"
+        }
+      ],
+      "script": "எனக்கு காரம் புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i03",
+      "sourcePrompt": "I don't like sweets.",
+      "register": "neutral",
+      "canonical": "enakku sweet pidikkaadhu",
+      "acceptedAnswers": [
+        "enakku sweet pidikkaadhu",
+        "enakku sweet pudikkaadhu",
+        "enakku sweet pidikkadhu",
+        "enakku sweets pidikkaadhu"
+      ],
+      "distractors": [
+        "enakku sweet pidikkum",
+        "enakku sweet pidichuchu",
+        "enakku sweet venum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "sweet",
+          "english": "sweets"
+        },
+        {
+          "word": "pidikkaadhu",
+          "english": "don't like"
+        }
+      ],
+      "script": "எனக்கு ஸ்வீட் புடிக்காது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i04",
+      "sourcePrompt": "I love biryani.",
+      "register": "neutral",
+      "canonical": "enakku biryani-na romba pidikkum",
+      "acceptedAnswers": [
+        "enakku biryani-na romba pidikkum",
+        "enakku biryani na romba pidikkum",
+        "enakku biryaniyae romba pidikkum",
+        "enakku biryani romba pidikkum"
+      ],
+      "distractors": [
+        "enakku biryani-na romba pidikkaadhu",
+        "enakku biryani-na pidichuchu",
+        "enakku biryani-na konjam pidikkum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "biryani-na",
+          "english": "as for biryani"
+        },
+        {
+          "word": "romba",
+          "english": "very much"
+        },
+        {
+          "word": "pidikkum",
+          "english": "likes"
+        }
+      ],
+      "script": "எனக்கு பிரியாணின்னா ரொம்ப புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i05",
+      "sourcePrompt": "What kind of films do you like? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku enna maadhiri padam pidikkum?",
+      "acceptedAnswers": [
+        "ungalukku enna maadhiri padam pidikkum?",
+        "ungalukku enna mathiri padam pidikkum?",
+        "ungalukku entha maadhiri padam pidikkum?",
+        "ungalukku enna padam pidikkum?"
+      ],
+      "registerVariant": "unakku enna maadhiri padam pidikkum?",
+      "distractors": [
+        "ungalukku enna maadhiri padam pidichuchu?",
+        "ungalukku enna maadhiri padam pidikkaadhu?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "enna maadhiri",
+          "english": "what kind"
+        },
+        {
+          "word": "padam",
+          "english": "film"
+        },
+        {
+          "word": "pidikkum",
+          "english": "do you like"
+        }
+      ],
+      "script": "உங்களுக்கு என்ன மாதிரி படம் புடிக்கும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i06",
+      "sourcePrompt": "Noise annoys me.",
+      "register": "neutral",
+      "canonical": "saththam enakku kaduppaa irukku",
+      "acceptedAnswers": [
+        "saththam enakku kaduppaa irukku",
+        "saththam enakku kadupaa irukku",
+        "saththam enakku kaduppu",
+        "saththam enakku romba kaduppaa irukku"
+      ],
+      "distractors": [
+        "saththam enakku pidikkum",
+        "saththam enakku kekkala",
+        "saththam enakku kaduppaa irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "saththam",
+          "english": "noise"
+        },
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "kaduppaa",
+          "english": "annoying"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "சத்தம் எனக்கு கடுப்பா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i07",
+      "sourcePrompt": "Which colour do you like? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku entha colour pidikkum?",
+      "acceptedAnswers": [
+        "unakku entha colour pidikkum?",
+        "unakku enna colour pidikkum?",
+        "unakku entha colour pudikkum?",
+        "unakku edhu colour pidikkum?"
+      ],
+      "registerVariant": "ungalukku entha colour pidikkum?",
+      "distractors": [
+        "unakku entha colour pidichuchu?",
+        "unakku entha colour pidikkaadhu?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "entha colour",
+          "english": "which colour"
+        },
+        {
+          "word": "pidikkum",
+          "english": "do you like"
+        }
+      ],
+      "script": "உனக்கு எந்த கலர் புடிக்கும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i08",
+      "sourcePrompt": "I like this song.",
+      "register": "neutral",
+      "canonical": "enakku indha paatu pidikkum",
+      "acceptedAnswers": [
+        "enakku indha paatu pidikkum",
+        "enakku indha paattu pidikkum",
+        "enakku intha paatu pidikkum",
+        "enakku indha song pidikkum"
+      ],
+      "distractors": [
+        "enakku indha paatu pidikkaadhu",
+        "enakku indha paatu pidichuchu",
+        "enakku indha paatu theriyum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "indha paatu",
+          "english": "this song"
+        },
+        {
+          "word": "pidikkum",
+          "english": "likes"
+        }
+      ],
+      "script": "எனக்கு இந்த பாட்டு புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i09",
+      "sourcePrompt": "She likes dancing.",
+      "register": "neutral",
+      "canonical": "avalukku dance pidikkum",
+      "acceptedAnswers": [
+        "avalukku dance pidikkum",
+        "avalukku dance pudikkum",
+        "avalukku aadradhu pidikkum",
+        "aval-ukku dance pidikkum"
+      ],
+      "distractors": [
+        "avalukku dance pidikkaadhu",
+        "avanukku dance pidikkum",
+        "avalukku dance pidichuchu"
+      ],
+      "tokens": [
+        {
+          "word": "avalukku",
+          "english": "to her"
+        },
+        {
+          "word": "dance",
+          "english": "dancing"
+        },
+        {
+          "word": "pidikkum",
+          "english": "likes"
+        }
+      ],
+      "script": "அவளுக்கு டான்ஸ் புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i10",
+      "sourcePrompt": "He doesn't like tea.",
+      "register": "neutral",
+      "canonical": "avanukku tea pidikkaadhu",
+      "acceptedAnswers": [
+        "avanukku tea pidikkaadhu",
+        "avanukku tea pudikkaadhu",
+        "avanukku tea pidikkadhu",
+        "avanukku chai pidikkaadhu"
+      ],
+      "distractors": [
+        "avanukku tea pidikkum",
+        "avalukku tea pidikkaadhu",
+        "avanukku tea pidichuchu"
+      ],
+      "tokens": [
+        {
+          "word": "avanukku",
+          "english": "to him"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "pidikkaadhu",
+          "english": "doesn't like"
+        }
+      ],
+      "script": "அவனுக்கு டீ புடிக்காது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i11",
+      "sourcePrompt": "Do you like this place? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku indha idam pidichirukkaa?",
+      "acceptedAnswers": [
+        "ungalukku indha idam pidichirukkaa?",
+        "ungalukku indha idam pudichirukka?",
+        "ungalukku inda idam pidichirukkaa?",
+        "ungalukku indha place pidichirukkaa?"
+      ],
+      "registerVariant": "unakku indha idam pidichirukkaa?",
+      "distractors": [
+        "ungalukku indha idam pidikkaadhaa?",
+        "ungalukku indha idam theriyumaa?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "indha idam",
+          "english": "this place"
+        },
+        {
+          "word": "pidichirukkaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "உங்களுக்கு இந்த இடம் புடிச்சிருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i12",
+      "sourcePrompt": "We love the rainy season.",
+      "register": "neutral",
+      "canonical": "namakku mazhai kaalam romba pidikkum",
+      "acceptedAnswers": [
+        "namakku mazhai kaalam romba pidikkum",
+        "namakku mazhai kaalam romba pudikkum",
+        "namakku mazhai kaalam pidikkum",
+        "engalukku mazhai kaalam romba pidikkum"
+      ],
+      "distractors": [
+        "namakku mazhai kaalam pidikkaadhu",
+        "namakku veyil kaalam romba pidikkum",
+        "namakku mazhai kaalam romba pidichuchu"
+      ],
+      "tokens": [
+        {
+          "word": "namakku",
+          "english": "to us"
+        },
+        {
+          "word": "mazhai kaalam",
+          "english": "rainy season"
+        },
+        {
+          "word": "romba",
+          "english": "very much"
+        },
+        {
+          "word": "pidikkum",
+          "english": "like"
+        }
+      ],
+      "script": "நமக்கு மழை காலம் ரொம்ப புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i13",
+      "sourcePrompt": "I like walking in the evening.",
+      "register": "neutral",
+      "canonical": "enakku saayangaalam nadakka pidikkum",
+      "acceptedAnswers": [
+        "enakku saayangaalam nadakka pidikkum",
+        "enakku saayangaalam nadakka pudikkum",
+        "enakku saayankaalam nadakka pidikkum",
+        "enakku saayangaalam nadakkaradhu pidikkum"
+      ],
+      "distractors": [
+        "enakku saayangaalam nadakka pidikkaadhu",
+        "enakku kaalaila nadakka pidikkum",
+        "enakku saayangaalam nadandhen"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "saayangaalam",
+          "english": "in the evening"
+        },
+        {
+          "word": "nadakka",
+          "english": "to walk"
+        },
+        {
+          "word": "pidikkum",
+          "english": "like"
+        }
+      ],
+      "script": "எனக்கு சாயங்காலம் நடக்க புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i14",
+      "sourcePrompt": "Does your mother like flowers? (to a friend)",
+      "register": "casual",
+      "canonical": "un ammaakku poo pidikkumaa?",
+      "acceptedAnswers": [
+        "un ammaakku poo pidikkumaa?",
+        "un ammaavukku poo pidikkumaa?",
+        "un ammaakku poo pudikkumaa?",
+        "un ammaakku poo pidikkuma?"
+      ],
+      "registerVariant": "unga ammaakku poo pidikkumaa?",
+      "distractors": [
+        "un ammaakku poo pidichuchaa?",
+        "un ammaakku poo pidikkaadhaa?"
+      ],
+      "tokens": [
+        {
+          "word": "un ammaakku",
+          "english": "to your mother"
+        },
+        {
+          "word": "poo",
+          "english": "flowers"
+        },
+        {
+          "word": "pidikkumaa",
+          "english": "does she like?"
+        }
+      ],
+      "script": "உன் அம்மாக்கு பூ புடிக்குமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i15",
+      "sourcePrompt": "Do you like coffee or tea? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku coffee pidikkumaa tea pidikkumaa?",
+      "acceptedAnswers": [
+        "unakku coffee pidikkumaa tea pidikkumaa?",
+        "unakku coffee pidikkumaa illa tea pidikkumaa?",
+        "unakku coffee pudikkumaa tea pudikkumaa?",
+        "unakku coffee-yaa tea-yaa pidikkum?"
+      ],
+      "registerVariant": "ungalukku coffee pidikkumaa tea pidikkumaa?",
+      "distractors": [
+        "unakku coffee pidichuchaa tea pidichuchaa?",
+        "unakku coffee pidikkaadhaa tea pidikkaadhaa?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "coffee",
+          "english": "coffee"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "pidikkumaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "உனக்கு காபி புடிக்குமா டீ புடிக்குமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i16",
+      "sourcePrompt": "Which do you like more? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku edhu jaasthi pidikkum?",
+      "acceptedAnswers": [
+        "unakku edhu jaasthi pidikkum?",
+        "unakku edhu jaasthiya pidikkum?",
+        "unakku edhu romba pidikkum?",
+        "unakku edhu adhigam pidikkum?"
+      ],
+      "registerVariant": "ungalukku edhu jaasthi pidikkum?",
+      "distractors": [
+        "unakku edhu jaasthi pidichuchu?",
+        "unakku edhu jaasthi pidikkaadhu?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "edhu",
+          "english": "which"
+        },
+        {
+          "word": "jaasthi",
+          "english": "more"
+        },
+        {
+          "word": "pidikkum",
+          "english": "do you like"
+        }
+      ],
+      "script": "உனக்கு எது ஜாஸ்தி புடிக்கும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i17",
+      "sourcePrompt": "I really like this shirt.",
+      "register": "neutral",
+      "canonical": "enakku indha shirt romba pidichirukku",
+      "acceptedAnswers": [
+        "enakku indha shirt romba pidichirukku",
+        "enakku indha shirt romba pudichirukku",
+        "enakku intha shirt romba pidichirukku",
+        "enakku indha shirt pidichirukku"
+      ],
+      "distractors": [
+        "enakku indha shirt pidikkala",
+        "enakku indha shirt romba pidichirundhuchu",
+        "enakku indha shirt romba venum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "indha shirt",
+          "english": "this shirt"
+        },
+        {
+          "word": "romba",
+          "english": "very much"
+        },
+        {
+          "word": "pidichirukku",
+          "english": "like"
+        }
+      ],
+      "script": "எனக்கு இந்த ஷர்ட் ரொம்ப புடிச்சிருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i18",
+      "sourcePrompt": "I don't like crowds.",
+      "register": "neutral",
+      "canonical": "enakku koottam pidikkaadhu",
+      "acceptedAnswers": [
+        "enakku koottam pidikkaadhu",
+        "enakku koottam pudikkaadhu",
+        "enakku koottam pidikkadhu",
+        "enakku crowd pidikkaadhu"
+      ],
+      "distractors": [
+        "enakku koottam pidikkum",
+        "enakku koottam pidichuchu",
+        "enakku koottam theriyaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "koottam",
+          "english": "crowd"
+        },
+        {
+          "word": "pidikkaadhu",
+          "english": "don't like"
+        }
+      ],
+      "script": "எனக்கு கூட்டம் புடிக்காது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i19",
+      "sourcePrompt": "Do you like cooking? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku samaikka pidikkumaa?",
+      "acceptedAnswers": [
+        "ungalukku samaikka pidikkumaa?",
+        "ungalukku samaikka pudikkumaa?",
+        "ungalukku samaikkardhu pidikkumaa?",
+        "ungalukku samaikka pidikkuma?"
+      ],
+      "registerVariant": "unakku samaikka pidikkumaa?",
+      "distractors": [
+        "ungalukku samaikka pidichuchaa?",
+        "ungalukku samaikka pidikkaadhaa?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "samaikka",
+          "english": "to cook"
+        },
+        {
+          "word": "pidikkumaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "உங்களுக்கு சமைக்க புடிக்குமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u06-i20",
+      "sourcePrompt": "I like it a lot.",
+      "register": "neutral",
+      "canonical": "enakku adhu romba pidikkum",
+      "acceptedAnswers": [
+        "enakku adhu romba pidikkum",
+        "enakku athu romba pudikkum",
+        "enakku adhu romba pidikkudhu",
+        "enakku adhu rombave pidikkum"
+      ],
+      "distractors": [
+        "enakku adhu romba pidikkaadhu",
+        "enakku adhu konjam pidikkum",
+        "enakku adhu romba pidichuchu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "romba",
+          "english": "a lot"
+        },
+        {
+          "word": "pidikkum",
+          "english": "like"
+        }
+      ],
+      "script": "எனக்கு அது ரொம்ப புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

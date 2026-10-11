@@ -1,0 +1,683 @@
+{
+  "scenarioId": "ta-l02-u11",
+  "language": "tamil",
+  "title": "Whose is it?",
+  "subtitle": "Sorting belongings: my, your, his, her, our, their, belongs to",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 11
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u11-i01",
+      "sourcePrompt": "This is my bag.",
+      "register": "neutral",
+      "canonical": "idhu en bag",
+      "acceptedAnswers": [
+        "idhu en bag",
+        "idhu en bag-u",
+        "idhu en bag thaan",
+        "idhu ennoda bag"
+      ],
+      "distractors": [
+        "idhu un bag",
+        "idhu avanoda bag",
+        "idhu en bag illa"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "en bag",
+          "english": "my bag"
+        }
+      ],
+      "script": "இது என் பேக்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i02",
+      "sourcePrompt": "That's your phone. (to a friend)",
+      "register": "casual",
+      "canonical": "adhu un phone",
+      "acceptedAnswers": [
+        "adhu un phone",
+        "adhu unnoda phone",
+        "adhu un phone-u",
+        "athu un phone"
+      ],
+      "registerVariant": "adhu unga phone",
+      "distractors": [
+        "adhu en phone",
+        "adhu avanoda phone"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "un phone",
+          "english": "your phone"
+        }
+      ],
+      "script": "அது உன் போன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i03",
+      "sourcePrompt": "This is his car.",
+      "register": "neutral",
+      "canonical": "idhu avanoda car",
+      "acceptedAnswers": [
+        "idhu avanoda car",
+        "idhu avan car",
+        "idhu avanodaya car",
+        "idhu avanoda car-u"
+      ],
+      "distractors": [
+        "idhu avaloda car",
+        "idhu ennoda car",
+        "idhu avanoda car illa"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "avanoda",
+          "english": "his"
+        },
+        {
+          "word": "car",
+          "english": "car"
+        }
+      ],
+      "script": "இது அவனோட கார்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i04",
+      "sourcePrompt": "That is her house.",
+      "register": "neutral",
+      "canonical": "adhu avaloda veedu",
+      "acceptedAnswers": [
+        "adhu avaloda veedu",
+        "athu avaloda veedu",
+        "adhu aval veedu",
+        "adhu avaloda veetu"
+      ],
+      "distractors": [
+        "adhu avanoda veedu",
+        "adhu ennoda veedu",
+        "adhu avaloda veedu illa"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "avaloda",
+          "english": "her"
+        },
+        {
+          "word": "veedu",
+          "english": "house"
+        }
+      ],
+      "script": "அது அவளோட வீடு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i05",
+      "sourcePrompt": "These are our books.",
+      "register": "neutral",
+      "canonical": "ivai namma books",
+      "acceptedAnswers": [
+        "ivai namma books",
+        "idhu namma books",
+        "ivai namma pustakam",
+        "ivai namma book-u"
+      ],
+      "distractors": [
+        "ivai avanga books",
+        "ivai en books",
+        "ivai namma books illa"
+      ],
+      "tokens": [
+        {
+          "word": "ivai",
+          "english": "these"
+        },
+        {
+          "word": "namma",
+          "english": "our"
+        },
+        {
+          "word": "books",
+          "english": "books"
+        }
+      ],
+      "script": "இவை நம்ம புக்ஸ்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i06",
+      "sourcePrompt": "Those are their shoes.",
+      "register": "neutral",
+      "canonical": "avai avangaloda shoes",
+      "acceptedAnswers": [
+        "avai avangaloda shoes",
+        "avai avanga shoes",
+        "adhu avangaloda shoes",
+        "avai avangalodadhu shoes"
+      ],
+      "distractors": [
+        "avai ennoda shoes",
+        "avai namma shoes",
+        "avai avangaloda shoes illa"
+      ],
+      "tokens": [
+        {
+          "word": "avai",
+          "english": "those"
+        },
+        {
+          "word": "avangaloda",
+          "english": "their"
+        },
+        {
+          "word": "shoes",
+          "english": "shoes"
+        }
+      ],
+      "script": "அவை அவங்களோட ஷூஸ்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i07",
+      "sourcePrompt": "Is this your seat? (to an elder)",
+      "register": "respectful",
+      "canonical": "idhu ungaloda seat-aa?",
+      "acceptedAnswers": [
+        "idhu ungaloda seat-aa?",
+        "idhu unga seat-aa?",
+        "idhu ungaloda seat-a?",
+        "idhu ungal seat-aa?"
+      ],
+      "registerVariant": "idhu unnoda seat-aa?",
+      "distractors": [
+        "idhu ungaloda seat-aa irundhuchaa?",
+        "idhu ungalukku seat-aa?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "ungaloda seat",
+          "english": "your seat"
+        },
+        {
+          "word": "aa",
+          "english": "(question)"
+        }
+      ],
+      "script": "இது உங்களோட சீட்டா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i08",
+      "sourcePrompt": "Whose bag is this? (to a friend)",
+      "register": "casual",
+      "canonical": "idhu yaaroda bag?",
+      "acceptedAnswers": [
+        "idhu yaaroda bag?",
+        "idhu yaaroda bag",
+        "idhu yaarodadhu bag?",
+        "idhu yaaru bag?"
+      ],
+      "registerVariant": "idhu yaarudaiya bag-nga?",
+      "distractors": [
+        "idhu yaarukku bag?",
+        "idhu enga bag?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "yaaroda",
+          "english": "whose"
+        },
+        {
+          "word": "bag",
+          "english": "bag"
+        }
+      ],
+      "script": "இது யாரோட பேக்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i09",
+      "sourcePrompt": "Whose pen is that?",
+      "register": "neutral",
+      "canonical": "adhu yaaroda pen?",
+      "acceptedAnswers": [
+        "adhu yaaroda pen?",
+        "athu yaaroda pen?",
+        "adhu yaarodadhu pen?",
+        "adhu yaaroda pen"
+      ],
+      "distractors": [
+        "adhu yaarukku pen?",
+        "adhu enga pen?",
+        "adhu yaaroda pen illa?"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "yaaroda",
+          "english": "whose"
+        },
+        {
+          "word": "pen",
+          "english": "pen"
+        }
+      ],
+      "script": "அது யாரோட பேனா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i10",
+      "sourcePrompt": "That belongs to my brother.",
+      "register": "neutral",
+      "canonical": "adhu en annanukku sondham",
+      "acceptedAnswers": [
+        "adhu en annanukku sondham",
+        "adhu en annanukku sontham",
+        "adhu en annanoda",
+        "adhu en annan-oda sondham"
+      ],
+      "distractors": [
+        "adhu en thambikku sondham",
+        "adhu en annanukku illa",
+        "adhu avanukku sondham"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "en annanukku",
+          "english": "to my brother"
+        },
+        {
+          "word": "sondham",
+          "english": "belongs"
+        }
+      ],
+      "script": "அது என் அண்ணனுக்கு சொந்தம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i11",
+      "sourcePrompt": "This is not mine.",
+      "register": "neutral",
+      "canonical": "idhu ennodadhu illa",
+      "acceptedAnswers": [
+        "idhu ennodadhu illa",
+        "idhu ennodadhu illai",
+        "idhu ennoda illa",
+        "idhu enakku illa"
+      ],
+      "distractors": [
+        "idhu ennodadhu",
+        "idhu unnodadhu illa",
+        "idhu ennodadhu thaan"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "ennodadhu",
+          "english": "mine"
+        },
+        {
+          "word": "illa",
+          "english": "is not"
+        }
+      ],
+      "script": "இது என்னோடது இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i12",
+      "sourcePrompt": "It's yours, take it. (to a friend)",
+      "register": "casual",
+      "canonical": "idhu unnodadhu, eduthuko",
+      "acceptedAnswers": [
+        "idhu unnodadhu, eduthuko",
+        "idhu unnoda, eduthuko",
+        "idhu unnodadhu eduthukko",
+        "idhu unnodadhu, eduthukko da"
+      ],
+      "registerVariant": "idhu ungalodadhu, eduthukkonga",
+      "distractors": [
+        "idhu ennodadhu, eduthuko",
+        "idhu unnodadhu, vachuko"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "unnodadhu",
+          "english": "yours"
+        },
+        {
+          "word": "eduthuko",
+          "english": "take it"
+        }
+      ],
+      "script": "இது உன்னோடது, எடுத்துக்கோ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i13",
+      "sourcePrompt": "That's our house.",
+      "register": "neutral",
+      "canonical": "adhu namma veedu",
+      "acceptedAnswers": [
+        "adhu namma veedu",
+        "athu namma veedu",
+        "adhu namma veedu thaan",
+        "adhu engal veedu"
+      ],
+      "distractors": [
+        "adhu avanga veedu",
+        "adhu en veedu",
+        "adhu namma veedu illa"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "namma veedu",
+          "english": "our house"
+        }
+      ],
+      "script": "அது நம்ம வீடு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i14",
+      "sourcePrompt": "Is this their car?",
+      "register": "neutral",
+      "canonical": "idhu avanga car-aa?",
+      "acceptedAnswers": [
+        "idhu avanga car-aa?",
+        "idhu avangaloda car-aa?",
+        "idhu avanga caraa?",
+        "idhu avanga car-a?"
+      ],
+      "distractors": [
+        "idhu avanga car-aa irundhuchaa?",
+        "idhu namma car-aa?",
+        "idhu avanga car illa?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "avanga",
+          "english": "their"
+        },
+        {
+          "word": "car-aa",
+          "english": "car?"
+        }
+      ],
+      "script": "இது அவங்க காரா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i15",
+      "sourcePrompt": "These are my parents' photos.",
+      "register": "neutral",
+      "canonical": "idhu en amma appa photo",
+      "acceptedAnswers": [
+        "idhu en amma appa photo",
+        "idhu en amma appaa photo",
+        "ivai en amma appa photo",
+        "idhu en parents photo"
+      ],
+      "distractors": [
+        "idhu en akka photo",
+        "idhu en amma appa photo illa",
+        "idhu en amma appa-vukku photo"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "en amma appa",
+          "english": "my parents'"
+        },
+        {
+          "word": "photo",
+          "english": "photo"
+        }
+      ],
+      "script": "இது என் அம்மா அப்பா போட்டோ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i16",
+      "sourcePrompt": "Whose turn is it? (to a friend)",
+      "register": "casual",
+      "canonical": "ippo yaaroda murai?",
+      "acceptedAnswers": [
+        "ippo yaaroda murai?",
+        "ippo yaar murai?",
+        "ippo yaaroda murai",
+        "ippo yaarukku murai?"
+      ],
+      "registerVariant": "ippo yaarudaiya murai?",
+      "distractors": [
+        "ippo yaaroda murai aachu?",
+        "ippo yaaroda murai varum?"
+      ],
+      "tokens": [
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "yaaroda",
+          "english": "whose"
+        },
+        {
+          "word": "murai",
+          "english": "turn"
+        }
+      ],
+      "script": "இப்போ யாரோட முறை?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i17",
+      "sourcePrompt": "It's my turn.",
+      "register": "neutral",
+      "canonical": "idhu en murai",
+      "acceptedAnswers": [
+        "idhu en murai",
+        "idhu en murai thaan",
+        "en murai",
+        "idhu ennoda murai"
+      ],
+      "distractors": [
+        "idhu un murai",
+        "idhu en murai illa",
+        "idhu avan murai"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "en murai",
+          "english": "my turn"
+        }
+      ],
+      "script": "இது என் முறை",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i18",
+      "sourcePrompt": "Is this your son's? (to an elder)",
+      "register": "respectful",
+      "canonical": "idhu ungaloda paiyanodadhaa?",
+      "acceptedAnswers": [
+        "idhu ungaloda paiyanodadhaa?",
+        "idhu unga paiyanodadhaa?",
+        "idhu ungaloda maganodadhaa?",
+        "idhu ungaloda paiyanodadha?"
+      ],
+      "registerVariant": "idhu unnoda paiyanodadhaa?",
+      "distractors": [
+        "idhu ungaloda paiyanukku irukkaa?",
+        "idhu ungaloda paiyan-aa?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "ungaloda paiyanodadhaa",
+          "english": "your son's?"
+        }
+      ],
+      "script": "இது உங்களோட பையனோடதா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i19",
+      "sourcePrompt": "He has his own room.",
+      "register": "neutral",
+      "canonical": "avanukku thani room irukku",
+      "acceptedAnswers": [
+        "avanukku thani room irukku",
+        "avanukku thaniya room irukku",
+        "avanukku sondha room irukku",
+        "avanukku thani room irukkudhu"
+      ],
+      "distractors": [
+        "avanukku thani room illa",
+        "avalukku thani room irukku",
+        "avanukku thani room irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "avanukku",
+          "english": "he has"
+        },
+        {
+          "word": "thani room",
+          "english": "own room"
+        },
+        {
+          "word": "irukku",
+          "english": "there is"
+        }
+      ],
+      "script": "அவனுக்கு தனி ரூம் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u11-i20",
+      "sourcePrompt": "I'll take mine, you take yours. (to a friend)",
+      "register": "casual",
+      "canonical": "naan ennodadha edukkuren, nee unnodadha eduthuko",
+      "acceptedAnswers": [
+        "naan ennodadha edukkuren, nee unnodadha eduthuko",
+        "naan ennodadha edukkuren nee unnodadha eduthuko",
+        "naan ennodadha edukuren, nee unnodadha eduthukko",
+        "naan ennodadhai edukkuren, nee unnodadhai eduthuko"
+      ],
+      "registerVariant": "naan ennodadha edukkuren, neenga ungalodadha eduthukkonga",
+      "distractors": [
+        "naan unnodadha edukkuren, nee ennodadha eduthuko",
+        "naan ennodadha eduthen, nee unnodadha eduthuko"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "ennodadha",
+          "english": "mine"
+        },
+        {
+          "word": "edukkuren",
+          "english": "will take"
+        },
+        {
+          "word": "nee unnodadha",
+          "english": "you yours"
+        },
+        {
+          "word": "eduthuko",
+          "english": "take"
+        }
+      ],
+      "script": "நான் என்னோடத எடுக்குறேன், நீ உன்னோடத எடுத்துக்கோ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

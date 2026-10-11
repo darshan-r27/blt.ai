@@ -1,0 +1,707 @@
+{
+  "scenarioId": "ta-l02-u05",
+  "language": "tamil",
+  "title": "Going to and coming from",
+  "subtitle": "Daily movement: to a place, from a place, with a person",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 5
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u05-i01",
+      "sourcePrompt": "Where are you coming from? (to a friend)",
+      "register": "casual",
+      "canonical": "nee enga irundhu varra?",
+      "acceptedAnswers": [
+        "nee enga irundhu varra?",
+        "nee enga irundhu varriya?",
+        "nee enga irunthu varra?",
+        "nee engirundhu varra?"
+      ],
+      "registerVariant": "neenga enga irundhu varreenga?",
+      "distractors": [
+        "nee enga irundhu vandha?",
+        "nee enga irundhu varuva?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "enga irundhu",
+          "english": "from where"
+        },
+        {
+          "word": "varra",
+          "english": "are you coming"
+        }
+      ],
+      "script": "நீ எங்க இருந்து வர்ற?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i02",
+      "sourcePrompt": "I'm going to my friend's house.",
+      "register": "neutral",
+      "canonical": "naan en friend veetukku poren",
+      "acceptedAnswers": [
+        "naan en friend veetukku poren",
+        "naan en friend veettukku poren",
+        "naan en friend veedukku poren",
+        "naan en friend-oda veetukku poren"
+      ],
+      "distractors": [
+        "naan en friend veetla irundhu varen",
+        "naan en friend veetukku ponen",
+        "naan en friend veetukku poven"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "en friend",
+          "english": "my friend"
+        },
+        {
+          "word": "veetukku",
+          "english": "to the house"
+        },
+        {
+          "word": "poren",
+          "english": "am going"
+        }
+      ],
+      "script": "நான் என் ஃபிரண்ட் வீட்டுக்கு போறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i03",
+      "sourcePrompt": "I'm coming from the office.",
+      "register": "neutral",
+      "canonical": "naan office-la irundhu varen",
+      "acceptedAnswers": [
+        "naan office-la irundhu varen",
+        "naan office la irundhu varen",
+        "naan office-la irundhu varuren",
+        "naan office-lendhu varen"
+      ],
+      "distractors": [
+        "naan office-ku poren",
+        "naan office-la irundhu vandhen",
+        "naan office-la irundhu varuven"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "office-la irundhu",
+          "english": "from the office"
+        },
+        {
+          "word": "varen",
+          "english": "am coming"
+        }
+      ],
+      "script": "நான் ஆபீஸ்ல இருந்து வரேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i04",
+      "sourcePrompt": "I'm going with my mother.",
+      "register": "neutral",
+      "canonical": "naan en ammaavoda poren",
+      "acceptedAnswers": [
+        "naan en ammaavoda poren",
+        "naan en amma kooda poren",
+        "naan en ammaa-vooda poren",
+        "naan en ammaavoda porren"
+      ],
+      "distractors": [
+        "naan en ammaavoda ponen",
+        "naan en ammaavoda poven",
+        "naan en ammaavoda poga maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "en ammaavoda",
+          "english": "with my mother"
+        },
+        {
+          "word": "poren",
+          "english": "am going"
+        }
+      ],
+      "script": "நான் என் அம்மாவோட போறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i05",
+      "sourcePrompt": "Who are you going with? (to a friend)",
+      "register": "casual",
+      "canonical": "nee yaar kooda pora?",
+      "acceptedAnswers": [
+        "nee yaar kooda pora?",
+        "nee yaarukooda pora?",
+        "nee yaaroda pora?",
+        "nee yaar koodavae pora?"
+      ],
+      "registerVariant": "neenga yaar kooda poreenga?",
+      "distractors": [
+        "nee yaar kooda ponaya?",
+        "nee yaar kooda poviya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "yaar kooda",
+          "english": "with whom"
+        },
+        {
+          "word": "pora",
+          "english": "are you going"
+        }
+      ],
+      "script": "நீ யார் கூட போற?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i06",
+      "sourcePrompt": "Come with me. (to a friend)",
+      "register": "casual",
+      "canonical": "en kooda vaa",
+      "acceptedAnswers": [
+        "en kooda vaa",
+        "en kooda vaada",
+        "ennoda vaa",
+        "en koodavae vaa"
+      ],
+      "registerVariant": "en kooda vaanga",
+      "distractors": [
+        "en kooda poga vendaam",
+        "unga kooda vaa"
+      ],
+      "tokens": [
+        {
+          "word": "en kooda",
+          "english": "with me"
+        },
+        {
+          "word": "vaa",
+          "english": "come"
+        }
+      ],
+      "script": "என் கூட வா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i07",
+      "sourcePrompt": "Come with us. (to an elder)",
+      "register": "respectful",
+      "canonical": "engaloda vaanga",
+      "acceptedAnswers": [
+        "engaloda vaanga",
+        "engalodu vaanga",
+        "engal kooda vaanga",
+        "engakooda vaanga"
+      ],
+      "registerVariant": "engaloda vaa",
+      "distractors": [
+        "engaloda ponga",
+        "engaloda varaadheenga"
+      ],
+      "tokens": [
+        {
+          "word": "engaloda",
+          "english": "with us"
+        },
+        {
+          "word": "vaanga",
+          "english": "please come"
+        }
+      ],
+      "script": "எங்களோட வாங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i08",
+      "sourcePrompt": "I go to the gym every morning.",
+      "register": "neutral",
+      "canonical": "naan dhinamum kaalaila gym-ku poven",
+      "acceptedAnswers": [
+        "naan dhinamum kaalaila gym-ku poven",
+        "naan dhinamum kaalaila gym ku poven",
+        "naan dhinamum kaalaila gym-ku poren",
+        "dhinamum kaalaila gym-ku poven"
+      ],
+      "distractors": [
+        "naan dhinamum kaalaila gym-ku ponen",
+        "naan dhinamum saayangaalam gym-ku poven",
+        "naan dhinamum kaalaila gym-ku poga maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "dhinamum",
+          "english": "every day"
+        },
+        {
+          "word": "kaalaila",
+          "english": "in the morning"
+        },
+        {
+          "word": "gym-ku",
+          "english": "to the gym"
+        },
+        {
+          "word": "poven",
+          "english": "go"
+        }
+      ],
+      "script": "நான் தினமும் காலைல ஜிம்முக்கு போவேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i09",
+      "sourcePrompt": "She's coming from Chennai.",
+      "register": "neutral",
+      "canonical": "ava Chennai-la irundhu varaa",
+      "acceptedAnswers": [
+        "ava Chennai-la irundhu varaa",
+        "ava Chennai la irundhu varaa",
+        "ava Chennai-la irundhu varra",
+        "aval Chennai-la irundhu varaal"
+      ],
+      "distractors": [
+        "ava Chennai-ku poraa",
+        "ava Chennai-la irundhu vandhaa",
+        "avan Chennai-la irundhu varaan"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "Chennai-la irundhu",
+          "english": "from Chennai"
+        },
+        {
+          "word": "varaa",
+          "english": "is coming"
+        }
+      ],
+      "script": "அவ சென்னைல இருந்து வர்றா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i10",
+      "sourcePrompt": "We're going to Madurai.",
+      "register": "neutral",
+      "canonical": "naanga Madurai-ku porom",
+      "acceptedAnswers": [
+        "naanga Madurai-ku porom",
+        "naanga Madurai ku porom",
+        "naanga Madurai-ku poromm",
+        "naanga Madurai-ku poroom"
+      ],
+      "distractors": [
+        "naanga Madurai-ku pogalaam",
+        "naanga Madurai-la irundhu varom",
+        "naanga Madurai-ku ponom"
+      ],
+      "tokens": [
+        {
+          "word": "naanga",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "Madurai-ku",
+          "english": "to Madurai"
+        },
+        {
+          "word": "porom",
+          "english": "are going"
+        }
+      ],
+      "script": "நாங்க மதுரைக்கு போறோம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i11",
+      "sourcePrompt": "Are you going to the market? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga market-ku poreengala?",
+      "acceptedAnswers": [
+        "neenga market-ku poreengala?",
+        "neenga market ku poreengala?",
+        "neenga market-ku porreengala?",
+        "neenga market-ku poreengala"
+      ],
+      "registerVariant": "nee market-ku porriya?",
+      "distractors": [
+        "neenga market-ku ponteengala?",
+        "neenga market-ku poveengala?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "market-ku",
+          "english": "to the market"
+        },
+        {
+          "word": "poreengala",
+          "english": "are you going?"
+        }
+      ],
+      "script": "நீங்க மார்க்கெட்டுக்கு போறீங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i12",
+      "sourcePrompt": "How are you going? (to a friend)",
+      "register": "casual",
+      "canonical": "nee eppadi pora?",
+      "acceptedAnswers": [
+        "nee eppadi pora?",
+        "nee eppadi porriya?",
+        "nee epdi pora?",
+        "nee eppadi pora"
+      ],
+      "registerVariant": "neenga eppadi poreenga?",
+      "distractors": [
+        "nee eppadi ponaa?",
+        "nee eppadi poviya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "eppadi",
+          "english": "how"
+        },
+        {
+          "word": "pora",
+          "english": "are you going"
+        }
+      ],
+      "script": "நீ எப்படி போற?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i13",
+      "sourcePrompt": "I'm going by train.",
+      "register": "neutral",
+      "canonical": "naan train-la poren",
+      "acceptedAnswers": [
+        "naan train-la poren",
+        "naan train la poren",
+        "naan train-la porren",
+        "naan train-la pooren"
+      ],
+      "distractors": [
+        "naan train-la ponen",
+        "naan train-la poven",
+        "naan train-la illa"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "train-la",
+          "english": "by train"
+        },
+        {
+          "word": "poren",
+          "english": "am going"
+        }
+      ],
+      "script": "நான் ட்ரெய்ன்ல போறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i14",
+      "sourcePrompt": "I walk to school.",
+      "register": "neutral",
+      "canonical": "naan school-ku nadandhu poven",
+      "acceptedAnswers": [
+        "naan school-ku nadandhu poven",
+        "naan school ku nadanthu poven",
+        "naan school-ku nadandhu poren",
+        "naan nadandhu school-ku poven"
+      ],
+      "distractors": [
+        "naan school-ku nadandhu ponen",
+        "naan school-ku bus-la poven",
+        "naan school-ku nadandhu poga maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "school-ku",
+          "english": "to school"
+        },
+        {
+          "word": "nadandhu",
+          "english": "walking"
+        },
+        {
+          "word": "poven",
+          "english": "go"
+        }
+      ],
+      "script": "நான் ஸ்கூலுக்கு நடந்து போவேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i15",
+      "sourcePrompt": "Is he coming with you? (to a friend)",
+      "register": "casual",
+      "canonical": "avan un kooda varraanaa?",
+      "acceptedAnswers": [
+        "avan un kooda varraanaa?",
+        "avan un kooda varraana?",
+        "avan unkooda varraana?",
+        "avan unnoda varraanaa?"
+      ],
+      "registerVariant": "avar ungakooda varraaraa?",
+      "distractors": [
+        "avan un kooda vandhaanaa?",
+        "avan un kooda varuvaanaa?"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "un kooda",
+          "english": "with you"
+        },
+        {
+          "word": "varraanaa",
+          "english": "is he coming?"
+        }
+      ],
+      "script": "அவன் உன் கூட வர்றானா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i16",
+      "sourcePrompt": "He's not coming today.",
+      "register": "neutral",
+      "canonical": "avan innikku varala",
+      "acceptedAnswers": [
+        "avan innikku varala",
+        "avan innaikku varala",
+        "avan innikku varave illa",
+        "avan innikku varalai"
+      ],
+      "distractors": [
+        "avan innikku varaan",
+        "avan innikku vandhaan",
+        "avan innikku varuvaan"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "varala",
+          "english": "is not coming"
+        }
+      ],
+      "script": "அவன் இன்னிக்கு வரல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i17",
+      "sourcePrompt": "I'm going home now.",
+      "register": "neutral",
+      "canonical": "naan ippo veetuku poren",
+      "acceptedAnswers": [
+        "naan ippo veetuku poren",
+        "naan ippo veettukku poren",
+        "naan ippo veetukku porren",
+        "ippo naan veetuku poren"
+      ],
+      "distractors": [
+        "naan ippo veetuku ponen",
+        "naan ippo veetuku poven",
+        "naan ippo veetla irukken"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "veetuku",
+          "english": "home"
+        },
+        {
+          "word": "poren",
+          "english": "am going"
+        }
+      ],
+      "script": "நான் இப்போ வீட்டுக்கு போறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i18",
+      "sourcePrompt": "Where are you going? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga enga poreenga?",
+      "acceptedAnswers": [
+        "neenga enga poreenga?",
+        "neenga enga porreenga?",
+        "neenga enga poreenga",
+        "neenga engaa poreenga?"
+      ],
+      "registerVariant": "nee enga pora?",
+      "distractors": [
+        "neenga enga ponteenga?",
+        "neenga enga poveenga?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "poreenga",
+          "english": "are you going"
+        }
+      ],
+      "script": "நீங்க எங்க போறீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i19",
+      "sourcePrompt": "My friend is coming to my house.",
+      "register": "neutral",
+      "canonical": "en friend en veettukku varaanga",
+      "acceptedAnswers": [
+        "en friend en veettukku varaanga",
+        "en friend en veetukku varraanga",
+        "en friend en veettukku varanga",
+        "en friend en veettuku varaanga"
+      ],
+      "distractors": [
+        "en friend en veettukku vandhaanga",
+        "en friend en veettukku varuvaanga",
+        "en friend en veettukku varala"
+      ],
+      "tokens": [
+        {
+          "word": "en friend",
+          "english": "my friend"
+        },
+        {
+          "word": "en veettukku",
+          "english": "to my house"
+        },
+        {
+          "word": "varaanga",
+          "english": "is coming"
+        }
+      ],
+      "script": "என் ஃபிரண்ட் என் வீட்டுக்கு வர்றாங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u05-i20",
+      "sourcePrompt": "Let's go together.",
+      "register": "neutral",
+      "canonical": "naama serndhu pogalaam",
+      "acceptedAnswers": [
+        "naama serndhu pogalaam",
+        "naama sernthu pogalaam",
+        "naama serndhu pogalam",
+        "naama onna pogalaam"
+      ],
+      "distractors": [
+        "naama serndhu ponom",
+        "naama serndhu poga maattom",
+        "naanga serndhu pogalaam"
+      ],
+      "tokens": [
+        {
+          "word": "naama",
+          "english": "we (including you)"
+        },
+        {
+          "word": "serndhu",
+          "english": "together"
+        },
+        {
+          "word": "pogalaam",
+          "english": "let's go"
+        }
+      ],
+      "script": "நாம சேர்ந்து போகலாம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

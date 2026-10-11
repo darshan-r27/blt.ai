@@ -1,0 +1,703 @@
+{
+  "scenarioId": "ta-l02-u07",
+  "language": "tamil",
+  "title": "Wanting and needing",
+  "subtitle": "Asking for things: want, don't want, need, enough",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 7
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u07-i01",
+      "sourcePrompt": "What do you want? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku enna venum?",
+      "acceptedAnswers": [
+        "unakku enna venum?",
+        "unakku enna vena?",
+        "unakku enna venum",
+        "unakku enna vennum?"
+      ],
+      "registerVariant": "ungalukku enna venum?",
+      "distractors": [
+        "unakku enna vendaam?",
+        "unakku enna kidaichadhu?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "venum",
+          "english": "do you want"
+        }
+      ],
+      "script": "உனக்கு என்ன வேணும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i02",
+      "sourcePrompt": "What would you like? (to an elder)",
+      "register": "respectful",
+      "canonical": "enna venumunga?",
+      "acceptedAnswers": [
+        "enna venumunga?",
+        "enna venum-nga?",
+        "ungalukku enna venumunga?",
+        "enna vendumunga?"
+      ],
+      "registerVariant": "unakku enna venum?",
+      "distractors": [
+        "enna vendaamunga?",
+        "enna kudukkanumunga?"
+      ],
+      "tokens": [
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "venumunga",
+          "english": "do you want (polite)"
+        }
+      ],
+      "script": "என்ன வேணுங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i03",
+      "sourcePrompt": "I want a glass of water.",
+      "register": "neutral",
+      "canonical": "enakku oru glass thanni venum",
+      "acceptedAnswers": [
+        "enakku oru glass thanni venum",
+        "enakku oru glass thanni vena",
+        "enakku oru glass thaneer venum",
+        "enakku oru glass thanni vennum"
+      ],
+      "distractors": [
+        "enakku oru glass thanni vendaam",
+        "enakku oru glass thanni kudutheen",
+        "enakku oru glass thanni irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "oru glass thanni",
+          "english": "a glass of water"
+        },
+        {
+          "word": "venum",
+          "english": "want"
+        }
+      ],
+      "script": "எனக்கு ஒரு கிளாஸ் தண்ணி வேணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i04",
+      "sourcePrompt": "I don't want tea.",
+      "register": "neutral",
+      "canonical": "enakku tea vendaam",
+      "acceptedAnswers": [
+        "enakku tea vendaam",
+        "enakku tea venaam",
+        "enakku tea vendam",
+        "enakku chai vendaam"
+      ],
+      "distractors": [
+        "enakku tea venum",
+        "enakku tea kudichen",
+        "enakku tea irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "vendaam",
+          "english": "don't want"
+        }
+      ],
+      "script": "எனக்கு டீ வேண்டாம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i05",
+      "sourcePrompt": "I need a pen.",
+      "register": "neutral",
+      "canonical": "enakku oru pen thevai",
+      "acceptedAnswers": [
+        "enakku oru pen thevai",
+        "enakku oru pen thevaiyaa irukku",
+        "enakku pen thevai",
+        "enakku oru pen venum"
+      ],
+      "distractors": [
+        "enakku oru pen thevai illa",
+        "enakku oru pen thevai irundhuchu",
+        "enakku oru pen irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "oru pen",
+          "english": "a pen"
+        },
+        {
+          "word": "thevai",
+          "english": "needed"
+        }
+      ],
+      "script": "எனக்கு ஒரு பேனா தேவை",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i06",
+      "sourcePrompt": "Do you need anything? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku edhaavadhu thevaiyaa?",
+      "acceptedAnswers": [
+        "ungalukku edhaavadhu thevaiyaa?",
+        "ungalukku edhavadhu thevaiya?",
+        "ungalukku edhaavadhu venumaa?",
+        "ungalukku ethuvum thevaiyaa?"
+      ],
+      "registerVariant": "unakku edhaavadhu thevaiyaa?",
+      "distractors": [
+        "ungalukku edhaavadhu thevai illaiyaa?",
+        "ungalukku edhaavadhu thevaippattuchaa?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "edhaavadhu",
+          "english": "anything"
+        },
+        {
+          "word": "thevaiyaa",
+          "english": "do you need?"
+        }
+      ],
+      "script": "உங்களுக்கு எதாவது தேவையா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i07",
+      "sourcePrompt": "Do you want more? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku innum venumaa?",
+      "acceptedAnswers": [
+        "unakku innum venumaa?",
+        "unakku innum vennuma?",
+        "unakku innum venuma?",
+        "unakku innum konjam venumaa?"
+      ],
+      "registerVariant": "ungalukku innum venumaa?",
+      "distractors": [
+        "unakku innum vendaamaa?",
+        "unakku innum venumnu sonnaya?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "innum",
+          "english": "more"
+        },
+        {
+          "word": "venumaa",
+          "english": "do you want?"
+        }
+      ],
+      "script": "உனக்கு இன்னும் வேணுமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i08",
+      "sourcePrompt": "That's enough, thank you.",
+      "register": "neutral",
+      "canonical": "idhu podhum, thanks",
+      "acceptedAnswers": [
+        "idhu podhum, thanks",
+        "idhu pothum thanks",
+        "idhu podhum, thank you",
+        "idhu podhum nandri"
+      ],
+      "distractors": [
+        "idhu podhaadhu, thanks",
+        "innum venum, thanks",
+        "idhu pothaama irukku, thanks"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "podhum",
+          "english": "enough"
+        },
+        {
+          "word": "thanks",
+          "english": "thanks"
+        }
+      ],
+      "script": "இது போதும், தேங்ஸ்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i09",
+      "sourcePrompt": "I want to go home.",
+      "register": "neutral",
+      "canonical": "enakku veetuku poganum",
+      "acceptedAnswers": [
+        "enakku veetuku poganum",
+        "enakku veetukku poganum",
+        "naan veetuku poganum",
+        "enakku veedukku poganum"
+      ],
+      "distractors": [
+        "enakku veetuku pogavendaam",
+        "enakku veetuku pona",
+        "enakku veetuku poga mudiyaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "veetuku",
+          "english": "home"
+        },
+        {
+          "word": "poganum",
+          "english": "want to go"
+        }
+      ],
+      "script": "எனக்கு வீட்டுக்கு போகணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i10",
+      "sourcePrompt": "I need some help.",
+      "register": "neutral",
+      "canonical": "enakku konjam help venum",
+      "acceptedAnswers": [
+        "enakku konjam help venum",
+        "enakku konjam udhavi venum",
+        "enakku konjam help vena",
+        "enakku help venum"
+      ],
+      "distractors": [
+        "enakku konjam help vendaam",
+        "enakku konjam help kudutheen",
+        "enakku konjam help irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "konjam help",
+          "english": "some help"
+        },
+        {
+          "word": "venum",
+          "english": "need"
+        }
+      ],
+      "script": "எனக்கு கொஞ்சம் ஹெல்ப் வேணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i11",
+      "sourcePrompt": "We need two more chairs.",
+      "register": "neutral",
+      "canonical": "namakku innum rendu naarkaali venum",
+      "acceptedAnswers": [
+        "namakku innum rendu naarkaali venum",
+        "namakku innum rendu chair venum",
+        "namakku innum rendu naarkaali vena",
+        "namakku innum irandu naarkaali venum"
+      ],
+      "distractors": [
+        "namakku innum rendu naarkaali vendaam",
+        "namakku innum onnu naarkaali venum",
+        "namakku innum rendu naarkaali irukku"
+      ],
+      "tokens": [
+        {
+          "word": "namakku",
+          "english": "for us"
+        },
+        {
+          "word": "innum rendu",
+          "english": "two more"
+        },
+        {
+          "word": "naarkaali",
+          "english": "chairs"
+        },
+        {
+          "word": "venum",
+          "english": "need"
+        }
+      ],
+      "script": "நமக்கு இன்னும் ரெண்டு நாற்காலி வேணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i12",
+      "sourcePrompt": "I don't need it.",
+      "register": "neutral",
+      "canonical": "enakku adhu thevai illa",
+      "acceptedAnswers": [
+        "enakku adhu thevai illa",
+        "enakku athu thevai illa",
+        "enakku adhu thevaiyilla",
+        "enakku adhu venaam"
+      ],
+      "distractors": [
+        "enakku adhu thevai",
+        "enakku adhu thevaiyaa irundhuchu",
+        "enakku adhu thevai irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "thevai illa",
+          "english": "not needed"
+        }
+      ],
+      "script": "எனக்கு அது தேவை இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i13",
+      "sourcePrompt": "How much do you need? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku evlo venum?",
+      "acceptedAnswers": [
+        "unakku evlo venum?",
+        "unakku evlo vena?",
+        "unakku evlo venum",
+        "unakku evvalavu venum?"
+      ],
+      "registerVariant": "ungalukku evlo venum?",
+      "distractors": [
+        "unakku evlo vendaam?",
+        "unakku evlo kidaichuchu?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "evlo",
+          "english": "how much"
+        },
+        {
+          "word": "venum",
+          "english": "do you need"
+        }
+      ],
+      "script": "உனக்கு எவ்ளோ வேணும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i14",
+      "sourcePrompt": "I want a small one.",
+      "register": "neutral",
+      "canonical": "enakku sinna onnu venum",
+      "acceptedAnswers": [
+        "enakku sinna onnu venum",
+        "enakku chinna onnu venum",
+        "enakku sinna size venum",
+        "enakku sinnadhu venum"
+      ],
+      "distractors": [
+        "enakku periya onnu venum",
+        "enakku sinna onnu vendaam",
+        "enakku sinna onnu irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "sinna",
+          "english": "small"
+        },
+        {
+          "word": "onnu",
+          "english": "one"
+        },
+        {
+          "word": "venum",
+          "english": "want"
+        }
+      ],
+      "script": "எனக்கு சின்ன ஒண்ணு வேணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i15",
+      "sourcePrompt": "I want to speak to the manager.",
+      "register": "neutral",
+      "canonical": "enakku manager-oda pesanum",
+      "acceptedAnswers": [
+        "enakku manager-oda pesanum",
+        "enakku manager kitta pesanum",
+        "naan manager-oda pesanum",
+        "enakku manager kooda pesanum"
+      ],
+      "distractors": [
+        "enakku manager-oda pesa vendaam",
+        "enakku manager-oda pesinen",
+        "manager enakku pesanum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "manager-oda",
+          "english": "with the manager"
+        },
+        {
+          "word": "pesanum",
+          "english": "want to speak"
+        }
+      ],
+      "script": "எனக்கு மேனேஜரோட பேசணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i16",
+      "sourcePrompt": "Do you want anything to eat? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku edhaavadhu saapda venumaa?",
+      "acceptedAnswers": [
+        "ungalukku edhaavadhu saapda venumaa?",
+        "ungalukku edhavadhu saapda venumaa?",
+        "ungalukku edhaavadhu saapdanuma?",
+        "ungalukku edhaavadhu saappida venumaa?"
+      ],
+      "registerVariant": "unakku edhaavadhu saapda venumaa?",
+      "distractors": [
+        "ungalukku edhaavadhu saapda vendaamaa?",
+        "ungalukku edhaavadhu saaptiruppeengalaa?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "edhaavadhu",
+          "english": "anything"
+        },
+        {
+          "word": "saapda",
+          "english": "to eat"
+        },
+        {
+          "word": "venumaa",
+          "english": "do you want?"
+        }
+      ],
+      "script": "உங்களுக்கு எதாவது சாப்ட வேணுமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i17",
+      "sourcePrompt": "I want to learn Tamil.",
+      "register": "neutral",
+      "canonical": "enakku Tamil katthukkanum",
+      "acceptedAnswers": [
+        "enakku Tamil katthukkanum",
+        "enakku Tamil kathukkanum",
+        "enakku Tamil katthukanum",
+        "naan Tamil katthukkanum"
+      ],
+      "distractors": [
+        "enakku Tamil katthukka vendaam",
+        "enakku Tamil theriyum",
+        "enakku Tamil katthukittu irukken"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "Tamil",
+          "english": "Tamil"
+        },
+        {
+          "word": "katthukkanum",
+          "english": "want to learn"
+        }
+      ],
+      "script": "எனக்கு தமிழ் கத்துக்கணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i18",
+      "sourcePrompt": "Don't give me more. (to a friend)",
+      "register": "casual",
+      "canonical": "enakku innum kudukkaadha",
+      "acceptedAnswers": [
+        "enakku innum kudukkaadha",
+        "enakku innum kudukkaadhe",
+        "enakku innum kudukkadha",
+        "enakku innum kudukkaadha da"
+      ],
+      "registerVariant": "enakku innum kudukkaadheenga",
+      "distractors": [
+        "enakku innum kudu",
+        "enakku innum kudukkalaam"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "innum",
+          "english": "more"
+        },
+        {
+          "word": "kudukkaadha",
+          "english": "don't give"
+        }
+      ],
+      "script": "எனக்கு இன்னும் குடுக்காத",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i19",
+      "sourcePrompt": "I need to leave now.",
+      "register": "neutral",
+      "canonical": "naan ippo kelambanum",
+      "acceptedAnswers": [
+        "naan ippo kelambanum",
+        "naan ippo kilambanum",
+        "ippo naan kelambanum",
+        "enakku ippo kelambanum"
+      ],
+      "distractors": [
+        "naan ippo kelambaadhu",
+        "naan ippo kelambinen",
+        "naan ippo kelambavendaam"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "kelambanum",
+          "english": "need to leave"
+        }
+      ],
+      "script": "நான் இப்போ கெளம்பணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u07-i20",
+      "sourcePrompt": "Is this enough for you? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku idhu podhumaa?",
+      "acceptedAnswers": [
+        "ungalukku idhu podhumaa?",
+        "ungalukku idhu pothumaa?",
+        "ungalukku idhu podhuma?",
+        "ungalukku idhu pothuma?"
+      ],
+      "registerVariant": "unakku idhu podhumaa?",
+      "distractors": [
+        "ungalukku idhu podhaadhaa?",
+        "ungalukku idhu pothumaa irundhuchaa?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "podhumaa",
+          "english": "is it enough?"
+        }
+      ],
+      "script": "உங்களுக்கு இது போதுமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

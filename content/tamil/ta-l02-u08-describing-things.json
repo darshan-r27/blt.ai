@@ -1,0 +1,731 @@
+{
+  "scenarioId": "ta-l02-u08",
+  "language": "tamil",
+  "title": "Describing things",
+  "subtitle": "Shopping and choosing: size, colour, quality, very, a little, too",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 8
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u08-i01",
+      "sourcePrompt": "This shirt is too big.",
+      "register": "neutral",
+      "canonical": "indha shirt jaasthi periya size-aa irukku",
+      "acceptedAnswers": [
+        "indha shirt jaasthi periya size-aa irukku",
+        "indha shirt jaasthi periya size irukku",
+        "indha shirt romba periya size-aa irukku",
+        "indha shirt rombave periya-aa irukku"
+      ],
+      "distractors": [
+        "indha shirt jaasthi sinna size-aa irukku",
+        "indha shirt konjam periya size-aa irukku",
+        "indha shirt jaasthi periya size-aa irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "indha shirt",
+          "english": "this shirt"
+        },
+        {
+          "word": "jaasthi",
+          "english": "too"
+        },
+        {
+          "word": "periya size",
+          "english": "big size"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "இந்த ஷர்ட் ஜாஸ்தி பெரிய சைஸா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i02",
+      "sourcePrompt": "It's a little small.",
+      "register": "neutral",
+      "canonical": "konjam sinnadhaa irukku",
+      "acceptedAnswers": [
+        "konjam sinnadhaa irukku",
+        "konjam chinnadhaa irukku",
+        "konjam sinna-aa irukku",
+        "konjam sinnadha irukku"
+      ],
+      "distractors": [
+        "romba sinnadhaa irukku",
+        "konjam periyadhaa irukku",
+        "konjam sinnadhaa irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "konjam",
+          "english": "a little"
+        },
+        {
+          "word": "sinnadhaa",
+          "english": "small"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "கொஞ்சம் சின்னதா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i03",
+      "sourcePrompt": "I like that blue colour.",
+      "register": "neutral",
+      "canonical": "enakku andha neela colour pidikkum",
+      "acceptedAnswers": [
+        "enakku andha neela colour pidikkum",
+        "enakku antha neela colour pidikkum",
+        "enakku andha blue colour pidikkum",
+        "enakku andha neelam pidikkum"
+      ],
+      "distractors": [
+        "enakku andha neela colour pidikkaadhu",
+        "enakku andha pachai colour pidikkum",
+        "enakku andha neela colour pidichuchu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "andha neela colour",
+          "english": "that blue colour"
+        },
+        {
+          "word": "pidikkum",
+          "english": "like"
+        }
+      ],
+      "script": "எனக்கு அந்த நீல கலர் புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i04",
+      "sourcePrompt": "What colour is it? (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "idhu enna colour-nga?",
+      "acceptedAnswers": [
+        "idhu enna colour-nga?",
+        "idhu enna colour nga?",
+        "idhu enna colourunga?",
+        "idhu enna colour-nga"
+      ],
+      "registerVariant": "idhu enna colour?",
+      "distractors": [
+        "idhu evlo colour-nga?",
+        "idhu enga colour-nga?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "enna colour",
+          "english": "what colour"
+        },
+        {
+          "word": "nga",
+          "english": "polite marker"
+        }
+      ],
+      "script": "இது என்ன கலருங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i05",
+      "sourcePrompt": "It's green.",
+      "register": "neutral",
+      "canonical": "adhu pachai colour",
+      "acceptedAnswers": [
+        "adhu pachai colour",
+        "adhu pachchai colour",
+        "athu pachai colour",
+        "adhu green colour"
+      ],
+      "distractors": [
+        "adhu neela colour",
+        "adhu manjal colour",
+        "adhu pachai colour illa"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "pachai",
+          "english": "green"
+        },
+        {
+          "word": "colour",
+          "english": "colour"
+        }
+      ],
+      "script": "அது பச்சை கலர்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i06",
+      "sourcePrompt": "This is very good quality.",
+      "register": "neutral",
+      "canonical": "idhu romba nalla quality",
+      "acceptedAnswers": [
+        "idhu romba nalla quality",
+        "idhu romba nalla quality-ya irukku",
+        "idhu rombave nalla quality",
+        "idhu nalla quality romba"
+      ],
+      "distractors": [
+        "idhu romba mosamaana quality",
+        "idhu konjam nalla quality",
+        "idhu romba nalla quality illa"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "nalla quality",
+          "english": "good quality"
+        }
+      ],
+      "script": "இது ரொம்ப நல்ல குவாலிட்டி",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i07",
+      "sourcePrompt": "This one is better than that.",
+      "register": "neutral",
+      "canonical": "idhu adhai vida nalladhu",
+      "acceptedAnswers": [
+        "idhu adhai vida nalladhu",
+        "idhu adhai vida nalladhaa irukku",
+        "idhu adha vida nalladhu",
+        "idhu adhaivida nalladhu"
+      ],
+      "distractors": [
+        "idhu adhai vida mosam",
+        "idhu adhai maadhiri nalladhu",
+        "adhu idhai vida nalladhu"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this one"
+        },
+        {
+          "word": "adhai vida",
+          "english": "than that"
+        },
+        {
+          "word": "nalladhu",
+          "english": "better"
+        }
+      ],
+      "script": "இது அதை விட நல்லது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i08",
+      "sourcePrompt": "That's too heavy.",
+      "register": "neutral",
+      "canonical": "adhu romba kanama irukku",
+      "acceptedAnswers": [
+        "adhu romba kanama irukku",
+        "adhu romba kanamaa irukku",
+        "adhu rombave kanama irukku",
+        "adhu romba kanam"
+      ],
+      "distractors": [
+        "adhu romba lesaa irukku",
+        "adhu konjam kanama irukku",
+        "adhu romba kanama irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "kanama",
+          "english": "heavy"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "அது ரொம்ப கனமா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i09",
+      "sourcePrompt": "It's very light.",
+      "register": "neutral",
+      "canonical": "idhu romba lesaa irukku",
+      "acceptedAnswers": [
+        "idhu romba lesaa irukku",
+        "idhu romba lesu",
+        "idhu rombave lesaa irukku",
+        "idhu romba lesa irukku"
+      ],
+      "distractors": [
+        "idhu romba kanama irukku",
+        "idhu konjam lesaa irukku",
+        "idhu romba lesaa irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "lesaa",
+          "english": "light"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "இது ரொம்ப லேசா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i10",
+      "sourcePrompt": "This is too long.",
+      "register": "neutral",
+      "canonical": "idhu jaasthi neelama irukku",
+      "acceptedAnswers": [
+        "idhu jaasthi neelama irukku",
+        "idhu jaasthi neelamaa irukku",
+        "idhu romba neelama irukku",
+        "idhu romba neelam"
+      ],
+      "distractors": [
+        "idhu jaasthi kuttaiyaa irukku",
+        "idhu konjam neelama irukku",
+        "idhu jaasthi neelama irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "jaasthi",
+          "english": "too"
+        },
+        {
+          "word": "neelama",
+          "english": "long"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "இது ஜாஸ்தி நீளமா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i11",
+      "sourcePrompt": "Do you have a shorter one?",
+      "register": "neutral",
+      "canonical": "kuttaiyaa onnu irukkaa?",
+      "acceptedAnswers": [
+        "kuttaiyaa onnu irukkaa?",
+        "kuttaiya onnu irukkaa?",
+        "kutta onnu irukkaa?",
+        "kuttaiyaa onnu irukka?"
+      ],
+      "distractors": [
+        "neelamaa onnu irukkaa?",
+        "kuttaiyaa onnu irundhucha?",
+        "kuttaiyaa onnu venaam"
+      ],
+      "tokens": [
+        {
+          "word": "kuttaiyaa",
+          "english": "shorter"
+        },
+        {
+          "word": "onnu",
+          "english": "one"
+        },
+        {
+          "word": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "குட்டையா ஒண்ணு இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i12",
+      "sourcePrompt": "It's a bit expensive. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "konjam jaasthiya irukkunga",
+      "acceptedAnswers": [
+        "konjam jaasthiya irukkunga",
+        "konjam jaasthiyaa irukkunga",
+        "konjam jaasthi-nga",
+        "konjam jaasthiya irukku-nga"
+      ],
+      "registerVariant": "konjam jaasthiya irukku",
+      "distractors": [
+        "konjam kammiya irukkunga",
+        "romba jaasthiya irukkunga"
+      ],
+      "tokens": [
+        {
+          "word": "konjam",
+          "english": "a bit"
+        },
+        {
+          "word": "jaasthiya",
+          "english": "too much"
+        },
+        {
+          "word": "irukkunga",
+          "english": "is (polite)"
+        }
+      ],
+      "script": "கொஞ்சம் ஜாஸ்தியா இருக்குங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i13",
+      "sourcePrompt": "It's soft.",
+      "register": "neutral",
+      "canonical": "adhu softaa irukku",
+      "acceptedAnswers": [
+        "adhu softaa irukku",
+        "adhu soft-aa irukku",
+        "adhu mensaa irukku",
+        "adhu romba soft-aa irukku"
+      ],
+      "distractors": [
+        "adhu gattiyaa irukku",
+        "adhu softaa irundhuchu",
+        "adhu softaa irukkum"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "softaa",
+          "english": "soft"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "அது சாஃப்டா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i14",
+      "sourcePrompt": "It's very hard.",
+      "register": "neutral",
+      "canonical": "adhu romba gattiyaa irukku",
+      "acceptedAnswers": [
+        "adhu romba gattiyaa irukku",
+        "adhu romba kettiyaa irukku",
+        "adhu rombave gattiya irukku",
+        "adhu romba hard-aa irukku"
+      ],
+      "distractors": [
+        "adhu romba softaa irukku",
+        "adhu konjam gattiyaa irukku",
+        "adhu romba gattiyaa irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "gattiyaa",
+          "english": "hard"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "அது ரொம்ப கெட்டியா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i15",
+      "sourcePrompt": "The room is very clean.",
+      "register": "neutral",
+      "canonical": "room romba clean-aa irukku",
+      "acceptedAnswers": [
+        "room romba clean-aa irukku",
+        "room romba clean-a irukku",
+        "room rombave clean-aa irukku",
+        "room romba suththama irukku"
+      ],
+      "distractors": [
+        "room romba azhukkaa irukku",
+        "room konjam clean-aa irukku",
+        "room romba clean-aa irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "room",
+          "english": "room"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "clean-aa",
+          "english": "clean"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "ரூம் ரொம்ப கிளீனா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i16",
+      "sourcePrompt": "It's not very big.",
+      "register": "neutral",
+      "canonical": "adhu avlo periya illa",
+      "acceptedAnswers": [
+        "adhu avlo periya illa",
+        "adhu avvalavu periya illa",
+        "adhu avlo periyadhu illa",
+        "athu avlo periya illa"
+      ],
+      "distractors": [
+        "adhu romba periya",
+        "adhu avlo periya irukku",
+        "adhu avlo sinna illa"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "avlo",
+          "english": "that much"
+        },
+        {
+          "word": "periya",
+          "english": "big"
+        },
+        {
+          "word": "illa",
+          "english": "is not"
+        }
+      ],
+      "script": "அது அவ்ளோ பெரிய இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i17",
+      "sourcePrompt": "Is this too spicy for you? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku idhu jaasthi kaaramaa irukkaa?",
+      "acceptedAnswers": [
+        "unakku idhu jaasthi kaaramaa irukkaa?",
+        "unakku idhu jaasthi kaaramaa irukka?",
+        "unakku idhu romba kaaramaa irukkaa?",
+        "unakku idhu jaasthi kaaram-aa irukkaa?"
+      ],
+      "registerVariant": "ungalukku idhu jaasthi kaaramaa irukkaa?",
+      "distractors": [
+        "unakku idhu jaasthi kaaramaa irundhuchaa?",
+        "unakku idhu konjam kaaramaa irukkaa?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "jaasthi",
+          "english": "too"
+        },
+        {
+          "word": "kaaramaa",
+          "english": "spicy"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "உனக்கு இது ஜாஸ்தி காரமா இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i18",
+      "sourcePrompt": "The tea has gone a little cold.",
+      "register": "neutral",
+      "canonical": "tea konjam aari pochu",
+      "acceptedAnswers": [
+        "tea konjam aari pochu",
+        "tea konjam aari pochchu",
+        "tea konjam aaridhu",
+        "tea konjam aaripoyiduchu"
+      ],
+      "distractors": [
+        "tea konjam sudaa irukku",
+        "tea konjam aarum",
+        "tea romba aari pochu"
+      ],
+      "tokens": [
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "konjam",
+          "english": "a little"
+        },
+        {
+          "word": "aari pochu",
+          "english": "has gone cold"
+        }
+      ],
+      "script": "டீ கொஞ்சம் ஆறிப் போச்சு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i19",
+      "sourcePrompt": "This is the best.",
+      "register": "neutral",
+      "canonical": "idhu thaan best",
+      "acceptedAnswers": [
+        "idhu thaan best",
+        "idhu dhaan best",
+        "idhu thaan romba nalladhu",
+        "idhuve best"
+      ],
+      "distractors": [
+        "idhu thaan worst",
+        "adhu thaan best",
+        "idhu thaan nalladhu illa"
+      ],
+      "tokens": [
+        {
+          "word": "idhu thaan",
+          "english": "this is"
+        },
+        {
+          "word": "best",
+          "english": "best"
+        }
+      ],
+      "script": "இது தான் பெஸ்ட்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u08-i20",
+      "sourcePrompt": "It's too noisy here.",
+      "register": "neutral",
+      "canonical": "inga jaasthi saththam irukku",
+      "acceptedAnswers": [
+        "inga jaasthi saththam irukku",
+        "inga jaasthi saththamaa irukku",
+        "inga romba saththam irukku",
+        "inga saththam jaasthi"
+      ],
+      "distractors": [
+        "inga saththam illa",
+        "inga jaasthi saththam irundhuchu",
+        "anga jaasthi saththam irukku"
+      ],
+      "tokens": [
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "jaasthi",
+          "english": "too much"
+        },
+        {
+          "word": "saththam",
+          "english": "noise"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "இங்க ஜாஸ்தி சத்தம் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

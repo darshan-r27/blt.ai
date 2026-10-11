@@ -1,0 +1,711 @@
+{
+  "scenarioId": "ta-l02-u09",
+  "language": "tamil",
+  "title": "Describing people",
+  "subtitle": "Talking about someone: looks, character and age",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 9
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u09-i01",
+      "sourcePrompt": "He is tall.",
+      "register": "neutral",
+      "canonical": "avan uyaramaa irukkaan",
+      "acceptedAnswers": [
+        "avan uyaramaa irukkaan",
+        "avan uyarama irukkaan",
+        "avan romba uyaramaa irukkaan",
+        "avan uyaramaana aal"
+      ],
+      "distractors": [
+        "avan kuttaiyaa irukkaan",
+        "avan uyaramaa irundhaan",
+        "ava uyaramaa irukkaa"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "uyaramaa",
+          "english": "tall"
+        },
+        {
+          "word": "irukkaan",
+          "english": "is"
+        }
+      ],
+      "script": "அவன் உயரமா இருக்கான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i02",
+      "sourcePrompt": "She is short.",
+      "register": "neutral",
+      "canonical": "ava kuttaiyaa irukkaa",
+      "acceptedAnswers": [
+        "ava kuttaiyaa irukkaa",
+        "aval kuttaiyaa irukkaal",
+        "ava kuttaiya irukkaa",
+        "ava romba kuttaiyaa irukkaa"
+      ],
+      "distractors": [
+        "ava uyaramaa irukkaa",
+        "ava kuttaiyaa irundhaa",
+        "avan kuttaiyaa irukkaan"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "kuttaiyaa",
+          "english": "short"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is"
+        }
+      ],
+      "script": "அவ குட்டையா இருக்கா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i03",
+      "sourcePrompt": "My sister is very pretty.",
+      "register": "neutral",
+      "canonical": "en thangachi romba azhagaa irukkaa",
+      "acceptedAnswers": [
+        "en thangachi romba azhagaa irukkaa",
+        "en thangachi romba alagaa irukkaa",
+        "en thangachi rombave azhagaa irukkaa",
+        "en thangai romba azhagaa irukkaa"
+      ],
+      "distractors": [
+        "en thangachi romba azhagaa irundhaa",
+        "en thangachi konjam azhagaa irukkaa",
+        "en akka romba azhagaa irukkaa"
+      ],
+      "tokens": [
+        {
+          "word": "en thangachi",
+          "english": "my younger sister"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "azhagaa",
+          "english": "pretty"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is"
+        }
+      ],
+      "script": "என் தங்கச்சி ரொம்ப அழகா இருக்கா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i04",
+      "sourcePrompt": "He's a kind person.",
+      "register": "neutral",
+      "canonical": "avan nalla manasu ulla aal",
+      "acceptedAnswers": [
+        "avan nalla manasu ulla aal",
+        "avan nalla manasulla aal",
+        "avan romba nalla manushan",
+        "avar nalla manasu ulla aal"
+      ],
+      "distractors": [
+        "avan mosamaana aal",
+        "avan nalla manasu illaadha aal",
+        "ava nalla manasu ulla aal"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "nalla manasu",
+          "english": "kind heart"
+        },
+        {
+          "word": "ulla aal",
+          "english": "person with"
+        }
+      ],
+      "script": "அவன் நல்ல மனசு உள்ள ஆள்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i05",
+      "sourcePrompt": "How old is your son? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungaloda paiyanukku evlo vayasu?",
+      "acceptedAnswers": [
+        "ungaloda paiyanukku evlo vayasu?",
+        "unga paiyanukku evlo vayasu?",
+        "ungaloda maganukku evlo vayasu?",
+        "unga paiyan-ukku evlo vayasu?"
+      ],
+      "registerVariant": "unnoda paiyanukku evlo vayasu?",
+      "distractors": [
+        "ungaloda paiyanukku evlo kaasu?",
+        "ungaloda paiyan evlo dhooram?"
+      ],
+      "tokens": [
+        {
+          "word": "ungaloda paiyanukku",
+          "english": "your son's"
+        },
+        {
+          "word": "evlo",
+          "english": "how much"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "உங்களோட பையனுக்கு எவ்ளோ வயசு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i06",
+      "sourcePrompt": "He's ten years old.",
+      "register": "neutral",
+      "canonical": "avanukku pathu vayasu",
+      "acceptedAnswers": [
+        "avanukku pathu vayasu",
+        "avanukku paththu vayasu",
+        "avanukku pathu vayasu aagudhu",
+        "avanukku 10 vayasu"
+      ],
+      "distractors": [
+        "avanukku pathu naal",
+        "avalukku pathu vayasu",
+        "avanukku pathu manikku"
+      ],
+      "tokens": [
+        {
+          "word": "avanukku",
+          "english": "to him"
+        },
+        {
+          "word": "pathu",
+          "english": "ten"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "அவனுக்கு பத்து வயசு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i07",
+      "sourcePrompt": "She is very friendly.",
+      "register": "neutral",
+      "canonical": "ava romba nalla pazhaguvaa",
+      "acceptedAnswers": [
+        "ava romba nalla pazhaguvaa",
+        "aval romba nalla pazhaguvaal",
+        "ava rombave nalla pazhaguvaa",
+        "ava romba friendly-aa pazhaguvaa"
+      ],
+      "distractors": [
+        "ava romba mosamaa pazhaguvaa",
+        "ava konjam nalla pazhaguvaa",
+        "avan romba nalla pazhaguvaan"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "nalla pazhaguvaa",
+          "english": "mixes well"
+        }
+      ],
+      "script": "அவ ரொம்ப நல்லா பழகுவா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i08",
+      "sourcePrompt": "Is your boss strict? (to a friend)",
+      "register": "casual",
+      "canonical": "un boss strict-aa?",
+      "acceptedAnswers": [
+        "un boss strict-aa?",
+        "un boss strict-a?",
+        "un boss strictaa?",
+        "un boss strict-aa irukkaaraa?"
+      ],
+      "registerVariant": "unga boss strict-aa?",
+      "distractors": [
+        "un boss strict-aa irundhaaraa?",
+        "un boss strict-aa irupaaraa?"
+      ],
+      "tokens": [
+        {
+          "word": "un boss",
+          "english": "your boss"
+        },
+        {
+          "word": "strict-aa",
+          "english": "strict?"
+        }
+      ],
+      "script": "உன் பாஸ் ஸ்ட்ரிக்டா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i09",
+      "sourcePrompt": "My friend is very funny.",
+      "register": "neutral",
+      "canonical": "en friend romba jolly",
+      "acceptedAnswers": [
+        "en friend romba jolly",
+        "en friend rombave jolly",
+        "en friend romba jolly-aa irukkaan",
+        "en friend romba jolly type"
+      ],
+      "distractors": [
+        "en friend romba serious",
+        "en friend konjam jolly",
+        "en friend romba jolly-aa irundhaan"
+      ],
+      "tokens": [
+        {
+          "word": "en friend",
+          "english": "my friend"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "jolly",
+          "english": "funny, jolly"
+        }
+      ],
+      "script": "என் ஃபிரண்ட் ரொம்ப ஜாலி",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i10",
+      "sourcePrompt": "Which one is your brother? (to a friend)",
+      "register": "casual",
+      "canonical": "un annan yaaru?",
+      "acceptedAnswers": [
+        "un annan yaaru?",
+        "un annan yaar?",
+        "un anna yaaru?",
+        "un annan yaaru-nu sollu?"
+      ],
+      "registerVariant": "unga annan yaaru?",
+      "distractors": [
+        "un annan enga?",
+        "un annan enna?"
+      ],
+      "tokens": [
+        {
+          "word": "un annan",
+          "english": "your brother"
+        },
+        {
+          "word": "yaaru",
+          "english": "who"
+        }
+      ],
+      "script": "உன் அண்ணன் யாரு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i11",
+      "sourcePrompt": "He's wearing a blue shirt.",
+      "register": "neutral",
+      "canonical": "avan neela shirt pottirukkaan",
+      "acceptedAnswers": [
+        "avan neela shirt pottirukkaan",
+        "avan neela shirt pottu irukkaan",
+        "avan blue shirt pottirukkaan",
+        "avan neela shirt potturukkaan"
+      ],
+      "distractors": [
+        "avan neela shirt pottaan",
+        "avan neela shirt podala",
+        "ava neela shirt pottirukkaa"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "neela shirt",
+          "english": "blue shirt"
+        },
+        {
+          "word": "pottirukkaan",
+          "english": "is wearing"
+        }
+      ],
+      "script": "அவன் நீல ஷர்ட் போட்டிருக்கான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i12",
+      "sourcePrompt": "She has long hair.",
+      "register": "neutral",
+      "canonical": "avalukku neelamaana mudi irukku",
+      "acceptedAnswers": [
+        "avalukku neelamaana mudi irukku",
+        "avalukku neelamaana mudi irukkudhu",
+        "avalukku neelama mudi irukku",
+        "avalukku romba neelamaana mudi irukku"
+      ],
+      "distractors": [
+        "avalukku kuttaiyaana mudi irukku",
+        "avanukku neelamaana mudi irukku",
+        "avalukku neelamaana mudi illa"
+      ],
+      "tokens": [
+        {
+          "word": "avalukku",
+          "english": "she has"
+        },
+        {
+          "word": "neelamaana",
+          "english": "long"
+        },
+        {
+          "word": "mudi",
+          "english": "hair"
+        },
+        {
+          "word": "irukku",
+          "english": "there is"
+        }
+      ],
+      "script": "அவளுக்கு நீளமான முடி இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i13",
+      "sourcePrompt": "He's very quiet.",
+      "register": "neutral",
+      "canonical": "avan romba amaidhiyaa irukkaan",
+      "acceptedAnswers": [
+        "avan romba amaidhiyaa irukkaan",
+        "avan romba amaidhi",
+        "avan amaidhiyaa irukkaan",
+        "avan romba amaithiyaa irukkaan"
+      ],
+      "distractors": [
+        "avan romba sathamaa irukkaan",
+        "avan konjam amaidhiyaa irukkaan",
+        "avan romba amaidhiyaa irundhaan"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "amaidhiyaa",
+          "english": "quiet"
+        },
+        {
+          "word": "irukkaan",
+          "english": "is"
+        }
+      ],
+      "script": "அவன் ரொம்ப அமைதியா இருக்கான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i14",
+      "sourcePrompt": "Is she married? (to an elder)",
+      "register": "respectful",
+      "canonical": "avangalukku kalyaanam aayiducha?",
+      "acceptedAnswers": [
+        "avangalukku kalyaanam aayiducha?",
+        "avangalukku kalyanam aayiducha?",
+        "avanga married-aa?",
+        "avangalukku kalyaanam aachaa?"
+      ],
+      "registerVariant": "avalukku kalyaanam aayiducha?",
+      "distractors": [
+        "avangalukku kalyaanam aaguma?",
+        "avangalukku kalyaanam venumaa?"
+      ],
+      "tokens": [
+        {
+          "word": "avangalukku",
+          "english": "to her (respectful)"
+        },
+        {
+          "word": "kalyaanam",
+          "english": "wedding"
+        },
+        {
+          "word": "aayiducha",
+          "english": "has it happened?"
+        }
+      ],
+      "script": "அவங்களுக்கு கல்யாணம் ஆயிடுச்சா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i15",
+      "sourcePrompt": "He looks like his father.",
+      "register": "neutral",
+      "canonical": "avan appa maadhiri irukkaan",
+      "acceptedAnswers": [
+        "avan appa maadhiri irukkaan",
+        "avan appa mathiri irukkaan",
+        "avan appaa maadhiri irukkaan",
+        "avan appa maadhiriye irukkaan"
+      ],
+      "distractors": [
+        "avan amma maadhiri irukkaan",
+        "avan appa maadhiri illa",
+        "avan appa maadhiri irundhaan"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "appa maadhiri",
+          "english": "like his father"
+        },
+        {
+          "word": "irukkaan",
+          "english": "is"
+        }
+      ],
+      "script": "அவன் அப்பா மாதிரி இருக்கான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i16",
+      "sourcePrompt": "She works very hard.",
+      "register": "neutral",
+      "canonical": "ava romba kashtappattu velai paakkuraa",
+      "acceptedAnswers": [
+        "ava romba kashtappattu velai paakkuraa",
+        "ava romba kashtapattu velai paakkuraa",
+        "aval romba kashtappattu velai seiyuraal",
+        "ava romba kashtappattu velai pannuraa"
+      ],
+      "distractors": [
+        "ava romba kashtappattu velai paathaa",
+        "ava romba kashtappattu velai paapaa",
+        "avan romba kashtappattu velai paakkuraan"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "kashtappattu",
+          "english": "with effort"
+        },
+        {
+          "word": "velai paakkuraa",
+          "english": "works"
+        }
+      ],
+      "script": "அவ ரொம்ப கஷ்டப்பட்டு வேலை பாக்குறா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i17",
+      "sourcePrompt": "My grandfather is eighty years old.",
+      "register": "neutral",
+      "canonical": "en thaathaavukku enbadhu vayasu",
+      "acceptedAnswers": [
+        "en thaathaavukku enbadhu vayasu",
+        "en thaathaavukku enbathu vayasu",
+        "en thaatha-kku enbadhu vayasu",
+        "en thaathaavukku 80 vayasu"
+      ],
+      "distractors": [
+        "en thaathaavukku ezhubadhu vayasu",
+        "en paatikku enbadhu vayasu",
+        "en thaathaavukku enbadhu naal"
+      ],
+      "tokens": [
+        {
+          "word": "en thaathaavukku",
+          "english": "to my grandfather"
+        },
+        {
+          "word": "enbadhu",
+          "english": "eighty"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "என் தாத்தாவுக்கு எண்பது வயசு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i18",
+      "sourcePrompt": "What does he look like? (to a friend)",
+      "register": "casual",
+      "canonical": "avan eppadi irukkaan?",
+      "acceptedAnswers": [
+        "avan eppadi irukkaan?",
+        "avan epdi irukkaan?",
+        "avan eppadi irukkan?",
+        "avan enna maadhiri irukkaan?"
+      ],
+      "registerVariant": "avar eppadi irukkaar?",
+      "distractors": [
+        "avan enga irukkaan?",
+        "avan eppo varuvaan?"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "eppadi",
+          "english": "how"
+        },
+        {
+          "word": "irukkaan",
+          "english": "is"
+        }
+      ],
+      "script": "அவன் எப்படி இருக்கான்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i19",
+      "sourcePrompt": "He is a very honest person.",
+      "register": "neutral",
+      "canonical": "avan romba nermaiyaana aal",
+      "acceptedAnswers": [
+        "avan romba nermaiyaana aal",
+        "avan rombave nermaiyaana aal",
+        "avar romba nermaiyaana aal",
+        "avan nermaiyaana manushan"
+      ],
+      "distractors": [
+        "avan romba poi solra aal",
+        "avan konjam nermaiyaana aal",
+        "ava romba nermaiyaana aal"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "nermaiyaana",
+          "english": "honest"
+        },
+        {
+          "word": "aal",
+          "english": "person"
+        }
+      ],
+      "script": "அவன் ரொம்ப நேர்மையான ஆள்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u09-i20",
+      "sourcePrompt": "She's about thirty.",
+      "register": "neutral",
+      "canonical": "avalukku muppadhu vayasu irukkum",
+      "acceptedAnswers": [
+        "avalukku muppadhu vayasu irukkum",
+        "avalukku muppathu vayasu irukkum",
+        "avalukku sumaar muppadhu vayasu irukkum",
+        "avalukku muppadhu vayasu aagum"
+      ],
+      "distractors": [
+        "avalukku muppadhu vayasu aachu",
+        "avalukku irubadhu vayasu irukkum",
+        "avanukku muppadhu vayasu irukkum"
+      ],
+      "tokens": [
+        {
+          "word": "avalukku",
+          "english": "to her"
+        },
+        {
+          "word": "muppadhu",
+          "english": "thirty"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        },
+        {
+          "word": "irukkum",
+          "english": "would be"
+        }
+      ],
+      "script": "அவளுக்கு முப்பது வயசு இருக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
