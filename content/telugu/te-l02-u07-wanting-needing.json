@@ -1,0 +1,703 @@
+{
+  "scenarioId": "te-l02-u07",
+  "language": "telugu",
+  "title": "Wanting and needing",
+  "subtitle": "Asking for things: want, don't want, need, enough",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 7
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u07-i01",
+      "sourcePrompt": "What do you want? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku emi kavali?",
+      "acceptedAnswers": [
+        "neeku emi kavali?",
+        "neeku em kavali?",
+        "neeku emi kaavali?",
+        "neeku emi kavaali?"
+      ],
+      "registerVariant": "meeku emi kavali?",
+      "distractors": [
+        "neeku emi vaddu?",
+        "neeku emi dorikindi?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "emi",
+          "english": "what"
+        },
+        {
+          "word": "kavali",
+          "english": "do you want"
+        }
+      ],
+      "script": "నీకు ఏమి కావాలి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i02",
+      "sourcePrompt": "What would you like? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku emi kavalandi?",
+      "acceptedAnswers": [
+        "meeku emi kavalandi?",
+        "meeku em kavalandi?",
+        "meeku emi kaavalandi?",
+        "emi kavalandi?"
+      ],
+      "registerVariant": "neeku emi kavali?",
+      "distractors": [
+        "meeku emi vaddandi?",
+        "meeku emi ichcharu?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "emi",
+          "english": "what"
+        },
+        {
+          "word": "kavalandi",
+          "english": "do you want (polite)"
+        }
+      ],
+      "script": "మీకు ఏమి కావాలండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i03",
+      "sourcePrompt": "I want a glass of water.",
+      "register": "neutral",
+      "canonical": "naaku oka glass neellu kavali",
+      "acceptedAnswers": [
+        "naaku oka glass neellu kavali",
+        "naaku oka glass neellu kaavali",
+        "naaku oka glass water kavali",
+        "naku oka glass neellu kavali"
+      ],
+      "distractors": [
+        "naaku oka glass neellu vaddu",
+        "naaku oka glass neellu taagaanu",
+        "naaku oka glass neellu undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "oka glass neellu",
+          "english": "a glass of water"
+        },
+        {
+          "word": "kavali",
+          "english": "want"
+        }
+      ],
+      "script": "నాకు ఒక గ్లాస్ నీళ్లు కావాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i04",
+      "sourcePrompt": "I don't want tea.",
+      "register": "neutral",
+      "canonical": "naaku tea vaddu",
+      "acceptedAnswers": [
+        "naaku tea vaddu",
+        "naaku chai vaddu",
+        "naku tea vaddu",
+        "naaku tea vadu"
+      ],
+      "distractors": [
+        "naaku tea kavali",
+        "naaku tea taagaanu",
+        "naaku tea undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "vaddu",
+          "english": "don't want"
+        }
+      ],
+      "script": "నాకు టీ వద్దు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i05",
+      "sourcePrompt": "I need a pen.",
+      "register": "neutral",
+      "canonical": "naaku oka pen avasaram",
+      "acceptedAnswers": [
+        "naaku oka pen avasaram",
+        "naku oka pen avasaram",
+        "naaku pen avasaram",
+        "naaku oka pen kavali"
+      ],
+      "distractors": [
+        "naaku oka pen avasaram ledu",
+        "naaku oka pen avasaram ayyindi",
+        "naaku oka pen undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "oka pen",
+          "english": "a pen"
+        },
+        {
+          "word": "avasaram",
+          "english": "needed"
+        }
+      ],
+      "script": "నాకు ఒక పెన్ అవసరం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i06",
+      "sourcePrompt": "Do you need anything? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku edaina kavalaa?",
+      "acceptedAnswers": [
+        "meeku edaina kavalaa?",
+        "meeku edaina kavala?",
+        "meeku edaina avasaramaa?",
+        "meeku edanna kavalaa?"
+      ],
+      "registerVariant": "neeku edaina kavalaa?",
+      "distractors": [
+        "meeku edaina vaddaa?",
+        "meeku edaina ichchara?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "edaina",
+          "english": "anything"
+        },
+        {
+          "word": "kavalaa",
+          "english": "do you need?"
+        }
+      ],
+      "script": "మీకు ఏదైనా కావాలా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i07",
+      "sourcePrompt": "Do you want more? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku inka kavalaa?",
+      "acceptedAnswers": [
+        "neeku inka kavalaa?",
+        "neeku inka kavala?",
+        "neeku inkaa kavalaa?",
+        "neeku inka konchem kavalaa?"
+      ],
+      "registerVariant": "meeku inka kavalaa?",
+      "distractors": [
+        "neeku inka vaddaa?",
+        "neeku inka dorikindaa?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "inka",
+          "english": "more"
+        },
+        {
+          "word": "kavalaa",
+          "english": "do you want?"
+        }
+      ],
+      "script": "నీకు ఇంకా కావాలా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i08",
+      "sourcePrompt": "That's enough, thank you.",
+      "register": "neutral",
+      "canonical": "idi chaalu, thanks",
+      "acceptedAnswers": [
+        "idi chaalu, thanks",
+        "idi chalu thanks",
+        "idi chaalu, thank you",
+        "idi saripotundi, thanks"
+      ],
+      "distractors": [
+        "idi saripodu, thanks",
+        "inka kavali, thanks",
+        "idi chaaladu, thanks"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "chaalu",
+          "english": "enough"
+        },
+        {
+          "word": "thanks",
+          "english": "thanks"
+        }
+      ],
+      "script": "ఇది చాలు, థాంక్స్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i09",
+      "sourcePrompt": "I want to go home.",
+      "register": "neutral",
+      "canonical": "naaku intiki vellaali",
+      "acceptedAnswers": [
+        "naaku intiki vellaali",
+        "naaku intiki vellali",
+        "nenu intiki vellaali",
+        "naaku inti ki vellaali"
+      ],
+      "distractors": [
+        "naaku intiki vellakoodadu",
+        "naaku intiki vellanu",
+        "naaku intlo undali"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "intiki",
+          "english": "home"
+        },
+        {
+          "word": "vellaali",
+          "english": "must go"
+        }
+      ],
+      "script": "నాకు ఇంటికి వెళ్లాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i10",
+      "sourcePrompt": "I need some help.",
+      "register": "neutral",
+      "canonical": "naaku konchem help kavali",
+      "acceptedAnswers": [
+        "naaku konchem help kavali",
+        "naaku konchem sahayam kavali",
+        "naaku konchem help kaavali",
+        "naaku help kavali"
+      ],
+      "distractors": [
+        "naaku konchem help vaddu",
+        "naaku konchem help chesanu",
+        "naaku konchem help undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "konchem help",
+          "english": "some help"
+        },
+        {
+          "word": "kavali",
+          "english": "need"
+        }
+      ],
+      "script": "నాకు కొంచెం హెల్ప్ కావాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i11",
+      "sourcePrompt": "We need two more chairs.",
+      "register": "neutral",
+      "canonical": "manaki inka rendu kurchilu kavali",
+      "acceptedAnswers": [
+        "manaki inka rendu kurchilu kavali",
+        "manaki inka rendu chairs kavali",
+        "manaku inka rendu kurchilu kavali",
+        "manaki inka rendu kurchilu kaavali"
+      ],
+      "distractors": [
+        "manaki inka rendu kurchilu vaddu",
+        "manaki inka okka kurchi kavali",
+        "manaki inka rendu kurchilu unnayi"
+      ],
+      "tokens": [
+        {
+          "word": "manaki",
+          "english": "for us"
+        },
+        {
+          "word": "inka rendu",
+          "english": "two more"
+        },
+        {
+          "word": "kurchilu",
+          "english": "chairs"
+        },
+        {
+          "word": "kavali",
+          "english": "need"
+        }
+      ],
+      "script": "మనకి ఇంకా రెండు కుర్చీలు కావాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i12",
+      "sourcePrompt": "I don't need it.",
+      "register": "neutral",
+      "canonical": "naaku adi avasaram ledu",
+      "acceptedAnswers": [
+        "naaku adi avasaram ledu",
+        "naku adi avasaram ledu",
+        "naaku adi avasaramledu",
+        "naaku adi vaddu"
+      ],
+      "distractors": [
+        "naaku adi avasaram",
+        "naaku adi avasaram ayindi",
+        "naaku adi avasaram undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "avasaram ledu",
+          "english": "not needed"
+        }
+      ],
+      "script": "నాకు అది అవసరం లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i13",
+      "sourcePrompt": "How much do you need? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku enta kavali?",
+      "acceptedAnswers": [
+        "neeku enta kavali?",
+        "neeku entha kavali?",
+        "neeku enta kaavali?",
+        "neeku enta kavaali?"
+      ],
+      "registerVariant": "meeku enta kavali?",
+      "distractors": [
+        "neeku enta vaddu?",
+        "neeku enta dorikindi?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "enta",
+          "english": "how much"
+        },
+        {
+          "word": "kavali",
+          "english": "do you need"
+        }
+      ],
+      "script": "నీకు ఎంత కావాలి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i14",
+      "sourcePrompt": "I want a small one.",
+      "register": "neutral",
+      "canonical": "naaku chinnadi kavali",
+      "acceptedAnswers": [
+        "naaku chinnadi kavali",
+        "naaku chinna daani kavali",
+        "naaku chinnadi kaavali",
+        "naaku chinna size kavali"
+      ],
+      "distractors": [
+        "naaku peddadi kavali",
+        "naaku chinnadi vaddu",
+        "naaku chinnadi undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "chinnadi",
+          "english": "a small one"
+        },
+        {
+          "word": "kavali",
+          "english": "want"
+        }
+      ],
+      "script": "నాకు చిన్నది కావాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i15",
+      "sourcePrompt": "I want to speak to the manager.",
+      "register": "neutral",
+      "canonical": "nenu manager tho matladali",
+      "acceptedAnswers": [
+        "nenu manager tho matladali",
+        "nenu manager tho maatladali",
+        "naaku manager tho matladali",
+        "nenu managertho matladali"
+      ],
+      "distractors": [
+        "nenu manager tho matladanu",
+        "nenu manager tho matladakoodadu",
+        "nenu manager tho matladukunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "manager tho",
+          "english": "with the manager"
+        },
+        {
+          "word": "matladali",
+          "english": "must speak"
+        }
+      ],
+      "script": "నేను మేనేజర్ తో మాట్లాడాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i16",
+      "sourcePrompt": "Do you want anything to eat? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku edaina tinadaniki kavalaa?",
+      "acceptedAnswers": [
+        "meeku edaina tinadaniki kavalaa?",
+        "meeku edaina tinadaniki kavala?",
+        "meeku edaina tinataniki kavalaa?",
+        "meeku edaina tinadaaniki kavalaa?"
+      ],
+      "registerVariant": "neeku edaina tinadaniki kavalaa?",
+      "distractors": [
+        "meeku edaina tinadaniki vaddaa?",
+        "meeku edaina tinnara?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "edaina",
+          "english": "anything"
+        },
+        {
+          "word": "tinadaniki",
+          "english": "to eat"
+        },
+        {
+          "word": "kavalaa",
+          "english": "do you want?"
+        }
+      ],
+      "script": "మీకు ఏదైనా తినడానికి కావాలా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i17",
+      "sourcePrompt": "I want to learn Telugu.",
+      "register": "neutral",
+      "canonical": "naaku Telugu nerchukovali",
+      "acceptedAnswers": [
+        "naaku Telugu nerchukovali",
+        "naku Telugu nerchukovali",
+        "naaku Telugu nerchukovaali",
+        "nenu Telugu nerchukovali"
+      ],
+      "distractors": [
+        "naaku Telugu nerchukonakkarledu",
+        "naaku Telugu vachchu",
+        "naaku Telugu nerchukuntunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "Telugu",
+          "english": "Telugu"
+        },
+        {
+          "word": "nerchukovali",
+          "english": "want to learn"
+        }
+      ],
+      "script": "నాకు తెలుగు నేర్చుకోవాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i18",
+      "sourcePrompt": "Don't give me more. (to a friend)",
+      "register": "casual",
+      "canonical": "naaku inka ivvaku",
+      "acceptedAnswers": [
+        "naaku inka ivvaku",
+        "naaku inka ivvaku ra",
+        "naaku inkaa ivvaku",
+        "naku inka ivvaku"
+      ],
+      "registerVariant": "naaku inka ivvakandi",
+      "distractors": [
+        "naaku inka ivvu",
+        "naaku inka ivvochu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "inka",
+          "english": "more"
+        },
+        {
+          "word": "ivvaku",
+          "english": "don't give"
+        }
+      ],
+      "script": "నాకు ఇంకా ఇవ్వకు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i19",
+      "sourcePrompt": "I need to leave now.",
+      "register": "neutral",
+      "canonical": "nenu ippudu vellipovali",
+      "acceptedAnswers": [
+        "nenu ippudu vellipovali",
+        "nenu ippudu vellipovaali",
+        "nenu ippudu bayaluderaali",
+        "nenu ippudu velli povali"
+      ],
+      "distractors": [
+        "nenu ippudu vellanu",
+        "nenu ippudu vellakoodadu",
+        "nenu ippudu vellipoyanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "vellipovali",
+          "english": "must leave"
+        }
+      ],
+      "script": "నేను ఇప్పుడు వెళ్లిపోవాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u07-i20",
+      "sourcePrompt": "Is this enough for you? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku idi chaalunaa?",
+      "acceptedAnswers": [
+        "meeku idi chaalunaa?",
+        "meeku idi chaaluna?",
+        "meeku idi chalunaa?",
+        "meeku idi chaalu na?"
+      ],
+      "registerVariant": "neeku idi chaalunaa?",
+      "distractors": [
+        "meeku idi chaaladaa?",
+        "meeku idi chaalindaa?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "chaalunaa",
+          "english": "is it enough?"
+        }
+      ],
+      "script": "మీకు ఇది చాలునా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

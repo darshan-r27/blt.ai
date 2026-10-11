@@ -1,0 +1,691 @@
+{
+  "scenarioId": "te-l02-u10",
+  "language": "telugu",
+  "title": "Question words",
+  "subtitle": "Asking anything: who, what, where, when, why, how, which, how many",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 10
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u10-i01",
+      "sourcePrompt": "Who are you looking for? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu evarini vetukutunnav?",
+      "acceptedAnswers": [
+        "nuvvu evarini vetukutunnav?",
+        "nuvvu evarini vethukutunnav?",
+        "nuvvu evari kosam vetukutunnav?",
+        "nuvvu evarni vetukutunnav?"
+      ],
+      "registerVariant": "meeru evarini vetukutunnaru?",
+      "distractors": [
+        "nuvvu evarini vetikav?",
+        "nuvvu evarini vetukutav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "evarini",
+          "english": "whom"
+        },
+        {
+          "word": "vetukutunnav",
+          "english": "are you looking for"
+        }
+      ],
+      "script": "నువ్వు ఎవరిని వెతుకుతున్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i02",
+      "sourcePrompt": "What is this called? (to an elder)",
+      "register": "respectful",
+      "canonical": "deeniki peru emiti andi?",
+      "acceptedAnswers": [
+        "deeniki peru emiti andi?",
+        "deeniki peru enti andi?",
+        "deeniki peremiti andi?",
+        "deeni peru emiti andi?"
+      ],
+      "registerVariant": "deeniki peru emiti?",
+      "distractors": [
+        "deeniki peru enta andi?",
+        "deeniki peru ekkada andi?"
+      ],
+      "tokens": [
+        {
+          "word": "deeniki",
+          "english": "for this"
+        },
+        {
+          "word": "peru",
+          "english": "name"
+        },
+        {
+          "word": "emiti",
+          "english": "what"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "దీనికి పేరు ఏమిటి అండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i03",
+      "sourcePrompt": "Where do you live? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu ekkada untav?",
+      "acceptedAnswers": [
+        "nuvvu ekkada untav?",
+        "nuvvu ekkada untaavu?",
+        "nuvvu ekkada vuntav?",
+        "nuvvu ekkada untunnav?"
+      ],
+      "registerVariant": "meeru ekkada untaru?",
+      "distractors": [
+        "nuvvu ekkada unnav?",
+        "nuvvu ekkada undevaadivi?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "untav",
+          "english": "do you live"
+        }
+      ],
+      "script": "నువ్వు ఎక్కడ ఉంటావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i04",
+      "sourcePrompt": "When will you come? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu eppudu vastav?",
+      "acceptedAnswers": [
+        "nuvvu eppudu vastav?",
+        "nuvvu eppudu vastaavu?",
+        "nuvvu eppudu osthav?",
+        "nuvvu eppudu vastavu?"
+      ],
+      "registerVariant": "meeru eppudu vastaru?",
+      "distractors": [
+        "nuvvu eppudu vachchav?",
+        "nuvvu eppudu vastunnav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "eppudu",
+          "english": "when"
+        },
+        {
+          "word": "vastav",
+          "english": "will you come"
+        }
+      ],
+      "script": "నువ్వు ఎప్పుడు వస్తావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i05",
+      "sourcePrompt": "Why are you sad? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu enduku badhaga unnav?",
+      "acceptedAnswers": [
+        "nuvvu enduku badhaga unnav?",
+        "nuvvu enduku badhaga unnavu?",
+        "nuvvu enduku sad ga unnav?",
+        "nuvvu enduku bhaadhaga unnav?"
+      ],
+      "registerVariant": "meeru enduku badhaga unnaru?",
+      "distractors": [
+        "nuvvu enduku badhaga undevaadivi?",
+        "nuvvu enduku badhaga untav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "enduku",
+          "english": "why"
+        },
+        {
+          "word": "badhaga",
+          "english": "sad"
+        },
+        {
+          "word": "unnav",
+          "english": "are you"
+        }
+      ],
+      "script": "నువ్వు ఎందుకు బాధగా ఉన్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i06",
+      "sourcePrompt": "Why is it closed?",
+      "register": "neutral",
+      "canonical": "enduku musi undi?",
+      "acceptedAnswers": [
+        "enduku musi undi?",
+        "enduku musivesi undi?",
+        "enduku musi undi",
+        "enduku closed ga undi?"
+      ],
+      "distractors": [
+        "eppudu musi undi?",
+        "ekkada musi undi?",
+        "enduku musi undedi?"
+      ],
+      "tokens": [
+        {
+          "word": "enduku",
+          "english": "why"
+        },
+        {
+          "word": "musi undi",
+          "english": "is closed"
+        }
+      ],
+      "script": "ఎందుకు మూసి ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i07",
+      "sourcePrompt": "How do you make this? (to an elder)",
+      "register": "respectful",
+      "canonical": "deenni ela chestaru?",
+      "acceptedAnswers": [
+        "deenni ela chestaru?",
+        "deenni ela chesthaaru?",
+        "dheenni ela chestaru?",
+        "deenni ela chestaaru?"
+      ],
+      "registerVariant": "deenni ela chestav?",
+      "distractors": [
+        "deenni ela chesaru?",
+        "deenni ekkada chestaru?"
+      ],
+      "tokens": [
+        {
+          "word": "deenni",
+          "english": "this (object)"
+        },
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "chestaru",
+          "english": "do you make"
+        }
+      ],
+      "script": "దీన్ని ఎలా చేస్తారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i08",
+      "sourcePrompt": "How many rooms are there?",
+      "register": "neutral",
+      "canonical": "enni gadulu unnayi?",
+      "acceptedAnswers": [
+        "enni gadulu unnayi?",
+        "enni gadulu vunnayi?",
+        "enni rooms unnayi?",
+        "enni gadulu unnaayi?"
+      ],
+      "distractors": [
+        "enta gadulu unnayi?",
+        "enni gadulu undevi?",
+        "ekkada gadulu unnayi?"
+      ],
+      "tokens": [
+        {
+          "word": "enni",
+          "english": "how many"
+        },
+        {
+          "word": "gadulu",
+          "english": "rooms"
+        },
+        {
+          "word": "unnayi",
+          "english": "are there"
+        }
+      ],
+      "script": "ఎన్ని గదులు ఉన్నాయి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i09",
+      "sourcePrompt": "Which bus goes there?",
+      "register": "neutral",
+      "canonical": "akkadiki ye bus veltundi?",
+      "acceptedAnswers": [
+        "akkadiki ye bus veltundi?",
+        "akkadiki e bus veltundi?",
+        "akkadiki ye bus velthundi?",
+        "akkadiki ye bus veltadi?"
+      ],
+      "distractors": [
+        "akkadiki ye bus vachchindi?",
+        "akkadiki ye bus vastundi?",
+        "ikkadiki ye bus veltundi?"
+      ],
+      "tokens": [
+        {
+          "word": "akkadiki",
+          "english": "to there"
+        },
+        {
+          "word": "ye bus",
+          "english": "which bus"
+        },
+        {
+          "word": "veltundi",
+          "english": "goes"
+        }
+      ],
+      "script": "అక్కడికి ఏ బస్ వెళ్తుంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i10",
+      "sourcePrompt": "Which one do you want? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku edi kavali?",
+      "acceptedAnswers": [
+        "neeku edi kavali?",
+        "neeku edi kaavali?",
+        "neeku edi kavaali?",
+        "neeku edi kavali"
+      ],
+      "registerVariant": "meeku edi kavali?",
+      "distractors": [
+        "neeku edi vaddu?",
+        "neeku edi dorikindi?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "edi",
+          "english": "which"
+        },
+        {
+          "word": "kavali",
+          "english": "do you want"
+        }
+      ],
+      "script": "నీకు ఏది కావాలి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i11",
+      "sourcePrompt": "What's the matter? (to a friend)",
+      "register": "casual",
+      "canonical": "emi vishayam?",
+      "acceptedAnswers": [
+        "emi vishayam?",
+        "em vishayam?",
+        "emi matter?",
+        "emiti vishayam?"
+      ],
+      "registerVariant": "emi vishayam andi?",
+      "distractors": [
+        "emi vishayam ayindi?",
+        "eppudu vishayam?"
+      ],
+      "tokens": [
+        {
+          "word": "emi",
+          "english": "what"
+        },
+        {
+          "word": "vishayam",
+          "english": "matter"
+        }
+      ],
+      "script": "ఏమి విషయం?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i12",
+      "sourcePrompt": "Who is coming?",
+      "register": "neutral",
+      "canonical": "evaru vastunnaru?",
+      "acceptedAnswers": [
+        "evaru vastunnaru?",
+        "evaru vasthunnaru?",
+        "evaru vastunnaaru?",
+        "evaru osthunnaru?"
+      ],
+      "distractors": [
+        "evaru vachcharu?",
+        "evaru vastaru?",
+        "ekkadiki vastunnaru?"
+      ],
+      "tokens": [
+        {
+          "word": "evaru",
+          "english": "who"
+        },
+        {
+          "word": "vastunnaru",
+          "english": "is coming"
+        }
+      ],
+      "script": "ఎవరు వస్తున్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i13",
+      "sourcePrompt": "What are you reading? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru emi chaduvutunnaru?",
+      "acceptedAnswers": [
+        "meeru emi chaduvutunnaru?",
+        "meeru em chaduvutunnaru?",
+        "meeru emi chaduvuthunnaru?",
+        "meeru emi chadivutunnaru?"
+      ],
+      "registerVariant": "nuvvu emi chaduvutunnav?",
+      "distractors": [
+        "meeru emi chadivaru?",
+        "meeru emi chaduvutaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "emi",
+          "english": "what"
+        },
+        {
+          "word": "chaduvutunnaru",
+          "english": "are you reading"
+        }
+      ],
+      "script": "మీరు ఏమి చదువుతున్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i14",
+      "sourcePrompt": "Where is the exit?",
+      "register": "neutral",
+      "canonical": "exit ekkada undi?",
+      "acceptedAnswers": [
+        "exit ekkada undi?",
+        "exit ekkada vundi?",
+        "bayataku daari ekkada undi?",
+        "exit ekkada undi"
+      ],
+      "distractors": [
+        "exit eppudu undi?",
+        "entrance ekkada undi?",
+        "exit ekkada undedi?"
+      ],
+      "tokens": [
+        {
+          "word": "exit",
+          "english": "exit"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఎగ్జిట్ ఎక్కడ ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i15",
+      "sourcePrompt": "What does his father do? (to a friend)",
+      "register": "casual",
+      "canonical": "atani nanna em pani chestaru?",
+      "acceptedAnswers": [
+        "atani nanna em pani chestaru?",
+        "atani nanna emi pani chestaru?",
+        "atani nanna em job chestaru?",
+        "atani nanna em pani chesthaaru?"
+      ],
+      "registerVariant": "vaari nanna em pani chestaru?",
+      "distractors": [
+        "atani nanna em pani chesaru?",
+        "atani nanna ekkada pani chestaru?"
+      ],
+      "tokens": [
+        {
+          "word": "atani nanna",
+          "english": "his father"
+        },
+        {
+          "word": "em pani",
+          "english": "what work"
+        },
+        {
+          "word": "chestaru",
+          "english": "does"
+        }
+      ],
+      "script": "అతని నాన్న ఏం పని చేస్తారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i16",
+      "sourcePrompt": "Why isn't it working?",
+      "register": "neutral",
+      "canonical": "idi enduku pani cheyatledu?",
+      "acceptedAnswers": [
+        "idi enduku pani cheyatledu?",
+        "idi enduku work avvatledu?",
+        "idi enduku pani cheyyatledu?",
+        "idi enduku panicheyatledu?"
+      ],
+      "distractors": [
+        "idi eppudu pani chestundi?",
+        "idi ekkada pani cheyatledu?",
+        "idi enduku pani chestundi?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "enduku",
+          "english": "why"
+        },
+        {
+          "word": "pani cheyatledu",
+          "english": "isn't working"
+        }
+      ],
+      "script": "ఇది ఎందుకు పని చేయట్లేదు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i17",
+      "sourcePrompt": "How do I get there? (to an elder)",
+      "register": "respectful",
+      "canonical": "akkadiki ela vellaali andi?",
+      "acceptedAnswers": [
+        "akkadiki ela vellaali andi?",
+        "akkadiki ela vellali andi",
+        "akkadiki ela vellaali andi.",
+        "akkadiki ela vellalandi?"
+      ],
+      "registerVariant": "akkadiki ela vellali?",
+      "distractors": [
+        "akkadiki eppudu vellali andi?",
+        "akkadiki ela vellaru andi?"
+      ],
+      "tokens": [
+        {
+          "word": "akkadiki",
+          "english": "to there"
+        },
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "vellaali",
+          "english": "should go"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "అక్కడికి ఎలా వెళ్లాలి అండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i18",
+      "sourcePrompt": "How long have you been waiting? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu enta sepu nunchi eduru chustunnav?",
+      "acceptedAnswers": [
+        "nuvvu enta sepu nunchi eduru chustunnav?",
+        "nuvvu entha sepu nunchi eduru chustunnav?",
+        "nuvvu enta sepu nundi eduru chustunnav?",
+        "nuvvu enta sepatinunchi eduru chustunnav?"
+      ],
+      "registerVariant": "meeru enta sepu nunchi eduru chustunnaru?",
+      "distractors": [
+        "nuvvu enta sepu eduru chusav?",
+        "nuvvu enta sepu eduru chustav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "enta sepu nunchi",
+          "english": "since how long"
+        },
+        {
+          "word": "eduru chustunnav",
+          "english": "are you waiting"
+        }
+      ],
+      "script": "నువ్వు ఎంత సేపు నుంచి ఎదురు చూస్తున్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i19",
+      "sourcePrompt": "Which floor is it on?",
+      "register": "neutral",
+      "canonical": "idi ye floor lo undi?",
+      "acceptedAnswers": [
+        "idi ye floor lo undi?",
+        "idi e floor lo undi?",
+        "idi ye floor lo vundi?",
+        "idi ye anthastu lo undi?"
+      ],
+      "distractors": [
+        "idi ye floor lo undedi?",
+        "idi ekkada floor lo undi?",
+        "idi enni floor lo undi?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "ye floor",
+          "english": "which floor"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఇది ఏ ఫ్లోర్ లో ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u10-i20",
+      "sourcePrompt": "What's wrong with him? (to a friend)",
+      "register": "casual",
+      "canonical": "atanikki emaindi?",
+      "acceptedAnswers": [
+        "atanikki emaindi?",
+        "atanikki emayindi?",
+        "atanuki emaindi?",
+        "atanikki emi ayindi?"
+      ],
+      "registerVariant": "ayanaki emaindi?",
+      "distractors": [
+        "atanikki emavutundi?",
+        "atanikki eppudu ayindi?"
+      ],
+      "tokens": [
+        {
+          "word": "atanikki",
+          "english": "to him"
+        },
+        {
+          "word": "emaindi",
+          "english": "what happened"
+        }
+      ],
+      "script": "అతనికి ఏమైంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

@@ -1,0 +1,699 @@
+{
+  "scenarioId": "te-l02-u05",
+  "language": "telugu",
+  "title": "Going to and coming from",
+  "subtitle": "Daily movement: to a place, from a place, with a person",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 5
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u05-i01",
+      "sourcePrompt": "Where are you coming from? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu ekkadi nunchi vastunnav?",
+      "acceptedAnswers": [
+        "nuvvu ekkadi nunchi vastunnav?",
+        "nuvvu ekkada nunchi vastunnav?",
+        "nuvvu ekkadinunchi vastunnav?",
+        "nuvvu ekkadi nundi vastunnavu?"
+      ],
+      "registerVariant": "meeru ekkadi nunchi vastunnaru?",
+      "distractors": [
+        "nuvvu ekkadi nunchi vachchav?",
+        "nuvvu ekkadi nunchi vastav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "ekkadi nunchi",
+          "english": "from where"
+        },
+        {
+          "word": "vastunnav",
+          "english": "are you coming"
+        }
+      ],
+      "script": "నువ్వు ఎక్కడి నుంచి వస్తున్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i02",
+      "sourcePrompt": "I'm going to my friend's house.",
+      "register": "neutral",
+      "canonical": "nenu naa friend inti ki veltunnanu",
+      "acceptedAnswers": [
+        "nenu naa friend inti ki veltunnanu",
+        "nenu naa friend illu ki veltunnanu",
+        "nenu naa friend inti ki veltunna",
+        "nenu naa friend vaari inti ki veltunnanu"
+      ],
+      "distractors": [
+        "nenu naa friend inti nunchi vastunnanu",
+        "nenu naa friend inti ki vellanu",
+        "nenu naa friend inti ki veltanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "naa friend inti ki",
+          "english": "to my friend's house"
+        },
+        {
+          "word": "veltunnanu",
+          "english": "am going"
+        }
+      ],
+      "script": "నేను నా ఫ్రెండ్ ఇంటికి వెళ్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i03",
+      "sourcePrompt": "I'm coming from the office.",
+      "register": "neutral",
+      "canonical": "nenu office nunchi vastunnanu",
+      "acceptedAnswers": [
+        "nenu office nunchi vastunnanu",
+        "nenu office nundi vastunnanu",
+        "nenu office nunchi vastunna",
+        "nenu office nunchi osthunnanu"
+      ],
+      "distractors": [
+        "nenu office ki veltunnanu",
+        "nenu office nunchi vachchanu",
+        "nenu office nunchi vastanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "office nunchi",
+          "english": "from the office"
+        },
+        {
+          "word": "vastunnanu",
+          "english": "am coming"
+        }
+      ],
+      "script": "నేను ఆఫీస్ నుంచి వస్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i04",
+      "sourcePrompt": "I'm going with my mother.",
+      "register": "neutral",
+      "canonical": "nenu amma tho veltunnanu",
+      "acceptedAnswers": [
+        "nenu amma tho veltunnanu",
+        "nenu amma tho veltunna",
+        "nenu amma tho kalisi veltunnanu",
+        "nenu ammatho veltunnanu"
+      ],
+      "distractors": [
+        "nenu amma tho vellanu",
+        "nenu amma tho veltanu",
+        "nenu amma lekunda veltunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "amma tho",
+          "english": "with mother"
+        },
+        {
+          "word": "veltunnanu",
+          "english": "am going"
+        }
+      ],
+      "script": "నేను అమ్మతో వెళ్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i05",
+      "sourcePrompt": "Who are you going with? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu evaritho veltunnav?",
+      "acceptedAnswers": [
+        "nuvvu evaritho veltunnav?",
+        "nuvvu evaritho veltunnavu?",
+        "nuvvu evaritho velthunnav?",
+        "nuvvu evari tho veltunnav?"
+      ],
+      "registerVariant": "meeru evaritho veltunnaru?",
+      "distractors": [
+        "nuvvu evaritho vellav?",
+        "nuvvu evaritho veltav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "evaritho",
+          "english": "with whom"
+        },
+        {
+          "word": "veltunnav",
+          "english": "are you going"
+        }
+      ],
+      "script": "నువ్వు ఎవరితో వెళ్తున్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i06",
+      "sourcePrompt": "Come with me. (to a friend)",
+      "register": "casual",
+      "canonical": "naatho ra",
+      "acceptedAnswers": [
+        "naatho ra",
+        "naatho raa",
+        "naatho rave",
+        "naa tho ra"
+      ],
+      "registerVariant": "naatho randi",
+      "distractors": [
+        "naatho raakandi",
+        "nee tho vastanu"
+      ],
+      "tokens": [
+        {
+          "word": "naatho",
+          "english": "with me"
+        },
+        {
+          "word": "ra",
+          "english": "come"
+        }
+      ],
+      "script": "నాతో రా",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i07",
+      "sourcePrompt": "Come with us. (to an elder)",
+      "register": "respectful",
+      "canonical": "maatho randi",
+      "acceptedAnswers": [
+        "maatho randi",
+        "maa tho randi",
+        "maatho raandi",
+        "maatho randi andi"
+      ],
+      "registerVariant": "maatho ra",
+      "distractors": [
+        "maatho vellandi",
+        "maatho raakandi"
+      ],
+      "tokens": [
+        {
+          "word": "maatho",
+          "english": "with us"
+        },
+        {
+          "word": "randi",
+          "english": "please come"
+        }
+      ],
+      "script": "మాతో రండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i08",
+      "sourcePrompt": "I go to the gym every morning.",
+      "register": "neutral",
+      "canonical": "nenu prati udayam gym ki veltanu",
+      "acceptedAnswers": [
+        "nenu prati udayam gym ki veltanu",
+        "nenu prati udayam gym ki velta",
+        "nenu pratiroju udayam gym ki veltanu",
+        "nenu roju udayam gym ki veltanu"
+      ],
+      "distractors": [
+        "nenu prati udayam gym ki vellanu",
+        "nenu prati saayantram gym ki veltanu",
+        "nenu prati udayam gym ki veltunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "prati udayam",
+          "english": "every morning"
+        },
+        {
+          "word": "gym ki",
+          "english": "to the gym"
+        },
+        {
+          "word": "veltanu",
+          "english": "go"
+        }
+      ],
+      "script": "నేను ప్రతి ఉదయం జిమ్ కి వెళ్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i09",
+      "sourcePrompt": "She's coming from Chennai.",
+      "register": "neutral",
+      "canonical": "aame Chennai nunchi vastondi",
+      "acceptedAnswers": [
+        "aame Chennai nunchi vastondi",
+        "ame Chennai nunchi vastondi",
+        "aame Chennai nundi vastondi",
+        "aame Chennai nunchi vastunnaru"
+      ],
+      "distractors": [
+        "aame Chennai ki veltondi",
+        "aame Chennai nunchi vachchindi",
+        "atanu Chennai nunchi vastunnadu"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "Chennai nunchi",
+          "english": "from Chennai"
+        },
+        {
+          "word": "vastondi",
+          "english": "is coming"
+        }
+      ],
+      "script": "ఆమె చెన్నై నుంచి వస్తోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i10",
+      "sourcePrompt": "We're going to Madurai.",
+      "register": "neutral",
+      "canonical": "memu Madurai ki veltunnam",
+      "acceptedAnswers": [
+        "memu Madurai ki veltunnam",
+        "memu Madurai ki veltunnamu",
+        "memu Madurai ki velthunnam",
+        "memu Madurai ki veltunnaam"
+      ],
+      "distractors": [
+        "memu Madurai nunchi vastunnam",
+        "memu Madurai ki veldam",
+        "memu Madurai ki vellam"
+      ],
+      "tokens": [
+        {
+          "word": "memu",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "Madurai ki",
+          "english": "to Madurai"
+        },
+        {
+          "word": "veltunnam",
+          "english": "are going"
+        }
+      ],
+      "script": "మేము మదురై కి వెళ్తున్నాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i11",
+      "sourcePrompt": "Are you going to the market? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru market ki veltunnara?",
+      "acceptedAnswers": [
+        "meeru market ki veltunnara?",
+        "meeru market ki veltunnaara?",
+        "meeru market ki veltara?",
+        "meeru market ki velthunnara?"
+      ],
+      "registerVariant": "nuvvu market ki veltunnava?",
+      "distractors": [
+        "meeru market ki vellara?",
+        "meeru market nunchi vastunnara?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "market ki",
+          "english": "to the market"
+        },
+        {
+          "word": "veltunnara",
+          "english": "are you going?"
+        }
+      ],
+      "script": "మీరు మార్కెట్ కి వెళ్తున్నారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i12",
+      "sourcePrompt": "How are you going? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu ela veltunnav?",
+      "acceptedAnswers": [
+        "nuvvu ela veltunnav?",
+        "nuvvu ela velthunnav?",
+        "nuvvu ela veltunnavu?",
+        "nuvvu ela veltunnav"
+      ],
+      "registerVariant": "meeru ela veltunnaru?",
+      "distractors": [
+        "nuvvu ela vellav?",
+        "nuvvu ela veltav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "veltunnav",
+          "english": "are you going"
+        }
+      ],
+      "script": "నువ్వు ఎలా వెళ్తున్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i13",
+      "sourcePrompt": "I'm going by train.",
+      "register": "neutral",
+      "canonical": "nenu train lo veltunnanu",
+      "acceptedAnswers": [
+        "nenu train lo veltunnanu",
+        "nenu train lo veltunna",
+        "nenu train lo velthunnanu",
+        "nenu railu lo veltunnanu"
+      ],
+      "distractors": [
+        "nenu train lo vellanu",
+        "nenu train lo veltanu",
+        "nenu train lo ledu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "train lo",
+          "english": "by train"
+        },
+        {
+          "word": "veltunnanu",
+          "english": "am going"
+        }
+      ],
+      "script": "నేను ట్రైన్ లో వెళ్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i14",
+      "sourcePrompt": "I walk to school.",
+      "register": "neutral",
+      "canonical": "nenu school ki nadichi veltanu",
+      "acceptedAnswers": [
+        "nenu school ki nadichi veltanu",
+        "nenu school ki nadichi velta",
+        "nenu school ki nadustu veltanu",
+        "nenu nadichi school ki veltanu"
+      ],
+      "distractors": [
+        "nenu school ki nadichi vellanu",
+        "nenu school ki bus lo veltanu",
+        "nenu school ki nadichi veltunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "school ki",
+          "english": "to school"
+        },
+        {
+          "word": "nadichi",
+          "english": "walking"
+        },
+        {
+          "word": "veltanu",
+          "english": "go"
+        }
+      ],
+      "script": "నేను స్కూల్ కి నడిచి వెళ్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i15",
+      "sourcePrompt": "Is he coming with you? (to a friend)",
+      "register": "casual",
+      "canonical": "atanu neetho vastunnada?",
+      "acceptedAnswers": [
+        "atanu neetho vastunnada?",
+        "atanu nee tho vastunnada?",
+        "atanu neetho vastunnaada?",
+        "atanu neetho osthunnada?"
+      ],
+      "registerVariant": "atanu meetho vastunnara?",
+      "distractors": [
+        "atanu neetho vachchada?",
+        "atanu neetho vastada?"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "neetho",
+          "english": "with you"
+        },
+        {
+          "word": "vastunnada",
+          "english": "is he coming?"
+        }
+      ],
+      "script": "అతను నీతో వస్తున్నాడా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i16",
+      "sourcePrompt": "He's not coming today.",
+      "register": "neutral",
+      "canonical": "atanu ivaala ravatledu",
+      "acceptedAnswers": [
+        "atanu ivaala ravatledu",
+        "atanu ivala ravatledu",
+        "atanu ivaala raavadam ledu",
+        "athanu ivaala ravatledu"
+      ],
+      "distractors": [
+        "atanu ivaala vastunnadu",
+        "atanu ivaala vachchadu",
+        "atanu ivaala vastadu"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "ravatledu",
+          "english": "is not coming"
+        }
+      ],
+      "script": "అతను ఈవాళ రావట్లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i17",
+      "sourcePrompt": "I'm going home now.",
+      "register": "neutral",
+      "canonical": "nenu ippudu intiki veltunnanu",
+      "acceptedAnswers": [
+        "nenu ippudu intiki veltunnanu",
+        "nenu ippudu intiki veltunna",
+        "nenu ippudu inti ki veltunnanu",
+        "ippudu nenu intiki veltunnanu"
+      ],
+      "distractors": [
+        "nenu ippudu intiki vellanu",
+        "nenu ippudu intiki veltanu",
+        "nenu ippudu intlo unnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "intiki",
+          "english": "home"
+        },
+        {
+          "word": "veltunnanu",
+          "english": "am going"
+        }
+      ],
+      "script": "నేను ఇప్పుడు ఇంటికి వెళ్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i18",
+      "sourcePrompt": "Where are you going? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru ekkadiki veltunnaru?",
+      "acceptedAnswers": [
+        "meeru ekkadiki veltunnaru?",
+        "meeru ekkadiki veltunnaaru?",
+        "meeru ekkadiki velthunnaru?",
+        "meeru ekkadiki veltunnaru"
+      ],
+      "registerVariant": "nuvvu ekkadiki veltunnav?",
+      "distractors": [
+        "meeru ekkadiki vellaru?",
+        "meeru ekkadiki veltaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "ekkadiki",
+          "english": "to where"
+        },
+        {
+          "word": "veltunnaru",
+          "english": "are you going"
+        }
+      ],
+      "script": "మీరు ఎక్కడికి వెళ్తున్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i19",
+      "sourcePrompt": "My friend is coming to my house.",
+      "register": "neutral",
+      "canonical": "naa friend naa inti ki vastunnaru",
+      "acceptedAnswers": [
+        "naa friend naa inti ki vastunnaru",
+        "naa friend naa inti ki vasthunnaru",
+        "naa friend maa inti ki vastunnaru",
+        "naa friend naa illu ki vastunnaru"
+      ],
+      "distractors": [
+        "naa friend naa inti ki vachcharu",
+        "naa friend naa inti ki vastaru",
+        "naa friend naa inti ki ravatledu"
+      ],
+      "tokens": [
+        {
+          "word": "naa friend",
+          "english": "my friend"
+        },
+        {
+          "word": "naa inti ki",
+          "english": "to my house"
+        },
+        {
+          "word": "vastunnaru",
+          "english": "is coming"
+        }
+      ],
+      "script": "నా ఫ్రెండ్ నా ఇంటికి వస్తున్నారు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u05-i20",
+      "sourcePrompt": "Let's go together.",
+      "register": "neutral",
+      "canonical": "manam kalisi veldam",
+      "acceptedAnswers": [
+        "manam kalisi veldam",
+        "manam kalisi veldaam",
+        "manam kalisi vellipodam",
+        "manam kalisi velthaam"
+      ],
+      "distractors": [
+        "manam kalisi vellam",
+        "manam kalisi vellakandi",
+        "memu kalisi veldam"
+      ],
+      "tokens": [
+        {
+          "word": "manam",
+          "english": "we (including you)"
+        },
+        {
+          "word": "kalisi",
+          "english": "together"
+        },
+        {
+          "word": "veldam",
+          "english": "let's go"
+        }
+      ],
+      "script": "మనం కలిసి వెళ్దాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

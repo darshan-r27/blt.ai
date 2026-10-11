@@ -1,0 +1,727 @@
+{
+  "scenarioId": "te-l02-u06",
+  "language": "telugu",
+  "title": "Likes and dislikes",
+  "subtitle": "Food, films and places: what you like and what you cannot stand",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 6
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u06-i01",
+      "sourcePrompt": "Do you like spicy food? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku karam ishtamaa?",
+      "acceptedAnswers": [
+        "neeku karam ishtamaa?",
+        "neeku karam istamaa?",
+        "neeku karam ishtama?",
+        "neeku karam ishtam aa?"
+      ],
+      "registerVariant": "meeku karam ishtamaa?",
+      "distractors": [
+        "neeku karam ishtam ledaa?",
+        "neeku karam ishtam ayyindaa?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "karam",
+          "english": "spice"
+        },
+        {
+          "word": "ishtamaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "నీకు కారం ఇష్టమా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i02",
+      "sourcePrompt": "I like spicy food.",
+      "register": "neutral",
+      "canonical": "naaku karam ishtam",
+      "acceptedAnswers": [
+        "naaku karam ishtam",
+        "naaku karam istam",
+        "naaku karam chala ishtam",
+        "naku karam ishtam"
+      ],
+      "distractors": [
+        "naaku karam ishtam ledu",
+        "naaku karam ishtam ayindi",
+        "naaku karam kavali"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "karam",
+          "english": "spice"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు కారం ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i03",
+      "sourcePrompt": "I don't like sweets.",
+      "register": "neutral",
+      "canonical": "naaku sweets ishtam ledu",
+      "acceptedAnswers": [
+        "naaku sweets ishtam ledu",
+        "naaku sweets istam ledu",
+        "naaku sweet ishtam ledu",
+        "naku sweets ishtam ledu"
+      ],
+      "distractors": [
+        "naaku sweets ishtam",
+        "naaku sweets ishtam ayindi",
+        "naaku sweets kavali"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "sweets",
+          "english": "sweets"
+        },
+        {
+          "word": "ishtam ledu",
+          "english": "don't like"
+        }
+      ],
+      "script": "నాకు స్వీట్స్ ఇష్టం లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i04",
+      "sourcePrompt": "I love biryani.",
+      "register": "neutral",
+      "canonical": "naaku biryani ante chala ishtam",
+      "acceptedAnswers": [
+        "naaku biryani ante chala ishtam",
+        "naaku biryani ante chaala ishtam",
+        "naaku biryani ante istam",
+        "naaku biryani chala ishtam"
+      ],
+      "distractors": [
+        "naaku biryani ante ishtam ledu",
+        "naaku biryani ante konchem ishtam",
+        "naaku biryani ante ishtam ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "biryani ante",
+          "english": "as for biryani"
+        },
+        {
+          "word": "chala",
+          "english": "very much"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు బిర్యానీ అంటే చాలా ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i05",
+      "sourcePrompt": "What kind of films do you like? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku ye rakam cinemalu ishtam?",
+      "acceptedAnswers": [
+        "meeku ye rakam cinemalu ishtam?",
+        "meeku ye rakam cinemaalu ishtam?",
+        "meeku ye taraha cinemalu ishtam?",
+        "meeku ye cinemalu ishtam?"
+      ],
+      "registerVariant": "neeku ye rakam cinemalu ishtam?",
+      "distractors": [
+        "meeku ye rakam cinemalu ishtam ledu?",
+        "meeku ye rakam cinemalu ishtam ayyayi?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "ye rakam",
+          "english": "what kind"
+        },
+        {
+          "word": "cinemalu",
+          "english": "films"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "మీకు ఏ రకం సినిమాలు ఇష్టం?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i06",
+      "sourcePrompt": "Noise annoys me.",
+      "register": "neutral",
+      "canonical": "naaku sound ante chiraku",
+      "acceptedAnswers": [
+        "naaku sound ante chiraku",
+        "naaku sound ante chiraaku",
+        "naaku noise ante chiraku",
+        "naaku shabdam ante chiraku"
+      ],
+      "distractors": [
+        "naaku sound ante ishtam",
+        "naaku sound vinipinchadu",
+        "naaku sound ante chiraku ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "sound",
+          "english": "noise"
+        },
+        {
+          "word": "chiraku",
+          "english": "annoyance"
+        }
+      ],
+      "script": "నాకు సౌండ్ అంటే చిరాకు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i07",
+      "sourcePrompt": "Which colour do you like? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku ye colour ishtam?",
+      "acceptedAnswers": [
+        "neeku ye colour ishtam?",
+        "neeku ye rangu ishtam?",
+        "neeku ye colour istam?",
+        "neeku ye colour ishtam"
+      ],
+      "registerVariant": "meeku ye colour ishtam?",
+      "distractors": [
+        "neeku ye colour ishtam ledu?",
+        "neeku ye colour ishtam ayindi?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "ye colour",
+          "english": "which colour"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నీకు ఏ కలర్ ఇష్టం?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i08",
+      "sourcePrompt": "I like this song.",
+      "register": "neutral",
+      "canonical": "naaku ee paata ishtam",
+      "acceptedAnswers": [
+        "naaku ee paata ishtam",
+        "naaku ee paata istam",
+        "naaku ee song ishtam",
+        "naku ee paata ishtam"
+      ],
+      "distractors": [
+        "naaku ee paata ishtam ledu",
+        "naaku ee paata ishtam ayindi",
+        "naaku ee paata telusu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "ee paata",
+          "english": "this song"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు ఈ పాట ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i09",
+      "sourcePrompt": "She likes dancing.",
+      "register": "neutral",
+      "canonical": "aameki dance ante ishtam",
+      "acceptedAnswers": [
+        "aameki dance ante ishtam",
+        "aameku dance ante ishtam",
+        "aameki dance ishtam",
+        "aameki dance ante istam"
+      ],
+      "distractors": [
+        "aameki dance ante ishtam ledu",
+        "atanuki dance ante ishtam",
+        "aameki dance ante ishtam ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "aameki",
+          "english": "to her"
+        },
+        {
+          "word": "dance ante",
+          "english": "dancing"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "ఆమెకి డాన్స్ అంటే ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i10",
+      "sourcePrompt": "He doesn't like tea.",
+      "register": "neutral",
+      "canonical": "atanuki tea ishtam ledu",
+      "acceptedAnswers": [
+        "atanuki tea ishtam ledu",
+        "atanuki chai ishtam ledu",
+        "atanuku tea ishtam ledu",
+        "atanuki tea istam ledu"
+      ],
+      "distractors": [
+        "atanuki tea ishtam",
+        "aameki tea ishtam ledu",
+        "atanuki tea ishtam ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "atanuki",
+          "english": "to him"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "ishtam ledu",
+          "english": "doesn't like"
+        }
+      ],
+      "script": "అతనికి టీ ఇష్టం లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i11",
+      "sourcePrompt": "Do you like this place? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku ee place ishtamaa?",
+      "acceptedAnswers": [
+        "meeku ee place ishtamaa?",
+        "meeku ee ooru ishtamaa?",
+        "meeku ee place istamaa?",
+        "meeku ee place ishtama?"
+      ],
+      "registerVariant": "neeku ee place ishtamaa?",
+      "distractors": [
+        "meeku ee place ishtam ledaa?",
+        "meeku ee place telusaa?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "ee place",
+          "english": "this place"
+        },
+        {
+          "word": "ishtamaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "మీకు ఈ ప్లేస్ ఇష్టమా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i12",
+      "sourcePrompt": "We love the rainy season.",
+      "register": "neutral",
+      "canonical": "maaku varsha kaalam ante chala ishtam",
+      "acceptedAnswers": [
+        "maaku varsha kaalam ante chala ishtam",
+        "maaku varsha kaalam ante chaala ishtam",
+        "maaku varsha kaalam ishtam",
+        "manaki varsha kaalam ante chala ishtam"
+      ],
+      "distractors": [
+        "maaku varsha kaalam ante ishtam ledu",
+        "maaku vesavi kaalam ante chala ishtam",
+        "maaku varsha kaalam ante ishtam ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "maaku",
+          "english": "to us"
+        },
+        {
+          "word": "varsha kaalam",
+          "english": "rainy season"
+        },
+        {
+          "word": "chala",
+          "english": "very much"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "మాకు వర్ష కాలం అంటే చాలా ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i13",
+      "sourcePrompt": "I like walking in the evening.",
+      "register": "neutral",
+      "canonical": "naaku saayantram nadavadam ishtam",
+      "acceptedAnswers": [
+        "naaku saayantram nadavadam ishtam",
+        "naaku saayantram nadavadam istam",
+        "naaku saayantram nadavatam ishtam",
+        "naaku saayantram nadichadam ishtam"
+      ],
+      "distractors": [
+        "naaku saayantram nadavadam ishtam ledu",
+        "naaku udayam nadavadam ishtam",
+        "naaku saayantram nadichanu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "saayantram",
+          "english": "in the evening"
+        },
+        {
+          "word": "nadavadam",
+          "english": "walking"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు సాయంత్రం నడవడం ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i14",
+      "sourcePrompt": "Does your mother like flowers? (to a friend)",
+      "register": "casual",
+      "canonical": "nee ammaki puvvulu ishtamaa?",
+      "acceptedAnswers": [
+        "nee ammaki puvvulu ishtamaa?",
+        "nee ammaki puvvulu istamaa?",
+        "nee ammaku puvvulu ishtamaa?",
+        "nee ammaki puvvulu ante ishtamaa?"
+      ],
+      "registerVariant": "mee ammaki puvvulu ishtamaa?",
+      "distractors": [
+        "nee ammaki puvvulu ishtam ledaa?",
+        "nee ammaki puvvulu ishtam ayyindaa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee ammaki",
+          "english": "to your mother"
+        },
+        {
+          "word": "puvvulu",
+          "english": "flowers"
+        },
+        {
+          "word": "ishtamaa",
+          "english": "does she like?"
+        }
+      ],
+      "script": "నీ అమ్మకి పువ్వులు ఇష్టమా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i15",
+      "sourcePrompt": "Do you like coffee or tea? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku coffee ishtamaa tea ishtamaa?",
+      "acceptedAnswers": [
+        "neeku coffee ishtamaa tea ishtamaa?",
+        "neeku coffee ishtamaa leka tea ishtamaa?",
+        "neeku coffee istamaa tea istamaa?",
+        "neeku coffeena teanaa ishtam?"
+      ],
+      "registerVariant": "meeku coffee ishtamaa tea ishtamaa?",
+      "distractors": [
+        "neeku coffee ishtam ledaa tea ishtam ledaa?",
+        "neeku coffee ishtam ayyindaa tea ishtam ayyindaa?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "coffee",
+          "english": "coffee"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "ishtamaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "నీకు కాఫీ ఇష్టమా టీ ఇష్టమా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i16",
+      "sourcePrompt": "Which do you like more? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku edi ekkuva ishtam?",
+      "acceptedAnswers": [
+        "neeku edi ekkuva ishtam?",
+        "neeku edi ekkuvaga ishtam?",
+        "neeku edi ekkuva istam?",
+        "neeku edi ekkuva ishtam"
+      ],
+      "registerVariant": "meeku edi ekkuva ishtam?",
+      "distractors": [
+        "neeku edi ekkuva ishtam ledu?",
+        "neeku edi ekkuva ishtam ayindi?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "edi",
+          "english": "which"
+        },
+        {
+          "word": "ekkuva",
+          "english": "more"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నీకు ఏది ఎక్కువ ఇష్టం?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i17",
+      "sourcePrompt": "I really like this shirt.",
+      "register": "neutral",
+      "canonical": "naaku ee shirt chala nachindi",
+      "acceptedAnswers": [
+        "naaku ee shirt chala nachindi",
+        "naaku ee shirt chaala nachindi",
+        "naaku ee shirt chala nachchindi",
+        "naaku ee shirt chala bagundi"
+      ],
+      "distractors": [
+        "naaku ee shirt nachaledu",
+        "naaku ee shirt chala nachutundi",
+        "naaku ee shirt chala kavali"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "ee shirt",
+          "english": "this shirt"
+        },
+        {
+          "word": "chala",
+          "english": "very much"
+        },
+        {
+          "word": "nachindi",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు ఈ షర్ట్ చాలా నచ్చింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i18",
+      "sourcePrompt": "I don't like crowds.",
+      "register": "neutral",
+      "canonical": "naaku rush ante ishtam ledu",
+      "acceptedAnswers": [
+        "naaku rush ante ishtam ledu",
+        "naaku rush ante istam ledu",
+        "naaku crowd ante ishtam ledu",
+        "naaku rush ishtam ledu"
+      ],
+      "distractors": [
+        "naaku rush ante ishtam",
+        "naaku rush ante ishtam ayindi",
+        "naaku rush ante telidu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "rush",
+          "english": "crowd"
+        },
+        {
+          "word": "ishtam ledu",
+          "english": "don't like"
+        }
+      ],
+      "script": "నాకు రష్ అంటే ఇష్టం లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i19",
+      "sourcePrompt": "Do you like cooking? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku vanta cheyadam ishtamaa?",
+      "acceptedAnswers": [
+        "meeku vanta cheyadam ishtamaa?",
+        "meeku vanta cheyyadam ishtamaa?",
+        "meeku vanta cheyatam ishtamaa?",
+        "meeku vanta cheyadam istamaa?"
+      ],
+      "registerVariant": "neeku vanta cheyadam ishtamaa?",
+      "distractors": [
+        "meeku vanta cheyadam ishtam ledaa?",
+        "meeku vanta cheyadam ayyindaa?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "vanta cheyadam",
+          "english": "cooking"
+        },
+        {
+          "word": "ishtamaa",
+          "english": "do you like?"
+        }
+      ],
+      "script": "మీకు వంట చేయడం ఇష్టమా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u06-i20",
+      "sourcePrompt": "I like it a lot.",
+      "register": "neutral",
+      "canonical": "naaku adi chala ishtam",
+      "acceptedAnswers": [
+        "naaku adi chala ishtam",
+        "naaku adi chaala ishtam",
+        "naaku adi chala istam",
+        "naku adi chala ishtam"
+      ],
+      "distractors": [
+        "naaku adi ishtam ledu",
+        "naaku adi konchem ishtam",
+        "naaku adi chala ishtam ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "chala",
+          "english": "a lot"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు అది చాలా ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
