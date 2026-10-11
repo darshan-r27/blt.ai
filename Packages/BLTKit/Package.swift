@@ -51,7 +51,11 @@ let package = Package(
             dependencies: ["BLTContentStore", "BLTCatalog", "BLTCore"],
             swiftSettings: strictWarnings
         ),
-        .testTarget(name: "BLTContentTests", dependencies: ["BLTCatalog", "BLTCore"], swiftSettings: strictWarnings),
+        .testTarget(
+            name: "BLTContentTests",
+            dependencies: ["BLTCatalog", "BLTCore", "BLTSession"],
+            swiftSettings: strictWarnings
+        ),
     ],
     swiftLanguageModes: [.v6]
 )

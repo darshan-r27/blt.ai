@@ -3,6 +3,7 @@ import BLTContentStore
 import BLTCore
 import BLTFeatures
 import BLTProgress
+import BLTSession
 import Foundation
 import os
 
@@ -89,14 +90,16 @@ struct CompositionRoot {
         return Composed(
             profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json")),
             makeCourse: { language in
-                CourseServices(
+                let catalog = Self.loadCatalog(for: language)
+                return CourseServices(
                     dependencies: AppDependencies(
-                        catalog: Self.loadCatalog(for: language),
+                        catalog: catalog,
                         language: language,
                         store: stores.store(for: language),
                         scheduler: SM2Scheduler(),
                         now: { Date.now },
-                        examResults: stores.examStore(for: language)
+                        examResults: stores.examStore(for: language),
+                        examPaper: Self.loadExamPaper(for: language, catalog: catalog)
                     ),
                     lessonImporter: ImportedContentStore(
                         directory: Self.importedContentDirectory(for: language),
@@ -106,6 +109,26 @@ struct CompositionRoot {
                 )
             }
         )
+    }
+
+    /// The course's exam paper (`content/<language>/exam/final.json`, DECISIONS 046), or `nil` when the course has
+    /// none yet (no file) or the file was refused. A refused paper is logged by count and never repaired, and Home
+    /// then shows no exam, so a learner is never given a short or odd exam. The shipped-content tests guard the
+    /// papers that must load.
+    private static func loadExamPaper(for language: CourseLanguage, catalog: Catalog) -> ExamPaper? {
+        guard let file = Bundle.main.url(
+            forResource: "final",
+            withExtension: "json",
+            subdirectory: "content/\(language.rawValue)/exam"
+        ) else { return nil }
+        switch ExamPaperLoader(blueprint: .syllabus).load(file: file, catalog: catalog, language: language) {
+        case .success(let paper):
+            return paper
+        case .failure(let failure):
+            logger.error("An exam paper was refused with \(failure.issues.count, privacy: .public) problems.")
+            assertionFailure("The exam paper has problems; the shipped-content tests list them.")
+            return nil
+        }
     }
 
     /// Removes, once, the single-course build's `progress.json` and imported `content/` folder (DECISIONS 043).
