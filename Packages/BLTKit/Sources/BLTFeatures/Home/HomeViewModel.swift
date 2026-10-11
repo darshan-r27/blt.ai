@@ -1,6 +1,7 @@
 import BLTCatalog
 import BLTCore
 import BLTProgress
+import BLTSession
 import Foundation
 import Observation
 
@@ -24,6 +25,11 @@ final class HomeViewModel {
     /// Levels the learner has opened or closed by hand, keyed by level number. Not saved: a fresh launch goes
     /// back to the defaults (finished levels closed, the rest open).
     private var expansionOverrides: [Int: Bool] = [:]
+
+    /// The best stored exam attempt, or `nil` when there is none or it could not be read.
+    private(set) var bestExamAttempt: ExamAttempt?
+    /// Set when the stored exam results could not be read. Home still works; the exam entry says so.
+    private(set) var examHistoryUnreadable = false
 
     private let dependencies: AppDependencies
 
@@ -80,6 +86,21 @@ final class HomeViewModel {
         return ordered.first { $0.totalCount > 0 && !$0.isComplete }
     }
 
+    /// The final-exam entry, or `nil` when this course has no exam paper yet (DECISIONS 041). It is open only when
+    /// every level is complete; until then it is shown as locked, with the reason.
+    var examEntry: ExamEntry? {
+        guard let paper = dependencies.examPaper, paper.total > 0 else { return nil }
+        let sections = levelSections
+        let everyLevelComplete = !sections.isEmpty && sections.allSatisfy(\.isComplete)
+        return ExamEntry(
+            isUnlocked: everyLevelComplete,
+            total: paper.total,
+            passMarkPercent: ExamPaper.passMarkPercent,
+            best: bestExamAttempt,
+            historyUnreadable: examHistoryUnreadable
+        )
+    }
+
     /// Whether a level's lessons are shown. Without a choice by the learner, finished levels are collapsed.
     func isExpanded(_ section: HomeLevelSection) -> Bool {
         expansionOverrides[section.number] ?? !section.isComplete
@@ -108,7 +129,20 @@ final class HomeViewModel {
             scenarios = []
             loadError = error
         }
+        await loadExamHistory()
         hasLoaded = true
+    }
+
+    /// Reads the best exam attempt. A failure is shown on the exam entry, never hidden, and does not stop Home.
+    private func loadExamHistory() async {
+        guard dependencies.examPaper != nil else { return }
+        do throws(ExamResultStoreError) {
+            bestExamAttempt = try await dependencies.examResults.bestAttempt()
+            examHistoryUnreadable = false
+        } catch {
+            bestExamAttempt = nil
+            examHistoryUnreadable = true
+        }
     }
 
     /// Step one of Reset: ask the user. Erases nothing.
@@ -132,6 +166,13 @@ final class HomeViewModel {
             try await dependencies.store.eraseAll()
         } catch {
             resetError = error
+            return
+        }
+        // Exam attempts belong to the same course, so Reset clears them too (DECISIONS 041).
+        do throws(ExamResultStoreError) {
+            try await dependencies.examResults.erase()
+        } catch {
+            resetError = .eraseFailed
             return
         }
         resetError = nil
