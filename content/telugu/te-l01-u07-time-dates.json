@@ -1,0 +1,659 @@
+{
+  "scenarioId": "te-l01-u07",
+  "language": "telugu",
+  "title": "Time, days and dates",
+  "subtitle": "Telling the time, naming the day and fixing when to meet",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 7
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u07-i01",
+      "sourcePrompt": "What time is it?",
+      "register": "neutral",
+      "canonical": "ippudu time enta ayindi?",
+      "acceptedAnswers": [
+        "ippudu time enta ayindi?",
+        "ippudu time entha ayindi?",
+        "time enta ayindi?",
+        "ippudu enta time ayindi?"
+      ],
+      "distractors": [
+        "ippudu ekkada undi?",
+        "ippudu evaru?",
+        "ippudu enta dabbu?"
+      ],
+      "tokens": [
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "time",
+          "english": "time"
+        },
+        {
+          "word": "enta ayindi",
+          "english": "how much has it become"
+        }
+      ],
+      "script": "ఇప్పుడు టైమ్ ఎంత అయింది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i02",
+      "sourcePrompt": "It's ten o'clock.",
+      "register": "neutral",
+      "canonical": "padi gantalu ayindi",
+      "acceptedAnswers": [
+        "padi gantalu ayindi",
+        "padi gantalu",
+        "padi gantalaindi",
+        "padi gantalayindi"
+      ],
+      "distractors": [
+        "padi nimishalu",
+        "okati gantalu",
+        "padi rojulu"
+      ],
+      "tokens": [
+        {
+          "word": "padi",
+          "english": "ten"
+        },
+        {
+          "word": "gantalu",
+          "english": "o'clock"
+        },
+        {
+          "word": "ayindi",
+          "english": "has become"
+        }
+      ],
+      "script": "పది గంటలు అయింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i03",
+      "sourcePrompt": "It's half past four.",
+      "register": "neutral",
+      "canonical": "nalugunnara",
+      "acceptedAnswers": [
+        "nalugunnara",
+        "nalugunnara ayindi",
+        "nalugu muppai",
+        "nalugu gantalu muppai"
+      ],
+      "distractors": [
+        "nalugu gantalu",
+        "aidunnara",
+        "moodunnara"
+      ],
+      "tokens": [
+        {
+          "word": "nalugunnara",
+          "english": "half past four"
+        }
+      ],
+      "script": "నాలుగున్నర",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i04",
+      "sourcePrompt": "Come at six o'clock. (to a friend)",
+      "register": "casual",
+      "canonical": "aaru gantalaki ra",
+      "acceptedAnswers": [
+        "aaru gantalaki ra",
+        "aaru gantalaku ra",
+        "aaru gantalaki raa",
+        "6 gantalaki ra"
+      ],
+      "registerVariant": "aaru gantalaki randi",
+      "distractors": [
+        "edu gantalaki ra",
+        "aaru gantalaki vellu"
+      ],
+      "tokens": [
+        {
+          "word": "aaru",
+          "english": "six"
+        },
+        {
+          "word": "gantalaki",
+          "english": "at o'clock"
+        },
+        {
+          "word": "ra",
+          "english": "come"
+        }
+      ],
+      "script": "ఆరు గంటలకి రా",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i05",
+      "sourcePrompt": "Today is Monday.",
+      "register": "neutral",
+      "canonical": "ivaala somavaaram",
+      "acceptedAnswers": [
+        "ivaala somavaaram",
+        "ivala somavaram",
+        "ivaala Monday",
+        "ivaala somavaram"
+      ],
+      "distractors": [
+        "ivaala mangalavaaram",
+        "repu somavaaram",
+        "ivaala aadivaaram"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "somavaaram",
+          "english": "Monday"
+        }
+      ],
+      "script": "ఈవాళ సోమవారం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i06",
+      "sourcePrompt": "Tomorrow is Sunday.",
+      "register": "neutral",
+      "canonical": "repu aadivaaram",
+      "acceptedAnswers": [
+        "repu aadivaaram",
+        "repu aadivaram",
+        "repu Sunday",
+        "repu adivaaram"
+      ],
+      "distractors": [
+        "ivaala aadivaaram",
+        "repu shanivaaram",
+        "repu shukravaaram"
+      ],
+      "tokens": [
+        {
+          "word": "repu",
+          "english": "tomorrow"
+        },
+        {
+          "word": "aadivaaram",
+          "english": "Sunday"
+        }
+      ],
+      "script": "రేపు ఆదివారం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i07",
+      "sourcePrompt": "Yesterday I was at home.",
+      "register": "neutral",
+      "canonical": "ninna nenu intlo unnanu",
+      "acceptedAnswers": [
+        "ninna nenu intlo unnanu",
+        "ninna nenu intlo vunnanu",
+        "ninna nenu intlone unnanu",
+        "ninna nenu intlo unna"
+      ],
+      "distractors": [
+        "repu nenu intlo untanu",
+        "ninna nenu intlo ledu",
+        "ivaala nenu intlo unnanu"
+      ],
+      "tokens": [
+        {
+          "word": "ninna",
+          "english": "yesterday"
+        },
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "intlo",
+          "english": "at home"
+        },
+        {
+          "word": "unnanu",
+          "english": "I was"
+        }
+      ],
+      "script": "నిన్న నేను ఇంట్లో ఉన్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i08",
+      "sourcePrompt": "What day is it today?",
+      "register": "neutral",
+      "canonical": "ivaala ye vaaram?",
+      "acceptedAnswers": [
+        "ivaala ye vaaram?",
+        "ivaala emi vaaram?",
+        "ivaala em vaaram?",
+        "ivala ye vaaram?"
+      ],
+      "distractors": [
+        "ivaala ye date?",
+        "ivaala enta time?",
+        "repu ye vaaram?"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "ye",
+          "english": "which"
+        },
+        {
+          "word": "vaaram",
+          "english": "day of the week"
+        }
+      ],
+      "script": "ఈవాళ ఏ వారం?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i09",
+      "sourcePrompt": "What's the date today?",
+      "register": "neutral",
+      "canonical": "ivaala ye tedi?",
+      "acceptedAnswers": [
+        "ivaala ye tedi?",
+        "ivaala date emiti?",
+        "ivaala ye date?",
+        "ivaala tedi emiti?"
+      ],
+      "distractors": [
+        "ivaala ye vaaram?",
+        "ivaala enta time?",
+        "ivaala enta?"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "ye",
+          "english": "which"
+        },
+        {
+          "word": "tedi",
+          "english": "date"
+        }
+      ],
+      "script": "ఈవాళ ఏ తేదీ?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i10",
+      "sourcePrompt": "The meeting is on Friday.",
+      "register": "neutral",
+      "canonical": "meeting shukravaaram",
+      "acceptedAnswers": [
+        "meeting shukravaaram",
+        "meeting shukravaram",
+        "meeting Friday",
+        "meeting shukravaaram roju"
+      ],
+      "distractors": [
+        "meeting shanivaaram",
+        "meeting eppudu?",
+        "meeting repu ledu"
+      ],
+      "tokens": [
+        {
+          "word": "meeting",
+          "english": "meeting"
+        },
+        {
+          "word": "shukravaaram",
+          "english": "Friday"
+        }
+      ],
+      "script": "మీటింగ్ శుక్రవారం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i11",
+      "sourcePrompt": "I'll come in the morning.",
+      "register": "neutral",
+      "canonical": "nenu udayam vastanu",
+      "acceptedAnswers": [
+        "nenu udayam vastanu",
+        "nenu udayame vastanu",
+        "nenu udayam vasta",
+        "nenu ee udayam vastanu"
+      ],
+      "distractors": [
+        "nenu saayantram vastanu",
+        "nenu raatri vastanu",
+        "nenu udayam vachchanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "udayam",
+          "english": "morning"
+        },
+        {
+          "word": "vastanu",
+          "english": "I will come"
+        }
+      ],
+      "script": "నేను ఉదయం వస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i12",
+      "sourcePrompt": "Let's meet in the evening.",
+      "register": "neutral",
+      "canonical": "saayantram kaluddam",
+      "acceptedAnswers": [
+        "saayantram kaluddam",
+        "sayantram kaluddam",
+        "saayantram kaladdam",
+        "saayantram kaluddaam"
+      ],
+      "distractors": [
+        "udayam kaluddam",
+        "saayantram kalavanu",
+        "saayantram vachchanu"
+      ],
+      "tokens": [
+        {
+          "word": "saayantram",
+          "english": "evening"
+        },
+        {
+          "word": "kaluddam",
+          "english": "let's meet"
+        }
+      ],
+      "script": "సాయంత్రం కలుద్దాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i13",
+      "sourcePrompt": "I get up at six.",
+      "register": "neutral",
+      "canonical": "nenu aaru gantalaki lestanu",
+      "acceptedAnswers": [
+        "nenu aaru gantalaki lestanu",
+        "nenu aaru gantalaku lestanu",
+        "nenu aaru gantalaki lesta",
+        "nenu 6 gantalaki lestanu"
+      ],
+      "distractors": [
+        "nenu aaru gantalaki padukuntanu",
+        "nenu aaru gantalaki tintanu",
+        "nenu aaru gantalaki levanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "aaru gantalaki",
+          "english": "at six"
+        },
+        {
+          "word": "lestanu",
+          "english": "get up"
+        }
+      ],
+      "script": "నేను ఆరు గంటలకి లేస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i14",
+      "sourcePrompt": "What time does it start?",
+      "register": "neutral",
+      "canonical": "enni gantalaki modalavutundi?",
+      "acceptedAnswers": [
+        "enni gantalaki modalavutundi?",
+        "enni gantalaku modalavutundi?",
+        "ye time ki modalavutundi?",
+        "enni gantalaki start avutundi?"
+      ],
+      "distractors": [
+        "enni gantalaki ayipotundi?",
+        "ekkada modalavutundi?",
+        "enta sepu avutundi?"
+      ],
+      "tokens": [
+        {
+          "word": "enni gantalaki",
+          "english": "at what time"
+        },
+        {
+          "word": "modalavutundi",
+          "english": "will start"
+        }
+      ],
+      "script": "ఎన్ని గంటలకి మొదలవుతుంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i15",
+      "sourcePrompt": "I'm late.",
+      "register": "neutral",
+      "canonical": "naaku late ayindi",
+      "acceptedAnswers": [
+        "naaku late ayindi",
+        "naaku late ayyindi",
+        "naku late ayindi",
+        "naaku aalasyam ayindi"
+      ],
+      "distractors": [
+        "naaku late vaddu",
+        "nenu mundu vachchanu",
+        "naaku time undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "late",
+          "english": "late"
+        },
+        {
+          "word": "ayindi",
+          "english": "has become"
+        }
+      ],
+      "script": "నాకు లేట్ అయింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i16",
+      "sourcePrompt": "We have time.",
+      "register": "neutral",
+      "canonical": "manaki time undi",
+      "acceptedAnswers": [
+        "manaki time undi",
+        "manaku time undi",
+        "manaki samayam undi",
+        "maa daggara time undi"
+      ],
+      "distractors": [
+        "manaki time ledu",
+        "manaki time vaddu",
+        "manaki time enta?"
+      ],
+      "tokens": [
+        {
+          "word": "manaki",
+          "english": "for us (including you)"
+        },
+        {
+          "word": "time",
+          "english": "time"
+        },
+        {
+          "word": "undi",
+          "english": "there is"
+        }
+      ],
+      "script": "మనకి టైమ్ ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i17",
+      "sourcePrompt": "Wait five minutes. (to a friend)",
+      "register": "casual",
+      "canonical": "aidu nimishalu wait chey",
+      "acceptedAnswers": [
+        "aidu nimishalu wait chey",
+        "aidu nimishalu agu",
+        "five minutes wait chey",
+        "aidu nimishalu wait cheyyi"
+      ],
+      "registerVariant": "aidu nimishalu wait cheyandi",
+      "distractors": [
+        "aidu nimishala mundu ra",
+        "aidu nimishalu ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "aidu nimishalu",
+          "english": "five minutes"
+        },
+        {
+          "word": "wait chey",
+          "english": "wait (do)"
+        }
+      ],
+      "script": "ఐదు నిమిషాలు వెయిట్ చెయ్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i18",
+      "sourcePrompt": "What time will you come? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru ennintiki vastaru?",
+      "acceptedAnswers": [
+        "meeru ennintiki vastaru?",
+        "meeru enni gantalaki vastaru?",
+        "meeru ye time ki vastaru?",
+        "meeru ennintiki vastaaru?"
+      ],
+      "registerVariant": "nuvvu ennintiki vastav?",
+      "distractors": [
+        "meeru ennintiki veltaru?",
+        "meeru enta sepu untaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "ennintiki",
+          "english": "at what time"
+        },
+        {
+          "word": "vastaru",
+          "english": "will come"
+        }
+      ],
+      "script": "మీరు ఎన్నింటికి వస్తారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i19",
+      "sourcePrompt": "For how many days?",
+      "register": "neutral",
+      "canonical": "enni rojulu?",
+      "acceptedAnswers": [
+        "enni rojulu?",
+        "enni rojulaku?",
+        "enta rojulu?",
+        "enni rojula?"
+      ],
+      "distractors": [
+        "enni gantalu?",
+        "enni mandi?",
+        "enni samvatsaralu?"
+      ],
+      "tokens": [
+        {
+          "word": "enni",
+          "english": "how many"
+        },
+        {
+          "word": "rojulu",
+          "english": "days"
+        }
+      ],
+      "script": "ఎన్ని రోజులు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u07-i20",
+      "sourcePrompt": "Next week.",
+      "register": "neutral",
+      "canonical": "vachche vaaram",
+      "acceptedAnswers": [
+        "vachche vaaram",
+        "vache vaaram",
+        "vachche week",
+        "next week"
+      ],
+      "distractors": [
+        "gata vaaram",
+        "vachche nelaa",
+        "ivaala"
+      ],
+      "tokens": [
+        {
+          "word": "vachche",
+          "english": "coming, next"
+        },
+        {
+          "word": "vaaram",
+          "english": "week"
+        }
+      ],
+      "script": "వచ్చే వారం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

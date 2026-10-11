@@ -1,0 +1,679 @@
+{
+  "scenarioId": "te-l01-u03",
+  "language": "telugu",
+  "title": "Food and eating out",
+  "subtitle": "Ordering, tasting and paying at a restaurant or stall",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 3
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u03-i01",
+      "sourcePrompt": "I'm hungry.",
+      "register": "neutral",
+      "canonical": "naaku aakesthundi",
+      "acceptedAnswers": [
+        "naaku aakesthundi",
+        "naku aakestundi",
+        "naaku aakali ga undi",
+        "naaku aakaligaa undi"
+      ],
+      "distractors": [
+        "naaku nidra vastundi",
+        "naaku daahamga undi",
+        "naaku jwaram vachchindi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "aakesthundi",
+          "english": "feel hungry"
+        }
+      ],
+      "script": "నాకు ఆకలేస్తుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i02",
+      "sourcePrompt": "I'm thirsty.",
+      "register": "neutral",
+      "canonical": "naaku daaham ga undi",
+      "acceptedAnswers": [
+        "naaku daaham ga undi",
+        "naaku daahamgaa undi",
+        "naku daham ga undi",
+        "naaku daaham vestundi"
+      ],
+      "distractors": [
+        "naaku aakesthundi",
+        "naaku kopam ga undi",
+        "naaku jwaram ga undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "daaham",
+          "english": "thirst"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నాకు దాహంగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i03",
+      "sourcePrompt": "Water, please. (to a waiter)",
+      "register": "respectful",
+      "canonical": "neellu ivvandi",
+      "acceptedAnswers": [
+        "neellu ivvandi",
+        "nillu ivvandi",
+        "neellu iyyandi",
+        "water ivvandi"
+      ],
+      "registerVariant": "neellu ivvu",
+      "distractors": [
+        "bhojanam ivvandi",
+        "tea ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "neellu",
+          "english": "water"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "నీళ్లు ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i04",
+      "sourcePrompt": "One tea, please. (to a server)",
+      "register": "respectful",
+      "canonical": "oka tea ivvandi",
+      "acceptedAnswers": [
+        "oka tea ivvandi",
+        "oka chai ivvandi",
+        "oka tea iyyandi",
+        "oka teaa ivvandi"
+      ],
+      "registerVariant": "oka tea ivvu",
+      "distractors": [
+        "oka coffee ivvandi",
+        "rendu tea ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "oka",
+          "english": "one"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "ఒక టీ ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i05",
+      "sourcePrompt": "What do you have? (asking the waiter)",
+      "register": "respectful",
+      "canonical": "emi unnayi andi?",
+      "acceptedAnswers": [
+        "emi unnayi andi?",
+        "emi unnayi andi",
+        "em unnayi andi?",
+        "emi vunnayi andi?"
+      ],
+      "registerVariant": "emi unnayi?",
+      "distractors": [
+        "emi kavali?",
+        "emaindi?"
+      ],
+      "tokens": [
+        {
+          "word": "emi",
+          "english": "what"
+        },
+        {
+          "word": "unnayi",
+          "english": "are there"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "ఏమి ఉన్నాయి అండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i06",
+      "sourcePrompt": "What do you want to eat? (to a female friend)",
+      "register": "casual",
+      "canonical": "neeku em tinalani undi ve?",
+      "acceptedAnswers": [
+        "neeku em tinalani undi ve?",
+        "neeku em tinalani undi ve",
+        "neeku emi tinalani undi ve?",
+        "neeku em tinaalani undi ve?"
+      ],
+      "registerVariant": "meeku em tinalani undi?",
+      "distractors": [
+        "neeku ekkada tinalani undi ve?",
+        "neeku eppudu tinalani undi ve?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "em",
+          "english": "what"
+        },
+        {
+          "word": "tinalani",
+          "english": "wish to eat"
+        },
+        {
+          "word": "ve",
+          "english": "friendly address to a woman"
+        }
+      ],
+      "script": "నీకు ఏం తినాలని ఉంది వే?",
+      "reviewStatus": "unreviewed",
+      "addressee": "female"
+    },
+    {
+      "id": "te-l01-u03-i07",
+      "sourcePrompt": "One dosa for me, please. (to a waiter)",
+      "register": "respectful",
+      "canonical": "naaku oka dosa ivvandi",
+      "acceptedAnswers": [
+        "naaku oka dosa ivvandi",
+        "naku oka dosa ivvandi",
+        "naaku oka dosa iyyandi",
+        "naaku oka dosa ivvandi andi"
+      ],
+      "registerVariant": "naaku oka dosa ivvu",
+      "distractors": [
+        "naaku rendu dosalu ivvandi",
+        "naaku oka idli ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "oka",
+          "english": "one"
+        },
+        {
+          "word": "dosa",
+          "english": "dosa"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "నాకు ఒక దోశ ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i08",
+      "sourcePrompt": "Less spicy, please. (to the cook)",
+      "register": "respectful",
+      "canonical": "karam takkuvaga veyandi",
+      "acceptedAnswers": [
+        "karam takkuvaga veyandi",
+        "karam takkuva veyandi",
+        "kaaram takkuvaga veyyandi",
+        "karam konchem takkuva veyandi"
+      ],
+      "registerVariant": "karam takkuvaga veyyi",
+      "distractors": [
+        "karam ekkuvaga veyandi",
+        "uppu takkuvaga veyandi"
+      ],
+      "tokens": [
+        {
+          "word": "karam",
+          "english": "spice"
+        },
+        {
+          "word": "takkuvaga",
+          "english": "less"
+        },
+        {
+          "word": "veyandi",
+          "english": "please put"
+        }
+      ],
+      "script": "కారం తక్కువగా వేయండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i09",
+      "sourcePrompt": "Is it spicy?",
+      "register": "neutral",
+      "canonical": "idi karam ga untunda?",
+      "acceptedAnswers": [
+        "idi karam ga untunda?",
+        "idi karam ga untundaa?",
+        "idi karamga untunda",
+        "idi karanga untunda?"
+      ],
+      "distractors": [
+        "idi teepiga untunda?",
+        "idi enta?",
+        "idi eppudu vastundi?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "karam ga",
+          "english": "spicy"
+        },
+        {
+          "word": "untunda",
+          "english": "will it be?"
+        }
+      ],
+      "script": "ఇది కారంగా ఉంటుందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i10",
+      "sourcePrompt": "A little more rice, please. (to a server)",
+      "register": "respectful",
+      "canonical": "inka konchem annam veyandi",
+      "acceptedAnswers": [
+        "inka konchem annam veyandi",
+        "inka konchem annam veyyandi",
+        "inkaa konchem annam veyandi",
+        "inka koncham annam veyandi"
+      ],
+      "registerVariant": "inka konchem annam vey",
+      "distractors": [
+        "konchem neellu veyandi",
+        "konchem pappu veyandi"
+      ],
+      "tokens": [
+        {
+          "word": "inka",
+          "english": "more"
+        },
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "annam",
+          "english": "rice"
+        },
+        {
+          "word": "veyandi",
+          "english": "please put"
+        }
+      ],
+      "script": "ఇంకా కొంచెం అన్నం వేయండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i11",
+      "sourcePrompt": "It's very tasty.",
+      "register": "neutral",
+      "canonical": "chala baagundi",
+      "acceptedAnswers": [
+        "chala baagundi",
+        "chaala baagundi",
+        "chala bagundi",
+        "chala ruchiga undi"
+      ],
+      "distractors": [
+        "chala karam ga undi",
+        "chala vedi ga undi",
+        "chala uppaga undi"
+      ],
+      "tokens": [
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "baagundi",
+          "english": "is good"
+        }
+      ],
+      "script": "చాలా బాగుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i12",
+      "sourcePrompt": "It's too salty.",
+      "register": "neutral",
+      "canonical": "uppu ekkuva",
+      "acceptedAnswers": [
+        "uppu ekkuva",
+        "uppu ekkuva ayindi",
+        "uppu ekkuvaga undi",
+        "uppu ekkuvaindi"
+      ],
+      "distractors": [
+        "karam ekkuva",
+        "panchadara ekkuva",
+        "neellu ekkuva"
+      ],
+      "tokens": [
+        {
+          "word": "uppu",
+          "english": "salt"
+        },
+        {
+          "word": "ekkuva",
+          "english": "too much"
+        }
+      ],
+      "script": "ఉప్పు ఎక్కువ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i13",
+      "sourcePrompt": "The bill, please. (to a waiter)",
+      "register": "respectful",
+      "canonical": "bill ivvandi",
+      "acceptedAnswers": [
+        "bill ivvandi",
+        "bill iyyandi",
+        "bill teesukuravandi",
+        "bill ivvandi andi"
+      ],
+      "registerVariant": "bill ivvu",
+      "distractors": [
+        "menu ivvandi",
+        "neellu ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "bill",
+          "english": "bill"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "బిల్ ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i14",
+      "sourcePrompt": "How much is it?",
+      "register": "casual",
+      "canonical": "enta ayindi?",
+      "acceptedAnswers": [
+        "enta ayindi?",
+        "entha ayindi?",
+        "enta ayyindi?",
+        "enta ayindi"
+      ],
+      "registerVariant": "enta ayindi andi?",
+      "distractors": [
+        "emaindi?",
+        "enta kavali?"
+      ],
+      "tokens": [
+        {
+          "word": "enta",
+          "english": "how much"
+        },
+        {
+          "word": "ayindi",
+          "english": "has it come to"
+        }
+      ],
+      "script": "ఎంత అయింది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i15",
+      "sourcePrompt": "Keep the change.",
+      "register": "respectful",
+      "canonical": "change unchukondi",
+      "acceptedAnswers": [
+        "change unchukondi",
+        "change meere unchukondi",
+        "chillara unchukondi",
+        "change ni unchukondi"
+      ],
+      "registerVariant": "change unchuko",
+      "distractors": [
+        "change ivvandi",
+        "change undaa?"
+      ],
+      "tokens": [
+        {
+          "word": "change",
+          "english": "change"
+        },
+        {
+          "word": "unchukondi",
+          "english": "please keep"
+        }
+      ],
+      "script": "చేంజ్ ఉంచుకోండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i16",
+      "sourcePrompt": "Do you have change?",
+      "register": "neutral",
+      "canonical": "change unda?",
+      "acceptedAnswers": [
+        "change unda?",
+        "change undaa?",
+        "chillara unda?",
+        "change unda"
+      ],
+      "distractors": [
+        "chillara ivvandi",
+        "chillara enta?",
+        "chillara unchukondi"
+      ],
+      "tokens": [
+        {
+          "word": "change",
+          "english": "change"
+        },
+        {
+          "word": "unda",
+          "english": "do you have?"
+        }
+      ],
+      "script": "చేంజ్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i17",
+      "sourcePrompt": "I only eat vegetarian food.",
+      "register": "neutral",
+      "canonical": "nenu veg matrame tintanu",
+      "acceptedAnswers": [
+        "nenu veg matrame tintanu",
+        "nenu veg matrame tinta",
+        "nenu veg maatrame tintanu",
+        "nenu veg ne tintanu"
+      ],
+      "distractors": [
+        "nenu non-veg matrame tintanu",
+        "nenu tinanu",
+        "nenu veg tinadaniki veltunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "veg",
+          "english": "vegetarian"
+        },
+        {
+          "word": "matrame",
+          "english": "only"
+        },
+        {
+          "word": "tintanu",
+          "english": "eat"
+        }
+      ],
+      "script": "నేను వెజ్ మాత్రమే తింటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i18",
+      "sourcePrompt": "Is this vegetarian?",
+      "register": "neutral",
+      "canonical": "idi veg aa?",
+      "acceptedAnswers": [
+        "idi veg aa?",
+        "idi veg a?",
+        "idi veg aa",
+        "idi vegetarian aa?"
+      ],
+      "distractors": [
+        "idi non-veg aa?",
+        "idi fresh aa?",
+        "idi enta?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "veg",
+          "english": "vegetarian"
+        },
+        {
+          "word": "aa",
+          "english": "(question)"
+        }
+      ],
+      "script": "ఇది వెజా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i19",
+      "sourcePrompt": "I've had enough.",
+      "register": "neutral",
+      "canonical": "naaku chaalu",
+      "acceptedAnswers": [
+        "naaku chaalu",
+        "naaku saripoyindi",
+        "naaku chalu",
+        "naaku saripotundi"
+      ],
+      "distractors": [
+        "inka veyandi",
+        "konchem veyandi",
+        "takkuva veyandi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "chaalu",
+          "english": "enough"
+        }
+      ],
+      "script": "నాకు చాలు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u03-i20",
+      "sourcePrompt": "The food was delicious.",
+      "register": "neutral",
+      "canonical": "bhojanam chala ruchiga undindi",
+      "acceptedAnswers": [
+        "bhojanam chala ruchiga undindi",
+        "bhojanam chaala ruchiga undindi",
+        "bhojanam chala ruchigaa undi",
+        "bhojanam chala ruchiga undi"
+      ],
+      "distractors": [
+        "bhojanam chala karam ga undindi",
+        "bhojanam chala late ga vachchindi",
+        "bhojanam chala takkuva undindi"
+      ],
+      "tokens": [
+        {
+          "word": "bhojanam",
+          "english": "meal"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "ruchiga",
+          "english": "tasty"
+        },
+        {
+          "word": "undindi",
+          "english": "was"
+        }
+      ],
+      "script": "భోజనం చాలా రుచిగా ఉండింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

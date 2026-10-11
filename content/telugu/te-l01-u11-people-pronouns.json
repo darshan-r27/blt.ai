@@ -1,0 +1,655 @@
+{
+  "scenarioId": "te-l01-u11",
+  "language": "telugu",
+  "title": "People and pronouns",
+  "subtitle": "I, you, he, she, they, both kinds of we, this and that",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 11
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u11-i01",
+      "sourcePrompt": "I am here.",
+      "register": "neutral",
+      "canonical": "nenu ikkada unnanu",
+      "acceptedAnswers": [
+        "nenu ikkada unnanu",
+        "nenu ikkade unnanu",
+        "nenu ikkada vunnanu",
+        "nenu ikkada unna"
+      ],
+      "distractors": [
+        "nenu ikkada ledu",
+        "nenu ikkadiki vastanu",
+        "nenu ikkadiki vachchanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "unnanu",
+          "english": "am"
+        }
+      ],
+      "script": "నేను ఇక్కడ ఉన్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i02",
+      "sourcePrompt": "You're right. (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu cheppindi sare",
+      "acceptedAnswers": [
+        "nuvvu cheppindi sare",
+        "nuvvu cheppindi correct",
+        "nuvvu cheppindi nijame",
+        "nuvvu annadi sare"
+      ],
+      "registerVariant": "meeru cheppindi sare",
+      "distractors": [
+        "nuvvu cheppindi tappu",
+        "nuvvu cheppindi ardham kaaledu"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "cheppindi",
+          "english": "what you said"
+        },
+        {
+          "word": "sare",
+          "english": "right"
+        }
+      ],
+      "script": "నువ్వు చెప్పింది సరే",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i03",
+      "sourcePrompt": "He is my brother.",
+      "register": "neutral",
+      "canonical": "atanu naa anna",
+      "acceptedAnswers": [
+        "atanu naa anna",
+        "athanu naa anna",
+        "vaadu naa anna",
+        "atanu maa anna"
+      ],
+      "distractors": [
+        "atanu naa tammudu",
+        "atanu naa nanna",
+        "atanu naa friend"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "naa",
+          "english": "my"
+        },
+        {
+          "word": "anna",
+          "english": "elder brother"
+        }
+      ],
+      "script": "అతను నా అన్న",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i04",
+      "sourcePrompt": "She is my sister.",
+      "register": "neutral",
+      "canonical": "aame naa chelli",
+      "acceptedAnswers": [
+        "aame naa chelli",
+        "ame naa chelli",
+        "aame maa chelli",
+        "aavida naa chelli"
+      ],
+      "distractors": [
+        "aame naa akka",
+        "aame naa amma",
+        "aame naa friend"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "naa",
+          "english": "my"
+        },
+        {
+          "word": "chelli",
+          "english": "younger sister"
+        }
+      ],
+      "script": "ఆమె నా చెల్లి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i05",
+      "sourcePrompt": "They are my neighbours.",
+      "register": "neutral",
+      "canonical": "vaallu maa pakkinti vaallu",
+      "acceptedAnswers": [
+        "vaallu maa pakkinti vaallu",
+        "vallu maa pakkinti vallu",
+        "vaallu naa pakkinti vaallu",
+        "vaallu maa neighbours"
+      ],
+      "distractors": [
+        "vaallu maa friends",
+        "vaallu maa bandhuvulu",
+        "vaallu maa teachers"
+      ],
+      "tokens": [
+        {
+          "word": "vaallu",
+          "english": "they"
+        },
+        {
+          "word": "maa",
+          "english": "my"
+        },
+        {
+          "word": "pakkinti vaallu",
+          "english": "neighbours"
+        }
+      ],
+      "script": "వాళ్లు మా పక్కింటి వాళ్లు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i06",
+      "sourcePrompt": "Let's go. (both of us)",
+      "register": "neutral",
+      "canonical": "manam veldaam",
+      "acceptedAnswers": [
+        "manam veldaam",
+        "manam vellipodam",
+        "manam velthaam",
+        "manam veldam"
+      ],
+      "distractors": [
+        "memu veldam",
+        "manam vellam",
+        "manam vachchaam"
+      ],
+      "tokens": [
+        {
+          "word": "manam",
+          "english": "we (including you)"
+        },
+        {
+          "word": "veldaam",
+          "english": "let's go"
+        }
+      ],
+      "script": "మనం వెళ్దాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i07",
+      "sourcePrompt": "We are going. (not including you)",
+      "register": "neutral",
+      "canonical": "memu veltunnam",
+      "acceptedAnswers": [
+        "memu veltunnam",
+        "memu veltunnamu",
+        "memu velthunnam",
+        "memu veltunnaamu"
+      ],
+      "distractors": [
+        "manam veldam",
+        "memu vachcham",
+        "memu vellam"
+      ],
+      "tokens": [
+        {
+          "word": "memu",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "veltunnam",
+          "english": "are going"
+        }
+      ],
+      "script": "మేము వెళ్తున్నాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i08",
+      "sourcePrompt": "Are you coming? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru vastunnara?",
+      "acceptedAnswers": [
+        "meeru vastunnara?",
+        "meeru vastara?",
+        "meeru vastunnaara?",
+        "meeru ostunnara?"
+      ],
+      "registerVariant": "nuvvu vastunnava?",
+      "distractors": [
+        "meeru veltunnara?",
+        "meeru vachcharaa?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "vastunnara",
+          "english": "are you coming?"
+        }
+      ],
+      "script": "మీరు వస్తున్నారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i09",
+      "sourcePrompt": "This is mine.",
+      "register": "neutral",
+      "canonical": "idi naadi",
+      "acceptedAnswers": [
+        "idi naadi",
+        "idi naadhi",
+        "idhi naadi",
+        "idi naadega"
+      ],
+      "distractors": [
+        "idi needi",
+        "idi atanidi",
+        "idi evaridi?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "naadi",
+          "english": "mine"
+        }
+      ],
+      "script": "ఇది నాది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i10",
+      "sourcePrompt": "That is yours. (to a friend)",
+      "register": "casual",
+      "canonical": "adi needi",
+      "acceptedAnswers": [
+        "adi needi",
+        "adi nee dhi",
+        "adhi needi",
+        "adi neede"
+      ],
+      "registerVariant": "adi meedi",
+      "distractors": [
+        "adi naadi",
+        "adi atanidi"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "needi",
+          "english": "yours (casual)"
+        }
+      ],
+      "script": "అది నీది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i11",
+      "sourcePrompt": "Who is that man?",
+      "register": "neutral",
+      "canonical": "atanu evaru?",
+      "acceptedAnswers": [
+        "atanu evaru?",
+        "athanu evaru?",
+        "ataru evaru?",
+        "aayana evaru?"
+      ],
+      "distractors": [
+        "atanu ekkada?",
+        "atanu emiti?",
+        "atanu eppudu?"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "evaru",
+          "english": "who"
+        }
+      ],
+      "script": "అతను ఎవరు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i12",
+      "sourcePrompt": "Who is that woman?",
+      "register": "neutral",
+      "canonical": "aame evaru?",
+      "acceptedAnswers": [
+        "aame evaru?",
+        "ame evaru?",
+        "aavida evaru?",
+        "aame evaru"
+      ],
+      "distractors": [
+        "aame ekkada?",
+        "aame emiti?",
+        "aame eppudu?"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "evaru",
+          "english": "who"
+        }
+      ],
+      "script": "ఆమె ఎవరు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i13",
+      "sourcePrompt": "Whose is this?",
+      "register": "neutral",
+      "canonical": "idi evaridi?",
+      "acceptedAnswers": [
+        "idi evaridi?",
+        "idi evarido?",
+        "idi evaridi",
+        "idi evarida?"
+      ],
+      "distractors": [
+        "idi naadi",
+        "idi ekkada?",
+        "idi eppudu?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "evaridi",
+          "english": "whose"
+        }
+      ],
+      "script": "ఇది ఎవరిది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i14",
+      "sourcePrompt": "I know him.",
+      "register": "neutral",
+      "canonical": "naaku atanu telusu",
+      "acceptedAnswers": [
+        "naaku atanu telusu",
+        "naaku atanini telusu",
+        "naaku atanu telusu ra",
+        "naaku vaadu telusu"
+      ],
+      "distractors": [
+        "naaku atanu teliyadu",
+        "naaku aame telusu",
+        "naaku vaallu telusu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "telusu",
+          "english": "know"
+        }
+      ],
+      "script": "నాకు అతను తెలుసు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i15",
+      "sourcePrompt": "I don't know her.",
+      "register": "neutral",
+      "canonical": "naaku aame teliyadu",
+      "acceptedAnswers": [
+        "naaku aame teliyadu",
+        "naaku aamenu teliyadu",
+        "naaku aame telidu",
+        "naaku aavida teliyadu"
+      ],
+      "distractors": [
+        "naaku aame telusu",
+        "naaku atanu teliyadu",
+        "naaku vaallu teliyadu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "teliyadu",
+          "english": "don't know"
+        }
+      ],
+      "script": "నాకు ఆమె తెలియదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i16",
+      "sourcePrompt": "They are not here.",
+      "register": "neutral",
+      "canonical": "vaallu ikkada leru",
+      "acceptedAnswers": [
+        "vaallu ikkada leru",
+        "vallu ikkada leru",
+        "vaallu ikkada ledu",
+        "vaallu ikkada ledandi"
+      ],
+      "distractors": [
+        "vaallu ikkada unnaru",
+        "vaallu akkada leru",
+        "vaallu ikkadiki vastaru"
+      ],
+      "tokens": [
+        {
+          "word": "vaallu",
+          "english": "they"
+        },
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "leru",
+          "english": "are not"
+        }
+      ],
+      "script": "వాళ్లు ఇక్కడ లేరు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i17",
+      "sourcePrompt": "Both of us are tired.",
+      "register": "neutral",
+      "canonical": "memu iddaram alasipoyam",
+      "acceptedAnswers": [
+        "memu iddaram alasipoyam",
+        "memu iddaram alasipoyaamu",
+        "memu iddaram tired ga unnam",
+        "memu iddaram alasipoyamu"
+      ],
+      "distractors": [
+        "memu iddaram tinnam",
+        "memu iddaram tired kaadu",
+        "memu iddaram vellam"
+      ],
+      "tokens": [
+        {
+          "word": "memu",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "iddaram",
+          "english": "both of us"
+        },
+        {
+          "word": "alasipoyam",
+          "english": "are tired"
+        }
+      ],
+      "script": "మేము ఇద్దరం అలసిపోయాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i18",
+      "sourcePrompt": "Is this yours? (to an elder)",
+      "register": "respectful",
+      "canonical": "idi meedena?",
+      "acceptedAnswers": [
+        "idi meedena?",
+        "idi meedaa?",
+        "idi meedi aa?",
+        "idi meedena"
+      ],
+      "registerVariant": "idi needena?",
+      "distractors": [
+        "idi meeku kavala?",
+        "idi mee peru?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "meedena",
+          "english": "is it yours (respectful)"
+        }
+      ],
+      "script": "ఇది మీదేనా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i19",
+      "sourcePrompt": "He is a good person.",
+      "register": "neutral",
+      "canonical": "atanu manchi manishi",
+      "acceptedAnswers": [
+        "atanu manchi manishi",
+        "athanu manchi manishi",
+        "atanu manchi vyakti",
+        "atanu manchi vaadu"
+      ],
+      "distractors": [
+        "atanu pedda manishi",
+        "atanu chedda manishi",
+        "atanu manchi pani"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "manchi",
+          "english": "good"
+        },
+        {
+          "word": "manishi",
+          "english": "person"
+        }
+      ],
+      "script": "అతను మంచి మనిషి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u11-i20",
+      "sourcePrompt": "Who is there?",
+      "register": "neutral",
+      "canonical": "akkada evaru?",
+      "acceptedAnswers": [
+        "akkada evaru?",
+        "akkada evaru",
+        "evaru akkada?",
+        "akkada evaru unnaru?"
+      ],
+      "distractors": [
+        "akkada emiti?",
+        "akkada ekkada?",
+        "akkada enta?"
+      ],
+      "tokens": [
+        {
+          "word": "akkada",
+          "english": "there"
+        },
+        {
+          "word": "evaru",
+          "english": "who"
+        }
+      ],
+      "script": "అక్కడ ఎవరు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

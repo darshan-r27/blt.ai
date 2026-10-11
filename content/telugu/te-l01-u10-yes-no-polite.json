@@ -1,0 +1,622 @@
+{
+  "scenarioId": "te-l01-u10",
+  "language": "telugu",
+  "title": "Yes, no and polite words",
+  "subtitle": "Agreeing, declining and the small words that keep a chat friendly",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 10
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u10-i01",
+      "sourcePrompt": "Yes, that's right.",
+      "register": "neutral",
+      "canonical": "avunu, correct",
+      "acceptedAnswers": [
+        "avunu, correct",
+        "avunu correct",
+        "avunu, sarigga",
+        "avunu, adi correct"
+      ],
+      "distractors": [
+        "kaadu, correct kaadu",
+        "avunu, vaddu",
+        "avunu, teliyadu"
+      ],
+      "tokens": [
+        {
+          "word": "avunu",
+          "english": "yes"
+        },
+        {
+          "word": "correct",
+          "english": "right"
+        }
+      ],
+      "script": "అవును, కరెక్ట్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i02",
+      "sourcePrompt": "No, thank you.",
+      "register": "neutral",
+      "canonical": "vaddu, thanks",
+      "acceptedAnswers": [
+        "vaddu, thanks",
+        "vaddandi, thanks",
+        "vaddu thanks",
+        "vaddu, dhanyavaadalu"
+      ],
+      "distractors": [
+        "kavali, thanks",
+        "avunu, thanks",
+        "vaddu, sorry"
+      ],
+      "tokens": [
+        {
+          "word": "vaddu",
+          "english": "no (don't want)"
+        },
+        {
+          "word": "thanks",
+          "english": "thanks"
+        }
+      ],
+      "script": "వద్దు, థాంక్స్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i03",
+      "sourcePrompt": "Yes, please. (accepting an offer)",
+      "register": "respectful",
+      "canonical": "avunu, ivvandi",
+      "acceptedAnswers": [
+        "avunu, ivvandi",
+        "avunu ivvandi",
+        "kavali, ivvandi",
+        "avunu, ivvandi please"
+      ],
+      "registerVariant": "avunu, ivvu",
+      "distractors": [
+        "vaddu, thanks",
+        "avunu, vaddu"
+      ],
+      "tokens": [
+        {
+          "word": "avunu",
+          "english": "yes"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "అవును, ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i04",
+      "sourcePrompt": "Okay, no problem.",
+      "register": "neutral",
+      "canonical": "sare, problem ledu",
+      "acceptedAnswers": [
+        "sare, problem ledu",
+        "sare problem ledu",
+        "okay, problem ledu",
+        "sare, samasya ledu"
+      ],
+      "distractors": [
+        "sare, problem undi",
+        "vaddu, problem ledu",
+        "sare, teliyadu"
+      ],
+      "tokens": [
+        {
+          "word": "sare",
+          "english": "okay"
+        },
+        {
+          "word": "problem",
+          "english": "problem"
+        },
+        {
+          "word": "ledu",
+          "english": "there is no"
+        }
+      ],
+      "script": "సరే, ప్రాబ్లమ్ లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i05",
+      "sourcePrompt": "I agree.",
+      "register": "neutral",
+      "canonical": "nenu oppukuntanu",
+      "acceptedAnswers": [
+        "nenu oppukuntanu",
+        "nenu oppukunta",
+        "nenu angeekaristanu",
+        "nenu oppukuntunnanu"
+      ],
+      "distractors": [
+        "nenu oppukonu",
+        "nenu cheptanu",
+        "nenu chustanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "oppukuntanu",
+          "english": "I agree"
+        }
+      ],
+      "script": "నేను ఒప్పుకుంటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i06",
+      "sourcePrompt": "I don't agree.",
+      "register": "neutral",
+      "canonical": "nenu oppukonu",
+      "acceptedAnswers": [
+        "nenu oppukonu",
+        "nenu oppukoledu",
+        "nenu oppukovadam ledu"
+      ],
+      "distractors": [
+        "nenu oppukuntanu",
+        "nenu cheppanu",
+        "nenu chudanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "oppukonu",
+          "english": "will not agree"
+        }
+      ],
+      "script": "నేను ఒప్పుకోను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i07",
+      "sourcePrompt": "Maybe.",
+      "register": "neutral",
+      "canonical": "avvochu",
+      "acceptedAnswers": [
+        "avvochu",
+        "avochu",
+        "undochu",
+        "avvochchu"
+      ],
+      "distractors": [
+        "khachchitanga",
+        "ledu",
+        "sare"
+      ],
+      "tokens": [
+        {
+          "word": "avvochu",
+          "english": "maybe"
+        }
+      ],
+      "script": "అవ్వొచ్చు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i08",
+      "sourcePrompt": "Of course!",
+      "register": "neutral",
+      "canonical": "tappakunda!",
+      "acceptedAnswers": [
+        "tappakunda!",
+        "tappakunda",
+        "khachchitanga",
+        "kachchitanga"
+      ],
+      "distractors": [
+        "teliyadu",
+        "vaddu",
+        "taruvata"
+      ],
+      "tokens": [
+        {
+          "word": "tappakunda",
+          "english": "of course"
+        }
+      ],
+      "script": "తప్పకుండా!",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i09",
+      "sourcePrompt": "Please come again. (to a customer)",
+      "register": "respectful",
+      "canonical": "malli randi",
+      "acceptedAnswers": [
+        "malli randi",
+        "marala randi",
+        "inkosari randi",
+        "malli randi andi"
+      ],
+      "registerVariant": "malli ra",
+      "distractors": [
+        "malli vellandi",
+        "malli cheppandi"
+      ],
+      "tokens": [
+        {
+          "word": "malli",
+          "english": "again"
+        },
+        {
+          "word": "randi",
+          "english": "please come"
+        }
+      ],
+      "script": "మళ్లీ రండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i10",
+      "sourcePrompt": "After you. (letting someone go first)",
+      "register": "respectful",
+      "canonical": "meeru mundu vellandi",
+      "acceptedAnswers": [
+        "meeru mundu vellandi",
+        "meeru mundhu vellandi",
+        "mundu meeru vellandi",
+        "meeru modata vellandi"
+      ],
+      "registerVariant": "nuvvu mundu vellu",
+      "distractors": [
+        "meeru venaka vellandi",
+        "nenu mundu veltanu"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "mundu",
+          "english": "first, ahead"
+        },
+        {
+          "word": "vellandi",
+          "english": "please go"
+        }
+      ],
+      "script": "మీరు ముందు వెళ్లండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i11",
+      "sourcePrompt": "Excuse me. (to get someone's attention)",
+      "register": "respectful",
+      "canonical": "konchem chudandi",
+      "acceptedAnswers": [
+        "konchem chudandi",
+        "konchem ikkada chudandi",
+        "excuse me",
+        "konchem chudandi andi"
+      ],
+      "registerVariant": "konchem chudu",
+      "distractors": [
+        "konchem cheppandi",
+        "konchem vellandi"
+      ],
+      "tokens": [
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "chudandi",
+          "english": "please look"
+        }
+      ],
+      "script": "కొంచెం చూడండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i12",
+      "sourcePrompt": "Sorry, I can't.",
+      "register": "neutral",
+      "canonical": "sorry, nenu cheyalenu",
+      "acceptedAnswers": [
+        "sorry, nenu cheyalenu",
+        "sorry nenu cheyalenu",
+        "sorry, naaku kudaradu",
+        "sorry, nenu cheyyalenu"
+      ],
+      "distractors": [
+        "sorry, nenu chestanu",
+        "sorry, naaku kavali",
+        "sorry, nenu veltanu"
+      ],
+      "tokens": [
+        {
+          "word": "sorry",
+          "english": "sorry"
+        },
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "cheyalenu",
+          "english": "can't do"
+        }
+      ],
+      "script": "సారీ, నేను చేయలేను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i13",
+      "sourcePrompt": "Never mind.",
+      "register": "neutral",
+      "canonical": "adi emi ledu",
+      "acceptedAnswers": [
+        "adi emi ledu",
+        "adi emi kaadu",
+        "emi ledu",
+        "adi parvaledu"
+      ],
+      "distractors": [
+        "adi emiti?",
+        "adi chala kastam",
+        "adi ekkada undi?"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "emi ledu",
+          "english": "nothing"
+        }
+      ],
+      "script": "అది ఏమీ లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i14",
+      "sourcePrompt": "That's fine with me.",
+      "register": "neutral",
+      "canonical": "naaku okay",
+      "acceptedAnswers": [
+        "naaku okay",
+        "naaku sare",
+        "naaku okay ye",
+        "naaku parvaledu"
+      ],
+      "distractors": [
+        "naaku vaddu",
+        "naaku teliyadu",
+        "naaku late ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "okay",
+          "english": "okay"
+        }
+      ],
+      "script": "నాకు ఓకే",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i15",
+      "sourcePrompt": "No, I don't think so.",
+      "register": "neutral",
+      "canonical": "ledu, alaa kaadu",
+      "acceptedAnswers": [
+        "ledu, alaa kaadu",
+        "ledu ala kaadu",
+        "kaadu, alaa kaadu",
+        "ledu, alaagaa kaadu"
+      ],
+      "distractors": [
+        "avunu, alaage",
+        "ledu, vaddu",
+        "ledu, teliyadu"
+      ],
+      "tokens": [
+        {
+          "word": "ledu",
+          "english": "no"
+        },
+        {
+          "word": "alaa",
+          "english": "like that"
+        },
+        {
+          "word": "kaadu",
+          "english": "is not"
+        }
+      ],
+      "script": "లేదు, అలా కాదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i16",
+      "sourcePrompt": "Yes, I understood.",
+      "register": "neutral",
+      "canonical": "avunu, ardham ayindi",
+      "acceptedAnswers": [
+        "avunu, ardham ayindi",
+        "avunu ardham ayindi",
+        "avunu, ardhamayindi",
+        "avunu, artham ayindi"
+      ],
+      "distractors": [
+        "ledu, ardham kaaledu",
+        "avunu, teliyadu",
+        "avunu, vinipinchaledu"
+      ],
+      "tokens": [
+        {
+          "word": "avunu",
+          "english": "yes"
+        },
+        {
+          "word": "ardham ayindi",
+          "english": "understood"
+        }
+      ],
+      "script": "అవును, అర్థం అయింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i17",
+      "sourcePrompt": "It's my pleasure.",
+      "register": "neutral",
+      "canonical": "adi naa santosham",
+      "acceptedAnswers": [
+        "adi naa santosham",
+        "adi naa pleasure",
+        "naa santosham",
+        "adi naaku santosham"
+      ],
+      "distractors": [
+        "adi naa kastam",
+        "adi naa illu",
+        "adi naa dabbu"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "naa",
+          "english": "my"
+        },
+        {
+          "word": "santosham",
+          "english": "pleasure"
+        }
+      ],
+      "script": "అది నా సంతోషం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i18",
+      "sourcePrompt": "Please forgive my mistake. (to an elder)",
+      "register": "respectful",
+      "canonical": "naa tappu kshaminchandi",
+      "acceptedAnswers": [
+        "naa tappu kshaminchandi",
+        "naa tappu kshamimchandi",
+        "naa tappunu kshaminchandi",
+        "naa tappu marchipondi"
+      ],
+      "registerVariant": "naa tappu kshaminchu",
+      "distractors": [
+        "naa tappu cheppandi",
+        "naa tappu raayandi"
+      ],
+      "tokens": [
+        {
+          "word": "naa tappu",
+          "english": "my mistake"
+        },
+        {
+          "word": "kshaminchandi",
+          "english": "please forgive"
+        }
+      ],
+      "script": "నా తప్పు క్షమించండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i19",
+      "sourcePrompt": "Congratulations!",
+      "register": "neutral",
+      "canonical": "abhinandanalu!",
+      "acceptedAnswers": [
+        "abhinandanalu!",
+        "abhinandanalu",
+        "congrats",
+        "shubhakankshalu"
+      ],
+      "distractors": [
+        "dhanyavadalu",
+        "parvaledu",
+        "sorry"
+      ],
+      "tokens": [
+        {
+          "word": "abhinandanalu",
+          "english": "congratulations"
+        }
+      ],
+      "script": "అభినందనలు!",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u10-i20",
+      "sourcePrompt": "Take care. (to a friend)",
+      "register": "casual",
+      "canonical": "jaagrattaga undu",
+      "acceptedAnswers": [
+        "jaagrattaga undu",
+        "jagrathaga undu",
+        "jaagratta",
+        "jagratta ga undu"
+      ],
+      "registerVariant": "jaagrattaga undandi",
+      "distractors": [
+        "jaagratta leka undu",
+        "malli kaluddam"
+      ],
+      "tokens": [
+        {
+          "word": "jaagrattaga",
+          "english": "carefully"
+        },
+        {
+          "word": "undu",
+          "english": "be"
+        }
+      ],
+      "script": "జాగ్రత్తగా ఉండు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

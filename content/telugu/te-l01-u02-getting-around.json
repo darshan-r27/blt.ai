@@ -1,0 +1,675 @@
+{
+  "scenarioId": "te-l01-u02",
+  "language": "telugu",
+  "title": "Getting around",
+  "subtitle": "Buses, autos, directions and asking the way",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 2
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u02-i01",
+      "sourcePrompt": "Where is the bus stand? (asking a stranger)",
+      "register": "neutral",
+      "canonical": "bus stand ekkada undi?",
+      "acceptedAnswers": [
+        "bus stand ekkada undi?",
+        "bus stand ekkada undi",
+        "busstand ekkada undi?",
+        "bus stand ekkada vundi?"
+      ],
+      "distractors": [
+        "bus stand eppudu vastundi?",
+        "bus ekkadiki veltundi?",
+        "bus stand enta dooram?"
+      ],
+      "tokens": [
+        {
+          "word": "bus stand",
+          "english": "bus stand"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "బస్ స్టాండ్ ఎక్కడ ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i02",
+      "sourcePrompt": "Which bus goes to the station?",
+      "register": "neutral",
+      "canonical": "station ki ye bus veltundi?",
+      "acceptedAnswers": [
+        "station ki ye bus veltundi?",
+        "station ki e bus veltundi?",
+        "station ki ye bus veltundi",
+        "stationki ye bus veltundi?"
+      ],
+      "distractors": [
+        "station ekkada undi?",
+        "bus eppudu vastundi?",
+        "station lo ye bus aagutundi?"
+      ],
+      "tokens": [
+        {
+          "word": "station ki",
+          "english": "to the station"
+        },
+        {
+          "word": "ye",
+          "english": "which"
+        },
+        {
+          "word": "bus",
+          "english": "bus"
+        },
+        {
+          "word": "veltundi",
+          "english": "goes"
+        }
+      ],
+      "script": "స్టేషన్ కి ఏ బస్సు వెళ్తుంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i03",
+      "sourcePrompt": "How much is the ticket?",
+      "register": "neutral",
+      "canonical": "ticket enta?",
+      "acceptedAnswers": [
+        "ticket enta?",
+        "ticket entha?",
+        "ticket enta",
+        "tikket enta?"
+      ],
+      "distractors": [
+        "ticket eppudu?",
+        "ticket ekkada dorukutundi?",
+        "ticket undaa?"
+      ],
+      "tokens": [
+        {
+          "word": "ticket",
+          "english": "ticket"
+        },
+        {
+          "word": "enta",
+          "english": "how much"
+        }
+      ],
+      "script": "టిక్కెట్ ఎంత?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i04",
+      "sourcePrompt": "One ticket to Chennai, please. (to the conductor)",
+      "register": "respectful",
+      "canonical": "Chennai ki oka ticket ivvandi",
+      "acceptedAnswers": [
+        "Chennai ki oka ticket ivvandi",
+        "chennai ki oka ticket iyyandi",
+        "Chennaiki oka ticket ivvandi",
+        "Chennai ki oka ticket ivvandi andi"
+      ],
+      "registerVariant": "Chennai ki oka ticket ivvu",
+      "distractors": [
+        "Chennai nunchi oka ticket ivvandi",
+        "Chennai ki rendu tickets ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "Chennai ki",
+          "english": "to Chennai"
+        },
+        {
+          "word": "oka",
+          "english": "one"
+        },
+        {
+          "word": "ticket",
+          "english": "ticket"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "చెన్నై కి ఒక టిక్కెట్ ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i05",
+      "sourcePrompt": "When will the bus come?",
+      "register": "neutral",
+      "canonical": "bus eppudu vastundi?",
+      "acceptedAnswers": [
+        "bus eppudu vastundi?",
+        "bus eppudu vastundi",
+        "bus eppudu vastadi?",
+        "bus eppudu osthundi?"
+      ],
+      "distractors": [
+        "bus ekkada vastundi?",
+        "bus enta sepu avutundi?",
+        "bus eppudu vellindi?"
+      ],
+      "tokens": [
+        {
+          "word": "bus",
+          "english": "bus"
+        },
+        {
+          "word": "eppudu",
+          "english": "when"
+        },
+        {
+          "word": "vastundi",
+          "english": "will come"
+        }
+      ],
+      "script": "బస్సు ఎప్పుడు వస్తుంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i06",
+      "sourcePrompt": "Where are you going? (to a male friend)",
+      "register": "casual",
+      "canonical": "ekkadiki veltunnav ra?",
+      "acceptedAnswers": [
+        "ekkadiki veltunnav ra?",
+        "ekkadiki veltunnav ra",
+        "ekkadiki velthunnav ra?",
+        "ekkadiki veltunnavu ra?"
+      ],
+      "registerVariant": "ekkadiki veltunnaru?",
+      "distractors": [
+        "ekkada nunchi vastunnav ra?",
+        "eppudu veltunnav ra?"
+      ],
+      "tokens": [
+        {
+          "word": "ekkadiki",
+          "english": "to where"
+        },
+        {
+          "word": "veltunnav",
+          "english": "are you going"
+        },
+        {
+          "word": "ra",
+          "english": "friendly address to a man"
+        }
+      ],
+      "script": "ఎక్కడికి వెళ్తున్నావ్ రా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "male"
+    },
+    {
+      "id": "te-l01-u02-i07",
+      "sourcePrompt": "I'm going to the market.",
+      "register": "neutral",
+      "canonical": "nenu market ki veltunnanu",
+      "acceptedAnswers": [
+        "nenu market ki veltunnanu",
+        "nenu market ki veltunna",
+        "nenu marketki veltunnanu",
+        "nenu market ki velthunnanu"
+      ],
+      "distractors": [
+        "nenu market lo unnanu",
+        "nenu market nunchi vastunnanu",
+        "nenu market ki vellanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "market ki",
+          "english": "to the market"
+        },
+        {
+          "word": "veltunnanu",
+          "english": "am going"
+        }
+      ],
+      "script": "నేను మార్కెట్ కి వెళ్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i08",
+      "sourcePrompt": "Please stop here. (to an auto driver)",
+      "register": "respectful",
+      "canonical": "ikkada aapandi",
+      "acceptedAnswers": [
+        "ikkada aapandi",
+        "ikkada apandi",
+        "ikkade aapandi",
+        "ikkada aapandi andi"
+      ],
+      "registerVariant": "ikkada aapu",
+      "distractors": [
+        "ikkada undandi",
+        "mellaga vellandi"
+      ],
+      "tokens": [
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "aapandi",
+          "english": "please stop"
+        }
+      ],
+      "script": "ఇక్కడ ఆపండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i09",
+      "sourcePrompt": "Go straight. (to an auto driver)",
+      "register": "respectful",
+      "canonical": "straight ga vellandi",
+      "acceptedAnswers": [
+        "straight ga vellandi",
+        "straightga vellandi",
+        "sootiga vellandi",
+        "straight ga vellandi andi"
+      ],
+      "registerVariant": "straight ga vellu",
+      "distractors": [
+        "right ki vellandi",
+        "left ki vellandi"
+      ],
+      "tokens": [
+        {
+          "word": "straight ga",
+          "english": "straight"
+        },
+        {
+          "word": "vellandi",
+          "english": "please go"
+        }
+      ],
+      "script": "స్ట్రెయిట్ గా వెళ్లండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i10",
+      "sourcePrompt": "Turn right. (to an auto driver)",
+      "register": "respectful",
+      "canonical": "right ki tirugandi",
+      "acceptedAnswers": [
+        "right ki tirugandi",
+        "right ki thirugandi",
+        "right side tirugandi",
+        "right ki turn cheyandi"
+      ],
+      "registerVariant": "right ki tirugu",
+      "distractors": [
+        "left ki tirugandi",
+        "venakki randi"
+      ],
+      "tokens": [
+        {
+          "word": "right ki",
+          "english": "to the right"
+        },
+        {
+          "word": "tirugandi",
+          "english": "please turn"
+        }
+      ],
+      "script": "రైట్ కి తిరగండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i11",
+      "sourcePrompt": "How far is it?",
+      "register": "neutral",
+      "canonical": "enta dooram?",
+      "acceptedAnswers": [
+        "enta dooram?",
+        "entha dooram?",
+        "enta dooram",
+        "entha duram?"
+      ],
+      "distractors": [
+        "enta sepu?",
+        "enta dabbu?",
+        "enni rojulu?"
+      ],
+      "tokens": [
+        {
+          "word": "enta",
+          "english": "how much"
+        },
+        {
+          "word": "dooram",
+          "english": "distance"
+        }
+      ],
+      "script": "ఎంత దూరం?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i12",
+      "sourcePrompt": "How long will it take?",
+      "register": "neutral",
+      "canonical": "enta sepu avutundi?",
+      "acceptedAnswers": [
+        "enta sepu avutundi?",
+        "entha sepu avutundi?",
+        "enta time pattutundi?",
+        "enta sepu pattutundi?"
+      ],
+      "distractors": [
+        "enta dabbu avutundi?",
+        "enni rojulu avutundi?",
+        "enta dooram avutundi?"
+      ],
+      "tokens": [
+        {
+          "word": "enta",
+          "english": "how much"
+        },
+        {
+          "word": "sepu",
+          "english": "time, a while"
+        },
+        {
+          "word": "avutundi",
+          "english": "will take, will be"
+        }
+      ],
+      "script": "ఎంత సేపు అవుతుంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i13",
+      "sourcePrompt": "Is it far?",
+      "register": "neutral",
+      "canonical": "chala dooramaa?",
+      "acceptedAnswers": [
+        "chala dooramaa?",
+        "chaala dooramaa?",
+        "chala dooram aa?",
+        "chala dooramaa"
+      ],
+      "distractors": [
+        "daggara aa?",
+        "chala sepa?",
+        "chala dabbaa?"
+      ],
+      "tokens": [
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "dooramaa",
+          "english": "far?"
+        }
+      ],
+      "script": "చాలా దూరమా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i14",
+      "sourcePrompt": "I don't know the way.",
+      "register": "neutral",
+      "canonical": "naaku daari teliyadu",
+      "acceptedAnswers": [
+        "naaku daari teliyadu",
+        "naku daari teliyadu",
+        "naaku daari telidu",
+        "naku dari teliyadu"
+      ],
+      "distractors": [
+        "naaku ooru teliyadu",
+        "naaku bus teliyadu",
+        "naaku peru teliyadu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "daari",
+          "english": "way"
+        },
+        {
+          "word": "teliyadu",
+          "english": "don't know"
+        }
+      ],
+      "script": "నాకు దారి తెలియదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i15",
+      "sourcePrompt": "Please tell me the way. (to a stranger)",
+      "register": "respectful",
+      "canonical": "daari cheppandi",
+      "acceptedAnswers": [
+        "daari cheppandi",
+        "dari cheppandi",
+        "daari cheppandi andi",
+        "daari chepandi"
+      ],
+      "registerVariant": "daari cheppu",
+      "distractors": [
+        "daari vadilandi",
+        "daari telusaa?"
+      ],
+      "tokens": [
+        {
+          "word": "daari",
+          "english": "way"
+        },
+        {
+          "word": "cheppandi",
+          "english": "please tell"
+        }
+      ],
+      "script": "దారి చెప్పండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i16",
+      "sourcePrompt": "Is this the right bus?",
+      "register": "neutral",
+      "canonical": "idi correct bus aa?",
+      "acceptedAnswers": [
+        "idi correct bus aa?",
+        "idi correct bus a?",
+        "idi sarainaa bus aa?",
+        "ee bus correct aa?"
+      ],
+      "distractors": [
+        "ee bus ekkadiki veltundi?",
+        "ee bus eppudu bayaluderutundi?",
+        "ee bus lo rush ga untundaa?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "correct",
+          "english": "right"
+        },
+        {
+          "word": "bus",
+          "english": "bus"
+        },
+        {
+          "word": "aa",
+          "english": "(question)"
+        }
+      ],
+      "script": "ఇది కరెక్ట్ బస్సా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i17",
+      "sourcePrompt": "Wait here. (to a male friend)",
+      "register": "casual",
+      "canonical": "ikkada wait chey ra",
+      "acceptedAnswers": [
+        "ikkada wait chey ra",
+        "ikkada wait cheyyi ra",
+        "ikkada agu ra",
+        "ikkada wait chey"
+      ],
+      "registerVariant": "ikkada wait cheyandi",
+      "distractors": [
+        "ikkada kurcho ra",
+        "ikkadiki vellu ra"
+      ],
+      "tokens": [
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "wait chey",
+          "english": "wait (do)"
+        },
+        {
+          "word": "ra",
+          "english": "friendly address to a man"
+        }
+      ],
+      "script": "ఇక్కడ వెయిట్ చెయ్ రా",
+      "reviewStatus": "unreviewed",
+      "addressee": "male"
+    },
+    {
+      "id": "te-l01-u02-i18",
+      "sourcePrompt": "I'll be there in five minutes.",
+      "register": "neutral",
+      "canonical": "five minutes lo vastanu",
+      "acceptedAnswers": [
+        "five minutes lo vastanu",
+        "aidu nimishalalo vastanu",
+        "five minutes lo vasta",
+        "aidu minutes lo vastanu"
+      ],
+      "distractors": [
+        "five minutes mundu vachchanu",
+        "five days lo vastanu",
+        "five minutes lo veltanu"
+      ],
+      "tokens": [
+        {
+          "word": "five minutes lo",
+          "english": "within five minutes"
+        },
+        {
+          "word": "vastanu",
+          "english": "I will come"
+        }
+      ],
+      "script": "ఫైవ్ మినిట్స్ లో వస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i19",
+      "sourcePrompt": "I'll get off here.",
+      "register": "neutral",
+      "canonical": "nenu ikkada digutanu",
+      "acceptedAnswers": [
+        "nenu ikkada digutanu",
+        "nenu ikkade digutanu",
+        "nenu ikkada digipotanu",
+        "nenu ikkada digutaanu"
+      ],
+      "distractors": [
+        "nenu ikkada ekkutanu",
+        "nenu ikkada unnanu",
+        "nenu ikkada veltunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "digutanu",
+          "english": "will get off"
+        }
+      ],
+      "script": "నేను ఇక్కడ దిగుతాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u02-i20",
+      "sourcePrompt": "Where can I get an auto?",
+      "register": "neutral",
+      "canonical": "auto ekkada dorukutundi?",
+      "acceptedAnswers": [
+        "auto ekkada dorukutundi?",
+        "auto ekkada dorukuthundi?",
+        "auto ekkada dorukutundi",
+        "auto ekkada dorukutundaa?"
+      ],
+      "distractors": [
+        "auto enta?",
+        "auto eppudu veltundi?",
+        "auto evarida?"
+      ],
+      "tokens": [
+        {
+          "word": "auto",
+          "english": "auto"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "dorukutundi",
+          "english": "is available"
+        }
+      ],
+      "script": "ఆటో ఎక్కడ దొరుకుతుంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

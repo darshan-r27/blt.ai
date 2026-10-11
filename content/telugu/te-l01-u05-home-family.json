@@ -1,0 +1,687 @@
+{
+  "scenarioId": "te-l01-u05",
+  "language": "telugu",
+  "title": "Home, family and daily routine",
+  "subtitle": "Introducing family and everyday home talk",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 5
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u05-i01",
+      "sourcePrompt": "This is my mother.",
+      "register": "neutral",
+      "canonical": "eeme maa amma",
+      "acceptedAnswers": [
+        "eeme maa amma",
+        "eme maa amma",
+        "eeme naa amma",
+        "ame maa amma"
+      ],
+      "distractors": [
+        "eeme maa akka",
+        "eeme maa ammamma",
+        "ataru maa nanna"
+      ],
+      "tokens": [
+        {
+          "word": "eeme",
+          "english": "this woman"
+        },
+        {
+          "word": "maa",
+          "english": "my"
+        },
+        {
+          "word": "amma",
+          "english": "mother"
+        }
+      ],
+      "script": "ఈమె మా అమ్మ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i02",
+      "sourcePrompt": "This is my friend.",
+      "register": "neutral",
+      "canonical": "ithanu naa friend",
+      "acceptedAnswers": [
+        "ithanu naa friend",
+        "itanu naa friend",
+        "ithanu naa snehitudu",
+        "eeme naa friend"
+      ],
+      "distractors": [
+        "ithanu maa nanna",
+        "ithanu maa padosi",
+        "ithanu maa anna"
+      ],
+      "tokens": [
+        {
+          "word": "ithanu",
+          "english": "this man"
+        },
+        {
+          "word": "naa",
+          "english": "my"
+        },
+        {
+          "word": "friend",
+          "english": "friend"
+        }
+      ],
+      "script": "ఇతను నా ఫ్రెండ్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i03",
+      "sourcePrompt": "How many people are in your family? (to an elder)",
+      "register": "respectful",
+      "canonical": "mee intlo enta mandi unnaru?",
+      "acceptedAnswers": [
+        "mee intlo enta mandi unnaru?",
+        "mee intlo entha mandi unnaru?",
+        "mee inti lo enta mandi unnaru",
+        "mee kutumbamlo enta mandi unnaru?"
+      ],
+      "registerVariant": "nee intlo enta mandi?",
+      "distractors": [
+        "mee intlo emi unnayi?",
+        "mee intiki enta dooram?"
+      ],
+      "tokens": [
+        {
+          "word": "mee",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "intlo",
+          "english": "in the house"
+        },
+        {
+          "word": "enta mandi",
+          "english": "how many people"
+        },
+        {
+          "word": "unnaru",
+          "english": "are there"
+        }
+      ],
+      "script": "మీ ఇంట్లో ఎంత మంది ఉన్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i04",
+      "sourcePrompt": "Where is your house? (to an elder)",
+      "register": "respectful",
+      "canonical": "mee illu ekkada undi?",
+      "acceptedAnswers": [
+        "mee illu ekkada undi?",
+        "mee illu ekkada undi",
+        "mee illu ekkada vundi?",
+        "mee illu ekkada?"
+      ],
+      "registerVariant": "nee illu ekkada undi?",
+      "distractors": [
+        "mee illu enta dooram?",
+        "mee illu peddadaa?"
+      ],
+      "tokens": [
+        {
+          "word": "mee",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "illu",
+          "english": "house"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "మీ ఇల్లు ఎక్కడ ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i05",
+      "sourcePrompt": "I live in Hyderabad.",
+      "register": "neutral",
+      "canonical": "nenu Hyderabad lo untanu",
+      "acceptedAnswers": [
+        "nenu Hyderabad lo untanu",
+        "nenu Hyderabad lo untaanu",
+        "nenu Hyderabad lo vuntanu",
+        "nenu Hyderabad lo unta"
+      ],
+      "distractors": [
+        "nenu Hyderabad ki veltunnanu",
+        "nenu Hyderabad nunchi vastunnanu",
+        "nenu Hyderabad lo pani chestunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "Hyderabad lo",
+          "english": "in Hyderabad"
+        },
+        {
+          "word": "untanu",
+          "english": "live"
+        }
+      ],
+      "script": "నేను హైదరాబాద్ లో ఉంటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i06",
+      "sourcePrompt": "What work do you do? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru em pani chestaru?",
+      "acceptedAnswers": [
+        "meeru em pani chestaru?",
+        "meeru emi pani chestaru?",
+        "meeru em pani chestunnaru?",
+        "meeru em job chestaru?"
+      ],
+      "registerVariant": "nuvvu em pani chestav?",
+      "distractors": [
+        "meeru ekkada pani chestaru?",
+        "meeru emi tintaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "em",
+          "english": "what"
+        },
+        {
+          "word": "pani",
+          "english": "work"
+        },
+        {
+          "word": "chestaru",
+          "english": "do (respectful)"
+        }
+      ],
+      "script": "మీరు ఏం పని చేస్తారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i07",
+      "sourcePrompt": "I work in an office.",
+      "register": "neutral",
+      "canonical": "nenu office lo pani chestanu",
+      "acceptedAnswers": [
+        "nenu office lo pani chestanu",
+        "nenu office lo pani chestaanu",
+        "nenu office lo pani chesta",
+        "nenu office lo work chestanu"
+      ],
+      "distractors": [
+        "nenu office ki veltanu",
+        "nenu office nunchi vastanu",
+        "nenu office lo tintanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "office lo",
+          "english": "in an office"
+        },
+        {
+          "word": "pani",
+          "english": "work"
+        },
+        {
+          "word": "chestanu",
+          "english": "do"
+        }
+      ],
+      "script": "నేను ఆఫీస్ లో పని చేస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i08",
+      "sourcePrompt": "I'm sleepy.",
+      "register": "neutral",
+      "canonical": "naaku nidra vastundi",
+      "acceptedAnswers": [
+        "naaku nidra vastundi",
+        "naku nidra vastundi",
+        "naaku nidra osthundi",
+        "naaku nidra vastondi"
+      ],
+      "distractors": [
+        "naaku aakesthundi",
+        "naaku daahamga undi",
+        "naaku jwaram ga undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "nidra",
+          "english": "sleep"
+        },
+        {
+          "word": "vastundi",
+          "english": "comes"
+        }
+      ],
+      "script": "నాకు నిద్ర వస్తుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i09",
+      "sourcePrompt": "Sleep well. (to an elder)",
+      "register": "respectful",
+      "canonical": "baaga padukondi",
+      "acceptedAnswers": [
+        "baaga padukondi",
+        "baaga nidra pondi",
+        "baga padukondi",
+        "baaga nidrapondi"
+      ],
+      "registerVariant": "baaga paduko",
+      "distractors": [
+        "baaga tinandi",
+        "baaga chaduvukondi"
+      ],
+      "tokens": [
+        {
+          "word": "baaga",
+          "english": "well"
+        },
+        {
+          "word": "padukondi",
+          "english": "please lie down, sleep"
+        }
+      ],
+      "script": "బాగా పడుకోండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i10",
+      "sourcePrompt": "What's for dinner?",
+      "register": "neutral",
+      "canonical": "raatri bhojanam emiti?",
+      "acceptedAnswers": [
+        "raatri bhojanam emiti?",
+        "raatri bhojanam enti?",
+        "ratri bhojanam emiti",
+        "raatri dinner emiti?"
+      ],
+      "distractors": [
+        "ratri bhojanam eppudu?",
+        "madhyaahnam bhojanam emiti?",
+        "ratri bhojanam ayyinda?"
+      ],
+      "tokens": [
+        {
+          "word": "raatri",
+          "english": "night"
+        },
+        {
+          "word": "bhojanam",
+          "english": "meal"
+        },
+        {
+          "word": "emiti",
+          "english": "what"
+        }
+      ],
+      "script": "రాత్రి భోజనం ఏమిటి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i11",
+      "sourcePrompt": "Is anyone at home? (calling out at a door)",
+      "register": "respectful",
+      "canonical": "intlo evaraina unnara?",
+      "acceptedAnswers": [
+        "intlo evaraina unnara?",
+        "intlo evaraina unnara",
+        "intlo evarina unnaara?",
+        "intlo evaraina unnaara?"
+      ],
+      "registerVariant": "intlo evaraina unnava?",
+      "distractors": [
+        "intlo evaru vachcharu?",
+        "intlo emi undi?"
+      ],
+      "tokens": [
+        {
+          "word": "intlo",
+          "english": "at home"
+        },
+        {
+          "word": "evaraina",
+          "english": "anyone"
+        },
+        {
+          "word": "unnara",
+          "english": "is there (respectful)"
+        }
+      ],
+      "script": "ఇంట్లో ఎవరైనా ఉన్నారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i12",
+      "sourcePrompt": "Please open the door. (to an elder)",
+      "register": "respectful",
+      "canonical": "talupu teeyandi",
+      "acceptedAnswers": [
+        "talupu teeyandi",
+        "talupu teravandi",
+        "talupu teyandi",
+        "talupu teeyandi andi"
+      ],
+      "registerVariant": "talupu teeyi",
+      "distractors": [
+        "talupu veyandi",
+        "kitiki teeyandi"
+      ],
+      "tokens": [
+        {
+          "word": "talupu",
+          "english": "door"
+        },
+        {
+          "word": "teeyandi",
+          "english": "please open"
+        }
+      ],
+      "script": "తలుపు తీయండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i13",
+      "sourcePrompt": "Please close the door. (to an elder)",
+      "register": "respectful",
+      "canonical": "talupu veyandi",
+      "acceptedAnswers": [
+        "talupu veyandi",
+        "talupu veyyandi",
+        "talupu mooyandi",
+        "talupu veyandi andi"
+      ],
+      "registerVariant": "talupu veyyi",
+      "distractors": [
+        "talupu teeyandi",
+        "light off cheyandi"
+      ],
+      "tokens": [
+        {
+          "word": "talupu",
+          "english": "door"
+        },
+        {
+          "word": "veyandi",
+          "english": "please close"
+        }
+      ],
+      "script": "తలుపు వేయండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i14",
+      "sourcePrompt": "Turn on the light. (to an elder)",
+      "register": "respectful",
+      "canonical": "light veyandi",
+      "acceptedAnswers": [
+        "light veyandi",
+        "light on cheyandi",
+        "light veyyandi",
+        "light on cheyyandi"
+      ],
+      "registerVariant": "light veyyi",
+      "distractors": [
+        "light off cheyandi",
+        "fan veyandi"
+      ],
+      "tokens": [
+        {
+          "word": "light",
+          "english": "light"
+        },
+        {
+          "word": "veyandi",
+          "english": "please put on"
+        }
+      ],
+      "script": "లైట్ వేయండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i15",
+      "sourcePrompt": "It's very hot today.",
+      "register": "neutral",
+      "canonical": "ivaala chala vedi ga undi",
+      "acceptedAnswers": [
+        "ivaala chala vedi ga undi",
+        "ivala chala vedi ga undi",
+        "ivaala chala vedigaa undi",
+        "ivaala vedi ekkuvaga undi"
+      ],
+      "distractors": [
+        "ivaala chala challaga undi",
+        "ivaala chala vaana",
+        "ivaala chala gaali"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "vedi ga",
+          "english": "hot"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఈవాళ చాలా వేడిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i16",
+      "sourcePrompt": "It's raining.",
+      "register": "neutral",
+      "canonical": "vaana padutondi",
+      "acceptedAnswers": [
+        "vaana padutondi",
+        "vaana paduthundi",
+        "vaana padutundi",
+        "varsham padutondi"
+      ],
+      "distractors": [
+        "endagaa undi",
+        "gaali vestondi",
+        "vaana aagipoyindi"
+      ],
+      "tokens": [
+        {
+          "word": "vaana",
+          "english": "rain"
+        },
+        {
+          "word": "padutondi",
+          "english": "is falling"
+        }
+      ],
+      "script": "వాన పడుతోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i17",
+      "sourcePrompt": "Come quickly. (to a female friend)",
+      "register": "casual",
+      "canonical": "tvaraga ra ve",
+      "acceptedAnswers": [
+        "tvaraga ra ve",
+        "tondaraga ra ve",
+        "tondarga ra ve",
+        "tvaraga raave"
+      ],
+      "registerVariant": "tvaraga randi",
+      "distractors": [
+        "mellaga ra ve",
+        "repu ra ve"
+      ],
+      "tokens": [
+        {
+          "word": "tvaraga",
+          "english": "quickly"
+        },
+        {
+          "word": "ra",
+          "english": "come"
+        },
+        {
+          "word": "ve",
+          "english": "friendly address to a woman"
+        }
+      ],
+      "script": "త్వరగా రా వే",
+      "reviewStatus": "unreviewed",
+      "addressee": "female"
+    },
+    {
+      "id": "te-l01-u05-i18",
+      "sourcePrompt": "What happened? (to a male friend)",
+      "register": "casual",
+      "canonical": "emaindi ra?",
+      "acceptedAnswers": [
+        "emaindi ra?",
+        "emayindi ra?",
+        "emaindi ra",
+        "emaindiraa?"
+      ],
+      "registerVariant": "emaindi andi?",
+      "distractors": [
+        "ekkada unnav ra?",
+        "evaru ra?"
+      ],
+      "tokens": [
+        {
+          "word": "emaindi",
+          "english": "what happened"
+        },
+        {
+          "word": "ra",
+          "english": "friendly address to a man"
+        }
+      ],
+      "script": "ఏమైంది రా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "male"
+    },
+    {
+      "id": "te-l01-u05-i19",
+      "sourcePrompt": "Don't worry. (to an elder)",
+      "register": "respectful",
+      "canonical": "chinta padakandi",
+      "acceptedAnswers": [
+        "chinta padakandi",
+        "chintha padakandi",
+        "chinta padakandi andi",
+        "badha padakandi"
+      ],
+      "registerVariant": "chinta padaku",
+      "distractors": [
+        "chinta padandi",
+        "chinta paddanu"
+      ],
+      "tokens": [
+        {
+          "word": "chinta",
+          "english": "worry"
+        },
+        {
+          "word": "padakandi",
+          "english": "please don't feel"
+        }
+      ],
+      "script": "చింత పడకండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u05-i20",
+      "sourcePrompt": "I've reached home.",
+      "register": "neutral",
+      "canonical": "nenu intiki vachchesanu",
+      "acceptedAnswers": [
+        "nenu intiki vachchesanu",
+        "nenu intiki vachesanu",
+        "nenu intiki cherukunnanu",
+        "nenu intiki vachchesaanu"
+      ],
+      "distractors": [
+        "nenu inti nunchi vastunnanu",
+        "nenu intiki veltunnanu",
+        "nenu intlo ledu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "intiki",
+          "english": "to home"
+        },
+        {
+          "word": "vachchesanu",
+          "english": "have come"
+        }
+      ],
+      "script": "నేను ఇంటికి వచ్చేశాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

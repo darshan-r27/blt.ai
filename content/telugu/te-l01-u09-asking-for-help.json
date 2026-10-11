@@ -1,0 +1,683 @@
+{
+  "scenarioId": "te-l01-u09",
+  "language": "telugu",
+  "title": "Asking for help",
+  "subtitle": "When you are lost, confused or need a hand",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 9
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u09-i01",
+      "sourcePrompt": "Please say it again. (to an elder)",
+      "register": "respectful",
+      "canonical": "malli cheppandi",
+      "acceptedAnswers": [
+        "malli cheppandi",
+        "marala cheppandi",
+        "inkosari cheppandi",
+        "malli cheppandi andi"
+      ],
+      "registerVariant": "malli cheppu",
+      "distractors": [
+        "malli randi",
+        "malli rayandi"
+      ],
+      "tokens": [
+        {
+          "word": "malli",
+          "english": "again"
+        },
+        {
+          "word": "cheppandi",
+          "english": "please say"
+        }
+      ],
+      "script": "మళ్లీ చెప్పండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i02",
+      "sourcePrompt": "What does this mean?",
+      "register": "neutral",
+      "canonical": "deeni ardham emiti?",
+      "acceptedAnswers": [
+        "deeni ardham emiti?",
+        "deeni ardham enti?",
+        "idi ante emiti?",
+        "deeni artham emiti?"
+      ],
+      "distractors": [
+        "deeni dhara emiti?",
+        "deeni peru emiti?",
+        "idi ekkada undi?"
+      ],
+      "tokens": [
+        {
+          "word": "deeni",
+          "english": "of this"
+        },
+        {
+          "word": "ardham",
+          "english": "meaning"
+        },
+        {
+          "word": "emiti",
+          "english": "what"
+        }
+      ],
+      "script": "దీని అర్థం ఏమిటి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i03",
+      "sourcePrompt": "How do I say this in Telugu?",
+      "register": "neutral",
+      "canonical": "deenni Telugu lo ela cheppali?",
+      "acceptedAnswers": [
+        "deenni Telugu lo ela cheppali?",
+        "dheenni Telugu lo ela cheppali",
+        "idi Telugu lo ela antaru?",
+        "deenni Telugu lo ela anali?"
+      ],
+      "distractors": [
+        "deenni Telugu lo ekkada cheppali?",
+        "deenni Telugu lo evaru cheppali?",
+        "deenni English lo ela cheppali?"
+      ],
+      "tokens": [
+        {
+          "word": "deenni",
+          "english": "this (object)"
+        },
+        {
+          "word": "Telugu lo",
+          "english": "in Telugu"
+        },
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "cheppali",
+          "english": "to say"
+        }
+      ],
+      "script": "దీన్ని తెలుగులో ఎలా చెప్పాలి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i04",
+      "sourcePrompt": "Please help me. (to an elder)",
+      "register": "respectful",
+      "canonical": "naaku sahayam cheyandi",
+      "acceptedAnswers": [
+        "naaku sahayam cheyandi",
+        "naaku saayam cheyandi",
+        "naaku help cheyandi",
+        "naaku sahaayam cheyyandi"
+      ],
+      "registerVariant": "naaku sahayam chey",
+      "distractors": [
+        "naaku sahayam vaddu",
+        "naaku bhojanam pettandi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "sahayam",
+          "english": "help"
+        },
+        {
+          "word": "cheyandi",
+          "english": "please do"
+        }
+      ],
+      "script": "నాకు సహాయం చేయండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i05",
+      "sourcePrompt": "I'm lost.",
+      "register": "neutral",
+      "canonical": "nenu daari tappipoyanu",
+      "acceptedAnswers": [
+        "nenu daari tappipoyanu",
+        "nenu dari tappipoyanu",
+        "nenu daari tappipoyaanu",
+        "nenu daari marchipoyanu"
+      ],
+      "distractors": [
+        "nenu daari cheptanu",
+        "nenu intiki veltunnanu",
+        "nenu daari tappaledu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "daari",
+          "english": "way"
+        },
+        {
+          "word": "tappipoyanu",
+          "english": "got lost"
+        }
+      ],
+      "script": "నేను దారి తప్పిపోయాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i06",
+      "sourcePrompt": "Can you help me? (to a stranger)",
+      "register": "respectful",
+      "canonical": "naaku konchem sahayam chestara?",
+      "acceptedAnswers": [
+        "naaku konchem sahayam chestara?",
+        "naaku sahayam chestara?",
+        "naaku konchem help chestara?",
+        "naaku konchem sahaayam chestaaraa?"
+      ],
+      "registerVariant": "naaku konchem sahayam chestava?",
+      "distractors": [
+        "naaku konchem sahayam cheyakandi",
+        "naaku konchem dabbulu istara?"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "sahayam",
+          "english": "help"
+        },
+        {
+          "word": "chestara",
+          "english": "will you do?"
+        }
+      ],
+      "script": "నాకు కొంచెం సహాయం చేస్తారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i07",
+      "sourcePrompt": "Do you speak English? (to a stranger)",
+      "register": "respectful",
+      "canonical": "meeru English matladataara?",
+      "acceptedAnswers": [
+        "meeru English matladataara?",
+        "meeru English matladutara?",
+        "meeru English matladatara?",
+        "meeru English matladataaraa?"
+      ],
+      "registerVariant": "nuvvu English matladatava?",
+      "distractors": [
+        "meeru Tamil matladataara?",
+        "meeru Hindi matladataara?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "English",
+          "english": "English"
+        },
+        {
+          "word": "matladataara",
+          "english": "do you speak?"
+        }
+      ],
+      "script": "మీరు ఇంగ్లీష్ మాట్లాడతారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i08",
+      "sourcePrompt": "I can't hear you.",
+      "register": "neutral",
+      "canonical": "naaku sariga vinipinchatledu",
+      "acceptedAnswers": [
+        "naaku sariga vinipinchatledu",
+        "naaku sarigga vinipinchadam ledu",
+        "naaku baaga vinipinchatledu",
+        "naaku vinipinchatledu"
+      ],
+      "distractors": [
+        "naaku sariga ardham kaaledu",
+        "naaku sariga teliyadu",
+        "naaku sariga vinipistundi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "sariga",
+          "english": "properly"
+        },
+        {
+          "word": "vinipinchatledu",
+          "english": "can't hear"
+        }
+      ],
+      "script": "నాకు సరిగ్గా వినిపించట్లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i09",
+      "sourcePrompt": "Please write it down. (to an elder)",
+      "register": "respectful",
+      "canonical": "deenni raasi ivvandi",
+      "acceptedAnswers": [
+        "deenni raasi ivvandi",
+        "deenni rasi ivvandi",
+        "idi raasi ivvandi",
+        "deenni raasi iyyandi"
+      ],
+      "registerVariant": "deenni raasi ivvu",
+      "distractors": [
+        "deenni cheppandi",
+        "deenni chudandi"
+      ],
+      "tokens": [
+        {
+          "word": "deenni",
+          "english": "this (object)"
+        },
+        {
+          "word": "raasi",
+          "english": "having written"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "దీన్ని రాసి ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i10",
+      "sourcePrompt": "Where is the toilet?",
+      "register": "neutral",
+      "canonical": "toilet ekkada undi?",
+      "acceptedAnswers": [
+        "toilet ekkada undi?",
+        "toilet ekkada undi",
+        "bathroom ekkada undi?",
+        "restroom ekkada undi?"
+      ],
+      "distractors": [
+        "toilet eppudu vastundi?",
+        "toilet enta?",
+        "toilet chala dooramaa?"
+      ],
+      "tokens": [
+        {
+          "word": "toilet",
+          "english": "toilet"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "టాయిలెట్ ఎక్కడ ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i11",
+      "sourcePrompt": "I need a doctor.",
+      "register": "neutral",
+      "canonical": "naaku doctor kavali",
+      "acceptedAnswers": [
+        "naaku doctor kavali",
+        "naaku oka doctor kavali",
+        "naaku doctor kaavali",
+        "naaku doctor ni chudali"
+      ],
+      "distractors": [
+        "naaku doctor vaddu",
+        "naaku doctor telusu",
+        "naaku doctor ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "doctor",
+          "english": "doctor"
+        },
+        {
+          "word": "kavali",
+          "english": "needed"
+        }
+      ],
+      "script": "నాకు డాక్టర్ కావాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i12",
+      "sourcePrompt": "Please call my friend. (to an elder)",
+      "register": "respectful",
+      "canonical": "naa friend ni pilavandi",
+      "acceptedAnswers": [
+        "naa friend ni pilavandi",
+        "naa friend ni pilvandi",
+        "naa friend ki phone cheyandi",
+        "naa friend ni pilavandi andi"
+      ],
+      "registerVariant": "naa friend ni pilu",
+      "distractors": [
+        "naa friend ni pilavakandi",
+        "naa friend ni chudandi"
+      ],
+      "tokens": [
+        {
+          "word": "naa friend ni",
+          "english": "my friend (object)"
+        },
+        {
+          "word": "pilavandi",
+          "english": "please call"
+        }
+      ],
+      "script": "నా ఫ్రెండ్ ని పిలవండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i13",
+      "sourcePrompt": "Can I use your phone? (to a stranger)",
+      "register": "respectful",
+      "canonical": "mee phone vaadochcha?",
+      "acceptedAnswers": [
+        "mee phone vaadochcha?",
+        "mee phone vaadocha?",
+        "mee phone vaadukovacha?",
+        "mee phone use cheyocha?"
+      ],
+      "registerVariant": "nee phone vaadocha?",
+      "distractors": [
+        "mee phone enta?",
+        "mee phone ekkada undi?"
+      ],
+      "tokens": [
+        {
+          "word": "mee phone",
+          "english": "your phone (respectful)"
+        },
+        {
+          "word": "vaadochcha",
+          "english": "may I use?"
+        }
+      ],
+      "script": "మీ ఫోన్ వాడొచ్చా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i14",
+      "sourcePrompt": "My phone isn't working.",
+      "register": "neutral",
+      "canonical": "naa phone pani cheyyatledu",
+      "acceptedAnswers": [
+        "naa phone pani cheyyatledu",
+        "naa phone work avvatledu",
+        "naa phone pani cheyyadam ledu",
+        "naa phone panicheyyatledu"
+      ],
+      "distractors": [
+        "naa phone baaga pani chestundi",
+        "naa phone ekkada undi?",
+        "naa phone enta?"
+      ],
+      "tokens": [
+        {
+          "word": "naa phone",
+          "english": "my phone"
+        },
+        {
+          "word": "pani cheyyatledu",
+          "english": "isn't working"
+        }
+      ],
+      "script": "నా ఫోన్ పని చేయట్లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i15",
+      "sourcePrompt": "I forgot my bag.",
+      "register": "neutral",
+      "canonical": "naa bag marchipoyanu",
+      "acceptedAnswers": [
+        "naa bag marchipoyanu",
+        "naa bag marchipoyaanu",
+        "naa bag marichipoyanu",
+        "nenu naa bag marchipoyanu"
+      ],
+      "distractors": [
+        "naa bag teesukunnanu",
+        "naa bag vethukutunnanu",
+        "naa bag konnanu"
+      ],
+      "tokens": [
+        {
+          "word": "naa bag",
+          "english": "my bag"
+        },
+        {
+          "word": "marchipoyanu",
+          "english": "I forgot"
+        }
+      ],
+      "script": "నా బ్యాగ్ మర్చిపోయాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i16",
+      "sourcePrompt": "Please wait a minute. (to an elder)",
+      "register": "respectful",
+      "canonical": "oka nimisham agandi",
+      "acceptedAnswers": [
+        "oka nimisham agandi",
+        "oka nimisham apandi",
+        "oka minute agandi",
+        "oka nimisham wait cheyandi"
+      ],
+      "registerVariant": "oka nimisham aagu",
+      "distractors": [
+        "oka nimisham randi",
+        "oka nimisham vellandi"
+      ],
+      "tokens": [
+        {
+          "word": "oka nimisham",
+          "english": "one minute"
+        },
+        {
+          "word": "agandi",
+          "english": "please wait"
+        }
+      ],
+      "script": "ఒక నిమిషం ఆగండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i17",
+      "sourcePrompt": "I'll ask someone else.",
+      "register": "neutral",
+      "canonical": "nenu vere evarnaina adugutanu",
+      "acceptedAnswers": [
+        "nenu vere evarnaina adugutanu",
+        "nenu vere evarnaina adugutaanu",
+        "nenu inkevarini adugutanu",
+        "nenu vere evarnaina aduguta"
+      ],
+      "distractors": [
+        "nenu vere evariki cheptanu",
+        "nenu evarini adagaledu",
+        "nenu vere edaina adugutanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "vere evarnaina",
+          "english": "someone else"
+        },
+        {
+          "word": "adugutanu",
+          "english": "I will ask"
+        }
+      ],
+      "script": "నేను వేరే ఎవర్నైనా అడుగుతాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i18",
+      "sourcePrompt": "It's okay, I can manage.",
+      "register": "neutral",
+      "canonical": "parvaledu, nenu chusukuntanu",
+      "acceptedAnswers": [
+        "parvaledu, nenu chusukuntanu",
+        "parvaledu nenu chusukuntanu",
+        "paravaledu, nenu manage chestanu",
+        "parvaledu, nenu chusukunta"
+      ],
+      "distractors": [
+        "parvaledu, nenu chudanu",
+        "parvaledu, sahayam cheyandi",
+        "parvaledu, naaku teliyadu"
+      ],
+      "tokens": [
+        {
+          "word": "parvaledu",
+          "english": "it's okay"
+        },
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "chusukuntanu",
+          "english": "I'll take care of it"
+        }
+      ],
+      "script": "పర్వాలేదు, నేను చూసుకుంటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i19",
+      "sourcePrompt": "Does anyone here speak English?",
+      "register": "neutral",
+      "canonical": "evaraina English matladataara?",
+      "acceptedAnswers": [
+        "evaraina English matladataara?",
+        "evarina English matladataara?",
+        "evaraina English matladutara?",
+        "evaraina English matladataaraa?"
+      ],
+      "distractors": [
+        "evaraina Tamil matladataara?",
+        "evaraina ikkada unnara?",
+        "evaraina English nerchukuntara?"
+      ],
+      "tokens": [
+        {
+          "word": "evaraina",
+          "english": "anyone"
+        },
+        {
+          "word": "English",
+          "english": "English"
+        },
+        {
+          "word": "matladataara",
+          "english": "will they speak?"
+        }
+      ],
+      "script": "ఎవరైనా ఇంగ్లీష్ మాట్లాడతారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u09-i20",
+      "sourcePrompt": "Thank you for your help. (to an elder)",
+      "register": "respectful",
+      "canonical": "mee sahayaniki chala thanks",
+      "acceptedAnswers": [
+        "mee sahayaniki chala thanks",
+        "mee help ki chala thanks",
+        "mee sahayaniki thanks andi",
+        "mee sahayaniki chala dhanyavaadalu"
+      ],
+      "registerVariant": "nee sahayaniki chala thanks",
+      "distractors": [
+        "mee sahayam vaddu",
+        "mee sahayam enta?"
+      ],
+      "tokens": [
+        {
+          "word": "mee",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "sahayaniki",
+          "english": "for the help"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "thanks",
+          "english": "thanks"
+        }
+      ],
+      "script": "మీ సహాయానికి చాలా థాంక్స్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

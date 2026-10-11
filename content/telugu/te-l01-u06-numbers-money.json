@@ -1,0 +1,643 @@
+{
+  "scenarioId": "te-l01-u06",
+  "language": "telugu",
+  "title": "Numbers, money and counting",
+  "subtitle": "Paying, counting and sharing a phone number",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 6
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u06-i01",
+      "sourcePrompt": "How many are there?",
+      "register": "neutral",
+      "canonical": "enni unnayi?",
+      "acceptedAnswers": [
+        "enni unnayi?",
+        "enni vunnayi?",
+        "enni unnayi",
+        "enni unnai?"
+      ],
+      "distractors": [
+        "enta undi?",
+        "ekkada unnayi?",
+        "eppudu unnayi?"
+      ],
+      "tokens": [
+        {
+          "word": "enni",
+          "english": "how many"
+        },
+        {
+          "word": "unnayi",
+          "english": "are there"
+        }
+      ],
+      "script": "ఎన్ని ఉన్నాయి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i02",
+      "sourcePrompt": "There are ten.",
+      "register": "neutral",
+      "canonical": "padi unnayi",
+      "acceptedAnswers": [
+        "padi unnayi",
+        "padi vunnayi",
+        "padi unnai",
+        "padi unnayi andi"
+      ],
+      "distractors": [
+        "okati undi",
+        "iruvai unnayi",
+        "padi levu"
+      ],
+      "tokens": [
+        {
+          "word": "padi",
+          "english": "ten"
+        },
+        {
+          "word": "unnayi",
+          "english": "there are"
+        }
+      ],
+      "script": "పది ఉన్నాయి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i03",
+      "sourcePrompt": "Give me five, please. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "aidu ivvandi",
+      "acceptedAnswers": [
+        "aidu ivvandi",
+        "ayidu ivvandi",
+        "aidu iyyandi",
+        "aidu ivvandi andi"
+      ],
+      "registerVariant": "aidu ivvu",
+      "distractors": [
+        "moodu ivvandi",
+        "padi ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "aidu",
+          "english": "five"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "ఐదు ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i04",
+      "sourcePrompt": "Twenty rupees.",
+      "register": "neutral",
+      "canonical": "iruvai rupayalu",
+      "acceptedAnswers": [
+        "iruvai rupayalu",
+        "iravai rupayalu",
+        "iruvai rupees",
+        "iruvai rupaayalu"
+      ],
+      "distractors": [
+        "padi rupayalu",
+        "muppai rupayalu",
+        "iruvai paisalu"
+      ],
+      "tokens": [
+        {
+          "word": "iruvai",
+          "english": "twenty"
+        },
+        {
+          "word": "rupayalu",
+          "english": "rupees"
+        }
+      ],
+      "script": "ఇరవై రూపాయలు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i05",
+      "sourcePrompt": "Fifty rupees only.",
+      "register": "neutral",
+      "canonical": "yabhai rupayalu matrame",
+      "acceptedAnswers": [
+        "yabhai rupayalu matrame",
+        "yabai rupayalu matrame",
+        "yabhai rupayalu antey",
+        "yabhai rupees matrame"
+      ],
+      "distractors": [
+        "nalabhai rupayalu matrame",
+        "yabhai rupayalu ekkuva",
+        "aravai rupayalu matrame"
+      ],
+      "tokens": [
+        {
+          "word": "yabhai",
+          "english": "fifty"
+        },
+        {
+          "word": "rupayalu",
+          "english": "rupees"
+        },
+        {
+          "word": "matrame",
+          "english": "only"
+        }
+      ],
+      "script": "యాభై రూపాయలు మాత్రమే",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i06",
+      "sourcePrompt": "It's a hundred rupees.",
+      "register": "neutral",
+      "canonical": "vanda rupayalu",
+      "acceptedAnswers": [
+        "vanda rupayalu",
+        "vanda rupees",
+        "vanda rupayalu andi",
+        "vanda rupaayalu"
+      ],
+      "distractors": [
+        "rendu vandalu",
+        "padi rupayalu",
+        "veyyi rupayalu"
+      ],
+      "tokens": [
+        {
+          "word": "vanda",
+          "english": "hundred"
+        },
+        {
+          "word": "rupayalu",
+          "english": "rupees"
+        }
+      ],
+      "script": "వంద రూపాయలు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i07",
+      "sourcePrompt": "It's five hundred rupees.",
+      "register": "neutral",
+      "canonical": "ayidu vandalu",
+      "acceptedAnswers": [
+        "ayidu vandalu",
+        "aidu vandalu",
+        "ayidu vandala rupayalu",
+        "ayidu vandalu andi"
+      ],
+      "distractors": [
+        "moodu vandalu",
+        "ayidu rupayalu",
+        "veyyi rupayalu"
+      ],
+      "tokens": [
+        {
+          "word": "ayidu",
+          "english": "five"
+        },
+        {
+          "word": "vandalu",
+          "english": "hundreds"
+        }
+      ],
+      "script": "ఐదు వందలు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i08",
+      "sourcePrompt": "It's a thousand rupees.",
+      "register": "neutral",
+      "canonical": "veyyi rupayalu",
+      "acceptedAnswers": [
+        "veyyi rupayalu",
+        "veyyi rupees",
+        "veyyi rupaayalu",
+        "veyyi rupayalu andi"
+      ],
+      "distractors": [
+        "vanda rupayalu",
+        "padi veyyilu",
+        "ayidu vandalu"
+      ],
+      "tokens": [
+        {
+          "word": "veyyi",
+          "english": "thousand"
+        },
+        {
+          "word": "rupayalu",
+          "english": "rupees"
+        }
+      ],
+      "script": "వెయ్యి రూపాయలు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i09",
+      "sourcePrompt": "What's the total?",
+      "register": "neutral",
+      "canonical": "motham enta?",
+      "acceptedAnswers": [
+        "motham enta?",
+        "motham entha?",
+        "total enta?",
+        "mottam enta?"
+      ],
+      "distractors": [
+        "motham enni?",
+        "motham ekkada?",
+        "motham eppudu?"
+      ],
+      "tokens": [
+        {
+          "word": "motham",
+          "english": "total"
+        },
+        {
+          "word": "enta",
+          "english": "how much"
+        }
+      ],
+      "script": "మొత్తం ఎంత?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i10",
+      "sourcePrompt": "What's your phone number? (to an elder)",
+      "register": "respectful",
+      "canonical": "mee phone number emiti?",
+      "acceptedAnswers": [
+        "mee phone number emiti?",
+        "mee phone number enti?",
+        "mee number emiti?",
+        "mee phone number emiti"
+      ],
+      "registerVariant": "nee phone number enti?",
+      "distractors": [
+        "mee phone ekkada undi?",
+        "mee phone enta?"
+      ],
+      "tokens": [
+        {
+          "word": "mee",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "phone number",
+          "english": "phone number"
+        },
+        {
+          "word": "emiti",
+          "english": "what"
+        }
+      ],
+      "script": "మీ ఫోన్ నంబర్ ఏమిటి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i11",
+      "sourcePrompt": "Please note down my number. (to an elder)",
+      "register": "respectful",
+      "canonical": "naa number raasukondi",
+      "acceptedAnswers": [
+        "naa number raasukondi",
+        "na number rasukondi",
+        "naa number note chesukondi",
+        "naa number raasukondi andi"
+      ],
+      "registerVariant": "naa number raasuko",
+      "distractors": [
+        "naa number cheppandi",
+        "naa number ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "naa",
+          "english": "my"
+        },
+        {
+          "word": "number",
+          "english": "number"
+        },
+        {
+          "word": "raasukondi",
+          "english": "please write down"
+        }
+      ],
+      "script": "నా నంబర్ రాసుకోండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i12",
+      "sourcePrompt": "I don't have any change.",
+      "register": "neutral",
+      "canonical": "naa daggara chillara ledu",
+      "acceptedAnswers": [
+        "naa daggara chillara ledu",
+        "naa daggara change ledu",
+        "naa daggara chillara ledhu",
+        "naa daggara chillara levu"
+      ],
+      "distractors": [
+        "naa daggara chillara undi",
+        "naa daggara bag ledu",
+        "naa daggara neellu ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naa daggara",
+          "english": "with me"
+        },
+        {
+          "word": "chillara",
+          "english": "small change"
+        },
+        {
+          "word": "ledu",
+          "english": "not"
+        }
+      ],
+      "script": "నా దగ్గర చిల్లర లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i13",
+      "sourcePrompt": "Please count them all. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "anni lekkapettandi",
+      "acceptedAnswers": [
+        "anni lekkapettandi",
+        "annee lekka pettandi",
+        "anni lekkinchandi",
+        "anni lekka pettandi"
+      ],
+      "registerVariant": "anni lekkapettu",
+      "distractors": [
+        "anni ivvandi",
+        "anni teesukondi"
+      ],
+      "tokens": [
+        {
+          "word": "anni",
+          "english": "all"
+        },
+        {
+          "word": "lekkapettandi",
+          "english": "please count"
+        }
+      ],
+      "script": "అన్నీ లెక్కపెట్టండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i14",
+      "sourcePrompt": "There are three of us.",
+      "register": "neutral",
+      "canonical": "memu mugguram",
+      "acceptedAnswers": [
+        "memu mugguram",
+        "memu mugguru",
+        "memu moodu mandi",
+        "memu mugguramu"
+      ],
+      "distractors": [
+        "memu iddaram",
+        "memu naluguram",
+        "nenu mugguru"
+      ],
+      "tokens": [
+        {
+          "word": "memu",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "mugguram",
+          "english": "three of us"
+        }
+      ],
+      "script": "మేము ముగ్గురం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i15",
+      "sourcePrompt": "I need two more.",
+      "register": "neutral",
+      "canonical": "inka rendu kavali",
+      "acceptedAnswers": [
+        "inka rendu kavali",
+        "inkaa rendu kavali",
+        "inka rendu kaavali",
+        "inka rendu kavaali"
+      ],
+      "distractors": [
+        "inka rendu vaddu",
+        "inka okati kavali",
+        "inka konchem kavali"
+      ],
+      "tokens": [
+        {
+          "word": "inka",
+          "english": "more"
+        },
+        {
+          "word": "rendu",
+          "english": "two"
+        },
+        {
+          "word": "kavali",
+          "english": "needed"
+        }
+      ],
+      "script": "ఇంకా రెండు కావాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i16",
+      "sourcePrompt": "Is that all?",
+      "register": "neutral",
+      "canonical": "anthena?",
+      "acceptedAnswers": [
+        "anthena?",
+        "antena?",
+        "anthenaa?",
+        "adi anthena?"
+      ],
+      "distractors": [
+        "inka undaa?",
+        "anta enta?",
+        "antha chaaluna?"
+      ],
+      "tokens": [
+        {
+          "word": "anthena",
+          "english": "is that all?"
+        }
+      ],
+      "script": "అంతేనా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i17",
+      "sourcePrompt": "Here is the money.",
+      "register": "neutral",
+      "canonical": "ide dabbulu",
+      "acceptedAnswers": [
+        "ide dabbulu",
+        "ide dabbu",
+        "idigo dabbulu",
+        "ivigo dabbulu"
+      ],
+      "distractors": [
+        "dabbulu ledu",
+        "dabbulu enta?",
+        "dabbulu ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "ide",
+          "english": "here it is"
+        },
+        {
+          "word": "dabbulu",
+          "english": "money"
+        }
+      ],
+      "script": "ఇదే డబ్బులు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i18",
+      "sourcePrompt": "I'll pay two hundred.",
+      "register": "neutral",
+      "canonical": "rendu vandalu istanu",
+      "acceptedAnswers": [
+        "rendu vandalu istanu",
+        "rendu vandalu istaanu",
+        "rendu vandalu ista",
+        "rendu vandalu ichchestanu"
+      ],
+      "distractors": [
+        "moodu vandalu istanu",
+        "rendu vandalu vaddu",
+        "rendu vandalu ledu"
+      ],
+      "tokens": [
+        {
+          "word": "rendu vandalu",
+          "english": "two hundred"
+        },
+        {
+          "word": "istanu",
+          "english": "I will give"
+        }
+      ],
+      "script": "రెండు వందలు ఇస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i19",
+      "sourcePrompt": "How many people are coming?",
+      "register": "neutral",
+      "canonical": "enta mandi vastunnaru?",
+      "acceptedAnswers": [
+        "enta mandi vastunnaru?",
+        "entha mandi vastunnaru?",
+        "enni mandi vastunnaru?",
+        "enta mandi vastaru?"
+      ],
+      "distractors": [
+        "evaru vastunnaru?",
+        "eppudu vastunnaru?",
+        "ekkadiki vastunnaru?"
+      ],
+      "tokens": [
+        {
+          "word": "enta mandi",
+          "english": "how many people"
+        },
+        {
+          "word": "vastunnaru",
+          "english": "are coming"
+        }
+      ],
+      "script": "ఎంత మంది వస్తున్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u06-i20",
+      "sourcePrompt": "One, two, three, four, five.",
+      "register": "neutral",
+      "canonical": "okati, rendu, moodu, nalugu, aidu",
+      "acceptedAnswers": [
+        "okati, rendu, moodu, nalugu, aidu",
+        "okati rendu moodu nalugu aidu",
+        "okati, rendu, moodu, naalugu, aidu",
+        "okati rendu moodu nalugu ayidu"
+      ],
+      "distractors": [
+        "aidu, nalugu, moodu, rendu, okati",
+        "okati, moodu, aidu, edu, tommidi",
+        "rendu, nalugu, aaru, enimidi, padi"
+      ],
+      "tokens": [
+        {
+          "word": "okati",
+          "english": "one"
+        },
+        {
+          "word": "rendu",
+          "english": "two"
+        },
+        {
+          "word": "moodu",
+          "english": "three"
+        },
+        {
+          "word": "nalugu",
+          "english": "four"
+        },
+        {
+          "word": "aidu",
+          "english": "five"
+        }
+      ],
+      "script": "ఒకటి, రెండు, మూడు, నాలుగు, ఐదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
