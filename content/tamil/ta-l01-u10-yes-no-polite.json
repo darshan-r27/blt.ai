@@ -1,0 +1,619 @@
+{
+  "scenarioId": "ta-l01-u10",
+  "language": "tamil",
+  "title": "Yes, no and polite words",
+  "subtitle": "Agreeing, declining and the small words that keep a chat friendly",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 10
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l01-u10-i01",
+      "sourcePrompt": "Yes, that's right.",
+      "register": "neutral",
+      "canonical": "aama, correct thaan",
+      "acceptedAnswers": [
+        "aama, correct thaan",
+        "aama correct than",
+        "aama, sari thaan",
+        "aama correct"
+      ],
+      "distractors": [
+        "illa, correct illa",
+        "aama, venaam",
+        "aama, theriyala"
+      ],
+      "tokens": [
+        {
+          "word": "aama",
+          "english": "yes"
+        },
+        {
+          "word": "correct",
+          "english": "right"
+        },
+        {
+          "word": "thaan",
+          "english": "indeed"
+        }
+      ],
+      "script": "ஆமா, கரெக்ட் தான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i02",
+      "sourcePrompt": "No, thank you.",
+      "register": "neutral",
+      "canonical": "venaam, thanks",
+      "acceptedAnswers": [
+        "venaam, thanks",
+        "vendaam thanks",
+        "venaam nandri",
+        "vendaam, thanks"
+      ],
+      "distractors": [
+        "venum, thanks",
+        "aama, thanks",
+        "venaam, kaasu"
+      ],
+      "tokens": [
+        {
+          "word": "venaam",
+          "english": "no (don't want)"
+        },
+        {
+          "word": "thanks",
+          "english": "thanks"
+        }
+      ],
+      "script": "வேணாம், தேங்ஸ்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i03",
+      "sourcePrompt": "Yes, please. (accepting an offer)",
+      "register": "respectful",
+      "canonical": "aama, kudunga",
+      "acceptedAnswers": [
+        "aama, kudunga",
+        "aama kudunga",
+        "venum, kudunga",
+        "aama please kudunga"
+      ],
+      "registerVariant": "aama, kudu",
+      "distractors": [
+        "venaam, thanks",
+        "aama, venaam"
+      ],
+      "tokens": [
+        {
+          "word": "aama",
+          "english": "yes"
+        },
+        {
+          "word": "kudunga",
+          "english": "please give"
+        }
+      ],
+      "script": "ஆமா, குடுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i04",
+      "sourcePrompt": "Okay, no problem.",
+      "register": "neutral",
+      "canonical": "sari, problem illa",
+      "acceptedAnswers": [
+        "sari, problem illa",
+        "sari problem illa",
+        "okay, problem illa",
+        "sari, prachanai illa"
+      ],
+      "distractors": [
+        "sari, problem irukku",
+        "vena, problem illa",
+        "sari, theriyala"
+      ],
+      "tokens": [
+        {
+          "word": "sari",
+          "english": "okay"
+        },
+        {
+          "word": "problem",
+          "english": "problem"
+        },
+        {
+          "word": "illa",
+          "english": "there is no"
+        }
+      ],
+      "script": "சரி, ப்ராப்ளம் இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i05",
+      "sourcePrompt": "I agree.",
+      "register": "neutral",
+      "canonical": "naan othukkuren",
+      "acceptedAnswers": [
+        "naan othukkuren",
+        "naan ottukkuren",
+        "nan othukuren",
+        "enakku othukkudhu"
+      ],
+      "distractors": [
+        "naan othukka maatten",
+        "naan sollren",
+        "naan paarkkuren"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "othukkuren",
+          "english": "I agree"
+        }
+      ],
+      "script": "நான் ஒத்துக்குறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i06",
+      "sourcePrompt": "I don't agree.",
+      "register": "neutral",
+      "canonical": "naan othukka maatten",
+      "acceptedAnswers": [
+        "naan othukka maatten",
+        "naan ottukka maatten",
+        "enakku othukkala",
+        "naan othukkala"
+      ],
+      "distractors": [
+        "naan othukkuren",
+        "naan sollala",
+        "naan paakka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "othukka maatten",
+          "english": "will not agree"
+        }
+      ],
+      "script": "நான் ஒத்துக்க மாட்டேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i07",
+      "sourcePrompt": "Maybe.",
+      "register": "neutral",
+      "canonical": "irukkalam",
+      "acceptedAnswers": [
+        "irukkalam",
+        "irukkalaam",
+        "irukalam",
+        "irukkalam-nga"
+      ],
+      "distractors": [
+        "kandippaa",
+        "illave illa",
+        "sari"
+      ],
+      "tokens": [
+        {
+          "word": "irukkalam",
+          "english": "maybe"
+        }
+      ],
+      "script": "இருக்கலாம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i08",
+      "sourcePrompt": "Of course!",
+      "register": "neutral",
+      "canonical": "kandippa!",
+      "acceptedAnswers": [
+        "kandippa!",
+        "kandippaa",
+        "kandipaa",
+        "nichayama"
+      ],
+      "distractors": [
+        "theriyala",
+        "venaam",
+        "appuram"
+      ],
+      "tokens": [
+        {
+          "word": "kandippa",
+          "english": "of course"
+        }
+      ],
+      "script": "கண்டிப்பா!",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i09",
+      "sourcePrompt": "Please come again. (to a customer)",
+      "register": "respectful",
+      "canonical": "marubadiyum vaanga",
+      "acceptedAnswers": [
+        "marubadiyum vaanga",
+        "marupadiyum vaanga",
+        "thirumba vaanga",
+        "innoru thadava vaanga"
+      ],
+      "registerVariant": "marubadiyum vaa",
+      "distractors": [
+        "marubadiyum ponga",
+        "marubadiyum sollunga"
+      ],
+      "tokens": [
+        {
+          "word": "marubadiyum",
+          "english": "again"
+        },
+        {
+          "word": "vaanga",
+          "english": "please come"
+        }
+      ],
+      "script": "மறுபடியும் வாங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i10",
+      "sourcePrompt": "After you. (letting someone go first)",
+      "register": "respectful",
+      "canonical": "neenga munnaadi ponga",
+      "acceptedAnswers": [
+        "neenga munnaadi ponga",
+        "neenga munnadi ponga",
+        "neenga mudhalla ponga",
+        "munnaadi ponga"
+      ],
+      "registerVariant": "nee munnaadi po",
+      "distractors": [
+        "neenga pinnaadi ponga",
+        "naan munnaadi poren"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "munnaadi",
+          "english": "ahead, first"
+        },
+        {
+          "word": "ponga",
+          "english": "please go"
+        }
+      ],
+      "script": "நீங்க முன்னாடி போங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i11",
+      "sourcePrompt": "Excuse me. (to get someone's attention)",
+      "register": "respectful",
+      "canonical": "konjam paarunga",
+      "acceptedAnswers": [
+        "konjam paarunga",
+        "konjam inga paarunga",
+        "excuse me",
+        "konjam paarunga sir"
+      ],
+      "registerVariant": "konjam paaru",
+      "distractors": [
+        "konjam sollunga",
+        "konjam poonga"
+      ],
+      "tokens": [
+        {
+          "word": "konjam",
+          "english": "a little"
+        },
+        {
+          "word": "paarunga",
+          "english": "please look"
+        }
+      ],
+      "script": "கொஞ்சம் பாருங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i12",
+      "sourcePrompt": "Sorry, I can't.",
+      "register": "neutral",
+      "canonical": "sorry, ennaala mudiyaadhu",
+      "acceptedAnswers": [
+        "sorry, ennaala mudiyaadhu",
+        "sorry ennaala mudiyaadhu",
+        "sorry, ennala mudiyadhu",
+        "sorry, enakku mudiyaadhu"
+      ],
+      "distractors": [
+        "sorry, ennaala mudiyum",
+        "sorry, enakku venum",
+        "sorry, naan poren"
+      ],
+      "tokens": [
+        {
+          "word": "sorry",
+          "english": "sorry"
+        },
+        {
+          "word": "ennaala",
+          "english": "by me"
+        },
+        {
+          "word": "mudiyaadhu",
+          "english": "not possible"
+        }
+      ],
+      "script": "சாரி, என்னால முடியாது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i13",
+      "sourcePrompt": "Never mind.",
+      "register": "neutral",
+      "canonical": "adhu onnum illa",
+      "acceptedAnswers": [
+        "adhu onnum illa",
+        "athu onnum illa",
+        "onnum illa",
+        "athu onnum prachanai illa"
+      ],
+      "distractors": [
+        "adhu onnu irukku",
+        "adhu romba kashtam",
+        "adhu enna?"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "onnum illa",
+          "english": "nothing"
+        }
+      ],
+      "script": "அது ஒண்ணும் இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i14",
+      "sourcePrompt": "That's fine with me.",
+      "register": "neutral",
+      "canonical": "enakku okay",
+      "acceptedAnswers": [
+        "enakku okay",
+        "enakku sari",
+        "enakku okay thaan",
+        "enakku ok"
+      ],
+      "distractors": [
+        "enakku venaam",
+        "enakku theriyala",
+        "enakku late aachu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "okay",
+          "english": "okay"
+        }
+      ],
+      "script": "எனக்கு ஓகே",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i15",
+      "sourcePrompt": "No, I don't think so.",
+      "register": "neutral",
+      "canonical": "illa, appadi illa",
+      "acceptedAnswers": [
+        "illa, appadi illa",
+        "illa appadi illa",
+        "illa, appadi nenakkala",
+        "illa, athu appadi illa"
+      ],
+      "distractors": [
+        "aama, appadi thaan",
+        "illa, venaam",
+        "illa, theriyala"
+      ],
+      "tokens": [
+        {
+          "word": "illa",
+          "english": "no"
+        },
+        {
+          "word": "appadi",
+          "english": "like that"
+        }
+      ],
+      "script": "இல்ல, அப்படி இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i16",
+      "sourcePrompt": "Yes, I understood.",
+      "register": "neutral",
+      "canonical": "aama, purinjuduchu",
+      "acceptedAnswers": [
+        "aama, purinjuduchu",
+        "aama purinjuduchu",
+        "aama, purinjuchu",
+        "aama puriyudhu"
+      ],
+      "distractors": [
+        "illa, puriyala",
+        "aama, theriyala",
+        "aama, kekkala"
+      ],
+      "tokens": [
+        {
+          "word": "aama",
+          "english": "yes"
+        },
+        {
+          "word": "purinjuduchu",
+          "english": "understood"
+        }
+      ],
+      "script": "ஆமா, புரிஞ்சுடுச்சு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i17",
+      "sourcePrompt": "It's my pleasure.",
+      "register": "neutral",
+      "canonical": "adhu en santhosham",
+      "acceptedAnswers": [
+        "adhu en santhosham",
+        "idhu en santhosham",
+        "adhu en pleasure",
+        "en santhosham"
+      ],
+      "distractors": [
+        "adhu en kashtam",
+        "adhu en veedu",
+        "adhu en kaasu"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "that"
+        },
+        {
+          "word": "en",
+          "english": "my"
+        },
+        {
+          "word": "santhosham",
+          "english": "pleasure"
+        }
+      ],
+      "script": "அது என் சந்தோஷம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i18",
+      "sourcePrompt": "Please forgive my mistake. (to an elder)",
+      "register": "respectful",
+      "canonical": "en thappa mannichidunga",
+      "acceptedAnswers": [
+        "en thappa mannichidunga",
+        "en thappa mannichudunga",
+        "en thappukku mannichidunga",
+        "thappa eduthukkaadheenga"
+      ],
+      "registerVariant": "en thappa mannichidu",
+      "distractors": [
+        "en thappa sollunga",
+        "en thappa ezhudhunga"
+      ],
+      "tokens": [
+        {
+          "word": "en thappa",
+          "english": "my mistake (object)"
+        },
+        {
+          "word": "mannichidunga",
+          "english": "please forgive"
+        }
+      ],
+      "script": "என் தப்ப மன்னிச்சிடுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i19",
+      "sourcePrompt": "Congratulations!",
+      "register": "neutral",
+      "canonical": "vaazhthukkal!",
+      "acceptedAnswers": [
+        "vaazhthukkal!",
+        "vaazhthukkal",
+        "valthukkal",
+        "congrats"
+      ],
+      "distractors": [
+        "nanri",
+        "paravaayilla",
+        "sorry"
+      ],
+      "tokens": [
+        {
+          "word": "vaazhthukkal",
+          "english": "congratulations"
+        }
+      ],
+      "script": "வாழ்த்துக்கள்!",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u10-i20",
+      "sourcePrompt": "Take care. (to a friend)",
+      "register": "casual",
+      "canonical": "paathukko",
+      "acceptedAnswers": [
+        "paathukko",
+        "paathukko da",
+        "paathukko di",
+        "jaagrathaiyaa iru"
+      ],
+      "registerVariant": "paathukkonga",
+      "distractors": [
+        "paathukka maatten",
+        "paathukkaadha"
+      ],
+      "tokens": [
+        {
+          "word": "paathukko",
+          "english": "take care (casual)"
+        }
+      ],
+      "script": "பாத்துக்கோ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

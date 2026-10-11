@@ -1,0 +1,683 @@
+{
+  "scenarioId": "ta-l01-u09",
+  "language": "tamil",
+  "title": "Asking for help",
+  "subtitle": "When you are lost, confused or need a hand",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 9
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l01-u09-i01",
+      "sourcePrompt": "Please say it again. (to an elder)",
+      "register": "respectful",
+      "canonical": "marubadiyum sollunga",
+      "acceptedAnswers": [
+        "marubadiyum sollunga",
+        "marupadiyum sollunga",
+        "innoru thadava sollunga",
+        "thirumba sollunga"
+      ],
+      "registerVariant": "marubadiyum sollu",
+      "distractors": [
+        "marubadiyum ezhudhunga",
+        "marubadiyum vaanga"
+      ],
+      "tokens": [
+        {
+          "word": "marubadiyum",
+          "english": "again"
+        },
+        {
+          "word": "sollunga",
+          "english": "please say"
+        }
+      ],
+      "script": "மறுபடியும் சொல்லுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i02",
+      "sourcePrompt": "What does this mean?",
+      "register": "neutral",
+      "canonical": "idhoda artham enna?",
+      "acceptedAnswers": [
+        "idhoda artham enna?",
+        "idhoda ardham enna?",
+        "idhukku artham enna?",
+        "idhu enna artham?"
+      ],
+      "distractors": [
+        "idhoda vilai enna?",
+        "idhoda peru enna?",
+        "idhu enga irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "idhoda",
+          "english": "of this"
+        },
+        {
+          "word": "artham",
+          "english": "meaning"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        }
+      ],
+      "script": "இதோட அர்த்தம் என்ன?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i03",
+      "sourcePrompt": "How do I say this in Tamil?",
+      "register": "neutral",
+      "canonical": "idha Tamil-la eppadi solradhu?",
+      "acceptedAnswers": [
+        "idha Tamil-la eppadi solradhu?",
+        "idha Tamil la eppadi solrathu?",
+        "idhai Tamil-la eppadi solvaanga?",
+        "idha Tamil-la eppadi sollanum?"
+      ],
+      "distractors": [
+        "idha Tamil-la enga solradhu?",
+        "idha Tamil-la yaaru solraanga?",
+        "idha English-la eppadi solradhu?"
+      ],
+      "tokens": [
+        {
+          "word": "idha",
+          "english": "this"
+        },
+        {
+          "word": "Tamil-la",
+          "english": "in Tamil"
+        },
+        {
+          "word": "eppadi",
+          "english": "how"
+        },
+        {
+          "word": "solradhu",
+          "english": "to say"
+        }
+      ],
+      "script": "இத தமிழ்ல எப்படி சொல்றது?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i04",
+      "sourcePrompt": "Please help me. (to an elder)",
+      "register": "respectful",
+      "canonical": "enakku udhavi pannunga",
+      "acceptedAnswers": [
+        "enakku udhavi pannunga",
+        "enakku utavi pannunga",
+        "enakku konjam udhavi pannunga",
+        "udhavi pannunga"
+      ],
+      "registerVariant": "enakku udhavi pannu",
+      "distractors": [
+        "enakku udhavi venaam",
+        "enakku saappaadu kudunga"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "udhavi",
+          "english": "help"
+        },
+        {
+          "word": "pannunga",
+          "english": "please do"
+        }
+      ],
+      "script": "எனக்கு உதவி பண்ணுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i05",
+      "sourcePrompt": "I'm lost.",
+      "register": "neutral",
+      "canonical": "naan vazhi thavari poiten",
+      "acceptedAnswers": [
+        "naan vazhi thavari poiten",
+        "naan vazhi thavarittaen",
+        "naan vazhi thavari poitten",
+        "naan vazhi marandhuten"
+      ],
+      "distractors": [
+        "naan vazhi sollren",
+        "naan veetuku poren",
+        "naan vazhi thavari illa"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "vazhi",
+          "english": "way"
+        },
+        {
+          "word": "thavari poiten",
+          "english": "got lost"
+        }
+      ],
+      "script": "நான் வழி தவறி போயிட்டேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i06",
+      "sourcePrompt": "Can you help me? (to a stranger)",
+      "register": "respectful",
+      "canonical": "enakku konjam udhavi pannuveengala?",
+      "acceptedAnswers": [
+        "enakku konjam udhavi pannuveengala?",
+        "enakku udhavi pannuveengala?",
+        "enakku konjam help pannuveengala?",
+        "enakku konjam utavi seiveengala?"
+      ],
+      "registerVariant": "enakku konjam udhavi pannuviya?",
+      "distractors": [
+        "enakku konjam udhavi pannaadheenga",
+        "enakku konjam kaasu kudupeengala?"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "konjam",
+          "english": "a little"
+        },
+        {
+          "word": "udhavi pannuveengala",
+          "english": "will you help?"
+        }
+      ],
+      "script": "எனக்கு கொஞ்சம் உதவி பண்ணுவீங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i07",
+      "sourcePrompt": "Do you speak English? (to a stranger)",
+      "register": "respectful",
+      "canonical": "neenga English pesuveengala?",
+      "acceptedAnswers": [
+        "neenga English pesuveengala?",
+        "neenga English pesuveengala",
+        "neenga English pesuvingala?",
+        "neenga English theriyumaa?"
+      ],
+      "registerVariant": "nee English pesuviya?",
+      "distractors": [
+        "neenga Telugu pesuveengala?",
+        "neenga Hindi pesuveengala?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "English",
+          "english": "English"
+        },
+        {
+          "word": "pesuveengala",
+          "english": "do you speak?"
+        }
+      ],
+      "script": "நீங்க இங்கிலீஷ் பேசுவீங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i08",
+      "sourcePrompt": "I can't hear you.",
+      "register": "neutral",
+      "canonical": "enakku sariya kekkala",
+      "acceptedAnswers": [
+        "enakku sariya kekkala",
+        "enakku sariya kekkalai",
+        "enakku kekkavae illa",
+        "enakku kekkavillai"
+      ],
+      "distractors": [
+        "enakku sariya puriyala",
+        "enakku sariya theriyala",
+        "enakku sariya kekkum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "sariya",
+          "english": "properly"
+        },
+        {
+          "word": "kekkala",
+          "english": "can't hear"
+        }
+      ],
+      "script": "எனக்கு சரியா கேக்கல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i09",
+      "sourcePrompt": "Please write it down. (to an elder)",
+      "register": "respectful",
+      "canonical": "idha ezhudhi kudunga",
+      "acceptedAnswers": [
+        "idha ezhudhi kudunga",
+        "idha ezhuthi kudunga",
+        "idha ezhudhi tharunga",
+        "idhai ezhudhi kudunga"
+      ],
+      "registerVariant": "idha ezhudhi kudu",
+      "distractors": [
+        "idha sollunga",
+        "idha paarunga"
+      ],
+      "tokens": [
+        {
+          "word": "idha",
+          "english": "this"
+        },
+        {
+          "word": "ezhudhi",
+          "english": "having written"
+        },
+        {
+          "word": "kudunga",
+          "english": "please give"
+        }
+      ],
+      "script": "இத எழுதி குடுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i10",
+      "sourcePrompt": "Where is the toilet?",
+      "register": "neutral",
+      "canonical": "toilet enga irukku?",
+      "acceptedAnswers": [
+        "toilet enga irukku?",
+        "toilet enga irukku",
+        "bathroom enga irukku?",
+        "restroom enga irukku?"
+      ],
+      "distractors": [
+        "toilet eppo varum?",
+        "toilet evlo?",
+        "toilet romba dhooramaa?"
+      ],
+      "tokens": [
+        {
+          "word": "toilet",
+          "english": "toilet"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "டாய்லெட் எங்க இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i11",
+      "sourcePrompt": "I need a doctor.",
+      "register": "neutral",
+      "canonical": "enakku doctor venum",
+      "acceptedAnswers": [
+        "enakku doctor venum",
+        "enakku oru doctor venum",
+        "enakku doctor vena",
+        "enakku doctor-a paakkanum"
+      ],
+      "distractors": [
+        "enakku doctor venaam",
+        "enakku doctor theriyum",
+        "enakku doctor-a theriyaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "doctor",
+          "english": "doctor"
+        },
+        {
+          "word": "venum",
+          "english": "needed"
+        }
+      ],
+      "script": "எனக்கு டாக்டர் வேணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i12",
+      "sourcePrompt": "Please call my friend. (to an elder)",
+      "register": "respectful",
+      "canonical": "en friend-a kooppidunga",
+      "acceptedAnswers": [
+        "en friend-a kooppidunga",
+        "en friend ah kooppidunga",
+        "en friend-a koopidunga",
+        "en friendukku phone pannunga"
+      ],
+      "registerVariant": "en friend-a kooppidu",
+      "distractors": [
+        "en friend-a kooppidaadheenga",
+        "en friend-ku kaasu kudunga"
+      ],
+      "tokens": [
+        {
+          "word": "en friend-a",
+          "english": "my friend (object)"
+        },
+        {
+          "word": "kooppidunga",
+          "english": "please call"
+        }
+      ],
+      "script": "என் ஃபிரண்டை கூப்பிடுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i13",
+      "sourcePrompt": "Can I use your phone? (to a stranger)",
+      "register": "respectful",
+      "canonical": "ungaloda phone use pannalaamaa?",
+      "acceptedAnswers": [
+        "ungaloda phone use pannalaamaa?",
+        "unga phone use pannalaama?",
+        "ungaloda phone-a use pannalaamaa?",
+        "unga phone konjam kudukkureengala?"
+      ],
+      "registerVariant": "unnoda phone use pannalaamaa?",
+      "distractors": [
+        "ungaloda phone evlo?",
+        "ungaloda phone enga irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "ungaloda",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "phone",
+          "english": "phone"
+        },
+        {
+          "word": "use pannalaamaa",
+          "english": "may I use?"
+        }
+      ],
+      "script": "உங்களோட போன் யூஸ் பண்ணலாமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i14",
+      "sourcePrompt": "My phone isn't working.",
+      "register": "neutral",
+      "canonical": "en phone velai seiyala",
+      "acceptedAnswers": [
+        "en phone velai seiyala",
+        "en phone work aagala",
+        "en phone velai pannala",
+        "en phone sari illa"
+      ],
+      "distractors": [
+        "en phone velai seiyudhu",
+        "en phone enga irukku?",
+        "en phone evlo?"
+      ],
+      "tokens": [
+        {
+          "word": "en phone",
+          "english": "my phone"
+        },
+        {
+          "word": "velai seiyala",
+          "english": "isn't working"
+        }
+      ],
+      "script": "என் போன் வேலை செய்யல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i15",
+      "sourcePrompt": "I forgot my bag.",
+      "register": "neutral",
+      "canonical": "en bag-a marandhuten",
+      "acceptedAnswers": [
+        "en bag-a marandhuten",
+        "en bag ah marandhuten",
+        "naan bag-a marandhuten",
+        "en bag-a maranthuten"
+      ],
+      "distractors": [
+        "en bag-a eduthuten",
+        "en bag-a thedren",
+        "en bag-a vaangiten"
+      ],
+      "tokens": [
+        {
+          "word": "en bag-a",
+          "english": "my bag (object)"
+        },
+        {
+          "word": "marandhuten",
+          "english": "I forgot"
+        }
+      ],
+      "script": "என் பேக்கை மறந்துட்டேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i16",
+      "sourcePrompt": "Please wait a minute. (to an elder)",
+      "register": "respectful",
+      "canonical": "oru nimisham irunga",
+      "acceptedAnswers": [
+        "oru nimisham irunga",
+        "oru nimisham wait pannunga",
+        "oru minute irunga",
+        "konjam irunga"
+      ],
+      "registerVariant": "oru nimisham iru",
+      "distractors": [
+        "oru nimisham varunga",
+        "oru nimisham ponga"
+      ],
+      "tokens": [
+        {
+          "word": "oru nimisham",
+          "english": "one minute"
+        },
+        {
+          "word": "irunga",
+          "english": "please wait, please stay"
+        }
+      ],
+      "script": "ஒரு நிமிஷம் இருங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i17",
+      "sourcePrompt": "I'll ask someone else.",
+      "register": "neutral",
+      "canonical": "naan vera yaarayaavadhu kekkuren",
+      "acceptedAnswers": [
+        "naan vera yaarayaavadhu kekkuren",
+        "naan vera yaaraiyaavadhu kekkuren",
+        "naan vera yaaraavadhu kekkuren",
+        "naan innoruthara kekkuren"
+      ],
+      "distractors": [
+        "naan vera yaarukku sollren",
+        "naan yaarum kekka maatten",
+        "naan vera edhaavadhu kekkuren"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "vera yaarayaavadhu",
+          "english": "someone else"
+        },
+        {
+          "word": "kekkuren",
+          "english": "I will ask"
+        }
+      ],
+      "script": "நான் வேற யாரையாவது கேக்குறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i18",
+      "sourcePrompt": "It's okay, I can manage.",
+      "register": "neutral",
+      "canonical": "paravaayilla, naan paathukkuren",
+      "acceptedAnswers": [
+        "paravaayilla, naan paathukkuren",
+        "paravailla naan paathukkuren",
+        "paravaayilla naan samaalichuruven",
+        "paravaayilla naan paathukuren"
+      ],
+      "distractors": [
+        "paravaayilla, naan paakka maatten",
+        "paravaayilla, udhavi pannunga",
+        "paravaayilla, enakku theriyala"
+      ],
+      "tokens": [
+        {
+          "word": "paravaayilla",
+          "english": "it's okay"
+        },
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "paathukkuren",
+          "english": "I'll manage"
+        }
+      ],
+      "script": "பரவாயில்ல, நான் பாத்துக்குறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i19",
+      "sourcePrompt": "Does anyone here speak English?",
+      "register": "neutral",
+      "canonical": "yaaraavadhu English pesuvaangalaa?",
+      "acceptedAnswers": [
+        "yaaraavadhu English pesuvaangalaa?",
+        "yaaraachum English pesuvaangalaa?",
+        "yaarum English pesuvaangalaa?",
+        "yaaravadhu English pesuvaangala?"
+      ],
+      "distractors": [
+        "yaaraavadhu Tamil pesuvaangalaa?",
+        "yaaraavadhu inga irukkaangalaa?",
+        "yaaraavadhu English kathukkuvaangalaa?"
+      ],
+      "tokens": [
+        {
+          "word": "yaaraavadhu",
+          "english": "anyone"
+        },
+        {
+          "word": "English",
+          "english": "English"
+        },
+        {
+          "word": "pesuvaangalaa",
+          "english": "will they speak?"
+        }
+      ],
+      "script": "யாராவது இங்கிலீஷ் பேசுவாங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u09-i20",
+      "sourcePrompt": "Thank you for your help. (to an elder)",
+      "register": "respectful",
+      "canonical": "ungaloda help-ku romba thanks",
+      "acceptedAnswers": [
+        "ungaloda help-ku romba thanks",
+        "unga udhavikku romba nandri",
+        "ungaloda help-ku thanks",
+        "unga help-ku thanks"
+      ],
+      "registerVariant": "unnoda help-ku romba thanks",
+      "distractors": [
+        "ungaloda help venaam",
+        "ungaloda help evlo?"
+      ],
+      "tokens": [
+        {
+          "word": "ungaloda",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "help-ku",
+          "english": "for the help"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "thanks",
+          "english": "thanks"
+        }
+      ],
+      "script": "உங்களோட ஹெல்ப்புக்கு ரொம்ப தேங்ஸ்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

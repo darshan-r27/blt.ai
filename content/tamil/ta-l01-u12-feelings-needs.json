@@ -1,0 +1,703 @@
+{
+  "scenarioId": "ta-l01-u12",
+  "language": "tamil",
+  "title": "Feelings and basic needs",
+  "subtitle": "Saying how you feel and what you need",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 12
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l01-u12-i01",
+      "sourcePrompt": "I'm tired.",
+      "register": "neutral",
+      "canonical": "enakku romba kalaippaa irukku",
+      "acceptedAnswers": [
+        "enakku romba kalaippaa irukku",
+        "enakku kalaippa irukku",
+        "enakku tired-aa irukku",
+        "naan romba tired-aa irukken"
+      ],
+      "distractors": [
+        "enakku romba pasikkudhu",
+        "enakku romba thookkam",
+        "enakku romba santhosham"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "kalaippaa",
+          "english": "tired"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "எனக்கு ரொம்ப களைப்பா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i02",
+      "sourcePrompt": "I'm feeling cold.",
+      "register": "neutral",
+      "canonical": "enakku kulirudhu",
+      "acceptedAnswers": [
+        "enakku kulirudhu",
+        "enakku kulir adikkudhu",
+        "enakku kulirudhu-nga",
+        "enakku romba kulirudhu"
+      ],
+      "distractors": [
+        "enakku sududhu",
+        "enakku pasikkudhu",
+        "enakku thookkam varudhu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "kulirudhu",
+          "english": "feels cold"
+        }
+      ],
+      "script": "எனக்கு குளிருது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i03",
+      "sourcePrompt": "I'm feeling hot.",
+      "register": "neutral",
+      "canonical": "enakku sudaa irukku",
+      "acceptedAnswers": [
+        "enakku sudaa irukku",
+        "enakku suda irukku",
+        "enakku veppamaa irukku",
+        "enakku romba sudaa irukku"
+      ],
+      "distractors": [
+        "enakku kulirudhu",
+        "enakku pasikkudhu",
+        "enakku thookkam varudhu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "sudaa",
+          "english": "hot"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "எனக்கு சூடா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i04",
+      "sourcePrompt": "I'm not feeling well.",
+      "register": "neutral",
+      "canonical": "enakku udambu sari illa",
+      "acceptedAnswers": [
+        "enakku udambu sari illa",
+        "enakku udambu sariyilla",
+        "enakku udambukku sari illa",
+        "enakku sari illa"
+      ],
+      "distractors": [
+        "enakku udambu nalla irukku",
+        "enakku udambu romba periya",
+        "enakku udambu venum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "udambu",
+          "english": "body, health"
+        },
+        {
+          "word": "sari illa",
+          "english": "not right"
+        }
+      ],
+      "script": "எனக்கு உடம்பு சரி இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i05",
+      "sourcePrompt": "I have a headache.",
+      "register": "neutral",
+      "canonical": "enakku thalai valikkudhu",
+      "acceptedAnswers": [
+        "enakku thalai valikkudhu",
+        "enakku thalaivali",
+        "enakku thalai vali irukku",
+        "enakku thala valikkudhu"
+      ],
+      "distractors": [
+        "enakku vayiru valikkudhu",
+        "enakku kaal valikkudhu",
+        "enakku thalai suthudhu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "thalai",
+          "english": "head"
+        },
+        {
+          "word": "valikkudhu",
+          "english": "hurts"
+        }
+      ],
+      "script": "எனக்கு தலை வலிக்குது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i06",
+      "sourcePrompt": "I have a stomach ache.",
+      "register": "neutral",
+      "canonical": "enakku vayiru valikkudhu",
+      "acceptedAnswers": [
+        "enakku vayiru valikkudhu",
+        "enakku vayiru vali",
+        "enakku vayithu valikkudhu",
+        "enakku vayiru valikuthu"
+      ],
+      "distractors": [
+        "enakku thalai valikkudhu",
+        "enakku vayiru pasikkudhu",
+        "enakku vayiru nirambiduchu"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "vayiru",
+          "english": "stomach"
+        },
+        {
+          "word": "valikkudhu",
+          "english": "hurts"
+        }
+      ],
+      "script": "எனக்கு வயிறு வலிக்குது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i07",
+      "sourcePrompt": "I have a fever.",
+      "register": "neutral",
+      "canonical": "enakku kaaichal irukku",
+      "acceptedAnswers": [
+        "enakku kaaichal irukku",
+        "enakku kaichal irukku",
+        "enakku fever irukku",
+        "enakku jwaram irukku"
+      ],
+      "distractors": [
+        "enakku thumal irukku",
+        "enakku vayiru valikkudhu",
+        "enakku pasi irukku"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "kaaichal",
+          "english": "fever"
+        },
+        {
+          "word": "irukku",
+          "english": "there is"
+        }
+      ],
+      "script": "எனக்கு காய்ச்சல் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i08",
+      "sourcePrompt": "I have a cold.",
+      "register": "neutral",
+      "canonical": "enakku sali pidichirukku",
+      "acceptedAnswers": [
+        "enakku sali pidichirukku",
+        "enakku sali pudichirukku",
+        "enakku sali irukku",
+        "enakku sali"
+      ],
+      "distractors": [
+        "enakku kaaichal pidichirukku",
+        "enakku sali pidikkala",
+        "enakku sali venaam"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "sali",
+          "english": "cold"
+        },
+        {
+          "word": "pidichirukku",
+          "english": "have caught"
+        }
+      ],
+      "script": "எனக்கு சளி பிடிச்சிருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i09",
+      "sourcePrompt": "I need to rest.",
+      "register": "neutral",
+      "canonical": "naan rest edukkanum",
+      "acceptedAnswers": [
+        "naan rest edukkanum",
+        "naan konjam rest edukkanum",
+        "enakku rest venum",
+        "naan oivu edukkanum"
+      ],
+      "distractors": [
+        "naan rest edukka maatten",
+        "naan work pannanum",
+        "naan rest-ku poren"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "rest",
+          "english": "rest"
+        },
+        {
+          "word": "edukkanum",
+          "english": "need to take"
+        }
+      ],
+      "script": "நான் ரெஸ்ட் எடுக்கணும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i10",
+      "sourcePrompt": "I'm feeling better.",
+      "register": "neutral",
+      "canonical": "ippo konjam nalla irukken",
+      "acceptedAnswers": [
+        "ippo konjam nalla irukken",
+        "ippo konjam nalladhaan irukken",
+        "ippo enakku konjam nalla irukku",
+        "ippo naan konjam nalla irukken"
+      ],
+      "distractors": [
+        "ippo konjam kashtama irukku",
+        "ippo naan illa",
+        "ippo konjam kalaippaa irukken"
+      ],
+      "tokens": [
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "konjam",
+          "english": "a little"
+        },
+        {
+          "word": "nalla",
+          "english": "better, good"
+        },
+        {
+          "word": "irukken",
+          "english": "am"
+        }
+      ],
+      "script": "இப்போ கொஞ்சம் நல்லா இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i11",
+      "sourcePrompt": "Are you okay? (to a friend)",
+      "register": "casual",
+      "canonical": "nee nallaa irukkiyaa?",
+      "acceptedAnswers": [
+        "nee nallaa irukkiyaa?",
+        "nee nalla irukkiya?",
+        "nee okay-vaa?",
+        "nee nallaa irukka?"
+      ],
+      "registerVariant": "neenga nallaa irukkeengala?",
+      "distractors": [
+        "nee enga irukkiya?",
+        "nee eppo varuviya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "nallaa",
+          "english": "well"
+        },
+        {
+          "word": "irukkiyaa",
+          "english": "are you?"
+        }
+      ],
+      "script": "நீ நல்லா இருக்கியா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i12",
+      "sourcePrompt": "Please get some medicine. (to an elder)",
+      "register": "respectful",
+      "canonical": "konjam marundhu vaangi kudunga",
+      "acceptedAnswers": [
+        "konjam marundhu vaangi kudunga",
+        "konjam marundhu vaangi tharunga",
+        "marundhu vaangi kudunga",
+        "konjam marundhu vaanga"
+      ],
+      "registerVariant": "konjam marundhu vaangi kudu",
+      "distractors": [
+        "konjam saappaadu vaangi kudunga",
+        "konjam thanni vaangi kudunga"
+      ],
+      "tokens": [
+        {
+          "word": "konjam",
+          "english": "a little"
+        },
+        {
+          "word": "marundhu",
+          "english": "medicine"
+        },
+        {
+          "word": "vaangi kudunga",
+          "english": "please buy and give"
+        }
+      ],
+      "script": "கொஞ்சம் மருந்து வாங்கி குடுங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i13",
+      "sourcePrompt": "I feel dizzy.",
+      "register": "neutral",
+      "canonical": "enakku thalai suthudhu",
+      "acceptedAnswers": [
+        "enakku thalai suthudhu",
+        "enakku thalai suththudhu",
+        "enakku thalai suthuthu",
+        "enakku mayakkama irukku"
+      ],
+      "distractors": [
+        "enakku thalai valikkudhu",
+        "enakku vayiru suthudhu",
+        "enakku thalai illa"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "thalai",
+          "english": "head"
+        },
+        {
+          "word": "suthudhu",
+          "english": "spins"
+        }
+      ],
+      "script": "எனக்கு தலை சுத்துது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i14",
+      "sourcePrompt": "I feel sick.",
+      "register": "neutral",
+      "canonical": "enakku vaanthi varra maathiri irukku",
+      "acceptedAnswers": [
+        "enakku vaanthi varra maathiri irukku",
+        "enakku vaanthi varra maadhiri irukku",
+        "enakku vaanthi varudhu",
+        "enakku vaandhi varumaadhiri irukku"
+      ],
+      "distractors": [
+        "enakku pasikkudhu maadhiri irukku",
+        "enakku thookkam varra maadhiri irukku",
+        "enakku vaanthi illa"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "vaanthi",
+          "english": "vomit"
+        },
+        {
+          "word": "varra maathiri irukku",
+          "english": "feels like coming"
+        }
+      ],
+      "script": "எனக்கு வாந்தி வர்ற மாதிரி இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i15",
+      "sourcePrompt": "I'm worried.",
+      "register": "neutral",
+      "canonical": "enakku kavalaiyaa irukku",
+      "acceptedAnswers": [
+        "enakku kavalaiyaa irukku",
+        "enakku kavalaya irukku",
+        "naan kavalaip padren",
+        "enakku kavala irukku"
+      ],
+      "distractors": [
+        "enakku santhosham irukku",
+        "enakku kobam irukku",
+        "enakku kavalai illa"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "kavalaiyaa",
+          "english": "worried"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "எனக்கு கவலையா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i16",
+      "sourcePrompt": "I'm happy.",
+      "register": "neutral",
+      "canonical": "naan romba santhoshama irukken",
+      "acceptedAnswers": [
+        "naan romba santhoshama irukken",
+        "naan santhoshama irukken",
+        "enakku romba santhosham",
+        "naan happy-a irukken"
+      ],
+      "distractors": [
+        "naan romba kopama irukken",
+        "naan romba kavalaiya irukken",
+        "naan santhoshama illa"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "santhoshama",
+          "english": "happily"
+        },
+        {
+          "word": "irukken",
+          "english": "am"
+        }
+      ],
+      "script": "நான் ரொம்ப சந்தோஷமா இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i17",
+      "sourcePrompt": "I'm angry.",
+      "register": "neutral",
+      "canonical": "enakku kobama irukku",
+      "acceptedAnswers": [
+        "enakku kobama irukku",
+        "enakku kobam varudhu",
+        "naan kobama irukken",
+        "enakku kopama irukku"
+      ],
+      "distractors": [
+        "enakku santhosham irukku",
+        "enakku kavala irukku",
+        "enakku kobam illa"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "kobama",
+          "english": "angry"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "எனக்கு கோபமா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i18",
+      "sourcePrompt": "Are you feeling cold? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukku kulirudhaa?",
+      "acceptedAnswers": [
+        "ungalukku kulirudhaa?",
+        "ungalukku kulirudha?",
+        "ungalukku kulir adikkudhaa?",
+        "ungalukku kulira irukkaa?"
+      ],
+      "registerVariant": "unakku kulirudhaa?",
+      "distractors": [
+        "ungalukku pasikkudhaa?",
+        "ungalukku thookkam varudhaa?"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "kulirudhaa",
+          "english": "do you feel cold?"
+        }
+      ],
+      "script": "உங்களுக்கு குளிருதா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i19",
+      "sourcePrompt": "Please open the window, it's hot. (to an elder)",
+      "register": "respectful",
+      "canonical": "jannala thoranga, sudaa irukku",
+      "acceptedAnswers": [
+        "jannala thoranga, sudaa irukku",
+        "jannala thorungalen, suda irukku",
+        "jannala thoranga sudaa irukku",
+        "jannala thorandhu vainga, romba sudaa irukku"
+      ],
+      "registerVariant": "jannala thora, sudaa irukku",
+      "distractors": [
+        "jannala moodunga, sudaa irukku",
+        "jannala thoranga, kulirudhu"
+      ],
+      "tokens": [
+        {
+          "word": "jannala",
+          "english": "the window (object)"
+        },
+        {
+          "word": "thoranga",
+          "english": "please open"
+        },
+        {
+          "word": "sudaa",
+          "english": "hot"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "ஜன்னலை தொறங்க, சூடா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l01-u12-i20",
+      "sourcePrompt": "Let's rest for a while.",
+      "register": "neutral",
+      "canonical": "konjam neram rest edukkalaam",
+      "acceptedAnswers": [
+        "konjam neram rest edukkalaam",
+        "konjam neram rest edukkalam",
+        "konjam neram oivu edukkalaam",
+        "konja neram rest panlaam"
+      ],
+      "distractors": [
+        "konjam neram rest edukka maattom",
+        "konjam neram saappidalaam",
+        "konjam neram nadakkalaam"
+      ],
+      "tokens": [
+        {
+          "word": "konjam neram",
+          "english": "for a while"
+        },
+        {
+          "word": "rest",
+          "english": "rest"
+        },
+        {
+          "word": "edukkalaam",
+          "english": "let's take"
+        }
+      ],
+      "script": "கொஞ்சம் நேரம் ரெஸ்ட் எடுக்கலாம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
