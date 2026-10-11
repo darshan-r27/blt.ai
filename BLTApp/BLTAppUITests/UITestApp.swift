@@ -28,11 +28,48 @@ enum AXID {
     static let settingsImportLessons = "settings.importLessons"
     static let settingsRemoveImported = "settings.removeImported"
     static let settingsImportStatus = "settings.importStatus"
-    /// Mirrors `AccessibilityID.scenarioCard("zz-scenario")`, the only scenario in the fixture catalog.
+    static let languageContinue = "language.continue"
+    static let homeLanguage = "home.language"
+    static let homeContinueLesson = "home.continueLesson"
+    static let homeOtherLessons = "home.otherLessons"
+    static let settingsLanguage = "settings.language"
+    static let settingsLanguageConfirm = "settings.language.confirm"
+    static let settingsLanguageCancel = "settings.language.cancel"
+    /// Mirrors `AccessibilityID.scenarioCard("zz-scenario")`, the only scenario in the Tamil fixture catalog.
     static let fixtureScenarioCard = "scenario.card.zz-scenario"
+    /// Mirrors `AccessibilityID.scenarioCard("zz-scenario-telugu")`, the only scenario in the Telugu fixture.
+    static let fixtureScenarioCardTelugu = "scenario.card.zz-scenario-telugu"
+
+    static func languageOption(_ language: UITestLanguage) -> String {
+        "language.option.\(language.rawValue)"
+    }
+
+    static func settingsLanguageOption(_ language: UITestLanguage) -> String {
+        "settings.language.option.\(language.rawValue)"
+    }
+
+    static func fixtureCard(_ language: UITestLanguage) -> String {
+        language == .tamil ? fixtureScenarioCard : fixtureScenarioCardTelugu
+    }
 }
 
-/// The two fake items from PreviewCatalog (Packages/BLTKit/Sources/BLTFeatures/PreviewCatalog.swift).
+/// The two courses, as the launch argument `--uitest-language=<raw value>` and the screens spell them.
+enum UITestLanguage: String, CaseIterable {
+    case tamil
+    case telugu
+
+    var displayName: String {
+        switch self {
+        case .tamil: "Tamil"
+        case .telugu: "Telugu"
+        }
+    }
+
+    var other: UITestLanguage { self == .tamil ? .telugu : .tamil }
+}
+
+/// The two fake items of each course's fixture in PreviewCatalog
+/// (Packages/BLTKit/Sources/BLTFeatures/PreviewCatalog.swift).
 /// Item order is shuffled per session, so tests branch on the prompt text rather than on position.
 struct FixtureQuestion: Equatable {
     let prompt: String
@@ -59,6 +96,31 @@ struct FixtureQuestion: Equatable {
     )
 
     static let all = [respectful, neutral]
+
+    static let teluguRespectful = FixtureQuestion(
+        prompt: "zz telugu prompt one (to an elder)",
+        canonical: "zz telugu canonical one",
+        otherRegister: "zz telugu casual one",
+        wrongOptions: ["zz telugu wrong one", "zz telugu wrong two"],
+        isUnreviewed: true
+    )
+
+    static let teluguNeutral = FixtureQuestion(
+        prompt: "zz telugu prompt two",
+        canonical: "zz telugu canonical two",
+        otherRegister: nil,
+        wrongOptions: ["zz telugu wrong three", "zz telugu wrong four", "zz telugu wrong five"],
+        isUnreviewed: false
+    )
+
+    static func all(_ language: UITestLanguage) -> [FixtureQuestion] {
+        language == .tamil ? all : [teluguRespectful, teluguNeutral]
+    }
+
+    /// The prefix every prompt of the course's fixture starts with.
+    static func promptPrefix(_ language: UITestLanguage) -> String {
+        language == .tamil ? "zz prompt" : "zz telugu prompt"
+    }
 }
 
 /// Raised by helpers when the screen is not in the state a test needs. The test also records a failure.
@@ -81,10 +143,17 @@ class BLTUITestCase: XCTestCase {
     // MARK: Launching
 
     /// Launches on the fake catalog. `reset` erases the separate UI-test progress and profile files
-    /// first (so onboarding shows); `name` seeds a saved profile (so onboarding is skipped).
-    func launch(reset: Bool = false, name: String? = nil, largestText: Bool = false) -> XCUIApplication {
+    /// first (so onboarding shows); `name` seeds a saved profile (so the name step is skipped); `language`
+    /// seeds the learning language too (so the language step is skipped as well). A name with no language is
+    /// a profile saved before the language existed, which the app must ask a language for.
+    func launch(
+        reset: Bool = false,
+        name: String? = nil,
+        language: UITestLanguage? = nil,
+        largestText: Bool = false
+    ) -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = Self.arguments(reset: reset, name: name, largestText: largestText)
+        app.launchArguments = Self.arguments(reset: reset, name: name, language: language, largestText: largestText)
         app.launch()
         return app
     }
@@ -93,11 +162,16 @@ class BLTUITestCase: XCTestCase {
     /// closing and reopening the app sees.
     func relaunch(_ app: XCUIApplication, largestText: Bool = false) {
         app.terminate()
-        app.launchArguments = Self.arguments(reset: false, name: nil, largestText: largestText)
+        app.launchArguments = Self.arguments(reset: false, name: nil, language: nil, largestText: largestText)
         app.launch()
     }
 
-    private static func arguments(reset: Bool, name: String?, largestText: Bool) -> [String] {
+    private static func arguments(
+        reset: Bool,
+        name: String?,
+        language: UITestLanguage?,
+        largestText: Bool
+    ) -> [String] {
         var arguments = ["--uitest-fixtures"]
         if reset {
             arguments.append("--uitest-reset")
@@ -105,17 +179,40 @@ class BLTUITestCase: XCTestCase {
         if let name {
             arguments.append("--uitest-name=\(name)")
         }
+        if let language {
+            arguments.append("--uitest-language=\(language.rawValue)")
+        }
         if largestText {
             arguments += ["-UIPreferredContentSizeCategoryName", largestTextSize]
         }
         return arguments
     }
 
-    /// The common starting point: onboarding skipped, progress empty.
-    func launchHome(name: String = "ZzTest", largestText: Bool = false) -> XCUIApplication {
-        let app = launch(reset: true, name: name, largestText: largestText)
+    /// The common starting point: onboarding skipped (name and language seeded), progress empty. The tests that
+    /// are not about a language use the Tamil fixture; the app itself never assumes one.
+    func launchHome(
+        name: String = "ZzTest",
+        language: UITestLanguage = .tamil,
+        largestText: Bool = false
+    ) -> XCUIApplication {
+        let app = launch(reset: true, name: name, language: language, largestText: largestText)
         requireExists(app.element(AXID.greeting), "Home greeting after launch")
         return app
+    }
+
+    /// Fresh launch with a saved name and no language (a profile from before the language existed), on the
+    /// language step.
+    func launchToLanguageStep(name: String = "ZzTest", largestText: Bool = false) -> XCUIApplication {
+        let app = launch(reset: true, name: name, largestText: largestText)
+        requireExists(app.element(AXID.languageContinue), "the language step")
+        return app
+    }
+
+    /// Picks `language` on the language step and continues to Home.
+    func chooseLanguageAndContinue(_ language: UITestLanguage, in app: XCUIApplication) {
+        tap(app.buttons[AXID.languageOption(language)], "the \(language.displayName) option")
+        tap(app.buttons[AXID.languageContinue], "Continue on the language step")
+        requireExists(app.element(AXID.greeting), "the Home greeting")
     }
 
     /// Fresh launch, past the intro, on the name entry screen.
@@ -182,11 +279,12 @@ class BLTUITestCase: XCTestCase {
     func requireCompletion(
         percent: Int,
         in app: XCUIApplication,
+        language: UITestLanguage = .tamil,
         file: StaticString = #filePath,
         line: UInt = #line
     ) {
         requireLabel(
-            of: app.element(AXID.fixtureScenarioCard),
+            of: app.element(AXID.fixtureCard(language)),
             containing: ", \(percent) percent complete",
             file: file,
             line: line
@@ -211,19 +309,20 @@ class BLTUITestCase: XCTestCase {
 
     // MARK: Session flow
 
-    func openFixtureScenario(_ app: XCUIApplication) {
-        tap(app.element(AXID.fixtureScenarioCard), "the fixture scenario card")
+    func openFixtureScenario(_ app: XCUIApplication, language: UITestLanguage = .tamil) {
+        tap(app.element(AXID.fixtureCard(language)), "the \(language.displayName) fixture scenario card")
     }
 
     /// Reads which fixture item is on a Question screen from its prompt text.
-    func currentQuestion(_ app: XCUIApplication) throws -> FixtureQuestion {
-        let prompts = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH 'zz prompt'")).firstMatch
+    func currentQuestion(_ app: XCUIApplication, language: UITestLanguage = .tamil) throws -> FixtureQuestion {
+        let prefix = FixtureQuestion.promptPrefix(language)
+        let prompts = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
         guard prompts.waitForExistence(timeout: Self.timeout) else {
             XCTFail("No question prompt appeared")
             throw UITestError(message: "No question prompt")
         }
         let label = prompts.label
-        guard let question = FixtureQuestion.all.first(where: { $0.prompt == label }) else {
+        guard let question = FixtureQuestion.all(language).first(where: { $0.prompt == label }) else {
             XCTFail("Unknown prompt '\(label)'")
             throw UITestError(message: "Unknown prompt")
         }

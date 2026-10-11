@@ -16,6 +16,8 @@ struct ScenarioSummary: Sendable, Equatable, Identifiable {
     let totalCount: Int
     /// Items whose latest outcome is `.correct`.
     let completedCount: Int
+    /// Where the lesson sits in the course; `nil` for a lesson that does not say (an older import).
+    let level: Level?
 
     init(scenario: Scenario, snapshot: ProgressSnapshot) {
         id = scenario.id
@@ -23,6 +25,12 @@ struct ScenarioSummary: Sendable, Equatable, Identifiable {
         subtitle = scenario.subtitle
         totalCount = scenario.items.count
         completedCount = scenario.items.filter { snapshot.reviews[$0.id]?.lastOutcome == .correct }.count
+        level = scenario.level
+    }
+
+    /// Every item is complete. A lesson with no items is never complete: there is nothing to finish.
+    var isComplete: Bool {
+        totalCount > 0 && completedCount == totalCount
     }
 
     /// Completed over total; 0 when the scenario has no items.

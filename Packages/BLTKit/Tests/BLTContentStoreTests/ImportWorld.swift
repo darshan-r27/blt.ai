@@ -28,7 +28,7 @@ struct ImportWorld {
         try? FileManager.default.removeItem(at: root)
     }
 
-    func store(language: CourseLanguage? = .tamil, loader: ContentLoader = ContentLoader()) -> ImportedContentStore {
+    func store(language: CourseLanguage = .tamil, loader: ContentLoader = ContentLoader()) -> ImportedContentStore {
         ImportedContentStore(directory: imported, bundledDirectory: bundled, language: language, loader: loader)
     }
 

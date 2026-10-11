@@ -1,6 +1,6 @@
 # BLT.ai architecture (v1, as built)
 
-blt.ai is a text-only, multiple-choice SwiftUI app. Today it teaches colloquial Tamil to Telugu speakers; it is being widened into a two-way course, Tamil and Telugu, for a couple learning each other's language (see "Planned: two courses" below). Everything runs on the device: there is no backend, no account, and no network code. Unless a section says "planned", this page describes what exists today. The voice product in [`PRD.md`](PRD.md) and [`BUILD_PLAN.md`](BUILD_PLAN.md) is the v2 plan, not the current code.
+blt.ai is a text-only, multiple-choice SwiftUI app. Today it teaches colloquial Tamil to Telugu speakers; it is a two-way course, Tamil and Telugu, for a couple learning each other's language (see "Two courses" below; only the Tamil lessons are written so far). Everything runs on the device: there is no backend, no account, and no network code. Unless a section says "planned", this page describes what exists today. The voice product in [`PRD.md`](PRD.md) and [`BUILD_PLAN.md`](BUILD_PLAN.md) is the v2 plan, not the current code.
 
 ## Module map
 
@@ -26,14 +26,14 @@ graph TD
 |---|---|---|
 | `BLTCore` | Small shared value types: item and scenario ids, register, addressee, outcome, review status | none |
 | `BLTCatalog` | Reads lesson JSON, validates it (schema, option rules, size limits) and builds the `Catalog`. Never throws: every problem becomes a `ContentIssue` and valid items survive | Core |
-| `BLTProgress` | SM-2 scheduling, the progress file and the profile (name) file, with typed errors | Core |
+| `BLTProgress` | SM-2 scheduling, the progress file and the profile (name and language) file, with typed errors, and the one-time clean-up of the old build's files | Core |
 | `BLTSession` | Picks what to ask (due items first, then new ones, shuffled), builds the four options, and runs the question state machine | Core, Catalog, Progress |
 | `BLTDesign` | Palette, theme, buttons, shimmer, completion bar. The only module that knows colours | Core |
 | `BLTContentStore` | Finds the bundled lesson files, layers the learner's imported lessons over them, and validates and stores imports | Core, Catalog |
 | `BLTFeatures` | The screens (intro, onboarding, Home, session, Progress, Settings) and their view models | all of the above |
 | `BLTApp` | Entry point and the composition root: the one place that chooses concrete types | BLTFeatures |
 
-`BLTFeatures` keeps its screens and view models `internal`. The app target uses only `RootView`, `AppDependencies`, `LessonImporting`, `LessonChange` and the DEBUG-only `PreviewCatalog` fixtures; its own tests reach the rest with `@testable import`. The lower modules stay public because other modules use them.
+`BLTFeatures` keeps its screens and view models `internal`. The app target uses only `RootView`, `AppDependencies`, `CourseServices`, `LessonImporting`, `LessonChange` and the DEBUG-only `PreviewCatalog` fixtures; its own tests reach the rest with `@testable import`. The lower modules stay public because other modules use them.
 
 ## How a practice session works
 
@@ -47,11 +47,13 @@ graph TD
 
 | File (Application Support/BLT) | Holds |
 |---|---|
-| `progress.json` | Review states and the answer history |
-| `profile.json` | The learner's display name |
-| `content/` | Imported lesson files and their manifest (only after an import) |
+| `profile.json` | The learner's display name and the language being learned (shared by both courses) |
+| `courses/<language>/progress.json` | That language's review states and answer history |
+| `courses/<language>/content/` | That language's imported lesson files and their manifest (only after an import) |
 
-The display name is the only personal data and it never leaves the device ([`DECISIONS.md`](DECISIONS.md) 030).
+`<language>` is `tamil` or `telugu`. The bundled lessons are `content/<language>/` inside the app. The display name is the only personal data and it never leaves the device ([`DECISIONS.md`](DECISIONS.md) 030).
+
+The single-course build kept `progress.json` and `content/` directly in `BLT/`. Nothing is migrated (no learner had progress, and the lesson ids changed); `LegacyStorageSweep` (in `BLTProgress`) removes those two paths once at the first launch of the new build. It touches only those two names, never follows a symbolic link, leaves `profile.json` and `courses/` alone, and is skipped for UI-test launches.
 
 ## Lesson import
 
@@ -59,7 +61,9 @@ Settings can import lesson files from the Files app ([`DECISIONS.md`](DECISIONS.
 
 ## Composition and dependency injection
 
-`CompositionRoot` builds `AppDependencies` (catalog, progress store, scheduler, clock) and the profile store, and hands them to `RootView`. There are no singletons. After an import the root rebuilds `AppDependencies` with a freshly loaded catalog and reuses the stores, so progress is untouched.
+The learner's language is only known after the profile has loaded, so the root is not built on one fixed set of dependencies. `RootView(profileStore:makeCourse:onLessonsChanged:)` takes a closure that `CompositionRoot` answers per language with `CourseServices`: the `AppDependencies` for that language (its catalog, `language`, progress store, scheduler and clock) and the importer that stores lessons for that language only. `RootView` builds Home only once the profile has a language, and gives Home that language as its identity, so switching language in Settings rebuilds Home and every view model under it on the other course. There are no singletons.
+
+`AppDependencies.language` is a required parameter: nothing builds a course for a language it was not told, and a profile with no language is asked for one rather than given Tamil. After a lesson import or removal the app creates a new root, which asks `makeCourse` again for the current language, so the catalog is loaded afresh while the stores are the ones already open and progress is untouched.
 
 ## What keeps the rules true
 
@@ -82,19 +86,21 @@ Settings can import lesson files from the Files app ([`DECISIONS.md`](DECISIONS.
 - **Content conformance tests** read the real `content/` folder and fail if any shipped item is invalid.
 - **CI** (GitHub Actions on the `xcode-27` preview image) runs the guardrails and lint, the package tests, and the UI tests as separate parallel jobs; the app is built once (`build-for-testing`) and the tests run without rebuilding. A small gate job named `Package and app tests` reports both test jobs as one required check. Changes reach `main` through pull requests with `Guardrails and lint` and `Package and app tests` required. UI tests retry up to three times, and the job summary lists every test that needed a retry. Measurements behind the tiers: [`TEST_TIMINGS.md`](TEST_TIMINGS.md).
 
-## Planned: two courses (not built yet)
+## Two courses
 
-[`DECISIONS.md`](DECISIONS.md) 042 to 044 and `plan.md` describe the change. The engine does not look at the language, so the module map stays as it is. What changes:
+[`DECISIONS.md`](DECISIONS.md) 042 to 044 and `plan.md` describe the change. The engine does not look at the language, so the module map did not change.
 
-| Area | Today | Planned |
-|---|---|---|
-| Language | Implicitly Tamil | `CourseLanguage` (`tamil`, `telugu`) in `BLTCore`, chosen at onboarding, stored on the profile, switchable in Settings |
-| Lessons | `content/*.json`, 5 files | `content/tamil/` and `content/telugu/`, 100 lessons each in 8 levels; each file names its `language` and `level` |
-| Lesson format | Gloss key `tamil`; optional `level` and `tamilScript`; duplicate rules | Required `language`; gloss key `word`; `tamilScript` becomes `script`, checked against the language's own script |
-| Data on the device | `progress.json`, `content/` | `courses/<language>/` holding progress, imports and the exam result; existing data moved once |
-| Composition | One catalog | Dependencies built for the chosen language; switching reuses the post-import reload |
-| Home | Flat list | Grouped by level, with a next-lesson suggestion |
-| Exam | None | One 100-question paper per language |
+| Area | How it works |
+|---|---|
+| Language | `CourseLanguage` (`tamil`, `telugu`) in `BLTCore`; chosen at onboarding (after the name), stored on the profile, switchable in Settings. A profile without one is asked, never assumed |
+| Lessons | `content/tamil/` and `content/telugu/` (100 lessons each planned, in 8 levels); each file names its `language` and `level`; a lesson in the other course is rejected, bundled or imported |
+| Lesson format | Required `language`; gloss key `word`; `script` checked against the language's own script |
+| Data on the device | `courses/<language>/` holds progress and imports; `profile.json` is shared (see above) |
+| Composition | Dependencies built per language on request (see above); switching language rebuilds Home |
+| Home | Grouped by level, with a Continue suggestion and the language being learned |
+| Reset progress | Clears only the language being learned; the confirmation names it |
+| Import | Into the current language only; a file for the other language is refused with a plain message |
+| Exam | Planned: one 100-question paper per language (041), not built yet |
 
 ## Where v2 (voice) plugs in
 

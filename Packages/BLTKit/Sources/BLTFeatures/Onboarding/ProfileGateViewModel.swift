@@ -2,7 +2,7 @@ import BLTProgress
 import Foundation
 import Observation
 
-/// Decides what the app shows first: onboarding, a problem screen, or Home.
+/// Decides what the app shows first: onboarding, the language step, a problem screen, or Home.
 ///
 /// A profile that cannot be read is never replaced behind the user's back. `.corrupt` and
 /// `.unsupportedSchemaVersion` lead to a screen that offers Start over, which erases the profile
@@ -14,6 +14,10 @@ final class ProfileGateViewModel {
         case loading
         /// No profile has been saved yet.
         case needsOnboarding
+        /// A profile with a name but no language: first launch after the name step, and every profile saved
+        /// before the language existed. The app never assumes a language (DECISIONS 043).
+        case needsLanguage(UserProfile)
+        /// A profile with a name and a language.
         case ready(UserProfile)
         case loadFailed(ProfileStoreError)
     }
@@ -49,7 +53,7 @@ final class ProfileGateViewModel {
     func load() async {
         do throws(ProfileStoreError) {
             if let profile = try await store.load() {
-                state = .ready(profile)
+                profileDidChange(profile)
             } else {
                 beginOnboarding()
             }
@@ -68,16 +72,24 @@ final class ProfileGateViewModel {
         onboardingStep = .nameEntry
     }
 
-    /// A name field wired to this gate: saving it moves on to Home.
+    /// A name field wired to this gate: saving it moves on to the language step.
     func makeNameEntryViewModel() -> NameEntryViewModel {
         NameEntryViewModel(store: store) { [weak self] profile in
             self?.profileDidChange(profile)
         }
     }
 
-    /// The saved profile is now `profile`: after onboarding, or after Change name in Settings.
+    /// The language choice for `profile`, wired to this gate: saving it moves on to Home.
+    func makeLanguageChoiceViewModel(profile: UserProfile) -> LanguageChoiceViewModel {
+        LanguageChoiceViewModel(store: store, profile: profile) { [weak self] saved in
+            self?.profileDidChange(saved)
+        }
+    }
+
+    /// The saved profile is now `profile`: after loading, after a step of onboarding, or after Change name
+    /// in Settings. Home is shown only once the profile has a language.
     func profileDidChange(_ profile: UserProfile) {
-        state = .ready(profile)
+        state = profile.learningLanguage == nil ? .needsLanguage(profile) : .ready(profile)
     }
 
     /// Step one of Start over: ask the user. Erases nothing.

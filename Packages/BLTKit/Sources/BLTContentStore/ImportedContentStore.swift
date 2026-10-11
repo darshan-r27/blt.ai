@@ -22,6 +22,9 @@ public enum ContentImportFailure: Error, Sendable, Equatable {
     case unreadable
     /// At least one chosen file broke a content rule, or would break the lessons already in the app.
     case invalid(issueCount: Int)
+    /// Every problem in the rejected batch was a lesson written for the other course, so the learner can be
+    /// told exactly that. A batch with any other problem too is `invalid`.
+    case wrongLanguage
     case couldNotSave
 }
 
@@ -43,19 +46,18 @@ public struct ImportedContentStore: Sendable {
 
     private let directory: URL
     private let bundledDirectory: URL?
-    private let language: CourseLanguage?
+    private let language: CourseLanguage
     private let loader: ContentLoader
 
     /// `directory` is created on the first write. `bundledDirectory` is the course's bundled folder
     /// (`content/<language>`; `nil` if missing, in which case nothing is replaced).
     ///
-    /// `language` is the course the store imports into. `nil` accepts lessons of either course and
-    /// exists only until the app reads the language from the profile (plan.md chunk D1); the app should
-    /// always pass one.
+    /// `language` is the course the store imports into. It is required: a store that accepted either course
+    /// could put a lesson in the wrong one.
     public init(
         directory: URL,
         bundledDirectory: URL?,
-        language: CourseLanguage? = nil,
+        language: CourseLanguage,
         loader: ContentLoader = ContentLoader()
     ) {
         self.directory = directory
@@ -148,16 +150,21 @@ public struct ImportedContentStore: Sendable {
     private func validate(_ staged: [URL]) throws(ContentImportFailure) -> [ScenarioID] {
         var ids: [ScenarioID] = []
         var issueCount = 0
+        var everyIssueIsWrongLanguage = true
         for url in staged {
             let alone = loader.load(files: [url], expectedLanguage: language)
             issueCount += alone.issues.count
+            if alone.issues.contains(where: { $0.rule != .wrongLanguage }) { everyIssueIsWrongLanguage = false }
             if let scenario = alone.scenarios.first {
                 ids.append(scenario.id)
             } else if alone.issues.isEmpty {
                 issueCount += 1
+                everyIssueIsWrongLanguage = false
             }
         }
-        guard issueCount == 0 else { throw .invalid(issueCount: issueCount) }
+        guard issueCount == 0 else {
+            throw everyIssueIsWrongLanguage ? .wrongLanguage : .invalid(issueCount: issueCount)
+        }
 
         // The catalog the learner would end up with: the imports first, then every bundled file whose
         // scenario is not being replaced, so duplicate ids across files are caught by the validator.

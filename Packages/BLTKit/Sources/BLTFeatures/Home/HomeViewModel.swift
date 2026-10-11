@@ -1,3 +1,4 @@
+import BLTCatalog
 import BLTCore
 import BLTProgress
 import Foundation
@@ -20,6 +21,10 @@ final class HomeViewModel {
     /// Bound to the confirmation dialog. Setting it is not a confirmation; only `confirmReset()` erases.
     var isConfirmingReset = false
 
+    /// Levels the learner has opened or closed by hand, keyed by level number. Not saved: a fresh launch goes
+    /// back to the defaults (finished levels closed, the rest open).
+    private var expansionOverrides: [Int: Bool] = [:]
+
     private let dependencies: AppDependencies
 
     init(dependencies: AppDependencies) {
@@ -29,6 +34,60 @@ final class HomeViewModel {
     /// The greeting above the scenario cards. `name` is the validated display name (DECISIONS 030).
     static func greeting(forName name: String) -> String {
         "Hi \(name)"
+    }
+
+    /// The calm line saying which course is being learned, or `nil` (nothing is shown) when no language is known.
+    static func languageLine(for language: CourseLanguage?) -> String? {
+        language.map { "Learning \($0.displayName)" }
+    }
+
+    /// What Home says when the catalog has no lessons. A named language gets a plain, specific line (a course
+    /// with no lessons yet is normal while its content is being written); with none the line stays general.
+    static func emptyStateCopy(for language: CourseLanguage?) -> (title: String, description: String) {
+        guard let language else {
+            return ("No scenarios", "This copy of the app has no lesson content to show.")
+        }
+        return (
+            "No \(language.displayName) lessons yet",
+            "There are no \(language.displayName) lessons in this copy of the app yet. "
+                + "They will appear here once they are added."
+        )
+    }
+
+    /// Lessons that carry a level, grouped by level number in ascending order. Lessons inside a level are sorted
+    /// by `level.position`, then by id. Nothing is locked: every lesson can be opened (DECISIONS 039).
+    var levelSections: [HomeLevelSection] {
+        let leveled = scenarios.compactMap { summary in summary.level.map { (summary, $0) } }
+        return Dictionary(grouping: leveled, by: { $0.1.number })
+            .map { number, members in
+                let ordered = members.sorted {
+                    ($0.1.position, $0.0.id.rawValue) < ($1.1.position, $1.0.id.rawValue)
+                }
+                return HomeLevelSection(number: number, title: ordered[0].1.title, lessons: ordered.map(\.0))
+            }
+            .sorted { $0.number < $1.number }
+    }
+
+    /// Lessons with no level (older imports), in catalog order.
+    var otherLessons: [ScenarioSummary] {
+        scenarios.filter { $0.level == nil }
+    }
+
+    /// The first lesson that is not fully complete: levels in order, lessons by position, then lessons with no
+    /// level. `nil` when everything is complete or there is nothing to practise.
+    var continueLesson: ScenarioSummary? {
+        let ordered = levelSections.flatMap(\.lessons) + otherLessons
+        return ordered.first { $0.totalCount > 0 && !$0.isComplete }
+    }
+
+    /// Whether a level's lessons are shown. Without a choice by the learner, finished levels are collapsed.
+    func isExpanded(_ section: HomeLevelSection) -> Bool {
+        expansionOverrides[section.number] ?? !section.isComplete
+    }
+
+    /// Opens a closed level or closes an open one.
+    func toggle(_ section: HomeLevelSection) {
+        expansionOverrides[section.number] = !isExpanded(section)
     }
 
     /// Only a damaged or newer-than-supported file can be fixed by erasing it. A transient read

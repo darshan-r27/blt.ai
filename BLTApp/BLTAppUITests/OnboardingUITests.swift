@@ -1,8 +1,9 @@
 import XCTest
 
-/// First launch details: the intro, the route to name entry, the empty-name error, and the saved name on later
-/// launches. Full tier (DECISIONS 045). The whole first-launch path is the happy path in `HappyPathUITests`; the
-/// name rules (validation, saving) are checked in the package.
+/// First launch details: the intro, the route to name entry, the empty-name error, the language step, and the
+/// saved name and language on later launches. Full tier (DECISIONS 045). The whole first-launch path is the happy
+/// path in `HappyPathUITests`; the name rules (validation, saving) and the gate rules (a profile with no language
+/// is asked, never assumed) are checked in the package.
 @MainActor
 final class OnboardingUITests: BLTUITestCase {
     private let enteredName = "ZzPerson"
@@ -38,17 +39,38 @@ final class OnboardingUITests: BLTUITestCase {
         XCTAssertFalse(app.element(AXID.greeting).exists, "Must not reach Home without a name")
     }
 
+    func testNameLeadsToTheLanguageStepWithBothCoursesAndNoPreselection() {
+        let app = launchToNameEntry()
+        enterName(enteredName, in: app)
+
+        tap(app.element(AXID.nameContinue), "Continue")
+
+        requireExists(app.element(AXID.languageContinue), "the language step")
+        XCTAssertTrue(app.staticTexts["Which language do you want to learn?"].exists)
+        for language in UITestLanguage.allCases {
+            XCTAssertTrue(app.buttons[AXID.languageOption(language)].exists, "\(language.displayName) option")
+            XCTAssertFalse(
+                app.buttons[AXID.languageOption(language)].isSelected,
+                "No language may be preselected: nothing defaults to Tamil"
+            )
+        }
+        XCTAssertFalse(app.buttons[AXID.languageContinue].isEnabled)
+        XCTAssertFalse(app.element(AXID.greeting).exists, "Must not reach Home without a language")
+    }
+
     func testRelaunchAfterOnboardingGoesStraightToHome() {
         let app = launchToNameEntry()
         enterName(enteredName, in: app)
         tap(app.element(AXID.nameContinue), "Continue")
-        requireExists(app.element(AXID.greeting), "the Home greeting")
+        chooseLanguageAndContinue(.tamil, in: app)
 
         relaunch(app)
 
         let greeting = app.element(AXID.greeting)
         requireExists(greeting, "the Home greeting after relaunch")
         requireGreetingText("Hi \(enteredName)", in: app)
+        requireLabel(of: app.element(AXID.homeLanguage), containing: "Tamil")
         XCTAssertFalse(app.element(AXID.introStart).exists, "Onboarding must not repeat")
+        XCTAssertFalse(app.element(AXID.languageContinue).exists, "The language is not asked again")
     }
 }

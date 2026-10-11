@@ -1,4 +1,5 @@
 import BLTContentStore
+import BLTCore
 import BLTProgress
 import Foundation
 import Observation
@@ -25,12 +26,58 @@ final class SettingsViewModel {
     /// checked it). The statement below follows the data, so the app never claims more than the content says.
     var allContentReviewed: Bool { totalCount > 0 && reviewedCount == totalCount }
 
-    /// The "About the content" statement for the current content.
+    /// The "About the content" statement for the current content. It names the language being learned when
+    /// the owner of Settings supplied one; with none it keeps the original "Tamil / Telugu" wording.
     var contentStatement: String {
-        allContentReviewed
-            ? "Every lesson was checked by a native Tamil / Telugu speaker before it was added to the app."
+        let speaker = learningLanguage.map { "native \($0.displayName) speaker" } ?? "native Tamil / Telugu speaker"
+        return allContentReviewed
+            ? "Every lesson was checked by a \(speaker) before it was added to the app."
             : "These lessons were drafted by an AI. Each item shows its review status, "
-                + "and an item counts as reviewed only after a native Tamil / Telugu speaker has checked it."
+                + "and an item counts as reviewed only after a \(speaker) has checked it."
+    }
+
+    /// The language being learned, or `nil` when none was supplied or chosen. Updated when a switch is saved.
+    private(set) var learningLanguage: CourseLanguage?
+    /// The current language's name for the Settings row, or a neutral "Not chosen".
+    var learningLanguageLabel: String { learningLanguage?.displayName ?? "Not chosen" }
+    /// Both languages, in a fixed order, for the choice under the row.
+    var languageOptions: [CourseLanguage] { CourseLanguage.allCases }
+    /// True while the two languages are shown under the row. Showing them changes nothing.
+    var isChoosingLanguage = false
+    /// The language the learner picked and has not yet confirmed. Set when the confirmation opens and cleared by
+    /// Cancel and by a confirmed switch. A dismissal of the dialog by the system leaves it set: it is read only by
+    /// `confirmLanguageChange()`, which only the Switch button calls.
+    private(set) var pendingLanguage: CourseLanguage?
+    /// True after a switch could not be saved. Nothing was changed. Cleared by the next attempt.
+    private(set) var languageChangeFailed = false
+    private(set) var isChangingLanguage = false
+    /// Bound to the Switch confirmation. Setting it to false only hides the dialog and saves nothing; only
+    /// `confirmLanguageChange()` saves. It is a flag of its own, not derived from `pendingLanguage`, because the
+    /// system sets the binding to false as the Switch button is tapped, and that must not discard the language
+    /// the button is about to switch to.
+    var isConfirmingLanguageChange = false
+    var languageChangeTitle: String {
+        pendingLanguage.map { "Switch to \($0.displayName)?" } ?? "Switch language?"
+    }
+    var languageChangeMessage: String {
+        "Each language keeps its own progress, so nothing is lost. You can switch back any time."
+    }
+    var languageChangeFailureMessage: String {
+        "The language could not be changed, so nothing was changed. You can try again."
+    }
+
+    /// Title of the Reset confirmation. Names the language when one is known.
+    var resetTitle: String {
+        learningLanguage.map { "Reset \($0.displayName) progress?" } ?? "Reset all progress?"
+    }
+    /// Message of the Reset confirmation. Says which language it clears when one is known.
+    var resetMessage: String {
+        if let learningLanguage {
+            return "This clears your \(learningLanguage.displayName) progress. "
+                + "Your name and your other language's progress are kept. It cannot be undone."
+        }
+        return "This erases your review schedule and answer history on this device. "
+            + "It cannot be undone. Your name is not erased."
     }
 
     private(set) var resetOutcome: ResetOutcome?
@@ -58,11 +105,22 @@ final class SettingsViewModel {
             let problems = issueCount == 1 ? "1 problem" : "\(issueCount) problems"
             return "Nothing was imported: the file did not pass the lesson checks (\(problems)). "
                 + "Your lessons are unchanged."
+        case .failed(.wrongLanguage):
+            return wrongLanguageMessage
         case .failed(.couldNotSave):
             return "The lessons could not be saved. Your lessons are unchanged."
         case nil:
             return nil
         }
+    }
+    /// Names the language the file is for and the one being learned. With no language chosen it stays neutral.
+    private var wrongLanguageMessage: String {
+        let outcome = "Nothing was imported and your lessons are unchanged."
+        guard let current = learningLanguage,
+              let other = CourseLanguage.allCases.first(where: { $0 != current }) else {
+            return "That file is for the other language. \(outcome)"
+        }
+        return "That file is for \(other.displayName), not \(current.displayName). \(outcome)"
     }
     /// The count line under Import lessons, or `nil` when nothing is imported.
     var importedCountMessage: String? {
@@ -86,10 +144,12 @@ final class SettingsViewModel {
     private let onDidChangeName: @MainActor (UserProfile) -> Void
     private let lessonImporter: (any LessonImporting)?
     private let onDidChangeLessons: @MainActor (LessonChange) -> Void
+    private let onDidChangeLanguage: @MainActor (UserProfile) -> Void
 
     /// `onDidReset` lets the owner of Home reload after a successful reset; `onDidChangeName` lets it show
     /// the new name straight away; `onDidChangeLessons` lets the owner of the catalog reload it after an
-    /// import or a removal.
+    /// import or a removal; `onDidChangeLanguage` lets it rebuild the root for the other course after a switch
+    /// is saved. `learningLanguage` is `nil` ("absent") unless the owner passes one: Settings never assumes one.
     init(
         dependencies: AppDependencies,
         profileStore: any ProfileStore,
@@ -97,7 +157,9 @@ final class SettingsViewModel {
         onDidReset: @escaping @MainActor () -> Void = {},
         onDidChangeName: @escaping @MainActor (UserProfile) -> Void = { _ in },
         lessonImporter: (any LessonImporting)? = nil,
-        onDidChangeLessons: @escaping @MainActor (LessonChange) -> Void = { _ in }
+        onDidChangeLessons: @escaping @MainActor (LessonChange) -> Void = { _ in },
+        learningLanguage: CourseLanguage? = nil,
+        onDidChangeLanguage: @escaping @MainActor (UserProfile) -> Void = { _ in }
     ) {
         reviewedCount = dependencies.catalog.reviewedItemCount
         totalCount = dependencies.catalog.totalItemCount
@@ -108,6 +170,56 @@ final class SettingsViewModel {
         self.onDidChangeName = onDidChangeName
         self.lessonImporter = lessonImporter
         self.onDidChangeLessons = onDidChangeLessons
+        self.learningLanguage = learningLanguage
+        self.onDidChangeLanguage = onDidChangeLanguage
+    }
+
+    // MARK: Language
+
+    /// Shows or hides the two languages under the row. Saves nothing.
+    func toggleLanguageChoice() {
+        isChoosingLanguage.toggle()
+    }
+
+    /// The learner picked a language. The current language does nothing; the other one asks first.
+    func chooseLanguage(_ language: CourseLanguage) {
+        isChoosingLanguage = false
+        guard language != learningLanguage else { return }
+        languageChangeFailed = false
+        pendingLanguage = language
+        isConfirmingLanguageChange = true
+    }
+
+    /// Closes the confirmation. Nothing is saved and the language is unchanged.
+    func cancelLanguageChange() {
+        pendingLanguage = nil
+        isConfirmingLanguageChange = false
+    }
+
+    /// Wired only to the confirmation's Switch button. Writes the stored profile with the new language and
+    /// the same name, then tells the owner. On any failure nothing changes and the owner is not told.
+    func confirmLanguageChange() async {
+        guard let language = pendingLanguage, !isChangingLanguage else { return }
+        pendingLanguage = nil
+        isConfirmingLanguageChange = false
+        isChangingLanguage = true
+        defer { isChangingLanguage = false }
+        languageChangeFailed = false
+        let updated: UserProfile
+        do throws(ProfileStoreError) {
+            // A missing stored profile cannot be updated: report it rather than inventing a name.
+            guard let stored = try await profileStore.load() else {
+                languageChangeFailed = true
+                return
+            }
+            updated = stored.withLearningLanguage(language)
+            try await profileStore.save(updated)
+        } catch {
+            languageChangeFailed = true
+            return
+        }
+        learningLanguage = language
+        onDidChangeLanguage(updated)
     }
 
     /// Opens the Change name sheet with the current name in the field. Saves nothing.

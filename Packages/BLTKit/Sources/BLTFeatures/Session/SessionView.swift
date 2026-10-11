@@ -152,6 +152,7 @@ struct SessionView: View {
 private func sessionPreviewDependencies(store: some ProgressStore = InMemoryProgressStore()) -> AppDependencies {
     AppDependencies(
         catalog: PreviewCatalog.catalog,
+        language: .tamil,
         store: store,
         scheduler: SM2Scheduler(),
         now: { Date(timeIntervalSince1970: 2_000_000) }

@@ -1,6 +1,7 @@
 import SwiftUI
 
-/// Intro, then Name entry. Saving the name hands control back to the gate, which then shows Home.
+/// Intro, then Name entry. Saving the name hands control back to the gate, which then shows the language
+/// step (`LanguageChoiceView`) and, once a language is saved, Home.
 struct OnboardingFlow: View {
     let gate: ProfileGateViewModel
     @State private var nameEntry: NameEntryViewModel

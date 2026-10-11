@@ -54,6 +54,7 @@ struct SessionEndTests {
             scenario: PreviewCatalog.scenario,
             dependencies: AppDependencies(
                 catalog: PreviewCatalog.catalog,
+                language: .tamil,
                 store: store,
                 scheduler: SM2Scheduler(),
                 now: { fixedNow }

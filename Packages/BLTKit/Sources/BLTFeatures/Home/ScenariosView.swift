@@ -7,9 +7,11 @@ import SwiftUI
 /// closures do.
 struct ScenariosView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Bindable private var viewModel: HomeViewModel
 
     private let name: String?
+    private let language: CourseLanguage?
     private let onSelectScenario: (ScenarioID) -> Void
     private let onOpenProgress: () -> Void
     private let onOpenSettings: () -> Void
@@ -17,12 +19,14 @@ struct ScenariosView: View {
     init(
         viewModel: HomeViewModel,
         name: String?,
+        language: CourseLanguage? = nil,
         onSelectScenario: @escaping (ScenarioID) -> Void,
         onOpenProgress: @escaping () -> Void,
         onOpenSettings: @escaping () -> Void
     ) {
         self.viewModel = viewModel
         self.name = name
+        self.language = language
         self.onSelectScenario = onSelectScenario
         self.onOpenProgress = onOpenProgress
         self.onOpenSettings = onOpenSettings
@@ -82,17 +86,59 @@ struct ScenariosView: View {
                         .padding(.bottom, 4)
                         .accessibilityIdentifier(AccessibilityID.greeting)
                 }
+                if let line = HomeViewModel.languageLine(for: language) {
+                    Text(line)
+                        .font(.subheadline)
+                        .foregroundStyle(Palette(colorScheme).textSecondaryColor)
+                        .padding(.horizontal, 4)
+                        .accessibilityIdentifier(AccessibilityID.homeLanguage)
+                }
+                if let next = viewModel.continueLesson {
+                    ContinueLessonCard(summary: next) { onSelectScenario(next.id) }
+                }
                 Text("Scenarios")
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(Palette(colorScheme).textPrimaryColor)
                     .padding(.horizontal, 4)
                     .accessibilityAddTraits(.isHeader)
-                ForEach(viewModel.scenarios) { scenario in
-                    ScenarioCard(summary: scenario) { onSelectScenario(scenario.id) }
+                ForEach(viewModel.levelSections) { section in
+                    levelSection(section)
                 }
+                otherLessons
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
+        }
+    }
+
+    @ViewBuilder
+    private func levelSection(_ section: HomeLevelSection) -> some View {
+        let isExpanded = viewModel.isExpanded(section)
+        LevelHeader(section: section, isExpanded: isExpanded) {
+            // No animation when Reduce Motion is on.
+            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.2)) { viewModel.toggle(section) }
+        }
+        if isExpanded {
+            ForEach(section.lessons) { lesson in
+                ScenarioCard(summary: lesson) { onSelectScenario(lesson.id) }
+            }
+        }
+    }
+
+    /// Lessons with no level (older imports). Always shown, never collapsed.
+    @ViewBuilder
+    private var otherLessons: some View {
+        let lessons = viewModel.otherLessons
+        if !lessons.isEmpty {
+            Text("Other lessons")
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(Palette(colorScheme).textPrimaryColor)
+                .padding(.horizontal, 4)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier(AccessibilityID.homeOtherLessons)
+            ForEach(lessons) { lesson in
+                ScenarioCard(summary: lesson) { onSelectScenario(lesson.id) }
+            }
         }
     }
 
@@ -103,10 +149,11 @@ struct ScenariosView: View {
     }
 
     private var emptyState: some View {
-        ContentUnavailableView(
-            "No scenarios",
+        let copy = HomeViewModel.emptyStateCopy(for: language)
+        return ContentUnavailableView(
+            copy.title,
             systemImage: "tray",
-            description: Text("This copy of the app has no lesson content to show.")
+            description: Text(copy.description)
         )
     }
 
@@ -161,8 +208,11 @@ struct ScenariosView: View {
 private struct HomePreviewHost: View {
     @State private var viewModel: HomeViewModel
 
-    init(_ dependencies: AppDependencies) {
+    private let language: CourseLanguage?
+
+    init(_ dependencies: AppDependencies, language: CourseLanguage? = nil) {
         _viewModel = State(initialValue: HomeViewModel(dependencies: dependencies))
+        self.language = language
     }
 
     var body: some View {
@@ -170,6 +220,7 @@ private struct HomePreviewHost: View {
             ScenariosView(
                 viewModel: viewModel,
                 name: "zz Sample",
+                language: language,
                 onSelectScenario: { _ in },
                 onOpenProgress: {},
                 onOpenSettings: {}
@@ -194,6 +245,20 @@ private struct HomePreviewHost: View {
 #Preview("Home, with data, largest accessibility size") {
     HomePreviewHost(PreviewDependencies.withData())
         .environment(\.dynamicTypeSize, .accessibility5)
+}
+
+#Preview("Home, levels, one finished level collapsed") {
+    HomePreviewHost(PreviewDependencies.withLevels(), language: .tamil)
+}
+
+#Preview("Home, levels, largest accessibility size") {
+    HomePreviewHost(PreviewDependencies.withLevels(), language: .telugu)
+        .environment(\.dynamicTypeSize, .accessibility5)
+}
+
+#Preview("Home, levels, dark") {
+    HomePreviewHost(PreviewDependencies.withLevels(), language: .tamil)
+        .preferredColorScheme(.dark)
 }
 
 #Preview("Home, corrupt progress file") {

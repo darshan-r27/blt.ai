@@ -348,7 +348,7 @@ The course grows from 100 to 2,000 phrases (`docs/COURSE_SYLLABUS.md`), drafted 
 The checks live in the validator, so bundled lessons, imported lessons and the editor all apply the same rule. The catalog-wide checks run against the catalog the learner would end up with, like the existing duplicate-id checks (036). `scripts/content-index.sh` lists every existing prompt and answer so a drafter can avoid repeats before writing.
 
 ## 039 — The course has levels; lessons carry their level
-**Status:** pending — the `level` field and its validation are applied (chunk C1); Home grouping and lesson naming land in Wave 2 (chunks C4 and C5). Lesson naming and folders are amended by 044
+**Status:** active — the `level` field and its validation (chunk C1) and Home grouped by level with a Continue suggestion (chunk C2) are built. Lesson naming and folders are amended by 044
 
 The 100 lessons are grouped into 8 levels taken in order (`docs/COURSE_SYLLABUS.md`). Each lesson file gains an optional `level` object: `number`, `title`, and `position` (its place within the level). `position` is needed because the first five lessons keep their original ids, which would otherwise sort after the new ones. A file without `level` (an older import) is listed under "Other lessons". The same level number must always carry the same title.
 
@@ -388,7 +388,7 @@ The app began as colloquial Tamil for a Telugu speaker (001). The owner's real c
 **What this costs.** Little code, because lessons are data and the engine never looks at the language. A lot of content: 3,900 phrases to draft and about 65 hours of review between two people.
 
 ## 043 — The learner's language lives on the profile; each language has its own data
-**Status:** pending — agreed with the owner on 2026-10-09; built in plan.md chunks A4, B2, C1, C3 and D1. Changes the frozen `UserProfile` and `AppDependencies`
+**Status:** active — built in plan.md chunks A4, B2, C1, C3 and D1. Changes the frozen `UserProfile` and `AppDependencies` (`AppDependencies.language` is a required parameter). Per-language data lives under `Application Support/BLT/courses/<language>/`; the old build's `progress.json` and `content/` are removed once at launch (`LegacyStorageSweep`)
 
 The profile gains the language being learned. Onboarding asks for it after the name. It can be changed later in Settings.
 
@@ -423,7 +423,7 @@ The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and GitH
 
 - **Measured first.** Ten completed CI runs, 50 tests: `docs/TEST_TIMINGS.md`. The whole job took 21 to 60 minutes (median about 34), the UI step 16.5 to 52. Six attempts failed and passed on retry; three of those had hung for 251 to 889 seconds, which is where the 45 and 60 minute runs came from.
 - **Ten UI tests removed**, each after a package test of the same rule passed (405 package tests became 424): completion after right, wrong and other-register answers, a missed item coming back, an answer given before ending, option-to-feedback routing, a cancelled Reset, and what is saved or erased. 40 UI tests remain. The table is in `docs/TEST_TIMINGS.md`.
-- **Tiers are chosen by test class**, so a tier cannot drift by method name. PR tier: `AccessibilityUITests` (the eight default-size audits) and `HappyPathUITests` (one happy path per screen), 13 tests. Everything else, including the new `AccessibilityLargeTextUITests` (the eight largest-size audits and the five reachability checks, moved unchanged), is full tier only. `scripts/test.sh app --tier pr|full` selects them and `scripts/test.sh tiers` prints the lists. A check moves tier; none was dropped or weakened.
+- **Tiers are chosen by test class**, so a tier cannot drift by method name. PR tier: `AccessibilityUITests` (the eight default-size audits) and `HappyPathUITests` (one happy path per screen), 16 tests. Everything else, including the new `AccessibilityLargeTextUITests` (the eight largest-size audits and the five reachability checks, moved unchanged), is full tier only. `scripts/test.sh app --tier pr|full` selects them and `scripts/test.sh tiers` prints the lists. A check moves tier; none was dropped or weakened.
 - **Build once.** `scripts/test.sh app --build-only` (build-for-testing) then `--no-build` (test-without-building). Package tests and UI tests are separate parallel jobs.
 - **Required check names are unchanged:** `Guardrails and lint` and `Package and app tests`. The second is now a small gate job (on `ubuntu-latest`) that passes only if the new `Package tests` and `UI tests` jobs both pass. Branch protection needs no change; the two new job names must not be added as required checks, or they would also block on the full tier.
 - **Triggers.** Pull request: PR tier. Push to `main`, a nightly cron (03:17 UTC) and `workflow_dispatch` (tier chosen, default full): full tier. The concurrency group includes the event name so the nightly run does not cancel a push run.
@@ -439,7 +439,7 @@ The UI suite takes about 50 minutes locally and 12 to 45 minutes on CI, and GitH
 1. Three pull-request runs in a row, each with `Guardrails and lint`, `Package tests`, `UI tests` and `Package and app tests` green and the `UI tests` job under 15 minutes (the build, the 13 tests, queueing excluded).
 2. A push to `main` runs the full tier (40 tests) green, and the nightly run starts on schedule and does not cancel a push run.
 3. In the job summary, "UI tests that failed an attempt" appears and lists any retried test.
-4. A `workflow_dispatch` run with tier `pr` runs only the 13 tests.
+4. A `workflow_dispatch` run with tier `pr` runs only the 16 tests.
 5. Branch protection still shows exactly the two required checks and merging is not blocked by the gate job.
 6. Note how often a hung UI query still costs a run more than 15 minutes (the "tests that needed a retry" summary and the step duration). If it happens in more than one of the three runs, the next step is a job-level rerun of only the failed tests, not a per-test limit.
 

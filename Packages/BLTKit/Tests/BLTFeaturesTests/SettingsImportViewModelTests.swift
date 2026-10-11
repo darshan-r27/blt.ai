@@ -55,11 +55,13 @@ private struct PickerFailure: Error {}
 @MainActor
 private func makeModel(
     importer: (any LessonImporting)?,
-    log: LessonChangeLog = LessonChangeLog()
+    log: LessonChangeLog = LessonChangeLog(),
+    language: CourseLanguage? = nil
 ) -> SettingsViewModel {
     SettingsViewModel(
         dependencies: AppDependencies(
             catalog: Catalog(scenarios: [], issues: []),
+            language: .tamil,
             store: InMemoryProgressStore(),
             scheduler: SM2Scheduler(),
             now: { Date(timeIntervalSince1970: 1_000_000) }
@@ -67,7 +69,8 @@ private func makeModel(
         profileStore: InMemoryProfileStore(initial: UserProfile(name: "zz Sample")),
         profileName: "zz Sample",
         lessonImporter: importer,
-        onDidChangeLessons: { log.record($0) }
+        onDidChangeLessons: { log.record($0) },
+        learningLanguage: language
     )
 }
 
@@ -147,6 +150,36 @@ struct SettingsImportViewModelTests {
         }
     }
 
+    @Test func aFileForTheOtherLanguageIsNamedPlainlyAndChangesNothing() async {
+        let cases: [(CourseLanguage?, String)] = [
+            (
+                .tamil,
+                "That file is for Telugu, not Tamil. Nothing was imported and your lessons are unchanged."
+            ),
+            (
+                .telugu,
+                "That file is for Tamil, not Telugu. Nothing was imported and your lessons are unchanged."
+            ),
+            (
+                nil,
+                "That file is for the other language. Nothing was imported and your lessons are unchanged."
+            )
+        ]
+        for (language, message) in cases {
+            let log = LessonChangeLog()
+            let model = makeModel(
+                importer: FakeLessonImporter(importResult: .failure(.wrongLanguage)),
+                log: log,
+                language: language
+            )
+            await model.importLessons(from: .success([pickedFile]))
+            #expect(model.importOutcome == .failed(.wrongLanguage))
+            #expect(model.importStatusMessage == message)
+            #expect(model.importedCount == 0)
+            #expect(log.changes.isEmpty)
+        }
+    }
+
     @Test func aCancelledPickerDoesNothing() async {
         let importer = FakeLessonImporter()
         let log = LessonChangeLog()
@@ -221,7 +254,11 @@ struct SettingsImportViewModelTests {
         let directory = FileManager.default.temporaryDirectory
             .appending(path: "zz-import-\(UUID().uuidString)", directoryHint: .isDirectory)
         defer { try? FileManager.default.removeItem(at: directory) }
-        let importer: any LessonImporting = ImportedContentStore(directory: directory, bundledDirectory: nil)
+        let importer: any LessonImporting = ImportedContentStore(
+            directory: directory,
+            bundledDirectory: nil,
+            language: .tamil
+        )
         #expect(await importer.currentSummary().scenarioIDs.isEmpty)
         do {
             _ = try await importer.importFiles([])
