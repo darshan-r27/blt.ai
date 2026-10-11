@@ -1,33 +1,30 @@
 # Progress: two-way course plan (plan.md)
 
-## Done
-- Single-course plan, syllabus and DECISIONS 038 to 041 merged (PR #8). All 100 Tamil phrases reviewed (PR #9).
-- Single-course plan Wave 1 built and merged in another session (PRs #11 to #13): `level`, `tamilScript`, the
-  duplicate rules, editor fields, `scripts/content-index.sh`. Reused by the new plan.
-- 2026-10-09: owner approved the two-way plan (Tamil and Telugu). It replaces the single-course plan's later
-  waves. `plan.md` holds the new plan.
+## Done (2026-10-11)
+- Single-course plan, syllabus, DECISIONS 038 to 041 and the first 100 reviewed Tamil phrases (PRs #8, #9, #11 to #13).
+- Two-way thesis and documents (PR #15): DECISIONS 042 to 044, `docs/REVIEWER_GUIDE.md`, the new `plan.md`.
+- Wave 1 (PRs #16 to #21): `CourseLanguage` and accessibility ids; the two-language lesson format (`language`, `script`, `word`) with neutral names; the editor; `content-index.sh` per language and `--mirror`; optional profile language (schema 2); two-tier UI tests and parallel CI.
+- Wave 2 (PR #22): Tamil lessons moved to `content/tamil/` with `ta-l01-uNN` ids and `level`; per-language loading and import; import limit 20.
+- Exam engine and exam result storage (PRs #23, #24), unwired.
+- Waves 3 and 4 (PR #25): language step, Home grouped by level, Settings language switch, per-language wiring and storage, legacy file removal, wrong-language import message, UI tests for the new flow.
 
 ## Decisions
-- Owner reviews Tamil; partner reviews Telugu on their own computer; reviewed files return by AirDrop and are
-  committed through a PR; phones get lessons through Settings > Import lessons.
-- Both courses 2,000 phrases in 8 levels, one level at a time; standard Coastal Andhra Telugu; language
-  switchable in Settings with separate progress; one syllabus and shared English prompts where natural.
+- Owner reviews Tamil; partner reviews Telugu on their own computer; reviewed files return by AirDrop and are committed through a PR; phones get lessons through Settings > Import lessons.
+- Both courses 2,000 phrases in 8 levels, one level at a time; standard Coastal Andhra Telugu; one syllabus and shared English prompts where natural; language switchable with separate progress; Reset clears only the current language.
+- Waves 3 and 4 landed as one PR so the existing UI tests never saw the language step without its wiring.
 - Audio, pronunciation scoring and native script in the app are v2.
 
-## Wave 0 (done 2026-10-09, awaiting the owner's approval of the docs PR)
-- Thesis rewritten in `README.md`, `CLAUDE.md`, `docs/PRD.md` (note at the top), `docs/ARCHITECTURE.md` (planned section), `docs/BUILD_PLAN.md`, `docs/MVP_PLAN.md` (pending note), `docs/HANDOFF.md`.
-- `docs/COURSE_SYLLABUS.md` widened to two courses; DECISIONS 042 to 044 added; `docs/REVIEWER_GUIDE.md` added.
-
-## Plan changes requested by the owner (2026-10-09)
-- The five reviewed Tamil lessons are renamed to the new id scheme in chunk B1; no learner progress exists, so nothing is migrated and the old build's files are removed at first launch.
-- New chunk Q1 and DECISIONS 045: reshape the slow UI test suite into a short required tier and a full tier.
-
 ## Deviations
-- `plan.md` chunks A1 to A3 were rewritten as deltas after finding that the old plan's Wave 1 was already merged.
-- PR #14 (handoff for the old plan's Wave 2) is superseded by this work and should be closed, not merged.
-- Sequencing fixed in `plan.md` after approval: A1 also updates the five shipped files in place (so tests stay green), and B1 and B2 merge as one PR (moving the files and changing the loader must land together).
-- Documents that describe the built app (README, ARCHITECTURE, HANDOFF) say what exists today and mark the two-course work as planned, instead of describing it as done.
-- The PRD body was not rewritten: a note at the top says how to read it for two languages.
+- The editor's duplicate rule inside one item compares only case and surrounding spaces (punctuation-only variants are wanted); prompts and answers across a course also ignore spacing and punctuation.
+- A1 left two compatibility shims that a follow-up commit removed (`Token.tamil`, `Scenario`'s Tamil default); `tamilScriptInField` became `nativeScriptInField`.
+- Q1's per-test time limit is opt-in (`BLT_TEST_TIMEOUT`), because xcodebuild does not retry a test that hits it.
+- The PR tier grew from 13 to 16 UI tests (two language-step audits, one Settings audit).
+- D1 found and fixed a bug in the Settings switch (the iOS 27 popover cleared its own binding), and added a narrow contrast exception for the disabled language Continue button.
+- PR #14 (an earlier handoff) was closed as superseded.
+
+## Not proven yet
+- ADR 045's goal (PR-tier UI job under 15 minutes) was not met: 26 to 38 minutes measured. The full tier on `main` has failed twice from runner hangs; reruns recover.
+- The new screens have been tested and walked once in the simulator, not reviewed by eye. Device-only checks (file protection, AirDrop import, VoiceOver, largest text) are open.
 
 ## Next action
-- Owner approves the Wave 0 PR. Then chunk T1 and Wave 1 in a fresh Sonnet session. See `docs/HANDOFF.md`, "Start here".
+- Owner chooses the drafting model; then Level 1 content for both languages (`plan.md` "Content"). Exam screen (E3) can be built meanwhile. See `docs/HANDOFF.md`.
