@@ -1,0 +1,687 @@
+{
+  "scenarioId": "ta-l02-u10",
+  "language": "tamil",
+  "title": "Question words",
+  "subtitle": "Asking anything: who, what, where, when, why, how, which, how many",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 10
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u10-i01",
+      "sourcePrompt": "Who are you looking for? (to a friend)",
+      "register": "casual",
+      "canonical": "nee yaara thedura?",
+      "acceptedAnswers": [
+        "nee yaara thedura?",
+        "nee yaarai thedura?",
+        "nee yaara theduriya?",
+        "nee yaara thedikittu irukka?"
+      ],
+      "registerVariant": "neenga yaara thedureenga?",
+      "distractors": [
+        "nee yaara thedunaa?",
+        "nee yaara theduva?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "yaara",
+          "english": "whom"
+        },
+        {
+          "word": "thedura",
+          "english": "are you looking for"
+        }
+      ],
+      "script": "நீ யாரை தேடுற?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i02",
+      "sourcePrompt": "What is this called? (to an elder)",
+      "register": "respectful",
+      "canonical": "idhukku enna peru-nga?",
+      "acceptedAnswers": [
+        "idhukku enna peru-nga?",
+        "idhukku enna perunga?",
+        "idhukku enna peru nga?",
+        "idhu enna perunga?"
+      ],
+      "registerVariant": "idhukku enna peru?",
+      "distractors": [
+        "idhukku evlo peru-nga?",
+        "idhukku enga peru-nga?"
+      ],
+      "tokens": [
+        {
+          "word": "idhukku",
+          "english": "for this"
+        },
+        {
+          "word": "enna peru",
+          "english": "what name"
+        },
+        {
+          "word": "nga",
+          "english": "polite marker"
+        }
+      ],
+      "script": "இதுக்கு என்ன பேருங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i03",
+      "sourcePrompt": "Where do you live? (to a friend)",
+      "register": "casual",
+      "canonical": "nee enga irukka?",
+      "acceptedAnswers": [
+        "nee enga irukka?",
+        "nee enga irukkira?",
+        "nee enga thangiyirukka?",
+        "nee enga irukkiya?"
+      ],
+      "registerVariant": "neenga enga irukkeenga?",
+      "distractors": [
+        "nee enga irundhiya?",
+        "nee enga iruppa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "irukka",
+          "english": "do you live"
+        }
+      ],
+      "script": "நீ எங்க இருக்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i04",
+      "sourcePrompt": "When will you come? (to a friend)",
+      "register": "casual",
+      "canonical": "nee eppo varuva?",
+      "acceptedAnswers": [
+        "nee eppo varuva?",
+        "nee eppo varuviya?",
+        "nee eppo vara pora?",
+        "nee eppo vandhuruva?"
+      ],
+      "registerVariant": "neenga eppo varuveenga?",
+      "distractors": [
+        "nee eppo vandha?",
+        "nee eppo varra?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "eppo",
+          "english": "when"
+        },
+        {
+          "word": "varuva",
+          "english": "will you come"
+        }
+      ],
+      "script": "நீ எப்போ வருவ?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i05",
+      "sourcePrompt": "Why are you sad? (to a friend)",
+      "register": "casual",
+      "canonical": "nee yen sogamaa irukka?",
+      "acceptedAnswers": [
+        "nee yen sogamaa irukka?",
+        "nee yen sogama irukka?",
+        "nee yen sad-aa irukka?",
+        "nee yen kavalaiyaa irukka?"
+      ],
+      "registerVariant": "neenga yen sogamaa irukkeenga?",
+      "distractors": [
+        "nee yen sogamaa irundha?",
+        "nee yen sogamaa iruppa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "yen",
+          "english": "why"
+        },
+        {
+          "word": "sogamaa",
+          "english": "sad"
+        },
+        {
+          "word": "irukka",
+          "english": "are you"
+        }
+      ],
+      "script": "நீ ஏன் சோகமா இருக்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i06",
+      "sourcePrompt": "Why is it closed?",
+      "register": "neutral",
+      "canonical": "yen moodi irukku?",
+      "acceptedAnswers": [
+        "yen moodi irukku?",
+        "yen moodirukku?",
+        "yen moodiruku?",
+        "yen moodi vechirukkaanga?"
+      ],
+      "distractors": [
+        "eppo moodi irukku?",
+        "enga moodi irukku?",
+        "yen moodi irundhuchu?"
+      ],
+      "tokens": [
+        {
+          "word": "yen",
+          "english": "why"
+        },
+        {
+          "word": "moodi irukku",
+          "english": "is closed"
+        }
+      ],
+      "script": "ஏன் மூடி இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i07",
+      "sourcePrompt": "How do you make this? (to an elder)",
+      "register": "respectful",
+      "canonical": "idha eppadi seiyureenga?",
+      "acceptedAnswers": [
+        "idha eppadi seiyureenga?",
+        "idha epdi seiyureenga?",
+        "idha eppadi pannureenga?",
+        "idha eppadi seiveenga?"
+      ],
+      "registerVariant": "idha eppadi seiyura?",
+      "distractors": [
+        "idha eppadi seidheenga?",
+        "idha enga seiyureenga?"
+      ],
+      "tokens": [
+        {
+          "word": "idha",
+          "english": "this"
+        },
+        {
+          "word": "eppadi",
+          "english": "how"
+        },
+        {
+          "word": "seiyureenga",
+          "english": "do you make"
+        }
+      ],
+      "script": "இத எப்படி செய்யுறீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i08",
+      "sourcePrompt": "How many rooms are there?",
+      "register": "neutral",
+      "canonical": "ethana room irukku?",
+      "acceptedAnswers": [
+        "ethana room irukku?",
+        "ethana rooms irukku?",
+        "ethana room irukkudhu?",
+        "ethanai room irukku?"
+      ],
+      "distractors": [
+        "evlo room irukku?",
+        "ethana room irundhuchu?",
+        "enga room irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "ethana",
+          "english": "how many"
+        },
+        {
+          "word": "room",
+          "english": "rooms"
+        },
+        {
+          "word": "irukku",
+          "english": "are there"
+        }
+      ],
+      "script": "எத்தன ரூம் இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i09",
+      "sourcePrompt": "Which bus goes there?",
+      "register": "neutral",
+      "canonical": "anga entha bus pogum?",
+      "acceptedAnswers": [
+        "anga entha bus pogum?",
+        "angu entha bus pogum?",
+        "anga edhu bus pogum?",
+        "anga entha bus poguthu?"
+      ],
+      "distractors": [
+        "anga entha bus vandhuchu?",
+        "anga entha bus varum?",
+        "inga entha bus pogum?"
+      ],
+      "tokens": [
+        {
+          "word": "anga",
+          "english": "there"
+        },
+        {
+          "word": "entha bus",
+          "english": "which bus"
+        },
+        {
+          "word": "pogum",
+          "english": "goes"
+        }
+      ],
+      "script": "அங்க எந்த பஸ் போகும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i10",
+      "sourcePrompt": "Which one do you want? (to a friend)",
+      "register": "casual",
+      "canonical": "unakku edhu venum?",
+      "acceptedAnswers": [
+        "unakku edhu venum?",
+        "unakku edhu vena?",
+        "unakku edhu venum",
+        "unakku edhu vennum?"
+      ],
+      "registerVariant": "ungalukku edhu venum?",
+      "distractors": [
+        "unakku edhu vendaam?",
+        "unakku edhu kidaichuchu?"
+      ],
+      "tokens": [
+        {
+          "word": "unakku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "edhu",
+          "english": "which"
+        },
+        {
+          "word": "venum",
+          "english": "do you want"
+        }
+      ],
+      "script": "உனக்கு எது வேணும்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i11",
+      "sourcePrompt": "What's the matter? (to a friend)",
+      "register": "casual",
+      "canonical": "enna vishayam?",
+      "acceptedAnswers": [
+        "enna vishayam?",
+        "enna visayam?",
+        "enna matter?",
+        "enna vishayam-nu sollu?"
+      ],
+      "registerVariant": "enna vishayam-nga?",
+      "distractors": [
+        "enna vishayam aachu?",
+        "eppo vishayam?"
+      ],
+      "tokens": [
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "vishayam",
+          "english": "matter"
+        }
+      ],
+      "script": "என்ன விஷயம்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i12",
+      "sourcePrompt": "Who is coming?",
+      "register": "neutral",
+      "canonical": "yaaru varaanga?",
+      "acceptedAnswers": [
+        "yaaru varaanga?",
+        "yaar varaanga?",
+        "yaaru varraanga?",
+        "yaaru vandhurukkaanga?"
+      ],
+      "distractors": [
+        "yaaru ponaanga?",
+        "yaaru varuvaanga?",
+        "enga varaanga?"
+      ],
+      "tokens": [
+        {
+          "word": "yaaru",
+          "english": "who"
+        },
+        {
+          "word": "varaanga",
+          "english": "is coming"
+        }
+      ],
+      "script": "யாரு வராங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i13",
+      "sourcePrompt": "What are you reading? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga enna padikkureenga?",
+      "acceptedAnswers": [
+        "neenga enna padikkureenga?",
+        "neenga enna padikireenga?",
+        "neenga enna padichittu irukkeenga?",
+        "neenga enna padikkureenga"
+      ],
+      "registerVariant": "nee enna padikkura?",
+      "distractors": [
+        "neenga enna padicheenga?",
+        "neenga enna padippeenga?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "padikkureenga",
+          "english": "are you reading"
+        }
+      ],
+      "script": "நீங்க என்ன படிக்குறீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i14",
+      "sourcePrompt": "Where is the exit?",
+      "register": "neutral",
+      "canonical": "exit enga irukku?",
+      "acceptedAnswers": [
+        "exit enga irukku?",
+        "exit enga irukkudhu?",
+        "veliya poga vazhi enga?",
+        "veliya pora vazhi enga irukku?"
+      ],
+      "distractors": [
+        "exit eppo irukku?",
+        "entrance enga irukku?",
+        "exit enga irundhuchu?"
+      ],
+      "tokens": [
+        {
+          "word": "exit",
+          "english": "exit"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "எக்ஸிட் எங்க இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i15",
+      "sourcePrompt": "What does his father do? (to a friend)",
+      "register": "casual",
+      "canonical": "avan appa enna velai paakkuraar?",
+      "acceptedAnswers": [
+        "avan appa enna velai paakkuraar?",
+        "avan appa enna velai pannuraar?",
+        "avan appa enna velai seiyuraar?",
+        "avan appa enna job pannuraar?"
+      ],
+      "registerVariant": "avanga appa enna velai paakkuraanga?",
+      "distractors": [
+        "avan appa enna velai paathaar?",
+        "avan appa enga velai paakkuraar?"
+      ],
+      "tokens": [
+        {
+          "word": "avan appa",
+          "english": "his father"
+        },
+        {
+          "word": "enna velai",
+          "english": "what work"
+        },
+        {
+          "word": "paakkuraar",
+          "english": "does"
+        }
+      ],
+      "script": "அவன் அப்பா என்ன வேலை பாக்குறார்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i16",
+      "sourcePrompt": "Why isn't it working?",
+      "register": "neutral",
+      "canonical": "idhu yen velai seiyala?",
+      "acceptedAnswers": [
+        "idhu yen velai seiyala?",
+        "idhu yen work aagala?",
+        "idhu yen velai seiyalai?",
+        "idhu yen velai pannala?"
+      ],
+      "distractors": [
+        "idhu eppo velai seiyum?",
+        "idhu enga velai seiyala?",
+        "idhu yen velai seiyudhu?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "yen",
+          "english": "why"
+        },
+        {
+          "word": "velai seiyala",
+          "english": "isn't working"
+        }
+      ],
+      "script": "இது ஏன் வேலை செய்யல?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i17",
+      "sourcePrompt": "How do I get there? (to an elder)",
+      "register": "respectful",
+      "canonical": "anga eppadi poganumnga?",
+      "acceptedAnswers": [
+        "anga eppadi poganumnga?",
+        "angu eppadi poganumnga?",
+        "anga eppadi poganum-nga?",
+        "anga epdi poganumnga?"
+      ],
+      "registerVariant": "anga eppadi poganum?",
+      "distractors": [
+        "anga eppadi ponaanga?",
+        "anga eppo poganumnga?"
+      ],
+      "tokens": [
+        {
+          "word": "anga",
+          "english": "there"
+        },
+        {
+          "word": "eppadi",
+          "english": "how"
+        },
+        {
+          "word": "poganumnga",
+          "english": "should go (polite)"
+        }
+      ],
+      "script": "அங்க எப்படி போகணுங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i18",
+      "sourcePrompt": "How long have you been waiting? (to a friend)",
+      "register": "casual",
+      "canonical": "nee evlo neram-a kaathittu irukka?",
+      "acceptedAnswers": [
+        "nee evlo neram-a kaathittu irukka?",
+        "nee evlo neramaa kaathittu irukka?",
+        "nee evlo neram kaathittu irukka?",
+        "nee evlo naerama kaathirukka?"
+      ],
+      "registerVariant": "neenga evlo neram-a kaathittu irukkeenga?",
+      "distractors": [
+        "nee evlo neram kaathirundha?",
+        "nee evlo neram kaathiruppa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "evlo neram",
+          "english": "how long"
+        },
+        {
+          "word": "kaathittu irukka",
+          "english": "have you been waiting"
+        }
+      ],
+      "script": "நீ எவ்ளோ நேரமா காத்திட்டு இருக்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i19",
+      "sourcePrompt": "Which floor is it on?",
+      "register": "neutral",
+      "canonical": "idhu entha floor-la irukku?",
+      "acceptedAnswers": [
+        "idhu entha floor-la irukku?",
+        "idhu entha floor la irukku?",
+        "idhu enna floor-la irukku?",
+        "idhu entha floor-ula irukku?"
+      ],
+      "distractors": [
+        "idhu entha floor-la irundhuchu?",
+        "idhu enga floor-la irukku?",
+        "idhu evlo floor-la irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "idhu",
+          "english": "this"
+        },
+        {
+          "word": "entha floor",
+          "english": "which floor"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "இது எந்த ஃப்ளோர்ல இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u10-i20",
+      "sourcePrompt": "What's wrong with him? (to a friend)",
+      "register": "casual",
+      "canonical": "avanukku enna aachu?",
+      "acceptedAnswers": [
+        "avanukku enna aachu?",
+        "avanukku enna aachchu?",
+        "avanukku enna aayiduchu?",
+        "avanukku enna aagiduchu?"
+      ],
+      "registerVariant": "avarukku enna aachu?",
+      "distractors": [
+        "avanukku enna aagum?",
+        "avanukku eppo aachu?"
+      ],
+      "tokens": [
+        {
+          "word": "avanukku",
+          "english": "to him"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "aachu",
+          "english": "happened"
+        }
+      ],
+      "script": "அவனுக்கு என்ன ஆச்சு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

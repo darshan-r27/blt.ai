@@ -1,0 +1,671 @@
+{
+  "scenarioId": "ta-l02-u01",
+  "language": "tamil",
+  "title": "What are you doing?",
+  "subtitle": "A phone call with a friend: what is happening right now",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 1
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u01-i01",
+      "sourcePrompt": "What are you doing now? (to a friend)",
+      "register": "casual",
+      "canonical": "ippo enna panra?",
+      "acceptedAnswers": [
+        "ippo enna panra?",
+        "ippo enna pannura?",
+        "ippo enna panraa?",
+        "ippo enna pannittu irukka?"
+      ],
+      "registerVariant": "ippo enna panreenga?",
+      "distractors": [
+        "ippo enna pannuna?",
+        "ippo enna pannuven?"
+      ],
+      "tokens": [
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "panra",
+          "english": "are you doing"
+        }
+      ],
+      "script": "இப்போ என்ன பண்ற?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i02",
+      "sourcePrompt": "I'm eating.",
+      "register": "neutral",
+      "canonical": "naan saapdittu irukken",
+      "acceptedAnswers": [
+        "naan saapdittu irukken",
+        "naan saapittu irukken",
+        "naan saapdittu irukken.",
+        "naan saapduren"
+      ],
+      "distractors": [
+        "naan saapten",
+        "naan saapduven",
+        "naan saapda maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "saapdittu irukken",
+          "english": "am eating"
+        }
+      ],
+      "script": "நான் சாப்டிட்டு இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i03",
+      "sourcePrompt": "I'm watching TV.",
+      "register": "neutral",
+      "canonical": "naan TV paakkuren",
+      "acceptedAnswers": [
+        "naan TV paakkuren",
+        "naan TV paakkren",
+        "naan TV paathittu irukken",
+        "naan TV paakkiren"
+      ],
+      "distractors": [
+        "naan TV paathen",
+        "naan TV paapen",
+        "naan TV paakka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "TV",
+          "english": "TV"
+        },
+        {
+          "word": "paakkuren",
+          "english": "am watching"
+        }
+      ],
+      "script": "நான் டிவி பாக்குறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i04",
+      "sourcePrompt": "She's cooking.",
+      "register": "neutral",
+      "canonical": "ava samaikkuraa",
+      "acceptedAnswers": [
+        "ava samaikkuraa",
+        "aval samaikkiraa",
+        "ava samachittu irukkaa",
+        "ava samaikkiraa"
+      ],
+      "distractors": [
+        "ava samaichaa",
+        "ava samaippaa",
+        "avan samaikkuraan"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "samaikkuraa",
+          "english": "is cooking"
+        }
+      ],
+      "script": "அவ சமைக்குறா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i05",
+      "sourcePrompt": "He's sleeping.",
+      "register": "neutral",
+      "canonical": "avan thoongittu irukkaan",
+      "acceptedAnswers": [
+        "avan thoongittu irukkaan",
+        "avan thoongitu irukkaan",
+        "avan thoongaraan",
+        "avan thoongittu irukan"
+      ],
+      "distractors": [
+        "avan thoongunaan",
+        "avan thoonguvaan",
+        "ava thoongittu irukkaa"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "thoongittu irukkaan",
+          "english": "is sleeping"
+        }
+      ],
+      "script": "அவன் தூங்கிட்டு இருக்கான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i06",
+      "sourcePrompt": "They're playing outside.",
+      "register": "neutral",
+      "canonical": "avanga veliya vilaiyaadittu irukkaanga",
+      "acceptedAnswers": [
+        "avanga veliya vilaiyaadittu irukkaanga",
+        "avanga veliya vilayaadittu irukkaanga",
+        "avanga veliya vilaiyaadraanga",
+        "avanga veliyila vilaiyaadraanga"
+      ],
+      "distractors": [
+        "avanga veliya vilaiyaadunaanga",
+        "avanga veliya vilaiyaaduvaanga",
+        "avanga ulla vilaiyaadittu irukkaanga"
+      ],
+      "tokens": [
+        {
+          "word": "avanga",
+          "english": "they"
+        },
+        {
+          "word": "veliya",
+          "english": "outside"
+        },
+        {
+          "word": "vilaiyaadittu irukkaanga",
+          "english": "are playing"
+        }
+      ],
+      "script": "அவங்க வெளிய விளையாடிட்டு இருக்காங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i07",
+      "sourcePrompt": "What's he doing?",
+      "register": "neutral",
+      "canonical": "avan enna panraan?",
+      "acceptedAnswers": [
+        "avan enna panraan?",
+        "avan enna pannuraan?",
+        "avan enna pannittu irukkaan?",
+        "avar enna panraar?"
+      ],
+      "distractors": [
+        "avan enna pannunaan?",
+        "avan enna pannuvaan?",
+        "ava enna panraa?"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "panraan",
+          "english": "is doing"
+        }
+      ],
+      "script": "அவன் என்ன பண்றான்?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i08",
+      "sourcePrompt": "Are you busy? (to a friend)",
+      "register": "casual",
+      "canonical": "nee busy-aa irukkiya?",
+      "acceptedAnswers": [
+        "nee busy-aa irukkiya?",
+        "nee busy-aa irukka?",
+        "nee busy-ya irukkiya?",
+        "nee busy-aa iruka?"
+      ],
+      "registerVariant": "neenga busy-aa irukkeengala?",
+      "distractors": [
+        "nee busy-aa irundhiya?",
+        "nee busy-aa iruppiya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "busy-aa",
+          "english": "busy"
+        },
+        {
+          "word": "irukkiya",
+          "english": "are you?"
+        }
+      ],
+      "script": "நீ பிசியா இருக்கியா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i09",
+      "sourcePrompt": "I'm busy right now.",
+      "register": "neutral",
+      "canonical": "ippo naan busy-aa irukken",
+      "acceptedAnswers": [
+        "ippo naan busy-aa irukken",
+        "ippo naan busy-a irukken",
+        "ippo naan busy-yaa irukken",
+        "naan ippo busy-aa irukken"
+      ],
+      "distractors": [
+        "ippo naan busy-aa irundhen",
+        "ippo naan busy-aa iruppen",
+        "ippo naan busy-aa illa"
+      ],
+      "tokens": [
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "busy-aa",
+          "english": "busy"
+        },
+        {
+          "word": "irukken",
+          "english": "am"
+        }
+      ],
+      "script": "இப்போ நான் பிசியா இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i10",
+      "sourcePrompt": "I'm studying.",
+      "register": "neutral",
+      "canonical": "naan padichittu irukken",
+      "acceptedAnswers": [
+        "naan padichittu irukken",
+        "naan padichitu irukken",
+        "naan padikkuren",
+        "naan padichukittu irukken"
+      ],
+      "distractors": [
+        "naan padichen",
+        "naan padippen",
+        "naan padikka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "padichittu irukken",
+          "english": "am studying"
+        }
+      ],
+      "script": "நான் படிச்சிட்டு இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i11",
+      "sourcePrompt": "We're waiting for you. (to an elder)",
+      "register": "respectful",
+      "canonical": "ungalukkaaga kaathittu irukkom",
+      "acceptedAnswers": [
+        "ungalukkaaga kaathittu irukkom",
+        "unga kaaga kaathittu irukkom",
+        "ungalukkaaga kaathirukkom",
+        "ungala kaathittu irukkom"
+      ],
+      "registerVariant": "unakkaaga kaathittu irukkom",
+      "distractors": [
+        "ungalukkaaga kaathirundhom",
+        "ungalukkaaga kaathiruppom"
+      ],
+      "tokens": [
+        {
+          "word": "ungalukkaaga",
+          "english": "for you (respectful)"
+        },
+        {
+          "word": "kaathittu irukkom",
+          "english": "are waiting"
+        }
+      ],
+      "script": "உங்களுக்காக காத்திட்டு இருக்கோம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i12",
+      "sourcePrompt": "I'm talking on the phone.",
+      "register": "neutral",
+      "canonical": "naan phone-la pesittu irukken",
+      "acceptedAnswers": [
+        "naan phone-la pesittu irukken",
+        "naan phone la pesitu irukken",
+        "naan phone-la pesuren",
+        "naan phone-la pesikittu irukken"
+      ],
+      "distractors": [
+        "naan phone-la pesunen",
+        "naan phone-la pesuven",
+        "naan phone-la pesa maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "phone-la",
+          "english": "on the phone"
+        },
+        {
+          "word": "pesittu irukken",
+          "english": "am talking"
+        }
+      ],
+      "script": "நான் போன்ல பேசிட்டு இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i13",
+      "sourcePrompt": "What are you cooking? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga enna samaikkureenga?",
+      "acceptedAnswers": [
+        "neenga enna samaikkureenga?",
+        "neenga enna samaikureenga?",
+        "neenga enna samachittu irukkeenga?",
+        "neenga enna samaikreenga?"
+      ],
+      "registerVariant": "nee enna samaikkura?",
+      "distractors": [
+        "neenga enna samaichteenga?",
+        "neenga enna samaippeenga?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "enna",
+          "english": "what"
+        },
+        {
+          "word": "samaikkureenga",
+          "english": "are cooking"
+        }
+      ],
+      "script": "நீங்க என்ன சமைக்குறீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i14",
+      "sourcePrompt": "I'm writing a message.",
+      "register": "neutral",
+      "canonical": "naan oru message ezhudhuren",
+      "acceptedAnswers": [
+        "naan oru message ezhudhuren",
+        "naan oru message ezhuthuren",
+        "naan message ezhudhittu irukken",
+        "naan oru message type panren"
+      ],
+      "distractors": [
+        "naan oru message ezhudhinen",
+        "naan oru message ezhudhuven",
+        "naan oru message ezhudha maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "oru message",
+          "english": "a message"
+        },
+        {
+          "word": "ezhudhuren",
+          "english": "am writing"
+        }
+      ],
+      "script": "நான் ஒரு மெசேஜ் எழுதுறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i15",
+      "sourcePrompt": "Are you coming now? (to a friend)",
+      "register": "casual",
+      "canonical": "nee ippo varriyaa?",
+      "acceptedAnswers": [
+        "nee ippo varriyaa?",
+        "nee ippo varriya?",
+        "nee ippo varriyaa",
+        "nee ippo vareeya?"
+      ],
+      "registerVariant": "neenga ippo varreengala?",
+      "distractors": [
+        "nee ippo vandhiyaa?",
+        "nee ippo varuviyaa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "ippo",
+          "english": "now"
+        },
+        {
+          "word": "varriyaa",
+          "english": "are you coming?"
+        }
+      ],
+      "script": "நீ இப்போ வர்றியா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i16",
+      "sourcePrompt": "It's raining outside.",
+      "register": "neutral",
+      "canonical": "veliya mazhai peiyudhu",
+      "acceptedAnswers": [
+        "veliya mazhai peiyudhu",
+        "veliya mazhai peiyuthu",
+        "veliyila mazhai peiyudhu",
+        "veliya mazhai peidhu"
+      ],
+      "distractors": [
+        "veliya mazhai peindhuchu",
+        "veliya mazhai peiyum",
+        "veliya veyil adikkudhu"
+      ],
+      "tokens": [
+        {
+          "word": "veliya",
+          "english": "outside"
+        },
+        {
+          "word": "mazhai",
+          "english": "rain"
+        },
+        {
+          "word": "peiyudhu",
+          "english": "is falling"
+        }
+      ],
+      "script": "வெளிய மழை பெய்யுது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i17",
+      "sourcePrompt": "The baby is crying.",
+      "register": "neutral",
+      "canonical": "kuzhandhai azhudhukittu irukku",
+      "acceptedAnswers": [
+        "kuzhandhai azhudhukittu irukku",
+        "kuzhandha azhudhukittu irukku",
+        "kolandhai azhudhukittu irukku",
+        "kuzhandhai azhudhuttu irukku"
+      ],
+      "distractors": [
+        "kuzhandhai azhudhuchu",
+        "kuzhandhai azhuvum",
+        "kuzhandhai sirichittu irukku"
+      ],
+      "tokens": [
+        {
+          "word": "kuzhandhai",
+          "english": "baby"
+        },
+        {
+          "word": "azhudhukittu irukku",
+          "english": "is crying"
+        }
+      ],
+      "script": "குழந்தை அழுதுகிட்டு இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i18",
+      "sourcePrompt": "My phone is ringing.",
+      "register": "neutral",
+      "canonical": "en phone adikkudhu",
+      "acceptedAnswers": [
+        "en phone adikkudhu",
+        "en phone adikkuthu",
+        "en phone ring aagudhu",
+        "en phone adikkidhu"
+      ],
+      "distractors": [
+        "en phone adichuchu",
+        "en phone adikkum",
+        "en phone adikkala"
+      ],
+      "tokens": [
+        {
+          "word": "en phone",
+          "english": "my phone"
+        },
+        {
+          "word": "adikkudhu",
+          "english": "is ringing"
+        }
+      ],
+      "script": "என் போன் அடிக்குது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i19",
+      "sourcePrompt": "I'm waiting for the bus.",
+      "register": "neutral",
+      "canonical": "naan bus-ku kaathittu irukken",
+      "acceptedAnswers": [
+        "naan bus-ku kaathittu irukken",
+        "naan bus kaaga kaathittu irukken",
+        "naan bus-ku kaathirukken",
+        "naan bus kaathittu irukken"
+      ],
+      "distractors": [
+        "naan bus-ku kaathirundhen",
+        "naan bus-ku kaathiruppen",
+        "naan bus-la irukken"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "bus-ku",
+          "english": "for the bus"
+        },
+        {
+          "word": "kaathittu irukken",
+          "english": "am waiting"
+        }
+      ],
+      "script": "நான் பஸ்சுக்கு காத்திட்டு இருக்கேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u01-i20",
+      "sourcePrompt": "I'm just looking.",
+      "register": "neutral",
+      "canonical": "naan summa paakkuren",
+      "acceptedAnswers": [
+        "naan summa paakkuren",
+        "naan summa paakkren",
+        "summa paakkuren",
+        "naan summa paathittu irukken"
+      ],
+      "distractors": [
+        "naan summa paathen",
+        "naan summa paapen",
+        "naan summa paakka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "summa",
+          "english": "just"
+        },
+        {
+          "word": "paakkuren",
+          "english": "am looking"
+        }
+      ],
+      "script": "நான் சும்மா பாக்குறேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

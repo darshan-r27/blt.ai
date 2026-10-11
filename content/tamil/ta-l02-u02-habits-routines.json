@@ -1,0 +1,739 @@
+{
+  "scenarioId": "ta-l02-u02",
+  "language": "tamil",
+  "title": "Habits and routines",
+  "subtitle": "Describing a normal day: always, usually, sometimes, never",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 2
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u02-i01",
+      "sourcePrompt": "I get up early every day.",
+      "register": "neutral",
+      "canonical": "naan dhinamum seekiram ezhundhiruppen",
+      "acceptedAnswers": [
+        "naan dhinamum seekiram ezhundhiruppen",
+        "naan dhinamum seekirama ezhundhiruppen",
+        "naan dhinamum seekkiram ezhundhirippen",
+        "dhinamum seekiram ezhundhiruppen"
+      ],
+      "distractors": [
+        "naan dhinamum seekiram ezhundhen",
+        "naan dhinamum late-aa ezhundhiruppen",
+        "naan dhinamum seekiram ezhundhirikka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "dhinamum",
+          "english": "every day"
+        },
+        {
+          "word": "seekiram",
+          "english": "early"
+        },
+        {
+          "word": "ezhundhiruppen",
+          "english": "get up"
+        }
+      ],
+      "script": "நான் தினமும் சீக்கிரம் எழுந்திருப்பேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i02",
+      "sourcePrompt": "Do you have tea in the morning? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga kaalaila tea kudippeengala?",
+      "acceptedAnswers": [
+        "neenga kaalaila tea kudippeengala?",
+        "neenga kaalaila tea kudipeengala?",
+        "neenga kaalaiyila tea kudippeengala",
+        "neenga kaalaila tea kudikkureengala?"
+      ],
+      "registerVariant": "nee kaalaila tea kudippiya?",
+      "distractors": [
+        "neenga kaalaila tea kudichcheengala?",
+        "neenga kaalaila tea kudikka maatteengala?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "kaalaila",
+          "english": "in the morning"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "kudippeengala",
+          "english": "do you drink?"
+        }
+      ],
+      "script": "நீங்க காலைல டீ குடிப்பீங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i03",
+      "sourcePrompt": "What time do you usually eat? (to a friend)",
+      "register": "casual",
+      "canonical": "nee pothuva ethana manikku saappidura?",
+      "acceptedAnswers": [
+        "nee pothuva ethana manikku saappidura?",
+        "nee pothuva ethana manikku saapdura?",
+        "nee ethana manikku pothuva saappidura?",
+        "nee pothuva enna time-ku saappidura?"
+      ],
+      "registerVariant": "neenga pothuva ethana manikku saappidureenga?",
+      "distractors": [
+        "nee pothuva ethana manikku saapttiya?",
+        "nee pothuva ethana manikku saappiduviya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "pothuva",
+          "english": "usually"
+        },
+        {
+          "word": "ethana manikku",
+          "english": "at what time"
+        },
+        {
+          "word": "saappidura",
+          "english": "do you eat"
+        }
+      ],
+      "script": "நீ பொதுவா எத்தன மணிக்கு சாப்பிடுற?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i04",
+      "sourcePrompt": "Do you walk to work? (to a friend)",
+      "register": "casual",
+      "canonical": "nee velaikku nadandhu poviya?",
+      "acceptedAnswers": [
+        "nee velaikku nadandhu poviya?",
+        "nee velaikku nadanthu poviya?",
+        "nee velaikku nadandhu porriya?",
+        "nee velaikku nadandhe poviya?"
+      ],
+      "registerVariant": "neenga velaikku nadandhu poveengala?",
+      "distractors": [
+        "nee velaikku nadandhu poniya?",
+        "nee velaikku bus-la poviya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "velaikku",
+          "english": "to work"
+        },
+        {
+          "word": "nadandhu",
+          "english": "walking"
+        },
+        {
+          "word": "poviya",
+          "english": "do you go?"
+        }
+      ],
+      "script": "நீ வேலைக்கு நடந்து போவியா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i05",
+      "sourcePrompt": "Sometimes I cook.",
+      "register": "neutral",
+      "canonical": "sila samayam naan samaippen",
+      "acceptedAnswers": [
+        "sila samayam naan samaippen",
+        "sila samayam naan samaipen",
+        "sila neram naan samaippen",
+        "naan sila samayam samaippen"
+      ],
+      "distractors": [
+        "sila samayam naan samaichen",
+        "sila samayam naan samaikka maatten",
+        "eppavume naan samaippen"
+      ],
+      "tokens": [
+        {
+          "word": "sila samayam",
+          "english": "sometimes"
+        },
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "samaippen",
+          "english": "cook"
+        }
+      ],
+      "script": "சில சமயம் நான் சமைப்பேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i06",
+      "sourcePrompt": "I never drink coffee.",
+      "register": "neutral",
+      "canonical": "naan coffee kudikkave maatten",
+      "acceptedAnswers": [
+        "naan coffee kudikkave maatten",
+        "naan coffee kudikave maatten",
+        "naan coffee eppavume kudikka maatten",
+        "naan coffee kudikka maatten"
+      ],
+      "distractors": [
+        "naan coffee kudippen",
+        "naan coffee kudichen",
+        "naan coffee kudikkureen"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "coffee",
+          "english": "coffee"
+        },
+        {
+          "word": "kudikkave maatten",
+          "english": "never drink"
+        }
+      ],
+      "script": "நான் காபி குடிக்கவே மாட்டேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i07",
+      "sourcePrompt": "We eat dinner at eight.",
+      "register": "neutral",
+      "canonical": "naanga ettu manikku raathiri saapduvom",
+      "acceptedAnswers": [
+        "naanga ettu manikku raathiri saapduvom",
+        "naanga ettu manikku raathiri saappiduvom",
+        "naanga ettu manikku dinner saapduvom",
+        "naanga raathiri ettu manikku saapduvom"
+      ],
+      "distractors": [
+        "naanga ettu manikku raathiri saaptom",
+        "naanga ettu manikku raathiri saapda maattom",
+        "naama ettu manikku raathiri saapduvom"
+      ],
+      "tokens": [
+        {
+          "word": "naanga",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "ettu manikku",
+          "english": "at eight"
+        },
+        {
+          "word": "raathiri",
+          "english": "at night"
+        },
+        {
+          "word": "saapduvom",
+          "english": "eat"
+        }
+      ],
+      "script": "நாங்க எட்டு மணிக்கு ராத்திரி சாப்பிடுவோம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i08",
+      "sourcePrompt": "Does your father read the newspaper? (to a friend)",
+      "register": "casual",
+      "canonical": "un appa paper padippaaraa?",
+      "acceptedAnswers": [
+        "un appa paper padippaaraa?",
+        "un appa paper padipaaraa?",
+        "un appa paper padikkuvaaraa?",
+        "un appa newspaper padippaaraa?"
+      ],
+      "registerVariant": "unga appa paper padippaaraa?",
+      "distractors": [
+        "un appa paper padichaaraa?",
+        "un appa paper padikka maattaaraa?"
+      ],
+      "tokens": [
+        {
+          "word": "un appa",
+          "english": "your father"
+        },
+        {
+          "word": "paper",
+          "english": "newspaper"
+        },
+        {
+          "word": "padippaaraa",
+          "english": "does he read?"
+        }
+      ],
+      "script": "உன் அப்பா பேப்பர் படிப்பாரா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i09",
+      "sourcePrompt": "Do you exercise? (to a friend)",
+      "register": "casual",
+      "canonical": "nee exercise pannuviya?",
+      "acceptedAnswers": [
+        "nee exercise pannuviya?",
+        "nee exercise panriya?",
+        "nee exercise pannuviyaa",
+        "nee exercise seiviya?"
+      ],
+      "registerVariant": "neenga exercise pannuveengala?",
+      "distractors": [
+        "nee exercise pannunaiya?",
+        "nee exercise pannittu irukkiya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "exercise",
+          "english": "exercise"
+        },
+        {
+          "word": "pannuviya",
+          "english": "do you do?"
+        }
+      ],
+      "script": "நீ எக்சர்சைஸ் பண்ணுவியா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i10",
+      "sourcePrompt": "Do you go to the temple on Fridays? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga velli kizhamai kovilukku poveengala?",
+      "acceptedAnswers": [
+        "neenga velli kizhamai kovilukku poveengala?",
+        "neenga velli kilamai kovilukku poveengala?",
+        "neenga velli kizhamaila kovilukku poveengala?",
+        "neenga velli kizhamai kovil poveengala?"
+      ],
+      "registerVariant": "nee velli kizhamai kovilukku poviya?",
+      "distractors": [
+        "neenga velli kizhamai kovilukku ponteengala?",
+        "neenga sani kizhamai kovilukku poveengala?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "velli kizhamai",
+          "english": "Friday"
+        },
+        {
+          "word": "kovilukku",
+          "english": "to the temple"
+        },
+        {
+          "word": "poveengala",
+          "english": "do you go?"
+        }
+      ],
+      "script": "நீங்க வெள்ளிக்கிழமை கோவிலுக்கு போவீங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i11",
+      "sourcePrompt": "She goes to work by bus.",
+      "register": "neutral",
+      "canonical": "ava bus-la velaikku povaa",
+      "acceptedAnswers": [
+        "ava bus-la velaikku povaa",
+        "aval bus-la velaikku povaal",
+        "ava bus la velaikku povaa",
+        "ava bus-la velaiku povaa"
+      ],
+      "distractors": [
+        "ava bus-la velaikku ponaa",
+        "ava bus-la velaikku poga maattaa",
+        "avan bus-la velaikku povaan"
+      ],
+      "tokens": [
+        {
+          "word": "ava",
+          "english": "she"
+        },
+        {
+          "word": "bus-la",
+          "english": "by bus"
+        },
+        {
+          "word": "velaikku",
+          "english": "to work"
+        },
+        {
+          "word": "povaa",
+          "english": "goes"
+        }
+      ],
+      "script": "அவ பஸ்ல வேலைக்கு போவா",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i12",
+      "sourcePrompt": "How often do you go there? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga evlo thadava anga poveenga?",
+      "acceptedAnswers": [
+        "neenga evlo thadava anga poveenga?",
+        "neenga evlo thadava angu poveenga?",
+        "neenga evlo dhadava anga poveenga?",
+        "neenga anga evlo thadava poveenga?"
+      ],
+      "registerVariant": "nee evlo thadava anga poviya?",
+      "distractors": [
+        "neenga evlo thadava anga ponteenga?",
+        "neenga evlo neram anga poveenga?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "evlo thadava",
+          "english": "how many times"
+        },
+        {
+          "word": "anga",
+          "english": "there"
+        },
+        {
+          "word": "poveenga",
+          "english": "do you go"
+        }
+      ],
+      "script": "நீங்க எவ்ளோ தடவ அங்க போவீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i13",
+      "sourcePrompt": "Once a week.",
+      "register": "neutral",
+      "canonical": "vaaththukku oru thadava",
+      "acceptedAnswers": [
+        "vaaththukku oru thadava",
+        "vaaramukku oru thadava",
+        "vaaraththukku oru thadava",
+        "oru vaaraththukku oru thadava"
+      ],
+      "distractors": [
+        "vaaththukku rendu thadava",
+        "maasaththukku oru thadava",
+        "dhinamum oru thadava"
+      ],
+      "tokens": [
+        {
+          "word": "vaaththukku",
+          "english": "per week"
+        },
+        {
+          "word": "oru thadava",
+          "english": "once"
+        }
+      ],
+      "script": "வாரத்துக்கு ஒரு தடவ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i14",
+      "sourcePrompt": "I study every evening.",
+      "register": "neutral",
+      "canonical": "naan dhinamum saayangaalam padippen",
+      "acceptedAnswers": [
+        "naan dhinamum saayangaalam padippen",
+        "naan dhinamum saayankaalam padippen",
+        "naan dhinamum saayangaalam padipen",
+        "dhinamum saayangaalam padippen"
+      ],
+      "distractors": [
+        "naan dhinamum saayangaalam padichen",
+        "naan dhinamum kaalaila padippen",
+        "naan saayangaalam padikka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "dhinamum",
+          "english": "every day"
+        },
+        {
+          "word": "saayangaalam",
+          "english": "evening"
+        },
+        {
+          "word": "padippen",
+          "english": "study"
+        }
+      ],
+      "script": "நான் தினமும் சாயங்காலம் படிப்பேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i15",
+      "sourcePrompt": "He doesn't smoke.",
+      "register": "neutral",
+      "canonical": "avan cigarette adikka maattaan",
+      "acceptedAnswers": [
+        "avan cigarette adikka maattaan",
+        "avan cigarette adikkamaattaan",
+        "avan cigarette pidikka maattaan",
+        "avan pugai pidikka maattaan"
+      ],
+      "distractors": [
+        "avan cigarette adippaan",
+        "avan cigarette adichaan",
+        "ava cigarette adikka maattaa"
+      ],
+      "tokens": [
+        {
+          "word": "avan",
+          "english": "he"
+        },
+        {
+          "word": "cigarette",
+          "english": "cigarette"
+        },
+        {
+          "word": "adikka maattaan",
+          "english": "does not smoke"
+        }
+      ],
+      "script": "அவன் சிகரெட் அடிக்க மாட்டான்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i16",
+      "sourcePrompt": "I rarely watch TV.",
+      "register": "neutral",
+      "canonical": "naan adhigam TV paakka maatten",
+      "acceptedAnswers": [
+        "naan adhigam TV paakka maatten",
+        "naan adhigama TV paakka maatten",
+        "naan romba TV paakka maatten",
+        "naan TV adhigam paakka maatten"
+      ],
+      "distractors": [
+        "naan adhigam TV paappen",
+        "naan adhigam TV paathen",
+        "naan eppavume TV paappen"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "adhigam",
+          "english": "much"
+        },
+        {
+          "word": "TV",
+          "english": "TV"
+        },
+        {
+          "word": "paakka maatten",
+          "english": "don't watch"
+        }
+      ],
+      "script": "நான் அதிகம் டிவி பாக்க மாட்டேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i17",
+      "sourcePrompt": "Do you go to bed late? (to a friend)",
+      "register": "casual",
+      "canonical": "nee late-aa thoonguviya?",
+      "acceptedAnswers": [
+        "nee late-aa thoonguviya?",
+        "nee late-a thoonguviya?",
+        "nee late-aa thoongura?",
+        "nee late-aa thoongiduviya?"
+      ],
+      "registerVariant": "neenga late-aa thoonguveengala?",
+      "distractors": [
+        "nee late-aa thoongunaya?",
+        "nee late-aa thoonga maattiya?"
+      ],
+      "tokens": [
+        {
+          "word": "nee",
+          "english": "you (casual)"
+        },
+        {
+          "word": "late-aa",
+          "english": "late"
+        },
+        {
+          "word": "thoonguviya",
+          "english": "do you sleep?"
+        }
+      ],
+      "script": "நீ லேட்டா தூங்குவியா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i18",
+      "sourcePrompt": "I sleep at ten.",
+      "register": "neutral",
+      "canonical": "naan pathu manikku thoonguven",
+      "acceptedAnswers": [
+        "naan pathu manikku thoonguven",
+        "naan paththu manikku thoonguven",
+        "naan pathu manikku thoongiduven",
+        "pathu manikku thoonguven"
+      ],
+      "distractors": [
+        "naan pathu manikku thoongunen",
+        "naan pathu manikku thoongala",
+        "naan pathu manikku ezhundhiruppen"
+      ],
+      "tokens": [
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "pathu manikku",
+          "english": "at ten"
+        },
+        {
+          "word": "thoonguven",
+          "english": "sleep"
+        }
+      ],
+      "script": "நான் பத்து மணிக்கு தூங்குவேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i19",
+      "sourcePrompt": "Where do you usually shop? (to an elder)",
+      "register": "respectful",
+      "canonical": "neenga pothuva enga shopping pannuveenga?",
+      "acceptedAnswers": [
+        "neenga pothuva enga shopping pannuveenga?",
+        "neenga pothuva enga shopping panuveenga?",
+        "neenga pothuva enga kadai-ku poveenga?",
+        "neenga enga pothuva shopping pannuveenga?"
+      ],
+      "registerVariant": "nee pothuva enga shopping pannuva?",
+      "distractors": [
+        "neenga pothuva enga shopping pannineenga?",
+        "neenga pothuva eppo shopping pannuveenga?"
+      ],
+      "tokens": [
+        {
+          "word": "neenga",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "pothuva",
+          "english": "usually"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "shopping pannuveenga",
+          "english": "do you shop"
+        }
+      ],
+      "script": "நீங்க பொதுவா எங்க ஷாப்பிங் பண்ணுவீங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u02-i20",
+      "sourcePrompt": "On Sundays I rest.",
+      "register": "neutral",
+      "canonical": "njaayiru-la naan rest edukkuven",
+      "acceptedAnswers": [
+        "njaayiru-la naan rest edukkuven",
+        "njaayiru la naan rest edukkuven",
+        "njaayitru kizhamai naan rest edukkuven",
+        "njaayiru naan rest edukkuven"
+      ],
+      "distractors": [
+        "njaayiru-la naan velai pannuven",
+        "njaayiru-la naan rest eduthen",
+        "njaayiru-la naan rest edukka maatten"
+      ],
+      "tokens": [
+        {
+          "word": "njaayiru-la",
+          "english": "on Sundays"
+        },
+        {
+          "word": "naan",
+          "english": "I"
+        },
+        {
+          "word": "rest",
+          "english": "rest"
+        },
+        {
+          "word": "edukkuven",
+          "english": "take"
+        }
+      ],
+      "script": "ஞாயிறுல நான் ரெஸ்ட் எடுக்குவேன்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 # Progress: two-way course plan (plan.md)
 
 ## Done (2026-10-12)
+- Level 2 content for both courses drafted (12 lessons, 240 phrases each, `unreviewed`), ahead of the Level 1 review at the owner's request.
+- Tamil-script backfill for lessons 1 to 5 opened as PR #35 for the owner to read.
 - Exam paper format, loader and blueprint checks (DECISIONS 046), wired into the app; no paper exists yet.
 - Exam screen E3 (PR #32): Home entry, sitting, result, Reset clears exam results. Invisible until a paper exists (E4).
 - Level 1 content for both courses (PRs #29, #30): Tamil lessons 6 to 12 and all 12 Telugu lessons, 480 phrases, all `unreviewed`; `docs/content/STYLE_NOTES_TAMIL.md` and `STYLE_NOTES_TELUGU.md`.
@@ -34,4 +36,4 @@
 - The new screens have been tested and walked once in the simulator, not reviewed by eye. Device-only checks (file protection, AirDrop import, VoiceOver, largest text) are open.
 
 ## Next action
-- Owner reviews Tamil Level 1 (lessons 6 to 12) and the Telugu reviewer checks Telugu Level 1, in the editor; corrections go into the style notes; then Level 2. The exam screen (E3) is built; the exam papers wait for Level 8 (format and loader are built). See `docs/HANDOFF.md`.
+- Owner reviews Tamil Levels 1 and 2 (Level 1 lessons 6 to 12, all of Level 2) and the Telugu reviewer checks Telugu Levels 1 and 2, in the editor; corrections go into the style notes; then Level 3. The exam screen (E3) is built; the exam papers wait for Level 8 (format and loader are built). See `docs/HANDOFF.md`.

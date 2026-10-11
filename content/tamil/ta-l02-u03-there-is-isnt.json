@@ -1,0 +1,679 @@
+{
+  "scenarioId": "ta-l02-u03",
+  "language": "tamil",
+  "title": "There is, there isn't",
+  "subtitle": "Looking for something: what exists, what you have and what you don't",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 3
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u03-i01",
+      "sourcePrompt": "Is there a pharmacy near here?",
+      "register": "neutral",
+      "canonical": "inga pakkathula pharmacy irukkaa?",
+      "acceptedAnswers": [
+        "inga pakkathula pharmacy irukkaa?",
+        "inga pakkathula pharmacy irukka?",
+        "inga pakkaththula pharmacy irukkaa?",
+        "inga pakkathula medical shop irukkaa?"
+      ],
+      "distractors": [
+        "inga pakkathula pharmacy irundhuchaa?",
+        "inga pakkathula pharmacy irukkum?",
+        "inga pharmacy enga irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "pakkathula",
+          "english": "nearby"
+        },
+        {
+          "word": "pharmacy",
+          "english": "pharmacy"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is there?"
+        }
+      ],
+      "script": "இங்க பக்கத்துல பார்மசி இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i02",
+      "sourcePrompt": "Yes, there is.",
+      "register": "neutral",
+      "canonical": "aama, irukku",
+      "acceptedAnswers": [
+        "aama, irukku",
+        "aama irukku",
+        "aama, irukkudhu",
+        "aamaa, irukku"
+      ],
+      "distractors": [
+        "aama, irundhuchu",
+        "aama, irukkum",
+        "illa, irukku"
+      ],
+      "tokens": [
+        {
+          "word": "aama",
+          "english": "yes"
+        },
+        {
+          "word": "irukku",
+          "english": "there is"
+        }
+      ],
+      "script": "ஆமா, இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i03",
+      "sourcePrompt": "No, there isn't any.",
+      "register": "neutral",
+      "canonical": "illa, onnum illa",
+      "acceptedAnswers": [
+        "illa, onnum illa",
+        "illa onnum illa",
+        "illa, ethuvum illa",
+        "illa, ondrum illa"
+      ],
+      "distractors": [
+        "aama, onnum irukku",
+        "illa, onnu irukku",
+        "illa, onnum irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "illa",
+          "english": "no"
+        },
+        {
+          "word": "onnum illa",
+          "english": "nothing"
+        }
+      ],
+      "script": "இல்ல, ஒண்ணும் இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i04",
+      "sourcePrompt": "Do you have a pen? (to a friend)",
+      "register": "casual",
+      "canonical": "unnitta pen irukkaa?",
+      "acceptedAnswers": [
+        "unnitta pen irukkaa?",
+        "unkitta pen irukkaa?",
+        "unnitta pen irukka?",
+        "unnidam pen irukkaa?"
+      ],
+      "registerVariant": "ungakitta pen irukkaa?",
+      "distractors": [
+        "unnitta pen irundhucha?",
+        "unnitta pen irukkum?"
+      ],
+      "tokens": [
+        {
+          "word": "unnitta",
+          "english": "with you (casual)"
+        },
+        {
+          "word": "pen",
+          "english": "pen"
+        },
+        {
+          "word": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "உன்கிட்ட பேனா இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i05",
+      "sourcePrompt": "Do you have time? (to an elder)",
+      "register": "respectful",
+      "canonical": "ungakitta time irukkaa?",
+      "acceptedAnswers": [
+        "ungakitta time irukkaa?",
+        "ungalukku time irukkaa?",
+        "ungakitta neram irukkaa?",
+        "ungakitta time irukka?"
+      ],
+      "registerVariant": "unnitta time irukkaa?",
+      "distractors": [
+        "ungakitta time irundhucha?",
+        "ungakitta time irukkum?"
+      ],
+      "tokens": [
+        {
+          "word": "ungakitta",
+          "english": "with you (respectful)"
+        },
+        {
+          "word": "time",
+          "english": "time"
+        },
+        {
+          "word": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "உங்ககிட்ட டைம் இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i06",
+      "sourcePrompt": "I have two younger brothers.",
+      "register": "neutral",
+      "canonical": "enakku rendu thambi irukkaanga",
+      "acceptedAnswers": [
+        "enakku rendu thambi irukkaanga",
+        "enakku rendu thambi irukkanga",
+        "enakku rendu thambigal irukkaanga",
+        "enakku irandu thambi irukkaanga"
+      ],
+      "distractors": [
+        "enakku rendu thambi illa",
+        "enakku rendu thambi irundhaanga",
+        "enakku rendu thambi venum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "rendu thambi",
+          "english": "two younger brothers"
+        },
+        {
+          "word": "irukkaanga",
+          "english": "there are"
+        }
+      ],
+      "script": "எனக்கு ரெண்டு தம்பி இருக்காங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i07",
+      "sourcePrompt": "I don't have a car.",
+      "register": "neutral",
+      "canonical": "enkitta car illa",
+      "acceptedAnswers": [
+        "enkitta car illa",
+        "ennitta car illa",
+        "enakku car illa",
+        "enkitta car illai"
+      ],
+      "distractors": [
+        "enkitta car irukku",
+        "enkitta car irundhuchu",
+        "enkitta car venaam"
+      ],
+      "tokens": [
+        {
+          "word": "enkitta",
+          "english": "with me"
+        },
+        {
+          "word": "car",
+          "english": "car"
+        },
+        {
+          "word": "illa",
+          "english": "not"
+        }
+      ],
+      "script": "என்கிட்ட கார் இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i08",
+      "sourcePrompt": "There is no water.",
+      "register": "neutral",
+      "canonical": "thanni illa",
+      "acceptedAnswers": [
+        "thanni illa",
+        "thanni illai",
+        "thanni ille",
+        "thanni onnum illa"
+      ],
+      "distractors": [
+        "thanni irukku",
+        "thanni irundhuchu",
+        "thanni irukkum"
+      ],
+      "tokens": [
+        {
+          "word": "thanni",
+          "english": "water"
+        },
+        {
+          "word": "illa",
+          "english": "there is none"
+        }
+      ],
+      "script": "தண்ணி இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i09",
+      "sourcePrompt": "Is there any milk at home?",
+      "register": "neutral",
+      "canonical": "veetla paal irukkaa?",
+      "acceptedAnswers": [
+        "veetla paal irukkaa?",
+        "veetula paal irukka?",
+        "veetla paal irukkaa",
+        "veetla paal irukkuma?"
+      ],
+      "distractors": [
+        "veetla paal irundhucha?",
+        "veetla paal irukkum?",
+        "veetla paal enga?"
+      ],
+      "tokens": [
+        {
+          "word": "veetla",
+          "english": "at home"
+        },
+        {
+          "word": "paal",
+          "english": "milk"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is there?"
+        }
+      ],
+      "script": "வீட்ல பால் இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i10",
+      "sourcePrompt": "There's a lot of traffic.",
+      "register": "neutral",
+      "canonical": "romba traffic irukku",
+      "acceptedAnswers": [
+        "romba traffic irukku",
+        "romba traffic irukkudhu",
+        "traffic romba irukku",
+        "romba traffic jaasthi"
+      ],
+      "distractors": [
+        "romba traffic irundhuchu",
+        "romba traffic irukkum",
+        "romba traffic illa"
+      ],
+      "tokens": [
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "traffic",
+          "english": "traffic"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "ரொம்ப டிராஃபிக் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i11",
+      "sourcePrompt": "Is the seat free?",
+      "register": "neutral",
+      "canonical": "seat empty-aa irukkaa?",
+      "acceptedAnswers": [
+        "seat empty-aa irukkaa?",
+        "seat empty-a irukkaa?",
+        "seat khaali irukkaa?",
+        "seat empty irukkaa?"
+      ],
+      "distractors": [
+        "seat empty-aa irundhuchaa?",
+        "seat empty-aa irukkum?",
+        "seat enga irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "seat",
+          "english": "seat"
+        },
+        {
+          "word": "empty-aa",
+          "english": "free"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "சீட் எம்ப்டியா இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i12",
+      "sourcePrompt": "Do you have a charger? (to a friend)",
+      "register": "casual",
+      "canonical": "unnitta charger irukkaa?",
+      "acceptedAnswers": [
+        "unnitta charger irukkaa?",
+        "unkitta charger irukkaa?",
+        "unnitta charger irukka?",
+        "unnidam charger irukkaa?"
+      ],
+      "registerVariant": "ungakitta charger irukkaa?",
+      "distractors": [
+        "unnitta charger irundhucha?",
+        "unnitta charger irukkum?"
+      ],
+      "tokens": [
+        {
+          "word": "unnitta",
+          "english": "with you (casual)"
+        },
+        {
+          "word": "charger",
+          "english": "charger"
+        },
+        {
+          "word": "irukkaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "உன்கிட்ட சார்ஜர் இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i13",
+      "sourcePrompt": "I have a question.",
+      "register": "neutral",
+      "canonical": "enakku oru kelvi irukku",
+      "acceptedAnswers": [
+        "enakku oru kelvi irukku",
+        "enakku oru question irukku",
+        "enakku oru kelvi irukkudhu",
+        "enakkoru kelvi irukku"
+      ],
+      "distractors": [
+        "enakku oru kelvi irundhuchu",
+        "enakku oru kelvi illa",
+        "enakku oru kelvi irukkum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "oru kelvi",
+          "english": "a question"
+        },
+        {
+          "word": "irukku",
+          "english": "there is"
+        }
+      ],
+      "script": "எனக்கு ஒரு கேள்வி இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i14",
+      "sourcePrompt": "There are many people.",
+      "register": "neutral",
+      "canonical": "niraiya aal irukkaanga",
+      "acceptedAnswers": [
+        "niraiya aal irukkaanga",
+        "niraya aal irukkaanga",
+        "niraiya per irukkaanga",
+        "niraiya aalunga irukkaanga"
+      ],
+      "distractors": [
+        "niraiya aal irundhaanga",
+        "niraiya aal irukkamaattaanga",
+        "konjam aal irukkaanga"
+      ],
+      "tokens": [
+        {
+          "word": "niraiya",
+          "english": "many"
+        },
+        {
+          "word": "aal",
+          "english": "people"
+        },
+        {
+          "word": "irukkaanga",
+          "english": "are there"
+        }
+      ],
+      "script": "நிறைய ஆள் இருக்காங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i15",
+      "sourcePrompt": "Is anyone there? (to an elder)",
+      "register": "respectful",
+      "canonical": "anga yaaraavadhu irukkeengala?",
+      "acceptedAnswers": [
+        "anga yaaraavadhu irukkeengala?",
+        "anga yaaravathu irukkeengala?",
+        "anga yaaraachum irukkeengala?",
+        "anga yaaraavadhu irukkaangala?"
+      ],
+      "registerVariant": "anga yaaraavadhu irukkiyaa?",
+      "distractors": [
+        "anga yaaraavadhu irundheengala?",
+        "anga yaaraavadhu irupeengala?"
+      ],
+      "tokens": [
+        {
+          "word": "anga",
+          "english": "there"
+        },
+        {
+          "word": "yaaraavadhu",
+          "english": "anyone"
+        },
+        {
+          "word": "irukkeengala",
+          "english": "are you there?"
+        }
+      ],
+      "script": "அங்க யாராவது இருக்கீங்களா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i16",
+      "sourcePrompt": "I have an appointment.",
+      "register": "neutral",
+      "canonical": "enakku oru appointment irukku",
+      "acceptedAnswers": [
+        "enakku oru appointment irukku",
+        "enakku oru appointment irukkudhu",
+        "enakku appointment irukku",
+        "enakku oru appointment irukkuthu"
+      ],
+      "distractors": [
+        "enakku oru appointment irundhuchu",
+        "enakku oru appointment illa",
+        "enakku oru appointment irukkum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "oru appointment",
+          "english": "an appointment"
+        },
+        {
+          "word": "irukku",
+          "english": "there is"
+        }
+      ],
+      "script": "எனக்கு ஒரு அப்பாயின்ட்மென்ட் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i17",
+      "sourcePrompt": "We have no sugar.",
+      "register": "neutral",
+      "canonical": "namma kitta sakkarai illa",
+      "acceptedAnswers": [
+        "namma kitta sakkarai illa",
+        "nammakitta sakkarai illa",
+        "enga kitta sakkarai illa",
+        "namma kitta sakkarai illai"
+      ],
+      "distractors": [
+        "namma kitta sakkarai irukku",
+        "namma kitta sakkarai irundhuchu",
+        "namma kitta uppu illa"
+      ],
+      "tokens": [
+        {
+          "word": "namma kitta",
+          "english": "with us"
+        },
+        {
+          "word": "sakkarai",
+          "english": "sugar"
+        },
+        {
+          "word": "illa",
+          "english": "none"
+        }
+      ],
+      "script": "நம்ம கிட்ட சக்கரை இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i18",
+      "sourcePrompt": "How many do you have? (to a friend)",
+      "register": "casual",
+      "canonical": "unnitta ethana irukku?",
+      "acceptedAnswers": [
+        "unnitta ethana irukku?",
+        "unkitta ethana irukku?",
+        "unnitta ethana irukkudhu?",
+        "unnitta evlo irukku?"
+      ],
+      "registerVariant": "ungakitta ethana irukku?",
+      "distractors": [
+        "unnitta ethana irundhuchu?",
+        "unnitta ethana irukkum?"
+      ],
+      "tokens": [
+        {
+          "word": "unnitta",
+          "english": "with you (casual)"
+        },
+        {
+          "word": "ethana",
+          "english": "how many"
+        },
+        {
+          "word": "irukku",
+          "english": "are there"
+        }
+      ],
+      "script": "உன்கிட்ட எத்தன இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i19",
+      "sourcePrompt": "Is there parking?",
+      "register": "neutral",
+      "canonical": "parking irukkaa?",
+      "acceptedAnswers": [
+        "parking irukkaa?",
+        "parking irukka?",
+        "parking irukkudhaa?",
+        "parking vasadhi irukkaa?"
+      ],
+      "distractors": [
+        "parking irundhucha?",
+        "parking irukkum?",
+        "parking enga?"
+      ],
+      "tokens": [
+        {
+          "word": "parking",
+          "english": "parking"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is there?"
+        }
+      ],
+      "script": "பார்க்கிங் இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u03-i20",
+      "sourcePrompt": "There is nothing in the fridge.",
+      "register": "neutral",
+      "canonical": "fridge-la onnum illa",
+      "acceptedAnswers": [
+        "fridge-la onnum illa",
+        "fridge la onnum illa",
+        "fridge-la ethuvum illa",
+        "fridge-la onnumey illa"
+      ],
+      "distractors": [
+        "fridge-la ellaam irukku",
+        "fridge-la onnum irundhuchu",
+        "fridge-la onnum irukkum"
+      ],
+      "tokens": [
+        {
+          "word": "fridge-la",
+          "english": "in the fridge"
+        },
+        {
+          "word": "onnum illa",
+          "english": "nothing"
+        }
+      ],
+      "script": "ஃப்ரிட்ஜ்ல ஒண்ணும் இல்ல",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

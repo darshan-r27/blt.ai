@@ -1,0 +1,711 @@
+{
+  "scenarioId": "ta-l02-u12",
+  "language": "tamil",
+  "title": "Weather and seasons",
+  "subtitle": "Small talk: hot, rainy, windy, summer and the rainy season",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 12
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u12-i01",
+      "sourcePrompt": "It's very cold today.",
+      "register": "neutral",
+      "canonical": "innikku romba kulirudhu",
+      "acceptedAnswers": [
+        "innikku romba kulirudhu",
+        "innaikku romba kulirudhu",
+        "innikku rombave kulirudhu",
+        "innikku romba kulira irukku"
+      ],
+      "distractors": [
+        "innikku romba sudaa irukku",
+        "innikku romba kulirichu",
+        "innikku romba kulirum"
+      ],
+      "tokens": [
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "kulirudhu",
+          "english": "is cold"
+        }
+      ],
+      "script": "இன்னிக்கு ரொம்ப குளிருது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i02",
+      "sourcePrompt": "It's windy.",
+      "register": "neutral",
+      "canonical": "kaathu romba adikkudhu",
+      "acceptedAnswers": [
+        "kaathu romba adikkudhu",
+        "kaathu rombave adikkudhu",
+        "kaathu romba adikkuthu",
+        "kaatru romba adikkudhu"
+      ],
+      "distractors": [
+        "kaathu romba adichuchu",
+        "kaathu adikkaadhu",
+        "mazhai romba adikkudhu"
+      ],
+      "tokens": [
+        {
+          "word": "kaathu",
+          "english": "wind"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "adikkudhu",
+          "english": "is blowing"
+        }
+      ],
+      "script": "காத்து ரொம்ப அடிக்குது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i03",
+      "sourcePrompt": "It's cloudy today.",
+      "register": "neutral",
+      "canonical": "innikku mabbaa irukku",
+      "acceptedAnswers": [
+        "innikku mabbaa irukku",
+        "innaikku mabbaa irukku",
+        "innikku mabbu irukku",
+        "innikku mugil moottamaa irukku"
+      ],
+      "distractors": [
+        "innikku veyilaa irukku",
+        "innikku mabbaa irundhuchu",
+        "innikku mabbaa illa"
+      ],
+      "tokens": [
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "mabbaa",
+          "english": "cloudy"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "இன்னிக்கு மப்பா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i04",
+      "sourcePrompt": "Will it rain tomorrow?",
+      "register": "neutral",
+      "canonical": "naalaikku mazhai peiyumaa?",
+      "acceptedAnswers": [
+        "naalaikku mazhai peiyumaa?",
+        "naalaikku mazhai peiyuma?",
+        "naalaiku mazhai varumaa?",
+        "naalaikku mazhai peiyumaa"
+      ],
+      "distractors": [
+        "naalaikku mazhai peindhucha?",
+        "naalaikku mazhai peiyaadhaa?",
+        "innikku mazhai peiyumaa?"
+      ],
+      "tokens": [
+        {
+          "word": "naalaikku",
+          "english": "tomorrow"
+        },
+        {
+          "word": "mazhai",
+          "english": "rain"
+        },
+        {
+          "word": "peiyumaa",
+          "english": "will it fall?"
+        }
+      ],
+      "script": "நாளைக்கு மழை பெய்யுமா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i05",
+      "sourcePrompt": "What's the weather like today? (to a friend)",
+      "register": "casual",
+      "canonical": "innikku weather eppadi irukku?",
+      "acceptedAnswers": [
+        "innikku weather eppadi irukku?",
+        "innaikku weather eppadi irukku?",
+        "innikku weather epdi irukku?",
+        "innikku weather eppadi irukkudhu?"
+      ],
+      "registerVariant": "innikku weather eppadi irukku-nga?",
+      "distractors": [
+        "innikku weather evlo irukku?",
+        "innikku weather enga irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "weather",
+          "english": "weather"
+        },
+        {
+          "word": "eppadi",
+          "english": "how"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "இன்னிக்கு வெதர் எப்படி இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i06",
+      "sourcePrompt": "I like the rain.",
+      "register": "neutral",
+      "canonical": "enakku mazhai pidikkum",
+      "acceptedAnswers": [
+        "enakku mazhai pidikkum",
+        "enakku mazhai pudikkum",
+        "enakku mazhai romba pidikkum",
+        "enakku mazhai pidikkudhu"
+      ],
+      "distractors": [
+        "enakku mazhai pidikkaadhu",
+        "enakku mazhai pidichuchu",
+        "enakku veyil pidikkum"
+      ],
+      "tokens": [
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "mazhai",
+          "english": "rain"
+        },
+        {
+          "word": "pidikkum",
+          "english": "likes"
+        }
+      ],
+      "script": "எனக்கு மழை புடிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i07",
+      "sourcePrompt": "Summer is very hot here.",
+      "register": "neutral",
+      "canonical": "inga veyil kaalam romba sudaa irukkum",
+      "acceptedAnswers": [
+        "inga veyil kaalam romba sudaa irukkum",
+        "inga veyil kaalam romba suda irukkum",
+        "inga summer romba sudaa irukkum",
+        "inga veyil kaalaththula romba sudaa irukkum"
+      ],
+      "distractors": [
+        "inga veyil kaalam romba kulira irukkum",
+        "inga veyil kaalam romba sudaa irundhuchu",
+        "inga veyil kaalam sudaa irukkaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "veyil kaalam",
+          "english": "summer"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "sudaa",
+          "english": "hot"
+        },
+        {
+          "word": "irukkum",
+          "english": "is usually"
+        }
+      ],
+      "script": "இங்க வெயில் காலம் ரொம்ப சூடா இருக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i08",
+      "sourcePrompt": "The rainy season starts in June.",
+      "register": "neutral",
+      "canonical": "mazhai kaalam June-la aarambikkum",
+      "acceptedAnswers": [
+        "mazhai kaalam June-la aarambikkum",
+        "mazhai kaalam June la aarambikkum",
+        "mazhai kaalam Joon-la aarambikkum",
+        "mazhai kaalam June-la aarambichidum"
+      ],
+      "distractors": [
+        "mazhai kaalam June-la mudiyum",
+        "mazhai kaalam January-la aarambikkum",
+        "mazhai kaalam June-la aarambichuchu"
+      ],
+      "tokens": [
+        {
+          "word": "mazhai kaalam",
+          "english": "rainy season"
+        },
+        {
+          "word": "June-la",
+          "english": "in June"
+        },
+        {
+          "word": "aarambikkum",
+          "english": "starts"
+        }
+      ],
+      "script": "மழை காலம் ஜூன்ல ஆரம்பிக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i09",
+      "sourcePrompt": "Winter is pleasant.",
+      "register": "neutral",
+      "canonical": "kulir kaalam sugamaa irukkum",
+      "acceptedAnswers": [
+        "kulir kaalam sugamaa irukkum",
+        "kulir kaalam sugama irukkum",
+        "kulir kaalam romba sugamaa irukkum",
+        "winter sugamaa irukkum"
+      ],
+      "distractors": [
+        "kulir kaalam sudaa irukkum",
+        "kulir kaalam sugamaa irundhuchu",
+        "kulir kaalam sugamaa irukkaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "kulir kaalam",
+          "english": "winter"
+        },
+        {
+          "word": "sugamaa",
+          "english": "pleasant"
+        },
+        {
+          "word": "irukkum",
+          "english": "is"
+        }
+      ],
+      "script": "குளிர் காலம் சுகமா இருக்கும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i10",
+      "sourcePrompt": "Take a jacket, it will be cold. (to an elder)",
+      "register": "respectful",
+      "canonical": "jacket eduthukkittu ponga, kulirum",
+      "acceptedAnswers": [
+        "jacket eduthukkittu ponga, kulirum",
+        "jacket eduthukittu ponga, kulirum",
+        "jacket eduthukittu ponga kulirum",
+        "jacket eduthukkittu ponga, kulirudhu"
+      ],
+      "registerVariant": "jacket eduthukkittu po, kulirum",
+      "distractors": [
+        "jacket eduthukkittu ponga, veyilaa irukkum",
+        "jacket vendaam ponga, kulirum"
+      ],
+      "tokens": [
+        {
+          "word": "jacket",
+          "english": "jacket"
+        },
+        {
+          "word": "eduthukkittu ponga",
+          "english": "please take along"
+        },
+        {
+          "word": "kulirum",
+          "english": "it will be cold"
+        }
+      ],
+      "script": "ஜாக்கெட் எடுத்துக்கிட்டு போங்க, குளிரும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i11",
+      "sourcePrompt": "Take an umbrella, it might rain. (to a friend)",
+      "register": "casual",
+      "canonical": "kudai eduthuko, mazhai varalaam",
+      "acceptedAnswers": [
+        "kudai eduthuko, mazhai varalaam",
+        "kudai eduthukko, mazhai varalaam",
+        "kudai eduthukittu po, mazhai varalaam",
+        "kudai eduthuko mazhai varalam"
+      ],
+      "registerVariant": "kudai eduthukkonga, mazhai varalaam",
+      "distractors": [
+        "kudai vendaam, mazhai varalaam",
+        "kudai eduthuko, mazhai vandhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "kudai",
+          "english": "umbrella"
+        },
+        {
+          "word": "eduthuko",
+          "english": "take"
+        },
+        {
+          "word": "mazhai varalaam",
+          "english": "it might rain"
+        }
+      ],
+      "script": "குடை எடுத்துக்கோ, மழை வரலாம்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i12",
+      "sourcePrompt": "It's raining heavily.",
+      "register": "neutral",
+      "canonical": "romba kanamaa mazhai peiyudhu",
+      "acceptedAnswers": [
+        "romba kanamaa mazhai peiyudhu",
+        "romba kanama mazhai peiyudhu",
+        "romba jorraa mazhai peiyudhu",
+        "nalla kanamaana mazhai peiyudhu"
+      ],
+      "distractors": [
+        "romba sinnaa mazhai peiyudhu",
+        "romba kanamaa mazhai peindhuchu",
+        "romba kanamaa mazhai peiyaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "kanamaa",
+          "english": "heavily"
+        },
+        {
+          "word": "mazhai peiyudhu",
+          "english": "it is raining"
+        }
+      ],
+      "script": "ரொம்ப கனமா மழை பெய்யுது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i13",
+      "sourcePrompt": "The sun is very strong.",
+      "register": "neutral",
+      "canonical": "veyil romba jaasthi",
+      "acceptedAnswers": [
+        "veyil romba jaasthi",
+        "veyil rombave jaasthi",
+        "veyil romba adhigam",
+        "veyil romba kodumaiyaa irukku"
+      ],
+      "distractors": [
+        "veyil romba kammi",
+        "veyil romba jaasthi irundhuchu",
+        "mazhai romba jaasthi"
+      ],
+      "tokens": [
+        {
+          "word": "veyil",
+          "english": "sun"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "jaasthi",
+          "english": "strong"
+        }
+      ],
+      "script": "வெயில் ரொம்ப ஜாஸ்தி",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i14",
+      "sourcePrompt": "It gets dark early in winter.",
+      "register": "neutral",
+      "canonical": "kulir kaalaththula seekiram irul aagum",
+      "acceptedAnswers": [
+        "kulir kaalaththula seekiram irul aagum",
+        "kulir kaalathula seekkiram irul aagum",
+        "kulir kaalaththula seekiram irul aayidum",
+        "winter-la seekiram irul aagum"
+      ],
+      "distractors": [
+        "kulir kaalaththula late-aa irul aagum",
+        "veyil kaalaththula seekiram irul aagum",
+        "kulir kaalaththula seekiram vellicham aagum"
+      ],
+      "tokens": [
+        {
+          "word": "kulir kaalaththula",
+          "english": "in winter"
+        },
+        {
+          "word": "seekiram",
+          "english": "early"
+        },
+        {
+          "word": "irul aagum",
+          "english": "gets dark"
+        }
+      ],
+      "script": "குளிர் காலத்துல சீக்கிரம் இருள் ஆகும்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i15",
+      "sourcePrompt": "Is it hot there?",
+      "register": "neutral",
+      "canonical": "anga sudaa irukkaa?",
+      "acceptedAnswers": [
+        "anga sudaa irukkaa?",
+        "angu sudaa irukkaa?",
+        "anga veyilaa irukkaa?",
+        "anga sudaa irukka?"
+      ],
+      "distractors": [
+        "anga sudaa irundhuchaa?",
+        "anga kulirudhaa?",
+        "inga sudaa irukkaa?"
+      ],
+      "tokens": [
+        {
+          "word": "anga",
+          "english": "there"
+        },
+        {
+          "word": "sudaa",
+          "english": "hot"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "அங்க சூடா இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i16",
+      "sourcePrompt": "How is the weather there? (to an elder)",
+      "register": "respectful",
+      "canonical": "anga weather eppadi irukku-nga?",
+      "acceptedAnswers": [
+        "anga weather eppadi irukku-nga?",
+        "anga weather eppadi irukkunga?",
+        "angu weather eppadi irukku-nga?",
+        "anga weather epdi irukkunga?"
+      ],
+      "registerVariant": "anga weather eppadi irukku?",
+      "distractors": [
+        "anga weather evlo irukkunga?",
+        "anga weather eppo irukkunga?"
+      ],
+      "tokens": [
+        {
+          "word": "anga",
+          "english": "there"
+        },
+        {
+          "word": "weather",
+          "english": "weather"
+        },
+        {
+          "word": "eppadi",
+          "english": "how"
+        },
+        {
+          "word": "irukku-nga",
+          "english": "is (polite)"
+        }
+      ],
+      "script": "அங்க வெதர் எப்படி இருக்குங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i17",
+      "sourcePrompt": "It's a lovely day.",
+      "register": "neutral",
+      "canonical": "innikku romba nalla naal",
+      "acceptedAnswers": [
+        "innikku romba nalla naal",
+        "innaikku romba nalla naal",
+        "innikku azhagaana naal",
+        "innikku nalla naal"
+      ],
+      "distractors": [
+        "innikku romba mosamaana naal",
+        "innikku romba nalla naal illa",
+        "naalaikku romba nalla naal"
+      ],
+      "tokens": [
+        {
+          "word": "innikku",
+          "english": "today"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "nalla naal",
+          "english": "nice day"
+        }
+      ],
+      "script": "இன்னிக்கு ரொம்ப நல்ல நாள்",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i18",
+      "sourcePrompt": "There's thunder.",
+      "register": "neutral",
+      "canonical": "idi idikkudhu",
+      "acceptedAnswers": [
+        "idi idikkudhu",
+        "idi idikkuthu",
+        "idi romba idikkudhu",
+        "idi saththam kekkudhu"
+      ],
+      "distractors": [
+        "idi idichuchu",
+        "idi idikkaadhu",
+        "mazhai idikkudhu"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "thunder"
+        },
+        {
+          "word": "idikkudhu",
+          "english": "is rumbling"
+        }
+      ],
+      "script": "இடி இடிக்குது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i19",
+      "sourcePrompt": "The weather is perfect.",
+      "register": "neutral",
+      "canonical": "weather romba perfect-aa irukku",
+      "acceptedAnswers": [
+        "weather romba perfect-aa irukku",
+        "weather rombave perfect-a irukku",
+        "weather romba perfect irukku",
+        "weather perfect-aa irukku"
+      ],
+      "distractors": [
+        "weather romba mosam-aa irukku",
+        "weather perfect-aa irundhuchu",
+        "weather perfect-aa illa"
+      ],
+      "tokens": [
+        {
+          "word": "weather",
+          "english": "weather"
+        },
+        {
+          "word": "romba",
+          "english": "very"
+        },
+        {
+          "word": "perfect-aa",
+          "english": "perfect"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "வெதர் ரொம்ப பெர்ஃபெக்ட்டா இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u12-i20",
+      "sourcePrompt": "I can't stand this heat.",
+      "register": "neutral",
+      "canonical": "indha veyil enakku pidikkaadhu",
+      "acceptedAnswers": [
+        "indha veyil enakku pidikkaadhu",
+        "indha veyil enakku pudikkaadhu",
+        "indha veyil enakku pidikkadhu",
+        "indha veyilai enakku pidikkaadhu"
+      ],
+      "distractors": [
+        "indha veyil enakku pidikkum",
+        "indha veyil enakku pidichuchu",
+        "indha mazhai enakku pidikkaadhu"
+      ],
+      "tokens": [
+        {
+          "word": "indha veyil",
+          "english": "this heat"
+        },
+        {
+          "word": "enakku",
+          "english": "to me"
+        },
+        {
+          "word": "pidikkaadhu",
+          "english": "don't like"
+        }
+      ],
+      "script": "இந்த வெயில் எனக்கு புடிக்காது",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

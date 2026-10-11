@@ -1,0 +1,735 @@
+{
+  "scenarioId": "ta-l02-u04",
+  "language": "tamil",
+  "title": "Where things are",
+  "subtitle": "Finding things at home: in, on, under, near, behind",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 4
+  },
+  "registerPolicy": "Two spoken registers only: casual (nee, un-, -a/-iya endings) and respectful (neenga, unga-, -eenga/-unga endings). Written or formal-literary forms (neengal, -irgal, medhuvaaga) are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in da (male friend) or di (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Tamil WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "ta-l02-u04-i01",
+      "sourcePrompt": "Where is my phone?",
+      "register": "neutral",
+      "canonical": "en phone enga irukku?",
+      "acceptedAnswers": [
+        "en phone enga irukku?",
+        "en phone enga irukkudhu?",
+        "en phone enga irukku",
+        "en phone enga?"
+      ],
+      "distractors": [
+        "en phone enga irundhuchu?",
+        "en phone enga irukkum?",
+        "un phone enga irukku?"
+      ],
+      "tokens": [
+        {
+          "word": "en phone",
+          "english": "my phone"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "என் போன் எங்க இருக்கு?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i02",
+      "sourcePrompt": "It's on the table.",
+      "register": "neutral",
+      "canonical": "adhu mesai mela irukku",
+      "acceptedAnswers": [
+        "adhu mesai mela irukku",
+        "athu mesai mela irukku",
+        "adhu table mela irukku",
+        "adhu mesai maela irukku"
+      ],
+      "distractors": [
+        "adhu mesai keezha irukku",
+        "adhu mesai pakkathula irukku",
+        "adhu mesai mela irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "mesai",
+          "english": "table"
+        },
+        {
+          "word": "mela",
+          "english": "on"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "அது மேசை மேல இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i03",
+      "sourcePrompt": "It's under the bed.",
+      "register": "neutral",
+      "canonical": "adhu kattil keezha irukku",
+      "acceptedAnswers": [
+        "adhu kattil keezha irukku",
+        "adhu kattil kezha irukku",
+        "adhu cot keezha irukku",
+        "adhu bed keezha irukku"
+      ],
+      "distractors": [
+        "adhu kattil mela irukku",
+        "adhu kattil pinnaadi irukku",
+        "adhu kattil keezha irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "kattil",
+          "english": "bed"
+        },
+        {
+          "word": "keezha",
+          "english": "under"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "அது கட்டில் கீழ இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i04",
+      "sourcePrompt": "The keys are in the bag.",
+      "register": "neutral",
+      "canonical": "saavi bag-la irukku",
+      "acceptedAnswers": [
+        "saavi bag-la irukku",
+        "saavi bag la irukku",
+        "saavigal bag-la irukku",
+        "saavi bag-kulla irukku"
+      ],
+      "distractors": [
+        "saavi bag mela irukku",
+        "saavi bag-la irundhuchu",
+        "saavi bag-la illa"
+      ],
+      "tokens": [
+        {
+          "word": "saavi",
+          "english": "key"
+        },
+        {
+          "word": "bag-la",
+          "english": "in the bag"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "சாவி பேக்ல இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i05",
+      "sourcePrompt": "Look behind the door. (to an elder)",
+      "register": "respectful",
+      "canonical": "kadhavukku pinnaadi paarunga",
+      "acceptedAnswers": [
+        "kadhavukku pinnaadi paarunga",
+        "kadhavukku pinnadi paarunga",
+        "kadhavukku pinnaala paarunga",
+        "kadhavu pinnaadi paarunga"
+      ],
+      "registerVariant": "kadhavukku pinnaadi paaru",
+      "distractors": [
+        "kadhavukku munnaadi paarunga",
+        "kadhavukku keezha paarunga"
+      ],
+      "tokens": [
+        {
+          "word": "kadhavukku",
+          "english": "of the door"
+        },
+        {
+          "word": "pinnaadi",
+          "english": "behind"
+        },
+        {
+          "word": "paarunga",
+          "english": "please look"
+        }
+      ],
+      "script": "கதவுக்கு பின்னாடி பாருங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i06",
+      "sourcePrompt": "Look inside. (to a friend)",
+      "register": "casual",
+      "canonical": "ulla paaru",
+      "acceptedAnswers": [
+        "ulla paaru",
+        "ulla paaru da",
+        "ulla paathuko",
+        "ulle paaru"
+      ],
+      "registerVariant": "ulla paarunga",
+      "distractors": [
+        "veliya paaru",
+        "mela paaru"
+      ],
+      "tokens": [
+        {
+          "word": "ulla",
+          "english": "inside"
+        },
+        {
+          "word": "paaru",
+          "english": "look"
+        }
+      ],
+      "script": "உள்ள பாரு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i07",
+      "sourcePrompt": "The school is near my house.",
+      "register": "neutral",
+      "canonical": "en veettukku pakkathula school irukku",
+      "acceptedAnswers": [
+        "en veettukku pakkathula school irukku",
+        "en veetukku pakkathula school irukku",
+        "en veettu pakkathula school irukku",
+        "en veettukku pakkaththula school irukku"
+      ],
+      "distractors": [
+        "en veettukku dhooramaa school irukku",
+        "en veettukku pinnaadi school irukku",
+        "en veettukku pakkathula school illa"
+      ],
+      "tokens": [
+        {
+          "word": "en veettukku",
+          "english": "to my house"
+        },
+        {
+          "word": "pakkathula",
+          "english": "near"
+        },
+        {
+          "word": "school",
+          "english": "school"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "என் வீட்டுக்கு பக்கத்துல ஸ்கூல் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i08",
+      "sourcePrompt": "The temple is in front of the bus stand.",
+      "register": "neutral",
+      "canonical": "kovil bus stand-ku munnaadi irukku",
+      "acceptedAnswers": [
+        "kovil bus stand-ku munnaadi irukku",
+        "kovil bus stand-ku munnadi irukku",
+        "kovil bus stand munnaadi irukku",
+        "kovil bus stand ku munnaadi irukku"
+      ],
+      "distractors": [
+        "kovil bus stand-ku pinnaadi irukku",
+        "kovil bus stand-ku pakkathula irukku",
+        "kovil bus stand-ku munnaadi irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "kovil",
+          "english": "temple"
+        },
+        {
+          "word": "bus stand-ku",
+          "english": "to the bus stand"
+        },
+        {
+          "word": "munnaadi",
+          "english": "in front"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "கோவில் பஸ் ஸ்டாண்டுக்கு முன்னாடி இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i09",
+      "sourcePrompt": "The shop is next to the bank.",
+      "register": "neutral",
+      "canonical": "kadai bank-ku pakkathula irukku",
+      "acceptedAnswers": [
+        "kadai bank-ku pakkathula irukku",
+        "kadai bank pakkathula irukku",
+        "kadai bank-ku pakkaththula irukku",
+        "kadai bank ku pakkathula irukku"
+      ],
+      "distractors": [
+        "kadai bank-ku munnaadi irukku",
+        "kadai bank-ku mela irukku",
+        "kadai bank-ku pakkathula irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "kadai",
+          "english": "shop"
+        },
+        {
+          "word": "bank-ku",
+          "english": "to the bank"
+        },
+        {
+          "word": "pakkathula",
+          "english": "next to"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "கடை பேங்குக்கு பக்கத்துல இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i10",
+      "sourcePrompt": "Where is the sugar? (to an elder)",
+      "register": "respectful",
+      "canonical": "sakkarai enga irukkunga?",
+      "acceptedAnswers": [
+        "sakkarai enga irukkunga?",
+        "sakkarai enga irukku-nga?",
+        "sakkarai enga irukkunga",
+        "sakkarai enga irukkuthunga?"
+      ],
+      "registerVariant": "sakkarai enga irukku?",
+      "distractors": [
+        "sakkarai evlo irukkunga?",
+        "sakkarai eppo irukkunga?"
+      ],
+      "tokens": [
+        {
+          "word": "sakkarai",
+          "english": "sugar"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "irukkunga",
+          "english": "is (polite)"
+        }
+      ],
+      "script": "சக்கரை எங்க இருக்குங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i11",
+      "sourcePrompt": "The cat is under the chair.",
+      "register": "neutral",
+      "canonical": "poonai naarkaali keezha irukku",
+      "acceptedAnswers": [
+        "poonai naarkaali keezha irukku",
+        "poonai chair keezha irukku",
+        "poonai naarkaali kezha irukku",
+        "poonai naarkaali adila irukku"
+      ],
+      "distractors": [
+        "poonai naarkaali mela irukku",
+        "poonai naarkaali pinnaadi irukku",
+        "poonai naarkaali keezha irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "poonai",
+          "english": "cat"
+        },
+        {
+          "word": "naarkaali",
+          "english": "chair"
+        },
+        {
+          "word": "keezha",
+          "english": "under"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "பூனை நாற்காலி கீழ இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i12",
+      "sourcePrompt": "Put it on the shelf. (to an elder)",
+      "register": "respectful",
+      "canonical": "adha shelf mela vainga",
+      "acceptedAnswers": [
+        "adha shelf mela vainga",
+        "adha shelf mela vaiyunga",
+        "atha shelf mela vainga",
+        "adha shelf-la vainga"
+      ],
+      "registerVariant": "adha shelf mela vei",
+      "distractors": [
+        "adha shelf keezha vainga",
+        "adha shelf-la irundhu edunga"
+      ],
+      "tokens": [
+        {
+          "word": "adha",
+          "english": "that"
+        },
+        {
+          "word": "shelf",
+          "english": "shelf"
+        },
+        {
+          "word": "mela",
+          "english": "on"
+        },
+        {
+          "word": "vainga",
+          "english": "please put"
+        }
+      ],
+      "script": "அத ஷெல்ஃப் மேல வைங்க",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i13",
+      "sourcePrompt": "Keep it here. (to a friend)",
+      "register": "casual",
+      "canonical": "idha inga vei",
+      "acceptedAnswers": [
+        "idha inga vei",
+        "idha inga vei da",
+        "idha ingae vai",
+        "itha inga vei"
+      ],
+      "registerVariant": "idha inga vainga",
+      "distractors": [
+        "idha anga vei",
+        "idha inga edu"
+      ],
+      "tokens": [
+        {
+          "word": "idha",
+          "english": "this"
+        },
+        {
+          "word": "inga",
+          "english": "here"
+        },
+        {
+          "word": "vei",
+          "english": "put"
+        }
+      ],
+      "script": "இத இங்க வை",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i14",
+      "sourcePrompt": "My bag is on the chair.",
+      "register": "neutral",
+      "canonical": "en bag naarkaali mela irukku",
+      "acceptedAnswers": [
+        "en bag naarkaali mela irukku",
+        "en bag chair mela irukku",
+        "en bag naarkaali mela irukkudhu",
+        "en bag naarkali mela irukku"
+      ],
+      "distractors": [
+        "en bag naarkaali keezha irukku",
+        "en bag naarkaali pinnaadi irukku",
+        "en bag naarkaali mela irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "en bag",
+          "english": "my bag"
+        },
+        {
+          "word": "naarkaali",
+          "english": "chair"
+        },
+        {
+          "word": "mela",
+          "english": "on"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "என் பேக் நாற்காலி மேல இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i15",
+      "sourcePrompt": "There is a garden behind the house.",
+      "register": "neutral",
+      "canonical": "veettukku pinnaadi thottam irukku",
+      "acceptedAnswers": [
+        "veettukku pinnaadi thottam irukku",
+        "veetukku pinnadi thottam irukku",
+        "veettukku pinnaala thottam irukku",
+        "veettukku pinnaadi garden irukku"
+      ],
+      "distractors": [
+        "veettukku munnaadi thottam irukku",
+        "veettukku pinnaadi thottam irundhuchu",
+        "veettukku pinnaadi thottam illa"
+      ],
+      "tokens": [
+        {
+          "word": "veettukku",
+          "english": "of the house"
+        },
+        {
+          "word": "pinnaadi",
+          "english": "behind"
+        },
+        {
+          "word": "thottam",
+          "english": "garden"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "வீட்டுக்கு பின்னாடி தோட்டம் இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i16",
+      "sourcePrompt": "Is the key in your pocket? (to a friend)",
+      "register": "casual",
+      "canonical": "saavi un pocket-la irukkaa?",
+      "acceptedAnswers": [
+        "saavi un pocket-la irukkaa?",
+        "saavi un pocket la irukkaa?",
+        "saavi unnoda pocket-la irukkaa?",
+        "saavi un pocket-la irukka?"
+      ],
+      "registerVariant": "saavi unga pocket-la irukkaa?",
+      "distractors": [
+        "saavi un pocket-la irundhucha?",
+        "saavi un bag-la irukkaa?"
+      ],
+      "tokens": [
+        {
+          "word": "saavi",
+          "english": "key"
+        },
+        {
+          "word": "un pocket-la",
+          "english": "in your pocket"
+        },
+        {
+          "word": "irukkaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "சாவி உன் பாக்கெட்ல இருக்கா?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i17",
+      "sourcePrompt": "The bathroom is upstairs.",
+      "register": "neutral",
+      "canonical": "bathroom mela irukku",
+      "acceptedAnswers": [
+        "bathroom mela irukku",
+        "bathroom maadila irukku",
+        "bathroom mela irukkudhu",
+        "bathroom mela thaan irukku"
+      ],
+      "distractors": [
+        "bathroom keezha irukku",
+        "bathroom mela irundhuchu",
+        "bathroom mela illa"
+      ],
+      "tokens": [
+        {
+          "word": "bathroom",
+          "english": "bathroom"
+        },
+        {
+          "word": "mela",
+          "english": "upstairs"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "பாத்ரூம் மேல இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i18",
+      "sourcePrompt": "The kitchen is downstairs.",
+      "register": "neutral",
+      "canonical": "kitchen keezha irukku",
+      "acceptedAnswers": [
+        "kitchen keezha irukku",
+        "kitchen kezha irukku",
+        "kitchen keezhe irukku",
+        "kitchen keezha thaan irukku"
+      ],
+      "distractors": [
+        "kitchen mela irukku",
+        "kitchen keezha irundhuchu",
+        "kitchen keezha illa"
+      ],
+      "tokens": [
+        {
+          "word": "kitchen",
+          "english": "kitchen"
+        },
+        {
+          "word": "keezha",
+          "english": "downstairs"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "கிச்சன் கீழ இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i19",
+      "sourcePrompt": "Where is the nearest ATM? (to an elder)",
+      "register": "respectful",
+      "canonical": "pakkathula ATM enga irukkunga?",
+      "acceptedAnswers": [
+        "pakkathula ATM enga irukkunga?",
+        "pakkathula ATM enga irukku-nga?",
+        "pakkaththula ATM enga irukkunga?",
+        "pakkathula ATM enga irukkunga"
+      ],
+      "registerVariant": "pakkathula ATM enga irukku?",
+      "distractors": [
+        "pakkathula ATM evlo irukkunga?",
+        "pakkathula ATM eppo irukkunga?"
+      ],
+      "tokens": [
+        {
+          "word": "pakkathula",
+          "english": "nearby"
+        },
+        {
+          "word": "ATM",
+          "english": "ATM"
+        },
+        {
+          "word": "enga",
+          "english": "where"
+        },
+        {
+          "word": "irukkunga",
+          "english": "is (polite)"
+        }
+      ],
+      "script": "பக்கத்துல ஏடிஎம் எங்க இருக்குங்க?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "ta-l02-u04-i20",
+      "sourcePrompt": "It's between the two shops.",
+      "register": "neutral",
+      "canonical": "adhu rendu kadaikkum naduvula irukku",
+      "acceptedAnswers": [
+        "adhu rendu kadaikkum naduvula irukku",
+        "adhu rendu kadaikkum nadula irukku",
+        "adhu rendu kadai naduvula irukku",
+        "adhu rendu kadaikkum naduvula irukkudhu"
+      ],
+      "distractors": [
+        "adhu rendu kadaikkum munnaadi irukku",
+        "adhu rendu kadaikkum pinnaadi irukku",
+        "adhu rendu kadaikkum naduvula irundhuchu"
+      ],
+      "tokens": [
+        {
+          "word": "adhu",
+          "english": "it"
+        },
+        {
+          "word": "rendu kadaikkum",
+          "english": "of the two shops"
+        },
+        {
+          "word": "naduvula",
+          "english": "between"
+        },
+        {
+          "word": "irukku",
+          "english": "is"
+        }
+      ],
+      "script": "அது ரெண்டு கடைக்கும் நடுவுல இருக்கு",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
