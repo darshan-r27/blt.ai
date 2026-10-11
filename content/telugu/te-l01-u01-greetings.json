@@ -1,0 +1,661 @@
+{
+  "scenarioId": "te-l01-u01",
+  "language": "telugu",
+  "title": "Greetings and small talk",
+  "subtitle": "Meeting people and getting by in everyday conversation",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 1
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u01-i01",
+      "sourcePrompt": "How are you? (to a male friend)",
+      "register": "casual",
+      "canonical": "ela unnav ra?",
+      "acceptedAnswers": [
+        "ela unnav ra?",
+        "ela unnav ra",
+        "ela unnavu ra?",
+        "ela vunnav ra?"
+      ],
+      "registerVariant": "ela unnaru?",
+      "distractors": [
+        "ekkada unnav ra?",
+        "emaindi ra?"
+      ],
+      "tokens": [
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "unnav",
+          "english": "are you (casual)"
+        },
+        {
+          "word": "ra",
+          "english": "friendly address to a man"
+        }
+      ],
+      "note": "ra is the friendly address between male friends; use it only with close male friends.",
+      "script": "ఎలా ఉన్నావ్ రా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "male"
+    },
+    {
+      "id": "te-l01-u01-i02",
+      "sourcePrompt": "How are you? (to an elder)",
+      "register": "respectful",
+      "canonical": "ela unnaru?",
+      "acceptedAnswers": [
+        "ela unnaru?",
+        "ela unnaaru?",
+        "ela unnaru",
+        "ela vunnaru?"
+      ],
+      "registerVariant": "ela unnav?",
+      "distractors": [
+        "ekkada unnaru?",
+        "emaindi andi?"
+      ],
+      "tokens": [
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "unnaru",
+          "english": "are you (respectful)"
+        }
+      ],
+      "script": "ఎలా ఉన్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i03",
+      "sourcePrompt": "I'm fine, and you? (to a female friend)",
+      "register": "casual",
+      "canonical": "nenu bagunnanu ve, nuvvu?",
+      "acceptedAnswers": [
+        "nenu bagunnanu ve, nuvvu?",
+        "nenu bagunna ve, nuvvu?",
+        "nenu baagunnanu ve, nuvvu?",
+        "nenu bagunnanu ve nuvvu"
+      ],
+      "registerVariant": "nenu bagunnanu, meeru?",
+      "distractors": [
+        "nenu tinnanu ve, nuvvu?",
+        "nenu veltunnanu ve, nuvvu?"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "bagunnanu",
+          "english": "am fine"
+        },
+        {
+          "word": "ve",
+          "english": "friendly address to a woman"
+        },
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        }
+      ],
+      "note": "ve is the friendly address between women friends; use it only with close friends.",
+      "script": "నేను బాగున్నాను వే, నువ్వు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "female"
+    },
+    {
+      "id": "te-l01-u01-i04",
+      "sourcePrompt": "Come in! (to a guest)",
+      "register": "respectful",
+      "canonical": "lopaliki randi",
+      "acceptedAnswers": [
+        "lopaliki randi",
+        "lopalaki randi",
+        "lopaliki raandi",
+        "lopaliki randi!"
+      ],
+      "registerVariant": "lopaliki ra",
+      "distractors": [
+        "bayataku vellandi",
+        "ikkada kurchondi"
+      ],
+      "tokens": [
+        {
+          "word": "lopaliki",
+          "english": "inside (to)"
+        },
+        {
+          "word": "randi",
+          "english": "please come"
+        }
+      ],
+      "script": "లోపలికి రండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i05",
+      "sourcePrompt": "Please sit. (to an elder or guest)",
+      "register": "respectful",
+      "canonical": "kurchondi",
+      "acceptedAnswers": [
+        "kurchondi",
+        "koorchondi",
+        "kurchondi andi",
+        "kurcho andi"
+      ],
+      "registerVariant": "kurcho",
+      "distractors": [
+        "nilabadandi",
+        "tinandi"
+      ],
+      "tokens": [
+        {
+          "word": "kurchondi",
+          "english": "please sit"
+        }
+      ],
+      "script": "కూర్చోండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i06",
+      "sourcePrompt": "What's your name? (to someone you've just met)",
+      "register": "respectful",
+      "canonical": "mee peru emiti?",
+      "acceptedAnswers": [
+        "mee peru emiti?",
+        "mee peru enti?",
+        "mee peru emiti",
+        "mee pere enti?"
+      ],
+      "registerVariant": "nee peru enti?",
+      "distractors": [
+        "mee ooru emiti?",
+        "mee pani emiti?"
+      ],
+      "tokens": [
+        {
+          "word": "mee",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "peru",
+          "english": "name"
+        },
+        {
+          "word": "emiti",
+          "english": "what"
+        }
+      ],
+      "script": "మీ పేరు ఏమిటి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i07",
+      "sourcePrompt": "My name is Ravi.",
+      "register": "neutral",
+      "canonical": "naa peru Ravi",
+      "acceptedAnswers": [
+        "naa peru Ravi",
+        "na peru Ravi",
+        "naa pere Ravi",
+        "naa peru Ravi andi"
+      ],
+      "distractors": [
+        "naa nanna peru Ravi",
+        "naa snehitudi peru Ravi",
+        "naa anna peru Ravi"
+      ],
+      "tokens": [
+        {
+          "word": "naa",
+          "english": "my"
+        },
+        {
+          "word": "peru",
+          "english": "name"
+        },
+        {
+          "word": "Ravi",
+          "english": "Ravi (a name)"
+        }
+      ],
+      "script": "నా పేరు రవి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i08",
+      "sourcePrompt": "Where have you come from? (to a stranger)",
+      "register": "respectful",
+      "canonical": "meeru ekkadi nunchi vastunnaru?",
+      "acceptedAnswers": [
+        "meeru ekkadi nunchi vastunnaru?",
+        "meeru ekkada nunchi vastunnaru?",
+        "meeru ekkadinunchi vastunnaru?",
+        "meeru ekkadi nundi vastunnaru?"
+      ],
+      "registerVariant": "nuvvu ekkadi nunchi vastunnav?",
+      "distractors": [
+        "meeru ekkadiki veltunnaru?",
+        "meeru eppudu vastunnaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "ekkadi nunchi",
+          "english": "from where"
+        },
+        {
+          "word": "vastunnaru",
+          "english": "are coming"
+        }
+      ],
+      "script": "మీరు ఎక్కడి నుంచి వస్తున్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i09",
+      "sourcePrompt": "Nice to meet you.",
+      "register": "respectful",
+      "canonical": "mimmalni chusi chala santosham",
+      "acceptedAnswers": [
+        "mimmalni chusi chala santosham",
+        "mimmalni chusi chaala santosham",
+        "mimmalni chusi chala santhosham",
+        "mimmalni chusi chala santoshamga undi"
+      ],
+      "registerVariant": "ninnu chusi chala santosham",
+      "distractors": [
+        "mimmalni repu chudochu",
+        "mimmalni chusi chala rojulayindi"
+      ],
+      "tokens": [
+        {
+          "word": "mimmalni",
+          "english": "you (respectful), as object"
+        },
+        {
+          "word": "chusi",
+          "english": "having seen"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "santosham",
+          "english": "happiness"
+        }
+      ],
+      "script": "మిమ్మల్ని చూసి చాలా సంతోషం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i10",
+      "sourcePrompt": "Have you eaten? (to an elder)",
+      "register": "respectful",
+      "canonical": "bhojanam chesara?",
+      "acceptedAnswers": [
+        "bhojanam chesara?",
+        "bhojanam chesaara?",
+        "bhojanam chesaaraa?",
+        "bhojanam chesara"
+      ],
+      "registerVariant": "tinnava?",
+      "distractors": [
+        "bhojanam cheddama?",
+        "emi bhojanam?"
+      ],
+      "tokens": [
+        {
+          "word": "bhojanam",
+          "english": "meal"
+        },
+        {
+          "word": "chesara",
+          "english": "did you do (respectful)"
+        }
+      ],
+      "script": "భోజనం చేశారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i11",
+      "sourcePrompt": "Have you eaten? (to a male friend)",
+      "register": "casual",
+      "canonical": "tinnava ra?",
+      "acceptedAnswers": [
+        "tinnava ra?",
+        "tinnava ra",
+        "tinnavaa ra?",
+        "tinnaava ra?"
+      ],
+      "registerVariant": "bhojanam chesara?",
+      "distractors": [
+        "tinadaniki vastunnava ra?",
+        "bhojanam ready aa ra?"
+      ],
+      "tokens": [
+        {
+          "word": "tinnava",
+          "english": "have you eaten"
+        },
+        {
+          "word": "ra",
+          "english": "friendly address to a man"
+        }
+      ],
+      "script": "తిన్నావా రా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "male"
+    },
+    {
+      "id": "te-l01-u01-i12",
+      "sourcePrompt": "What are you doing? (to a female friend)",
+      "register": "casual",
+      "canonical": "em chestunnave?",
+      "acceptedAnswers": [
+        "em chestunnave?",
+        "emi chestunnave?",
+        "em chesthunnave?",
+        "emi chesthunnave?"
+      ],
+      "registerVariant": "emi chestunnaru?",
+      "distractors": [
+        "ekkadiki veltunnave?",
+        "emaindi ve?"
+      ],
+      "tokens": [
+        {
+          "word": "em",
+          "english": "what"
+        },
+        {
+          "word": "chestunnave",
+          "english": "are you doing (to a woman friend)"
+        }
+      ],
+      "script": "ఏం చేస్తున్నావే?",
+      "reviewStatus": "unreviewed",
+      "addressee": "female"
+    },
+    {
+      "id": "te-l01-u01-i13",
+      "sourcePrompt": "I'm leaving now. (I'll be back)",
+      "register": "neutral",
+      "canonical": "velli vastanu",
+      "acceptedAnswers": [
+        "velli vastanu",
+        "velli vastaanu",
+        "velli vasta",
+        "vellivastanu"
+      ],
+      "distractors": [
+        "vachchesanu",
+        "ikkade unnanu",
+        "ippudu vastanu"
+      ],
+      "tokens": [
+        {
+          "word": "velli",
+          "english": "having gone"
+        },
+        {
+          "word": "vastanu",
+          "english": "I will come"
+        }
+      ],
+      "script": "వెళ్లి వస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i14",
+      "sourcePrompt": "Thank you very much.",
+      "register": "neutral",
+      "canonical": "chala thanks",
+      "acceptedAnswers": [
+        "chala thanks",
+        "chaala thanks",
+        "chala thanks andi",
+        "chala thank you"
+      ],
+      "distractors": [
+        "chala santosham",
+        "chala kastam",
+        "chala late"
+      ],
+      "tokens": [
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "thanks",
+          "english": "thanks"
+        }
+      ],
+      "script": "చాలా థాంక్స్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i15",
+      "sourcePrompt": "Sorry, please forgive me. (to an elder)",
+      "register": "respectful",
+      "canonical": "kshaminchandi",
+      "acceptedAnswers": [
+        "kshaminchandi",
+        "kshamimchandi",
+        "kshaminchandi andi",
+        "kshaminchaali andi"
+      ],
+      "registerVariant": "kshaminchu",
+      "distractors": [
+        "parvaledu",
+        "sare"
+      ],
+      "tokens": [
+        {
+          "word": "kshaminchandi",
+          "english": "please forgive"
+        }
+      ],
+      "script": "క్షమించండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i16",
+      "sourcePrompt": "I don't understand.",
+      "register": "neutral",
+      "canonical": "naaku ardham kaaledu",
+      "acceptedAnswers": [
+        "naaku ardham kaaledu",
+        "naku ardham kaledu",
+        "naaku artham kaaledu",
+        "naku ardam kaledu"
+      ],
+      "distractors": [
+        "naaku telidu",
+        "naaku ardham ayindi",
+        "naaku vinipinchaledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "ardham",
+          "english": "understanding"
+        },
+        {
+          "word": "kaaledu",
+          "english": "is not"
+        }
+      ],
+      "script": "నాకు అర్థం కాలేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i17",
+      "sourcePrompt": "Please speak slowly. (to an elder or stranger)",
+      "register": "respectful",
+      "canonical": "konchem mellaga matladandi",
+      "acceptedAnswers": [
+        "konchem mellaga matladandi",
+        "konchem mellagaa maatladandi",
+        "konchem melliga matladandi",
+        "konchem mellaga maatladandi"
+      ],
+      "registerVariant": "konchem mellaga matladu",
+      "distractors": [
+        "konchem pedda gontuka matladandi",
+        "konchem vegamga matladandi"
+      ],
+      "tokens": [
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "mellaga",
+          "english": "slowly"
+        },
+        {
+          "word": "matladandi",
+          "english": "please speak"
+        }
+      ],
+      "script": "కొంచెం మెల్లగా మాట్లాడండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i18",
+      "sourcePrompt": "Do you know English? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku English vachchaa?",
+      "acceptedAnswers": [
+        "neeku English vachchaa?",
+        "neeku English vachha?",
+        "neeku english vacha?",
+        "neeku English telusa?"
+      ],
+      "registerVariant": "meeku English vachchaa?",
+      "distractors": [
+        "neeku Tamil vachchaa?",
+        "neeku Hindi vachchaa?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "English",
+          "english": "English"
+        },
+        {
+          "word": "vachchaa",
+          "english": "do you know (a language)"
+        }
+      ],
+      "script": "నీకు ఇంగ్లీష్ వచ్చా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i19",
+      "sourcePrompt": "I know a little Telugu.",
+      "register": "neutral",
+      "canonical": "naaku konchem Telugu vachchu",
+      "acceptedAnswers": [
+        "naaku konchem Telugu vachchu",
+        "naku konchem Telugu vachu",
+        "naaku Telugu konchem vachu",
+        "naaku konchem Telugu vachu"
+      ],
+      "distractors": [
+        "naaku Telugu raadu",
+        "naaku baaga Telugu vachchu",
+        "naaku konchem Hindi vachchu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "Telugu",
+          "english": "Telugu"
+        },
+        {
+          "word": "vachchu",
+          "english": "I can, I know"
+        }
+      ],
+      "script": "నాకు కొంచెం తెలుగు వచ్చు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u01-i20",
+      "sourcePrompt": "See you tomorrow.",
+      "register": "neutral",
+      "canonical": "repu kaluddam",
+      "acceptedAnswers": [
+        "repu kaluddam",
+        "repu kaladdam",
+        "repu kaluddaam",
+        "repu kalustanu"
+      ],
+      "distractors": [
+        "ivaala kaluddam",
+        "taruvata kaluddam",
+        "eppudu kaluddam"
+      ],
+      "tokens": [
+        {
+          "word": "repu",
+          "english": "tomorrow"
+        },
+        {
+          "word": "kaluddam",
+          "english": "let's meet"
+        }
+      ],
+      "script": "రేపు కలుద్దాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

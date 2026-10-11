@@ -1,0 +1,723 @@
+{
+  "scenarioId": "te-l01-u08",
+  "language": "telugu",
+  "title": "Introducing yourself",
+  "subtitle": "Name, home town, work, languages and a little about you",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 8
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u08-i01",
+      "sourcePrompt": "My hometown is Chennai.",
+      "register": "neutral",
+      "canonical": "naa ooru Chennai",
+      "acceptedAnswers": [
+        "naa ooru Chennai",
+        "naa ooru Chennai ye",
+        "maa ooru Chennai",
+        "naa sontha ooru Chennai"
+      ],
+      "distractors": [
+        "naa peru Chennai",
+        "naa ooru Madurai",
+        "naa illu Chennai lo ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naa",
+          "english": "my"
+        },
+        {
+          "word": "ooru",
+          "english": "hometown"
+        },
+        {
+          "word": "Chennai",
+          "english": "Chennai"
+        }
+      ],
+      "script": "నా ఊరు చెన్నై",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i02",
+      "sourcePrompt": "Where is your hometown? (to an elder)",
+      "register": "respectful",
+      "canonical": "mee ooru ekkada?",
+      "acceptedAnswers": [
+        "mee ooru ekkada?",
+        "mee ooru ekkada",
+        "mee sontha ooru ekkada?",
+        "mee ooru ekkada andi?"
+      ],
+      "registerVariant": "nee ooru ekkada?",
+      "distractors": [
+        "mee ooru emiti?",
+        "mee ooru enta dooram?"
+      ],
+      "tokens": [
+        {
+          "word": "mee",
+          "english": "your (respectful)"
+        },
+        {
+          "word": "ooru",
+          "english": "town"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        }
+      ],
+      "script": "మీ ఊరు ఎక్కడ?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i03",
+      "sourcePrompt": "I'm a teacher.",
+      "register": "neutral",
+      "canonical": "nenu teacher ni",
+      "acceptedAnswers": [
+        "nenu teacher ni",
+        "nenu oka teacher ni",
+        "nenu teacherni",
+        "nenu teacher ni andi"
+      ],
+      "distractors": [
+        "nenu doctor ni",
+        "nenu student ni",
+        "nenu teacher kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "teacher",
+          "english": "teacher"
+        },
+        {
+          "word": "ni",
+          "english": "am"
+        }
+      ],
+      "script": "నేను టీచర్ ని",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i04",
+      "sourcePrompt": "I'm a student.",
+      "register": "neutral",
+      "canonical": "nenu student ni",
+      "acceptedAnswers": [
+        "nenu student ni",
+        "nenu oka student ni",
+        "nenu studentni",
+        "nenu vidyarthini"
+      ],
+      "distractors": [
+        "nenu teacher ni",
+        "nenu driver ni",
+        "nenu student kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "student",
+          "english": "student"
+        },
+        {
+          "word": "ni",
+          "english": "am"
+        }
+      ],
+      "script": "నేను స్టూడెంట్ ని",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i05",
+      "sourcePrompt": "What do you do for work? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu em job chestunnav?",
+      "acceptedAnswers": [
+        "nuvvu em job chestunnav?",
+        "nuvvu em pani chestunnav?",
+        "nuvvu emi job chestunnav?",
+        "nee job emiti?"
+      ],
+      "registerVariant": "meeru em job chestunnaru?",
+      "distractors": [
+        "nuvvu ekkada job chestunnav?",
+        "nuvvu emi tintunnav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "em",
+          "english": "what"
+        },
+        {
+          "word": "job",
+          "english": "job"
+        },
+        {
+          "word": "chestunnav",
+          "english": "are you doing"
+        }
+      ],
+      "script": "నువ్వు ఏం జాబ్ చేస్తున్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i06",
+      "sourcePrompt": "I work in a bank.",
+      "register": "neutral",
+      "canonical": "nenu bank lo pani chestanu",
+      "acceptedAnswers": [
+        "nenu bank lo pani chestanu",
+        "nenu bank lo pani chesta",
+        "nenu bank lo job chestanu",
+        "nenu bank lo work chestanu"
+      ],
+      "distractors": [
+        "nenu bank ki veltanu",
+        "nenu bank nunchi vastanu",
+        "nenu bank lo tintanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "bank lo",
+          "english": "in a bank"
+        },
+        {
+          "word": "pani chestanu",
+          "english": "work"
+        }
+      ],
+      "script": "నేను బ్యాంక్ లో పని చేస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i07",
+      "sourcePrompt": "I speak Tamil and a little Telugu.",
+      "register": "neutral",
+      "canonical": "nenu Tamil matladatanu, konchem Telugu matladatanu",
+      "acceptedAnswers": [
+        "nenu Tamil matladatanu, konchem Telugu matladatanu",
+        "nenu Tamil matladutanu konchem Telugu matladutanu",
+        "nenu Tamil matladatanu, konchem Telugu kuda matladatanu",
+        "nenu Tamil, konchem Telugu matladatanu"
+      ],
+      "distractors": [
+        "nenu Telugu matladatanu, konchem Tamil matladatanu",
+        "nenu Tamil matladanu",
+        "nenu Tamil, Hindi matladatanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "Tamil",
+          "english": "Tamil"
+        },
+        {
+          "word": "matladatanu",
+          "english": "I speak"
+        },
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "Telugu",
+          "english": "Telugu"
+        }
+      ],
+      "script": "నేను తమిళం మాట్లాడతాను, కొంచెం తెలుగు మాట్లాడతాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i08",
+      "sourcePrompt": "I'm learning Telugu.",
+      "register": "neutral",
+      "canonical": "nenu Telugu nerchukuntunnanu",
+      "acceptedAnswers": [
+        "nenu Telugu nerchukuntunnanu",
+        "nenu Telugu nerchukuntunna",
+        "nenu Telugu nerchukuntu unnanu",
+        "nenu Telugu nerchukuntanu"
+      ],
+      "distractors": [
+        "nenu Telugu nerpistunnanu",
+        "nenu Telugu matladanu",
+        "nenu Telugu nerchukunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "Telugu",
+          "english": "Telugu"
+        },
+        {
+          "word": "nerchukuntunnanu",
+          "english": "am learning"
+        }
+      ],
+      "script": "నేను తెలుగు నేర్చుకుంటున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i09",
+      "sourcePrompt": "My friend is teaching me.",
+      "register": "neutral",
+      "canonical": "naa friend naaku nerputunnaru",
+      "acceptedAnswers": [
+        "naa friend naaku nerputunnaru",
+        "naa friend naaku nerputhunnaru",
+        "naa friend naaku nerpistunnaru",
+        "naa friend naaku nerpustunnaru"
+      ],
+      "distractors": [
+        "naa friend naaku nerpaleedu",
+        "nenu naa friend ki nerputunnanu",
+        "naa friend naaku dabbulu istunnaru"
+      ],
+      "tokens": [
+        {
+          "word": "naa friend",
+          "english": "my friend"
+        },
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "nerputunnaru",
+          "english": "is teaching"
+        }
+      ],
+      "script": "నా ఫ్రెండ్ నాకు నేర్పుతున్నారు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i10",
+      "sourcePrompt": "Nice to meet you too.",
+      "register": "neutral",
+      "canonical": "naakoo santosham",
+      "acceptedAnswers": [
+        "naakoo santosham",
+        "naakoo chala santosham",
+        "naaku kuda santosham",
+        "naakoo santhosham"
+      ],
+      "distractors": [
+        "naaku teliyadu",
+        "naakoo kopam",
+        "naaku santosham ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naakoo",
+          "english": "to me too"
+        },
+        {
+          "word": "santosham",
+          "english": "happiness"
+        }
+      ],
+      "script": "నాకూ సంతోషం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i11",
+      "sourcePrompt": "I'm twenty-eight years old.",
+      "register": "neutral",
+      "canonical": "naaku iruvai enimidi yella vayasu",
+      "acceptedAnswers": [
+        "naaku iruvai enimidi yella vayasu",
+        "naaku iruvai enimidi ella vayasu",
+        "naaku 28 yella vayasu",
+        "naaku iravai enimidi yella vayasu"
+      ],
+      "distractors": [
+        "naaku iruvai yella vayasu",
+        "naaku muppai yella vayasu",
+        "naaku iruvai enimidi rojulu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "iruvai enimidi",
+          "english": "twenty-eight"
+        },
+        {
+          "word": "yella",
+          "english": "years"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "నాకు ఇరవై ఎనిమిది ఏళ్ల వయసు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i12",
+      "sourcePrompt": "Are you married? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku pelli ayyinda?",
+      "acceptedAnswers": [
+        "neeku pelli ayyinda?",
+        "neeku pelli ayindaa?",
+        "neeku pelli ayyindaa?",
+        "nuvvu married aa?"
+      ],
+      "registerVariant": "meeku pelli ayyinda?",
+      "distractors": [
+        "neeku pelli kavala?",
+        "neeku enta vayasu?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "pelli",
+          "english": "wedding"
+        },
+        {
+          "word": "ayyinda",
+          "english": "has it happened?"
+        }
+      ],
+      "script": "నీకు పెళ్లి అయ్యిందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i13",
+      "sourcePrompt": "I have an elder brother and a younger sister.",
+      "register": "neutral",
+      "canonical": "naaku oka anna, oka chelli unnaru",
+      "acceptedAnswers": [
+        "naaku oka anna, oka chelli unnaru",
+        "naaku oka anna oka chelli unnaru",
+        "naaku oka anna, oka chellelu unnaru",
+        "naaku anna chelli unnaru"
+      ],
+      "distractors": [
+        "naaku akka tammudu unnaru",
+        "naaku anna chelli ledu",
+        "naaku oka anna, oka chelli kavali"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "oka anna",
+          "english": "an elder brother"
+        },
+        {
+          "word": "oka chelli",
+          "english": "a younger sister"
+        },
+        {
+          "word": "unnaru",
+          "english": "there are"
+        }
+      ],
+      "script": "నాకు ఒక అన్న, ఒక చెల్లి ఉన్నారు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i14",
+      "sourcePrompt": "I like cricket.",
+      "register": "neutral",
+      "canonical": "naaku cricket ishtam",
+      "acceptedAnswers": [
+        "naaku cricket ishtam",
+        "naaku cricket istam",
+        "naaku cricket nachutundi",
+        "naaku cricket ante ishtam"
+      ],
+      "distractors": [
+        "naaku cricket teliyadu",
+        "naaku cricket ishtam ledu",
+        "naaku football ishtam"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "cricket",
+          "english": "cricket"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు క్రికెట్ ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i15",
+      "sourcePrompt": "Do you like it here? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku ikkada nachchinda?",
+      "acceptedAnswers": [
+        "meeku ikkada nachchinda?",
+        "meeku ikkada nachindaa?",
+        "meeku ikkada baagunda?",
+        "meeku ikkada nachchindaa?"
+      ],
+      "registerVariant": "neeku ikkada nachchinda?",
+      "distractors": [
+        "meeku ikkada telusaa?",
+        "meeku ikkada eppudu vachcharu?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "nachchinda",
+          "english": "did you like?"
+        }
+      ],
+      "script": "మీకు ఇక్కడ నచ్చిందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i16",
+      "sourcePrompt": "I came here last year.",
+      "register": "neutral",
+      "canonical": "nenu gata samvatsaram ikkadiki vachchanu",
+      "acceptedAnswers": [
+        "nenu gata samvatsaram ikkadiki vachchanu",
+        "nenu gata samvatsaram ikkadiki vachanu",
+        "nenu ee gata samvatsaram ikkadiki vachchanu",
+        "nenu gata ella ikkadiki vachchanu"
+      ],
+      "distractors": [
+        "nenu vachche samvatsaram ikkadiki vastanu",
+        "nenu ikkada unnanu",
+        "nenu gata samvatsaram ikkadiki raaledu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "gata samvatsaram",
+          "english": "last year"
+        },
+        {
+          "word": "ikkadiki",
+          "english": "to here"
+        },
+        {
+          "word": "vachchanu",
+          "english": "came"
+        }
+      ],
+      "script": "నేను గత సంవత్సరం ఇక్కడికి వచ్చాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i17",
+      "sourcePrompt": "How long have you lived here? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru ikkada enta kaalamga unnaru?",
+      "acceptedAnswers": [
+        "meeru ikkada enta kaalamga unnaru?",
+        "meeru ikkada entha kaalamga unnaru?",
+        "meeru ikkada enta kaalam nunchi unnaru?",
+        "meeru ikkada enni rojulu nunchi unnaru?"
+      ],
+      "registerVariant": "nuvvu ikkada enta kaalamga unnav?",
+      "distractors": [
+        "meeru ikkada eppudu vachcharu?",
+        "meeru ekkada unnaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "enta kaalamga",
+          "english": "for how long"
+        },
+        {
+          "word": "unnaru",
+          "english": "have been"
+        }
+      ],
+      "script": "మీరు ఇక్కడ ఎంత కాలంగా ఉన్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i18",
+      "sourcePrompt": "Let me introduce myself.",
+      "register": "neutral",
+      "canonical": "nannu nenu parichayam chesukuntanu",
+      "acceptedAnswers": [
+        "nannu nenu parichayam chesukuntanu",
+        "nannu nenu parichayam chesukunta",
+        "nenu parichayam chesukuntanu",
+        "nannu nenu introduce chesukuntanu"
+      ],
+      "distractors": [
+        "mimmalni parichayam chestanu",
+        "parichayam vaddu",
+        "nannu nenu marchipoyanu"
+      ],
+      "tokens": [
+        {
+          "word": "nannu nenu",
+          "english": "myself"
+        },
+        {
+          "word": "parichayam",
+          "english": "introduction"
+        },
+        {
+          "word": "chesukuntanu",
+          "english": "I will do"
+        }
+      ],
+      "script": "నన్ను నేను పరిచయం చేసుకుంటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i19",
+      "sourcePrompt": "These are my parents.",
+      "register": "neutral",
+      "canonical": "veellu maa amma, nanna",
+      "acceptedAnswers": [
+        "veellu maa amma, nanna",
+        "veellu maa amma nanna",
+        "veeru maa amma nanna",
+        "veellu maa parents"
+      ],
+      "distractors": [
+        "veellu maa akka, anna",
+        "veellu maa ammamma, thaatha",
+        "veellu maa amma kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "veellu",
+          "english": "these people"
+        },
+        {
+          "word": "maa",
+          "english": "my"
+        },
+        {
+          "word": "amma",
+          "english": "mother"
+        },
+        {
+          "word": "nanna",
+          "english": "father"
+        }
+      ],
+      "script": "వీళ్లు మా అమ్మా, నాన్న",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u08-i20",
+      "sourcePrompt": "It's nice to be here.",
+      "register": "neutral",
+      "canonical": "ikkada undadam santosham",
+      "acceptedAnswers": [
+        "ikkada undadam santosham",
+        "ikkada undatam santosham",
+        "ikkada undadam chala santosham",
+        "ikkada undadam anandam"
+      ],
+      "distractors": [
+        "ikkada undadam kastam",
+        "ikkada undadam late",
+        "ikkada undadam ledu"
+      ],
+      "tokens": [
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "undadam",
+          "english": "being"
+        },
+        {
+          "word": "santosham",
+          "english": "happiness"
+        }
+      ],
+      "script": "ఇక్కడ ఉండడం సంతోషం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

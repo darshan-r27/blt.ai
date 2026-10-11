@@ -1,0 +1,647 @@
+{
+  "scenarioId": "te-l01-u04",
+  "language": "telugu",
+  "title": "Shopping and bargaining",
+  "subtitle": "Prices, sizes, paying and polite haggling",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 4
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u04-i01",
+      "sourcePrompt": "How much is this?",
+      "register": "neutral",
+      "canonical": "idi enta?",
+      "acceptedAnswers": [
+        "idi enta?",
+        "idi entha?",
+        "idi enta",
+        "eedi enta?"
+      ],
+      "distractors": [
+        "idi emiti?",
+        "idi ekkada?",
+        "idi eppudu?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "enta",
+          "english": "how much"
+        }
+      ],
+      "script": "ఇది ఎంత?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i02",
+      "sourcePrompt": "That's too expensive.",
+      "register": "neutral",
+      "canonical": "dhara chala ekkuva",
+      "acceptedAnswers": [
+        "dhara chala ekkuva",
+        "dhara chaala ekkuva",
+        "dhara chala ekkuvaga undi",
+        "rate chala ekkuva"
+      ],
+      "distractors": [
+        "dhara chala takkuva",
+        "dhara chala baagundi",
+        "dhara chala pedda size"
+      ],
+      "tokens": [
+        {
+          "word": "dhara",
+          "english": "price"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "ekkuva",
+          "english": "high, too much"
+        }
+      ],
+      "script": "ధర చాలా ఎక్కువ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i03",
+      "sourcePrompt": "Please reduce the price. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "dhara konchem tagginchandi",
+      "acceptedAnswers": [
+        "dhara konchem tagginchandi",
+        "dhara konchem taggimchandi",
+        "rate konchem tagginchandi",
+        "dhara konchem taggandi"
+      ],
+      "registerVariant": "dhara konchem taggincu",
+      "distractors": [
+        "dhara konchem pencandi",
+        "dhara konchem mellaga cheyyandi"
+      ],
+      "tokens": [
+        {
+          "word": "dhara",
+          "english": "price"
+        },
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "tagginchandi",
+          "english": "please reduce"
+        }
+      ],
+      "script": "ధర కొంచెం తగ్గించండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i04",
+      "sourcePrompt": "What's the final price?",
+      "register": "neutral",
+      "canonical": "last price enta?",
+      "acceptedAnswers": [
+        "last price enta?",
+        "last rate enta?",
+        "chivari dhara enta?",
+        "last price entha?"
+      ],
+      "distractors": [
+        "first price enta?",
+        "stock enta undi?",
+        "bill enta?"
+      ],
+      "tokens": [
+        {
+          "word": "last price",
+          "english": "final price"
+        },
+        {
+          "word": "enta",
+          "english": "how much"
+        }
+      ],
+      "script": "లాస్ట్ ప్రైస్ ఎంత?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i05",
+      "sourcePrompt": "I'll take two.",
+      "register": "neutral",
+      "canonical": "rendu teesukuntanu",
+      "acceptedAnswers": [
+        "rendu teesukuntanu",
+        "rendu teesukunta",
+        "rendu thisukuntanu",
+        "rendu teeskuntanu"
+      ],
+      "distractors": [
+        "moodu teesukuntanu",
+        "rendu vaddu",
+        "rendu teesukoledu"
+      ],
+      "tokens": [
+        {
+          "word": "rendu",
+          "english": "two"
+        },
+        {
+          "word": "teesukuntanu",
+          "english": "I will take"
+        }
+      ],
+      "script": "రెండు తీసుకుంటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i06",
+      "sourcePrompt": "I don't want it.",
+      "register": "neutral",
+      "canonical": "naaku vaddu",
+      "acceptedAnswers": [
+        "naaku vaddu",
+        "naku vaddu",
+        "naaku vadu",
+        "naaku ledhu vaddu"
+      ],
+      "distractors": [
+        "naaku kavali",
+        "naaku nachindi",
+        "naaku teliyadu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "vaddu",
+          "english": "don't want"
+        }
+      ],
+      "script": "నాకు వద్దు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i07",
+      "sourcePrompt": "I like this.",
+      "register": "neutral",
+      "canonical": "naaku idi nachindi",
+      "acceptedAnswers": [
+        "naaku idi nachindi",
+        "naku idi nachindi",
+        "naaku idi bagundi",
+        "naaku idi nachchindi"
+      ],
+      "distractors": [
+        "naaku idi nachaledu",
+        "naaku idi kavali",
+        "naaku idi telusu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "nachindi",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు ఇది నచ్చింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i08",
+      "sourcePrompt": "Do you have a bigger size?",
+      "register": "neutral",
+      "canonical": "pedda size undaa?",
+      "acceptedAnswers": [
+        "pedda size undaa?",
+        "pedda size unda?",
+        "inka pedda size undaa?",
+        "pedda size vundaa?"
+      ],
+      "distractors": [
+        "chinna size undaa?",
+        "vere colour undaa?",
+        "pedda size enta?"
+      ],
+      "tokens": [
+        {
+          "word": "pedda",
+          "english": "big"
+        },
+        {
+          "word": "size",
+          "english": "size"
+        },
+        {
+          "word": "undaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "పెద్ద సైజ్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i09",
+      "sourcePrompt": "Do you have another colour?",
+      "register": "neutral",
+      "canonical": "vere colour undaa?",
+      "acceptedAnswers": [
+        "vere colour undaa?",
+        "vere colour unda?",
+        "inkoka colour undaa?",
+        "vere rangu undaa?"
+      ],
+      "distractors": [
+        "vere size undaa?",
+        "vere dukaanam undaa?",
+        "vere colour vaddu"
+      ],
+      "tokens": [
+        {
+          "word": "vere",
+          "english": "another"
+        },
+        {
+          "word": "colour",
+          "english": "colour"
+        },
+        {
+          "word": "undaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "వేరే కలర్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i10",
+      "sourcePrompt": "Can I try it on?",
+      "register": "neutral",
+      "canonical": "try cheyocha?",
+      "acceptedAnswers": [
+        "try cheyocha?",
+        "try cheyyocha?",
+        "try chesi chudocha?",
+        "try cheyavacha?"
+      ],
+      "distractors": [
+        "try cheyanu",
+        "vesukoni chudandi",
+        "konukkocha?"
+      ],
+      "tokens": [
+        {
+          "word": "try",
+          "english": "try"
+        },
+        {
+          "word": "cheyocha",
+          "english": "can I do?"
+        }
+      ],
+      "script": "ట్రై చేయొచ్చా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i11",
+      "sourcePrompt": "Where do I pay?",
+      "register": "neutral",
+      "canonical": "ekkada pay cheyali?",
+      "acceptedAnswers": [
+        "ekkada pay cheyali?",
+        "ekkada pay cheyyali?",
+        "ekkada dabbulu ivvali?",
+        "ekkada pay cheyyali"
+      ],
+      "distractors": [
+        "evariki dabbulu ivvali?",
+        "eppudu pay cheyali?",
+        "enta pay cheyali?"
+      ],
+      "tokens": [
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "pay",
+          "english": "pay"
+        },
+        {
+          "word": "cheyali",
+          "english": "should do"
+        }
+      ],
+      "script": "ఎక్కడ పే చేయాలి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i12",
+      "sourcePrompt": "Do you take cards? (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "card teesukuntara?",
+      "acceptedAnswers": [
+        "card teesukuntara?",
+        "cards teesukuntara?",
+        "card accept chestara?",
+        "card teeskuntara?"
+      ],
+      "registerVariant": "card teesukuntava?",
+      "distractors": [
+        "card ivvandi",
+        "cash matrame na?"
+      ],
+      "tokens": [
+        {
+          "word": "card",
+          "english": "card"
+        },
+        {
+          "word": "teesukuntara",
+          "english": "do you take? (respectful)"
+        }
+      ],
+      "script": "కార్డ్ తీసుకుంటారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i13",
+      "sourcePrompt": "Can I pay by GPay?",
+      "register": "neutral",
+      "canonical": "GPay cheyocha?",
+      "acceptedAnswers": [
+        "GPay cheyocha?",
+        "GPay cheyyocha?",
+        "GPay lo pay cheyocha?",
+        "GPay chesocha?"
+      ],
+      "distractors": [
+        "GPay number enta?",
+        "GPay lo enta ayindi?",
+        "GPay lo pay cheyakandi"
+      ],
+      "tokens": [
+        {
+          "word": "GPay",
+          "english": "GPay"
+        },
+        {
+          "word": "cheyocha",
+          "english": "can I do?"
+        }
+      ],
+      "script": "జీపే చేయొచ్చా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i14",
+      "sourcePrompt": "Please pack it. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "pack cheyandi",
+      "acceptedAnswers": [
+        "pack cheyandi",
+        "pack cheyyandi",
+        "pack chesi ivvandi",
+        "pack cheyandi andi"
+      ],
+      "registerVariant": "pack chey",
+      "distractors": [
+        "pack cheyakandi",
+        "pack enta?"
+      ],
+      "tokens": [
+        {
+          "word": "pack",
+          "english": "pack"
+        },
+        {
+          "word": "cheyandi",
+          "english": "please do"
+        }
+      ],
+      "script": "ప్యాక్ చేయండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i15",
+      "sourcePrompt": "Do you have a bag?",
+      "register": "neutral",
+      "canonical": "bag undaa?",
+      "acceptedAnswers": [
+        "bag undaa?",
+        "bag unda?",
+        "bag vundaa?",
+        "bag undaa"
+      ],
+      "distractors": [
+        "bag vaddu",
+        "bag naa daggara undi",
+        "bag enta?"
+      ],
+      "tokens": [
+        {
+          "word": "bag",
+          "english": "bag"
+        },
+        {
+          "word": "undaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "బ్యాగ్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i16",
+      "sourcePrompt": "What time does the shop open?",
+      "register": "neutral",
+      "canonical": "dukaanam eppudu teruchukuntundi?",
+      "acceptedAnswers": [
+        "dukaanam eppudu teruchukuntundi?",
+        "shop eppudu teruchukuntundi?",
+        "dukanam eppudu teruchukuntundi?",
+        "shop eppudu terustaru?"
+      ],
+      "distractors": [
+        "dukaanam eppudu moostaru?",
+        "dukaanam ekkada undi?",
+        "dukaanam enta dooram?"
+      ],
+      "tokens": [
+        {
+          "word": "dukaanam",
+          "english": "shop"
+        },
+        {
+          "word": "eppudu",
+          "english": "when"
+        },
+        {
+          "word": "teruchukuntundi",
+          "english": "opens"
+        }
+      ],
+      "script": "దుకాణం ఎప్పుడు తెరుచుకుంటుంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i17",
+      "sourcePrompt": "Half a kilo, please. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "ardha kilo ivvandi",
+      "acceptedAnswers": [
+        "ardha kilo ivvandi",
+        "ardha kilo iyyandi",
+        "half kilo ivvandi",
+        "ardhakilo ivvandi"
+      ],
+      "registerVariant": "ardha kilo ivvu",
+      "distractors": [
+        "oka kilo ivvandi",
+        "pavu kilo ivvandi"
+      ],
+      "tokens": [
+        {
+          "word": "ardha kilo",
+          "english": "half a kilo"
+        },
+        {
+          "word": "ivvandi",
+          "english": "please give"
+        }
+      ],
+      "script": "అర్ధ కిలో ఇవ్వండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i18",
+      "sourcePrompt": "How much per kilo?",
+      "register": "neutral",
+      "canonical": "kilo enta?",
+      "acceptedAnswers": [
+        "kilo enta?",
+        "kilo entha?",
+        "oka kilo enta?",
+        "kilo ki enta?"
+      ],
+      "distractors": [
+        "ardha kilo enta?",
+        "enni kilos kavali?",
+        "oka kilo kavali"
+      ],
+      "tokens": [
+        {
+          "word": "kilo",
+          "english": "kilo"
+        },
+        {
+          "word": "enta",
+          "english": "how much"
+        }
+      ],
+      "script": "కిలో ఎంత?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i19",
+      "sourcePrompt": "Is there a discount?",
+      "register": "neutral",
+      "canonical": "discount undaa?",
+      "acceptedAnswers": [
+        "discount undaa?",
+        "discount unda?",
+        "discount vundaa?",
+        "discount emaina undaa?"
+      ],
+      "distractors": [
+        "discount vaddu",
+        "discount eppati varaku?",
+        "discount ledu"
+      ],
+      "tokens": [
+        {
+          "word": "discount",
+          "english": "discount"
+        },
+        {
+          "word": "undaa",
+          "english": "is there?"
+        }
+      ],
+      "script": "డిస్కౌంట్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u04-i20",
+      "sourcePrompt": "I'll come back later.",
+      "register": "neutral",
+      "canonical": "nenu taruvata vastanu",
+      "acceptedAnswers": [
+        "nenu taruvata vastanu",
+        "nenu tarvata vastanu",
+        "nenu taruvata vasta",
+        "nenu malli vastanu"
+      ],
+      "distractors": [
+        "nenu taruvata veltanu",
+        "nenu ippudu vastanu",
+        "nenu ivaala randu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "taruvata",
+          "english": "later"
+        },
+        {
+          "word": "vastanu",
+          "english": "will come"
+        }
+      ],
+      "script": "నేను తర్వాత వస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

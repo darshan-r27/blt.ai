@@ -1,0 +1,703 @@
+{
+  "scenarioId": "te-l01-u12",
+  "language": "telugu",
+  "title": "Feelings and basic needs",
+  "subtitle": "Saying how you feel and what you need",
+  "level": {
+    "number": 1,
+    "title": "Survival",
+    "position": 12
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l01-u12-i01",
+      "sourcePrompt": "I'm tired.",
+      "register": "neutral",
+      "canonical": "naaku chala alasiga undi",
+      "acceptedAnswers": [
+        "naaku chala alasiga undi",
+        "naaku alasiga undi",
+        "naaku tired ga undi",
+        "naaku chaala alasata ga undi"
+      ],
+      "distractors": [
+        "naaku chala aakali ga undi",
+        "naaku chala nidra",
+        "naaku chala santosham ga undi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "alasiga",
+          "english": "tired"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నాకు చాలా అలసిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i02",
+      "sourcePrompt": "I'm feeling cold.",
+      "register": "neutral",
+      "canonical": "naaku chali vestundi",
+      "acceptedAnswers": [
+        "naaku chali vestundi",
+        "naaku chali vestondi",
+        "naaku chaliga undi",
+        "naaku chali ga undi"
+      ],
+      "distractors": [
+        "naaku vedi ga undi",
+        "naaku aakesthundi",
+        "naaku nidra vastundi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "chali",
+          "english": "cold"
+        },
+        {
+          "word": "vestundi",
+          "english": "hits, is felt"
+        }
+      ],
+      "script": "నాకు చలి వేస్తుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i03",
+      "sourcePrompt": "I'm feeling hot.",
+      "register": "neutral",
+      "canonical": "naaku vedi ga undi",
+      "acceptedAnswers": [
+        "naaku vedi ga undi",
+        "naaku vedigaa undi",
+        "naaku ushnam ga undi",
+        "naaku chala vedi ga undi"
+      ],
+      "distractors": [
+        "naaku chali vestundi",
+        "naaku aakesthundi",
+        "naaku nidra vastundi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "vedi ga",
+          "english": "hot"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నాకు వేడిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i04",
+      "sourcePrompt": "I'm not feeling well.",
+      "register": "neutral",
+      "canonical": "naaku baaledu",
+      "acceptedAnswers": [
+        "naaku baaledu",
+        "naaku baaleydu",
+        "naaku ontlo baaledu",
+        "naaku baagaledu"
+      ],
+      "distractors": [
+        "naaku baagundi",
+        "naaku vaddu",
+        "naaku telidu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "baaledu",
+          "english": "not well"
+        }
+      ],
+      "script": "నాకు బాలేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i05",
+      "sourcePrompt": "I have a headache.",
+      "register": "neutral",
+      "canonical": "naaku talanoppi ga undi",
+      "acceptedAnswers": [
+        "naaku talanoppi ga undi",
+        "naaku tala noppi ga undi",
+        "naaku talanoppi undi",
+        "naaku tala noppigaa undi"
+      ],
+      "distractors": [
+        "naaku kadupu noppi ga undi",
+        "naaku kaalu noppi ga undi",
+        "naaku tala tirugutondi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "talanoppi",
+          "english": "headache"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నాకు తలనొప్పిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i06",
+      "sourcePrompt": "I have a stomach ache.",
+      "register": "neutral",
+      "canonical": "naaku kadupu noppi ga undi",
+      "acceptedAnswers": [
+        "naaku kadupu noppi ga undi",
+        "naaku kadupu noppigaa undi",
+        "naaku kadupulo noppi",
+        "naaku kadupu noppi undi"
+      ],
+      "distractors": [
+        "naaku tala noppi ga undi",
+        "naaku kadupu aakali ga undi",
+        "naaku kadupu nindindi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "kadupu",
+          "english": "stomach"
+        },
+        {
+          "word": "noppi ga",
+          "english": "painful"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నాకు కడుపు నొప్పిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i07",
+      "sourcePrompt": "I have a fever.",
+      "register": "neutral",
+      "canonical": "naaku jwaram vachchindi",
+      "acceptedAnswers": [
+        "naaku jwaram vachchindi",
+        "naaku jwaram undi",
+        "naaku fever vachchindi",
+        "naaku jvaram vachindi"
+      ],
+      "distractors": [
+        "naaku jalubu vachchindi",
+        "naaku daggu vachchindi",
+        "naaku jwaram ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "jwaram",
+          "english": "fever"
+        },
+        {
+          "word": "vachchindi",
+          "english": "has come"
+        }
+      ],
+      "script": "నాకు జ్వరం వచ్చింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i08",
+      "sourcePrompt": "I have a cold.",
+      "register": "neutral",
+      "canonical": "naaku jalubu chesindi",
+      "acceptedAnswers": [
+        "naaku jalubu chesindi",
+        "naaku jalubu undi",
+        "naaku jalubu chesinde",
+        "naaku jalubu pattindi"
+      ],
+      "distractors": [
+        "naaku jwaram chesindi",
+        "naaku jalubu ledu",
+        "naaku jalubu kavali"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "jalubu",
+          "english": "cold"
+        },
+        {
+          "word": "chesindi",
+          "english": "has happened"
+        }
+      ],
+      "script": "నాకు జలుబు చేసింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i09",
+      "sourcePrompt": "I need to rest.",
+      "register": "neutral",
+      "canonical": "nenu rest teesukovali",
+      "acceptedAnswers": [
+        "nenu rest teesukovali",
+        "nenu konchem rest teesukovali",
+        "naaku rest kavali",
+        "nenu vishraanti teesukovali"
+      ],
+      "distractors": [
+        "nenu rest teesukonu",
+        "nenu pani cheyali",
+        "nenu rest ki veltunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "rest",
+          "english": "rest"
+        },
+        {
+          "word": "teesukovali",
+          "english": "need to take"
+        }
+      ],
+      "script": "నేను రెస్ట్ తీసుకోవాలి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i10",
+      "sourcePrompt": "I'm feeling better.",
+      "register": "neutral",
+      "canonical": "ippudu konchem baagunnanu",
+      "acceptedAnswers": [
+        "ippudu konchem baagunnanu",
+        "ippudu konchem baagundi",
+        "ippudu konchem bagunna",
+        "ippudu naaku konchem baagundi"
+      ],
+      "distractors": [
+        "ippudu konchem baaledu",
+        "ippudu nenu ledu",
+        "ippudu konchem alasiga undi"
+      ],
+      "tokens": [
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "baagunnanu",
+          "english": "am well"
+        }
+      ],
+      "script": "ఇప్పుడు కొంచెం బాగున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i11",
+      "sourcePrompt": "Are you okay? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu bagunnava?",
+      "acceptedAnswers": [
+        "nuvvu bagunnava?",
+        "nuvvu baagunnava?",
+        "nuvvu okay naa?",
+        "nuvvu baagunnaava?"
+      ],
+      "registerVariant": "meeru baagunnara?",
+      "distractors": [
+        "nuvvu ekkada unnav?",
+        "nuvvu eppudu vastav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "bagunnava",
+          "english": "are you well?"
+        }
+      ],
+      "script": "నువ్వు బాగున్నావా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i12",
+      "sourcePrompt": "Please get some medicine. (to an elder)",
+      "register": "respectful",
+      "canonical": "konchem mandu teesukuravandi",
+      "acceptedAnswers": [
+        "konchem mandu teesukuravandi",
+        "konchem mandulu teesukuravandi",
+        "konchem mandu techchi ivvandi",
+        "mandu teesukuravandi"
+      ],
+      "registerVariant": "konchem mandu teesukurava",
+      "distractors": [
+        "konchem neellu teesukuravandi",
+        "konchem bhojanam teesukuravandi"
+      ],
+      "tokens": [
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "mandu",
+          "english": "medicine"
+        },
+        {
+          "word": "teesukuravandi",
+          "english": "please bring"
+        }
+      ],
+      "script": "కొంచెం మందు తీసుకురావండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i13",
+      "sourcePrompt": "I feel dizzy.",
+      "register": "neutral",
+      "canonical": "naaku tala tirugutondi",
+      "acceptedAnswers": [
+        "naaku tala tirugutondi",
+        "naaku tala tirugutundi",
+        "naaku tala tippinattu undi",
+        "naaku tala tipputhundi"
+      ],
+      "distractors": [
+        "naaku tala noppi ga undi",
+        "naaku kaalu tirugutondi",
+        "naaku tala ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "tala",
+          "english": "head"
+        },
+        {
+          "word": "tirugutondi",
+          "english": "is spinning"
+        }
+      ],
+      "script": "నాకు తల తిరుగుతోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i14",
+      "sourcePrompt": "I feel sick.",
+      "register": "neutral",
+      "canonical": "naaku vaanthi vachchela undi",
+      "acceptedAnswers": [
+        "naaku vaanthi vachchela undi",
+        "naaku vaanthi vachinattu undi",
+        "naaku vaanthi vastunnattu undi",
+        "naaku vaanthi vastondi"
+      ],
+      "distractors": [
+        "naaku aakali vachchela undi",
+        "naaku nidra vachchela undi",
+        "naaku vaanthi ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "vaanthi",
+          "english": "vomiting"
+        },
+        {
+          "word": "vachchela undi",
+          "english": "feels like coming"
+        }
+      ],
+      "script": "నాకు వాంతి వచ్చేలా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i15",
+      "sourcePrompt": "I'm worried.",
+      "register": "neutral",
+      "canonical": "naaku chinta ga undi",
+      "acceptedAnswers": [
+        "naaku chinta ga undi",
+        "naaku chintaga undi",
+        "naaku badhaga undi",
+        "naaku chinta undi"
+      ],
+      "distractors": [
+        "naaku santosham ga undi",
+        "naaku kopam ga undi",
+        "naaku chinta ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "chinta",
+          "english": "worry"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నాకు చింతగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i16",
+      "sourcePrompt": "I'm happy.",
+      "register": "neutral",
+      "canonical": "nenu chala santoshanga unnanu",
+      "acceptedAnswers": [
+        "nenu chala santoshanga unnanu",
+        "nenu santoshanga unnanu",
+        "naaku chala santosham ga undi",
+        "nenu happy ga unnanu"
+      ],
+      "distractors": [
+        "nenu chala kopam ga unnanu",
+        "nenu chala chintaga unnanu",
+        "nenu santoshanga ledu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "santoshanga",
+          "english": "happily"
+        },
+        {
+          "word": "unnanu",
+          "english": "am"
+        }
+      ],
+      "script": "నేను చాలా సంతోషంగా ఉన్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i17",
+      "sourcePrompt": "I'm angry.",
+      "register": "neutral",
+      "canonical": "naaku kopam ga undi",
+      "acceptedAnswers": [
+        "naaku kopam ga undi",
+        "naaku kopam vastondi",
+        "nenu kopam ga unnanu",
+        "naaku kopamga undi"
+      ],
+      "distractors": [
+        "naaku santosham ga undi",
+        "naaku chinta ga undi",
+        "naaku kopam ledu"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "kopam",
+          "english": "anger"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నాకు కోపంగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i18",
+      "sourcePrompt": "Are you feeling cold? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeku chali vestunda?",
+      "acceptedAnswers": [
+        "meeku chali vestunda?",
+        "meeku chali vestundaa?",
+        "meeku chaliga undaa?",
+        "meeku chali ga undaa?"
+      ],
+      "registerVariant": "neeku chali vestunda?",
+      "distractors": [
+        "meeku aakesthunda?",
+        "meeku nidra vastunda?"
+      ],
+      "tokens": [
+        {
+          "word": "meeku",
+          "english": "to you (respectful)"
+        },
+        {
+          "word": "chali",
+          "english": "cold"
+        },
+        {
+          "word": "vestunda",
+          "english": "do you feel?"
+        }
+      ],
+      "script": "మీకు చలి వేస్తుందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i19",
+      "sourcePrompt": "Please open the window, it's hot. (to an elder)",
+      "register": "respectful",
+      "canonical": "kitiki teeyandi, vedi ga undi",
+      "acceptedAnswers": [
+        "kitiki teeyandi, vedi ga undi",
+        "kitiki teeyandi vedigaa undi",
+        "kitiki teravandi, vedi ga undi",
+        "kitiki teeyandi, ushnam ga undi"
+      ],
+      "registerVariant": "kitiki teeyi, vedi ga undi",
+      "distractors": [
+        "kitiki veyandi, vedi ga undi",
+        "kitiki teeyandi, chali ga undi"
+      ],
+      "tokens": [
+        {
+          "word": "kitiki",
+          "english": "window"
+        },
+        {
+          "word": "teeyandi",
+          "english": "please open"
+        },
+        {
+          "word": "vedi ga",
+          "english": "hot"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "కిటికీ తీయండి, వేడిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l01-u12-i20",
+      "sourcePrompt": "Let's rest for a while.",
+      "register": "neutral",
+      "canonical": "konchem sepu rest teesukundaam",
+      "acceptedAnswers": [
+        "konchem sepu rest teesukundaam",
+        "konchem sepu rest teesukundam",
+        "konchem sepu vishraanti teesukundam",
+        "konchem sepu rest cheddam"
+      ],
+      "distractors": [
+        "konchem sepu rest teesukonu",
+        "konchem sepu tindam",
+        "konchem sepu nadavandi"
+      ],
+      "tokens": [
+        {
+          "word": "konchem sepu",
+          "english": "for a while"
+        },
+        {
+          "word": "rest",
+          "english": "rest"
+        },
+        {
+          "word": "teesukundaam",
+          "english": "let's take"
+        }
+      ],
+      "script": "కొంచెం సేపు రెస్ట్ తీసుకుందాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
