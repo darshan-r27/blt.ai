@@ -40,6 +40,7 @@
         }
       ],
       "note": null,
+      "script": "இது எவ்ளோ?",
       "reviewStatus": "reviewed"
     },
     {
@@ -74,6 +75,7 @@
         }
       ],
       "note": null,
+      "script": "வெல ரொம்ப ஜாஸ்தி",
       "reviewStatus": "reviewed"
     },
     {
@@ -112,6 +114,7 @@
         }
       ],
       "note": null,
+      "script": "வெல கொஞ்சம் கம்மி பண்ணுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -143,6 +146,7 @@
         }
       ],
       "note": null,
+      "script": "லாஸ்ட் பிரைஸ் எவ்ளோ?",
       "reviewStatus": "reviewed"
     },
     {
@@ -174,6 +178,7 @@
         }
       ],
       "note": "kudunga - give (respectful)",
+      "script": "ரெண்டு எடுத்துக்குறேன்",
       "reviewStatus": "reviewed"
     },
     {
@@ -206,6 +211,7 @@
         }
       ],
       "note": "vena would also work",
+      "script": "எனக்கு வேணாம்",
       "reviewStatus": "reviewed"
     },
     {
@@ -241,6 +247,7 @@
         }
       ],
       "note": null,
+      "script": "எனக்கு இது புடிச்சிருக்கு",
       "reviewStatus": "reviewed"
     },
     {
@@ -275,6 +282,7 @@
         }
       ],
       "note": null,
+      "script": "பெரிய சைஸ் இருக்கா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -310,6 +318,7 @@
         }
       ],
       "note": null,
+      "script": "வேற கலர் இருக்கா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -341,6 +350,7 @@
         }
       ],
       "note": null,
+      "script": "ட்ரை பண்லாமா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -375,6 +385,7 @@
         }
       ],
       "note": null,
+      "script": "எங்க பே பண்ணனும்?",
       "reviewStatus": "reviewed"
     },
     {
@@ -405,6 +416,7 @@
         }
       ],
       "note": null,
+      "script": "கார்டு அக்செப்ட் பண்ணுவீங்களா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -437,6 +449,7 @@
         }
       ],
       "note": null,
+      "script": "ஜிபே பண்லாமா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -467,6 +480,7 @@
         }
       ],
       "note": null,
+      "script": "பேக் பண்ணுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -497,6 +511,7 @@
         }
       ],
       "note": null,
+      "script": "பேக் இருக்கா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -532,6 +547,7 @@
         }
       ],
       "note": null,
+      "script": "கடை எப்போ தொறக்கும்?",
       "reviewStatus": "reviewed"
     },
     {
@@ -566,6 +582,7 @@
         }
       ],
       "note": null,
+      "script": "அரை கிலோ குடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -597,6 +614,7 @@
         }
       ],
       "note": null,
+      "script": "ஒரு கிலோ எவ்ளோ?",
       "reviewStatus": "reviewed"
     },
     {
@@ -627,6 +645,7 @@
         }
       ],
       "note": null,
+      "script": "டிஸ்கவுண்ட் இருக்கா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -661,6 +680,7 @@
         }
       ],
       "note": null,
+      "script": "நான் அப்றம் வரேன்",
       "reviewStatus": "reviewed"
     }
   ]
