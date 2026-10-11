@@ -42,6 +42,7 @@
         }
       ],
       "note": "da is the friendly address between male friends; use it only with close male friends.",
+      "script": "எப்படி இருக்க டா?",
       "reviewStatus": "reviewed",
       "addressee": "male"
     },
@@ -72,6 +73,7 @@
         }
       ],
       "note": "Use -eenga with elders and strangers.",
+      "script": "எப்படி இருக்கீங்க?",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -114,6 +116,7 @@
         }
       ],
       "note": "di is the friendly address to a female friend; da is for a male friend.",
+      "script": "நான் நல்லா இருக்கேன் டி, நீ?",
       "reviewStatus": "reviewed",
       "addressee": "female"
     },
@@ -144,6 +147,7 @@
         }
       ],
       "note": "vaanga is respectful; vaa is for friends and kids.",
+      "script": "உள்ள வாங்க",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -170,6 +174,7 @@
         }
       ],
       "note": "-unga marks respect; ukkaaru is casual.",
+      "script": "உக்காருங்க",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -204,6 +209,7 @@
         }
       ],
       "note": "ungaloda is the respectful your; un is casual.",
+      "script": "உங்களோட பேரு என்ன?",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -238,6 +244,7 @@
         }
       ],
       "note": "No register change needed when talking about yourself.",
+      "script": "என் பேரு ரவி",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -272,6 +279,7 @@
         }
       ],
       "note": "neenga ... vareenga for elders and strangers.",
+      "script": "நீங்க எங்க இருந்து வர்றீங்க?",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -310,6 +318,7 @@
         }
       ],
       "note": "ungala is respectful; unna is casual.",
+      "script": "உங்கள பாத்ததுல ரொம்ப சந்தோஷம்",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -336,6 +345,7 @@
         }
       ],
       "note": "A common way to greet someone.",
+      "script": "சாப்டீங்களா?",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -366,6 +376,7 @@
         }
       ],
       "note": "-iya is the casual question ending.",
+      "script": "சாப்டியா டா?",
       "reviewStatus": "reviewed",
       "addressee": "male"
     },
@@ -400,6 +411,7 @@
         }
       ],
       "note": "panra is casual; panreenga is respectful.",
+      "script": "என்ன பண்ற டி?",
       "reviewStatus": "reviewed",
       "addressee": "female"
     },
@@ -431,6 +443,7 @@
         }
       ],
       "note": "Tamil speakers say go-and-come when leaving.",
+      "script": "போய்ட்டு வரேன்",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -462,6 +475,7 @@
         }
       ],
       "note": "Speakers say thanks in every register; the English word is normal.",
+      "script": "ரொம்ப தேங்ஸ்",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -487,6 +501,7 @@
         }
       ],
       "note": "-unga respectful, plain mannichidu casual.",
+      "script": "மன்னிச்சிடுங்க",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -518,6 +533,7 @@
         }
       ],
       "note": "Spoken negative -ala.",
+      "script": "எனக்கு புரியல",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -552,6 +568,7 @@
         }
       ],
       "note": "pesunga is respectful; pesu is casual.",
+      "script": "கொஞ்சம் மெதுவா பேசுங்க",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -585,6 +602,7 @@
         }
       ],
       "note": "unakku casual; ungalukku respectful.",
+      "script": "உனக்கு இங்கிலீஷ் தெரியுமா?",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -623,6 +641,7 @@
         }
       ],
       "note": "A useful line to say early in any conversation.",
+      "script": "எனக்கு கொஞ்சம் தமிழ் தெரியும்",
       "reviewStatus": "reviewed",
       "addressee": "any"
     },
@@ -654,6 +673,7 @@
         }
       ],
       "note": "The casual way to part.",
+      "script": "நாளைக்கு பாக்கலாம்",
       "reviewStatus": "reviewed",
       "addressee": "any"
     }

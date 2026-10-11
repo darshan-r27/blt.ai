@@ -40,6 +40,7 @@
         }
       ],
       "note": null,
+      "script": "எனக்கு பசிக்குது",
       "reviewStatus": "reviewed"
     },
     {
@@ -74,6 +75,7 @@
         }
       ],
       "note": null,
+      "script": "எனக்கு தாகமா இருக்கு",
       "reviewStatus": "reviewed"
     },
     {
@@ -104,6 +106,7 @@
         }
       ],
       "note": null,
+      "script": "தண்ணி குடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -138,6 +141,7 @@
         }
       ],
       "note": null,
+      "script": "ஒரு டீ குடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -168,6 +172,7 @@
         }
       ],
       "note": "To add before the option:\nsapudrathuku - to eat\nkudikurathuku - to drink",
+      "script": "என்ன இருக்குங்க?",
       "reviewStatus": "reviewed"
     },
     {
@@ -206,6 +211,7 @@
         }
       ],
       "note": "unnaku is informal\nungaluku is formal / plural",
+      "script": "உன்னக்கு என்ன வேணும் சாப்ட?",
       "reviewStatus": "reviewed"
     },
     {
@@ -244,6 +250,7 @@
         }
       ],
       "note": null,
+      "script": "எனக்கு ஒரு தோசை குடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -278,6 +285,7 @@
         }
       ],
       "note": "pannunga - make (respectful)",
+      "script": "காரம் கம்மியா போடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -313,6 +321,7 @@
         }
       ],
       "note": null,
+      "script": "இது காரமா இருக்குமா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -351,6 +360,7 @@
         }
       ],
       "note": null,
+      "script": "இன்னும் கொஞ்சம் சாதம் போடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -386,6 +396,7 @@
         }
       ],
       "note": null,
+      "script": "ரொம்ப நல்லா இருக்கு",
       "reviewStatus": "reviewed"
     },
     {
@@ -416,6 +427,7 @@
         }
       ],
       "note": null,
+      "script": "உப்பு ஜாஸ்தி",
       "reviewStatus": "reviewed"
     },
     {
@@ -445,6 +457,7 @@
         }
       ],
       "note": "kudu. -give (casual)",
+      "script": "பில் குடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -474,6 +487,7 @@
         }
       ],
       "note": "aachunga - respectful (notice -nga)",
+      "script": "எவ்ளோ ஆச்சு?",
       "reviewStatus": "reviewed"
     },
     {
@@ -503,6 +517,7 @@
         }
       ],
       "note": "meethi - balance",
+      "script": "சேஞ்ச வச்சுக்கோங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -533,6 +548,7 @@
         }
       ],
       "note": null,
+      "script": "சேஞ்ச் இருக்கா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -572,6 +588,7 @@
         }
       ],
       "note": null,
+      "script": "நான் வெஜ் மட்டும் தான் சாப்பிடுவேன்",
       "reviewStatus": "reviewed"
     },
     {
@@ -603,6 +620,7 @@
         }
       ],
       "note": null,
+      "script": "இது வெஜ்ஜா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -635,6 +653,7 @@
         }
       ],
       "note": null,
+      "script": "எனக்கு போதும்",
       "reviewStatus": "reviewed"
     },
     {
@@ -669,6 +688,7 @@
         }
       ],
       "note": null,
+      "script": "சாப்பாடு ரொம்ப நல்லா இருந்துச்சு",
       "reviewStatus": "reviewed"
     }
   ]
