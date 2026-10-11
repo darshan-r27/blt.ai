@@ -1,0 +1,723 @@
+{
+  "scenarioId": "te-l02-u12",
+  "language": "telugu",
+  "title": "Weather and seasons",
+  "subtitle": "Small talk: hot, rainy, windy, summer and the rainy season",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 12
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u12-i01",
+      "sourcePrompt": "It's very cold today.",
+      "register": "neutral",
+      "canonical": "ivaala chala chali ga undi",
+      "acceptedAnswers": [
+        "ivaala chala chali ga undi",
+        "ivaala chaala chali ga undi",
+        "ivala chala chali ga undi",
+        "ivaala chala chaliga undi"
+      ],
+      "distractors": [
+        "ivaala chala vedi ga undi",
+        "ivaala chala chali ga undedi",
+        "ivaala chali ledu"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "chali ga",
+          "english": "cold"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఈవాళ చాలా చలిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i02",
+      "sourcePrompt": "It's windy.",
+      "register": "neutral",
+      "canonical": "gaali chala veestondi",
+      "acceptedAnswers": [
+        "gaali chala veestondi",
+        "gaali chaala veestondi",
+        "gaali chala veestundi",
+        "gaali chala veesthondi"
+      ],
+      "distractors": [
+        "gaali chala veesindi",
+        "gaali veeyadu",
+        "vaana chala veestondi"
+      ],
+      "tokens": [
+        {
+          "word": "gaali",
+          "english": "wind"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "veestondi",
+          "english": "is blowing"
+        }
+      ],
+      "script": "గాలి చాలా వీస్తోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i03",
+      "sourcePrompt": "It's cloudy today.",
+      "register": "neutral",
+      "canonical": "ivaala mabbuga undi",
+      "acceptedAnswers": [
+        "ivaala mabbuga undi",
+        "ivala mabbuga undi",
+        "ivaala mabbu ga undi",
+        "ivaala meghaalu unnayi"
+      ],
+      "distractors": [
+        "ivaala endaga undi",
+        "ivaala mabbuga undedi",
+        "ivaala mabbu ledu"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "mabbuga",
+          "english": "cloudy"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఈవాళ మబ్బుగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i04",
+      "sourcePrompt": "Will it rain tomorrow?",
+      "register": "neutral",
+      "canonical": "repu vaana padutunda?",
+      "acceptedAnswers": [
+        "repu vaana padutunda?",
+        "repu vaana paduthunda?",
+        "repu varsham padutunda?",
+        "repu vaana padutundaa?"
+      ],
+      "distractors": [
+        "repu vaana padindaa?",
+        "repu vaana padadaa?",
+        "ivaala vaana padutunda?"
+      ],
+      "tokens": [
+        {
+          "word": "repu",
+          "english": "tomorrow"
+        },
+        {
+          "word": "vaana",
+          "english": "rain"
+        },
+        {
+          "word": "padutunda",
+          "english": "will it fall?"
+        }
+      ],
+      "script": "రేపు వాన పడుతుందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i05",
+      "sourcePrompt": "What's the weather like today? (to a friend)",
+      "register": "casual",
+      "canonical": "ivaala weather ela undi?",
+      "acceptedAnswers": [
+        "ivaala weather ela undi?",
+        "ivala weather ela undi?",
+        "ivaala weather ela vundi?",
+        "ivaala vaatavaranam ela undi?"
+      ],
+      "registerVariant": "ivaala weather ela undi andi?",
+      "distractors": [
+        "ivaala weather enta undi?",
+        "ivaala weather ekkada undi?"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "weather",
+          "english": "weather"
+        },
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఈవాళ వెదర్ ఎలా ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i06",
+      "sourcePrompt": "I like the rain.",
+      "register": "neutral",
+      "canonical": "naaku vaana ishtam",
+      "acceptedAnswers": [
+        "naaku vaana ishtam",
+        "naaku vaana istam",
+        "naaku vaana chala ishtam",
+        "naku vaana ishtam"
+      ],
+      "distractors": [
+        "naaku vaana ishtam ledu",
+        "naaku endaa ishtam",
+        "naaku vaana ishtam ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "vaana",
+          "english": "rain"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు వాన ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i07",
+      "sourcePrompt": "Summer is very hot here.",
+      "register": "neutral",
+      "canonical": "ikkada vesavi chala vedi ga untundi",
+      "acceptedAnswers": [
+        "ikkada vesavi chala vedi ga untundi",
+        "ikkada vesavi kaalam chala vedi ga untundi",
+        "ikkada summer chala vedi ga untundi",
+        "ikkada vesavi chaala vedigaa untundi"
+      ],
+      "distractors": [
+        "ikkada vesavi chala chali ga untundi",
+        "ikkada vesavi chala vedi ga undi",
+        "ikkada vesavi vedi ga undadu"
+      ],
+      "tokens": [
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "vesavi",
+          "english": "summer"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "vedi ga",
+          "english": "hot"
+        },
+        {
+          "word": "untundi",
+          "english": "is usually"
+        }
+      ],
+      "script": "ఇక్కడ వేసవి చాలా వేడిగా ఉంటుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i08",
+      "sourcePrompt": "The rainy season starts in June.",
+      "register": "neutral",
+      "canonical": "varsha kaalam June lo modalavutundi",
+      "acceptedAnswers": [
+        "varsha kaalam June lo modalavutundi",
+        "varsha kaalam June lo modalavuthundi",
+        "varsha kaalam June lo start avutundi",
+        "varsha kaalam June lo modalautundi"
+      ],
+      "distractors": [
+        "varsha kaalam June lo ayipotundi",
+        "varsha kaalam January lo modalavutundi",
+        "varsha kaalam June lo modalaindi"
+      ],
+      "tokens": [
+        {
+          "word": "varsha kaalam",
+          "english": "rainy season"
+        },
+        {
+          "word": "June lo",
+          "english": "in June"
+        },
+        {
+          "word": "modalavutundi",
+          "english": "starts"
+        }
+      ],
+      "script": "వర్ష కాలం జూన్ లో మొదలవుతుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i09",
+      "sourcePrompt": "Winter is pleasant.",
+      "register": "neutral",
+      "canonical": "chali kaalam haayiga untundi",
+      "acceptedAnswers": [
+        "chali kaalam haayiga untundi",
+        "chali kaalam hayiga untundi",
+        "chali kaalam chala haayiga untundi",
+        "winter haayiga untundi"
+      ],
+      "distractors": [
+        "chali kaalam vedi ga untundi",
+        "chali kaalam haayiga undi",
+        "chali kaalam haayiga undadu"
+      ],
+      "tokens": [
+        {
+          "word": "chali kaalam",
+          "english": "winter"
+        },
+        {
+          "word": "haayiga",
+          "english": "pleasant"
+        },
+        {
+          "word": "untundi",
+          "english": "is"
+        }
+      ],
+      "script": "చలి కాలం హాయిగా ఉంటుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i10",
+      "sourcePrompt": "Take a jacket, it will be cold. (to an elder)",
+      "register": "respectful",
+      "canonical": "jacket teesukelli randi, chali ga untundi",
+      "acceptedAnswers": [
+        "jacket teesukelli randi, chali ga untundi",
+        "jacket teesukuni randi, chali ga untundi",
+        "jacket teesukelli randi chali ga untundi",
+        "jacket teesukelli randi, chaliga untundi"
+      ],
+      "registerVariant": "jacket teesukelli ra, chali ga untundi",
+      "distractors": [
+        "jacket vaddu randi, chali ga untundi",
+        "jacket teesukelli randi, vedi ga untundi"
+      ],
+      "tokens": [
+        {
+          "word": "jacket",
+          "english": "jacket"
+        },
+        {
+          "word": "teesukelli randi",
+          "english": "please take along"
+        },
+        {
+          "word": "chali ga untundi",
+          "english": "it will be cold"
+        }
+      ],
+      "script": "జాకెట్ తీసుకెళ్లి రండి, చలిగా ఉంటుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i11",
+      "sourcePrompt": "Take an umbrella, it might rain. (to a friend)",
+      "register": "casual",
+      "canonical": "godugu teesuko, vaana padochu",
+      "acceptedAnswers": [
+        "godugu teesuko, vaana padochu",
+        "godugu teesuko vaana padochu",
+        "godugu teesukelli, vaana padochu",
+        "umbrella teesuko, vaana padochu"
+      ],
+      "registerVariant": "godugu teesukondi, vaana padochu",
+      "distractors": [
+        "godugu vaddu, vaana padochu",
+        "godugu teesuko, vaana padindi"
+      ],
+      "tokens": [
+        {
+          "word": "godugu",
+          "english": "umbrella"
+        },
+        {
+          "word": "teesuko",
+          "english": "take"
+        },
+        {
+          "word": "vaana padochu",
+          "english": "it might rain"
+        }
+      ],
+      "script": "గొడుగు తీసుకో, వాన పడొచ్చు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i12",
+      "sourcePrompt": "It's raining heavily.",
+      "register": "neutral",
+      "canonical": "bhaaree vaana padutondi",
+      "acceptedAnswers": [
+        "bhaaree vaana padutondi",
+        "bhaari vaana padutondi",
+        "chala bhaari vaana padutondi",
+        "bhaari varsham padutondi"
+      ],
+      "distractors": [
+        "chinna vaana padutondi",
+        "bhaari vaana padindi",
+        "bhaari vaana padadu"
+      ],
+      "tokens": [
+        {
+          "word": "bhaaree",
+          "english": "heavy"
+        },
+        {
+          "word": "vaana",
+          "english": "rain"
+        },
+        {
+          "word": "padutondi",
+          "english": "is falling"
+        }
+      ],
+      "script": "భారీ వాన పడుతోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i13",
+      "sourcePrompt": "The sun is very strong.",
+      "register": "neutral",
+      "canonical": "endaa chala ekkuvaga undi",
+      "acceptedAnswers": [
+        "endaa chala ekkuvaga undi",
+        "endaa chaala ekkuva undi",
+        "enda chala ekkuvaga undi",
+        "endaa chala ekkuva ga undi"
+      ],
+      "distractors": [
+        "endaa chala takkuvaga undi",
+        "endaa chala ekkuvaga undedi",
+        "vaana chala ekkuvaga undi"
+      ],
+      "tokens": [
+        {
+          "word": "endaa",
+          "english": "sun"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "ekkuvaga",
+          "english": "strong"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఎండ చాలా ఎక్కువగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i14",
+      "sourcePrompt": "It gets dark early in winter.",
+      "register": "neutral",
+      "canonical": "chali kaalam lo tondaraga cheekati padutundi",
+      "acceptedAnswers": [
+        "chali kaalam lo tondaraga cheekati padutundi",
+        "chali kaalamlo tondaraga cheekati padutundi",
+        "chali kaalam lo tvaraga cheekati avutundi",
+        "chali kaalam lo tondaraga cheekatiga avutundi"
+      ],
+      "distractors": [
+        "chali kaalam lo late ga cheekati padutundi",
+        "vesavi lo tondaraga cheekati padutundi",
+        "chali kaalam lo tondaraga velugu padutundi"
+      ],
+      "tokens": [
+        {
+          "word": "chali kaalam lo",
+          "english": "in winter"
+        },
+        {
+          "word": "tondaraga",
+          "english": "early"
+        },
+        {
+          "word": "cheekati padutundi",
+          "english": "gets dark"
+        }
+      ],
+      "script": "చలి కాలం లో తొందరగా చీకటి పడుతుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i15",
+      "sourcePrompt": "Is it hot there?",
+      "register": "neutral",
+      "canonical": "akkada vedi ga undaa?",
+      "acceptedAnswers": [
+        "akkada vedi ga undaa?",
+        "akkada vedigaa undaa?",
+        "akkada endaga undaa?",
+        "akkada vedi ga unda?"
+      ],
+      "distractors": [
+        "akkada vedi ga undedaa?",
+        "akkada chali ga undaa?",
+        "ikkada vedi ga undaa?"
+      ],
+      "tokens": [
+        {
+          "word": "akkada",
+          "english": "there"
+        },
+        {
+          "word": "vedi ga",
+          "english": "hot"
+        },
+        {
+          "word": "undaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "అక్కడ వేడిగా ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i16",
+      "sourcePrompt": "How is the weather there? (to an elder)",
+      "register": "respectful",
+      "canonical": "akkada weather ela undi andi?",
+      "acceptedAnswers": [
+        "akkada weather ela undi andi?",
+        "akkada weather ela undandi?",
+        "akkada vaatavaranam ela undi andi?",
+        "akkada weather ela undi andi"
+      ],
+      "registerVariant": "akkada weather ela undi?",
+      "distractors": [
+        "akkada weather enta andi?",
+        "akkada weather eppudu undi andi?"
+      ],
+      "tokens": [
+        {
+          "word": "akkada",
+          "english": "there"
+        },
+        {
+          "word": "weather",
+          "english": "weather"
+        },
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "అక్కడ వెదర్ ఎలా ఉంది అండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i17",
+      "sourcePrompt": "It's a lovely day.",
+      "register": "neutral",
+      "canonical": "ivaala chala manchi roju",
+      "acceptedAnswers": [
+        "ivaala chala manchi roju",
+        "ivala chala manchi roju",
+        "ivaala chaala manchi roju",
+        "ivaala chala andamaina roju"
+      ],
+      "distractors": [
+        "ivaala chala cheddha roju",
+        "ivaala chala manchi roju kaadu",
+        "repu chala manchi roju"
+      ],
+      "tokens": [
+        {
+          "word": "ivaala",
+          "english": "today"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "manchi roju",
+          "english": "nice day"
+        }
+      ],
+      "script": "ఈవాళ చాలా మంచి రోజు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i18",
+      "sourcePrompt": "There's thunder.",
+      "register": "neutral",
+      "canonical": "meghaalu gharjistunnayi",
+      "acceptedAnswers": [
+        "meghaalu gharjistunnayi",
+        "meghalu gharjistunnayi",
+        "meghaalu garjistunnayi",
+        "meghaalu gharjisthunnayi"
+      ],
+      "distractors": [
+        "meghaalu gharjinchaayi",
+        "meghaalu gharjinchavu",
+        "vaana padutondi"
+      ],
+      "tokens": [
+        {
+          "word": "meghaalu",
+          "english": "clouds"
+        },
+        {
+          "word": "gharjistunnayi",
+          "english": "are thundering"
+        }
+      ],
+      "script": "మేఘాలు ఘర్జిస్తున్నాయి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i19",
+      "sourcePrompt": "The weather is perfect.",
+      "register": "neutral",
+      "canonical": "weather chala perfect ga undi",
+      "acceptedAnswers": [
+        "weather chala perfect ga undi",
+        "weather chaala perfect ga undi",
+        "weather perfect ga undi",
+        "vaatavaranam chala perfect ga undi"
+      ],
+      "distractors": [
+        "weather chala bad ga undi",
+        "weather perfect ga undedi",
+        "weather perfect ga ledu"
+      ],
+      "tokens": [
+        {
+          "word": "weather",
+          "english": "weather"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "perfect ga",
+          "english": "perfect"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "వెదర్ చాలా పర్ఫెక్ట్ గా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u12-i20",
+      "sourcePrompt": "I can't stand this heat.",
+      "register": "neutral",
+      "canonical": "ee vedi naaku chiraku",
+      "acceptedAnswers": [
+        "ee vedi naaku chiraku",
+        "ee vedi naaku chiraaku",
+        "ee endaa naaku chiraku",
+        "ee vedi naaku ishtam ledu"
+      ],
+      "distractors": [
+        "ee vedi naaku ishtam",
+        "ee vedi naaku chiraku ledu",
+        "ee vaana naaku chiraku"
+      ],
+      "tokens": [
+        {
+          "word": "ee vedi",
+          "english": "this heat"
+        },
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "chiraku",
+          "english": "annoying"
+        }
+      ],
+      "script": "ఈ వేడి నాకు చిరాకు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

@@ -55,3 +55,19 @@ Look at these first. Each was written from general knowledge of spoken Telugu an
 - Does the `script` field match the romanised answer, including loanwords and the way words are joined?
 - Notes in the second half of the syllabus's section 4b ("Tamil speaker learning Telugu") are the drafter's
   working assumptions; correct any that are wrong.
+
+## Level 2 drafting notes (2026-10-12, unreviewed)
+
+Level 2 (`te-l02-u01` to `te-l02-u12`, 240 phrases) was drafted before Level 1 was reviewed, at the owner's
+request. Any correction you make to Level 1 probably applies to Level 2 too; please add the rule here and
+fix Level 2 with it.
+
+- **Verb forms taught:** present "is doing" (the -tunnanu, -tunnav, -tunnaru family) and the habitual
+  (-tanu, -tav, -taru family). The wrong options change tense, person or negation on purpose; please check that
+  none of them is also natural.
+- **Register mix:** about 20% casual, 14% respectful, 66% with no you-form (target 40/40/20), for the same
+  reason as in the Tamil notes.
+- **Telugu words I am least sure of:** te-l02-u01-i04, i05, i17 and i18; te-l02-u03-i01, i06 and i14;
+  te-l02-u04-i04 and i20; te-l02-u05-i06 and i20; te-l02-u06-i06, i12 and i13; te-l02-u07-i09 and i19;
+  te-l02-u08-i05, i11 and i18; te-l02-u09-i06, i07 and i14; te-l02-u10-i02, i15 and i18; te-l02-u11-i10 and i19;
+  te-l02-u12-i03, i14 and i18.

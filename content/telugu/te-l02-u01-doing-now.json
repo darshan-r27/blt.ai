@@ -1,0 +1,683 @@
+{
+  "scenarioId": "te-l02-u01",
+  "language": "telugu",
+  "title": "What are you doing?",
+  "subtitle": "A phone call with a friend: what is happening right now",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 1
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u01-i01",
+      "sourcePrompt": "What are you doing now? (to a friend)",
+      "register": "casual",
+      "canonical": "ippudu em chestunnav?",
+      "acceptedAnswers": [
+        "ippudu em chestunnav?",
+        "ippudu emi chestunnav?",
+        "ippudu em chesthunnav?",
+        "ippudu em chestunnavu?"
+      ],
+      "registerVariant": "ippudu em chestunnaru?",
+      "distractors": [
+        "ippudu em chesav?",
+        "ippudu em chestav?"
+      ],
+      "tokens": [
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "em",
+          "english": "what"
+        },
+        {
+          "word": "chestunnav",
+          "english": "are you doing"
+        }
+      ],
+      "script": "ఇప్పుడు ఏం చేస్తున్నావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i02",
+      "sourcePrompt": "I'm eating.",
+      "register": "neutral",
+      "canonical": "nenu tintunnanu",
+      "acceptedAnswers": [
+        "nenu tintunnanu",
+        "nenu tintunna",
+        "nenu thintunnanu",
+        "nenu tinuchunnanu"
+      ],
+      "distractors": [
+        "nenu tinnanu",
+        "nenu tintanu",
+        "nenu tinanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "tintunnanu",
+          "english": "am eating"
+        }
+      ],
+      "script": "నేను తింటున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i03",
+      "sourcePrompt": "I'm watching TV.",
+      "register": "neutral",
+      "canonical": "nenu TV chustunnanu",
+      "acceptedAnswers": [
+        "nenu TV chustunnanu",
+        "nenu TV chustunna",
+        "nenu TV chuduthunnanu",
+        "nenu TV chusthunnanu"
+      ],
+      "distractors": [
+        "nenu TV chusanu",
+        "nenu TV chustanu",
+        "nenu TV chudanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "TV",
+          "english": "TV"
+        },
+        {
+          "word": "chustunnanu",
+          "english": "am watching"
+        }
+      ],
+      "script": "నేను టీవీ చూస్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i04",
+      "sourcePrompt": "She's cooking.",
+      "register": "neutral",
+      "canonical": "aame vanta chestondi",
+      "acceptedAnswers": [
+        "aame vanta chestondi",
+        "ame vanta chestondi",
+        "aame vanta chestunnaru",
+        "aame vanta chesthondi"
+      ],
+      "distractors": [
+        "aame vanta chesindi",
+        "aame vanta chestundi",
+        "atanu vanta chestunnadu"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "vanta",
+          "english": "cooking"
+        },
+        {
+          "word": "chestondi",
+          "english": "is doing"
+        }
+      ],
+      "script": "ఆమె వంట చేస్తోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i05",
+      "sourcePrompt": "He's sleeping.",
+      "register": "neutral",
+      "canonical": "atanu nidra potunnadu",
+      "acceptedAnswers": [
+        "atanu nidra potunnadu",
+        "atanu nidrapotunnadu",
+        "atanu padukuni unnadu",
+        "atanu nidra poutunnadu"
+      ],
+      "distractors": [
+        "atanu nidra poyadu",
+        "atanu nidra potadu",
+        "aame nidra potondi"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "nidra",
+          "english": "sleep"
+        },
+        {
+          "word": "potunnadu",
+          "english": "is going"
+        }
+      ],
+      "script": "అతను నిద్ర పోతున్నాడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i06",
+      "sourcePrompt": "They're playing outside.",
+      "register": "neutral",
+      "canonical": "vaallu bayata aadukuntunnaru",
+      "acceptedAnswers": [
+        "vaallu bayata aadukuntunnaru",
+        "vallu bayata aadukuntunnaru",
+        "vaallu bayata aadutunnaru",
+        "vaallu bayata aadukuntu unnaru"
+      ],
+      "distractors": [
+        "vaallu bayata aadukunnaru",
+        "vaallu bayata aadukuntaru",
+        "vaallu lopala aadukuntunnaru"
+      ],
+      "tokens": [
+        {
+          "word": "vaallu",
+          "english": "they"
+        },
+        {
+          "word": "bayata",
+          "english": "outside"
+        },
+        {
+          "word": "aadukuntunnaru",
+          "english": "are playing"
+        }
+      ],
+      "script": "వాళ్లు బయట ఆడుకుంటున్నారు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i07",
+      "sourcePrompt": "What's he doing?",
+      "register": "neutral",
+      "canonical": "atanu em chestunnadu?",
+      "acceptedAnswers": [
+        "atanu em chestunnadu?",
+        "athanu em chestunnadu?",
+        "atanu emi chestunnadu?",
+        "atanu em chesthunnadu?"
+      ],
+      "distractors": [
+        "atanu em chesadu?",
+        "atanu em chestadu?",
+        "aame em chestondi?"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "em",
+          "english": "what"
+        },
+        {
+          "word": "chestunnadu",
+          "english": "is doing"
+        }
+      ],
+      "script": "అతను ఏం చేస్తున్నాడు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i08",
+      "sourcePrompt": "Are you busy? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu busy ga unnava?",
+      "acceptedAnswers": [
+        "nuvvu busy ga unnava?",
+        "nuvvu busy ga unnaava?",
+        "nuvvu busy ga unnava",
+        "nuvvu busy gaa unnava?"
+      ],
+      "registerVariant": "meeru busy ga unnara?",
+      "distractors": [
+        "nuvvu busy ga untava?",
+        "nuvvu free ga unnava?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "busy ga",
+          "english": "busy"
+        },
+        {
+          "word": "unnava",
+          "english": "are you?"
+        }
+      ],
+      "script": "నువ్వు బిజీగా ఉన్నావా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i09",
+      "sourcePrompt": "I'm busy right now.",
+      "register": "neutral",
+      "canonical": "ippudu nenu busy ga unnanu",
+      "acceptedAnswers": [
+        "ippudu nenu busy ga unnanu",
+        "ippudu nenu busy ga unna",
+        "nenu ippudu busy ga unnanu",
+        "ippudu nenu busy gaa unnanu"
+      ],
+      "distractors": [
+        "ippudu nenu busy ga undanu",
+        "ippudu nenu busy ga untanu",
+        "ippudu nenu free ga unnanu"
+      ],
+      "tokens": [
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "busy ga",
+          "english": "busy"
+        },
+        {
+          "word": "unnanu",
+          "english": "am"
+        }
+      ],
+      "script": "ఇప్పుడు నేను బిజీగా ఉన్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i10",
+      "sourcePrompt": "I'm studying.",
+      "register": "neutral",
+      "canonical": "nenu chaduvukuntunnanu",
+      "acceptedAnswers": [
+        "nenu chaduvukuntunnanu",
+        "nenu chaduvukuntunna",
+        "nenu chaduvuthunnanu",
+        "nenu chaduvutunnanu"
+      ],
+      "distractors": [
+        "nenu chaduvukunnanu",
+        "nenu chaduvukuntanu",
+        "nenu chaduvukonu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "chaduvukuntunnanu",
+          "english": "am studying"
+        }
+      ],
+      "script": "నేను చదువుకుంటున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i11",
+      "sourcePrompt": "We're waiting for you. (to an elder)",
+      "register": "respectful",
+      "canonical": "mee kosam eduru chustunnam",
+      "acceptedAnswers": [
+        "mee kosam eduru chustunnam",
+        "mee kosam eduru chusthunnam",
+        "mee kosam waiting chestunnam",
+        "mee kosam eduruchustunnam"
+      ],
+      "registerVariant": "nee kosam eduru chustunnam",
+      "distractors": [
+        "mee kosam eduru chusam",
+        "mee kosam eduru chustam"
+      ],
+      "tokens": [
+        {
+          "word": "mee kosam",
+          "english": "for you (respectful)"
+        },
+        {
+          "word": "eduru chustunnam",
+          "english": "are waiting"
+        }
+      ],
+      "script": "మీ కోసం ఎదురు చూస్తున్నాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i12",
+      "sourcePrompt": "I'm talking on the phone.",
+      "register": "neutral",
+      "canonical": "nenu phone lo matladutunnanu",
+      "acceptedAnswers": [
+        "nenu phone lo matladutunnanu",
+        "nenu phone lo maatladutunnanu",
+        "nenu phone lo matladuthunnanu",
+        "nenu phone matladutunnanu"
+      ],
+      "distractors": [
+        "nenu phone lo matladanu",
+        "nenu phone lo matladutanu",
+        "nenu phone lo matladatam ledu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "phone lo",
+          "english": "on the phone"
+        },
+        {
+          "word": "matladutunnanu",
+          "english": "am talking"
+        }
+      ],
+      "script": "నేను ఫోన్ లో మాట్లాడుతున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i13",
+      "sourcePrompt": "What are you cooking? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru em vanta chestunnaru?",
+      "acceptedAnswers": [
+        "meeru em vanta chestunnaru?",
+        "meeru emi vanta chestunnaru?",
+        "meeru em vanta chesthunnaru?",
+        "meeru em vantalu chestunnaru?"
+      ],
+      "registerVariant": "nuvvu em vanta chestunnav?",
+      "distractors": [
+        "meeru em vanta chesaru?",
+        "meeru em vanta chestaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "em",
+          "english": "what"
+        },
+        {
+          "word": "vanta",
+          "english": "cooking"
+        },
+        {
+          "word": "chestunnaru",
+          "english": "are doing"
+        }
+      ],
+      "script": "మీరు ఏం వంట చేస్తున్నారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i14",
+      "sourcePrompt": "I'm writing a message.",
+      "register": "neutral",
+      "canonical": "nenu oka message raastunnanu",
+      "acceptedAnswers": [
+        "nenu oka message raastunnanu",
+        "nenu oka message rastunnanu",
+        "nenu message raasthunnanu",
+        "nenu oka message type chestunnanu"
+      ],
+      "distractors": [
+        "nenu oka message raasanu",
+        "nenu oka message raastanu",
+        "nenu oka message raayanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "oka message",
+          "english": "a message"
+        },
+        {
+          "word": "raastunnanu",
+          "english": "am writing"
+        }
+      ],
+      "script": "నేను ఒక మెసేజ్ రాస్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i15",
+      "sourcePrompt": "Are you coming now? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu ippudu vastunnava?",
+      "acceptedAnswers": [
+        "nuvvu ippudu vastunnava?",
+        "nuvvu ippudu vastunnaava?",
+        "nuvvu ippudu vastunnava",
+        "nuvvu ippudu osthunnava?"
+      ],
+      "registerVariant": "meeru ippudu vastunnara?",
+      "distractors": [
+        "nuvvu ippudu vachchava?",
+        "nuvvu ippudu vastava?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "vastunnava",
+          "english": "are you coming?"
+        }
+      ],
+      "script": "నువ్వు ఇప్పుడు వస్తున్నావా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i16",
+      "sourcePrompt": "It's raining outside.",
+      "register": "neutral",
+      "canonical": "bayata vaana padutondi",
+      "acceptedAnswers": [
+        "bayata vaana padutondi",
+        "bayata vaana paduthundi",
+        "bayata vaana padutundi",
+        "bayata varsham padutondi"
+      ],
+      "distractors": [
+        "bayata vaana padindi",
+        "bayata endagaa undi",
+        "bayata gaali vestondi"
+      ],
+      "tokens": [
+        {
+          "word": "bayata",
+          "english": "outside"
+        },
+        {
+          "word": "vaana",
+          "english": "rain"
+        },
+        {
+          "word": "padutondi",
+          "english": "is falling"
+        }
+      ],
+      "script": "బయట వాన పడుతోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i17",
+      "sourcePrompt": "The baby is crying.",
+      "register": "neutral",
+      "canonical": "paapa edustondi",
+      "acceptedAnswers": [
+        "paapa edustondi",
+        "papa edustondi",
+        "paapa edustunnadi",
+        "paapa edusthondi"
+      ],
+      "distractors": [
+        "paapa edchindi",
+        "paapa edustundi",
+        "paapa navvutondi"
+      ],
+      "tokens": [
+        {
+          "word": "paapa",
+          "english": "baby"
+        },
+        {
+          "word": "edustondi",
+          "english": "is crying"
+        }
+      ],
+      "script": "పాప ఏడుస్తోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i18",
+      "sourcePrompt": "My phone is ringing.",
+      "register": "neutral",
+      "canonical": "naa phone mogutondi",
+      "acceptedAnswers": [
+        "naa phone mogutondi",
+        "naa phone mogutundi",
+        "naa phone mogutunnadi",
+        "naa phone ring avutondi"
+      ],
+      "distractors": [
+        "naa phone mogindi",
+        "naa phone mogadu",
+        "naa phone mogaledu"
+      ],
+      "tokens": [
+        {
+          "word": "naa phone",
+          "english": "my phone"
+        },
+        {
+          "word": "mogutondi",
+          "english": "is ringing"
+        }
+      ],
+      "script": "నా ఫోన్ మోగుతోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i19",
+      "sourcePrompt": "I'm waiting for the bus.",
+      "register": "neutral",
+      "canonical": "nenu bus kosam eduru chustunnanu",
+      "acceptedAnswers": [
+        "nenu bus kosam eduru chustunnanu",
+        "nenu bus kosam eduru chusthunnanu",
+        "nenu bus kosam waiting chestunnanu",
+        "nenu bus kosam eduruchustunnanu"
+      ],
+      "distractors": [
+        "nenu bus kosam eduru chusanu",
+        "nenu bus kosam eduru chustanu",
+        "nenu bus lo unnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "bus kosam",
+          "english": "for the bus"
+        },
+        {
+          "word": "eduru chustunnanu",
+          "english": "am waiting"
+        }
+      ],
+      "script": "నేను బస్ కోసం ఎదురు చూస్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u01-i20",
+      "sourcePrompt": "I'm just looking.",
+      "register": "neutral",
+      "canonical": "nenu just chustunnanu",
+      "acceptedAnswers": [
+        "nenu just chustunnanu",
+        "nenu just chustunna",
+        "nenu soomaa chustunnanu",
+        "nenu chustunnanu anthe"
+      ],
+      "distractors": [
+        "nenu just chusanu",
+        "nenu just chustanu",
+        "nenu just chudanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "just",
+          "english": "just"
+        },
+        {
+          "word": "chustunnanu",
+          "english": "am looking"
+        }
+      ],
+      "script": "నేను జస్ట్ చూస్తున్నాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
