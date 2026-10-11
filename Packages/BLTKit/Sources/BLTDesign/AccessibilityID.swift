@@ -49,4 +49,11 @@ public enum AccessibilityID {
     public static func settingsLanguageOption(_ language: String) -> String {
         "settings.language.option.\(language)"
     }
+    public static let homeExam = "home.exam"
+    public static let examStart = "exam.start"
+    public static let examEndButton = "exam.end.button"
+    public static let examEndConfirm = "exam.end.confirm"
+    public static let examKeepGoing = "exam.end.keepGoing"
+    public static let examResult = "exam.result"
+    public static let examDone = "exam.done"
 }

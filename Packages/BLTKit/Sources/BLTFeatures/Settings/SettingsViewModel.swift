@@ -139,6 +139,7 @@ final class SettingsViewModel {
     var canImportLessons: Bool { lessonImporter != nil }
 
     private let store: any ProgressStore
+    fileprivate let examResults: any ExamResultStore
     private let profileStore: any ProfileStore
     private let onDidReset: @MainActor () -> Void
     private let onDidChangeName: @MainActor (UserProfile) -> Void
@@ -164,6 +165,7 @@ final class SettingsViewModel {
         reviewedCount = dependencies.catalog.reviewedItemCount
         totalCount = dependencies.catalog.totalItemCount
         store = dependencies.store
+        examResults = dependencies.examResults
         self.profileStore = profileStore
         self.profileName = profileName
         self.onDidReset = onDidReset
@@ -262,6 +264,10 @@ final class SettingsViewModel {
             resetOutcome = .failed(error)
             return
         }
+        guard await eraseExamResults() else {
+            resetOutcome = .failed(.eraseFailed)
+            return
+        }
         resetOutcome = .succeeded
         onDidReset()
     }
@@ -327,5 +333,17 @@ final class SettingsViewModel {
 
     private static func isCancellation(_ error: any Error) -> Bool {
         (error as? CocoaError)?.code == .userCancelled
+    }
+}
+
+extension SettingsViewModel {
+    /// Exam attempts belong to the same course, so Reset clears them too (DECISIONS 041). `false` on failure.
+    fileprivate func eraseExamResults() async -> Bool {
+        do throws(ExamResultStoreError) {
+            try await examResults.erase()
+            return true
+        } catch {
+            return false
+        }
     }
 }

@@ -68,6 +68,11 @@ struct CompositionRoot {
         courseDirectory(for: language).appending(path: "progress.json", directoryHint: .notDirectory)
     }
 
+    /// Where one language's final-exam attempts are kept (DECISIONS 041, 043).
+    static func examResultsFileURL(for language: CourseLanguage) -> URL {
+        courseDirectory(for: language).appending(path: "exam.json", directoryHint: .notDirectory)
+    }
+
     /// Where one language's imported lesson files live.
     static func importedContentDirectory(for language: CourseLanguage) -> URL {
         courseDirectory(for: language).appending(path: "content", directoryHint: .isDirectory)
@@ -77,7 +82,10 @@ struct CompositionRoot {
     /// here, so a test can never remove real files.
     private func makeShippingComposition() -> Composed {
         sweepLegacyFiles()
-        let stores = CourseStores { FileProgressStore(fileURL: Self.progressFileURL(for: $0)) }
+        let stores = CourseStores(
+            make: { FileProgressStore(fileURL: Self.progressFileURL(for: $0)) },
+            makeExam: { FileExamResultStore(fileURL: Self.examResultsFileURL(for: $0)) }
+        )
         return Composed(
             profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json")),
             makeCourse: { language in
@@ -87,7 +95,8 @@ struct CompositionRoot {
                         language: language,
                         store: stores.store(for: language),
                         scheduler: SM2Scheduler(),
-                        now: { Date.now }
+                        now: { Date.now },
+                        examResults: stores.examStore(for: language)
                     ),
                     lessonImporter: ImportedContentStore(
                         directory: Self.importedContentDirectory(for: language),
@@ -142,16 +151,31 @@ struct CompositionRoot {
 struct CourseStores: Sendable {
     private let tamil: any ProgressStore
     private let telugu: any ProgressStore
+    private let tamilExam: any ExamResultStore
+    private let teluguExam: any ExamResultStore
 
-    init(make: (CourseLanguage) -> any ProgressStore) {
+    /// `makeExam` defaults to in-memory stores: only the shipping composition keeps exam attempts on disk.
+    init(
+        make: (CourseLanguage) -> any ProgressStore,
+        makeExam: (CourseLanguage) -> any ExamResultStore = { _ in InMemoryExamResultStore() }
+    ) {
         tamil = make(.tamil)
         telugu = make(.telugu)
+        tamilExam = makeExam(.tamil)
+        teluguExam = makeExam(.telugu)
     }
 
     func store(for language: CourseLanguage) -> any ProgressStore {
         switch language {
         case .tamil: tamil
         case .telugu: telugu
+        }
+    }
+
+    func examStore(for language: CourseLanguage) -> any ExamResultStore {
+        switch language {
+        case .tamil: tamilExam
+        case .telugu: teluguExam
         }
     }
 }

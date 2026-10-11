@@ -10,6 +10,8 @@ import SwiftUI
 /// (primary text colour, no fill) so it never competes with the answer options.
 struct SessionEndControl: View {
     let onTap: @MainActor () -> Void
+    var title = "End session"
+    var identifier = AccessibilityID.endSessionButton
 
     @Environment(\.colorScheme) private var colorScheme
 
@@ -18,7 +20,7 @@ struct SessionEndControl: View {
         HStack {
             Button(action: onTap) {
                 Label {
-                    Text("End session")
+                    Text(title)
                         .font(.body)
                         .fixedSize(horizontal: false, vertical: true)
                 } icon: {
@@ -30,7 +32,7 @@ struct SessionEndControl: View {
             }
             .buttonStyle(.plain)
             .foregroundStyle(palette.textPrimaryColor)
-            .accessibilityIdentifier(AccessibilityID.endSessionButton)
+            .accessibilityIdentifier(identifier)
             Spacer(minLength: 0)
         }
         .padding(.horizontal, 20)

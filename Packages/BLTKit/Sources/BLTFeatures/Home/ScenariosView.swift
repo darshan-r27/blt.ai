@@ -15,6 +15,7 @@ struct ScenariosView: View {
     private let onSelectScenario: (ScenarioID) -> Void
     private let onOpenProgress: () -> Void
     private let onOpenSettings: () -> Void
+    private let onOpenExam: () -> Void
 
     init(
         viewModel: HomeViewModel,
@@ -22,7 +23,8 @@ struct ScenariosView: View {
         language: CourseLanguage? = nil,
         onSelectScenario: @escaping (ScenarioID) -> Void,
         onOpenProgress: @escaping () -> Void,
-        onOpenSettings: @escaping () -> Void
+        onOpenSettings: @escaping () -> Void,
+        onOpenExam: @escaping () -> Void = {}
     ) {
         self.viewModel = viewModel
         self.name = name
@@ -30,6 +32,7 @@ struct ScenariosView: View {
         self.onSelectScenario = onSelectScenario
         self.onOpenProgress = onOpenProgress
         self.onOpenSettings = onOpenSettings
+        self.onOpenExam = onOpenExam
     }
 
     var body: some View {
@@ -105,6 +108,10 @@ struct ScenariosView: View {
                     levelSection(section)
                 }
                 otherLessons
+                if let entry = viewModel.examEntry {
+                    ExamEntryCard(entry: entry, action: onOpenExam)
+                        .padding(.top, 8)
+                }
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)

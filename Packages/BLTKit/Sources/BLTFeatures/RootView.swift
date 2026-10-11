@@ -127,6 +127,7 @@ private struct HomeFlow: View {
     @State private var home: HomeViewModel
     @State private var path: [Destination] = []
     @State private var session: SessionSelection?
+    @State private var isTakingExam = false
 
     init(
         dependencies: AppDependencies,
@@ -155,7 +156,8 @@ private struct HomeFlow: View {
                 language: dependencies.language,
                 onSelectScenario: select,
                 onOpenProgress: { path.append(.progress) },
-                onOpenSettings: { path.append(.settings) }
+                onOpenSettings: { path.append(.settings) },
+                onOpenExam: { isTakingExam = true }
             )
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
@@ -173,6 +175,20 @@ private struct HomeFlow: View {
                         onDidChangeLessons: onLessonsChanged
                     )
                 }
+            }
+        }
+        .fullScreenCover(isPresented: $isTakingExam, onDismiss: reloadHome) {
+            if let paper = dependencies.examPaper {
+                ExamView(
+                    viewModel: ExamViewModel(
+                        paper: paper,
+                        language: dependencies.language,
+                        results: dependencies.examResults,
+                        now: dependencies.now
+                    ),
+                    onDone: { isTakingExam = false }
+                )
+                .bltScreenBackground()
             }
         }
         .fullScreenCover(item: $session, onDismiss: reloadHome) { selection in
