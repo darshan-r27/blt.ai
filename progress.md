@@ -1,5 +1,9 @@
 # Progress: two-way course plan (plan.md)
 
+## Done (2026-10-12)
+- Level 1 content for both courses (PRs #29, #30): Tamil lessons 6 to 12 and all 12 Telugu lessons, 480 phrases, all `unreviewed`; `docs/content/STYLE_NOTES_TAMIL.md` and `STYLE_NOTES_TELUGU.md`.
+- CI: serial simulator (#27) and a PR path filter that skips the UI job for content-only changes (#28).
+
 ## Done (2026-10-11)
 - Single-course plan, syllabus, DECISIONS 038 to 041 and the first 100 reviewed Tamil phrases (PRs #8, #9, #11 to #13).
 - Two-way thesis and documents (PR #15): DECISIONS 042 to 044, `docs/REVIEWER_GUIDE.md`, the new `plan.md`.
@@ -23,8 +27,9 @@
 - PR #14 (an earlier handoff) was closed as superseded.
 
 ## Not proven yet
-- ADR 045's goal (PR-tier UI job under 15 minutes) was not met: 26 to 38 minutes measured. The full tier on `main` has failed twice from runner hangs; reruns recover.
+- ADR 045's goal: after the fix the UI job took 18.6 then 13.9 minutes; two more app-code PR timings and a green full tier on `main` are owed.
+- None of the Level 1 Telugu, nor Tamil lessons 6 to 12, has been checked by a native speaker.
 - The new screens have been tested and walked once in the simulator, not reviewed by eye. Device-only checks (file protection, AirDrop import, VoiceOver, largest text) are open.
 
 ## Next action
-- Owner chooses the drafting model; then Level 1 content for both languages (`plan.md` "Content"). Exam screen (E3) can be built meanwhile. See `docs/HANDOFF.md`.
+- Owner reviews Tamil Level 1 (lessons 6 to 12) and the Telugu reviewer checks Telugu Level 1, in the editor; corrections go into the style notes; then Level 2. Meanwhile the exam screen (E3) is being built. See `docs/HANDOFF.md`.
