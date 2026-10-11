@@ -1,0 +1,743 @@
+{
+  "scenarioId": "te-l02-u02",
+  "language": "telugu",
+  "title": "Habits and routines",
+  "subtitle": "Describing a normal day: always, usually, sometimes, never",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 2
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u02-i01",
+      "sourcePrompt": "I get up early every day.",
+      "register": "neutral",
+      "canonical": "nenu pratiroju tondaraga lestanu",
+      "acceptedAnswers": [
+        "nenu pratiroju tondaraga lestanu",
+        "nenu prati roju tondaraga lestaanu",
+        "nenu pratiroju tvaraga lestanu",
+        "nenu roju tondaraga lestanu"
+      ],
+      "distractors": [
+        "nenu pratiroju tondaraga lechanu",
+        "nenu pratiroju late ga lestanu",
+        "nenu pratiroju tondaraga levanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "pratiroju",
+          "english": "every day"
+        },
+        {
+          "word": "tondaraga",
+          "english": "early"
+        },
+        {
+          "word": "lestanu",
+          "english": "get up"
+        }
+      ],
+      "script": "నేను ప్రతిరోజు తొందరగా లేస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i02",
+      "sourcePrompt": "Do you have tea in the morning? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru udayam tea tagutara?",
+      "acceptedAnswers": [
+        "meeru udayam tea tagutara?",
+        "meeru udayam tea taagutara?",
+        "meeru udayam chai tagutara?",
+        "meeru udayam tea tagutaaraa?"
+      ],
+      "registerVariant": "nuvvu udayam tea tagutava?",
+      "distractors": [
+        "meeru udayam tea tagaara?",
+        "meeru udayam tea tagutunnara?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "udayam",
+          "english": "in the morning"
+        },
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "tagutara",
+          "english": "do you drink?"
+        }
+      ],
+      "script": "మీరు ఉదయం టీ తాగుతారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i03",
+      "sourcePrompt": "What time do you usually eat? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu sadharananga enni gantalaki tintav?",
+      "acceptedAnswers": [
+        "nuvvu sadharananga enni gantalaki tintav?",
+        "nuvvu sadharanamga enni gantalaki tintav?",
+        "nuvvu enni gantalaki sadharananga tintav?",
+        "nuvvu sadharananga ye time ki tintav?"
+      ],
+      "registerVariant": "meeru sadharananga enni gantalaki tintaru?",
+      "distractors": [
+        "nuvvu sadharananga enni gantalaki tinnav?",
+        "nuvvu sadharananga enni gantalaki tinav?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "sadharananga",
+          "english": "usually"
+        },
+        {
+          "word": "enni gantalaki",
+          "english": "at what time"
+        },
+        {
+          "word": "tintav",
+          "english": "do you eat"
+        }
+      ],
+      "script": "నువ్వు సాధారణంగా ఎన్ని గంటలకి తింటావ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i04",
+      "sourcePrompt": "Do you walk to work? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu pani ki nadichi veltava?",
+      "acceptedAnswers": [
+        "nuvvu pani ki nadichi veltava?",
+        "nuvvu pani ki nadichi veltaava?",
+        "nuvvu pani ki nadichi veltava",
+        "nuvvu pani ki nadustu veltava?"
+      ],
+      "registerVariant": "meeru pani ki nadichi veltara?",
+      "distractors": [
+        "nuvvu pani ki nadichi vellava?",
+        "nuvvu pani ki bus lo veltava?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "pani ki",
+          "english": "to work"
+        },
+        {
+          "word": "nadichi",
+          "english": "walking"
+        },
+        {
+          "word": "veltava",
+          "english": "do you go?"
+        }
+      ],
+      "script": "నువ్వు పనికి నడిచి వెళ్తావా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i05",
+      "sourcePrompt": "Sometimes I cook.",
+      "register": "neutral",
+      "canonical": "konni sarlu nenu vanta chestanu",
+      "acceptedAnswers": [
+        "konni sarlu nenu vanta chestanu",
+        "konni saarlu nenu vanta chestanu",
+        "konni sarlu nenu vanta chesta",
+        "nenu konni sarlu vanta chestanu"
+      ],
+      "distractors": [
+        "konni sarlu nenu vanta chesanu",
+        "konni sarlu nenu vanta cheyanu",
+        "eppudu nenu vanta chestanu"
+      ],
+      "tokens": [
+        {
+          "word": "konni sarlu",
+          "english": "sometimes"
+        },
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "vanta",
+          "english": "cooking"
+        },
+        {
+          "word": "chestanu",
+          "english": "do"
+        }
+      ],
+      "script": "కొన్ని సార్లు నేను వంట చేస్తాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i06",
+      "sourcePrompt": "I never drink coffee.",
+      "register": "neutral",
+      "canonical": "nenu coffee asalu taaganu",
+      "acceptedAnswers": [
+        "nenu coffee asalu taaganu",
+        "nenu asalu coffee taaganu",
+        "nenu coffee asalu taganu",
+        "nenu coffee ennadu taaganu"
+      ],
+      "distractors": [
+        "nenu coffee taagutanu",
+        "nenu coffee taagaanu",
+        "nenu coffee taagutunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "coffee",
+          "english": "coffee"
+        },
+        {
+          "word": "asalu",
+          "english": "at all"
+        },
+        {
+          "word": "taaganu",
+          "english": "don't drink"
+        }
+      ],
+      "script": "నేను కాఫీ అసలు తాగను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i07",
+      "sourcePrompt": "We eat dinner at eight.",
+      "register": "neutral",
+      "canonical": "memu enimidi gantalaki raatri bhojanam chestam",
+      "acceptedAnswers": [
+        "memu enimidi gantalaki raatri bhojanam chestam",
+        "memu enimidi gantalaku raatri bhojanam chestaam",
+        "memu raatri enimidi gantalaki bhojanam chestam",
+        "memu enimidi gantalaki dinner chestam"
+      ],
+      "distractors": [
+        "memu enimidi gantalaki raatri bhojanam chesam",
+        "memu enimidi gantalaki raatri bhojanam cheyam",
+        "manam enimidi gantalaki raatri bhojanam chestam"
+      ],
+      "tokens": [
+        {
+          "word": "memu",
+          "english": "we (not including you)"
+        },
+        {
+          "word": "enimidi gantalaki",
+          "english": "at eight"
+        },
+        {
+          "word": "raatri bhojanam",
+          "english": "dinner"
+        },
+        {
+          "word": "chestam",
+          "english": "do"
+        }
+      ],
+      "script": "మేము ఎనిమిది గంటలకి రాత్రి భోజనం చేస్తాం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i08",
+      "sourcePrompt": "Does your father read the newspaper? (to a friend)",
+      "register": "casual",
+      "canonical": "nee nanna paper chaduvutara?",
+      "acceptedAnswers": [
+        "nee nanna paper chaduvutara?",
+        "nee nanna paper chaduvutaara?",
+        "nee nanna newspaper chaduvutaaraa?",
+        "nee nanna paper chaduvutaru aa?"
+      ],
+      "registerVariant": "mee nanna paper chaduvutara?",
+      "distractors": [
+        "nee nanna paper chadivaara?",
+        "nee nanna paper chaduvutunnara?"
+      ],
+      "tokens": [
+        {
+          "word": "nee nanna",
+          "english": "your father"
+        },
+        {
+          "word": "paper",
+          "english": "newspaper"
+        },
+        {
+          "word": "chaduvutara",
+          "english": "does he read?"
+        }
+      ],
+      "script": "నీ నాన్న పేపర్ చదువుతారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i09",
+      "sourcePrompt": "Do you exercise? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu exercise chestava?",
+      "acceptedAnswers": [
+        "nuvvu exercise chestava?",
+        "nuvvu exercise chestaava?",
+        "nuvvu exercise chestava",
+        "nuvvu vyayamam chestava?"
+      ],
+      "registerVariant": "meeru exercise chestara?",
+      "distractors": [
+        "nuvvu exercise chesava?",
+        "nuvvu exercise chestunnava?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "exercise",
+          "english": "exercise"
+        },
+        {
+          "word": "chestava",
+          "english": "do you do?"
+        }
+      ],
+      "script": "నువ్వు ఎక్సర్సైజ్ చేస్తావా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i10",
+      "sourcePrompt": "Do you go to the temple on Fridays? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru shukravaaram gudiki veltara?",
+      "acceptedAnswers": [
+        "meeru shukravaaram gudiki veltara?",
+        "meeru shukravaram gudiki veltara?",
+        "meeru shukravaaram gudiki veltaaraa?",
+        "meeru shukravaaram temple ki veltara?"
+      ],
+      "registerVariant": "nuvvu shukravaaram gudiki veltava?",
+      "distractors": [
+        "meeru shukravaaram gudiki vellara?",
+        "meeru shanivaaram gudiki veltara?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "shukravaaram",
+          "english": "Friday"
+        },
+        {
+          "word": "gudiki",
+          "english": "to the temple"
+        },
+        {
+          "word": "veltara",
+          "english": "do you go?"
+        }
+      ],
+      "script": "మీరు శుక్రవారం గుడికి వెళ్తారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i11",
+      "sourcePrompt": "She goes to work by bus.",
+      "register": "neutral",
+      "canonical": "aame bus lo pani ki veltundi",
+      "acceptedAnswers": [
+        "aame bus lo pani ki veltundi",
+        "ame bus lo pani ki veltundi",
+        "aame bus lo pani ki velthundi",
+        "aame bus lo pani ki velthadi"
+      ],
+      "distractors": [
+        "aame bus lo pani ki vellindi",
+        "aame bus lo pani ki vellaadu",
+        "atanu bus lo pani ki veltadu"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "bus lo",
+          "english": "by bus"
+        },
+        {
+          "word": "pani ki",
+          "english": "to work"
+        },
+        {
+          "word": "veltundi",
+          "english": "goes"
+        }
+      ],
+      "script": "ఆమె బస్ లో పనికి వెళ్తుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i12",
+      "sourcePrompt": "How often do you go there? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru enni sarlu akkadiki veltaru?",
+      "acceptedAnswers": [
+        "meeru enni sarlu akkadiki veltaru?",
+        "meeru enni saarlu akkadiki veltaru?",
+        "meeru akkadiki enni sarlu veltaru?",
+        "meeru enni sarlu akkadiki veltaaru?"
+      ],
+      "registerVariant": "nuvvu enni sarlu akkadiki veltav?",
+      "distractors": [
+        "meeru enni sarlu akkadiki vellaru?",
+        "meeru enni rojulu akkadiki veltaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "enni sarlu",
+          "english": "how many times"
+        },
+        {
+          "word": "akkadiki",
+          "english": "to there"
+        },
+        {
+          "word": "veltaru",
+          "english": "do you go"
+        }
+      ],
+      "script": "మీరు ఎన్ని సార్లు అక్కడికి వెళ్తారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i13",
+      "sourcePrompt": "Once a week.",
+      "register": "neutral",
+      "canonical": "vaaraniki oka saari",
+      "acceptedAnswers": [
+        "vaaraniki oka saari",
+        "vaaraaniki oka saari",
+        "vaaraniki okasari",
+        "prati vaaram oka saari"
+      ],
+      "distractors": [
+        "vaaraniki rendu saarlu",
+        "nelaki oka saari",
+        "roju oka saari"
+      ],
+      "tokens": [
+        {
+          "word": "vaaraniki",
+          "english": "per week"
+        },
+        {
+          "word": "oka saari",
+          "english": "once"
+        }
+      ],
+      "script": "వారానికి ఒక సారి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i14",
+      "sourcePrompt": "I study every evening.",
+      "register": "neutral",
+      "canonical": "nenu prati saayantram chaduvutanu",
+      "acceptedAnswers": [
+        "nenu prati saayantram chaduvutanu",
+        "nenu pratiroju saayantram chaduvutanu",
+        "nenu prati sayantram chaduvutaanu",
+        "nenu saayantram prati roju chaduvutanu"
+      ],
+      "distractors": [
+        "nenu prati saayantram chaduvukunnanu",
+        "nenu prati udayam chaduvutanu",
+        "nenu saayantram chaduvanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "prati saayantram",
+          "english": "every evening"
+        },
+        {
+          "word": "chaduvutanu",
+          "english": "study"
+        }
+      ],
+      "script": "నేను ప్రతి సాయంత్రం చదువుతాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i15",
+      "sourcePrompt": "He doesn't smoke.",
+      "register": "neutral",
+      "canonical": "atanu sigaret kaalchadu",
+      "acceptedAnswers": [
+        "atanu sigaret kaalchadu",
+        "athanu cigarette kaalchadu",
+        "atanu cigarette kaalchadu",
+        "atanu sigarettu kaalchadu"
+      ],
+      "distractors": [
+        "atanu sigaret kaalustaadu",
+        "atanu sigaret kaalchaadu",
+        "aame sigaret kaalchadu"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "sigaret",
+          "english": "cigarette"
+        },
+        {
+          "word": "kaalchadu",
+          "english": "doesn't smoke"
+        }
+      ],
+      "script": "అతను సిగరెట్ కాల్చడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i16",
+      "sourcePrompt": "I rarely watch TV.",
+      "register": "neutral",
+      "canonical": "nenu ekkuvaga TV chudanu",
+      "acceptedAnswers": [
+        "nenu ekkuvaga TV chudanu",
+        "nenu ekkuva TV chudanu",
+        "nenu TV ekkuvaga chudanu",
+        "nenu TV ekkuva chudanu"
+      ],
+      "distractors": [
+        "nenu ekkuvaga TV chustanu",
+        "nenu ekkuvaga TV chusanu",
+        "nenu ekkuvaga TV chustunnanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "ekkuvaga",
+          "english": "much"
+        },
+        {
+          "word": "TV",
+          "english": "TV"
+        },
+        {
+          "word": "chudanu",
+          "english": "don't watch"
+        }
+      ],
+      "script": "నేను ఎక్కువగా టీవీ చూడను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i17",
+      "sourcePrompt": "Do you go to bed late? (to a friend)",
+      "register": "casual",
+      "canonical": "nuvvu late ga padukuntava?",
+      "acceptedAnswers": [
+        "nuvvu late ga padukuntava?",
+        "nuvvu late ga padukuntaava?",
+        "nuvvu late ga padukuntava",
+        "nuvvu late ga nidra potava?"
+      ],
+      "registerVariant": "meeru late ga padukuntara?",
+      "distractors": [
+        "nuvvu late ga padukunnava?",
+        "nuvvu late ga padukuntunnava?"
+      ],
+      "tokens": [
+        {
+          "word": "nuvvu",
+          "english": "you (casual)"
+        },
+        {
+          "word": "late ga",
+          "english": "late"
+        },
+        {
+          "word": "padukuntava",
+          "english": "do you go to bed?"
+        }
+      ],
+      "script": "నువ్వు లేట్ గా పడుకుంటావా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i18",
+      "sourcePrompt": "I sleep at ten.",
+      "register": "neutral",
+      "canonical": "nenu padi gantalaki padukuntanu",
+      "acceptedAnswers": [
+        "nenu padi gantalaki padukuntanu",
+        "nenu padi gantalaku padukuntanu",
+        "nenu padi gantalaki padukunta",
+        "nenu padi gantalaki nidra potanu"
+      ],
+      "distractors": [
+        "nenu padi gantalaki padukunnanu",
+        "nenu padi gantalaki padukonu",
+        "nenu padi gantalaki lestanu"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "padi gantalaki",
+          "english": "at ten"
+        },
+        {
+          "word": "padukuntanu",
+          "english": "go to bed"
+        }
+      ],
+      "script": "నేను పది గంటలకి పడుకుంటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i19",
+      "sourcePrompt": "Where do you usually shop? (to an elder)",
+      "register": "respectful",
+      "canonical": "meeru sadharananga ekkada shopping chestaru?",
+      "acceptedAnswers": [
+        "meeru sadharananga ekkada shopping chestaru?",
+        "meeru sadharanamga ekkada shopping chestaru?",
+        "meeru ekkada sadharananga shopping chestaru?",
+        "meeru sadharananga ekkada kontaru?"
+      ],
+      "registerVariant": "nuvvu sadharananga ekkada shopping chestav?",
+      "distractors": [
+        "meeru sadharananga ekkada shopping chesaru?",
+        "meeru sadharananga eppudu shopping chestaru?"
+      ],
+      "tokens": [
+        {
+          "word": "meeru",
+          "english": "you (respectful)"
+        },
+        {
+          "word": "sadharananga",
+          "english": "usually"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "shopping chestaru",
+          "english": "do you shop"
+        }
+      ],
+      "script": "మీరు సాధారణంగా ఎక్కడ షాపింగ్ చేస్తారు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u02-i20",
+      "sourcePrompt": "On Sundays I rest.",
+      "register": "neutral",
+      "canonical": "aadivaaram nenu rest teesukuntanu",
+      "acceptedAnswers": [
+        "aadivaaram nenu rest teesukuntanu",
+        "aadivaaralu nenu rest teesukuntanu",
+        "aadivaaram nenu vishraanti teesukuntanu",
+        "aadivaaram nenu rest teesukunta"
+      ],
+      "distractors": [
+        "aadivaaram nenu pani chestanu",
+        "aadivaaram nenu rest teesukunnanu",
+        "aadivaaram nenu rest teesukonu"
+      ],
+      "tokens": [
+        {
+          "word": "aadivaaram",
+          "english": "Sunday"
+        },
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "rest",
+          "english": "rest"
+        },
+        {
+          "word": "teesukuntanu",
+          "english": "take"
+        }
+      ],
+      "script": "ఆదివారం నేను రెస్ట్ తీసుకుంటాను",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

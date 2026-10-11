@@ -1,0 +1,675 @@
+{
+  "scenarioId": "te-l02-u03",
+  "language": "telugu",
+  "title": "There is, there isn't",
+  "subtitle": "Looking for something: what exists, what you have and what you don't",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 3
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u03-i01",
+      "sourcePrompt": "Is there a pharmacy near here?",
+      "register": "neutral",
+      "canonical": "ikkada daggara pharmacy undaa?",
+      "acceptedAnswers": [
+        "ikkada daggara pharmacy undaa?",
+        "ikkada daggara pharmacy unda?",
+        "ikkada daggara medical shop undaa?",
+        "ikkada daggarlo pharmacy undaa?"
+      ],
+      "distractors": [
+        "ikkada daggara pharmacy undedi?",
+        "ikkada daggara pharmacy untundaa?",
+        "ikkada pharmacy ekkada undi?"
+      ],
+      "tokens": [
+        {
+          "word": "ikkada daggara",
+          "english": "near here"
+        },
+        {
+          "word": "pharmacy",
+          "english": "pharmacy"
+        },
+        {
+          "word": "undaa",
+          "english": "is there?"
+        }
+      ],
+      "script": "ఇక్కడ దగ్గర ఫార్మసీ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i02",
+      "sourcePrompt": "Yes, there is.",
+      "register": "neutral",
+      "canonical": "avunu, undi",
+      "acceptedAnswers": [
+        "avunu, undi",
+        "avunu undi",
+        "avunu, vundi",
+        "avunu, undandi"
+      ],
+      "distractors": [
+        "avunu, undedi",
+        "avunu, untundi",
+        "ledu, undi"
+      ],
+      "tokens": [
+        {
+          "word": "avunu",
+          "english": "yes"
+        },
+        {
+          "word": "undi",
+          "english": "there is"
+        }
+      ],
+      "script": "అవును, ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i03",
+      "sourcePrompt": "No, there isn't any.",
+      "register": "neutral",
+      "canonical": "ledu, emi ledu",
+      "acceptedAnswers": [
+        "ledu, emi ledu",
+        "ledu emi ledu",
+        "ledu, edi ledu",
+        "ledu, em ledu"
+      ],
+      "distractors": [
+        "avunu, emi undi",
+        "ledu, edo undi",
+        "ledu, emi undedi"
+      ],
+      "tokens": [
+        {
+          "word": "ledu",
+          "english": "no"
+        },
+        {
+          "word": "emi ledu",
+          "english": "nothing"
+        }
+      ],
+      "script": "లేదు, ఏమీ లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i04",
+      "sourcePrompt": "Do you have a pen? (to a friend)",
+      "register": "casual",
+      "canonical": "nee daggara pen undaa?",
+      "acceptedAnswers": [
+        "nee daggara pen undaa?",
+        "nee daggara pen unda?",
+        "nee daggara pen vundaa?",
+        "neeku pen undaa?"
+      ],
+      "registerVariant": "mee daggara pen undaa?",
+      "distractors": [
+        "nee daggara pen undedaa?",
+        "nee daggara pen untundaa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee daggara",
+          "english": "with you (casual)"
+        },
+        {
+          "word": "pen",
+          "english": "pen"
+        },
+        {
+          "word": "undaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "నీ దగ్గర పెన్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i05",
+      "sourcePrompt": "Do you have time? (to an elder)",
+      "register": "respectful",
+      "canonical": "mee daggara time undaa?",
+      "acceptedAnswers": [
+        "mee daggara time undaa?",
+        "mee daggara time unda?",
+        "meeku time undaa?",
+        "mee daggara samayam undaa?"
+      ],
+      "registerVariant": "nee daggara time undaa?",
+      "distractors": [
+        "mee daggara time undedaa?",
+        "mee daggara time untundaa?"
+      ],
+      "tokens": [
+        {
+          "word": "mee daggara",
+          "english": "with you (respectful)"
+        },
+        {
+          "word": "time",
+          "english": "time"
+        },
+        {
+          "word": "undaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "మీ దగ్గర టైమ్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i06",
+      "sourcePrompt": "I have two younger brothers.",
+      "register": "neutral",
+      "canonical": "naaku iddaru tammullu unnaru",
+      "acceptedAnswers": [
+        "naaku iddaru tammullu unnaru",
+        "naku iddaru tammulu unnaru",
+        "naaku iddaru tammudulu unnaru",
+        "naaku rendu mandi tammullu unnaru"
+      ],
+      "distractors": [
+        "naaku iddaru tammullu leru",
+        "naaku iddaru tammullu undevaaru",
+        "naaku iddaru tammullu kavali"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "iddaru",
+          "english": "two people"
+        },
+        {
+          "word": "tammullu",
+          "english": "younger brothers"
+        },
+        {
+          "word": "unnaru",
+          "english": "there are"
+        }
+      ],
+      "script": "నాకు ఇద్దరు తమ్ముళ్లు ఉన్నారు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i07",
+      "sourcePrompt": "I don't have a car.",
+      "register": "neutral",
+      "canonical": "naa daggara car ledu",
+      "acceptedAnswers": [
+        "naa daggara car ledu",
+        "naa daggara car ledhu",
+        "naaku car ledu",
+        "naa daggara car levu"
+      ],
+      "distractors": [
+        "naa daggara car undi",
+        "naa daggara car undedi",
+        "naa daggara car kavali"
+      ],
+      "tokens": [
+        {
+          "word": "naa daggara",
+          "english": "with me"
+        },
+        {
+          "word": "car",
+          "english": "car"
+        },
+        {
+          "word": "ledu",
+          "english": "not"
+        }
+      ],
+      "script": "నా దగ్గర కారు లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i08",
+      "sourcePrompt": "There is no water.",
+      "register": "neutral",
+      "canonical": "neellu levu",
+      "acceptedAnswers": [
+        "neellu levu",
+        "neellu ledu",
+        "neellu emi levu",
+        "neellu levandi"
+      ],
+      "distractors": [
+        "neellu unnayi",
+        "neellu undedi",
+        "neellu untayi"
+      ],
+      "tokens": [
+        {
+          "word": "neellu",
+          "english": "water"
+        },
+        {
+          "word": "levu",
+          "english": "there is none"
+        }
+      ],
+      "script": "నీళ్లు లేవు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i09",
+      "sourcePrompt": "Is there any milk at home?",
+      "register": "neutral",
+      "canonical": "intlo paalu unnaaya?",
+      "acceptedAnswers": [
+        "intlo paalu unnaaya?",
+        "intlo paalu unnayaa?",
+        "intlo paalu unnaya?",
+        "intlo paalu vunnaya?"
+      ],
+      "distractors": [
+        "intlo paalu undedaa?",
+        "intlo paalu untayaa?",
+        "intlo paalu ekkada?"
+      ],
+      "tokens": [
+        {
+          "word": "intlo",
+          "english": "at home"
+        },
+        {
+          "word": "paalu",
+          "english": "milk"
+        },
+        {
+          "word": "unnaaya",
+          "english": "is there?"
+        }
+      ],
+      "script": "ఇంట్లో పాలు ఉన్నాయా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i10",
+      "sourcePrompt": "There's a lot of traffic.",
+      "register": "neutral",
+      "canonical": "chala traffic undi",
+      "acceptedAnswers": [
+        "chala traffic undi",
+        "chaala traffic undi",
+        "traffic chala undi",
+        "chala traffic vundi"
+      ],
+      "distractors": [
+        "chala traffic undedi",
+        "chala traffic untundi",
+        "chala traffic ledu"
+      ],
+      "tokens": [
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "traffic",
+          "english": "traffic"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "చాలా ట్రాఫిక్ ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i11",
+      "sourcePrompt": "Is the seat free?",
+      "register": "neutral",
+      "canonical": "seat khaali undaa?",
+      "acceptedAnswers": [
+        "seat khaali undaa?",
+        "seat khali undaa?",
+        "seat empty undaa?",
+        "seat khaali unda?"
+      ],
+      "distractors": [
+        "seat khaali undedaa?",
+        "seat khaali untundaa?",
+        "seat ekkada undi?"
+      ],
+      "tokens": [
+        {
+          "word": "seat",
+          "english": "seat"
+        },
+        {
+          "word": "khaali",
+          "english": "empty"
+        },
+        {
+          "word": "undaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "సీట్ ఖాళీ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i12",
+      "sourcePrompt": "Do you have a charger? (to a friend)",
+      "register": "casual",
+      "canonical": "nee daggara charger undaa?",
+      "acceptedAnswers": [
+        "nee daggara charger undaa?",
+        "nee daggara charger unda?",
+        "neeku charger undaa?",
+        "nee daggara charger vundaa?"
+      ],
+      "registerVariant": "mee daggara charger undaa?",
+      "distractors": [
+        "nee daggara charger undedaa?",
+        "nee daggara charger untundaa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee daggara",
+          "english": "with you (casual)"
+        },
+        {
+          "word": "charger",
+          "english": "charger"
+        },
+        {
+          "word": "undaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "నీ దగ్గర చార్జర్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i13",
+      "sourcePrompt": "I have a question.",
+      "register": "neutral",
+      "canonical": "naaku oka prashna undi",
+      "acceptedAnswers": [
+        "naaku oka prashna undi",
+        "naku oka prashna undi",
+        "naaku oka question undi",
+        "naaku oka doubt undi"
+      ],
+      "distractors": [
+        "naaku oka prashna undedi",
+        "naaku oka prashna ledu",
+        "naaku oka prashna untundi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "oka prashna",
+          "english": "a question"
+        },
+        {
+          "word": "undi",
+          "english": "there is"
+        }
+      ],
+      "script": "నాకు ఒక ప్రశ్న ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i14",
+      "sourcePrompt": "There are many people.",
+      "register": "neutral",
+      "canonical": "chala mandi unnaru",
+      "acceptedAnswers": [
+        "chala mandi unnaru",
+        "chaala mandi unnaru",
+        "chala mandi vunnaru",
+        "chala mandi unnarandi"
+      ],
+      "distractors": [
+        "chala mandi undevaaru",
+        "chala mandi leru",
+        "konchem mandi unnaru"
+      ],
+      "tokens": [
+        {
+          "word": "chala mandi",
+          "english": "many people"
+        },
+        {
+          "word": "unnaru",
+          "english": "are there"
+        }
+      ],
+      "script": "చాలా మంది ఉన్నారు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i15",
+      "sourcePrompt": "Is anyone there? (to an elder)",
+      "register": "respectful",
+      "canonical": "akkada evaraina unnara?",
+      "acceptedAnswers": [
+        "akkada evaraina unnara?",
+        "akkada evarina unnara?",
+        "akkada evaraina unnaara?",
+        "akkada evaraina unnaaraa?"
+      ],
+      "registerVariant": "akkada evaraina unnava?",
+      "distractors": [
+        "akkada evaraina undevaaraa?",
+        "akkada evaraina untara?"
+      ],
+      "tokens": [
+        {
+          "word": "akkada",
+          "english": "there"
+        },
+        {
+          "word": "evaraina",
+          "english": "anyone"
+        },
+        {
+          "word": "unnara",
+          "english": "are you there?"
+        }
+      ],
+      "script": "అక్కడ ఎవరైనా ఉన్నారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i16",
+      "sourcePrompt": "I have an appointment.",
+      "register": "neutral",
+      "canonical": "naaku oka appointment undi",
+      "acceptedAnswers": [
+        "naaku oka appointment undi",
+        "naku oka appointment undi",
+        "naaku appointment undi",
+        "naaku oka appointment vundi"
+      ],
+      "distractors": [
+        "naaku oka appointment undedi",
+        "naaku oka appointment ledu",
+        "naaku oka appointment untundi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "oka appointment",
+          "english": "an appointment"
+        },
+        {
+          "word": "undi",
+          "english": "there is"
+        }
+      ],
+      "script": "నాకు ఒక అపాయింట్మెంట్ ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i17",
+      "sourcePrompt": "We have no sugar.",
+      "register": "neutral",
+      "canonical": "maa daggara panchadara ledu",
+      "acceptedAnswers": [
+        "maa daggara panchadara ledu",
+        "maa daggara chakkera ledu",
+        "maa daggara panchadara ledhu",
+        "maa daggara sugar ledu"
+      ],
+      "distractors": [
+        "maa daggara panchadara undi",
+        "maa daggara panchadara undedi",
+        "maa daggara uppu ledu"
+      ],
+      "tokens": [
+        {
+          "word": "maa daggara",
+          "english": "with us"
+        },
+        {
+          "word": "panchadara",
+          "english": "sugar"
+        },
+        {
+          "word": "ledu",
+          "english": "none"
+        }
+      ],
+      "script": "మా దగ్గర పంచదార లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i18",
+      "sourcePrompt": "How many do you have? (to a friend)",
+      "register": "casual",
+      "canonical": "nee daggara enni unnayi?",
+      "acceptedAnswers": [
+        "nee daggara enni unnayi?",
+        "nee daggara enni unnayi",
+        "nee daggara enni vunnayi?",
+        "neeku enni unnayi?"
+      ],
+      "registerVariant": "mee daggara enni unnayi?",
+      "distractors": [
+        "nee daggara enni undevi?",
+        "nee daggara enni untayi?"
+      ],
+      "tokens": [
+        {
+          "word": "nee daggara",
+          "english": "with you (casual)"
+        },
+        {
+          "word": "enni",
+          "english": "how many"
+        },
+        {
+          "word": "unnayi",
+          "english": "are there"
+        }
+      ],
+      "script": "నీ దగ్గర ఎన్ని ఉన్నాయి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i19",
+      "sourcePrompt": "Is there parking?",
+      "register": "neutral",
+      "canonical": "parking undaa?",
+      "acceptedAnswers": [
+        "parking undaa?",
+        "parking unda?",
+        "parking vundaa?",
+        "parking facility undaa?"
+      ],
+      "distractors": [
+        "parking undedaa?",
+        "parking untundaa?",
+        "parking ekkada?"
+      ],
+      "tokens": [
+        {
+          "word": "parking",
+          "english": "parking"
+        },
+        {
+          "word": "undaa",
+          "english": "is there?"
+        }
+      ],
+      "script": "పార్కింగ్ ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u03-i20",
+      "sourcePrompt": "There is nothing in the fridge.",
+      "register": "neutral",
+      "canonical": "fridge lo emi ledu",
+      "acceptedAnswers": [
+        "fridge lo emi ledu",
+        "fridge lo emi levu",
+        "fridge lo edi ledu",
+        "fridge lo em ledu"
+      ],
+      "distractors": [
+        "fridge lo anni unnayi",
+        "fridge lo emi undi",
+        "fridge lo emi untundi"
+      ],
+      "tokens": [
+        {
+          "word": "fridge lo",
+          "english": "in the fridge"
+        },
+        {
+          "word": "emi ledu",
+          "english": "nothing"
+        }
+      ],
+      "script": "ఫ్రిజ్ లో ఏమీ లేదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

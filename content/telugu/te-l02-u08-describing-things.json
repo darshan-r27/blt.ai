@@ -1,0 +1,735 @@
+{
+  "scenarioId": "te-l02-u08",
+  "language": "telugu",
+  "title": "Describing things",
+  "subtitle": "Shopping and choosing: size, colour, quality, very, a little, too",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 8
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u08-i01",
+      "sourcePrompt": "This shirt is too big.",
+      "register": "neutral",
+      "canonical": "ee shirt ekkuva pedda ga undi",
+      "acceptedAnswers": [
+        "ee shirt ekkuva pedda ga undi",
+        "ee shirt ekkuvaga pedda ga undi",
+        "ee shirt ekkuva peddadi",
+        "ee shirt ekkuva pedda size ga undi"
+      ],
+      "distractors": [
+        "ee shirt ekkuva chinna ga undi",
+        "ee shirt konchem pedda ga undi",
+        "ee shirt ekkuva pedda ga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "ee shirt",
+          "english": "this shirt"
+        },
+        {
+          "word": "ekkuva",
+          "english": "too"
+        },
+        {
+          "word": "pedda ga",
+          "english": "big"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఈ షర్ట్ ఎక్కువ పెద్దగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i02",
+      "sourcePrompt": "It's a little small.",
+      "register": "neutral",
+      "canonical": "konchem chinnadi ga undi",
+      "acceptedAnswers": [
+        "konchem chinnadi ga undi",
+        "konchem chinnaga undi",
+        "konchem chinna ga undi",
+        "konchem chinnadiga undi"
+      ],
+      "distractors": [
+        "chala chinnadi ga undi",
+        "konchem peddadi ga undi",
+        "konchem chinnadi ga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "chinnadi ga",
+          "english": "small"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "కొంచెం చిన్నదిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i03",
+      "sourcePrompt": "I like that blue colour.",
+      "register": "neutral",
+      "canonical": "naaku aa neeli rangu ishtam",
+      "acceptedAnswers": [
+        "naaku aa neeli rangu ishtam",
+        "naaku aa neelam colour ishtam",
+        "naaku aa blue colour ishtam",
+        "naku aa neeli rangu ishtam"
+      ],
+      "distractors": [
+        "naaku aa neeli rangu ishtam ledu",
+        "naaku aa aakupachcha rangu ishtam",
+        "naaku aa neeli rangu ishtam ayindi"
+      ],
+      "tokens": [
+        {
+          "word": "naaku",
+          "english": "to me"
+        },
+        {
+          "word": "aa neeli rangu",
+          "english": "that blue colour"
+        },
+        {
+          "word": "ishtam",
+          "english": "liked"
+        }
+      ],
+      "script": "నాకు ఆ నీలి రంగు ఇష్టం",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i04",
+      "sourcePrompt": "What colour is it? (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "idi ye colour andi?",
+      "acceptedAnswers": [
+        "idi ye colour andi?",
+        "idi ye rangu andi?",
+        "idi ye colour andi",
+        "idi ye colourandi?"
+      ],
+      "registerVariant": "idi ye colour?",
+      "distractors": [
+        "idi enta andi?",
+        "idi ekkada andi?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "ye colour",
+          "english": "which colour"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "ఇది ఏ కలర్ అండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i05",
+      "sourcePrompt": "It's green.",
+      "register": "neutral",
+      "canonical": "adi aakupachcha rangu",
+      "acceptedAnswers": [
+        "adi aakupachcha rangu",
+        "adi aakupacha colour",
+        "adi green colour",
+        "adi aaku pachcha rangu"
+      ],
+      "distractors": [
+        "adi neeli rangu",
+        "adi pasupu rangu",
+        "adi aakupachcha rangu kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "aakupachcha",
+          "english": "green"
+        },
+        {
+          "word": "rangu",
+          "english": "colour"
+        }
+      ],
+      "script": "అది ఆకుపచ్చ రంగు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i06",
+      "sourcePrompt": "This is very good quality.",
+      "register": "neutral",
+      "canonical": "idi chala manchi quality",
+      "acceptedAnswers": [
+        "idi chala manchi quality",
+        "idi chaala manchi quality",
+        "idi chala manchi quality ga undi",
+        "idi manchi quality chala"
+      ],
+      "distractors": [
+        "idi chala cheddha quality",
+        "idi konchem manchi quality",
+        "idi chala manchi quality kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "manchi quality",
+          "english": "good quality"
+        }
+      ],
+      "script": "ఇది చాలా మంచి క్వాలిటీ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i07",
+      "sourcePrompt": "This one is better than that.",
+      "register": "neutral",
+      "canonical": "idi daani kante manchidi",
+      "acceptedAnswers": [
+        "idi daani kante manchidi",
+        "idi daani kanna manchidi",
+        "idi adi kante manchidi",
+        "idi daani kante bagundi"
+      ],
+      "distractors": [
+        "idi daani kante cheddadi",
+        "idi daani laage manchidi",
+        "adi idi kante manchidi"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this one"
+        },
+        {
+          "word": "daani kante",
+          "english": "than that"
+        },
+        {
+          "word": "manchidi",
+          "english": "better"
+        }
+      ],
+      "script": "ఇది దాని కంటే మంచిది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i08",
+      "sourcePrompt": "That's too heavy.",
+      "register": "neutral",
+      "canonical": "adi chala baruvuga undi",
+      "acceptedAnswers": [
+        "adi chala baruvuga undi",
+        "adi chaala baruvuga undi",
+        "adi chala baruvu",
+        "adi chala heavy ga undi"
+      ],
+      "distractors": [
+        "adi chala telikaga undi",
+        "adi konchem baruvuga undi",
+        "adi chala baruvuga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "baruvuga",
+          "english": "heavy"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "అది చాలా బరువుగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i09",
+      "sourcePrompt": "It's very light.",
+      "register": "neutral",
+      "canonical": "idi chala telikaga undi",
+      "acceptedAnswers": [
+        "idi chala telikaga undi",
+        "idi chaala telikaga undi",
+        "idi chala telika",
+        "idi chala light ga undi"
+      ],
+      "distractors": [
+        "idi chala baruvuga undi",
+        "idi konchem telikaga undi",
+        "idi chala telikaga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "telikaga",
+          "english": "light"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఇది చాలా తేలికగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i10",
+      "sourcePrompt": "This is too long.",
+      "register": "neutral",
+      "canonical": "idi ekkuva podavuga undi",
+      "acceptedAnswers": [
+        "idi ekkuva podavuga undi",
+        "idi chala podavuga undi",
+        "idi ekkuva podavu undi",
+        "idi ekkuva podavaga undi"
+      ],
+      "distractors": [
+        "idi ekkuva chinnadi ga undi",
+        "idi konchem podavuga undi",
+        "idi ekkuva podavuga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "ekkuva",
+          "english": "too"
+        },
+        {
+          "word": "podavuga",
+          "english": "long"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఇది ఎక్కువ పొడవుగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i11",
+      "sourcePrompt": "Do you have a shorter one?",
+      "register": "neutral",
+      "canonical": "podavu takkuva ayinadi okati undaa?",
+      "acceptedAnswers": [
+        "podavu takkuva ayinadi okati undaa?",
+        "podavu takkuva ayindi okati undaa?",
+        "konchem chinnadi okati undaa?",
+        "takkuva podavu okati undaa?"
+      ],
+      "distractors": [
+        "podavu ekkuva ayinadi okati undaa?",
+        "podavu takkuva ayinadi okati undedaa?",
+        "podavu takkuva ayinadi okati kavali"
+      ],
+      "tokens": [
+        {
+          "word": "podavu takkuva",
+          "english": "shorter"
+        },
+        {
+          "word": "okati",
+          "english": "one"
+        },
+        {
+          "word": "undaa",
+          "english": "do you have?"
+        }
+      ],
+      "script": "పొడవు తక్కువ అయినది ఒకటి ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i12",
+      "sourcePrompt": "It's a bit expensive. (to a shopkeeper)",
+      "register": "respectful",
+      "canonical": "konchem ekkuvaga undi andi",
+      "acceptedAnswers": [
+        "konchem ekkuvaga undi andi",
+        "konchem ekkuva undi andi",
+        "konchem ekkuvagaa undandi",
+        "konchem ekkuvaga undi andi."
+      ],
+      "registerVariant": "konchem ekkuvaga undi",
+      "distractors": [
+        "konchem takkuvaga undi andi",
+        "chala ekkuvaga undi andi"
+      ],
+      "tokens": [
+        {
+          "word": "konchem",
+          "english": "a bit"
+        },
+        {
+          "word": "ekkuvaga",
+          "english": "too much"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "కొంచెం ఎక్కువగా ఉంది అండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i13",
+      "sourcePrompt": "It's soft.",
+      "register": "neutral",
+      "canonical": "adi mettaga undi",
+      "acceptedAnswers": [
+        "adi mettaga undi",
+        "adi mettagaa undi",
+        "adi soft ga undi",
+        "adi mrudhuvuga undi"
+      ],
+      "distractors": [
+        "adi gattiga undi",
+        "adi mettaga undedi",
+        "adi mettaga ledu"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "mettaga",
+          "english": "soft"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "అది మెత్తగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i14",
+      "sourcePrompt": "It's very hard.",
+      "register": "neutral",
+      "canonical": "adi chala gattiga undi",
+      "acceptedAnswers": [
+        "adi chala gattiga undi",
+        "adi chaala gattiga undi",
+        "adi chala gattiga vundi",
+        "adi chala hard ga undi"
+      ],
+      "distractors": [
+        "adi chala mettaga undi",
+        "adi konchem gattiga undi",
+        "adi chala gattiga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "gattiga",
+          "english": "hard"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "అది చాలా గట్టిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i15",
+      "sourcePrompt": "The room is very clean.",
+      "register": "neutral",
+      "canonical": "room chala clean ga undi",
+      "acceptedAnswers": [
+        "room chala clean ga undi",
+        "room chaala clean ga undi",
+        "gadi chala clean ga undi",
+        "room chala shubhram ga undi"
+      ],
+      "distractors": [
+        "room chala dirty ga undi",
+        "room konchem clean ga undi",
+        "room chala clean ga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "room",
+          "english": "room"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "clean ga",
+          "english": "clean"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "రూమ్ చాలా క్లీన్ గా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i16",
+      "sourcePrompt": "It's not very big.",
+      "register": "neutral",
+      "canonical": "adi anta pedda kaadu",
+      "acceptedAnswers": [
+        "adi anta pedda kaadu",
+        "adi antha pedda kaadu",
+        "adi anta peddadi kaadu",
+        "adi anta pedda kadu"
+      ],
+      "distractors": [
+        "adi chala pedda",
+        "adi anta pedda ga undi",
+        "adi anta chinna kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "anta",
+          "english": "that much"
+        },
+        {
+          "word": "pedda",
+          "english": "big"
+        },
+        {
+          "word": "kaadu",
+          "english": "is not"
+        }
+      ],
+      "script": "అది అంత పెద్ద కాదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i17",
+      "sourcePrompt": "Is this too spicy for you? (to a friend)",
+      "register": "casual",
+      "canonical": "neeku idi ekkuva karam ga undaa?",
+      "acceptedAnswers": [
+        "neeku idi ekkuva karam ga undaa?",
+        "neeku idi ekkuva karamga undaa?",
+        "neeku idi chala karam ga undaa?",
+        "neeku idi ekkuva karam ga unda?"
+      ],
+      "registerVariant": "meeku idi ekkuva karam ga undaa?",
+      "distractors": [
+        "neeku idi ekkuva karam ga undedaa?",
+        "neeku idi konchem karam ga undaa?"
+      ],
+      "tokens": [
+        {
+          "word": "neeku",
+          "english": "to you (casual)"
+        },
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "ekkuva",
+          "english": "too"
+        },
+        {
+          "word": "karam ga",
+          "english": "spicy"
+        },
+        {
+          "word": "undaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "నీకు ఇది ఎక్కువ కారంగా ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i18",
+      "sourcePrompt": "The tea has gone a little cold.",
+      "register": "neutral",
+      "canonical": "tea konchem challaarindi",
+      "acceptedAnswers": [
+        "tea konchem challaarindi",
+        "tea konchem challaaripoyindi",
+        "tea konchem challabadindi",
+        "tea konchem challaga ayindi"
+      ],
+      "distractors": [
+        "tea konchem vedi ga undi",
+        "tea konchem challaaruthundi",
+        "tea chala challaarindi"
+      ],
+      "tokens": [
+        {
+          "word": "tea",
+          "english": "tea"
+        },
+        {
+          "word": "konchem",
+          "english": "a little"
+        },
+        {
+          "word": "challaarindi",
+          "english": "has gone cold"
+        }
+      ],
+      "script": "టీ కొంచెం చల్లారింది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i19",
+      "sourcePrompt": "This is the best.",
+      "register": "neutral",
+      "canonical": "idi best",
+      "acceptedAnswers": [
+        "idi best",
+        "idi ide best",
+        "idi anni kante best",
+        "idi best ra"
+      ],
+      "distractors": [
+        "idi worst",
+        "adi best",
+        "idi best kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "best",
+          "english": "best"
+        }
+      ],
+      "script": "ఇది బెస్ట్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u08-i20",
+      "sourcePrompt": "It's too noisy here.",
+      "register": "neutral",
+      "canonical": "ikkada ekkuva sound undi",
+      "acceptedAnswers": [
+        "ikkada ekkuva sound undi",
+        "ikkada chala sound undi",
+        "ikkada sound ekkuva undi",
+        "ikkada ekkuva sound ga undi"
+      ],
+      "distractors": [
+        "ikkada sound ledu",
+        "ikkada ekkuva sound undedi",
+        "akkada ekkuva sound undi"
+      ],
+      "tokens": [
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "ekkuva",
+          "english": "too much"
+        },
+        {
+          "word": "sound",
+          "english": "noise"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఇక్కడ ఎక్కువ సౌండ్ ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

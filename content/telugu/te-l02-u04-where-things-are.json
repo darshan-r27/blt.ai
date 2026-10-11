@@ -1,0 +1,731 @@
+{
+  "scenarioId": "te-l02-u04",
+  "language": "telugu",
+  "title": "Where things are",
+  "subtitle": "Finding things at home: in, on, under, near, behind",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 4
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u04-i01",
+      "sourcePrompt": "Where is my phone?",
+      "register": "neutral",
+      "canonical": "naa phone ekkada undi?",
+      "acceptedAnswers": [
+        "naa phone ekkada undi?",
+        "naa phone ekkada vundi?",
+        "naa phone ekkada undi",
+        "naa phone ekkada?"
+      ],
+      "distractors": [
+        "naa phone ekkada undedi?",
+        "naa phone ekkada untundi?",
+        "nee phone ekkada undi?"
+      ],
+      "tokens": [
+        {
+          "word": "naa phone",
+          "english": "my phone"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నా ఫోన్ ఎక్కడ ఉంది?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i02",
+      "sourcePrompt": "It's on the table.",
+      "register": "neutral",
+      "canonical": "adi table meeda undi",
+      "acceptedAnswers": [
+        "adi table meeda undi",
+        "adi table mida undi",
+        "adi table paina undi",
+        "adi table meeda vundi"
+      ],
+      "distractors": [
+        "adi table kinda undi",
+        "adi table daggara undi",
+        "adi table meeda undedi"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "table meeda",
+          "english": "on the table"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "అది టేబుల్ మీద ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i03",
+      "sourcePrompt": "It's under the bed.",
+      "register": "neutral",
+      "canonical": "adi bed kinda undi",
+      "acceptedAnswers": [
+        "adi bed kinda undi",
+        "adi bed kindha undi",
+        "adi manchamkinda undi",
+        "adi bed krinda undi"
+      ],
+      "distractors": [
+        "adi bed meeda undi",
+        "adi bed venaka undi",
+        "adi bed kinda undedi"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "bed kinda",
+          "english": "under the bed"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "అది బెడ్ కింద ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i04",
+      "sourcePrompt": "The keys are in the bag.",
+      "register": "neutral",
+      "canonical": "taalam chevulu bag lo unnayi",
+      "acceptedAnswers": [
+        "taalam chevulu bag lo unnayi",
+        "keys bag lo unnayi",
+        "taalam chevulu bag lo vunnayi",
+        "taalam chevulu bag lo unnayi."
+      ],
+      "distractors": [
+        "taalam chevulu bag meeda unnayi",
+        "taalam chevulu bag lo undevi",
+        "taalam chevulu bag lo levu"
+      ],
+      "tokens": [
+        {
+          "word": "taalam chevulu",
+          "english": "keys"
+        },
+        {
+          "word": "bag lo",
+          "english": "in the bag"
+        },
+        {
+          "word": "unnayi",
+          "english": "are"
+        }
+      ],
+      "script": "తాళం చెవులు బ్యాగ్ లో ఉన్నాయి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i05",
+      "sourcePrompt": "Look behind the door. (to an elder)",
+      "register": "respectful",
+      "canonical": "talupu venaka chudandi",
+      "acceptedAnswers": [
+        "talupu venaka chudandi",
+        "talupu venuka chudandi",
+        "talupu venaka choodandi",
+        "talupu venaka chudandi andi"
+      ],
+      "registerVariant": "talupu venaka chudu",
+      "distractors": [
+        "talupu mundu chudandi",
+        "talupu kinda chudandi"
+      ],
+      "tokens": [
+        {
+          "word": "talupu",
+          "english": "door"
+        },
+        {
+          "word": "venaka",
+          "english": "behind"
+        },
+        {
+          "word": "chudandi",
+          "english": "please look"
+        }
+      ],
+      "script": "తలుపు వెనక చూడండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i06",
+      "sourcePrompt": "Look inside. (to a friend)",
+      "register": "casual",
+      "canonical": "lopala chudu",
+      "acceptedAnswers": [
+        "lopala chudu",
+        "lopala choodu",
+        "lopala chudu ra",
+        "lopalaa chudu"
+      ],
+      "registerVariant": "lopala chudandi",
+      "distractors": [
+        "bayata chudu",
+        "paina chudu"
+      ],
+      "tokens": [
+        {
+          "word": "lopala",
+          "english": "inside"
+        },
+        {
+          "word": "chudu",
+          "english": "look"
+        }
+      ],
+      "script": "లోపల చూడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i07",
+      "sourcePrompt": "The school is near my house.",
+      "register": "neutral",
+      "canonical": "naa inti daggara school undi",
+      "acceptedAnswers": [
+        "naa inti daggara school undi",
+        "naa inti pakkana school undi",
+        "naa inti daggara school vundi",
+        "maa inti daggara school undi"
+      ],
+      "distractors": [
+        "naa inti daggara school ledu",
+        "naa inti venaka school undi",
+        "naa inti daggara school undedi"
+      ],
+      "tokens": [
+        {
+          "word": "naa inti",
+          "english": "my house's"
+        },
+        {
+          "word": "daggara",
+          "english": "near"
+        },
+        {
+          "word": "school",
+          "english": "school"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నా ఇంటి దగ్గర స్కూల్ ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i08",
+      "sourcePrompt": "The temple is in front of the bus stand.",
+      "register": "neutral",
+      "canonical": "gudi bus stand ki eduruga undi",
+      "acceptedAnswers": [
+        "gudi bus stand ki eduruga undi",
+        "gudi bus stand ki ederuga undi",
+        "gudi bus stand mundu undi",
+        "gudi bus stand eduruga undi"
+      ],
+      "distractors": [
+        "gudi bus stand venaka undi",
+        "gudi bus stand pakkana undi",
+        "gudi bus stand ki eduruga undedi"
+      ],
+      "tokens": [
+        {
+          "word": "gudi",
+          "english": "temple"
+        },
+        {
+          "word": "bus stand ki",
+          "english": "to the bus stand"
+        },
+        {
+          "word": "eduruga",
+          "english": "in front"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "గుడి బస్ స్టాండ్ కి ఎదురుగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i09",
+      "sourcePrompt": "The shop is next to the bank.",
+      "register": "neutral",
+      "canonical": "dukaanam bank pakkana undi",
+      "acceptedAnswers": [
+        "dukaanam bank pakkana undi",
+        "dukanam bank pakkana undi",
+        "dukaanam bank pakkanundi",
+        "shop bank pakkana undi"
+      ],
+      "distractors": [
+        "dukaanam bank mundu undi",
+        "dukaanam bank paina undi",
+        "dukaanam bank pakkana undedi"
+      ],
+      "tokens": [
+        {
+          "word": "dukaanam",
+          "english": "shop"
+        },
+        {
+          "word": "bank",
+          "english": "bank"
+        },
+        {
+          "word": "pakkana",
+          "english": "next to"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "దుకాణం బ్యాంక్ పక్కన ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i10",
+      "sourcePrompt": "Where is the sugar? (to an elder)",
+      "register": "respectful",
+      "canonical": "panchadara ekkada undi andi?",
+      "acceptedAnswers": [
+        "panchadara ekkada undi andi?",
+        "panchadara ekkada undandi?",
+        "panchadara ekkada undi andi",
+        "chakkera ekkada undi andi?"
+      ],
+      "registerVariant": "panchadara ekkada undi?",
+      "distractors": [
+        "panchadara enta andi?",
+        "panchadara eppudu undi andi?"
+      ],
+      "tokens": [
+        {
+          "word": "panchadara",
+          "english": "sugar"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "పంచదార ఎక్కడ ఉంది అండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i11",
+      "sourcePrompt": "The cat is under the chair.",
+      "register": "neutral",
+      "canonical": "pilli kurchi kinda undi",
+      "acceptedAnswers": [
+        "pilli kurchi kinda undi",
+        "pilli chair kinda undi",
+        "pilli kurchi kindha undi",
+        "pilli kurchi krinda undi"
+      ],
+      "distractors": [
+        "pilli kurchi meeda undi",
+        "pilli kurchi venaka undi",
+        "pilli kurchi kinda undedi"
+      ],
+      "tokens": [
+        {
+          "word": "pilli",
+          "english": "cat"
+        },
+        {
+          "word": "kurchi",
+          "english": "chair"
+        },
+        {
+          "word": "kinda",
+          "english": "under"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "పిల్లి కుర్చీ కింద ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i12",
+      "sourcePrompt": "Put it on the shelf. (to an elder)",
+      "register": "respectful",
+      "canonical": "daanni shelf meeda pettandi",
+      "acceptedAnswers": [
+        "daanni shelf meeda pettandi",
+        "deenni shelf meeda pettandi",
+        "daanni shelf paina pettandi",
+        "daanni shelf mida pettandi"
+      ],
+      "registerVariant": "daanni shelf meeda pettu",
+      "distractors": [
+        "daanni shelf kinda pettandi",
+        "daanni shelf lo nunchi teeyandi"
+      ],
+      "tokens": [
+        {
+          "word": "daanni",
+          "english": "that (object)"
+        },
+        {
+          "word": "shelf meeda",
+          "english": "on the shelf"
+        },
+        {
+          "word": "pettandi",
+          "english": "please put"
+        }
+      ],
+      "script": "దాన్ని షెల్ఫ్ మీద పెట్టండి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i13",
+      "sourcePrompt": "Keep it here. (to a friend)",
+      "register": "casual",
+      "canonical": "deenni ikkada pettu",
+      "acceptedAnswers": [
+        "deenni ikkada pettu",
+        "deenni ikkada pettu ra",
+        "idi ikkada pettu",
+        "deenni ikkade pettu"
+      ],
+      "registerVariant": "deenni ikkada pettandi",
+      "distractors": [
+        "deenni akkada pettu",
+        "deenni ikkada teesuko"
+      ],
+      "tokens": [
+        {
+          "word": "deenni",
+          "english": "this (object)"
+        },
+        {
+          "word": "ikkada",
+          "english": "here"
+        },
+        {
+          "word": "pettu",
+          "english": "put"
+        }
+      ],
+      "script": "దీన్ని ఇక్కడ పెట్టు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i14",
+      "sourcePrompt": "My bag is on the chair.",
+      "register": "neutral",
+      "canonical": "naa bag kurchi meeda undi",
+      "acceptedAnswers": [
+        "naa bag kurchi meeda undi",
+        "naa bag chair meeda undi",
+        "naa bag kurchi mida undi",
+        "naa bag kurchi paina undi"
+      ],
+      "distractors": [
+        "naa bag kurchi kinda undi",
+        "naa bag kurchi venaka undi",
+        "naa bag kurchi meeda undedi"
+      ],
+      "tokens": [
+        {
+          "word": "naa bag",
+          "english": "my bag"
+        },
+        {
+          "word": "kurchi",
+          "english": "chair"
+        },
+        {
+          "word": "meeda",
+          "english": "on"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నా బ్యాగ్ కుర్చీ మీద ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i15",
+      "sourcePrompt": "There is a garden behind the house.",
+      "register": "neutral",
+      "canonical": "inti venaka thota undi",
+      "acceptedAnswers": [
+        "inti venaka thota undi",
+        "inti venuka thota undi",
+        "inti venaka garden undi",
+        "inti venaka thota vundi"
+      ],
+      "distractors": [
+        "inti mundu thota undi",
+        "inti venaka thota undedi",
+        "inti venaka thota ledu"
+      ],
+      "tokens": [
+        {
+          "word": "inti",
+          "english": "house's"
+        },
+        {
+          "word": "venaka",
+          "english": "behind"
+        },
+        {
+          "word": "thota",
+          "english": "garden"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఇంటి వెనక తోట ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i16",
+      "sourcePrompt": "Is the key in your pocket? (to a friend)",
+      "register": "casual",
+      "canonical": "taalam chevi nee pocket lo undaa?",
+      "acceptedAnswers": [
+        "taalam chevi nee pocket lo undaa?",
+        "taalam chevi nee pocket lo unda?",
+        "key nee pocket lo undaa?",
+        "taalam chevi nee pocket lo vundaa?"
+      ],
+      "registerVariant": "taalam chevi mee pocket lo undaa?",
+      "distractors": [
+        "taalam chevi nee pocket lo undedaa?",
+        "taalam chevi nee bag lo undaa?"
+      ],
+      "tokens": [
+        {
+          "word": "taalam chevi",
+          "english": "key"
+        },
+        {
+          "word": "nee pocket lo",
+          "english": "in your pocket"
+        },
+        {
+          "word": "undaa",
+          "english": "is it?"
+        }
+      ],
+      "script": "తాళం చెవి నీ పాకెట్ లో ఉందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i17",
+      "sourcePrompt": "The bathroom is upstairs.",
+      "register": "neutral",
+      "canonical": "bathroom paina undi",
+      "acceptedAnswers": [
+        "bathroom paina undi",
+        "bathroom paina vundi",
+        "bathroom upstairs undi",
+        "bathroom maadi meeda undi"
+      ],
+      "distractors": [
+        "bathroom kinda undi",
+        "bathroom paina undedi",
+        "bathroom paina ledu"
+      ],
+      "tokens": [
+        {
+          "word": "bathroom",
+          "english": "bathroom"
+        },
+        {
+          "word": "paina",
+          "english": "upstairs"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "బాత్రూమ్ పైన ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i18",
+      "sourcePrompt": "The kitchen is downstairs.",
+      "register": "neutral",
+      "canonical": "kitchen kinda undi",
+      "acceptedAnswers": [
+        "kitchen kinda undi",
+        "kitchen kindha undi",
+        "kitchen krinda undi",
+        "kitchen downstairs undi"
+      ],
+      "distractors": [
+        "kitchen paina undi",
+        "kitchen kinda undedi",
+        "kitchen kinda ledu"
+      ],
+      "tokens": [
+        {
+          "word": "kitchen",
+          "english": "kitchen"
+        },
+        {
+          "word": "kinda",
+          "english": "downstairs"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "కిచెన్ కింద ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i19",
+      "sourcePrompt": "Where is the nearest ATM? (to an elder)",
+      "register": "respectful",
+      "canonical": "daggarlo ATM ekkada undi andi?",
+      "acceptedAnswers": [
+        "daggarlo ATM ekkada undi andi?",
+        "daggara ATM ekkada undandi?",
+        "daggarlo ATM ekkada undi andi",
+        "daggara ATM ekkada undi andi?"
+      ],
+      "registerVariant": "daggarlo ATM ekkada undi?",
+      "distractors": [
+        "daggarlo ATM enta andi?",
+        "daggarlo ATM eppudu undi andi?"
+      ],
+      "tokens": [
+        {
+          "word": "daggarlo",
+          "english": "nearby"
+        },
+        {
+          "word": "ATM",
+          "english": "ATM"
+        },
+        {
+          "word": "ekkada",
+          "english": "where"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        },
+        {
+          "word": "andi",
+          "english": "polite marker"
+        }
+      ],
+      "script": "దగ్గర్లో ఏటీఎం ఎక్కడ ఉంది అండి?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u04-i20",
+      "sourcePrompt": "It's between the two shops.",
+      "register": "neutral",
+      "canonical": "adi rendu dukaanaala madhya undi",
+      "acceptedAnswers": [
+        "adi rendu dukaanaala madhya undi",
+        "adi rendu dukanaala madhya undi",
+        "adi rendu shops madhya undi",
+        "adi rendu dukaanaala madhyalo undi"
+      ],
+      "distractors": [
+        "adi rendu dukaanaala mundu undi",
+        "adi rendu dukaanaala venaka undi",
+        "adi rendu dukaanaala madhya undedi"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "it"
+        },
+        {
+          "word": "rendu dukaanaala",
+          "english": "of the two shops"
+        },
+        {
+          "word": "madhya",
+          "english": "between"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "అది రెండు దుకాణాల మధ్య ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

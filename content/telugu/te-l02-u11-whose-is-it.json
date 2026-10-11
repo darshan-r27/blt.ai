@@ -1,0 +1,687 @@
+{
+  "scenarioId": "te-l02-u11",
+  "language": "telugu",
+  "title": "Whose is it?",
+  "subtitle": "Sorting belongings: my, your, his, her, our, their, belongs to",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 11
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u11-i01",
+      "sourcePrompt": "This is my bag.",
+      "register": "neutral",
+      "canonical": "idi naa bag",
+      "acceptedAnswers": [
+        "idi naa bag",
+        "idi naa bag ye",
+        "idhi naa bag",
+        "idi naa bag andi"
+      ],
+      "distractors": [
+        "idi nee bag",
+        "idi atani bag",
+        "idi naa bag kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "naa bag",
+          "english": "my bag"
+        }
+      ],
+      "script": "ఇది నా బ్యాగ్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i02",
+      "sourcePrompt": "That's your phone. (to a friend)",
+      "register": "casual",
+      "canonical": "adi nee phone",
+      "acceptedAnswers": [
+        "adi nee phone",
+        "adi nee phone ra",
+        "adhi nee phone",
+        "adi neede phone"
+      ],
+      "registerVariant": "adi mee phone",
+      "distractors": [
+        "adi naa phone",
+        "adi atani phone"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "nee phone",
+          "english": "your phone"
+        }
+      ],
+      "script": "అది నీ ఫోన్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i03",
+      "sourcePrompt": "This is his car.",
+      "register": "neutral",
+      "canonical": "idi atani car",
+      "acceptedAnswers": [
+        "idi atani car",
+        "idi athani car",
+        "idi atanidi car",
+        "idi vaadi car"
+      ],
+      "distractors": [
+        "idi aame car",
+        "idi naa car",
+        "idi atani car kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "atani",
+          "english": "his"
+        },
+        {
+          "word": "car",
+          "english": "car"
+        }
+      ],
+      "script": "ఇది అతని కారు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i04",
+      "sourcePrompt": "That is her house.",
+      "register": "neutral",
+      "canonical": "adi aame illu",
+      "acceptedAnswers": [
+        "adi aame illu",
+        "adi ame illu",
+        "adi aame inti",
+        "adi aavida illu"
+      ],
+      "distractors": [
+        "adi atani illu",
+        "adi naa illu",
+        "adi aame illu kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "aame",
+          "english": "her"
+        },
+        {
+          "word": "illu",
+          "english": "house"
+        }
+      ],
+      "script": "అది ఆమె ఇల్లు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i05",
+      "sourcePrompt": "These are our books.",
+      "register": "neutral",
+      "canonical": "ivi maa pustakaalu",
+      "acceptedAnswers": [
+        "ivi maa pustakaalu",
+        "ivi maa books",
+        "ivi maa pustakalu",
+        "ivi maa pusthakaalu"
+      ],
+      "distractors": [
+        "ivi vaalla pustakaalu",
+        "ivi naa pustakaalu",
+        "ivi maa pustakaalu kaavu"
+      ],
+      "tokens": [
+        {
+          "word": "ivi",
+          "english": "these"
+        },
+        {
+          "word": "maa",
+          "english": "our"
+        },
+        {
+          "word": "pustakaalu",
+          "english": "books"
+        }
+      ],
+      "script": "ఇవి మా పుస్తకాలు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i06",
+      "sourcePrompt": "Those are their shoes.",
+      "register": "neutral",
+      "canonical": "avi vaalla shoes",
+      "acceptedAnswers": [
+        "avi vaalla shoes",
+        "avi vallu shoes",
+        "avi vaalla shoes andi",
+        "avi vaalla shoos"
+      ],
+      "distractors": [
+        "avi naa shoes",
+        "avi maa shoes",
+        "avi vaalla shoes kaavu"
+      ],
+      "tokens": [
+        {
+          "word": "avi",
+          "english": "those"
+        },
+        {
+          "word": "vaalla",
+          "english": "their"
+        },
+        {
+          "word": "shoes",
+          "english": "shoes"
+        }
+      ],
+      "script": "అవి వాళ్ల షూస్",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i07",
+      "sourcePrompt": "Is this your seat? (to an elder)",
+      "register": "respectful",
+      "canonical": "idi mee seat aa?",
+      "acceptedAnswers": [
+        "idi mee seat aa?",
+        "idi mee seat a?",
+        "idi mee seat aa",
+        "idi mee seatena?"
+      ],
+      "registerVariant": "idi nee seat aa?",
+      "distractors": [
+        "idi mee seat undaa?",
+        "idi mee seat ledaa?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "mee seat",
+          "english": "your seat"
+        },
+        {
+          "word": "aa",
+          "english": "(question)"
+        }
+      ],
+      "script": "ఇది మీ సీటా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i08",
+      "sourcePrompt": "Whose bag is this? (to a friend)",
+      "register": "casual",
+      "canonical": "idi evari bag?",
+      "acceptedAnswers": [
+        "idi evari bag?",
+        "idi evari bag",
+        "idi evaridi bag?",
+        "idi evaru bag?"
+      ],
+      "registerVariant": "idi evari bag andi?",
+      "distractors": [
+        "idi evariki bag?",
+        "idi ekkada bag?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "evari",
+          "english": "whose"
+        },
+        {
+          "word": "bag",
+          "english": "bag"
+        }
+      ],
+      "script": "ఇది ఎవరి బ్యాగ్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i09",
+      "sourcePrompt": "Whose pen is that?",
+      "register": "neutral",
+      "canonical": "adi evari pen?",
+      "acceptedAnswers": [
+        "adi evari pen?",
+        "adi evari pen",
+        "adi evaridi pen?",
+        "adi evari pennu?"
+      ],
+      "distractors": [
+        "adi evariki pen?",
+        "adi ekkada pen?",
+        "adi evari pen ledu?"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "evari",
+          "english": "whose"
+        },
+        {
+          "word": "pen",
+          "english": "pen"
+        }
+      ],
+      "script": "అది ఎవరి పెన్?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i10",
+      "sourcePrompt": "That belongs to my brother.",
+      "register": "neutral",
+      "canonical": "adi naa annayyadi",
+      "acceptedAnswers": [
+        "adi naa annayyadi",
+        "adi naa annadi",
+        "adi naa anna di",
+        "adi naa annayya yokka"
+      ],
+      "distractors": [
+        "adi naa tammudi",
+        "adi naa annayyadi kaadu",
+        "adi vaadidi"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "naa annayyadi",
+          "english": "my elder brother's"
+        }
+      ],
+      "script": "అది నా అన్నయ్యది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i11",
+      "sourcePrompt": "This is not mine.",
+      "register": "neutral",
+      "canonical": "idi naadi kaadu",
+      "acceptedAnswers": [
+        "idi naadi kaadu",
+        "idi naadhi kaadu",
+        "idi naadi kadu",
+        "idi naadi kaaledu"
+      ],
+      "distractors": [
+        "idi naadi",
+        "idi needi kaadu",
+        "idi naadi ye"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "naadi",
+          "english": "mine"
+        },
+        {
+          "word": "kaadu",
+          "english": "is not"
+        }
+      ],
+      "script": "ఇది నాది కాదు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i12",
+      "sourcePrompt": "It's yours, take it. (to a friend)",
+      "register": "casual",
+      "canonical": "idi needi, teesuko",
+      "acceptedAnswers": [
+        "idi needi, teesuko",
+        "idi needi teesuko",
+        "idi needi, teesuko ra",
+        "idi neede, teesuko"
+      ],
+      "registerVariant": "idi meedi, teesukondi",
+      "distractors": [
+        "idi naadi, teesuko",
+        "idi needi, pettuko"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "needi",
+          "english": "yours"
+        },
+        {
+          "word": "teesuko",
+          "english": "take it"
+        }
+      ],
+      "script": "ఇది నీది, తీసుకో",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i13",
+      "sourcePrompt": "That's our house.",
+      "register": "neutral",
+      "canonical": "adi maa illu",
+      "acceptedAnswers": [
+        "adi maa illu",
+        "adi maa inti",
+        "adi maa illu ye",
+        "adi maa illu andi"
+      ],
+      "distractors": [
+        "adi vaalla illu",
+        "adi naa illu",
+        "adi maa illu kaadu"
+      ],
+      "tokens": [
+        {
+          "word": "adi",
+          "english": "that"
+        },
+        {
+          "word": "maa illu",
+          "english": "our house"
+        }
+      ],
+      "script": "అది మా ఇల్లు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i14",
+      "sourcePrompt": "Is this their car?",
+      "register": "neutral",
+      "canonical": "idi vaalla car aa?",
+      "acceptedAnswers": [
+        "idi vaalla car aa?",
+        "idi vaalla car a?",
+        "idi vaalla car aa",
+        "idi vallu car aa?"
+      ],
+      "distractors": [
+        "idi maa car aa?",
+        "idi vaalla car undaa?",
+        "idi vaalla car kaadaa?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "vaalla",
+          "english": "their"
+        },
+        {
+          "word": "car",
+          "english": "car"
+        },
+        {
+          "word": "aa",
+          "english": "(question)"
+        }
+      ],
+      "script": "ఇది వాళ్ల కారా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i15",
+      "sourcePrompt": "These are my parents' photos.",
+      "register": "neutral",
+      "canonical": "ivi naa amma nanna photos",
+      "acceptedAnswers": [
+        "ivi naa amma nanna photos",
+        "ivi naa amma nanna photolu",
+        "ivi naa parents photos",
+        "ivi naa amma nannala photos"
+      ],
+      "distractors": [
+        "ivi naa akka photos",
+        "ivi naa amma nanna photos kaavu",
+        "ivi naa amma photos"
+      ],
+      "tokens": [
+        {
+          "word": "ivi",
+          "english": "these"
+        },
+        {
+          "word": "naa amma nanna",
+          "english": "my parents'"
+        },
+        {
+          "word": "photos",
+          "english": "photos"
+        }
+      ],
+      "script": "ఇవి నా అమ్మ నాన్న ఫోటోలు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i16",
+      "sourcePrompt": "Whose turn is it? (to a friend)",
+      "register": "casual",
+      "canonical": "ippudu evari varusa?",
+      "acceptedAnswers": [
+        "ippudu evari varusa?",
+        "ippudu evari varasa?",
+        "ippudu evari turn?",
+        "ippudu evari varusa"
+      ],
+      "registerVariant": "ippudu evari varusa andi?",
+      "distractors": [
+        "ippudu evari varusa ayindi?",
+        "ippudu evari varusa avutundi?"
+      ],
+      "tokens": [
+        {
+          "word": "ippudu",
+          "english": "now"
+        },
+        {
+          "word": "evari",
+          "english": "whose"
+        },
+        {
+          "word": "varusa",
+          "english": "turn"
+        }
+      ],
+      "script": "ఇప్పుడు ఎవరి వరస?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i17",
+      "sourcePrompt": "It's my turn.",
+      "register": "neutral",
+      "canonical": "idi naa varusa",
+      "acceptedAnswers": [
+        "idi naa varusa",
+        "idi naa turn",
+        "idi naa varusa ye",
+        "idi naa varasa"
+      ],
+      "distractors": [
+        "idi nee varusa",
+        "idi naa varusa kaadu",
+        "idi atani varusa"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "naa varusa",
+          "english": "my turn"
+        }
+      ],
+      "script": "ఇది నా వరస",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i18",
+      "sourcePrompt": "Is this your son's? (to an elder)",
+      "register": "respectful",
+      "canonical": "idi mee abbayidenaa?",
+      "acceptedAnswers": [
+        "idi mee abbayidenaa?",
+        "idi mee abbayidena?",
+        "idi mee kodukudenaa?",
+        "idi mee abbayidi aa?"
+      ],
+      "registerVariant": "idi nee abbayidenaa?",
+      "distractors": [
+        "idi mee abbayiki undaa?",
+        "idi mee abbayi enaa?"
+      ],
+      "tokens": [
+        {
+          "word": "idi",
+          "english": "this"
+        },
+        {
+          "word": "mee abbayidenaa",
+          "english": "your son's?"
+        }
+      ],
+      "script": "ఇది మీ అబ్బాయిదేనా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i19",
+      "sourcePrompt": "He has his own room.",
+      "register": "neutral",
+      "canonical": "atanikki prathyekamaina gadi undi",
+      "acceptedAnswers": [
+        "atanikki prathyekamaina gadi undi",
+        "atanikki prathyeka gadi undi",
+        "atanikki tana sontha gadi undi",
+        "atanikki separate room undi"
+      ],
+      "distractors": [
+        "atanikki prathyekamaina gadi ledu",
+        "aameki prathyekamaina gadi undi",
+        "atanikki prathyekamaina gadi undedi"
+      ],
+      "tokens": [
+        {
+          "word": "atanikki",
+          "english": "to him"
+        },
+        {
+          "word": "prathyekamaina",
+          "english": "separate"
+        },
+        {
+          "word": "gadi",
+          "english": "room"
+        },
+        {
+          "word": "undi",
+          "english": "there is"
+        }
+      ],
+      "script": "అతనికి ప్రత్యేకమైన గది ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u11-i20",
+      "sourcePrompt": "I'll take mine, you take yours. (to a friend)",
+      "register": "casual",
+      "canonical": "nenu naadi teesukuntanu, nuvvu needi teesuko",
+      "acceptedAnswers": [
+        "nenu naadi teesukuntanu, nuvvu needi teesuko",
+        "nenu naadi teesukunta, nuvvu needi teesuko",
+        "nenu naadi teesukuntanu nuvvu needi teesuko",
+        "nenu naadhi teesukuntanu, nuvvu needhi teesuko"
+      ],
+      "registerVariant": "nenu naadi teesukuntanu, meeru meedi teesukondi",
+      "distractors": [
+        "nenu needi teesukuntanu, nuvvu naadi teesuko",
+        "nenu naadi teesukunnanu, nuvvu needi teesuko"
+      ],
+      "tokens": [
+        {
+          "word": "nenu",
+          "english": "I"
+        },
+        {
+          "word": "naadi",
+          "english": "mine"
+        },
+        {
+          "word": "teesukuntanu",
+          "english": "will take"
+        },
+        {
+          "word": "nuvvu needi",
+          "english": "you yours"
+        },
+        {
+          "word": "teesuko",
+          "english": "take"
+        }
+      ],
+      "script": "నేను నాది తీసుకుంటాను, నువ్వు నీది తీసుకో",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}

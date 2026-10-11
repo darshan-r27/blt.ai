@@ -42,6 +42,7 @@
         }
       ],
       "note": "-nga adds respect when asking a stranger.",
+      "script": "பஸ் ஸ்டாண்ட் எங்க இருக்கு?",
       "reviewStatus": "reviewed"
     },
     {
@@ -81,6 +82,7 @@
         }
       ],
       "note": null,
+      "script": "ஸ்டேஷனுக்கு எந்த பஸ் போகும்?",
       "reviewStatus": "reviewed"
     },
     {
@@ -112,6 +114,7 @@
         }
       ],
       "note": null,
+      "script": "டிக்கெட் எவ்ளோ?",
       "reviewStatus": "reviewed"
     },
     {
@@ -150,6 +153,7 @@
         }
       ],
       "note": "kudunga is respectful; kudu is casual.",
+      "script": "சென்னைக்கு ஒரு டிக்கெட் குடுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -184,6 +188,7 @@
         }
       ],
       "note": null,
+      "script": "பஸ் எப்போ வரும்?",
       "reviewStatus": "reviewed"
     },
     {
@@ -218,6 +223,7 @@
         }
       ],
       "note": "poreenga is the respectful form.",
+      "script": "எங்க போற டா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -253,6 +259,7 @@
         }
       ],
       "note": null,
+      "script": "நான் மார்க்கெட்டுக்கு போறேன்",
       "reviewStatus": "reviewed"
     },
     {
@@ -283,6 +290,7 @@
         }
       ],
       "note": "niruthu is casual, for friends.",
+      "script": "இங்க நிறுத்துங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -313,6 +321,7 @@
         }
       ],
       "note": null,
+      "script": "ஸ்ட்ரெயிட்டா போங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -343,6 +352,7 @@
         }
       ],
       "note": null,
+      "script": "ரைட்ல திரும்புங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -374,6 +384,7 @@
         }
       ],
       "note": null,
+      "script": "எவ்ளோ தூரம்?",
       "reviewStatus": "reviewed"
     },
     {
@@ -409,6 +420,7 @@
         }
       ],
       "note": null,
+      "script": "எவ்ளோ நேரம் ஆகும்?",
       "reviewStatus": "reviewed"
     },
     {
@@ -440,6 +452,7 @@
         }
       ],
       "note": null,
+      "script": "ரொம்ப தூரமா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -475,6 +488,7 @@
         }
       ],
       "note": null,
+      "script": "எனக்கு வழி தெரியல",
       "reviewStatus": "reviewed"
     },
     {
@@ -505,6 +519,7 @@
         }
       ],
       "note": null,
+      "script": "வழி சொல்லுங்க",
       "reviewStatus": "reviewed"
     },
     {
@@ -541,6 +556,7 @@
         }
       ],
       "note": null,
+      "script": "இது கரெக்ட் பஸ்ஸா?",
       "reviewStatus": "reviewed"
     },
     {
@@ -574,6 +590,7 @@
         }
       ],
       "note": "wait pannu uses the English word the way speakers do.",
+      "script": "இங்க வெயிட் பண்ணு டா",
       "reviewStatus": "reviewed"
     },
     {
@@ -606,6 +623,7 @@
         }
       ],
       "note": "vanthuruven would also work here",
+      "script": "ஃபைவ் மினிட்ஸ்ல வரேன்",
       "reviewStatus": "reviewed"
     },
     {
@@ -643,6 +661,7 @@
         }
       ],
       "note": null,
+      "script": "நான் இங்க இறங்குறேன்",
       "reviewStatus": "reviewed"
     },
     {
@@ -678,6 +697,7 @@
         }
       ],
       "note": null,
+      "script": "ஆட்டோ எங்க கிடைக்கும்?",
       "reviewStatus": "reviewed"
     }
   ]

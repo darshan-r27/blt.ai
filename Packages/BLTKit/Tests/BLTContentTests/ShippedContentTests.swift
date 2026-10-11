@@ -9,13 +9,6 @@ import Testing
 struct ShippedContentTests {
     private let expectedItemsPerLesson = 20
 
-    /// The five lessons written before `script` existed (DECISIONS 044). They are the only lessons allowed to
-    /// have items without a `script`. Delete this constant, and the exemption in `everyNewStyleItemHasAScript`,
-    /// when those five lessons are backfilled with their native-script spellings.
-    private let grandfatheredWithoutScript: Set<String> = [
-        "ta-l01-u01", "ta-l01-u02", "ta-l01-u03", "ta-l01-u04", "ta-l01-u05"
-    ]
-
     private func load(_ language: CourseLanguage) throws -> (files: [URL], catalog: Catalog) {
         let files = try ShippedContentFiles.files(for: language)
         let catalog = ContentLoader(limits: .default).load(files: files, expectedLanguage: language)
@@ -134,7 +127,7 @@ struct ShippedContentTests {
     @Test func everyNewStyleItemHasAScript() throws {
         for language in CourseLanguage.allCases {
             let catalog = try load(language).catalog
-            for scenario in catalog.scenarios where !grandfatheredWithoutScript.contains(scenario.id.rawValue) {
+            for scenario in catalog.scenarios {
                 for item in scenario.items {
                     #expect(item.script != nil, "item \(item.id.rawValue) has no script")
                 }

@@ -1,0 +1,739 @@
+{
+  "scenarioId": "te-l02-u09",
+  "language": "telugu",
+  "title": "Describing people",
+  "subtitle": "Talking about someone: looks, character and age",
+  "level": {
+    "number": 2,
+    "title": "Now",
+    "position": 9
+  },
+  "registerPolicy": "Two spoken registers only: casual (nuvvu, -av endings) and respectful (meeru, -aru/-andi endings), in the standard spoken Telugu of Coastal Andhra. Written or formal-literary forms are out of scope. 'neutral' = the sentence has no you-form, so no register choice is needed. Casual items may end in ra (male friend) or ve (female friend); `addressee` records which.",
+  "romanisationNote": "PROVISIONAL informal Latin spelling as used in Telugu WhatsApp chats; final scheme open (OPEN_ITEMS, Task 0.3). Variants are listed in acceptedAnswers.",
+  "items": [
+    {
+      "id": "te-l02-u09-i01",
+      "sourcePrompt": "He is tall.",
+      "register": "neutral",
+      "canonical": "atanu podugga unnadu",
+      "acceptedAnswers": [
+        "atanu podugga unnadu",
+        "athanu podugga unnadu",
+        "atanu podavuga unnadu",
+        "atanu chala podugga unnadu"
+      ],
+      "distractors": [
+        "atanu pottiga unnadu",
+        "atanu podugga undevaadu",
+        "aame podugga undi"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "podugga",
+          "english": "tall"
+        },
+        {
+          "word": "unnadu",
+          "english": "is"
+        }
+      ],
+      "script": "అతను పొడుగ్గా ఉన్నాడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i02",
+      "sourcePrompt": "She is short.",
+      "register": "neutral",
+      "canonical": "aame pottiga undi",
+      "acceptedAnswers": [
+        "aame pottiga undi",
+        "ame pottiga undi",
+        "aame pottiga vundi",
+        "aame chala pottiga undi"
+      ],
+      "distractors": [
+        "aame podugga undi",
+        "aame pottiga undedi",
+        "atanu pottiga unnadu"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "pottiga",
+          "english": "short"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "ఆమె పొట్టిగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i03",
+      "sourcePrompt": "My sister is very pretty.",
+      "register": "neutral",
+      "canonical": "naa chelli chala andamga undi",
+      "acceptedAnswers": [
+        "naa chelli chala andamga undi",
+        "naa chelli chaala andamga undi",
+        "naa chelli chala andanga undi",
+        "naa chelli chala andamgaa undi"
+      ],
+      "distractors": [
+        "naa chelli konchem andamga undi",
+        "naa chelli chala andamga undedi",
+        "naa akka chala andamga undi"
+      ],
+      "tokens": [
+        {
+          "word": "naa chelli",
+          "english": "my younger sister"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "andamga",
+          "english": "pretty"
+        },
+        {
+          "word": "undi",
+          "english": "is"
+        }
+      ],
+      "script": "నా చెల్లి చాలా అందంగా ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i04",
+      "sourcePrompt": "He's a kind person.",
+      "register": "neutral",
+      "canonical": "atanu manchi manasu unna manishi",
+      "acceptedAnswers": [
+        "atanu manchi manasu unna manishi",
+        "athanu manchi manasu unna manishi",
+        "atanu manchi manasu gala manishi",
+        "atanu manchi manishi"
+      ],
+      "distractors": [
+        "atanu cheddha manishi",
+        "atanu manchi manasu lenivaadu",
+        "aame manchi manasu unna manishi"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "manchi manasu",
+          "english": "kind heart"
+        },
+        {
+          "word": "unna",
+          "english": "who has"
+        },
+        {
+          "word": "manishi",
+          "english": "person"
+        }
+      ],
+      "script": "అతను మంచి మనసు ఉన్న మనిషి",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i05",
+      "sourcePrompt": "How old is your son? (to an elder)",
+      "register": "respectful",
+      "canonical": "mee abbayiki enta vayasu?",
+      "acceptedAnswers": [
+        "mee abbayiki enta vayasu?",
+        "mee abbayiki entha vayasu?",
+        "mee kodukuki enta vayasu?",
+        "mee abbayiki enta vayasu andi?"
+      ],
+      "registerVariant": "nee abbayiki enta vayasu?",
+      "distractors": [
+        "mee abbayiki enta dabbu?",
+        "mee abbayi enta dooram?"
+      ],
+      "tokens": [
+        {
+          "word": "mee abbayiki",
+          "english": "to your son"
+        },
+        {
+          "word": "enta",
+          "english": "how much"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "మీ అబ్బాయికి ఎంత వయసు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i06",
+      "sourcePrompt": "He's ten years old.",
+      "register": "neutral",
+      "canonical": "vaadiki padi yella vayasu",
+      "acceptedAnswers": [
+        "vaadiki padi yella vayasu",
+        "atanikki padi ella vayasu",
+        "vaadiki padi samvatsaralu",
+        "vaadiki padi yella"
+      ],
+      "distractors": [
+        "vaadiki padi rojulu",
+        "aameki padi yella vayasu",
+        "vaadiki padi gantalu"
+      ],
+      "tokens": [
+        {
+          "word": "vaadiki",
+          "english": "to him"
+        },
+        {
+          "word": "padi",
+          "english": "ten"
+        },
+        {
+          "word": "yella",
+          "english": "years"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "వాడికి పది ఏళ్ల వయసు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i07",
+      "sourcePrompt": "She is very friendly.",
+      "register": "neutral",
+      "canonical": "aame chala baaga kalustundi",
+      "acceptedAnswers": [
+        "aame chala baaga kalustundi",
+        "aame chaala baaga kalustundi",
+        "aame andariki chala baaga kalustundi",
+        "aame chala friendly ga untundi"
+      ],
+      "distractors": [
+        "aame chala cheddaga kalustundi",
+        "aame konchem baaga kalustundi",
+        "atanu chala baaga kalustaadu"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "baaga",
+          "english": "well"
+        },
+        {
+          "word": "kalustundi",
+          "english": "mixes"
+        }
+      ],
+      "script": "ఆమె చాలా బాగా కలుస్తుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i08",
+      "sourcePrompt": "Is your boss strict? (to a friend)",
+      "register": "casual",
+      "canonical": "nee boss strict aa?",
+      "acceptedAnswers": [
+        "nee boss strict aa?",
+        "nee boss strict a?",
+        "nee boss strictaa?",
+        "nee boss strict aa"
+      ],
+      "registerVariant": "mee boss strict aa?",
+      "distractors": [
+        "nee boss strict ga undevaaraa?",
+        "nee boss strict ga untaaraa?"
+      ],
+      "tokens": [
+        {
+          "word": "nee boss",
+          "english": "your boss"
+        },
+        {
+          "word": "strict",
+          "english": "strict"
+        },
+        {
+          "word": "aa",
+          "english": "(question)"
+        }
+      ],
+      "script": "నీ బాస్ స్ట్రిక్టా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i09",
+      "sourcePrompt": "My friend is very funny.",
+      "register": "neutral",
+      "canonical": "naa friend chala jolly",
+      "acceptedAnswers": [
+        "naa friend chala jolly",
+        "naa friend chaala jolly",
+        "naa friend chala jolly ga untaadu",
+        "naa friend chala jolly person"
+      ],
+      "distractors": [
+        "naa friend chala serious",
+        "naa friend konchem jolly",
+        "naa friend chala jolly ga undevaadu"
+      ],
+      "tokens": [
+        {
+          "word": "naa friend",
+          "english": "my friend"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "jolly",
+          "english": "funny, jolly"
+        }
+      ],
+      "script": "నా ఫ్రెండ్ చాలా జాలీ",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i10",
+      "sourcePrompt": "Which one is your brother? (to a friend)",
+      "register": "casual",
+      "canonical": "nee anna evaru?",
+      "acceptedAnswers": [
+        "nee anna evaru?",
+        "nee anna evaru",
+        "nee anna evaru ra?",
+        "nee annayya evaru?"
+      ],
+      "registerVariant": "mee anna evaru?",
+      "distractors": [
+        "nee anna ekkada?",
+        "nee anna emiti?"
+      ],
+      "tokens": [
+        {
+          "word": "nee anna",
+          "english": "your elder brother"
+        },
+        {
+          "word": "evaru",
+          "english": "who"
+        }
+      ],
+      "script": "నీ అన్న ఎవరు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i11",
+      "sourcePrompt": "He's wearing a blue shirt.",
+      "register": "neutral",
+      "canonical": "atanu neeli shirt veskunnadu",
+      "acceptedAnswers": [
+        "atanu neeli shirt veskunnadu",
+        "atanu blue shirt veskunnadu",
+        "athanu neeli shirt veskunnaadu",
+        "atanu neeli shirt vesukunnadu"
+      ],
+      "distractors": [
+        "atanu neeli shirt veskoledu",
+        "atanu neeli shirt veskuntadu",
+        "aame neeli shirt veskundi"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "neeli shirt",
+          "english": "blue shirt"
+        },
+        {
+          "word": "veskunnadu",
+          "english": "is wearing"
+        }
+      ],
+      "script": "అతను నీలి షర్ట్ వేసుకున్నాడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i12",
+      "sourcePrompt": "She has long hair.",
+      "register": "neutral",
+      "canonical": "aameki podavaina juttu undi",
+      "acceptedAnswers": [
+        "aameki podavaina juttu undi",
+        "aameku podavaina juttu undi",
+        "aameki podavu juttu undi",
+        "aameki chala podavaina juttu undi"
+      ],
+      "distractors": [
+        "aameki chinna juttu undi",
+        "atanuki podavaina juttu undi",
+        "aameki podavaina juttu ledu"
+      ],
+      "tokens": [
+        {
+          "word": "aameki",
+          "english": "she has"
+        },
+        {
+          "word": "podavaina",
+          "english": "long"
+        },
+        {
+          "word": "juttu",
+          "english": "hair"
+        },
+        {
+          "word": "undi",
+          "english": "there is"
+        }
+      ],
+      "script": "ఆమెకి పొడవైన జుట్టు ఉంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i13",
+      "sourcePrompt": "He's very quiet.",
+      "register": "neutral",
+      "canonical": "atanu chala silent ga untaadu",
+      "acceptedAnswers": [
+        "atanu chala silent ga untaadu",
+        "atanu chaala silent ga untaadu",
+        "atanu chala silent",
+        "atanu chala silent gaa untaadu"
+      ],
+      "distractors": [
+        "atanu chala noisy ga untaadu",
+        "atanu konchem silent ga untaadu",
+        "atanu chala silent ga unnadu"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "silent ga",
+          "english": "quiet"
+        },
+        {
+          "word": "untaadu",
+          "english": "is by nature"
+        }
+      ],
+      "script": "అతను చాలా సైలెంట్ గా ఉంటాడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i14",
+      "sourcePrompt": "Is she married? (to an elder)",
+      "register": "respectful",
+      "canonical": "aavidaku pelli ayyinda?",
+      "acceptedAnswers": [
+        "aavidaku pelli ayyinda?",
+        "aavidaku pelli ayyindaa?",
+        "aameku pelli ayyinda?",
+        "aavidaku pelli ayindaa?"
+      ],
+      "registerVariant": "aameki pelli ayyinda?",
+      "distractors": [
+        "aavidaku pelli avutunda?",
+        "aavidaku pelli kavala?"
+      ],
+      "tokens": [
+        {
+          "word": "aavidaku",
+          "english": "to her (respectful)"
+        },
+        {
+          "word": "pelli",
+          "english": "wedding"
+        },
+        {
+          "word": "ayyinda",
+          "english": "has it happened?"
+        }
+      ],
+      "script": "ఆవిడకి పెళ్లి అయ్యిందా?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i15",
+      "sourcePrompt": "He looks like his father.",
+      "register": "neutral",
+      "canonical": "atanu tana nanna laaga untaadu",
+      "acceptedAnswers": [
+        "atanu tana nanna laaga untaadu",
+        "atanu tana nanna laga untaadu",
+        "atanu vaalla nanna laaga untaadu",
+        "atanu tana nanna lage untaadu"
+      ],
+      "distractors": [
+        "atanu tana amma laaga untaadu",
+        "atanu tana nanna laaga undadu",
+        "atanu tana nanna laaga unnadu"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "tana nanna",
+          "english": "his father"
+        },
+        {
+          "word": "laaga",
+          "english": "like"
+        },
+        {
+          "word": "untaadu",
+          "english": "looks"
+        }
+      ],
+      "script": "అతను తన నాన్న లాగా ఉంటాడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i16",
+      "sourcePrompt": "She works very hard.",
+      "register": "neutral",
+      "canonical": "aame chala kashtapadi pani chestondi",
+      "acceptedAnswers": [
+        "aame chala kashtapadi pani chestondi",
+        "aame chaala kashtapadi pani chestundi",
+        "aame chala kashtapadi pani chestunnaru",
+        "aame chala kashtapadi pani chesthondi"
+      ],
+      "distractors": [
+        "aame chala kashtapadi pani chesindi",
+        "aame chala kashtapadi pani cheyadu",
+        "atanu chala kashtapadi pani chestunnadu"
+      ],
+      "tokens": [
+        {
+          "word": "aame",
+          "english": "she"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "kashtapadi",
+          "english": "with effort"
+        },
+        {
+          "word": "pani chestondi",
+          "english": "works"
+        }
+      ],
+      "script": "ఆమె చాలా కష్టపడి పని చేస్తోంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i17",
+      "sourcePrompt": "My grandfather is eighty years old.",
+      "register": "neutral",
+      "canonical": "naa thaathagaariki enabhai yella vayasu",
+      "acceptedAnswers": [
+        "naa thaathagaariki enabhai yella vayasu",
+        "naa thaathagaariki enabhai ella vayasu",
+        "naa thaathaki enabhai yella vayasu",
+        "naa thaathagaariki 80 yella vayasu"
+      ],
+      "distractors": [
+        "naa thaathagaariki debbhai yella vayasu",
+        "naa ammammaki enabhai yella vayasu",
+        "naa thaathagaariki enabhai rojulu"
+      ],
+      "tokens": [
+        {
+          "word": "naa thaathagaariki",
+          "english": "to my grandfather"
+        },
+        {
+          "word": "enabhai",
+          "english": "eighty"
+        },
+        {
+          "word": "yella",
+          "english": "years"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        }
+      ],
+      "script": "నా తాతగారికి ఎనభై ఏళ్ల వయసు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i18",
+      "sourcePrompt": "What does he look like? (to a friend)",
+      "register": "casual",
+      "canonical": "atanu ela untaadu?",
+      "acceptedAnswers": [
+        "atanu ela untaadu?",
+        "athanu ela untaadu?",
+        "atanu ela unnadu?",
+        "atanu ela kanipistaadu?"
+      ],
+      "registerVariant": "ayana ela untaaru?",
+      "distractors": [
+        "atanu ekkada untaadu?",
+        "atanu eppudu vastaadu?"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "ela",
+          "english": "how"
+        },
+        {
+          "word": "untaadu",
+          "english": "looks"
+        }
+      ],
+      "script": "అతను ఎలా ఉంటాడు?",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i19",
+      "sourcePrompt": "He is a very honest person.",
+      "register": "neutral",
+      "canonical": "atanu chala nijayitiga untaadu",
+      "acceptedAnswers": [
+        "atanu chala nijayitiga untaadu",
+        "atanu chaala nijayitiga untaadu",
+        "atanu chala nijayiti unna manishi",
+        "atanu chala nijayiti gala vaadu"
+      ],
+      "distractors": [
+        "atanu chala abaddham cheptaadu",
+        "atanu konchem nijayitiga untaadu",
+        "aame chala nijayitiga untundi"
+      ],
+      "tokens": [
+        {
+          "word": "atanu",
+          "english": "he"
+        },
+        {
+          "word": "chala",
+          "english": "very"
+        },
+        {
+          "word": "nijayitiga",
+          "english": "honestly"
+        },
+        {
+          "word": "untaadu",
+          "english": "is"
+        }
+      ],
+      "script": "అతను చాలా నిజాయితీగా ఉంటాడు",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    },
+    {
+      "id": "te-l02-u09-i20",
+      "sourcePrompt": "She's about thirty.",
+      "register": "neutral",
+      "canonical": "aameki muppai yella vayasu untundi",
+      "acceptedAnswers": [
+        "aameki muppai yella vayasu untundi",
+        "aameku muppai ella vayasu untundi",
+        "aameki saaraasuri muppai yella vayasu untundi",
+        "aameki muppai yella vayasu undochu"
+      ],
+      "distractors": [
+        "aameki muppai yella vayasu ayindi",
+        "aameki iruvai yella vayasu untundi",
+        "atanuki muppai yella vayasu untundi"
+      ],
+      "tokens": [
+        {
+          "word": "aameki",
+          "english": "to her"
+        },
+        {
+          "word": "muppai",
+          "english": "thirty"
+        },
+        {
+          "word": "yella",
+          "english": "years"
+        },
+        {
+          "word": "vayasu",
+          "english": "age"
+        },
+        {
+          "word": "untundi",
+          "english": "would be"
+        }
+      ],
+      "script": "ఆమెకి ముప్పై ఏళ్ల వయసు ఉంటుంది",
+      "reviewStatus": "unreviewed",
+      "addressee": "any"
+    }
+  ]
+}
