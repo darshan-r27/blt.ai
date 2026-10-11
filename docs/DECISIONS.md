@@ -373,7 +373,7 @@ When every level is complete, Home offers a final exam: 100 questions in one sit
 **What a pass means:** the questions are multiple choice, so a pass shows the learner recognises natural spoken Tamil in unfamiliar sentences. It does not show they can say it. The exam screen states this, and speaking stays with the voice work (024).
 
 ## 042 — blt.ai is a two-way course for a couple: Tamil and Telugu
-**Status:** pending — agreed with the owner on 2026-10-09; built by plan.md. Reframes 001 and extends 025
+**Status:** active — agreed with the owner on 2026-10-09. The app is built for both courses (plan.md Waves 0 to 4); Telugu lessons and the exam papers are not written yet. Reframes 001 and extends 025
 
 The app began as colloquial Tamil for a Telugu speaker (001). The owner's real case is a couple, one Tamil speaker and one Telugu speaker, who share English. So the thesis becomes: **one app, two courses, each partner learns the other's language, English is the common medium.** BLT now reads "Budugu Learns Tamil / Telugu". The learner gives a name and picks the language they want to learn.
 
