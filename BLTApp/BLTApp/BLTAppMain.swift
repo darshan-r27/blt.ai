@@ -14,6 +14,7 @@ struct BLTAppMain: App {
     var body: some Scene {
         WindowGroup {
             content
+                .uiTestMotionOff()
                 // On the container, not on the root view: the root gets a new identity after an import, and an
                 // alert attached to a view that is being replaced is never shown.
                 .alert("Lessons", isPresented: noticeIsShown) {
@@ -60,5 +61,27 @@ struct BLTAppMain: App {
         case .removed:
             notice = "Imported lessons removed. The lessons that came with the app are in use."
         }
+    }
+}
+
+#if DEBUG
+import UIKit
+#endif
+
+extension View {
+    /// In a UI-test launch only, switches animations off for the whole app, so the shimmer stops and screens change
+    /// without animation and UI tests no longer wait for the app to go idle between frames. SwiftUI has no setting
+    /// for this (Reduce Motion is read-only), so this uses `UIView.setAnimationsEnabled`, the one UIKit call in the
+    /// app, in Debug builds only. Any other launch, and every Release build, is left alone.
+    @ViewBuilder fileprivate func uiTestMotionOff() -> some View {
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains(UITestLaunch.fixturesArgument) {
+            onAppear { UIView.setAnimationsEnabled(false) }
+        } else {
+            self
+        }
+        #else
+        self
+        #endif
     }
 }

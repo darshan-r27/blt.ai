@@ -3,9 +3,9 @@
 For the native speaker checking a course's lessons. You do not need a developer account, Xcode or any
 programming tools: only a computer with Chrome.
 
-> **Status (2026-10-09).** The Tamil course's first five lessons are reviewed. Telugu lessons do not exist yet;
-> this guide describes how their review will work once Level 1 is drafted. Steps marked *planned* depend on
-> work in `plan.md` that is not built yet.
+> **Status (2026-10-12).** Level 1 exists for both courses: the Tamil course has 12 lessons (the first five
+> reviewed) and the Telugu course has 12 lessons, all unreviewed drafts. Every lesson carries a spelling in the
+> language's own script, except the first five Tamil lessons.
 
 ## What you are checking
 
@@ -19,7 +19,7 @@ everyday speech.** For each phrase, check:
 - **The wrong options** are real sentences that mean something else. A wrong option that is also a correct
   answer must be changed.
 - **The word-by-word gloss** matches the answer.
-- **The spelling in the language's own script** matches the answer (*planned*: new lessons carry this field).
+- **The spelling in the language's own script** matches the answer (every lesson written since the first five carries this field).
 
 Change anything that is wrong. If you would say it differently, write what you would say. Your corrections
 are also collected into style notes so that the next level is drafted better.
@@ -32,7 +32,7 @@ are also collected into style notes so that the next level is drafted better.
 ## Reviewing
 
 1. In the editor click **Open content folder...** and choose your language's lesson folder inside the unzipped
-   download (*planned*: `content/telugu` or `content/tamil`; today all lessons are in `content`). Allow read
+   download (`content/telugu` or `content/tamil`). Allow read
    and write when Chrome asks.
 2. The editor opens at the first phrase that is not yet reviewed and shows how many are done.
 3. Read the phrase, fix anything that is wrong, and click **Mark reviewed**. **Previous** and **Next** only
