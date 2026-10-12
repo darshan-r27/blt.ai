@@ -44,8 +44,9 @@ Each course has the same shape.
 | 8 | Fluency | 12 | 240 |
 | | **Total** | **100** | **2,000** |
 
-**Where each course stands.** Tamil: the first five lessons of Level 1 (100 phrases) are written and reviewed;
-1,900 remain. Telugu: nothing is written; 2,000 remain. Together: 3,900 phrases to draft.
+**Where each course stands.** Both courses have Levels 1 and 2 drafted (24 lessons, 480 phrases each, 960 together). Tamil lessons 1 to 5
+(100 phrases) are native-reviewed; every other drafted phrase is unreviewed. 1,520 phrases remain to draft in each
+course (3,040 together), from Level 3 on.
 
 **Who reviews.** The owner reviews Tamil. The owner's partner, a native Telugu speaker, reviews Telugu
 (`docs/REVIEWER_GUIDE.md`).
@@ -119,7 +120,7 @@ Each course has the same shape.
 
 Both courses use this list. Paired lessons share a key: `ta-l02-u03` in the Tamil course and `te-l02-u03` in the
 Telugu course (DECISIONS 044). The first five Tamil lessons are renamed to this scheme (`ta-l01-u01` to `ta-l01-u05`).
-"Exists in Tamil" marks the five lessons already written and reviewed for the Tamil course.
+"Exists in Tamil" marks the five lessons written and reviewed first for the Tamil course; Levels 1 and 2 are now drafted for both courses.
 
 ### Level 1: Survival
 The learner can get through a first day: greet, ask, buy, eat, and say they don't understand.

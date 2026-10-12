@@ -1,6 +1,6 @@
 # BLT.ai architecture (v1, as built)
 
-blt.ai is a text-only, multiple-choice SwiftUI app. Today it teaches colloquial Tamil to Telugu speakers; it is a two-way course, Tamil and Telugu, for a couple learning each other's language (see "Two courses" below; only the Tamil lessons are written so far). Everything runs on the device: there is no backend, no account, and no network code. Unless a section says "planned", this page describes what exists today. The voice product in [`PRD.md`](PRD.md) and [`BUILD_PLAN.md`](BUILD_PLAN.md) is the v2 plan, not the current code.
+blt.ai is a text-only, multiple-choice SwiftUI app. Today it teaches colloquial Tamil to Telugu speakers; it is a two-way course, Tamil and Telugu, for a couple learning each other's language (see "Two courses" below; Levels 1 and 2 are drafted for both courses, and only the first five Tamil lessons are native-reviewed). Everything runs on the device: there is no backend, no account, and no network code. Unless a section says "planned", this page describes what exists today. The voice product in [`PRD.md`](PRD.md) and [`BUILD_PLAN.md`](BUILD_PLAN.md) is the v2 plan, not the current code.
 
 ## Module map
 
@@ -72,7 +72,7 @@ The learner's language is only known after the profile has loaded, so the root i
 | No network, audio or speech APIs, no new Info.plist permissions | `scripts/check-forbidden-apis.sh` (source and project files) and `scripts/check-binary.sh` (the built app) |
 | Warnings are errors, strict concurrency | `Package.swift` settings, `scripts/test.sh`, SwiftLint strict |
 | No machine name or real email in commit history | `scripts/check-identity.sh` in CI and as a pre-push hook |
-| Lesson text (Tamil today, Telugu planned) only in `content/`; test fixtures are obviously fake | content conformance tests and review |
+| Lesson text (Tamil and Telugu) only in `content/`; test fixtures are obviously fake | content conformance tests and review |
 | Imported and bundled lessons are untrusted input | the same validator for both |
 
 ## Testing
@@ -100,7 +100,7 @@ The learner's language is only known after the profile has loaded, so the root i
 | Home | Grouped by level, with a Continue suggestion and the language being learned |
 | Reset progress | Clears only the language being learned; the confirmation names it |
 | Import | Into the current language only; a file for the other language is refused with a plain message |
-| Exam | Planned: one 100-question paper per language (041), not built yet |
+| Exam | One 100-question paper per language (041, 046). The engine, the screen, score-only result storage (`courses/<language>/exam.json`) and the paper loader are built; Home shows the exam card only when a paper loads, and no paper is written yet |
 
 ## Where v2 (voice) plugs in
 

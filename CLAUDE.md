@@ -1,6 +1,6 @@
 # BLT.ai
 
-iOS app for a couple learning each other's language: colloquial Tamil for the Telugu speaker and colloquial Telugu for the Tamil speaker, with English as the shared medium (ADR 042). Text-only multiple choice; voice is v2 (ADR 024). On-device, no backend. Today only the Tamil course is built; `plan.md` is the plan for the rest.
+iOS app for a couple learning each other's language: colloquial Tamil for the Telugu speaker and colloquial Telugu for the Tamil speaker, with English as the shared medium (ADR 042). Text-only multiple choice; voice is v2 (ADR 024). On-device, no backend. Today both courses have Levels 1 and 2 drafted (unreviewed except the first five Tamil lessons); `plan.md` is the plan for the rest.
 
 Start every new session by reading `@docs/HANDOFF.md` (current status, commands, how we work). Read `@docs/ARCHITECTURE.md` for how the code is organised. Read `@docs/PRD.md` before any product decision (it describes the v2 voice product; v1 is defined by `@docs/MVP_PLAN.md` and DECISIONS 024 to 037, and the two-course plan by `plan.md`, `@docs/COURSE_SYLLABUS.md` and DECISIONS 038 to 044). Read `@docs/BUILD_PLAN.md` for v2 tasks. Read `@docs/SECURITY.md` before touching audio, file storage, `Info.plist`, or dependencies. Read `@docs/BACKEND.md` before any telemetry work.
 

@@ -5,15 +5,21 @@
 [![CI](https://github.com/darshan-r27/blt.ai/actions/workflows/ci.yml/badge.svg)](https://github.com/darshan-r27/blt.ai/actions/workflows/ci.yml)
 
 <p>
-  <img src="docs/images/intro.png" width="200" alt="Intro screen: blt.ai, learn the Tamil people actually speak">
-  <img src="docs/images/home.png" width="200" alt="Home screen: a greeting and five scenario cards with completion bars">
-  <img src="docs/images/question.png" width="200" alt="Question screen: an English prompt and four Tamil options">
-  <img src="docs/images/feedback.png" width="200" alt="Feedback screen: the correct phrase with a word-by-word gloss">
+  <img src="docs/images/intro.png" width="200" alt="Intro screen: blt.ai, learn the Tamil / Telugu people actually speak">
+  <img src="docs/images/language.png" width="200" alt="Language step: choose Tamil or Telugu, changeable later in Settings">
+  <img src="docs/images/home.png" width="200" alt="Home screen for the Tamil course: a continue card and Level 1 lessons with completion bars">
+  <img src="docs/images/question.png" width="200" alt="Question screen: an English prompt and four romanised Tamil options">
+</p>
+<p>
+  <img src="docs/images/feedback.png" width="200" alt="Feedback screen: the correct phrase with a word-by-word gloss and a note on who to say it to">
+  <img src="docs/images/home-telugu.png" width="200" alt="Home screen for the Telugu course, with its own progress">
+  <img src="docs/images/question-telugu.png" width="200" alt="Question screen in the Telugu course, with an Unreviewed draft label">
+  <img src="docs/images/settings-switch.png" width="200" alt="Settings: switching language asks first and keeps each language's progress">
 </p>
 
 This is a portfolio project. It runs on a simulator or your own iPhone; it is not on the App Store.
 
-> **Where it stands.** The app and the first part of the Tamil course are built and described below. The language choice (first launch and Settings) is built. The Telugu lessons and the full 2,000-phrase courses are planned and in progress: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots show the current, Tamil-only build.
+> **Where it stands.** The two-course app is built: language choice, Home grouped by level, per-language progress, lesson import, and the final-exam screen. Levels 1 and 2 are drafted for both courses (480 phrases each). Only the first 100 Tamil phrases have been checked by a native speaker; the rest, and all of Telugu, are labelled "Unreviewed draft" in the app until the native reviewers check them. The remaining six levels, each course's exam paper, and the review passes are still ahead: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots are from the current build.
 
 ## Who it is for
 
@@ -38,15 +44,17 @@ The argument runs both ways, which is why one syllabus serves both courses. Only
 
 ## What is built today
 
-The Tamil course's first five lessons, and everything around them:
+Two courses, each with Levels 1 and 2 (24 lessons, 480 phrases), and everything around them:
 
-- **Five everyday lessons (Level 1), 100 phrases:** greetings, getting around, food, shopping, and home and family.
-- **Multiple choice.** An English prompt, four options in romanised Tamil.
+- **Two courses from one syllabus.** After entering a name, you choose Tamil or Telugu. Switching later in Settings keeps each language's progress. Reset progress clears only the language you are on.
+- **Lessons grouped by level.** Level 1 is survival (greetings, getting around, food, numbers and money, asking for help and more); Level 2 covers everyday doing, habits, likes and describing. Levels are ordered but not locked, and Home suggests the next lesson.
+- **Multiple choice.** An English prompt, four options in romanised Tamil or Telugu.
 - **Feedback that teaches.** Each answer shows the phrase, a word-by-word gloss, and a note on who you would say it to.
 - **Three outcomes, not two.** "Right sentence, wrong register" is its own result, so saying the casual form to an elder is corrected without being marked simply wrong.
 - **Spaced repetition.** An SM-2 scheduler decides what comes back and when. A wrong answer is due again immediately, and a phrase counts as complete only when your latest answer was correct.
 - **Shuffled sessions.** Each session samples up to ten phrases and shuffles questions and options, so you cannot pass by remembering positions.
 - **Never red.** Mistakes are shown in a neutral tone. The app is meant to feel like practice, not a test.
+- **A final exam, not yet open.** The exam screen is built (100 questions, pass mark 75, no feedback during the sitting, score-only history). It appears on Home only when a course has an exam paper, and no paper is written yet.
 - **Lessons can be updated on the phone.** Settings has an "Import lessons" action: pick lesson files from the Files app and the app validates them (all or nothing) and starts using them straight away. See below.
 - **Private by construction.** The only personal data is a display name, stored on the device. There is no account, no network code, and no analytics.
 
@@ -74,14 +82,14 @@ A few choices worth a look:
 
 - **Content is data, not code.** The phrases live in [`content/tamil/`](content/tamil/) and `content/telugu/` (one folder per course) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures. This is what makes a second language a content job more than a code job.
 - **"No network" is enforced, not promised.** [`scripts/check-forbidden-apis.sh`](scripts/check-forbidden-apis.sh) fails the build if networking, audio or speech APIs, network entitlements or permission strings appear in the source. [`scripts/check-binary.sh`](scripts/check-binary.sh) then inspects the compiled app for the same thing.
-- **Storage is two small JSON files**, written atomically with complete file protection. A damaged file is reported to the user and never silently overwritten.
+- **Storage is a few small JSON files per language** (progress, exam results, imported lessons) plus one profile file, written atomically with complete file protection. A damaged file is reported to the user and never silently overwritten.
 - **No dependencies.** Nothing third-party is linked.
 - **Warnings are errors**, in the package and in the test script, and SwiftLint runs in strict mode.
-- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 44 decisions, including the ones that were later reversed and why.
+- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 46 decisions, including the ones that were later reversed and why.
 
 ## Where the content stands
 
-The 100 Tamil phrases were drafted by an AI and have all been checked by hand by a native Tamil speaker. Telugu lessons will be drafted the same way and checked by a native Telugu speaker ([`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md)). Every phrase carries a review status in its data file, and the app shows an "Unreviewed draft" label on any phrase that has not been checked. The Settings screen says the lessons are native-reviewed only when every phrase is marked reviewed; the statement is computed from the data, not typed in.
+Every phrase was drafted by an AI. The first 100 Tamil phrases (Level 1, lessons 1 to 5) have been checked by hand by a native Tamil speaker; the other 380 Tamil phrases and all 480 Telugu phrases are unreviewed drafts, to be checked level by level by a native Tamil speaker and a native Telugu speaker respectively ([`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md)). Every phrase carries a review status in its data file, and the app shows an "Unreviewed draft" label on any phrase that has not been checked. The Settings screen says the lessons are native-reviewed only when every phrase is marked reviewed; the statement is computed from the data, not typed in.
 
 [`tools/content-editor/`](tools/content-editor/) is a single offline HTML page for that review: it walks through every phrase and applies the same validation rules as the app.
 
@@ -135,12 +143,11 @@ The app was built with Claude Code, with the author acting as product owner and 
 
 ## Roadmap
 
-**Now: two courses.** The plan is [`plan.md`](plan.md); the reasoning is decisions 038 to 044.
+**Now: two courses.** The plan is [`plan.md`](plan.md); the reasoning is decisions 038 to 046.
 
-- Pick the language you are learning after entering your name; switch in Settings with each language's progress kept.
-- A Telugu course beside the Tamil one, from one syllabus: 8 levels, 100 lessons and 2,000 phrases each, sharing English prompts wherever that is natural.
-- Home grouped by level, checks against duplicate phrases, and a 100-question final exam per language with a pass mark of 75.
-- Each course reviewed by its native speaker, one level at a time.
+- Done: choosing and switching language with separate progress, a Telugu course beside the Tamil one from one syllabus, Home grouped by level, duplicate-phrase checks, the exam screen and the exam paper loader, and Levels 1 and 2 drafted for both courses.
+- Next: native review of Levels 1 and 2 in both courses (the owner for Tamil, a native Telugu speaker for Telugu), then Levels 3 to 8 one level at a time, each drafted only after the previous level is reviewed. Each course will reach 8 levels, 100 lessons and 2,000 phrases, sharing English prompts wherever that is natural.
+- Last: one 100-question exam paper per language (pass mark 75), written after that language's Level 8 is reviewed.
 
 **v2: voice.** This is the original thesis, and v1 is the foundation for it. It applies to both languages.
 
