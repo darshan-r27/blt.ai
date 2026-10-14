@@ -16,6 +16,7 @@ struct ScenariosView: View {
     private let onOpenProgress: () -> Void
     private let onOpenSettings: () -> Void
     private let onOpenExam: () -> Void
+    private let onOpenStreak: () -> Void
 
     init(
         viewModel: HomeViewModel,
@@ -24,7 +25,8 @@ struct ScenariosView: View {
         onSelectScenario: @escaping (ScenarioID) -> Void,
         onOpenProgress: @escaping () -> Void,
         onOpenSettings: @escaping () -> Void,
-        onOpenExam: @escaping () -> Void = {}
+        onOpenExam: @escaping () -> Void = {},
+        onOpenStreak: @escaping () -> Void = {}
     ) {
         self.viewModel = viewModel
         self.name = name
@@ -33,6 +35,7 @@ struct ScenariosView: View {
         self.onOpenProgress = onOpenProgress
         self.onOpenSettings = onOpenSettings
         self.onOpenExam = onOpenExam
+        self.onOpenStreak = onOpenStreak
     }
 
     var body: some View {
@@ -96,6 +99,7 @@ struct ScenariosView: View {
                         .padding(.horizontal, 4)
                         .accessibilityIdentifier(AccessibilityID.homeLanguage)
                 }
+                HomePracticeSection(viewModel: viewModel, onStartChapter: startChapter, onOpenStreak: onOpenStreak)
                 if let next = viewModel.continueLesson {
                     ContinueLessonCard(summary: next) { onSelectScenario(next.id) }
                 }
@@ -116,6 +120,11 @@ struct ScenariosView: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
         }
+    }
+
+    /// Starts the next chapter through the same entry as the Continue card.
+    private func startChapter() {
+        if let next = viewModel.continueLesson { onSelectScenario(next.id) }
     }
 
     @ViewBuilder
@@ -217,8 +226,16 @@ private struct HomePreviewHost: View {
 
     private let language: CourseLanguage?
 
-    init(_ dependencies: AppDependencies, language: CourseLanguage? = nil) {
-        _viewModel = State(initialValue: HomeViewModel(dependencies: dependencies))
+    init(
+        _ dependencies: AppDependencies,
+        language: CourseLanguage? = nil,
+        practiceLog: any PracticeLogStore = PreviewDependencies.practiceLog()
+    ) {
+        _viewModel = State(initialValue: HomeViewModel(
+            dependencies: dependencies,
+            practiceLog: practiceLog,
+            calendar: PreviewDependencies.practiceCalendar
+        ))
         self.language = language
     }
 
@@ -230,7 +247,8 @@ private struct HomePreviewHost: View {
                 language: language,
                 onSelectScenario: { _ in },
                 onOpenProgress: {},
-                onOpenSettings: {}
+                onOpenSettings: {},
+                onOpenStreak: {}
             )
         }
     }
@@ -266,6 +284,35 @@ private struct HomePreviewHost: View {
 #Preview("Home, levels, dark") {
     HomePreviewHost(PreviewDependencies.withLevels(), language: .tamil)
         .preferredColorScheme(.dark)
+}
+
+#Preview("Home, daily practice, goal met") {
+    HomePreviewHost(
+        PreviewDependencies.withLevels(),
+        language: .tamil,
+        practiceLog: PreviewDependencies.practiceLog(chaptersToday: 2)
+    )
+}
+
+#Preview("Home, daily practice, nothing practised yet") {
+    HomePreviewHost(
+        PreviewDependencies.withData(),
+        practiceLog: PreviewDependencies.practiceLog(streakDays: 0, chaptersToday: 0)
+    )
+}
+
+#Preview("Home, daily practice, dark") {
+    HomePreviewHost(PreviewDependencies.withLevels(), language: .tamil)
+        .preferredColorScheme(.dark)
+}
+
+#Preview("Home, daily practice, largest accessibility size") {
+    HomePreviewHost(PreviewDependencies.withLevels(), language: .telugu)
+        .environment(\.dynamicTypeSize, .accessibility5)
+}
+
+#Preview("Home, practice log unreadable") {
+    HomePreviewHost(PreviewDependencies.withData(), practiceLog: PreviewFailingPracticeLog(loadError: .corrupt))
 }
 
 #Preview("Home, corrupt progress file") {

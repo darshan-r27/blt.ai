@@ -31,10 +31,39 @@ final class HomeViewModel {
     /// Set when the stored exam results could not be read. Home still works; the exam entry says so.
     private(set) var examHistoryUnreadable = false
 
-    private let dependencies: AppDependencies
+    /// The streak, freezes and today's chapters, computed from the practice log. The empty summary while the
+    /// log has not been read or could not be (see `practiceError`).
+    private(set) var practiceSummary: StreakSummary = .empty()
+    /// Set when the practice log could not be read. Home and the scenarios still work; the practice section says
+    /// so calmly. The file is never rewritten or erased because of it (only Reset erases).
+    private(set) var practiceError: PracticeLogError?
 
-    init(dependencies: AppDependencies) {
+    private let dependencies: AppDependencies
+    private let practiceLog: any PracticeLogStore
+    /// The calendar that decides which dates "today" and "this week" are.
+    let practiceCalendar: Calendar
+    private let streakCalculator: StreakCalculator
+
+    /// - Parameters:
+    ///   - practiceLog: this course's practice log. The default is an empty in-memory log for previews and
+    ///     tests only; the composition root passes the course's real store.
+    ///   - calendar: decides which dates "today" and "this week" are; carries the learner's time zone.
+    ///   - streakCalculator: the streak rules, with the daily goal.
+    init(
+        dependencies: AppDependencies,
+        practiceLog: any PracticeLogStore = InMemoryPracticeLogStore(),
+        calendar: Calendar = .current,
+        streakCalculator: StreakCalculator = StreakCalculator()
+    ) {
         self.dependencies = dependencies
+        self.practiceLog = practiceLog
+        self.practiceCalendar = calendar
+        self.streakCalculator = streakCalculator
+    }
+
+    /// The current time from the injected clock (the same one the streak is computed at).
+    var currentTime: Date {
+        dependencies.now()
     }
 
     /// The greeting above the scenario cards. `name` is the validated display name (DECISIONS 030).
@@ -130,7 +159,22 @@ final class HomeViewModel {
             loadError = error
         }
         await loadExamHistory()
+        await loadPractice()
         hasLoaded = true
+    }
+
+    /// Reads the practice log and recomputes the streak at the current time. A read error is kept in
+    /// `practiceError` and shown calmly; it never stops Home and never writes to the log. Call it again after
+    /// a session finishes so the chip, the Today card and the week strip catch up.
+    func loadPractice() async {
+        do throws(PracticeLogError) {
+            let log = try await practiceLog.load()
+            practiceSummary = streakCalculator.summary(for: log, now: dependencies.now(), calendar: practiceCalendar)
+            practiceError = nil
+        } catch {
+            practiceSummary = .empty(dailyGoal: streakCalculator.dailyGoal)
+            practiceError = error
+        }
     }
 
     /// Reads the best exam attempt. A failure is shown on the exam entry, never hidden, and does not stop Home.
@@ -171,6 +215,13 @@ final class HomeViewModel {
         // Exam attempts belong to the same course, so Reset clears them too (DECISIONS 041).
         do throws(ExamResultStoreError) {
             try await dependencies.examResults.erase()
+        } catch {
+            resetError = .eraseFailed
+            return
+        }
+        // The practice log (streak, freezes, goal days) belongs to the same course, so Reset clears it too.
+        do throws(PracticeLogError) {
+            try await practiceLog.erase()
         } catch {
             resetError = .eraseFailed
             return
