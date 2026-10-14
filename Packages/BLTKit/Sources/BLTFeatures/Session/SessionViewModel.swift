@@ -15,6 +15,12 @@ import Observation
 /// write. Writes run one after another in order. If a write throws, `saveFailed` is set and
 /// stays set for the rest of the session; the next question is never held up.
 ///
+/// Daily practice: a chapter counts when the session reaches its summary with at least one answer, or when
+/// the learner ends it early with at least one answer. It is appended to the practice log once only and
+/// `onSessionRecorded` is called with the new streak summary (the host reschedules reminders from it). A
+/// log failure sets `practiceState` to `.failed` for the summary to say so; answers and progress are never
+/// touched by it, and the log file is never erased or rewritten here.
+///
 /// Pronunciation does not exist in v1 and nothing here reads it (CLAUDE.md constraint 5).
 @MainActor
 @Observable
@@ -35,6 +41,9 @@ final class SessionViewModel {
 
     let scenario: Scenario
 
+    /// The calendar the streak is counted in; the summary's week strip uses the same one.
+    let calendar: Calendar
+
     /// True once any save has failed. Visible, non-blocking, never cleared during a session.
     private(set) var saveFailed = false
 
@@ -44,6 +53,9 @@ final class SessionViewModel {
     /// True from the moment `endSession()` is first called. Once set, the session accepts no
     /// further answers, so nothing new can be written after the learner has left.
     private(set) var hasEnded = false
+
+    /// What recording this chapter in the practice log produced. `.none` until it finishes.
+    private(set) var practiceState = PracticeRecordState.none
 
     private enum Phase {
         case loading
@@ -65,6 +77,11 @@ final class SessionViewModel {
     private var hasStarted = false
     private var saveTask: Task<Void, Never>?
     private var doneHandler: (@MainActor () -> Void)?
+    private let recorder: PracticeRecorder
+    /// Questions answered for the first time this session; a requeued presentation does not add to it.
+    private var answeredCount = 0
+    private var hasStartedRecording = false
+    private var recordTask: Task<Void, Never>?
 
     /// How many wrong answers an item can get before the machine stops requeuing it
     /// (it requeues at most twice, so the third wrong answer is the last).
@@ -73,11 +90,21 @@ final class SessionViewModel {
     init(
         scenario: Scenario,
         dependencies: AppDependencies,
-        random: SessionRandomSource = .system
+        random: SessionRandomSource = .system,
+        practiceLog: any PracticeLogStore = InMemoryPracticeLogStore(),
+        calendar: Calendar = .current,
+        onSessionRecorded: @escaping @Sendable (StreakSummary) async -> Void = { _ in }
     ) {
         self.scenario = scenario
         self.dependencies = dependencies
         self.random = random
+        self.calendar = calendar
+        self.recorder = PracticeRecorder(
+            log: practiceLog,
+            calendar: calendar,
+            calculator: StreakCalculator(),
+            onRecorded: onSessionRecorded
+        )
     }
 
     // MARK: Reading state
@@ -147,6 +174,7 @@ final class SessionViewModel {
             wrongCounts[question.item.id, default: 0] += 1
         }
         if let attempt {
+            answeredCount += 1
             persist(attempt)
         }
     }
@@ -162,6 +190,9 @@ final class SessionViewModel {
         if current.state != before {
             beat += 1
         }
+        if case .finished = current.state {
+            startRecordingPractice()
+        }
     }
 
     /// Registers the closure `endSession()` calls to leave the session. The view sets this from
@@ -171,22 +202,25 @@ final class SessionViewModel {
     }
 
     /// Leaves the session. First waits for every queued save, so each answer given so far is
-    /// persisted, then calls the done handler exactly once. The unanswered current item records
-    /// nothing, and after the first call the session ignores answers, so repeated calls (a
-    /// double tap) do nothing.
+    /// persisted, and for the practice record (an early end with answers counts as a chapter; a
+    /// session already recorded at its summary is not recorded again), then calls the done
+    /// handler exactly once. The unanswered current item records nothing, and after the first
+    /// call the session ignores answers, so repeated calls (a double tap) do nothing.
     func endSession() async {
         guard !hasEnded else { return }
         hasEnded = true
+        startRecordingPractice()
         await waitForPendingSaves()
         let handler = doneHandler
         doneHandler = nil
         handler?()
     }
 
-    /// Waits until every queued save has finished. For tests, and for a host that wants to be
-    /// sure nothing is in flight before it tears the session down.
+    /// Waits until every queued save and the practice record have finished. For tests, and for a
+    /// host that wants to be sure nothing is in flight before it tears the session down.
     func waitForPendingSaves() async {
         await saveTask?.value
+        await recordTask?.value
     }
 
     // MARK: Private
@@ -233,6 +267,23 @@ final class SessionViewModel {
         plannedOrder = items.map(\.id)
         wrongCounts = [:]
         setPhase(.running)
+    }
+
+    /// Starts recording this chapter in the practice log, at most once per session: the flag is set
+    /// before anything suspends, so a second trigger (summary reached, then Done) finds it taken.
+    private func startRecordingPractice() {
+        guard !hasStartedRecording, answeredCount >= 1 else { return }
+        hasStartedRecording = true
+        let answered = answeredCount
+        let finishedAt = dependencies.now()
+        recordTask = Task { [recorder] in
+            do {
+                let outcome = try await recorder.record(answered: answered, finishedAt: finishedAt)
+                practiceState = .recorded(outcome)
+            } catch {
+                practiceState = .failed
+            }
+        }
     }
 
     private func setPhase(_ newPhase: Phase) {

@@ -2,10 +2,12 @@ import BLTDesign
 import BLTSession
 import SwiftUI
 
-/// End-of-session summary: three plain counts and a Done action. No scores, streaks or praise
-/// inflation (README: no gamification).
+/// End-of-session summary: three plain counts, the daily-practice streak moment (see
+/// `SessionPracticeSection`) and a Done action. No scores and no praise inflation.
 struct SessionSummaryView: View {
     let result: SessionResult
+    var practice = PracticeRecordState.none
+    var calendar = Calendar.current
     let onDone: @MainActor () -> Void
 
     @Environment(\.colorScheme) private var colorScheme
@@ -18,6 +20,7 @@ struct SessionSummaryView: View {
                     .font(.title2.weight(.semibold))
                     .foregroundStyle(palette.textPrimaryColor)
                     .accessibilityAddTraits(.isHeader)
+                SessionPracticeSection(state: practice, calendar: calendar)
                 Text(
                     "You went through \(result.total) \(result.total == 1 ? "phrase" : "phrases"). "
                         + "Counts are for your first attempt at each one."
