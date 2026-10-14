@@ -73,7 +73,7 @@ final class SettingsViewModel {
     /// Message of the Reset confirmation. Says which language it clears when one is known.
     var resetMessage: String {
         if let learningLanguage {
-            return "This clears your \(learningLanguage.displayName) progress. "
+            return "This clears your \(learningLanguage.displayName) progress. Your streak is cleared too. "
                 + "Your name and your other language's progress are kept. It cannot be undone."
         }
         return "This erases your review schedule and answer history on this device. "
@@ -90,46 +90,6 @@ final class SettingsViewModel {
     var isConfirmingReset = false
 
     private(set) var importOutcome: ImportOutcome?
-    /// Plain wording for `importOutcome`. Neutral in tone, with no file names or paths.
-    var importStatusMessage: String? {
-        switch importOutcome {
-        case .succeeded:
-            return "Lessons imported. Your progress is kept."
-        case .failed(.noFiles):
-            return "No file was chosen."
-        case .failed(.tooManyFiles(let limit)):
-            return "Choose up to \(limit) files at a time."
-        case .failed(.unreadable):
-            return "A file could not be read. If it is in iCloud Drive, download it first."
-        case .failed(.invalid(let issueCount)):
-            let problems = issueCount == 1 ? "1 problem" : "\(issueCount) problems"
-            return "Nothing was imported: the file did not pass the lesson checks (\(problems)). "
-                + "Your lessons are unchanged."
-        case .failed(.wrongLanguage):
-            return wrongLanguageMessage
-        case .failed(.couldNotSave):
-            return "The lessons could not be saved. Your lessons are unchanged."
-        case nil:
-            return nil
-        }
-    }
-    /// Names the language the file is for and the one being learned. With no language chosen it stays neutral.
-    private var wrongLanguageMessage: String {
-        let outcome = "Nothing was imported and your lessons are unchanged."
-        guard let current = learningLanguage,
-              let other = CourseLanguage.allCases.first(where: { $0 != current }) else {
-            return "That file is for the other language. \(outcome)"
-        }
-        return "That file is for \(other.displayName), not \(current.displayName). \(outcome)"
-    }
-    /// The count line under Import lessons, or `nil` when nothing is imported.
-    var importedCountMessage: String? {
-        switch importedCount {
-        case 0: nil
-        case 1: "1 imported lesson is in use."
-        default: "\(importedCount) imported lessons are in use."
-        }
-    }
     private(set) var isImporting = false
     /// How many imported scenarios are in use. Refreshed by `refreshImportedSummary()` and after each change.
     private(set) var importedCount = 0
@@ -146,11 +106,21 @@ final class SettingsViewModel {
     private let lessonImporter: (any LessonImporting)?
     private let onDidChangeLessons: @MainActor (LessonChange) -> Void
     private let onDidChangeLanguage: @MainActor (UserProfile) -> Void
+    private let practiceLog: any PracticeLogStore
+    /// The Daily practice section: reminders, quiet hours, the read-only daily goal, and the permission
+    /// pre-prompt that the reminders toggle can open.
+    let practice: DailyPracticeSettingsModel
 
     /// `onDidReset` lets the owner of Home reload after a successful reset; `onDidChangeName` lets it show
     /// the new name straight away; `onDidChangeLessons` lets the owner of the catalog reload it after an
     /// import or a removal; `onDidChangeLanguage` lets it rebuild the root for the other course after a switch
     /// is saved. `learningLanguage` is `nil` ("absent") unless the owner passes one: Settings never assumes one.
+    ///
+    /// Daily practice: `practicePreferences` holds the device-wide reminder choices; `practiceLog` is this
+    /// course's log, which Reset erases like the exam results; `reminders` answers the permission state and
+    /// asks for permission; `onPracticeSettingsChanged` runs after every saved change so the owner can
+    /// reschedule (this type never schedules); `openSystemSettings` opens the app's page in iOS Settings
+    /// (SwiftUI's `openURL` is on the forbidden-API list, so the app target supplies this).
     init(
         dependencies: AppDependencies,
         profileStore: any ProfileStore,
@@ -160,7 +130,13 @@ final class SettingsViewModel {
         lessonImporter: (any LessonImporting)? = nil,
         onDidChangeLessons: @escaping @MainActor (LessonChange) -> Void = { _ in },
         learningLanguage: CourseLanguage? = nil,
-        onDidChangeLanguage: @escaping @MainActor (UserProfile) -> Void = { _ in }
+        onDidChangeLanguage: @escaping @MainActor (UserProfile) -> Void = { _ in },
+        practicePreferences: any PracticePreferencesStore = InMemoryPracticePreferencesStore(),
+        practiceLog: any PracticeLogStore = InMemoryPracticeLogStore(),
+        reminders: any ReminderScheduling = FakeReminderScheduler(),
+        calendar: Calendar = .current,
+        onPracticeSettingsChanged: @escaping @Sendable () async -> Void = {},
+        openSystemSettings: @escaping @MainActor () -> Void = {}
     ) {
         reviewedCount = dependencies.catalog.reviewedItemCount
         totalCount = dependencies.catalog.totalItemCount
@@ -174,6 +150,14 @@ final class SettingsViewModel {
         self.onDidChangeLessons = onDidChangeLessons
         self.learningLanguage = learningLanguage
         self.onDidChangeLanguage = onDidChangeLanguage
+        self.practiceLog = practiceLog
+        practice = DailyPracticeSettingsModel(
+            store: practicePreferences,
+            reminders: reminders,
+            calendar: calendar,
+            onPracticeSettingsChanged: onPracticeSettingsChanged,
+            openSystemSettings: openSystemSettings
+        )
     }
 
     // MARK: Language
@@ -268,6 +252,10 @@ final class SettingsViewModel {
             resetOutcome = .failed(.eraseFailed)
             return
         }
+        guard await erasePracticeLog() else {
+            resetOutcome = .failed(.eraseFailed)
+            return
+        }
         resetOutcome = .succeeded
         onDidReset()
     }
@@ -344,6 +332,60 @@ extension SettingsViewModel {
             return true
         } catch {
             return false
+        }
+    }
+
+    /// The practice log (and so the streak) belongs to the same course, so Reset clears it too. The device-wide
+    /// reminder preferences are not progress and are kept. `false` on failure.
+    fileprivate func erasePracticeLog() async -> Bool {
+        do throws(PracticeLogError) {
+            try await practiceLog.erase()
+            return true
+        } catch {
+            return false
+        }
+    }
+}
+
+extension SettingsViewModel {
+    /// Plain wording for `importOutcome`. Neutral in tone, with no file names or paths.
+    var importStatusMessage: String? {
+        switch importOutcome {
+        case .succeeded:
+            return "Lessons imported. Your progress is kept."
+        case .failed(.noFiles):
+            return "No file was chosen."
+        case .failed(.tooManyFiles(let limit)):
+            return "Choose up to \(limit) files at a time."
+        case .failed(.unreadable):
+            return "A file could not be read. If it is in iCloud Drive, download it first."
+        case .failed(.invalid(let issueCount)):
+            let problems = issueCount == 1 ? "1 problem" : "\(issueCount) problems"
+            return "Nothing was imported: the file did not pass the lesson checks (\(problems)). "
+                + "Your lessons are unchanged."
+        case .failed(.wrongLanguage):
+            return wrongLanguageMessage
+        case .failed(.couldNotSave):
+            return "The lessons could not be saved. Your lessons are unchanged."
+        case nil:
+            return nil
+        }
+    }
+    /// Names the language the file is for and the one being learned. With no language chosen it stays neutral.
+    fileprivate var wrongLanguageMessage: String {
+        let outcome = "Nothing was imported and your lessons are unchanged."
+        guard let current = learningLanguage,
+              let other = CourseLanguage.allCases.first(where: { $0 != current }) else {
+            return "That file is for the other language. \(outcome)"
+        }
+        return "That file is for \(other.displayName), not \(current.displayName). \(outcome)"
+    }
+    /// The count line under Import lessons, or `nil` when nothing is imported.
+    var importedCountMessage: String? {
+        switch importedCount {
+        case 0: nil
+        case 1: "1 imported lesson is in use."
+        default: "\(importedCount) imported lessons are in use."
         }
     }
 }
