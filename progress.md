@@ -1,5 +1,8 @@
 # Progress: two-way course plan (plan.md)
 
+## Next (2026-10-14)
+- Daily practice feature approved (plan.md, "Daily practice"): two chapters a day, rolling 24-hour streak with earned freezes, reminders 20 h and 23 h after the last session with quiet hours. Start with Wave 1 (S1 to S3).
+
 ## Done (2026-10-12)
 - Level 2 content for both courses drafted (12 lessons, 240 phrases each, `unreviewed`), ahead of the Level 1 review at the owner's request.
 - Tamil-script backfill for lessons 1 to 5 opened as PR #35 for the owner to read.
