@@ -9,23 +9,6 @@ import XCTest
 final class LanguageUITests: BLTUITestCase {
     // MARK: Helpers
 
-    private func openSettings(_ app: XCUIApplication) {
-        tap(app.buttons["Settings"], "the Settings button")
-        requireExists(app.element(AXID.settingsReset), "Settings")
-    }
-
-    /// Settings, then Language I'm learning, the other language and Switch: ends on that language's Home.
-    private func switchLanguage(to language: UITestLanguage, in app: XCUIApplication) {
-        openSettings(app)
-        tap(app.buttons[AXID.settingsLanguage], "the Language I'm learning row")
-        tap(app.buttons[AXID.settingsLanguageOption(language)], "the \(language.displayName) option")
-        requireExists(app.staticTexts["Switch to \(language.displayName)?"], "the Switch confirmation")
-        // The confirmation is an action sheet; its button shares nothing with the screen behind it.
-        tap(app.sheets.buttons["Switch"].firstMatch, "Switch in the confirmation")
-        requireExists(app.element(AXID.greeting), "Home after switching")
-        requireLabel(of: app.element(AXID.homeLanguage), containing: language.displayName)
-    }
-
     /// Answers one item of `language`'s fixture correctly and ends the session, leaving the app on Home.
     private func answerOneItemAndEnd(_ language: UITestLanguage, in app: XCUIApplication) throws {
         openFixtureScenario(app, language: language)
@@ -99,7 +82,7 @@ final class LanguageUITests: BLTUITestCase {
         try answerOneItemAndEnd(.tamil, in: app)
         switchLanguage(to: .telugu, in: app)
         try answerOneItemAndEnd(.telugu, in: app)
-        openSettings(app)
+        goToSettings(app)
 
         tap(app.element(AXID.settingsReset), "Reset progress")
         requireExists(app.staticTexts["Reset Telugu progress?"], "the confirmation naming Telugu")

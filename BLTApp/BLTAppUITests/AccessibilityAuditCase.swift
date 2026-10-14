@@ -15,6 +15,10 @@ class AccessibilityAuditCase: BLTUITestCase {
     enum Screen {
         case intro, nameEntry, language, languageChosen, home, question, feedback, progress
         case settings, settingsLanguageChoice, changeName
+        /// Daily practice (DECISIONS 047), all with a seeded 3 day streak: Home with the flame chip and the
+        /// Today card, the end-of-session summary with its streak block, the streak screen, and the Daily
+        /// practice section of Settings.
+        case homeWithStreak, sessionSummary, streakScreen, settingsDailyPractice
     }
 
     /// Launches fresh and navigates to `screen`.
@@ -48,7 +52,33 @@ class AccessibilityAuditCase: BLTUITestCase {
             return app
         case .settings, .settingsLanguageChoice, .changeName:
             return openSettingsScreen(screen, largestText: largestText)
+        case .homeWithStreak, .sessionSummary, .streakScreen, .settingsDailyPractice:
+            return openPracticeScreen(screen, largestText: largestText)
         }
+    }
+
+    private func openPracticeScreen(_ screen: Screen, largestText: Bool) -> XCUIApplication {
+        let app = launchHome(largestText: largestText, extraArguments: [PracticeArguments.streak(3)])
+        requireExists(app.element(AXID.homeStreakChip), "the flame chip")
+        switch screen {
+        case .sessionSummary:
+            do {
+                try finishFixtureSession(app)
+            } catch {
+                XCTFail("Could not reach the session summary: \(error)")
+            }
+            requireExists(app.element(AXID.sessionStreak), "the streak on the summary")
+        case .streakScreen:
+            tap(app.element(AXID.homeStreakChip), "the flame chip")
+            requireExists(app.element(AXID.streakScreen), "the streak screen")
+            requireExists(app.element(AXID.streakCount), "the streak count")
+        case .settingsDailyPractice:
+            goToSettings(app)
+            scrollIntoView(app.element(AXID.settingsReminders), in: app)
+        default:
+            break
+        }
+        return app
     }
 
     private func openSessionScreen(_ screen: Screen, largestText: Bool) -> XCUIApplication {
@@ -93,16 +123,6 @@ class AccessibilityAuditCase: BLTUITestCase {
             requireExists(app.textFields[AXID.changeNameField], "the Change name sheet")
         }
         return app
-    }
-
-    /// Swipes up (at most a few times) until the element can be tapped.
-    func scrollIntoView(_ element: XCUIElement, in app: XCUIApplication) {
-        requireExists(element, "the element to scroll to")
-        var swipes = 0
-        while !element.isHittable && swipes < 6 {
-            app.swipeUp()
-            swipes += 1
-        }
     }
 
     /// The one issue this file ignores: "Dynamic Type font sizes are partially unsupported" on the Change name
