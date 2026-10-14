@@ -28,6 +28,25 @@ public struct Palette: Sendable, Equatable {
         public var foregroundColor: Color { foreground.color }
     }
 
+    /// Colours for one streak mark: a tinted background, text on it, and a brighter fill for the symbol itself.
+    /// Used only for the streak visuals (flame, freeze, goal met). The symbol fill is a graphic, so it must reach
+    /// 3:1 against the page, the card and its own tint; the text must reach 4.5:1 on the tint (`PaletteTests`).
+    public struct StreakTone: Sendable, Equatable {
+        public let background: DesignRGB
+        public let foreground: DesignRGB
+        public let glyph: DesignRGB
+
+        init(background: UInt32, foreground: UInt32, glyph: UInt32) {
+            self.background = DesignRGB(hex: background)
+            self.foreground = DesignRGB(hex: foreground)
+            self.glyph = DesignRGB(hex: glyph)
+        }
+
+        public var backgroundColor: Color { background.color }
+        public var foregroundColor: Color { foreground.color }
+        public var glyphColor: Color { glyph.color }
+    }
+
     public let scheme: Scheme
 
     public let background: DesignRGB
@@ -44,6 +63,12 @@ public struct Palette: Sendable, Equatable {
     public let affirm: TonePair
     public let nudge: TonePair
     public let neutral: TonePair
+    /// Amber: the streak flame.
+    public let flame: StreakTone
+    /// Blue: a streak freeze (snowflake).
+    public let freeze: StreakTone
+    /// Green: the daily goal met.
+    public let goalMet: StreakTone
     /// Deep red on a pale red tint, for Reset progress only. Not a feedback tone and never used for answers.
     public let destructive: TonePair
 
@@ -65,6 +90,9 @@ public struct Palette: Sendable, Equatable {
             affirm = TonePair(background: DesignRGB(hex: 0xCAE8D4), foreground: DesignRGB(hex: 0x14462A))
             nudge = TonePair(background: DesignRGB(hex: 0xF6E0B0), foreground: DesignRGB(hex: 0x5C3A00))
             neutral = TonePair(background: DesignRGB(hex: 0xD3DEEE), foreground: DesignRGB(hex: 0x22344F))
+            flame = StreakTone(background: 0xF9DDB0, foreground: 0x6B3300, glyph: 0xB45309)
+            freeze = StreakTone(background: 0xCFE3F7, foreground: 0x0F3D66, glyph: 0x1D6FB8)
+            goalMet = StreakTone(background: 0xCBEAD7, foreground: 0x0F4A27, glyph: 0x1E7B43)
             destructive = TonePair(background: DesignRGB(hex: 0xFBE4E1), foreground: DesignRGB(hex: 0x8F1D14))
         case .dark:
             background = DesignRGB(hex: 0x1A1821)
@@ -78,6 +106,9 @@ public struct Palette: Sendable, Equatable {
             affirm = TonePair(background: DesignRGB(hex: 0x173825), foreground: DesignRGB(hex: 0xBDEBC8))
             nudge = TonePair(background: DesignRGB(hex: 0x3B2A0A), foreground: DesignRGB(hex: 0xFFDDA0))
             neutral = TonePair(background: DesignRGB(hex: 0x1F2A3B), foreground: DesignRGB(hex: 0xCCDAF0))
+            flame = StreakTone(background: 0x3F2A08, foreground: 0xFFD9A0, glyph: 0xFFA033)
+            freeze = StreakTone(background: 0x16304A, foreground: 0xC4E1FF, glyph: 0x6CB6F5)
+            goalMet = StreakTone(background: 0x173B26, foreground: 0xBDEBC8, glyph: 0x5CCB84)
             destructive = TonePair(background: DesignRGB(hex: 0x3D1A17), foreground: DesignRGB(hex: 0xFFB4AB))
         }
     }
@@ -96,7 +127,7 @@ public struct Palette: Sendable, Equatable {
 
     /// Every colour with a stable name, for tests and tooling.
     public var allColors: [(name: String, rgb: DesignRGB)] {
-        [
+        var colors: [(name: String, rgb: DesignRGB)] = [
             ("background", background), ("surface", surface),
             ("textPrimary", textPrimary), ("textSecondary", textSecondary), ("outline", outline),
             ("accent", accent), ("onAccent", onAccent), ("accentTint", accentTint),
@@ -104,6 +135,17 @@ public struct Palette: Sendable, Equatable {
             ("nudge.background", nudge.background), ("nudge.foreground", nudge.foreground),
             ("neutral.background", neutral.background), ("neutral.foreground", neutral.foreground)
         ]
+        for entry in streakTones {
+            colors.append(("\(entry.name).background", entry.tone.background))
+            colors.append(("\(entry.name).foreground", entry.tone.foreground))
+            colors.append(("\(entry.name).glyph", entry.tone.glyph))
+        }
+        return colors
+    }
+
+    /// The three streak tones with stable names, for tests and tooling.
+    public var streakTones: [(name: String, tone: StreakTone)] {
+        [("flame", flame), ("freeze", freeze), ("goalMet", goalMet)]
     }
 
     public var backgroundColor: Color { background.color }

@@ -56,4 +56,60 @@ public enum AccessibilityID {
     public static let examKeepGoing = "exam.end.keepGoing"
     public static let examResult = "exam.result"
     public static let examDone = "exam.done"
+
+    // Daily practice (plan.md, "Daily practice"). Added up front so Home (S4), the session end and streak
+    // screen (S5) and Settings (S6) do not collide on this file.
+
+    // Home
+    public static let homeStreakChip = "home.streak.chip"
+    public static let homeTodayCard = "home.today.card"
+    public static let homeWeekStrip = "home.weekStrip"
+
+    /// Chapter row 1 or 2 inside the Today card.
+    public static func homeChapter(_ number: Int) -> String {
+        "home.chapter.\(number)"
+    }
+
+    // Session end
+    public static let sessionStreak = "session.streak"
+    public static let sessionGoalMet = "session.goalMet"
+    public static let sessionWeekStrip = "session.weekStrip"
+    public static let sessionNextFreeze = "session.nextFreeze"
+    public static let sessionMilestone = "session.milestone"
+
+    // Streak screen
+    public static let streakScreen = "streak.screen"
+    public static let streakCount = "streak.count"
+    public static let streakDeadline = "streak.deadline"
+    public static let streakLongest = "streak.longest"
+    public static let streakFreezes = "streak.freezes"
+    public static let streakGoalDays = "streak.goalDays"
+    public static let streakCalendar = "streak.calendar"
+    public static let streakDone = "streak.done"
+
+    /// One day cell of the month calendar, by day of the month (1...31).
+    public static func streakCalendarDay(_ dayOfMonth: Int) -> String {
+        "streak.calendar.day.\(dayOfMonth)"
+    }
+
+    /// One day of the week strip, by position from the first weekday (0...6).
+    public static func weekStripDay(_ index: Int) -> String {
+        "weekStrip.day.\(index)"
+    }
+
+    // Settings: Daily practice section
+    public static let settingsDailyPractice = "settings.dailyPractice"
+    public static let settingsReminders = "settings.reminders"
+    public static let settingsQuietHoursStart = "settings.quietHours.start"
+    public static let settingsQuietHoursEnd = "settings.quietHours.end"
+    public static let settingsDailyGoal = "settings.dailyGoal"
+    /// The one-line explanation shown under the reminders toggle when notifications are off in iOS Settings.
+    public static let settingsNotificationsDenied = "settings.notifications.denied"
+    /// The "Turn on in iOS Settings" button beside that explanation.
+    public static let settingsNotificationsOpenSettings = "settings.notifications.openSettings"
+
+    // Notification permission pre-prompt (shown before the system dialog)
+    public static let notificationsPrompt = "notifications.prompt"
+    public static let notificationsPromptAllow = "notifications.prompt.allow"
+    public static let notificationsPromptNotNow = "notifications.prompt.notNow"
 }
