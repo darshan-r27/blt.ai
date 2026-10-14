@@ -123,12 +123,15 @@ public struct StreakCelebrationView: View {
     @ViewBuilder
     private func burst(palette: Palette) -> some View {
         if style != .quiet, !reduceMotion {
+            // Read the main-actor values here: the animator's content closure is Sendable.
+            let particleCount = isMilestone ? 16 : 8
+            let radius = burstRadius * (isMilestone ? 1.5 : 1.0)
             Color.clear
                 .keyframeAnimator(initialValue: 0.0, trigger: playCount) { _, progress in
                     BurstParticles(
                         progress: progress,
-                        particleCount: isMilestone ? 16 : 8,
-                        radius: burstRadius * (isMilestone ? 1.5 : 1.0),
+                        particleCount: particleCount,
+                        radius: radius,
                         colors: [palette.flame.glyphColor, palette.goalMet.glyphColor]
                     )
                 } keyframes: { _ in
