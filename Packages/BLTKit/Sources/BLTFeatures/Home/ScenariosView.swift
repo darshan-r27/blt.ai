@@ -85,7 +85,10 @@ struct ScenariosView: View {
 
     private var scenarioList: some View {
         ScrollView {
-            LazyVStack(alignment: .leading, spacing: 12) {
+            // Not lazy: with the practice section above them, the lessons start low on the screen, and a lazy
+            // stack does not build rows that scroll out of view when the text grows. The accessibility audit
+            // then cannot compare them. A course has at most about 100 simple cards, so building them all is cheap.
+            VStack(alignment: .leading, spacing: 12) {
                 if let greeting {
                     ShimmerText(greeting)
                         .padding(.horizontal, 4)
