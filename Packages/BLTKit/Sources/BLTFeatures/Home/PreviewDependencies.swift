@@ -44,6 +44,27 @@ enum PreviewDependencies {
         )
     }
 
+    /// A fixed calendar for the practice previews, so "today" and the week do not depend on the machine.
+    static let practiceCalendar: Calendar = {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC") ?? .gmt
+        calendar.firstWeekday = 2
+        return calendar
+    }()
+
+    /// A practice log ending at `now`: one session a day for `streakDays` days before today (evenings, so each
+    /// is within 24 hours of the next), and `chaptersToday` finished sessions this morning.
+    static func practiceLog(streakDays: Int = 5, chaptersToday: Int = 1) -> InMemoryPracticeLogStore {
+        let day: TimeInterval = 86_400
+        let earlier = (1...max(streakDays, 1)).map {
+            PracticeSession(finishedAt: now.addingTimeInterval(-Double($0) * day + 3_600), answered: 10)
+        }
+        let today = (0..<chaptersToday).map {
+            PracticeSession(finishedAt: now.addingTimeInterval(-Double($0) * 600), answered: 10)
+        }
+        return InMemoryPracticeLogStore(initial: PracticeLog(sessions: streakDays > 0 ? earlier + today : today))
+    }
+
     static func empty() -> AppDependencies {
         make(store: InMemoryProgressStore())
     }
