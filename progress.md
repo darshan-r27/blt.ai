@@ -15,10 +15,15 @@
 - Merged and checked together: package tests pass, SwiftLint strict clean (300 files), forbidden-API scan clean, no compiler warnings, no shared or frozen file touched, `UserNotifications` imported only in `LocalReminderScheduler.swift`.
 - For S7: pass the real per-course `PracticeLogStore` to Home, Session and Streak view models, and the device-wide preferences store to Settings; supply `openSystemSettings` (`UIApplication.open(UIApplication.openSettingsURLString)`), because `openURL` is on the forbidden list; call `HomeViewModel.loadPractice()` when Home returns after a session; present the pre-prompt from session end (`shouldAsk` is true only for the first finished session across both courses); `onSessionRecorded` and `onPracticeSettingsChanged` are where reminders get rescheduled; the Continue card is kept under the Today card because `HomeUITests` needs `homeContinueLesson` (decide in S7); the daily goal is fixed at 2 and not yet passed into `SessionViewModel`.
 - Not verified: how any new screen looks (previews only), VoiceOver order, largest text size layout, Reduce Motion, the system permission dialog, the flame haptic.
-- Next: Wave 3 (S7 wiring, UI tests, DECISIONS 047).
+**Wave 3 built, not pushed (branch `wave3-s7`, on top of `wave2`).**
+- S7 wiring: `AppDependencies.practiceLog` (per course), new `PracticeServices` (preferences store, reminder scheduler, both courses' logs, open-settings), `ReminderRescheduler`, `HomeFlow` (streak cover, pre-prompt, reschedule on session recorded, setting change, Reset, launch and foreground), `CompositionRoot` (`courses/<language>/practice.json`, `practice-preferences.json`, the real scheduler), UI-test launch arguments `--uitest-practice=<n>`, `--uitest-practice-<language>=<n>`, `--uitest-notifications=<state>` with a fake scheduler; DECISIONS 047; one shared streak calculator for Home, Session and the streak screen.
+- UI tests written, NOT RUN: three in `HappyPathUITests` (PR tier), `DailyPracticeUITests` (9), `AccessibilityPracticeUITests` (4 audits), 4 audits and 2 reachability checks in `AccessibilityLargeTextUITests` (full tier). The Mac was thrashing (load about 700, swap full, simulators would not boot), so they still need to run.
+- Checked: package tests, SwiftLint strict, forbidden-API scan, Debug and Release builds with warnings as errors, `scripts/check-binary.sh`.
+- Docs updated by the orchestrator: ARCHITECTURE "Daily practice", HANDOFF item 0, README.
+- Next: free the machine, run the PR-tier and full-tier UI tests, fix what they show, owner looks at the screens, then push and open PRs.
 
 ## Next (2026-10-14)
-- Daily practice feature approved (plan.md, "Daily practice"): two chapters a day, rolling 24-hour streak with earned freezes, reminders 20 h and 23 h after the last session with quiet hours. Start with Wave 1 (S1 to S3).
+- Daily practice feature: all three waves built locally; see above for what is owed.
 
 ## Done (2026-10-12)
 - Level 2 content for both courses drafted (12 lessons, 240 phrases each, `unreviewed`), ahead of the Level 1 review at the owner's request.
