@@ -26,6 +26,11 @@ final class DailyPracticeUITests: BLTUITestCase {
         XCTAssertEqual(XCTWaiter().wait(for: [matches], timeout: Self.timeout), .completed, "Got '\(element.label)'")
     }
 
+    /// Taps the switch itself, at the right end of its row; a tap in the middle of the row lands on the label.
+    private func flip(_ toggle: XCUIElement) {
+        toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.92, dy: 0.5)).tap()
+    }
+
     private func isOn(_ toggle: XCUIElement) -> Bool {
         (toggle.value as? String) == "1"
     }
@@ -49,11 +54,11 @@ final class DailyPracticeUITests: BLTUITestCase {
         let toggle = app.switches[AXID.settingsReminders]
         requireExists(toggle, "the Reminders toggle")
 
-        toggle.tap()
+        flip(toggle)
         let off = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '0'"), object: toggle)
         XCTAssertEqual(XCTWaiter().wait(for: [off], timeout: Self.timeout), .completed, "Reminders did not switch off")
 
-        toggle.tap()
+        flip(toggle)
         let on = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '1'"), object: toggle)
         XCTAssertEqual(XCTWaiter().wait(for: [on], timeout: Self.timeout), .completed, "Reminders did not switch on")
     }

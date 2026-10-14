@@ -6,9 +6,9 @@ import SwiftUI
 /// - Each day is one VoiceOver element ("Tuesday, October 13, today, practised, streak day"); blank cells,
 ///   weekday letters and the legend are hidden from VoiceOver. The month title is a heading and the summary
 ///   line ("12 practice days, 3 with the daily goal met") is plain text.
-/// - Dynamic Type: the dense grid itself stops growing at the largest non-accessibility size, because seven
-///   columns of two-digit numbers cannot fit beside each other at accessibility sizes. The title, legend and
-///   summary keep growing and wrap, and the summary carries the month's information in words.
+/// - Dynamic Type: nothing is capped. At accessibility sizes seven columns of numbers cannot fit beside each
+///   other, so the grid becomes a list with one row per marked day (and today), as the week strip does. The
+///   title, legend and summary keep growing and wrap, and the summary carries the month in words.
 /// - Each day carries `AccessibilityID.streakCalendarDay(_:)`; callers set `AccessibilityID.streakCalendar`
 ///   on the whole view.
 public struct MonthCalendarView: View {
@@ -20,6 +20,7 @@ public struct MonthCalendarView: View {
     private let locale: Locale
 
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     /// - Parameters:
     ///   - month: any date inside the month to show.
@@ -47,7 +48,11 @@ public struct MonthCalendarView: View {
                 .font(.headline)
                 .foregroundStyle(palette.textPrimaryColor)
                 .accessibilityAddTraits(.isHeader)
-            calendarGrid(palette: palette)
+            if dynamicTypeSize.isAccessibilitySize {
+                dayList(palette: palette)
+            } else {
+                calendarGrid(palette: palette)
+            }
             legend(palette: palette)
             Text(StreakLabels.monthSummary(grid.summary(states: states)))
                 .font(.subheadline)
@@ -77,7 +82,42 @@ public struct MonthCalendarView: View {
                 }
             }
         }
-        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    }
+
+    /// One row per day that has a mark, plus today, in date order. Used at accessibility text sizes.
+    private func dayList(palette: Palette) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(grid.rows.flatMap { $0 }.filter { shownInList($0) }) { cell in
+                if let date = cell.date, let day = cell.day {
+                    let state = states[date] ?? .empty
+                    let isToday = calendar.isDate(date, inSameDayAs: today)
+                    let label = StreakLabels.day(
+                        date: date, state: state, today: today, calendar: calendar, locale: locale
+                    )
+                    HStack(spacing: 12) {
+                        StreakDayMarker(
+                            state: state,
+                            isToday: isToday,
+                            isFuture: StreakWeek.isFuture(date, today: today, calendar: calendar),
+                            isCompact: false
+                        )
+                        Text(label)
+                            .font(.body.weight(isToday ? .bold : .regular))
+                            .foregroundStyle(palette.textPrimaryColor)
+                            .multilineTextAlignment(.leading)
+                        Spacer(minLength: 0)
+                    }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(label)
+                    .accessibilityIdentifier(AccessibilityID.streakCalendarDay(day))
+                }
+            }
+        }
+    }
+
+    private func shownInList(_ cell: MonthGrid.Cell) -> Bool {
+        guard let date = cell.date else { return false }
+        return calendar.isDate(date, inSameDayAs: today) || (states[date] ?? .empty) != .empty
     }
 
     @ViewBuilder
