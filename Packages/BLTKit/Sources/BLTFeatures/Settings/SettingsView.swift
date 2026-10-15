@@ -21,6 +21,7 @@ struct SettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 languageSection(palette: palette)
+                DailyPracticeSection(model: viewModel.practice)
                 section("About the content") {
                     Text(viewModel.contentStatement)
                     if !viewModel.allContentReviewed {

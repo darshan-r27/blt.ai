@@ -86,6 +86,8 @@ public enum AccessibilityID {
     public static let streakGoalDays = "streak.goalDays"
     public static let streakCalendar = "streak.calendar"
     public static let streakDone = "streak.done"
+    public static let streakPreviousMonth = "streak.calendar.previous"
+    public static let streakNextMonth = "streak.calendar.next"
 
     /// One day cell of the month calendar, by day of the month (1...31).
     public static func streakCalendarDay(_ dayOfMonth: Int) -> String {

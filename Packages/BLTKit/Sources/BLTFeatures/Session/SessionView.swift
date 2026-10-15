@@ -124,7 +124,12 @@ struct SessionView: View {
                 onContinue: { viewModel.advance() }
             )
         case .finished(let result):
-            SessionSummaryView(result: result, onDone: finish)
+            SessionSummaryView(
+                result: result,
+                practice: viewModel.practiceState,
+                calendar: viewModel.calendar,
+                onDone: finish
+            )
         }
     }
 
