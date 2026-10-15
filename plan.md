@@ -173,6 +173,105 @@ As in the approved plan (engine, storage, screen), with one paper per language a
 `content/<language>/exam/final.json`, each written after that language's Level 8 is reviewed. New-sentence
 prompts are shared between the two papers where natural.
 
+## Daily practice: two chapters a day, streaks, and reminders
+
+**Approved by the owner on 2026-10-14, with the wireframe.** Built by Sonnet agents in worktrees (at most
+three at a time), with `progress.md` updated after each wave. Decision record: DECISIONS 047 (written in S7).
+
+### Context
+The courses are long (2,000 phrases each) and the app has no reason to come back tomorrow. The owner wants a
+daily target of two "chapters", a Duolingo-style streak that is graphic and animated, and two reminders before
+the streak lapses (20 hours and 23 hours after the last session). Everything stays on the device: local
+notifications only, no network, no account (hard constraint 1 holds; `UserNotifications` is not on the
+forbidden list and needs no Info.plist usage string).
+
+### Decided with the owner
+- **Streak window: rolling 24 hours, with quiet hours.** The streak survives if the learner finishes a session
+  within 24 hours of the previous one. Reminders fire 20 h and 23 h after the last session. A reminder that
+  would land in quiet hours (default 10 pm to 8 am, changeable) moves to 30 minutes before quiet hours start
+  on the evening before; if both land on the same time, only one is sent.
+- **Chapter = one practice session** (up to 10 questions, about 5 minutes; due reviews count). Daily goal: 2.
+- **One finished session keeps the streak.** The second meets the daily goal, shown as a separate mark.
+- **Earned freezes.** One freeze per 7 streak days, hold at most 2, used automatically on a missed window and
+  shown as a snowflake. With none left the streak resets calmly; the longest streak is kept and shown.
+
+### Decisions I made (most likely to change first)
+1. **What the number counts.** Calendar dates on which the learner practised, inside an unbroken chain (no gap
+   over 24 hours, or a gap covered by a freeze). A learner practising every 23 hours gets one day per date.
+2. **Per course.** Each language has its own streak, goal and log, like its progress (DECISIONS 043).
+   Reminders follow the language being learned. Reset progress for a language clears its streak too.
+3. **A session counts when it reaches its summary screen** with at least one answer. Ending a session early
+   with answers also counts; opening and leaving does not.
+4. **Stored as a log, computed on read.** A new `practice.json` per course lists finished sessions (time and
+   number answered). Streak, freezes, goal days and the next reminder times are all computed from it, so
+   there is one source of truth and the rules are easy to test. The frozen `ProgressStore` is unchanged.
+5. **Permission is asked after the first finished session**, with a one-line reason shown first. If declined,
+   the Settings toggle explains how to turn notifications on in iOS Settings. Nothing nags.
+6. **Notification text never contains a phrase or the learner's name** (lock screens are public). It names
+   the streak length and the language being learned.
+7. **Colour.** The flame is amber, freezes blue, goal-met green. New tones go through the palette's existing
+   no-red test; Reset progress stays the only red (DECISIONS 037).
+8. **Motion.** SF Symbol flame with SwiftUI symbol effects and a keyframe burst at session end; bigger burst
+   and a badge at 7, 30, 50 and 100 days; a success haptic. With Reduce Motion on, the number fades in and
+   nothing bounces. UI-test launches already switch animations off (#33).
+
+### Improvements suggested beyond the request
+- Quiet hours (above): 20 h after a 7 am session is 3 am.
+- Freezes and a calm reset (above): a broken streak is the main reason learners quit, and "never red" applies.
+- Goal-met kept separate from the streak (above), so a short day still counts.
+- **Later, not in this plan:** a "send my streak to my partner" share card (iOS share sheet, no network in the
+  app), and a home-screen widget with the flame. Both fit the couple idea; ask when wanted.
+
+### Wireframe (approved together with this plan)
+Four screens: Home top (flame chip with count, "Today: 1 of 2 chapters" card with the next chapter, this
+week's strip of flames, freezes and goal marks, then the existing lessons by level); end of session (flame
+burst, new count, "Daily goal met", the week strip filling in, next freeze); streak screen (count, deadline
+"practise by 7:40 pm tomorrow", longest, freezes, goal days, a month calendar); reminders (the two
+notifications, and a Settings "Daily practice" section: reminders on or off, quiet hours, daily goal 2).
+
+### Chunks
+**Wave 1 (parallel, different files)**
+- **S1 Practice log and streak rules.** `Packages/BLTKit/Sources/BLTProgress/Practice/*` (new: session record,
+  log file and in-memory stores, `StreakCalculator`, streak and daily-goal summaries) and tests.
+  Constraints: pure functions over the log, injected clock and time zone, `.completeFileProtection`, atomic
+  writes, damaged file reported not overwritten (same pattern as `FileProgressStore`).
+  Proof: package tests covering 23-hour cadence, a 25-hour gap with and without a freeze, freeze earning and
+  the cap of 2, time-zone travel, daylight-saving change, midnight crossings, reset.
+- **S2 Reminder planning.** Pure `ReminderPlanner` (fire times from last session and quiet hours) in
+  `BLTProgress/Practice/`, a `ReminderScheduling` protocol, a fake, and the concrete local-notification
+  scheduler in the app target (`BLTApp/BLTApp/LocalReminderScheduler.swift`), which is the only file that
+  imports `UserNotifications`. Two fixed notification ids, replaced on every reschedule.
+  Proof: package tests for every quiet-hours case; `bash scripts/check-forbidden-apis.sh` clean.
+- **S3 Streak visuals.** `Packages/BLTKit/Sources/BLTDesign/*`: flame badge, week strip, month calendar,
+  celebration burst, new palette tones, VoiceOver labels ("13 day streak, 1 freeze left"), Reduce Motion.
+  Also adds every new accessibility id for Waves 2 and 3 up front. Proof: package tests incl. palette tests.
+
+**Wave 2 (parallel; needs Wave 1)**
+- **S4 Home.** `BLTFeatures/Home/*`: flame chip, Today card (chapter 1 and 2), week strip. Reuses
+  `ContinueLessonCard` patterns and `SessionPlanner` for what chapter 2 contains.
+- **S5 Session end and streak screen.** `BLTFeatures/Session/SessionSummaryView.swift` and new
+  `BLTFeatures/Streak/*`.
+- **S6 Settings.** `BLTFeatures/Settings/*`: Daily practice section, quiet hours, permission pre-prompt.
+- Proof: view-model tests in the package for each.
+
+**Wave 3 (needs Wave 2)**
+- **S7 Wiring, UI tests and docs.** `CourseServices`, `AppDependencies` (frozen contract: DECISIONS 047),
+  `RootView`, `CompositionRoot`, `UITestLaunch` (a launch argument to seed a practice log), Reset clears the
+  log, reschedule on session end, launch and return to foreground. UI tests: PR tier (streak shows and
+  grows after a session), full tier (settings, reset, audits at the largest text size). Docs: DECISIONS 047,
+  `docs/ARCHITECTURE.md`, `docs/HANDOFF.md`, `README.md`.
+
+### Verification
+1. `BLT_SIM="iPhone 17" scripts/test.sh package`
+2. `BLT_SIM="iPhone 17" scripts/test.sh app --tier pr`, then the full tier per class
+3. `swiftlint lint --config .swiftlint.yml --strict`, `bash scripts/check-forbidden-apis.sh`, Release build and
+   `scripts/check-binary.sh`
+4. Simulator: finish a session, see the burst and the count; check pending notifications at +20 h and +23 h
+   (and the quiet-hours shift) through a debug-only listing; Reduce Motion on and off.
+5. Owner's iPhone: allow notifications, finish a session in the morning and confirm the reminders arrive the
+   evening before quiet hours; VoiceOver on the streak screen.
+6. CI green on each PR.
+
 ## Deferred to v2 (planned, not dropped)
 This plan is v1.x: text-only multiple choice for two languages. Voice stays in v2, as already decided (024).
 The `script` field on every new phrase exists so v2 does not need a second review of 4,000 phrases.
