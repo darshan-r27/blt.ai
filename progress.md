@@ -1,29 +1,29 @@
 # Progress: two-way course plan (plan.md)
 
 ## Daily practice (plan.md "Daily practice")
-**Wave 1 built, not pushed (branch `wave1`, from `plan/daily-practice`; PR #39 for the plan is still open).**
+**Wave 1 built (PR #40; the plan is merged as PR #39).**
 - S1 practice log and streak rules: `BLTProgress/Practice/` (`PracticeSession`, `PracticeLog`, file and in-memory stores, `StreakCalculator`, `StreakSummary`), 43 tests.
 - S2 reminder planning: `QuietHours`, `ReminderPlanner`, `ReminderScheduling`, `FakeReminderScheduler` in `BLTProgress/Practice/` and `BLTApp/BLTApp/LocalReminderScheduler.swift` (the only `UserNotifications` import), 19 tests.
 - S3 streak visuals: `BLTDesign` flame badge, week strip, month calendar, celebration, palette tones (amber, blue, green), labels, and every accessibility id Waves 2 and 3 need.
 - Merged and checked together: package tests pass, SwiftLint strict clean, forbidden-API scan clean, app target builds. One concurrency warning in `StreakCelebrationView` (found in the merged build) is fixed.
 - Decisions made by the agents: a gap over 24 h misses `ceil(gap/24h) - 1` windows, one freeze each; a freeze is earned at each multiple of 7 chain dates, cap 2, kept across a reset; fall-back night (25 h) breaks a rolling-24 h streak unless a freeze is held; the planner takes a `ReminderContext` (SwiftLint's 5-parameter cap); reminder text is title "N day streak" plus a language-only body.
 - Not verified: how any streak view looks or animates (previews only), real notification delivery, `.completeFileProtection` (device only).
-**Wave 2 built, not pushed (branch `wave2`, on top of `wave1`).**
+**Wave 2 built (PR #41, on top of PR #40).**
 - S4 Home: flame chip, Today card (chapter rows, goal-met mark), week strip, freezes line, calm note when the log cannot be read; `HomeViewModel(dependencies:practiceLog:calendar:streakCalculator:)`, `ScenariosView(onOpenStreak:)`, `loadPractice()`; Reset also erases the practice log.
 - S5 session end and streak screen: `SessionViewModel(... practiceLog:calendar:onSessionRecorded:)` records a chapter once (summary reached, or early end with at least one answer); summary shows the burst, count, "Daily goal met", week strip and days to the next freeze; new `StreakView(viewModel:onDone:)` with `StreakViewModel(practiceLog:calendar:now:locale:dailyGoal:)`, month paging, deadline text.
 - S6 Settings: Daily practice section (reminders toggle, quiet hours, read-only daily goal 2), `PracticePreferences` store (device-wide file), notification pre-prompt (`NotificationsPromptView`, `NotificationsPromptRule.shouldAsk`), Reset also erases the practice log ("Your streak is cleared too.").
 - Merged and checked together: package tests pass, SwiftLint strict clean (300 files), forbidden-API scan clean, no compiler warnings, no shared or frozen file touched, `UserNotifications` imported only in `LocalReminderScheduler.swift`.
 - For S7: pass the real per-course `PracticeLogStore` to Home, Session and Streak view models, and the device-wide preferences store to Settings; supply `openSystemSettings` (`UIApplication.open(UIApplication.openSettingsURLString)`), because `openURL` is on the forbidden list; call `HomeViewModel.loadPractice()` when Home returns after a session; present the pre-prompt from session end (`shouldAsk` is true only for the first finished session across both courses); `onSessionRecorded` and `onPracticeSettingsChanged` are where reminders get rescheduled; the Continue card is kept under the Today card because `HomeUITests` needs `homeContinueLesson` (decide in S7); the daily goal is fixed at 2 and not yet passed into `SessionViewModel`.
 - Not verified: how any new screen looks (previews only), VoiceOver order, largest text size layout, Reduce Motion, the system permission dialog, the flame haptic.
-**Wave 3 built, not pushed (branch `wave3-s7`, on top of `wave2`).**
+**Wave 3 built (PR #42, on top of PR #41).**
 - S7 wiring: `AppDependencies.practiceLog` (per course), new `PracticeServices` (preferences store, reminder scheduler, both courses' logs, open-settings), `ReminderRescheduler`, `HomeFlow` (streak cover, pre-prompt, reschedule on session recorded, setting change, Reset, launch and foreground), `CompositionRoot` (`courses/<language>/practice.json`, `practice-preferences.json`, the real scheduler), UI-test launch arguments `--uitest-practice=<n>`, `--uitest-practice-<language>=<n>`, `--uitest-notifications=<state>` with a fake scheduler; DECISIONS 047; one shared streak calculator for Home, Session and the streak screen.
 - UI tests written and now run (2026-10-14): PR tier `HappyPathUITests` (3 new) passed; `DailyPracticeUITests` (9) and `AccessibilityPracticeUITests` (4) pass; the new large-text audits and reachability checks pass. Found and fixed: Home's plain audit reported 8 Dynamic Type findings because the lazy lesson list did not build rows that scroll away at large text (now a plain `VStack`); the capped month grid failed the streak-screen audit (at accessibility sizes it is now a list of marked days, nothing is capped); the Reminders switch test tapped the label (now taps the switch). Known and not ours: on the iPhone 17 simulator both name-entry audits fail ("keyboard did not dismiss"), also on code without this feature; they pass on iPhone 17e. One timeout of the change-name audit under load passed on rerun. The whole full tier then ran once on iPhone 17e (77 tests): 2 failures. `testChangeNameSheetAudit` flagged the new Daily practice footnote behind the Change name sheet (fixed by extending the narrow "Settings text behind the sheet" audit exception; passes). `testIntroAndNameEntryControlsAreReachableAtXXXL` (Continue not hittable) fails the same way on code without this feature, so it is not ours and is left alone. The full PR tier was not rerun in one piece after the last fixes; its classes passed individually.
 - Checked: package tests, SwiftLint strict, forbidden-API scan, Debug and Release builds with warnings as errors, `scripts/check-binary.sh`.
 - Docs updated by the orchestrator: ARCHITECTURE "Daily practice", HANDOFF item 0, README.
-- Next: run the whole full tier once on a quiet machine, owner looks at the screens, then push and open PRs.
+- Next: the owner looks at the screens and tests on an iPhone.
 
 ## Next (2026-10-14)
-- Daily practice feature: all three waves built locally; see above for what is owed.
+- Daily practice feature: built (PRs #40, #41, #42). Owed: the owner looks at the screens and tests on an iPhone (see HANDOFF item 0).
 
 ## Done (2026-10-12)
 - Level 2 content for both courses drafted (12 lessons, 240 phrases each, `unreviewed`), ahead of the Level 1 review at the owner's request.
