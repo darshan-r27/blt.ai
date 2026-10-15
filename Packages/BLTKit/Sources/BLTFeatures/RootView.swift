@@ -19,18 +19,22 @@ import SwiftUI
 public struct RootView: View {
     private let profileStore: any ProfileStore
     private let onLessonsChanged: @MainActor (LessonChange) -> Void
+    private let practice: PracticeServices
     @State private var courses: CourseCache
     @State private var gate: ProfileGateViewModel
 
     /// `makeCourse` builds the dependencies and the lesson importer for one language; it is called at most
-    /// once per language for the life of this view. After an import or a removal, `onLessonsChanged` tells the
+    /// once per language for the life of this view. `practice` holds the device-wide daily-practice pieces
+    /// (reminders, their choices, the way to iOS Settings; DECISIONS 047). After an import or a removal, `onLessonsChanged` tells the
     /// owner of the catalog to build a new root, which asks `makeCourse` again for the current language.
     public init(
         profileStore: any ProfileStore,
         makeCourse: @escaping @MainActor (CourseLanguage) -> CourseServices,
+        practice: PracticeServices = PracticeServices(),
         onLessonsChanged: @escaping @MainActor (LessonChange) -> Void = { _ in }
     ) {
         self.profileStore = profileStore
+        self.practice = practice
         self.onLessonsChanged = onLessonsChanged
         _courses = State(initialValue: CourseCache(make: makeCourse))
         _gate = State(initialValue: ProfileGateViewModel(store: profileStore))
@@ -70,7 +74,8 @@ public struct RootView: View {
                 onNameChanged: { gate.profileDidChange($0) },
                 onLanguageChanged: { gate.profileDidChange($0) },
                 lessonImporter: course.lessonImporter,
-                onLessonsChanged: onLessonsChanged
+                onLessonsChanged: onLessonsChanged,
+                practice: practice
             )
             // A different language is a different course: new catalog, new progress, new view models.
             .id(language)
@@ -100,119 +105,8 @@ private final class CourseCache {
     }
 }
 
-/// Home and everything reachable from it. Built only once there is a profile.
-///
-/// Home is reloaded when a session is dismissed and when Settings finishes a reset, so the cards
-/// never show figures from before the last answer.
-private struct HomeFlow: View {
-    /// A pushed screen. Plain values so the stack's path stays `Hashable`.
-    private enum Destination: Hashable {
-        case progress
-        case settings
-    }
-
-    /// The scenario whose session is on screen.
-    private struct SessionSelection: Identifiable {
-        let scenario: Scenario
-        var id: ScenarioID { scenario.id }
-    }
-
-    private let dependencies: AppDependencies
-    private let profileStore: any ProfileStore
-    private let name: String
-    private let onNameChanged: @MainActor (UserProfile) -> Void
-    private let onLanguageChanged: @MainActor (UserProfile) -> Void
-    private let lessonImporter: (any LessonImporting)?
-    private let onLessonsChanged: @MainActor (LessonChange) -> Void
-    @State private var home: HomeViewModel
-    @State private var path: [Destination] = []
-    @State private var session: SessionSelection?
-    @State private var isTakingExam = false
-
-    init(
-        dependencies: AppDependencies,
-        profileStore: any ProfileStore,
-        name: String,
-        onNameChanged: @escaping @MainActor (UserProfile) -> Void,
-        onLanguageChanged: @escaping @MainActor (UserProfile) -> Void,
-        lessonImporter: (any LessonImporting)?,
-        onLessonsChanged: @escaping @MainActor (LessonChange) -> Void
-    ) {
-        self.dependencies = dependencies
-        self.profileStore = profileStore
-        self.name = name
-        self.onNameChanged = onNameChanged
-        self.onLanguageChanged = onLanguageChanged
-        self.lessonImporter = lessonImporter
-        self.onLessonsChanged = onLessonsChanged
-        _home = State(initialValue: HomeViewModel(dependencies: dependencies))
-    }
-
-    var body: some View {
-        NavigationStack(path: $path) {
-            ScenariosView(
-                viewModel: home,
-                name: name,
-                language: dependencies.language,
-                onSelectScenario: select,
-                onOpenProgress: { path.append(.progress) },
-                onOpenSettings: { path.append(.settings) },
-                onOpenExam: { isTakingExam = true }
-            )
-            .navigationDestination(for: Destination.self) { destination in
-                switch destination {
-                case .progress:
-                    ProgressDestination(dependencies: dependencies)
-                case .settings:
-                    SettingsDestination(
-                        dependencies: dependencies,
-                        profileStore: profileStore,
-                        name: name,
-                        onDidReset: reloadHome,
-                        onDidChangeName: onNameChanged,
-                        onDidChangeLanguage: onLanguageChanged,
-                        lessonImporter: lessonImporter,
-                        onDidChangeLessons: onLessonsChanged
-                    )
-                }
-            }
-        }
-        .fullScreenCover(isPresented: $isTakingExam, onDismiss: reloadHome) {
-            if let paper = dependencies.examPaper {
-                ExamView(
-                    viewModel: ExamViewModel(
-                        paper: paper,
-                        language: dependencies.language,
-                        results: dependencies.examResults,
-                        now: dependencies.now
-                    ),
-                    onDone: { isTakingExam = false }
-                )
-                .bltScreenBackground()
-            }
-        }
-        .fullScreenCover(item: $session, onDismiss: reloadHome) { selection in
-            SessionView(
-                viewModel: SessionViewModel(scenario: selection.scenario, dependencies: dependencies),
-                onDone: { session = nil }
-            )
-            .bltScreenBackground()
-        }
-    }
-
-    private func select(_ id: ScenarioID) {
-        // An ID that is not in the catalog cannot come from a card, which is built from the same catalog.
-        guard let scenario = dependencies.catalog.scenarios.first(where: { $0.id == id }) else { return }
-        session = SessionSelection(scenario: scenario)
-    }
-
-    private func reloadHome() {
-        Task { await home.load() }
-    }
-}
-
 /// Owns the Progress view model so it lives as long as the pushed screen does.
-private struct ProgressDestination: View {
+struct ProgressDestination: View {
     @State private var viewModel: ProgressViewModel
 
     init(dependencies: AppDependencies) {
@@ -225,7 +119,7 @@ private struct ProgressDestination: View {
 }
 
 /// Owns the Settings view model, so a fresh visit starts without the last visit's reset message.
-private struct SettingsDestination: View {
+struct SettingsDestination: View {
     @State private var viewModel: SettingsViewModel
 
     init(
@@ -236,7 +130,9 @@ private struct SettingsDestination: View {
         onDidChangeName: @escaping @MainActor (UserProfile) -> Void,
         onDidChangeLanguage: @escaping @MainActor (UserProfile) -> Void,
         lessonImporter: (any LessonImporting)?,
-        onDidChangeLessons: @escaping @MainActor (LessonChange) -> Void
+        onDidChangeLessons: @escaping @MainActor (LessonChange) -> Void,
+        practice: PracticeServices,
+        onPracticeSettingsChanged: @escaping @Sendable () async -> Void
     ) {
         _viewModel = State(initialValue: SettingsViewModel(
             dependencies: dependencies,
@@ -247,7 +143,12 @@ private struct SettingsDestination: View {
             lessonImporter: lessonImporter,
             onDidChangeLessons: onDidChangeLessons,
             learningLanguage: dependencies.language,
-            onDidChangeLanguage: onDidChangeLanguage
+            onDidChangeLanguage: onDidChangeLanguage,
+            practicePreferences: practice.preferences,
+            practiceLog: dependencies.practiceLog,
+            reminders: practice.reminders,
+            onPracticeSettingsChanged: onPracticeSettingsChanged,
+            openSystemSettings: practice.openSystemSettings
         ))
     }
 

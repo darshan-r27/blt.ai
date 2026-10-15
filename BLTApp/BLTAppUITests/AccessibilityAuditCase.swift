@@ -15,6 +15,10 @@ class AccessibilityAuditCase: BLTUITestCase {
     enum Screen {
         case intro, nameEntry, language, languageChosen, home, question, feedback, progress
         case settings, settingsLanguageChoice, changeName
+        /// Daily practice (DECISIONS 047), all with a seeded 3 day streak: Home with the flame chip and the
+        /// Today card, the end-of-session summary with its streak block, the streak screen, and the Daily
+        /// practice section of Settings.
+        case homeWithStreak, sessionSummary, streakScreen, settingsDailyPractice
     }
 
     /// Launches fresh and navigates to `screen`.
@@ -48,7 +52,33 @@ class AccessibilityAuditCase: BLTUITestCase {
             return app
         case .settings, .settingsLanguageChoice, .changeName:
             return openSettingsScreen(screen, largestText: largestText)
+        case .homeWithStreak, .sessionSummary, .streakScreen, .settingsDailyPractice:
+            return openPracticeScreen(screen, largestText: largestText)
         }
+    }
+
+    private func openPracticeScreen(_ screen: Screen, largestText: Bool) -> XCUIApplication {
+        let app = launchHome(largestText: largestText, extraArguments: [PracticeArguments.streak(3)])
+        requireExists(app.element(AXID.homeStreakChip), "the flame chip")
+        switch screen {
+        case .sessionSummary:
+            do {
+                try finishFixtureSession(app)
+            } catch {
+                XCTFail("Could not reach the session summary: \(error)")
+            }
+            requireExists(app.element(AXID.sessionStreak), "the streak on the summary")
+        case .streakScreen:
+            tap(app.element(AXID.homeStreakChip), "the flame chip")
+            requireExists(app.element(AXID.streakScreen), "the streak screen")
+            requireExists(app.element(AXID.streakCount), "the streak count")
+        case .settingsDailyPractice:
+            goToSettings(app)
+            scrollIntoView(app.element(AXID.settingsReminders), in: app)
+        default:
+            break
+        }
+        return app
     }
 
     private func openSessionScreen(_ screen: Screen, largestText: Bool) -> XCUIApplication {
@@ -95,25 +125,6 @@ class AccessibilityAuditCase: BLTUITestCase {
         return app
     }
 
-    /// Swipes up (at most a few times) until the element can be tapped.
-    func scrollIntoView(_ element: XCUIElement, in app: XCUIApplication) {
-        requireExists(element, "the element to scroll to")
-        var swipes = 0
-        while !element.isHittable && swipes < 6 {
-            if app.keyboards.firstMatch.exists {
-                // `swipeUp()` starts near the bottom of the screen, which is the keyboard while a name field has
-                // focus, so nothing would scroll. Drag inside the scroll view, from above the keyboard.
-                let scroller = app.scrollViews.firstMatch
-                let from = scroller.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.45))
-                let to = scroller.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
-                from.press(forDuration: 0.1, thenDragTo: to)
-            } else {
-                app.swipeUp()
-            }
-            swipes += 1
-        }
-    }
-
     /// The one issue this file ignores: "Dynamic Type font sizes are partially unsupported" on the Change name
     /// sheet's Cancel and Save. They are plain `Button`s in a SwiftUI navigation-bar toolbar (no custom font),
     /// and the system caps the size of bar-button text, so the audit flags them at every size even though the
@@ -140,11 +151,24 @@ class AccessibilityAuditCase: BLTUITestCase {
     /// this on some runs and not others, on the same build (never seen locally on a clean simulator). It is not
     /// part of the sheet and VoiceOver cannot focus it while the sheet is up; the same text is audited on its own
     /// screen by `testSettingsAudit` and `testSettingsAuditAtXXXL`. Matched by audit type AND the text's two
-    /// possible openings (see `SettingsViewModel.contentStatement`), and only when auditing the Change name sheet.
+    /// possible openings (see `SettingsViewModel.contentStatement`) and the other texts listed in
+    /// `behindSheetPrefixes`, and only when auditing the Change name sheet.
     private static func isSettingsTextBehindSheet(_ issue: XCUIAccessibilityAuditIssue, onSheet: Bool) -> Bool {
         guard onSheet, issue.auditType == .contrast, let label = issue.element?.label else { return false }
-        return label.hasPrefix("These lessons were drafted") || label.hasPrefix("Every lesson was checked")
+        return behindSheetPrefixes.contains { label.hasPrefix($0) }
     }
+
+    /// The Settings texts that can sit behind the Change name sheet: the content statement above, the footnotes
+    /// of the Daily practice section (they move behind the sheet's scrim as the section grows) and the learning
+    /// language shown in the language picker. All are audited on their own by the Settings audits.
+    private static let behindSheetPrefixes = [
+        "These lessons were drafted",
+        "Every lesson was checked",
+        "Up to two short reminders",
+        "No reminders during quiet hours",
+        "Tamil",
+        "Telugu"
+    ]
 
     /// The fourth ignored case: a contrast issue on the language step's Continue button while it is disabled
     /// (nothing chosen yet). A disabled control is exempt from the contrast requirement (WCAG 1.4.3, inactive

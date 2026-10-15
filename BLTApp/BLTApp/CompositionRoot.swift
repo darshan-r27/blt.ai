@@ -6,6 +6,7 @@ import BLTProgress
 import BLTSession
 import Foundation
 import os
+import UIKit
 
 /// The one composition root: the only place that chooses concrete types and builds `AppDependencies`.
 /// Everything below it receives what it needs by injection.
@@ -35,6 +36,9 @@ struct CompositionRoot {
         /// again, so lessons the learner just imported (or removed) take effect in a new root. The progress
         /// stores behind it are built once and reused, so nothing is erased or re-seeded by a reload.
         let makeCourse: @MainActor (CourseLanguage) -> CourseServices
+        /// The device-wide daily-practice pieces: reminder choices, the reminder scheduler, either course's
+        /// practice log, and the way to this app's page in iOS Settings (DECISIONS 047).
+        let practice: PracticeServices
     }
 
     /// Async because a UI-test launch may have to erase its files before anything reads them.
@@ -74,6 +78,26 @@ struct CompositionRoot {
         courseDirectory(for: language).appending(path: "exam.json", directoryHint: .notDirectory)
     }
 
+    /// Where one language's finished practice sessions are kept: the streak is computed from this file (DECISIONS 047).
+    static func practiceLogFileURL(for language: CourseLanguage) -> URL {
+        courseDirectory(for: language).appending(path: "practice.json", directoryHint: .notDirectory)
+    }
+
+    /// The learner's reminder choices. One file for the device, not one per course: the choices are about the
+    /// phone (notifications, quiet hours), not about a language.
+    static var practicePreferencesFileURL: URL {
+        supportFileURL(named: "practice-preferences.json")
+    }
+
+    /// Opens this app's page in iOS Settings, where the learner can turn notifications back on. The one UIKit call
+    /// the daily-practice feature needs: SwiftUI's `openURL` is on the forbidden-API list, and `UIApplication.open`
+    /// reaches only the Settings page the system itself names, never a web address.
+    @MainActor
+    static func openSystemSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(url)
+    }
+
     /// Where one language's imported lesson files live.
     static func importedContentDirectory(for language: CourseLanguage) -> URL {
         courseDirectory(for: language).appending(path: "content", directoryHint: .isDirectory)
@@ -85,7 +109,8 @@ struct CompositionRoot {
         sweepLegacyFiles()
         let stores = CourseStores(
             make: { FileProgressStore(fileURL: Self.progressFileURL(for: $0)) },
-            makeExam: { FileExamResultStore(fileURL: Self.examResultsFileURL(for: $0)) }
+            makeExam: { FileExamResultStore(fileURL: Self.examResultsFileURL(for: $0)) },
+            makePractice: { FilePracticeLogStore(fileURL: Self.practiceLogFileURL(for: $0)) }
         )
         return Composed(
             profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json")),
@@ -99,7 +124,8 @@ struct CompositionRoot {
                         scheduler: SM2Scheduler(),
                         now: { Date.now },
                         examResults: stores.examStore(for: language),
-                        examPaper: Self.loadExamPaper(for: language, catalog: catalog)
+                        examPaper: Self.loadExamPaper(for: language, catalog: catalog),
+                        practiceLog: stores.practiceLog(for: language)
                     ),
                     lessonImporter: ImportedContentStore(
                         directory: Self.importedContentDirectory(for: language),
@@ -107,7 +133,13 @@ struct CompositionRoot {
                         language: language
                     )
                 )
-            }
+            },
+            practice: PracticeServices(
+                preferences: FilePracticePreferencesStore(fileURL: Self.practicePreferencesFileURL),
+                reminders: LocalReminderScheduler(),
+                logs: { stores.practiceLog(for: $0) },
+                openSystemSettings: { Self.openSystemSettings() }
+            )
         )
     }
 
@@ -176,16 +208,22 @@ struct CourseStores: Sendable {
     private let telugu: any ProgressStore
     private let tamilExam: any ExamResultStore
     private let teluguExam: any ExamResultStore
+    private let tamilPractice: any PracticeLogStore
+    private let teluguPractice: any PracticeLogStore
 
-    /// `makeExam` defaults to in-memory stores: only the shipping composition keeps exam attempts on disk.
+    /// `makeExam` and `makePractice` default to in-memory stores: only the shipping composition keeps exam
+    /// attempts and practice sessions on disk (a UI-test launch keeps its own separate practice files).
     init(
         make: (CourseLanguage) -> any ProgressStore,
-        makeExam: (CourseLanguage) -> any ExamResultStore = { _ in InMemoryExamResultStore() }
+        makeExam: (CourseLanguage) -> any ExamResultStore = { _ in InMemoryExamResultStore() },
+        makePractice: (CourseLanguage) -> any PracticeLogStore = { _ in InMemoryPracticeLogStore() }
     ) {
         tamil = make(.tamil)
         telugu = make(.telugu)
         tamilExam = makeExam(.tamil)
         teluguExam = makeExam(.telugu)
+        tamilPractice = makePractice(.tamil)
+        teluguPractice = makePractice(.telugu)
     }
 
     func store(for language: CourseLanguage) -> any ProgressStore {
@@ -199,6 +237,13 @@ struct CourseStores: Sendable {
         switch language {
         case .tamil: tamilExam
         case .telugu: teluguExam
+        }
+    }
+
+    nonisolated func practiceLog(for language: CourseLanguage) -> any PracticeLogStore {
+        switch language {
+        case .tamil: tamilPractice
+        case .telugu: teluguPractice
         }
     }
 }

@@ -26,9 +26,9 @@ graph TD
 |---|---|---|
 | `BLTCore` | Small shared value types: item and scenario ids, register, addressee, outcome, review status | none |
 | `BLTCatalog` | Reads lesson JSON, validates it (schema, option rules, size limits) and builds the `Catalog`. Never throws: every problem becomes a `ContentIssue` and valid items survive | Core |
-| `BLTProgress` | SM-2 scheduling, the progress file and the profile (name and language) file, with typed errors, and the one-time clean-up of the old build's files | Core |
+| `BLTProgress` | SM-2 scheduling, the progress file and the profile (name and language) file, exam results, the practice log, streak rules and reminder planning, with typed errors, and the one-time clean-up of the old build's files | Core |
 | `BLTSession` | Picks what to ask (due items first, then new ones, shuffled), builds the four options, and runs the question state machine | Core, Catalog, Progress |
-| `BLTDesign` | Palette, theme, buttons, shimmer, completion bar. The only module that knows colours | Core |
+| `BLTDesign` | Palette, theme, buttons, shimmer, completion bar, and the streak visuals (flame, week strip, month calendar, celebration). The only module that knows colours | Core |
 | `BLTContentStore` | Finds the bundled lesson files, layers the learner's imported lessons over them, and validates and stores imports | Core, Catalog |
 | `BLTFeatures` | The screens (intro, onboarding, Home, session, Progress, Settings) and their view models | all of the above |
 | `BLTApp` | Entry point and the composition root: the one place that chooses concrete types | BLTFeatures |
@@ -50,6 +50,9 @@ graph TD
 | `profile.json` | The learner's display name and the language being learned (shared by both courses) |
 | `courses/<language>/progress.json` | That language's review states and answer history |
 | `courses/<language>/content/` | That language's imported lesson files and their manifest (only after an import) |
+| `courses/<language>/exam.json` | That language's final-exam attempts (score only) |
+| `courses/<language>/practice.json` | That language's log of finished practice sessions (time and number answered). The streak, freezes and goal days are computed from it, never stored |
+| `practice-preferences.json` | Device-wide daily-practice settings: reminders on or off, quiet hours, whether the notification prompt was already shown |
 
 `<language>` is `tamil` or `telugu`. The bundled lessons are `content/<language>/` inside the app. The display name is the only personal data and it never leaves the device ([`DECISIONS.md`](DECISIONS.md) 030).
 
@@ -102,10 +105,24 @@ The learner's language is only known after the profile has loaded, so the root i
 | Import | Into the current language only; a file for the other language is refused with a plain message |
 | Exam | One 100-question paper per language (041, 046). The engine, the screen, score-only result storage (`courses/<language>/exam.json`) and the paper loader are built; Home shows the exam card only when a paper loads, and no paper is written yet |
 
+## Daily practice
+
+[`DECISIONS.md`](DECISIONS.md) 047 and `plan.md` ("Daily practice") describe it. A chapter is one practice session; the daily goal is two chapters. Everything stays on the device.
+
+| Piece | Where | How it works |
+|---|---|---|
+| Log and streak rules | `BLTProgress/Practice/` | `PracticeLogStore` (file and in-memory) holds finished sessions. `StreakCalculator` is a pure function of the log, the time and a calendar: rolling 24-hour window, one freeze earned per 7 streak days (at most 2), goal days, the "practise by" deadline and the day sets for the calendar views |
+| Reminders | `BLTProgress/Practice/` and `BLTApp/BLTApp/LocalReminderScheduler.swift` | `ReminderPlanner` (pure) turns the last session, quiet hours and the streak into at most two reminders, 20 and 23 hours after the last session, moved out of quiet hours. `LocalReminderScheduler` is the only file that imports `UserNotifications`; the text names the streak length and the language, never a phrase or the learner's name |
+| Settings and permission | `BLTProgress/Practice/PracticePreferences*`, `BLTFeatures/Settings/` | One device-wide preferences file; a pre-prompt after the first finished session, shown once |
+| Screens | `BLTDesign` (flame, week strip, month calendar, celebration), `BLTFeatures/{Home,Session,Streak,Settings}` | Home shows the chip, the Today card and the week; the session summary shows the streak; the streak screen has the calendar |
+| Wiring | `PracticeServices`, `ReminderRescheduler`, `HomeFlow` in `BLTFeatures`; `CompositionRoot` | Per-course log on `AppDependencies.practiceLog`; device-wide pieces in `PracticeServices`. Reminders are rescheduled when a session is recorded, a setting changes, Reset runs, at launch and on return to the foreground |
+
+Reset progress for a language also clears that language's practice log and cancels its reminders. The preferences file is not progress, so Reset keeps it.
+
 ## Where v2 (voice) plugs in
 
 `Outcome` and the session state machine are deliberately independent of how an answer is produced, so spoken answers can feed the same scheduler. The audio and scoring modules described in the PRD do not exist yet and would be new modules beside these. Their constraints (on-device speech only, audio deleted after each attempt) are written down in `CLAUDE.md` and [`SECURITY.md`](SECURITY.md) so they apply from the first line.
 
 ## Decisions
 
-The reasoning behind each choice is in [`DECISIONS.md`](DECISIONS.md), including the ones that were reversed. Decisions 024 to 037 define v1; 038 to 044 define the two-course plan.
+The reasoning behind each choice is in [`DECISIONS.md`](DECISIONS.md), including the ones that were reversed. Decisions 024 to 037 define v1; 038 to 046 define the two-course plan; 047 defines daily practice.

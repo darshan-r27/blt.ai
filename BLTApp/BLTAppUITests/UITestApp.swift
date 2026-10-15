@@ -150,10 +150,12 @@ class BLTUITestCase: XCTestCase {
         reset: Bool = false,
         name: String? = nil,
         language: UITestLanguage? = nil,
-        largestText: Bool = false
+        largestText: Bool = false,
+        extraArguments: [String] = []
     ) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchArguments = Self.arguments(reset: reset, name: name, language: language, largestText: largestText)
+            + extraArguments
         app.launch()
         return app
     }
@@ -193,9 +195,16 @@ class BLTUITestCase: XCTestCase {
     func launchHome(
         name: String = "ZzTest",
         language: UITestLanguage = .tamil,
-        largestText: Bool = false
+        largestText: Bool = false,
+        extraArguments: [String] = []
     ) -> XCUIApplication {
-        let app = launch(reset: true, name: name, language: language, largestText: largestText)
+        let app = launch(
+            reset: true,
+            name: name,
+            language: language,
+            largestText: largestText,
+            extraArguments: extraArguments
+        )
         requireExists(app.element(AXID.greeting), "Home greeting after launch")
         return app
     }

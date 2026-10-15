@@ -19,6 +19,11 @@ public struct AppDependencies: Sendable {
     /// The course's final-exam paper, or `nil` while it has none (the papers are written after Level 8 is
     /// reviewed). With `nil`, Home shows no exam entry.
     public let examPaper: ExamPaper?
+    /// Where this course's finished practice sessions are kept (DECISIONS 047). Per course, like `store`: the
+    /// streak, freezes and daily goal are computed from it, and Reset progress erases it. The device-wide
+    /// pieces (reminder choices, the notification scheduler) are not here: they belong to the device, not to
+    /// a course, and travel in `PracticeServices`.
+    public let practiceLog: any PracticeLogStore
 
     public init(
         catalog: Catalog,
@@ -27,7 +32,8 @@ public struct AppDependencies: Sendable {
         scheduler: any Scheduler,
         now: @escaping @Sendable () -> Date,
         examResults: any ExamResultStore = InMemoryExamResultStore(),
-        examPaper: ExamPaper? = nil
+        examPaper: ExamPaper? = nil,
+        practiceLog: any PracticeLogStore = InMemoryPracticeLogStore()
     ) {
         self.catalog = catalog
         self.language = language
@@ -36,5 +42,6 @@ public struct AppDependencies: Sendable {
         self.now = now
         self.examResults = examResults
         self.examPaper = examPaper
+        self.practiceLog = practiceLog
     }
 }

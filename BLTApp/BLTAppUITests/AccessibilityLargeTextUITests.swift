@@ -21,6 +21,12 @@ final class AccessibilityLargeTextUITests: AccessibilityAuditCase {
     func testSettingsLanguageChoiceAuditAtXXXL() throws { try audit(.settingsLanguageChoice, largestText: true) }
     func testChangeNameSheetAuditAtXXXL() throws { try audit(.changeName, largestText: true) }
 
+    // Daily practice (DECISIONS 047), with a seeded 3 day streak
+    func testHomeWithStreakAuditAtXXXL() throws { try audit(.homeWithStreak, largestText: true) }
+    func testSessionSummaryAuditAtXXXL() throws { try audit(.sessionSummary, largestText: true) }
+    func testStreakScreenAuditAtXXXL() throws { try audit(.streakScreen, largestText: true) }
+    func testSettingsDailyPracticeAuditAtXXXL() throws { try audit(.settingsDailyPractice, largestText: true) }
+
     // MARK: Reachability at the largest size
 
     func testIntroAndNameEntryControlsAreReachableAtXXXL() {
@@ -80,5 +86,20 @@ final class AccessibilityLargeTextUITests: AccessibilityAuditCase {
         XCTAssertTrue(app.textFields[AXID.changeNameField].isHittable, "Name field")
         XCTAssertTrue(app.buttons[AXID.changeNameSave].isHittable, "Save")
         XCTAssertTrue(app.buttons[AXID.changeNameCancel].isHittable, "Cancel")
+    }
+
+    func testStreakScreenDoneIsReachableAtXXXL() {
+        let app = open(.streakScreen, largestText: true)
+        scrollIntoView(app.buttons[AXID.streakDone], in: app)
+        XCTAssertTrue(app.buttons[AXID.streakDone].isHittable, "Done on the streak screen")
+    }
+
+    func testDailyPracticeControlsAreReachableAtXXXL() {
+        let app = open(.settingsDailyPractice, largestText: true)
+        XCTAssertTrue(app.switches[AXID.settingsReminders].isHittable, "Reminders toggle")
+        for identifier in [AXID.settingsQuietHoursStart, AXID.settingsQuietHoursEnd] {
+            scrollIntoView(app.element(identifier), in: app)
+            XCTAssertTrue(app.element(identifier).isHittable, "Quiet hours picker \(identifier)")
+        }
     }
 }

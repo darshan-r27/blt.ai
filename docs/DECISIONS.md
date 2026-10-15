@@ -458,3 +458,45 @@ Each course's paper is one file, `content/<language>/exam/final.json`. It is a l
 - `fromLessons`: the ids of items taken from the lessons (about 30). Their level is the level of their lesson.
 
 `ExamPaperLoader` (BLTSession) reads the file and refuses the whole paper on any problem; nothing is repaired or skipped, so a learner never gets a short or odd exam. Checks: the items pass `ContentLoader` for that course's language; every `examLevel` is valid; every `fromLessons` id exists and appears once; a new sentence repeats no lesson prompt or answer (same letters-and-digits comparison as the course duplicate rule); and, with `ExamBlueprint.syllabus`, the per-level counts of the syllabus table (30 from lessons, 70 new, 100 in all), at least 40 questions carrying a register choice, and no lesson used more than twice. The app loads the paper from the bundle at launch; a refused paper is logged by count and hides the exam. `ShippedExamPaperTests` makes a shipped paper that does not load a failing test. The `exam` folder is not read as lessons (the lesson loader reads only the files directly in a course folder, and `scripts/content-index.sh` skips `exam`).
+
+## 047 — Daily practice: a rolling-24-hour streak, a daily goal of two chapters, and local reminders
+**Status:** active — approved by the owner on 2026-10-14 (plan.md "Daily practice"); built in Waves 1 to 3 (chunks S1 to S7). Adds `practiceLog` to the frozen `AppDependencies` (below) and a device-wide `PracticeServices` beside it. Nothing here touches the network, so hard constraint 1 holds.
+
+The courses are long and the app had no reason to be opened tomorrow. Each course now has a streak, a small daily goal and two gentle reminders. All of it is computed on the phone from a plain list of finished sessions.
+
+**The rules** (`StreakCalculator`, pure functions of a log, a moment and a calendar; the package tests cover them)
+
+- **Rolling 24 hours.** The streak survives while each session finishes within 24 hours of the one before (exactly 24 counts). The hours are real elapsed time, not calendar days.
+- **Chapter.** One practice session is one chapter (up to 10 questions, due reviews included). It counts when it reaches its summary with at least one answer, or when the learner ends it early with at least one answer; opening a session and leaving does not. **Daily goal: 2 chapters** a calendar day, shown apart from the streak: one finished session keeps the streak, the second meets the goal. The goal is fixed (one `StreakCalculator` is shared by Home, the session end and the streak screen so they cannot disagree) and is not stored.
+- **The number** is the count of calendar dates with a session inside an unbroken chain, so practising every 23 hours still adds one per date.
+- **Freezes.** One is earned at each multiple of 7 chain days, at most 2 are held, and they are used automatically, one per missed 24-hour window (a gap of `g` misses `ceil(g / 24 h) - 1` windows), shown as a snowflake. With too few freezes the streak resets calmly; the longest streak is kept and freezes already held stay for the next chain. Reset progress erases the whole log, so the freezes and the longest streak go with it.
+- **Per course.** Each language has its own streak, goal and freezes, like its progress (043). Reminders follow the language being learned.
+- **Consequence of the rolling window: the night the clocks go back.** On that night "the same time tomorrow" is 25 hours away, which is more than 24, so a learner who practises at the same time every day loses the streak unless a freeze is held (and the freeze is spent). We accepted this rather than counting calendar days, because the owner chose the rolling 24-hour rule and the reminders (20 and 23 hours) are built on it. The reminders still fire in time, and the fix for a learner who is bitten is the freeze. It is a tested case (`StreakCalculator` daylight-saving tests), not a surprise.
+
+**Storage**
+
+- `Application Support/BLT/courses/<language>/practice.json`: the course's finished sessions (time and number answered), written atomically with `.completeFileProtection` (checked on the owner's iPhone, not in the Simulator), a damaged file reported and never overwritten, as `FileProgressStore` does. Streak, freezes, goal days and reminder times are all computed on read, so there is one source of truth and the frozen `ProgressStore` is unchanged. Reset progress erases the log; Home's own reset (offered only for a damaged progress file) does too.
+- `Application Support/BLT/practice-preferences.json`: one device-wide file with reminders on or off, the quiet hours (default 10 pm to 8 am) and whether the learner was ever asked about notifications. It is not progress, so Reset keeps it.
+
+**`AppDependencies` change (the frozen contract)**
+
+- `AppDependencies` gains `practiceLog: any PracticeLogStore`, per course, defaulting to `InMemoryPracticeLogStore()` so every existing call site compiles. It sits beside `store` and `examResults` for the same reason: it belongs to one course and Reset erases it.
+- The device-wide pieces do not go on `AppDependencies` (a per-course struct would hold two copies of one thing). They travel in a new `PracticeServices` (`preferences`, `reminders`, `logs(language)`, `openSystemSettings`), passed to `RootView(practice:)` beside `makeCourse`; its defaults are in-memory and inert. `logs(language)` reaches either course's log so the app can count finished sessions across both courses; the composition root builds each log once, so it is the same store that course's `AppDependencies.practiceLog` holds. `CourseServices` is unchanged.
+- `openSystemSettings` is a closure the composition root supplies with `UIApplication.open(UIApplication.openSettingsURLString)`, the one UIKit call the feature needs: SwiftUI's `openURL` is on the forbidden-API list, and this call reaches only the page iOS itself names for the app.
+
+**Reminders**
+
+- **Local notifications only.** Two fixed notification ids, 20 and 23 hours after the last finished session, replaced on every reschedule (never added to). `BLTApp/BLTApp/LocalReminderScheduler.swift` is the only file that imports `UserNotifications`; everything else talks to the `ReminderScheduling` protocol and a fake. No account, no push, no network, and no usage string in `Info.plist` is needed.
+- **Text carries no phrase and no name**, because a lock screen is public: the title is "N day streak" (or "<Language> practice" with no streak) and the body names only the language and a short chapter.
+- **Quiet hours.** A reminder that would land inside quiet hours moves to 30 minutes before they start, on the evening before; if both land on the same moment only one is sent (`ReminderPlanner`).
+- **When it reschedules** (`ReminderRescheduler`, for the language being learned only): after a session is recorded, after any Daily practice setting or the permission answer is saved, after Reset progress, at launch, and when the app returns to the foreground. Switching language rebuilds Home, which reschedules for the new course. It reads everything fresh and either schedules the plan or cancels both reminders: when they are off, when iOS does not allow them, when the course has no finished session, and when the preferences or the log cannot be read (a reminder built on a guess could be wrong; a missing one is only a missed nudge).
+- **Permission is asked once.** After the very first finished session across both courses (`finishedSessionCount == 1`, counting the one that just ended), if the learner was never asked and iOS has not been asked either, a one-line reason is shown first with Allow and Not now (`NotificationsPromptRule`). Either choice, or swiping it away, records that the learner was asked; the app never asks again by itself. If iOS has the permission off, Settings explains it and offers "Open iOS Settings"; nothing nags.
+
+**UI tests.** A UI-test launch uses a fake reminder scheduler (its permission state set by `--uitest-notifications=`) and a do-nothing "open iOS Settings", so no test touches real notifications. `--uitest-practice=<count>` seeds a streak and fixes the app's clock to noon today, so the tests do not depend on the hour they run at.
+
+**Deliberately not done**
+
+- **A share card** ("send my streak to my partner", through the iOS share sheet) and **a home-screen widget** with the flame. Both fit the couple idea and need no network, but both are new surfaces; they wait until the owner asks.
+- **Any network path** (push notifications, a server that knows the streak, sync between the two phones). The streak lives in a file on the phone.
+- **A changeable daily goal.** It is fixed at 2 and shown read-only in Settings.
+- **Not verified in the Simulator:** how the screens look and move (previews and audits only), real notification delivery at +20 h and +23 h and the quiet-hours shift, the system permission dialog, the flame haptic, VoiceOver order, and file protection. These need the owner's iPhone.

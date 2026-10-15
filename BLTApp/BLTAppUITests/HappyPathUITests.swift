@@ -80,4 +80,47 @@ final class HappyPathUITests: BLTUITestCase {
             "the Import lessons helper text"
         )
     }
+
+    // MARK: Daily practice (DECISIONS 047)
+    // A seeded launch (`--uitest-practice=3`) has a 3 day streak ending yesterday evening, and an app clock fixed
+    // to noon today, so these never depend on the hour they run at.
+
+    /// Home: the flame chip shows the seeded streak, above the Today card.
+    func testHomeShowsTheSeededStreakOnTheFlameChip() {
+        let app = launchHome(extraArguments: [PracticeArguments.streak(3)])
+
+        let chip = app.element(AXID.homeStreakChip)
+        requireLabel(of: chip, containing: "3 day streak")
+        requireExists(app.element(AXID.homeTodayCard), "the Today card")
+        XCTAssertLessThan(chip.frame.minY, app.element(AXID.homeTodayCard).frame.minY, "The chip sits above the card")
+    }
+
+    /// Session end and Home: finishing a session grows the streak, shows the streak block on the summary, and the
+    /// new count is on the chip when Home returns.
+    func testFinishingASessionGrowsTheStreakAndShowsItOnTheSummary() throws {
+        let app = launchHome(extraArguments: [PracticeArguments.streak(3)])
+
+        try finishFixtureSession(app)
+
+        requireLabel(of: app.element(AXID.sessionStreak), containing: "4 day streak")
+        tap(app.buttons["Done"], "Done")
+        requireExists(app.element(AXID.greeting), "Home after Done")
+        requireLabel(of: app.element(AXID.homeStreakChip), containing: "4 day streak")
+    }
+
+    /// The streak screen: opens from the chip with the count and the deadline in words; Done returns to Home.
+    func testStreakScreenOpensFromTheChipAndDoneReturnsHome() {
+        let app = launchHome(extraArguments: [PracticeArguments.streak(3)])
+
+        tap(app.element(AXID.homeStreakChip), "the flame chip")
+
+        requireExists(app.element(AXID.streakScreen), "the streak screen")
+        requireLabel(of: app.element(AXID.streakCount), containing: "3 day streak")
+        // The last session was yesterday at 6 pm, the clock says noon: the deadline is 6 pm today.
+        requireLabel(of: app.element(AXID.streakDeadline), containing: "Practise by")
+        requireLabel(of: app.element(AXID.streakDeadline), containing: "today")
+        tap(app.buttons[AXID.streakDone], "Done on the streak screen")
+        requireExists(app.element(AXID.greeting), "Home after Done")
+        requireGone(app.element(AXID.streakScreen), "the streak screen")
+    }
 }

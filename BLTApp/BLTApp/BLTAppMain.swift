@@ -30,6 +30,7 @@ struct BLTAppMain: App {
             RootView(
                 profileStore: composed.profileStore,
                 makeCourse: composed.makeCourse,
+                practice: composed.practice,
                 onLessonsChanged: { change in lessonsDidChange(change) }
             )
             .id(generation)

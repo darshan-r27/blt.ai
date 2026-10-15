@@ -93,6 +93,7 @@ final class SessionViewModel {
         random: SessionRandomSource = .system,
         practiceLog: any PracticeLogStore = InMemoryPracticeLogStore(),
         calendar: Calendar = .current,
+        streakCalculator: StreakCalculator = StreakCalculator(),
         onSessionRecorded: @escaping @Sendable (StreakSummary) async -> Void = { _ in }
     ) {
         self.scenario = scenario
@@ -102,7 +103,7 @@ final class SessionViewModel {
         self.recorder = PracticeRecorder(
             log: practiceLog,
             calendar: calendar,
-            calculator: StreakCalculator(),
+            calculator: streakCalculator,
             onRecorded: onSessionRecorded
         )
     }
