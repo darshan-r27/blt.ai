@@ -1,5 +1,15 @@
 # Progress: two-way course plan (plan.md)
 
+## Daily practice (plan.md "Daily practice")
+**Wave 1 built (PR #40; the plan is merged as PR #39).**
+- S1 practice log and streak rules: `BLTProgress/Practice/` (`PracticeSession`, `PracticeLog`, file and in-memory stores, `StreakCalculator`, `StreakSummary`), 43 tests.
+- S2 reminder planning: `QuietHours`, `ReminderPlanner`, `ReminderScheduling`, `FakeReminderScheduler` in `BLTProgress/Practice/` and `BLTApp/BLTApp/LocalReminderScheduler.swift` (the only `UserNotifications` import), 19 tests.
+- S3 streak visuals: `BLTDesign` flame badge, week strip, month calendar, celebration, palette tones (amber, blue, green), labels, and every accessibility id Waves 2 and 3 need.
+- Merged and checked together: package tests pass, SwiftLint strict clean, forbidden-API scan clean, app target builds. One concurrency warning in `StreakCelebrationView` (found in the merged build) is fixed.
+- Decisions made by the agents: a gap over 24 h misses `ceil(gap/24h) - 1` windows, one freeze each; a freeze is earned at each multiple of 7 chain dates, cap 2, kept across a reset; fall-back night (25 h) breaks a rolling-24 h streak unless a freeze is held; the planner takes a `ReminderContext` (SwiftLint's 5-parameter cap); reminder text is title "N day streak" plus a language-only body.
+- Not verified: how any streak view looks or animates (previews only), real notification delivery, `.completeFileProtection` (device only).
+- Next: Wave 2 (S4 Home, S5 session end and streak screen, S6 Settings), then Wave 3 (S7 wiring, UI tests, DECISIONS 047).
+
 ## Next (2026-10-14)
 - Daily practice feature approved (plan.md, "Daily practice"): two chapters a day, rolling 24-hour streak with earned freezes, reminders 20 h and 23 h after the last session with quiet hours. Start with Wave 1 (S1 to S3).
 
