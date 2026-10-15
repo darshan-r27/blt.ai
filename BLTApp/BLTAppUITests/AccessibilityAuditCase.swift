@@ -151,11 +151,24 @@ class AccessibilityAuditCase: BLTUITestCase {
     /// this on some runs and not others, on the same build (never seen locally on a clean simulator). It is not
     /// part of the sheet and VoiceOver cannot focus it while the sheet is up; the same text is audited on its own
     /// screen by `testSettingsAudit` and `testSettingsAuditAtXXXL`. Matched by audit type AND the text's two
-    /// possible openings (see `SettingsViewModel.contentStatement`), and only when auditing the Change name sheet.
+    /// possible openings (see `SettingsViewModel.contentStatement`) and the other texts listed in
+    /// `behindSheetPrefixes`, and only when auditing the Change name sheet.
     private static func isSettingsTextBehindSheet(_ issue: XCUIAccessibilityAuditIssue, onSheet: Bool) -> Bool {
         guard onSheet, issue.auditType == .contrast, let label = issue.element?.label else { return false }
-        return label.hasPrefix("These lessons were drafted") || label.hasPrefix("Every lesson was checked")
+        return behindSheetPrefixes.contains { label.hasPrefix($0) }
     }
+
+    /// The Settings texts that can sit behind the Change name sheet: the content statement above, the footnotes
+    /// of the Daily practice section (they move behind the sheet's scrim as the section grows) and the learning
+    /// language shown in the language picker. All are audited on their own by the Settings audits.
+    private static let behindSheetPrefixes = [
+        "These lessons were drafted",
+        "Every lesson was checked",
+        "Up to two short reminders",
+        "No reminders during quiet hours",
+        "Tamil",
+        "Telugu"
+    ]
 
     /// The fourth ignored case: a contrast issue on the language step's Continue button while it is disabled
     /// (nothing chosen yet). A disabled control is exempt from the contrast requirement (WCAG 1.4.3, inactive
