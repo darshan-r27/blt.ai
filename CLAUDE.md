@@ -61,6 +61,8 @@ Guessing wastes more of the human's time than asking does. He is reviewing for s
 
 **Definition of done:** acceptance criteria met, tests written and passing, `swiftlint --strict` clean, build has zero warnings, and a one-paragraph summary of what changed and what the human should verify on device.
 
+**Keep GitHub current.** Any change a learner can see or that changes how the app is built or stored (front end or back end) is not done until the repository says so, in the same pull request: add a line to `CHANGELOG.md` under the version it ships in (`MINOR` for a feature or structural change, `PATCH` for a fix, content, docs or tooling change); update `README.md` (the feature list, the module and storage text, the roadmap, and the screenshots when a screen changed: retake them from a current build, never edit old ones); update `docs/ARCHITECTURE.md` when structure or storage changed, `docs/DECISIONS.md` when a decision was made, and `docs/HANDOFF.md` and `progress.md`. After the owner merges, tag the merge commit (`vX.Y.Z`) only when the owner says so. If a screenshot cannot be retaken, say so in the pull request rather than leaving a stale one.
+
 ## What not to do
 
 - Do not mark a task complete when part of it is unverified. Say which part.

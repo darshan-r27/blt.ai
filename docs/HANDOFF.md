@@ -15,6 +15,7 @@ Read this first in a new session, then `CLAUDE.md`. Last updated 2026-10-12 (Lev
 
 **Owner preferences to keep honouring**
 - TL;DR first (what worked, what failed, what you need), plain language, short.
+- **Every change updates GitHub in the same PR**: `CHANGELOG.md` (versioned), `README.md` (features and fresh screenshots), ARCHITECTURE, DECISIONS, HANDOFF (rule in `CLAUDE.md`, "Keep GitHub current").
 - **Never archive any of the owner's sessions without asking** (auto-archive on PR close is turned off).
 - Ask before overriding anything the owner set in Xcode or the docs. Do NOT commit `BLTApp/BLTApp.xcodeproj/project.pbxproj` (it carries the owner's local signing team id; an uncommitted change in the owner's clone). Stage explicit paths only.
 - Remote Control is on for the working sessions. If a session resumes after a usage limit, the owner wants model effort **High** (a session cannot change its own effort; ask the owner or use the picker).
