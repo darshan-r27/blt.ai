@@ -1,14 +1,14 @@
 # Progress: two-way course plan (plan.md)
 
 ## Daily practice (plan.md "Daily practice")
-**Wave 1 built, not pushed (branch `wave1`, from `plan/daily-practice`; PR #39 for the plan is still open).**
+**Wave 1 built (PR #40; the plan is merged as PR #39).**
 - S1 practice log and streak rules: `BLTProgress/Practice/` (`PracticeSession`, `PracticeLog`, file and in-memory stores, `StreakCalculator`, `StreakSummary`), 43 tests.
 - S2 reminder planning: `QuietHours`, `ReminderPlanner`, `ReminderScheduling`, `FakeReminderScheduler` in `BLTProgress/Practice/` and `BLTApp/BLTApp/LocalReminderScheduler.swift` (the only `UserNotifications` import), 19 tests.
 - S3 streak visuals: `BLTDesign` flame badge, week strip, month calendar, celebration, palette tones (amber, blue, green), labels, and every accessibility id Waves 2 and 3 need.
 - Merged and checked together: package tests pass, SwiftLint strict clean, forbidden-API scan clean, app target builds. One concurrency warning in `StreakCelebrationView` (found in the merged build) is fixed.
 - Decisions made by the agents: a gap over 24 h misses `ceil(gap/24h) - 1` windows, one freeze each; a freeze is earned at each multiple of 7 chain dates, cap 2, kept across a reset; fall-back night (25 h) breaks a rolling-24 h streak unless a freeze is held; the planner takes a `ReminderContext` (SwiftLint's 5-parameter cap); reminder text is title "N day streak" plus a language-only body.
 - Not verified: how any streak view looks or animates (previews only), real notification delivery, `.completeFileProtection` (device only).
-**Wave 2 built, not pushed (branch `wave2`, on top of `wave1`).**
+**Wave 2 built (PR #41, on top of PR #40).**
 - S4 Home: flame chip, Today card (chapter rows, goal-met mark), week strip, freezes line, calm note when the log cannot be read; `HomeViewModel(dependencies:practiceLog:calendar:streakCalculator:)`, `ScenariosView(onOpenStreak:)`, `loadPractice()`; Reset also erases the practice log.
 - S5 session end and streak screen: `SessionViewModel(... practiceLog:calendar:onSessionRecorded:)` records a chapter once (summary reached, or early end with at least one answer); summary shows the burst, count, "Daily goal met", week strip and days to the next freeze; new `StreakView(viewModel:onDone:)` with `StreakViewModel(practiceLog:calendar:now:locale:dailyGoal:)`, month paging, deadline text.
 - S6 Settings: Daily practice section (reminders toggle, quiet hours, read-only daily goal 2), `PracticePreferences` store (device-wide file), notification pre-prompt (`NotificationsPromptView`, `NotificationsPromptRule.shouldAsk`), Reset also erases the practice log ("Your streak is cleared too.").
