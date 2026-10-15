@@ -100,7 +100,16 @@ class AccessibilityAuditCase: BLTUITestCase {
         requireExists(element, "the element to scroll to")
         var swipes = 0
         while !element.isHittable && swipes < 6 {
-            app.swipeUp()
+            if app.keyboards.firstMatch.exists {
+                // `swipeUp()` starts near the bottom of the screen, which is the keyboard while a name field has
+                // focus, so nothing would scroll. Drag inside the scroll view, from above the keyboard.
+                let scroller = app.scrollViews.firstMatch
+                let from = scroller.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.45))
+                let to = scroller.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
+                from.press(forDuration: 0.1, thenDragTo: to)
+            } else {
+                app.swipeUp()
+            }
             swipes += 1
         }
     }
