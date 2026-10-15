@@ -1,7 +1,7 @@
 # Progress: two-way course plan (plan.md)
 
 ## Daily practice (plan.md "Daily practice")
-**Wave 1 built, not pushed (branch `wave1`, from `plan/daily-practice`; PR #39 for the plan is still open).**
+**Wave 1 built (PR #40; the plan is merged as PR #39).**
 - S1 practice log and streak rules: `BLTProgress/Practice/` (`PracticeSession`, `PracticeLog`, file and in-memory stores, `StreakCalculator`, `StreakSummary`), 43 tests.
 - S2 reminder planning: `QuietHours`, `ReminderPlanner`, `ReminderScheduling`, `FakeReminderScheduler` in `BLTProgress/Practice/` and `BLTApp/BLTApp/LocalReminderScheduler.swift` (the only `UserNotifications` import), 19 tests.
 - S3 streak visuals: `BLTDesign` flame badge, week strip, month calendar, celebration, palette tones (amber, blue, green), labels, and every accessibility id Waves 2 and 3 need.
