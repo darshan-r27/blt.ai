@@ -1,7 +1,7 @@
 # Progress: two-way course plan (plan.md)
 
 ## Next (2026-10-16)
-- Cheat sheets (plan.md "Cheat sheets", ships as v0.5.0): the owner approved the plan on 2026-10-16. Wave 1 is built; next is Wave 2 (C4 screens, C5 Home).
+- Cheat sheets (plan.md "Cheat sheets", ships as v0.5.0): the owner approved the plan on 2026-10-16. Waves 1 and 2 are built; next is Wave 3 (C6 wiring, UI tests, docs).
 
 ## Cheat sheets (plan.md "Cheat sheets")
 **Wave 1 built (branch `cheat-wave1`, merged from `cheat-c1`, `cheat-c2`, `cheat-c3`).**
@@ -11,6 +11,13 @@
 - Check: full package tests passed and `swiftlint --strict` clean on the merged branch.
 - Deviations: none. Branches start from `origin/plan/cheat-sheets` because PR #46 is not merged.
 - Next action: Wave 2 (C4 screens, C5 Home).
+
+**Wave 2 built (branch `cheat-wave2`, merged from `cheat-c4`, `cheat-c5`).**
+- C4 screens: `BLTFeatures/CheatSheet/` (`CheatSheetView`, `CheatSheetViewModel`, `CheatSheetListView`, `CheatSheetListViewModel`, `CheatSheetCopy`). Plain list, not grouped by level. The list opens a sheet in its own full-screen cover, so wiring only needs the two `onClose` closures. Previews compile but were not viewed rendered.
+- C5 Home: "Cheat sheet" button on unlocked topic cards, `HomeCheatSheetsEntry` row, unlock recording in `HomeViewModel.load()` (stored OR currently complete), Reset erases the unlock store; 7 tests.
+- To wire in C6: `HomeViewModel(..., cheatSheetUnlocks:)` (built in `HomeFlow`), `ScenariosView(..., onOpenCheatSheet:, onOpenCheatSheetList:)`, `CheatSheetListViewModel(scenarios:unlockedTopicIDs:)`; topic id is `scenarioID.rawValue`.
+- Check: full package tests passed and `swiftlint --strict` clean on the merged branch. Deviations: none.
+- Next action: Wave 3 (C6 wiring, UI tests, docs and screenshots).
 
 ## Daily practice (plan.md "Daily practice")
 **Wave 1 built (PR #40; the plan is merged as PR #39).**
