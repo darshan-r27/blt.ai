@@ -38,8 +38,17 @@ final class HomeViewModel {
     /// so calmly. The file is never rewritten or erased because of it (only Reset erases).
     private(set) var practiceError: PracticeLogError?
 
+    /// The topics whose cheat sheet is open: every topic ever recorded as complete, plus every topic complete
+    /// right now (so one that has not been written down yet already shows its button). A topic that later slips
+    /// below 100% stays in the stored part, so it keeps its button.
+    private(set) var unlockedCheatSheetIDs: Set<String> = []
+    /// Set when the unlock record could not be read or written. Home still works; topics that are complete right
+    /// now still show their button, and the record is never rewritten or erased because of it (only Reset erases).
+    private(set) var cheatSheetUnlockError: CheatSheetUnlockError?
+
     private let dependencies: AppDependencies
     private let practiceLog: any PracticeLogStore
+    private let cheatSheetUnlocks: any CheatSheetUnlockStore
     /// The calendar that decides which dates "today" and "this week" are.
     let practiceCalendar: Calendar
     private let streakCalculator: StreakCalculator
@@ -49,16 +58,20 @@ final class HomeViewModel {
     ///     tests only; the composition root passes the course's real store.
     ///   - calendar: decides which dates "today" and "this week" are; carries the learner's time zone.
     ///   - streakCalculator: the streak rules, with the daily goal.
+    ///   - cheatSheetUnlocks: this course's record of topics whose cheat sheet is unlocked. The default is an
+    ///     empty in-memory record for previews and tests only; the composition root passes the course's real store.
     init(
         dependencies: AppDependencies,
         practiceLog: any PracticeLogStore = InMemoryPracticeLogStore(),
         calendar: Calendar = .current,
-        streakCalculator: StreakCalculator = StreakCalculator()
+        streakCalculator: StreakCalculator = StreakCalculator(),
+        cheatSheetUnlocks: any CheatSheetUnlockStore = InMemoryCheatSheetUnlockStore()
     ) {
         self.dependencies = dependencies
         self.practiceLog = practiceLog
         self.practiceCalendar = calendar
         self.streakCalculator = streakCalculator
+        self.cheatSheetUnlocks = cheatSheetUnlocks
     }
 
     /// The current time from the injected clock (the same one the streak is computed at).
@@ -160,6 +173,7 @@ final class HomeViewModel {
         }
         await loadExamHistory()
         await loadPractice()
+        await recordCheatSheetUnlocks()
         hasLoaded = true
     }
 
@@ -226,7 +240,35 @@ final class HomeViewModel {
             resetError = .eraseFailed
             return
         }
+        // So does the cheat sheet record: a sheet belongs to a topic the learner has finished.
+        do throws(CheatSheetUnlockError) {
+            try await cheatSheetUnlocks.erase()
+        } catch {
+            resetError = .eraseFailed
+            return
+        }
         resetError = nil
         await load()
+    }
+
+    /// Writes down every topic that is complete now (DECISIONS 033 rule), then sets `unlockedCheatSheetIDs` to
+    /// the written-down topics plus the complete ones. Topics finished before cheat sheets existed are caught
+    /// here on the first load. A read or write failure is kept in `cheatSheetUnlockError`, never repaired.
+    private func recordCheatSheetUnlocks() async {
+        let completeNow = Set(scenarios.filter(\.isComplete).map(\.id.rawValue))
+        var stored: Set<String> = []
+        do throws(CheatSheetUnlockError) {
+            stored = try await cheatSheetUnlocks.load()
+            try await cheatSheetUnlocks.add(completeNow)
+            cheatSheetUnlockError = nil
+        } catch {
+            cheatSheetUnlockError = error
+        }
+        unlockedCheatSheetIDs = stored.union(completeNow)
+    }
+
+    /// Whether this topic's cheat sheet is open, so its card shows the "Cheat sheet" button.
+    func isCheatSheetUnlocked(_ id: ScenarioID) -> Bool {
+        unlockedCheatSheetIDs.contains(id.rawValue)
     }
 }
