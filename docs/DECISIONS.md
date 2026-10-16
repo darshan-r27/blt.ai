@@ -500,3 +500,44 @@ The courses are long and the app had no reason to be opened tomorrow. Each cours
 - **Any network path** (push notifications, a server that knows the streak, sync between the two phones). The streak lives in a file on the phone.
 - **A changeable daily goal.** It is fixed at 2 and shown read-only in Settings.
 - **Not verified in the Simulator:** how the screens look and move (previews and audits only), real notification delivery at +20 h and +23 h and the quiet-hours shift, the system permission dialog, the flame haptic, VoiceOver order, and file protection. These need the owner's iPhone.
+
+## 048 — Cheat sheets: an auto-built word list for each finished topic
+**Status:** active — approved by the owner on 2026-10-16 (plan.md "Cheat sheets"); built in Waves 1 to 3 (chunks C1 to C6). Adds `cheatSheetUnlocks` to the frozen `AppDependencies`. Nothing here touches the network, so hard constraint 1 holds.
+
+After finishing a topic the learner wants a page to read and revise at any time. The owner first described it as a verb and adverb cheat sheet. It is built as a **word list** instead, and that is a deliberate difference.
+
+**What it is, and why it is not a verb and adverb sheet**
+
+- Each sheet lists the distinct words of one topic, in the order the topic teaches them, with their English meaning and the first phrase of the topic that uses the word (romanised only; native script is v2). It is computed at run time from the lesson data (`CheatSheetBuilder`, a pure function of a `Scenario`), so there is no new content and no new review.
+- The lesson files record, for each word, only the word and its English meaning (`tokens[].word`, `tokens[].english`). They have no part-of-speech label and no verb forms, so the app cannot honestly say which words are verbs or adverbs. Guessing would put unreviewed grammar claims in front of the learner, in a course whose whole promise is that nothing looks more checked than it is. A word list is true to the data; a verb sheet would not be.
+- A word with two meanings in the topic (for example a respectful and a casual sense) shows both, joined with "; ", and repeated words are listed once (case-insensitive).
+
+**Unlock: stored, not recomputed**
+
+- A topic's sheet opens the first time the topic is complete (every item's latest answer correct, the Home completion rule of 033) and **stays open**, even if the learner later slips below 100%. Recomputing "is it complete now" would take the sheet away after a wrong answer, which feels like a penalty in an app that is never red.
+- So the unlock is written down: `courses/<language>/cheatsheets.json` holds the ids of the topics that were ever complete (`FileCheatSheetUnlockStore`, the same pattern as the practice log: atomic write, `.completeFileProtection`, a damaged file reported and never overwritten, unknown newer schema refused). Home records a newly complete topic whenever it loads, so topics finished before this feature existed unlock on the first load. If the record cannot be read or written, topics that are complete right now still show their button.
+- A topic that is not finished shows a calm line, "Finish this topic to see its cheat sheet", never a warning.
+
+**Per language**
+
+- Each course has its own file. Reset progress clears the unlocks of the language being learned, like its streak (047); a sheet belongs to a topic the learner has finished. Imported lessons get sheets too, keyed by their topic id.
+
+**Honesty label and look**
+
+- A word shows "Unreviewed draft" if any phrase that uses it is unreviewed, the same rule as the lessons, so the sheet never looks more checked than the lesson it came from. The label is text, not only a colour.
+- Never red. VoiceOver reads each row as "word, meaning". No fixed heights and no capped text, so the accessibility audits at the largest text size pass; the rows are not lazy, because the audit cannot see rows that were never built.
+
+**Where it is**
+
+- A "Cheat sheet" button on each finished topic's card, and a "Cheat sheets" row on Home that opens a list of every topic of the language being learned, unlocked or locked. Both open full-screen covers from `HomeFlow`, closed by Close.
+
+**`AppDependencies` change (the frozen contract)**
+
+- `AppDependencies` gains `cheatSheetUnlocks: any CheatSheetUnlockStore`, per course, defaulting to `InMemoryCheatSheetUnlockStore()` so every existing call site compiles. It sits beside `practiceLog` for the same reason: it belongs to one course and Reset erases it.
+
+**Deliberately not done**
+
+- **A real verb and adverb sheet.** It needs an optional `kind` field (verb, adverb, other) on each word in the lesson files, drafted like the other content and reviewed by the native speakers, then the sheet grouped by kind. That is a content task per topic (about 24 topics today, 100 when finished) and would need its own plan. The sheet's data shape does not stand in its way.
+- A "Practise these words" button that starts a session on the topic, and native-script spelling beside each word (v2).
+- **Not verified in the Simulator:** how the sheet reads with VoiceOver on a real phone, and that the sheet still opens after the topic is no longer 100%, on a real learner's history. The second is a package test; the owner's check on the iPhone is in HANDOFF.
+

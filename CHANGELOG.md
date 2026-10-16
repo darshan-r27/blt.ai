@@ -2,7 +2,23 @@
 
 What changed in each version of blt.ai, newest first. These are project versions, not App Store versions (the app is not published; its Xcode version stays 1.0).
 
-**How versions work.** `MINOR` goes up for a feature a learner can see or a change to how the app is built (v0.4.0 is daily practice). `PATCH` goes up for a fix, a content or documentation change, or a tooling change. Every pull request that changes behaviour, a screen, storage, or the docs adds a line here under the version it ships in, and updates the README (features and screenshots) when a screen or a capability changed. The standing rule is in [`CLAUDE.md`](CLAUDE.md). Git tags (`v0.4.0` and so on) mark the merge commit of each version.
+**How versions work.** `MINOR` goes up for a feature a learner can see or a change to how the app is built (v0.4.0 is daily practice, v0.5.0 is cheat sheets). `PATCH` goes up for a fix, a content or documentation change, or a tooling change. Every pull request that changes behaviour, a screen, storage, or the docs adds a line here under the version it ships in, and updates the README (features and screenshots) when a screen or a capability changed. The standing rule is in [`CLAUDE.md`](CLAUDE.md). Git tags (`v0.4.0` and so on) mark the merge commit of each version.
+
+## v0.5.0 (2026-10-16): Cheat sheets (this PR, DECISIONS 048)
+
+**New for the learner**
+- **Cheat sheet button.** A topic's card gets a "Cheat sheet" button once the topic is complete. The sheet lists the topic's words in teaching order, each with its English meaning and the first phrase that uses it. Words from unreviewed phrases carry the "Unreviewed draft" label.
+- **It is a word list, not a verb and adverb list.** The lesson data records only a word and its meaning, with no part-of-speech label, so the app cannot say which words are verbs or adverbs. A real verb and adverb sheet is a later content task (see DECISIONS 048).
+- **It stays open.** A topic that slips below 100% later keeps its sheet.
+- **Cheat sheets list.** A "Cheat sheets" row on Home lists every topic of the language you are learning: finished topics open, the others say "Finish this topic to see its cheat sheet".
+- **Per language.** Each course has its own unlocks, and Reset progress clears the ones of the language you are on.
+
+**Under the hood**
+- New `courses/<language>/cheatsheets.json` (the ids of topics ever completed), written like the practice log; `AppDependencies.cheatSheetUnlocks` (per course, defaults to in-memory).
+- Reset progress in Settings erases the unlock record (`SettingsViewModel`).
+- `CheatSheetBuilder` is a pure function of a topic; `CheatSheetUnlockStore` has file and in-memory versions; new screens in `BLTFeatures/CheatSheet/`.
+- UI tests: a PR-tier happy path, `CheatSheetUITests` and `AccessibilityCheatSheetUITests` (default and largest text size) in the full tier, and a `--uitest-cheatsheets=<ids>` launch argument. No network, no new dependency.
+- README screenshots of the sheet and the list are added by the owner from a current build.
 
 ## v0.4.2 (2026-10-15): Quiet-hours pickers are labelled
 
