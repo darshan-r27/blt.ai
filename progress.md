@@ -1,7 +1,16 @@
 # Progress: two-way course plan (plan.md)
 
-## Next (2026-10-15)
-- Cheat sheets planned (plan.md "Cheat sheets"), waiting for the owner to approve; ships as v0.5.0.
+## Next (2026-10-16)
+- Cheat sheets (plan.md "Cheat sheets", ships as v0.5.0): the owner approved the plan on 2026-10-16. Wave 1 is built; next is Wave 2 (C4 screens, C5 Home).
+
+## Cheat sheets (plan.md "Cheat sheets")
+**Wave 1 built (branch `cheat-wave1`, merged from `cheat-c1`, `cheat-c2`, `cheat-c3`).**
+- C1 sheet builder: `BLTSession/CheatSheet/` (`CheatSheet`, `CheatSheetEntry`, `CheatSheetBuilder`), 8 tests. Entry id is the lowercased word; meanings are deduplicated case-insensitively and joined with "; "; blank words are skipped.
+- C2 unlock record: `BLTProgress/CheatSheet/` (`CheatSheetUnlockStore`, file and in-memory stores, `CheatSheetUnlockError`), same pattern as the practice log. `add` is idempotent.
+- C3 ids and labels: 11 new ids in `AccessibilityID` and `CheatSheetLabels` in `BLTDesign` (all Wave 2 and 3 ids added up front).
+- Check: full package tests passed and `swiftlint --strict` clean on the merged branch.
+- Deviations: none. Branches start from `origin/plan/cheat-sheets` because PR #46 is not merged.
+- Next action: Wave 2 (C4 screens, C5 Home).
 
 ## Daily practice (plan.md "Daily practice")
 **Wave 1 built (PR #40; the plan is merged as PR #39).**
