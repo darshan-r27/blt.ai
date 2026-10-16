@@ -83,15 +83,23 @@ struct DailyPracticeSection: View {
         }
     }
 
+    /// A menu picker shows only its value outside a form, so its name is drawn above it as plain text. The picker
+    /// keeps its own title as its VoiceOver label ("Quiet hours start, 10 PM").
     private func hourPicker(_ title: String, selection: Binding<Int>, id: String) -> some View {
-        Picker(title, selection: selection) {
-            ForEach(0..<24, id: \.self) { hour in
-                Text(model.hourLabel(hour)).tag(hour)
+        VStack(alignment: .leading, spacing: 0) {
+            Text(title)
+                .font(.subheadline)
+                .foregroundStyle(Palette(colorScheme).textSecondaryColor)
+            Picker(title, selection: selection) {
+                ForEach(0..<24, id: \.self) { hour in
+                    Text(model.hourLabel(hour)).tag(hour)
+                }
             }
+            .pickerStyle(.menu)
+            .labelsHidden()
+            .disabled(!model.canChangeQuietHours)
+            .accessibilityIdentifier(id)
         }
-        .pickerStyle(.menu)
-        .disabled(!model.canChangeQuietHours)
-        .accessibilityIdentifier(id)
     }
 
     private var quietStartBinding: Binding<Int> {
