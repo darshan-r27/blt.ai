@@ -1,5 +1,8 @@
 # Progress: two-way course plan (plan.md)
 
+## Next (2026-10-15)
+- Cheat sheets planned (plan.md "Cheat sheets"), waiting for the owner to approve; ships as v0.5.0.
+
 ## Daily practice (plan.md "Daily practice")
 **Wave 1 built (PR #40; the plan is merged as PR #39).**
 - S1 practice log and streak rules: `BLTProgress/Practice/` (`PracticeSession`, `PracticeLog`, file and in-memory stores, `StreakCalculator`, `StreakSummary`), 43 tests.

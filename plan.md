@@ -272,6 +272,101 @@ notifications, and a Settings "Daily practice" section: reminders on or off, qui
    evening before quiet hours; VoiceOver on the streak screen.
 6. CI green on each PR.
 
+## Cheat sheets: a revision list for each finished topic
+
+**Requested by the owner on 2026-10-15; the three design questions were answered the same day.** Ships as
+v0.5.0 (a feature). Decision record: DECISIONS 048 (written in the last chunk). Built by Sonnet agents in
+worktrees (at most three at a time), with `progress.md` updated after each wave.
+
+### Context
+After finishing a topic (for example "Getting around") the learner wants a page to read and revise at any time,
+like a cheat sheet, focused on the words they learned. Today a lesson file records, for each word, only the word
+and its English meaning (`tokens[].word`, `tokens[].english`). It has no verb or adverb label and no verb forms.
+
+### Decided with the owner
+- **Source: auto-built from the words already in the topic.** No new content and no new review. The sheet is a
+  plain word list with English meanings. It cannot say which words are verbs or adverbs, so it is **not** a verb
+  and adverb sheet (see "Improvements suggested").
+- **Unlock: only once the topic is complete, and it stays unlocked.** Before that, the topic shows a calm line
+  ("Finish this topic to see its cheat sheet"). A topic you later slip on keeps its sheet.
+- **Where: a "Cheat sheet" button on each finished topic's card, plus a "Cheat sheets" list on Home** showing
+  every topic of the language being learned, unlocked or locked.
+
+### Decisions I made (most likely to change first)
+1. **"Complete" means the topic reaches 100% once** (every item's latest answer correct, the same rule as the
+   Home completion bar, DECISIONS 033). Because completion can be lost later, the unlock is **stored**, not
+   recomputed: a small file `courses/<language>/cheatsheets.json` holds the topic ids that have ever been
+   completed. Home records a newly complete topic whenever it loads, so it also catches topics finished before
+   this feature existed.
+2. **Per language.** Each course has its own file. Reset progress for a language clears its unlocks, like its
+   streak. Imported lessons get sheets too, keyed by their topic id.
+3. **What a sheet shows.** Each distinct word of the topic, in the order the topic teaches it, with its English
+   meaning (several meanings are joined when the topic uses the word two ways, for example a respectful and a
+   casual sense), and one example: the first phrase of the topic that uses it. Romanised only, never native
+   script (that is v2). No search, no sorting: a topic has about 40 to 60 words.
+4. **Honesty label.** A word shows the "Unreviewed draft" label if any phrase that uses it is unreviewed, the
+   same rule as the lessons, so the sheet never looks more checked than the lesson it came from.
+5. **No Tamil or Telugu in code.** The sheet is computed at run time from the lesson data. Tests use the fake
+   `zz` fixtures (hard rule in `CLAUDE.md`).
+6. **Same look and rules as the rest of the app:** never red, VoiceOver reads each row as "word, meaning",
+   Dynamic Type to the largest size (no fixed heights, no capped text: the audit flags both), Reduce Motion
+   respected.
+
+### Improvements suggested beyond the request
+- **A real verb and adverb sheet later.** Add an optional `kind` field (verb, adverb, other) to each word in the
+  lesson files, drafted like the other content and reviewed by the native speakers, then group the sheet by
+  kind. That is a content task per topic (about 24 topics today, 100 when finished) and would need its own plan.
+- A "Practise these words" button that starts a session on the topic.
+- Native-script spelling beside each word (v2, already planned).
+
+### Chunks
+**Wave 1 (parallel, different files)**
+- **C1 Sheet builder.** `Packages/BLTKit/Sources/BLTSession/CheatSheet/*` (new: `CheatSheet`, `CheatSheetEntry`,
+  `CheatSheetBuilder`) and `Tests/BLTSessionTests/CheatSheet*`. Pure function of a `Scenario`: distinct words in
+  teaching order (case-insensitive), joined distinct meanings, first example phrase, review flag per word.
+  Constraints: no Tamil or Telugu text, no UI. Proof: `BLT_SIM="iPhone 17" scripts/test.sh package`
+  (cases: repeated word, one word two meanings, word only in a distractor-free token list, empty scenario,
+  mixed reviewed and unreviewed phrases).
+- **C2 Unlock record.** `Packages/BLTKit/Sources/BLTProgress/CheatSheet/*` (new: `CheatSheetUnlockStore`
+  protocol, `FileCheatSheetUnlockStore`, `InMemoryCheatSheetUnlockStore`) and `Tests/BLTProgressTests/CheatSheet*`.
+  Same pattern as `FilePracticeLogStore`: atomic write, `.completeFileProtection`, a damaged file is reported
+  and never overwritten, erase. Proof: package tests (round trip, damaged file, unknown newer schema, erase,
+  adding the same topic twice).
+- **C3 Ids and labels.** `Packages/BLTKit/Sources/BLTDesign/AccessibilityID.swift` and a pure
+  `CheatSheetLabels` in `BLTDesign` (row label "word, meaning", locked line, entry label), with every new id for
+  Waves 2 and 3 added up front. Proof: package tests.
+
+**Wave 2 (parallel; needs Wave 1)**
+- **C4 Screens.** `Packages/BLTKit/Sources/BLTFeatures/CheatSheet/*` (new: the sheet screen and its view model,
+  the list screen and its view model) and `Tests/BLTFeaturesTests/CheatSheet*`. Takes its dependencies through
+  its own init (catalog, progress snapshot, unlock store) with defaults for previews. Proof: package tests and
+  previews (light, dark, largest size).
+- **C5 Home.** `Packages/BLTKit/Sources/BLTFeatures/Home/*`: the "Cheat sheet" button on a finished topic's card,
+  the "Cheat sheets" entry, recording newly complete topics on load, Reset clearing the record. New init
+  parameters with defaults so existing call sites compile. Proof: package tests (unlock on first completion, stays
+  after slipping, topics completed before the feature unlock on first load, Reset clears).
+
+**Wave 3 (needs Wave 2)**
+- **C6 Wiring, UI tests and docs.** `AppDependencies` (or `PracticeServices`, whichever fits the existing
+  pattern), `RootView`/`HomeFlow`, `CompositionRoot` (`courses/<language>/cheatsheets.json`), `UITestLaunch` (a
+  launch argument that marks topics complete), UI tests, and the docs. UI tests: PR tier (a completed topic shows
+  the button and the sheet lists its words); full tier (locked line, the list, Reset clears, per-language
+  separation, audits at the default and the largest text size). Docs, as the "Keep GitHub current" rule
+  requires: DECISIONS 048, `docs/ARCHITECTURE.md`, `README.md` (feature text and new screenshots, retaken from a
+  current build), `CHANGELOG.md` v0.5.0, `docs/HANDOFF.md`, `progress.md`.
+
+### Verification
+1. `BLT_SIM="iPhone 17" scripts/test.sh package`
+2. `BLT_SIM="iPhone 17e" scripts/test.sh app --tier pr`, then each new full-tier class alone (the iPhone 17
+   simulator fails the two name-entry audits for reasons unrelated to this work)
+3. `swiftlint lint --config .swiftlint.yml --strict`, `bash scripts/check-forbidden-apis.sh` (run on a clean tree:
+   it flags the owner's local signing team in `project.pbxproj`), Release build and `scripts/check-binary.sh`
+4. Simulator: finish a topic, see its button, open the sheet; a topic in progress shows the locked line; the
+   list shows both; Reset clears
+5. Owner's iPhone: finish a topic and read its sheet; VoiceOver on a row; the sheet still opens after the topic
+   is no longer 100%
+6. CI green on each PR
+
 ## Deferred to v2 (planned, not dropped)
 This plan is v1.x: text-only multiple choice for two languages. Voice stays in v2, as already decided (024).
 The `script` field on every new phrase exists so v2 does not need a second review of 4,000 phrases.
