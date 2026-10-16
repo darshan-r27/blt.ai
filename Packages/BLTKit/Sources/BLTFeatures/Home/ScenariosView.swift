@@ -17,6 +17,8 @@ struct ScenariosView: View {
     private let onOpenSettings: () -> Void
     private let onOpenExam: () -> Void
     private let onOpenStreak: () -> Void
+    private let onOpenCheatSheet: (ScenarioID) -> Void
+    private let onOpenCheatSheetList: () -> Void
 
     init(
         viewModel: HomeViewModel,
@@ -26,7 +28,9 @@ struct ScenariosView: View {
         onOpenProgress: @escaping () -> Void,
         onOpenSettings: @escaping () -> Void,
         onOpenExam: @escaping () -> Void = {},
-        onOpenStreak: @escaping () -> Void = {}
+        onOpenStreak: @escaping () -> Void = {},
+        onOpenCheatSheet: @escaping (ScenarioID) -> Void = { _ in },
+        onOpenCheatSheetList: @escaping () -> Void = {}
     ) {
         self.viewModel = viewModel
         self.name = name
@@ -36,6 +40,8 @@ struct ScenariosView: View {
         self.onOpenSettings = onOpenSettings
         self.onOpenExam = onOpenExam
         self.onOpenStreak = onOpenStreak
+        self.onOpenCheatSheet = onOpenCheatSheet
+        self.onOpenCheatSheetList = onOpenCheatSheetList
     }
 
     var body: some View {
@@ -115,6 +121,8 @@ struct ScenariosView: View {
                     levelSection(section)
                 }
                 otherLessons
+                HomeCheatSheetsEntry(action: onOpenCheatSheetList)
+                    .padding(.top, 8)
                 if let entry = viewModel.examEntry {
                     ExamEntryCard(entry: entry, action: onOpenExam)
                         .padding(.top, 8)
@@ -139,9 +147,18 @@ struct ScenariosView: View {
         }
         if isExpanded {
             ForEach(section.lessons) { lesson in
-                ScenarioCard(summary: lesson) { onSelectScenario(lesson.id) }
+                lessonCard(lesson)
             }
         }
+    }
+
+    /// A lesson's card; the "Cheat sheet" button is there only once the topic is unlocked.
+    private func lessonCard(_ lesson: ScenarioSummary) -> some View {
+        ScenarioCard(
+            summary: lesson,
+            action: { onSelectScenario(lesson.id) },
+            onOpenCheatSheet: viewModel.isCheatSheetUnlocked(lesson.id) ? { onOpenCheatSheet(lesson.id) } : nil
+        )
     }
 
     /// Lessons with no level (older imports). Always shown, never collapsed.
@@ -156,7 +173,7 @@ struct ScenariosView: View {
                 .accessibilityAddTraits(.isHeader)
                 .accessibilityIdentifier(AccessibilityID.homeOtherLessons)
             ForEach(lessons) { lesson in
-                ScenarioCard(summary: lesson) { onSelectScenario(lesson.id) }
+                lessonCard(lesson)
             }
         }
     }
