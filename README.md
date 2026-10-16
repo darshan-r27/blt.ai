@@ -7,19 +7,24 @@
 <p>
   <img src="docs/images/intro.png" width="200" alt="Intro screen: blt.ai, learn the Tamil / Telugu people actually speak">
   <img src="docs/images/language.png" width="200" alt="Language step: choose Tamil or Telugu, changeable later in Settings">
-  <img src="docs/images/home.png" width="200" alt="Home screen for the Tamil course: a continue card and Level 1 lessons with completion bars">
+  <img src="docs/images/home.png" width="200" alt="Home for the Tamil course: a 7 day streak flame, the Today card with two chapters, the week strip with a freeze left, and the lessons by level">
   <img src="docs/images/question.png" width="200" alt="Question screen: an English prompt and four romanised Tamil options">
 </p>
 <p>
   <img src="docs/images/feedback.png" width="200" alt="Feedback screen: the correct phrase with a word-by-word gloss and a note on who to say it to">
-  <img src="docs/images/home-telugu.png" width="200" alt="Home screen for the Telugu course, with its own progress">
+  <img src="docs/images/streak.png" width="200" alt="Streak screen: the day count, a practise-by deadline, longest streak, freezes, daily goal days and a month calendar">
+  <img src="docs/images/settings-daily.png" width="200" alt="Settings: the Daily practice section with the reminders switch, quiet hours and the daily goal of two chapters">
+  <img src="docs/images/reminder-prompt.png" width="200" alt="The reminder prompt: a gentle reminder before the streak lapses, at most two notifications, never in quiet hours">
+</p>
+<p>
+  <img src="docs/images/home-telugu.png" width="200" alt="Home for the Telugu course, with its own 3 day streak and no freezes left">
   <img src="docs/images/question-telugu.png" width="200" alt="Question screen in the Telugu course, with an Unreviewed draft label">
   <img src="docs/images/settings-switch.png" width="200" alt="Settings: switching language asks first and keeps each language's progress">
 </p>
 
 This is a portfolio project. It runs on a simulator or your own iPhone; it is not on the App Store.
 
-> **Where it stands.** The two-course app is built: language choice, Home grouped by level, per-language progress, lesson import, and the final-exam screen. Levels 1 and 2 are drafted for both courses (480 phrases each). Only the first 100 Tamil phrases have been checked by a native speaker; the rest, and all of Telugu, are labelled "Unreviewed draft" in the app until the native reviewers check them. The remaining six levels, each course's exam paper, and the review passes are still ahead: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots are from the current build.
+> **Where it stands.** The two-course app is built: language choice, Home grouped by level, per-language progress, lesson import, daily practice (streaks, freezes and local reminders) and the final-exam screen. Levels 1 and 2 are drafted for both courses (480 phrases each). Only the first 100 Tamil phrases have been checked by a native speaker; the rest, and all of Telugu, are labelled "Unreviewed draft" in the app until the native reviewers check them. The remaining six levels, each course's exam paper, and the review passes are still ahead: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots are from the current build; what changed in each version is in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Who it is for
 
@@ -54,10 +59,14 @@ Two courses, each with Levels 1 and 2 (24 lessons, 480 phrases), and everything 
 - **Spaced repetition.** An SM-2 scheduler decides what comes back and when. A wrong answer is due again immediately, and a phrase counts as complete only when your latest answer was correct.
 - **Shuffled sessions.** Each session samples up to ten phrases and shuffles questions and options, so you cannot pass by remembering positions.
 - **Never red.** Mistakes are shown in a neutral tone. The app is meant to feel like practice, not a test.
-- **A daily habit, on the device.** Two practice sessions ("chapters") make a day. A streak counts the days you practised inside a rolling 24-hour window, with one freeze earned per 7 streak days (at most 2), a flame on Home, a week strip and a month calendar. Two gentle local reminders (20 and 23 hours after your last session) skip quiet hours, never mention a phrase or your name, and are asked for once, after your first finished session. Each language has its own streak. No account and no network. See [`docs/DECISIONS.md`](docs/DECISIONS.md) 047.
+- **A daily habit, on the device.** A "chapter" is one practice session of up to ten questions, and two chapters make a day.
+  - **Streak.** It counts the days you practised inside a rolling 24-hour window. One freeze is earned for every 7 streak days (you can hold 2), and it is used automatically when you miss a window. A broken streak resets calmly and your longest streak is kept.
+  - **Where you see it.** A flame chip, the Today card and a week strip on Home; the flame, the new count and "Daily goal met" at the end of a session; and a streak screen with the deadline, longest streak, freezes and a month calendar. With Reduce Motion on, nothing bounces.
+  - **Reminders.** At most two local notifications, 20 and 23 hours after your last session. A reminder that would fall in quiet hours (10 pm to 8 am unless you change them) arrives 30 minutes before they start instead. The text names the streak and the language, never a phrase or your name. You are asked once, after your first finished session, and Settings is the way back in.
+  - **Per language.** Each language has its own streak and log. Reset progress clears only the language you are on. Nothing leaves the device. See [`docs/DECISIONS.md`](docs/DECISIONS.md) 047.
 - **A final exam, not yet open.** The exam screen is built (100 questions, pass mark 75, no feedback during the sitting, score-only history). It appears on Home only when a course has an exam paper, and no paper is written yet.
 - **Lessons can be updated on the phone.** Settings has an "Import lessons" action: pick lesson files from the Files app and the app validates them (all or nothing) and starts using them straight away. See below.
-- **Private by construction.** The only personal data is a display name, stored on the device. There is no account, no network code, and no analytics.
+- **Private by construction.** The only personal data is a display name, stored on the device. There is no account, no network code, and no analytics. Reminders are local notifications scheduled by one file, `LocalReminderScheduler.swift`; nothing is sent anywhere.
 
 ## How it is built
 
@@ -66,12 +75,12 @@ Swift 6 with strict concurrency, SwiftUI, iOS 27. All logic lives in a local Swi
 ```mermaid
 graph TD
     App[BLTApp: app shell and composition root] --> Features
-    Features[BLTFeatures: screens and view models] --> Session
-    Features --> Design[BLTDesign: theme and components]
+    Features[BLTFeatures: screens, view models and daily practice flow] --> Session
+    Features --> Design[BLTDesign: theme, components and streak visuals]
     Features --> ContentStore[BLTContentStore: bundled and imported lesson loading]
     Features --> Progress
     Session[BLTSession: question builder, planner, state machine] --> Catalog
-    Session --> Progress[BLTProgress: scheduler, progress and profile stores]
+    Session --> Progress[BLTProgress: scheduler, progress, profile, practice log, streak rules, reminder planning]
     ContentStore --> Catalog
     Catalog[BLTCatalog: content loader and validator] --> Core
     Progress --> Core[BLTCore: identifiers, register, outcome]
@@ -83,10 +92,10 @@ A few choices worth a look:
 
 - **Content is data, not code.** The phrases live in [`content/tamil/`](content/tamil/) and `content/telugu/` (one folder per course) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures. This is what makes a second language a content job more than a code job.
 - **"No network" is enforced, not promised.** [`scripts/check-forbidden-apis.sh`](scripts/check-forbidden-apis.sh) fails the build if networking, audio or speech APIs, network entitlements or permission strings appear in the source. [`scripts/check-binary.sh`](scripts/check-binary.sh) then inspects the compiled app for the same thing.
-- **Storage is a few small JSON files per language** (progress, exam results, imported lessons) plus one profile file, written atomically with complete file protection. A damaged file is reported to the user and never silently overwritten.
+- **Storage is a few small JSON files per language** (progress, exam results, practice log, imported lessons) plus a profile file and a device-wide practice-settings file, written atomically with complete file protection. The streak is never stored: it is computed from the practice log each time, so there is one source of truth. A damaged file is reported to the user and never silently overwritten.
 - **No dependencies.** Nothing third-party is linked.
 - **Warnings are errors**, in the package and in the test script, and SwiftLint runs in strict mode.
-- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 46 decisions, including the ones that were later reversed and why.
+- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 47 decisions, including the ones that were later reversed and why.
 
 ## Where the content stands
 
@@ -144,9 +153,9 @@ The app was built with Claude Code, with the author acting as product owner and 
 
 ## Roadmap
 
-**Now: two courses.** The plan is [`plan.md`](plan.md); the reasoning is decisions 038 to 046.
+**Now: two courses.** The plan is [`plan.md`](plan.md); the reasoning is decisions 038 to 047.
 
-- Done: choosing and switching language with separate progress, a Telugu course beside the Tamil one from one syllabus, Home grouped by level, duplicate-phrase checks, the exam screen and the exam paper loader, and Levels 1 and 2 drafted for both courses.
+- Done: choosing and switching language with separate progress, a Telugu course beside the Tamil one from one syllabus, Home grouped by level, duplicate-phrase checks, the exam screen and the exam paper loader, daily practice with streaks, freezes and reminders, and Levels 1 and 2 drafted for both courses.
 - Next: native review of Levels 1 and 2 in both courses (the owner for Tamil, a native Telugu speaker for Telugu), then Levels 3 to 8 one level at a time, each drafted only after the previous level is reviewed. Each course will reach 8 levels, 100 lessons and 2,000 phrases, sharing English prompts wherever that is natural.
 - Last: one 100-question exam paper per language (pass mark 75), written after that language's Level 8 is reviewed.
 
@@ -166,7 +175,8 @@ The app was built with Claude Code, with the author acting as product owner and 
 | Document | What it is |
 | --- | --- |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How the code is organised: modules, data flow, storage, and what enforces the rules. |
-| [`plan.md`](plan.md) | The current plan: two courses, Tamil and Telugu. |
+| [`CHANGELOG.md`](CHANGELOG.md) | What changed in each version, newest first. |
+| [`plan.md`](plan.md) | The current plan: two courses, Tamil and Telugu, and daily practice. |
 | [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md) | The syllabus both courses follow: 8 levels, 100 lessons, exam blueprint. |
 | [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md) | How a native speaker reviews a course's lessons. |
 | [`docs/MVP_PLAN.md`](docs/MVP_PLAN.md) | The v1 plan: interfaces, work breakdown, review checklist. |
