@@ -123,4 +123,19 @@ final class HappyPathUITests: BLTUITestCase {
         requireExists(app.element(AXID.greeting), "Home after Done")
         requireGone(app.element(AXID.streakScreen), "the streak screen")
     }
+
+    // MARK: Cheat sheets (DECISIONS 048)
+
+    /// A launch argument marks the fixture topic complete, so the card shows its "Cheat sheet" button and the sheet
+    /// lists the topic's word with its meaning. Close returns to Home.
+    func testACompletedTopicShowsTheCheatSheetButtonAndTheSheetListsItsWords() {
+        let app = launchHomeWithUnlockedTopic()
+
+        openCheatSheet(app)
+
+        requireLabel(of: app.element(AXID.cheatSheetRow(0)), containing: "zz, zz gloss")
+        tap(app.buttons[AXID.cheatSheetClose], "Close on the sheet")
+        requireExists(app.element(AXID.greeting), "Home after Close")
+        requireGone(app.element(AXID.cheatSheetScreen), "the sheet")
+    }
 }

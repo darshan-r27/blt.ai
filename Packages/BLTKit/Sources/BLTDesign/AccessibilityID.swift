@@ -114,4 +114,45 @@ public enum AccessibilityID {
     public static let notificationsPrompt = "notifications.prompt"
     public static let notificationsPromptAllow = "notifications.prompt.allow"
     public static let notificationsPromptNotNow = "notifications.prompt.notNow"
+
+    // Cheat sheets (plan.md, "Cheat sheets"). Added up front so the screens (C4), Home (C5) and the wiring
+    // and UI tests (C6) do not collide on this file. A topic is passed as its scenario id.
+
+    /// The "Cheat sheets" entry on Home.
+    public static let homeCheatSheets = "home.cheatSheets"
+    /// The list screen of every topic's cheat sheet.
+    public static let cheatSheetList = "cheatSheet.list"
+    /// The sheet screen for one topic.
+    public static let cheatSheetScreen = "cheatSheet.screen"
+    /// The calm "Finish this topic to see its cheat sheet" line.
+    public static let cheatSheetLocked = "cheatSheet.locked"
+    /// The close control on the list screen.
+    public static let cheatSheetListClose = "cheatSheet.list.close"
+    /// The close or back control on the sheet screen.
+    public static let cheatSheetClose = "cheatSheet.close"
+
+    /// The "Cheat sheet" button on a finished topic's card.
+    public static func cheatSheetButton(_ scenarioID: String) -> String {
+        "cheatSheet.button.\(scenarioID)"
+    }
+
+    /// A topic's row in the list when its sheet is unlocked.
+    public static func cheatSheetListRow(_ scenarioID: String) -> String {
+        "cheatSheet.list.row.\(scenarioID)"
+    }
+
+    /// A topic's row in the list while it is still locked.
+    public static func cheatSheetListRowLocked(_ scenarioID: String) -> String {
+        "cheatSheet.list.row.locked.\(scenarioID)"
+    }
+
+    /// One word row of a sheet, by position in teaching order (from 0).
+    public static func cheatSheetRow(_ index: Int) -> String {
+        "cheatSheet.row.\(index)"
+    }
+
+    /// The "Unreviewed draft" label on one word row, by the same position.
+    public static func cheatSheetRowUnreviewed(_ index: Int) -> String {
+        "cheatSheet.row.unreviewed.\(index)"
+    }
 }

@@ -21,6 +21,14 @@ import os
 ///   --uitest-practice-<language>=<count>
 ///                                the same for one course (`tamil` or `telugu`); wins over --uitest-practice.
 ///                                Seeding replaces the course's log, so a test needs --uitest-reset too.
+///   --uitest-cheatsheets=<ids>   mark these topics complete in both courses' cheat sheet records, so a test sees
+///                                the "Cheat sheet" button without answering questions. <ids> is a comma-separated
+///                                list of topic ids (the fixtures' are `zz-scenario` for Tamil and
+///                                `zz-scenario-telugu` for Telugu; an id a course does not have is ignored by
+///                                its screens).
+///   --uitest-cheatsheets-<language>=<ids>
+///                                the same for one course; wins over --uitest-cheatsheets. Seeding replaces the
+///                                course's record, so a test needs --uitest-reset too.
 ///   --uitest-notifications=<status>
 ///                                what the fake reminder scheduler reports: `authorized` (the default, so no
 ///                                test meets the permission pre-prompt by accident), `notDetermined` or `denied`.
@@ -36,12 +44,23 @@ struct UITestLaunch {
     static let languagePrefix = "--uitest-language="
     static let practicePrefix = "--uitest-practice="
     static let notificationsPrefix = "--uitest-notifications="
+    static let cheatSheetsPrefix = "--uitest-cheatsheets="
     static let profileFileName = "uitest-profile.json"
     static let practicePreferencesFileName = "uitest-practice-preferences.json"
 
     /// `--uitest-practice-<language>=`, the per-course form of `practicePrefix`.
     static func practicePrefix(for language: CourseLanguage) -> String {
         "--uitest-practice-\(language.rawValue)="
+    }
+
+    /// `--uitest-cheatsheets-<language>=`, the per-course form of `cheatSheetsPrefix`.
+    static func cheatSheetsPrefix(for language: CourseLanguage) -> String {
+        "--uitest-cheatsheets-\(language.rawValue)="
+    }
+
+    /// `uitest-cheatsheets-<language>.json`, the fixture's cheat sheet unlock record.
+    static func cheatSheetsFileName(for language: CourseLanguage) -> String {
+        "uitest-cheatsheets-\(language.rawValue).json"
     }
 
     /// `uitest-practice-<language>.json`, the fixture's practice log.
@@ -59,7 +78,7 @@ struct UITestLaunch {
         "uitest-content-\(language.rawValue)"
     }
 
-    private static let logger = Logger(subsystem: "ai.blt.app", category: "uitest")
+    static let logger = Logger(subsystem: "ai.blt.app", category: "uitest")
 
     private let arguments: [String]
 
@@ -87,7 +106,10 @@ struct UITestLaunch {
 
         let stores = CourseStores(
             make: { FileProgressStore(fileURL: Self.fileURL(Self.progressFileName(for: $0))) },
-            makePractice: { FilePracticeLogStore(fileURL: Self.fileURL(Self.practiceLogFileName(for: $0))) }
+            makePractice: { FilePracticeLogStore(fileURL: Self.fileURL(Self.practiceLogFileName(for: $0))) },
+            makeCheatSheetUnlocks: {
+                FileCheatSheetUnlockStore(fileURL: Self.fileURL(Self.cheatSheetsFileName(for: $0)))
+            }
         )
         let practicePreferences = FilePracticePreferencesStore(fileURL: Self.fileURL(Self.practicePreferencesFileName))
         let profileStore = FileProfileStore(fileURL: Self.fileURL(Self.profileFileName))
@@ -100,6 +122,11 @@ struct UITestLaunch {
         for language in CourseLanguage.allCases {
             if let days = practiceDays(for: language) {
                 await seedStreak(stores.practiceLog(for: language), days: days)
+            }
+        }
+        for language in CourseLanguage.allCases {
+            if let ids = cheatSheetIDs(for: language) {
+                await seedCheatSheets(stores.cheatSheetUnlocks(for: language), ids: ids)
             }
         }
         return makeComposed(stores: stores, profileStore: profileStore, preferences: practicePreferences)
@@ -121,7 +148,8 @@ struct UITestLaunch {
                         store: stores.store(for: language),
                         scheduler: SM2Scheduler(),
                         now: now,
-                        practiceLog: stores.practiceLog(for: language)
+                        practiceLog: stores.practiceLog(for: language),
+                        cheatSheetUnlocks: stores.cheatSheetUnlocks(for: language)
                     ),
                     lessonImporter: Self.importer(for: language)
                 )
@@ -145,6 +173,7 @@ struct UITestLaunch {
             await erase(stores.store(for: language))
             await erase(Self.importer(for: language))
             await erase(stores.practiceLog(for: language))
+            await erase(stores.cheatSheetUnlocks(for: language))
         }
         await erase(profileStore)
         await reset(preferences)
@@ -189,7 +218,7 @@ struct UITestLaunch {
         return { noon.addingTimeInterval(Date.now.timeIntervalSince(started)) }
     }
 
-    private func value(after prefix: String) -> String? {
+    func value(after prefix: String) -> String? {
         arguments.first { $0.hasPrefix(prefix) }.map { String($0.dropFirst(prefix.count)) }
     }
 

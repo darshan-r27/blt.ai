@@ -26,8 +26,8 @@ graph TD
 |---|---|---|
 | `BLTCore` | Small shared value types: item and scenario ids, register, addressee, outcome, review status | none |
 | `BLTCatalog` | Reads lesson JSON, validates it (schema, option rules, size limits) and builds the `Catalog`. Never throws: every problem becomes a `ContentIssue` and valid items survive | Core |
-| `BLTProgress` | SM-2 scheduling, the progress file and the profile (name and language) file, exam results, the practice log, streak rules and reminder planning, with typed errors, and the one-time clean-up of the old build's files | Core |
-| `BLTSession` | Picks what to ask (due items first, then new ones, shuffled), builds the four options, and runs the question state machine | Core, Catalog, Progress |
+| `BLTProgress` | SM-2 scheduling, the progress file and the profile (name and language) file, exam results, the practice log, streak rules and reminder planning, the cheat sheet unlock record, with typed errors, and the one-time clean-up of the old build's files | Core |
+| `BLTSession` | Picks what to ask (due items first, then new ones, shuffled), builds the four options, runs the question state machine, and builds a topic's cheat sheet | Core, Catalog, Progress |
 | `BLTDesign` | Palette, theme, buttons, shimmer, completion bar, and the streak visuals (flame, week strip, month calendar, celebration). The only module that knows colours | Core |
 | `BLTContentStore` | Finds the bundled lesson files, layers the learner's imported lessons over them, and validates and stores imports | Core, Catalog |
 | `BLTFeatures` | The screens (intro, onboarding, Home, session, Progress, Settings) and their view models | all of the above |
@@ -52,6 +52,7 @@ graph TD
 | `courses/<language>/content/` | That language's imported lesson files and their manifest (only after an import) |
 | `courses/<language>/exam.json` | That language's final-exam attempts (score only) |
 | `courses/<language>/practice.json` | That language's log of finished practice sessions (time and number answered). The streak, freezes and goal days are computed from it, never stored |
+| `courses/<language>/cheatsheets.json` | That language's cheat sheet unlocks: the ids of topics that were ever complete, so a sheet stays open after a later slip |
 | `practice-preferences.json` | Device-wide daily-practice settings: reminders on or off, quiet hours, whether the notification prompt was already shown |
 
 `<language>` is `tamil` or `telugu`. The bundled lessons are `content/<language>/` inside the app. The display name is the only personal data and it never leaves the device ([`DECISIONS.md`](DECISIONS.md) 030).
@@ -119,10 +120,24 @@ The learner's language is only known after the profile has loaded, so the root i
 
 Reset progress for a language also clears that language's practice log and cancels its reminders. The preferences file is not progress, so Reset keeps it.
 
+## Cheat sheets
+
+[`DECISIONS.md`](DECISIONS.md) 048 and `plan.md` ("Cheat sheets") describe it. A finished topic gets a word list: its distinct words in teaching order, each with its English meaning and first example phrase. It is a word list, not a verb and adverb list, because the lesson data has no part-of-speech labels.
+
+| Piece | Where | How it works |
+|---|---|---|
+| Sheet builder | `BLTSession/CheatSheet/` (`CheatSheet`, `CheatSheetEntry`, `CheatSheetBuilder`) | A pure function of a `Scenario`: distinct words (case-insensitive) in teaching order, meanings joined with "; ", the first phrase that uses the word, and an unreviewed flag if any phrase using it is unreviewed |
+| Unlock record | `BLTProgress/CheatSheet/` (`CheatSheetUnlockStore`, `FileCheatSheetUnlockStore`, `InMemoryCheatSheetUnlockStore`, `CheatSheetUnlockError`) | The ids of topics ever complete, in `courses/<language>/cheatsheets.json`. Written atomically with complete file protection; a damaged file is reported and never overwritten; `add` is idempotent |
+| Labels and ids | `BLTDesign` (`CheatSheetLabels`, the `cheatSheet*` ids in `AccessibilityID`) | Every visible string and VoiceOver label is a pure function, unit-tested |
+| Screens | `BLTFeatures/CheatSheet/` (`CheatSheetView`, `CheatSheetListView`, their view models, `CheatSheetCopy`) and `BLTFeatures/Home/` (the card button, `HomeCheatSheetsEntry`) | Plain, non-lazy lists so the accessibility audit sees every row; the list opens a sheet in its own full-screen cover |
+| Wiring | `AppDependencies.cheatSheetUnlocks`, `HomeFlow`, `CompositionRoot` | `HomeViewModel.load()` records every topic that is complete now and sets `unlockedCheatSheetIDs` to the stored plus the complete ones. `HomeFlow` presents the sheet (card button) and the list (Home row) as full-screen covers closed by Close |
+
+Reset progress for a language also erases that language's cheat sheet record. The sheet is computed from the lesson data each time it opens, so nothing about its words is stored.
+
 ## Where v2 (voice) plugs in
 
 `Outcome` and the session state machine are deliberately independent of how an answer is produced, so spoken answers can feed the same scheduler. The audio and scoring modules described in the PRD do not exist yet and would be new modules beside these. Their constraints (on-device speech only, audio deleted after each attempt) are written down in `CLAUDE.md` and [`SECURITY.md`](SECURITY.md) so they apply from the first line.
 
 ## Decisions
 
-The reasoning behind each choice is in [`DECISIONS.md`](DECISIONS.md), including the ones that were reversed. Decisions 024 to 037 define v1; 038 to 046 define the two-course plan; 047 defines daily practice.
+The reasoning behind each choice is in [`DECISIONS.md`](DECISIONS.md), including the ones that were reversed. Decisions 024 to 037 define v1; 038 to 046 define the two-course plan; 047 defines daily practice; 048 defines cheat sheets.

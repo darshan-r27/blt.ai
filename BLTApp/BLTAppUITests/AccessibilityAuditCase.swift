@@ -19,6 +19,9 @@ class AccessibilityAuditCase: BLTUITestCase {
         /// Today card, the end-of-session summary with its streak block, the streak screen, and the Daily
         /// practice section of Settings.
         case homeWithStreak, sessionSummary, streakScreen, settingsDailyPractice
+        /// Cheat sheets (DECISIONS 048): one sheet, the list with a finished topic, the list with a topic still
+        /// locked.
+        case cheatSheet, cheatSheetList, cheatSheetListLocked
     }
 
     /// Launches fresh and navigates to `screen`.
@@ -54,7 +57,24 @@ class AccessibilityAuditCase: BLTUITestCase {
             return openSettingsScreen(screen, largestText: largestText)
         case .homeWithStreak, .sessionSummary, .streakScreen, .settingsDailyPractice:
             return openPracticeScreen(screen, largestText: largestText)
+        case .cheatSheet, .cheatSheetList, .cheatSheetListLocked:
+            return openCheatSheetScreen(screen, largestText: largestText)
         }
+    }
+
+    private func openCheatSheetScreen(_ screen: Screen, largestText: Bool) -> XCUIApplication {
+        if screen == .cheatSheetListLocked {
+            let app = launchHome(largestText: largestText)
+            openCheatSheetList(app)
+            return app
+        }
+        let app = launchHomeWithUnlockedTopic(largestText: largestText)
+        if screen == .cheatSheet {
+            openCheatSheet(app)
+        } else {
+            openCheatSheetList(app)
+        }
+        return app
     }
 
     private func openPracticeScreen(_ screen: Screen, largestText: Bool) -> XCUIApplication {

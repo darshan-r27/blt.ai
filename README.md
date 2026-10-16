@@ -20,11 +20,13 @@
   <img src="docs/images/home-telugu.png" width="200" alt="Home for the Telugu course, with its own 3 day streak and no freezes left">
   <img src="docs/images/question-telugu.png" width="200" alt="Question screen in the Telugu course, with an Unreviewed draft label">
   <img src="docs/images/settings-switch.png" width="200" alt="Settings: switching language asks first and keeps each language's progress">
+  <img src="docs/images/cheatsheet.png" width="200" alt="A cheat sheet: the words of a finished topic in teaching order, each with its English meaning">
+  <img src="docs/images/cheatsheet-list.png" width="200" alt="The Cheat sheets list: finished topics open their sheet, topics still ahead say to finish them first">
 </p>
 
 This is a portfolio project. It runs on a simulator or your own iPhone; it is not on the App Store.
 
-> **Where it stands.** The two-course app is built: language choice, Home grouped by level, per-language progress, lesson import, daily practice (streaks, freezes and local reminders) and the final-exam screen. Levels 1 and 2 are drafted for both courses (480 phrases each). Only the first 100 Tamil phrases have been checked by a native speaker; the rest, and all of Telugu, are labelled "Unreviewed draft" in the app until the native reviewers check them. The remaining six levels, each course's exam paper, and the review passes are still ahead: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots are from the current build; what changed in each version is in [`CHANGELOG.md`](CHANGELOG.md).
+> **Where it stands.** The two-course app is built: language choice, Home grouped by level, per-language progress, lesson import, daily practice (streaks, freezes and local reminders), cheat sheets for finished topics and the final-exam screen. Levels 1 and 2 are drafted for both courses (480 phrases each). Only the first 100 Tamil phrases have been checked by a native speaker; the rest, and all of Telugu, are labelled "Unreviewed draft" in the app until the native reviewers check them. The remaining six levels, each course's exam paper, and the review passes are still ahead: see [Roadmap](#roadmap), [`plan.md`](plan.md) and [`docs/COURSE_SYLLABUS.md`](docs/COURSE_SYLLABUS.md). The screenshots are from the current build; what changed in each version is in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Who it is for
 
@@ -64,6 +66,7 @@ Two courses, each with Levels 1 and 2 (24 lessons, 480 phrases), and everything 
   - **Where you see it.** A flame chip, the Today card and a week strip on Home; the flame, the new count and "Daily goal met" at the end of a session; and a streak screen with the deadline, longest streak, freezes and a month calendar. With Reduce Motion on, nothing bounces.
   - **Reminders.** At most two local notifications, 20 and 23 hours after your last session. A reminder that would fall in quiet hours (10 pm to 8 am unless you change them) arrives 30 minutes before they start instead. The text names the streak and the language, never a phrase or your name. You are asked once, after your first finished session, and Settings is the way back in.
   - **Per language.** Each language has its own streak and log. Reset progress clears only the language you are on. Nothing leaves the device. See [`docs/DECISIONS.md`](docs/DECISIONS.md) 047.
+- **Cheat sheets.** When you finish a topic, its card gets a "Cheat sheet" button: a plain word list of that topic, in the order it teaches them, each word with its English meaning and an example phrase. It is a word list, not a verb and adverb list, because the lesson data has no part-of-speech labels. A sheet stays open even if you later slip below 100%. A "Cheat sheets" row on Home lists every topic, with a calm "Finish this topic to see its cheat sheet" for the ones still ahead. Words from unreviewed phrases carry the "Unreviewed draft" label. Each language has its own, and Reset progress clears them. See [`docs/DECISIONS.md`](docs/DECISIONS.md) 048.
 - **A final exam, not yet open.** The exam screen is built (100 questions, pass mark 75, no feedback during the sitting, score-only history). It appears on Home only when a course has an exam paper, and no paper is written yet.
 - **Lessons can be updated on the phone.** Settings has an "Import lessons" action: pick lesson files from the Files app and the app validates them (all or nothing) and starts using them straight away. See below.
 - **Private by construction.** The only personal data is a display name, stored on the device. There is no account, no network code, and no analytics. Reminders are local notifications scheduled by one file, `LocalReminderScheduler.swift`; nothing is sent anywhere.
@@ -75,12 +78,12 @@ Swift 6 with strict concurrency, SwiftUI, iOS 27. All logic lives in a local Swi
 ```mermaid
 graph TD
     App[BLTApp: app shell and composition root] --> Features
-    Features[BLTFeatures: screens, view models and daily practice flow] --> Session
+    Features[BLTFeatures: screens, view models, daily practice flow and cheat sheets] --> Session
     Features --> Design[BLTDesign: theme, components and streak visuals]
     Features --> ContentStore[BLTContentStore: bundled and imported lesson loading]
     Features --> Progress
-    Session[BLTSession: question builder, planner, state machine] --> Catalog
-    Session --> Progress[BLTProgress: scheduler, progress, profile, practice log, streak rules, reminder planning]
+    Session[BLTSession: question builder, planner, state machine, cheat sheet builder] --> Catalog
+    Session --> Progress[BLTProgress: scheduler, progress, profile, practice log, streak rules, reminder planning, cheat sheet unlocks]
     ContentStore --> Catalog
     Catalog[BLTCatalog: content loader and validator] --> Core
     Progress --> Core[BLTCore: identifiers, register, outcome]
@@ -92,10 +95,10 @@ A few choices worth a look:
 
 - **Content is data, not code.** The phrases live in [`content/tamil/`](content/tamil/) and `content/telugu/` (one folder per course) as JSON and are validated when loaded. No Swift file contains Tamil text; tests use obviously fake fixtures. This is what makes a second language a content job more than a code job.
 - **"No network" is enforced, not promised.** [`scripts/check-forbidden-apis.sh`](scripts/check-forbidden-apis.sh) fails the build if networking, audio or speech APIs, network entitlements or permission strings appear in the source. [`scripts/check-binary.sh`](scripts/check-binary.sh) then inspects the compiled app for the same thing.
-- **Storage is a few small JSON files per language** (progress, exam results, practice log, imported lessons) plus a profile file and a device-wide practice-settings file, written atomically with complete file protection. The streak is never stored: it is computed from the practice log each time, so there is one source of truth. A damaged file is reported to the user and never silently overwritten.
+- **Storage is a few small JSON files per language** (progress, exam results, practice log, cheat sheet unlocks, imported lessons) plus a profile file and a device-wide practice-settings file, written atomically with complete file protection. The streak is never stored: it is computed from the practice log each time, so there is one source of truth. A damaged file is reported to the user and never silently overwritten.
 - **No dependencies.** Nothing third-party is linked.
 - **Warnings are errors**, in the package and in the test script, and SwiftLint runs in strict mode.
-- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 47 decisions, including the ones that were later reversed and why.
+- **Decisions are written down.** [`docs/DECISIONS.md`](docs/DECISIONS.md) records 48 decisions, including the ones that were later reversed and why.
 
 ## Where the content stands
 
@@ -153,9 +156,9 @@ The app was built with Claude Code, with the author acting as product owner and 
 
 ## Roadmap
 
-**Now: two courses.** The plan is [`plan.md`](plan.md); the reasoning is decisions 038 to 047.
+**Now: two courses.** The plan is [`plan.md`](plan.md); the reasoning is decisions 038 to 048.
 
-- Done: choosing and switching language with separate progress, a Telugu course beside the Tamil one from one syllabus, Home grouped by level, duplicate-phrase checks, the exam screen and the exam paper loader, daily practice with streaks, freezes and reminders, and Levels 1 and 2 drafted for both courses.
+- Done: choosing and switching language with separate progress, a Telugu course beside the Tamil one from one syllabus, Home grouped by level, duplicate-phrase checks, the exam screen and the exam paper loader, daily practice with streaks, freezes and reminders, a cheat sheet for each finished topic, and Levels 1 and 2 drafted for both courses.
 - Next: native review of Levels 1 and 2 in both courses (the owner for Tamil, a native Telugu speaker for Telugu), then Levels 3 to 8 one level at a time, each drafted only after the previous level is reviewed. Each course will reach 8 levels, 100 lessons and 2,000 phrases, sharing English prompts wherever that is natural.
 - Last: one 100-question exam paper per language (pass mark 75), written after that language's Level 8 is reviewed.
 

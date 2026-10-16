@@ -1,7 +1,33 @@
 # Progress: two-way course plan (plan.md)
 
-## Next (2026-10-15)
-- Cheat sheets planned (plan.md "Cheat sheets"), waiting for the owner to approve; ships as v0.5.0.
+## Next (2026-10-16)
+- Cheat sheets (plan.md "Cheat sheets", ships as v0.5.0): the owner approved the plan on 2026-10-16. All three waves are built; next is the owner retaking two screenshots and checking on an iPhone (HANDOFF item 0a).
+
+## Cheat sheets (plan.md "Cheat sheets")
+**Wave 1 built (branch `cheat-wave1`, merged from `cheat-c1`, `cheat-c2`, `cheat-c3`).**
+- C1 sheet builder: `BLTSession/CheatSheet/` (`CheatSheet`, `CheatSheetEntry`, `CheatSheetBuilder`), 8 tests. Entry id is the lowercased word; meanings are deduplicated case-insensitively and joined with "; "; blank words are skipped.
+- C2 unlock record: `BLTProgress/CheatSheet/` (`CheatSheetUnlockStore`, file and in-memory stores, `CheatSheetUnlockError`), same pattern as the practice log. `add` is idempotent.
+- C3 ids and labels: 11 new ids in `AccessibilityID` and `CheatSheetLabels` in `BLTDesign` (all Wave 2 and 3 ids added up front).
+- Check: full package tests passed and `swiftlint --strict` clean on the merged branch.
+- Deviations: none. Branches start from `origin/plan/cheat-sheets` because PR #46 is not merged.
+- Next action: Wave 2 (C4 screens, C5 Home).
+
+**Wave 2 built (branch `cheat-wave2`, merged from `cheat-c4`, `cheat-c5`).**
+- C4 screens: `BLTFeatures/CheatSheet/` (`CheatSheetView`, `CheatSheetViewModel`, `CheatSheetListView`, `CheatSheetListViewModel`, `CheatSheetCopy`). Plain list, not grouped by level. The list opens a sheet in its own full-screen cover, so wiring only needs the two `onClose` closures. Previews compile but were not viewed rendered.
+- C5 Home: "Cheat sheet" button on unlocked topic cards, `HomeCheatSheetsEntry` row, unlock recording in `HomeViewModel.load()` (stored OR currently complete), Reset erases the unlock store; 7 tests.
+- To wire in C6: `HomeViewModel(..., cheatSheetUnlocks:)` (built in `HomeFlow`), `ScenariosView(..., onOpenCheatSheet:, onOpenCheatSheetList:)`, `CheatSheetListViewModel(scenarios:unlockedTopicIDs:)`; topic id is `scenarioID.rawValue`.
+- Check: full package tests passed and `swiftlint --strict` clean on the merged branch. Deviations: none.
+- Next action: Wave 3 (C6 wiring, UI tests, docs and screenshots).
+
+**Wave 3 built (branch `cheat-c6`).**
+- C6 wiring: `AppDependencies.cheatSheetUnlocks` (per course, default in-memory), `CourseStores` builds one `FileCheatSheetUnlockStore` per language (`courses/<language>/cheatsheets.json` in `CompositionRoot`), `HomeFlow` passes it to `HomeViewModel(cheatSheetUnlocks:)` and presents `CheatSheetView` (card button) and `CheatSheetListView` (Home row) as full-screen covers closed by `onClose`. C5 made Home's own reset erase the store, but the Reset button in Settings (the path a learner uses) did not; the UI test found it. Fixed: `SettingsViewModel` now erases `dependencies.cheatSheetUnlocks` too (`SettingsViewModel+CheatSheets.swift`, 2 new package tests, `SettingsCheatSheetResetTests`).
+- Launch argument `--uitest-cheatsheets=<ids>` (comma-separated topic ids, both courses) and `--uitest-cheatsheets-<language>=<ids>` (one course; wins). The fixtures' ids are `zz-scenario` (Tamil) and `zz-scenario-telugu`. Seeding replaces the course's record; `--uitest-reset` also erases it. The helpers live in `UITestLaunch+CheatSheets.swift` because `UITestLaunch` hit SwiftLint's 250-line type limit.
+- UI tests: PR tier `HappyPathUITests` (1 new); full tier `CheatSheetUITests` (5) and `AccessibilityCheatSheetUITests` (6 audits, 2 reachability checks), with three new `Screen` cases in `AccessibilityAuditCase`. No audit was weakened and no exception was added.
+- Docs: DECISIONS 048 (count 47 to 48 in the README), ARCHITECTURE "Cheat sheets" and the storage table, README (feature, storage, roadmap, two screenshot links), CHANGELOG v0.5.0, HANDOFF item 0a.
+- Decisions: the fixture topic has one word (`zz`), so the UI tests check one row and the unreviewed label; longer sheets are covered by the package tests. The audit of a locked list is a separate screen case from the unlocked list.
+- Deviations: the Settings Reset fix above (a bug in C5's scope, found by the C6 UI test). Two images (`docs/images/cheatsheet.png`, `cheatsheet-list.png`) are linked in the README but not created here, as instructed.
+- Known and not ours: `testChangeNameSheetAudit` failed once in the full PR-tier run (behind-the-sheet Settings text, the flake described in `AccessibilityAuditCase`) and passed alone on rerun.
+- Next action: owner retakes the two screenshots from a current build, checks on an iPhone (HANDOFF 0a), merges, and says when to tag `v0.5.0`.
 
 ## Daily practice (plan.md "Daily practice")
 **Wave 1 built (PR #40; the plan is merged as PR #39).**
