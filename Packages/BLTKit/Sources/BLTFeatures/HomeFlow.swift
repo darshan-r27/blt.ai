@@ -43,6 +43,8 @@ struct HomeFlow: View {
     @State private var session: SessionSelection?
     @State private var isTakingExam = false
     @State private var isShowingStreak = false
+    @State private var cheatSheet: CheatSheetViewModel?
+    @State private var isShowingCheatSheetList = false
     @State private var notificationsPrompt: NotificationsPromptViewModel?
 
     init(
@@ -75,7 +77,8 @@ struct HomeFlow: View {
         _home = State(initialValue: HomeViewModel(
             dependencies: dependencies,
             practiceLog: dependencies.practiceLog,
-            streakCalculator: streakCalculator
+            streakCalculator: streakCalculator,
+            cheatSheetUnlocks: dependencies.cheatSheetUnlocks
         ))
     }
 
@@ -89,7 +92,9 @@ struct HomeFlow: View {
                 onOpenProgress: { path.append(.progress) },
                 onOpenSettings: { path.append(.settings) },
                 onOpenExam: { isTakingExam = true },
-                onOpenStreak: { isShowingStreak = true }
+                onOpenStreak: { isShowingStreak = true },
+                onOpenCheatSheet: openCheatSheet,
+                onOpenCheatSheetList: { isShowingCheatSheetList = true }
             )
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
@@ -128,6 +133,18 @@ struct HomeFlow: View {
                 onDone: { isShowingStreak = false }
             )
             .bltScreenBackground()
+        }
+        .fullScreenCover(item: $cheatSheet) { sheet in
+            CheatSheetView(viewModel: sheet, onClose: { cheatSheet = nil })
+        }
+        .fullScreenCover(isPresented: $isShowingCheatSheetList) {
+            CheatSheetListView(
+                viewModel: CheatSheetListViewModel(
+                    scenarios: dependencies.catalog.scenarios,
+                    unlockedTopicIDs: Set(home.unlockedCheatSheetIDs.map { ScenarioID(rawValue: $0) })
+                ),
+                onClose: { isShowingCheatSheetList = false }
+            )
         }
         .fullScreenCover(item: $session, onDismiss: sessionDidEnd) { selection in
             SessionView(viewModel: sessionViewModel(for: selection.scenario), onDone: { session = nil })
@@ -170,6 +187,13 @@ struct HomeFlow: View {
         // An ID that is not in the catalog cannot come from a card, which is built from the same catalog.
         guard let scenario = dependencies.catalog.scenarios.first(where: { $0.id == id }) else { return }
         session = SessionSelection(scenario: scenario)
+    }
+
+    /// The "Cheat sheet" button on a finished topic's card. Only unlocked topics have the button, so a topic
+    /// that is not in the catalog cannot arrive here.
+    private func openCheatSheet(_ id: ScenarioID) {
+        guard let scenario = dependencies.catalog.scenarios.first(where: { $0.id == id }) else { return }
+        cheatSheet = CheatSheetViewModel(scenario: scenario)
     }
 
     private func reloadHome() {

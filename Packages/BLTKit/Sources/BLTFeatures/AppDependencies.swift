@@ -24,6 +24,9 @@ public struct AppDependencies: Sendable {
     /// pieces (reminder choices, the notification scheduler) are not here: they belong to the device, not to
     /// a course, and travel in `PracticeServices`.
     public let practiceLog: any PracticeLogStore
+    /// Where this course's cheat sheet unlocks are kept: the topics that were ever complete, so a sheet stays open
+    /// after a later slip (DECISIONS 048). Per course, like `store`, and Reset progress erases it.
+    public let cheatSheetUnlocks: any CheatSheetUnlockStore
 
     public init(
         catalog: Catalog,
@@ -33,7 +36,8 @@ public struct AppDependencies: Sendable {
         now: @escaping @Sendable () -> Date,
         examResults: any ExamResultStore = InMemoryExamResultStore(),
         examPaper: ExamPaper? = nil,
-        practiceLog: any PracticeLogStore = InMemoryPracticeLogStore()
+        practiceLog: any PracticeLogStore = InMemoryPracticeLogStore(),
+        cheatSheetUnlocks: any CheatSheetUnlockStore = InMemoryCheatSheetUnlockStore()
     ) {
         self.catalog = catalog
         self.language = language
@@ -43,5 +47,6 @@ public struct AppDependencies: Sendable {
         self.examResults = examResults
         self.examPaper = examPaper
         self.practiceLog = practiceLog
+        self.cheatSheetUnlocks = cheatSheetUnlocks
     }
 }

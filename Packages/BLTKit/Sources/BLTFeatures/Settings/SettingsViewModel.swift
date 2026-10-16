@@ -100,6 +100,7 @@ final class SettingsViewModel {
 
     private let store: any ProgressStore
     fileprivate let examResults: any ExamResultStore
+    let cheatSheetUnlocks: any CheatSheetUnlockStore
     private let profileStore: any ProfileStore
     private let onDidReset: @MainActor () -> Void
     private let onDidChangeName: @MainActor (UserProfile) -> Void
@@ -142,6 +143,7 @@ final class SettingsViewModel {
         totalCount = dependencies.catalog.totalItemCount
         store = dependencies.store
         examResults = dependencies.examResults
+        cheatSheetUnlocks = dependencies.cheatSheetUnlocks
         self.profileStore = profileStore
         self.profileName = profileName
         self.onDidReset = onDidReset
@@ -253,6 +255,10 @@ final class SettingsViewModel {
             return
         }
         guard await erasePracticeLog() else {
+            resetOutcome = .failed(.eraseFailed)
+            return
+        }
+        guard await eraseCheatSheetUnlocks() else {
             resetOutcome = .failed(.eraseFailed)
             return
         }

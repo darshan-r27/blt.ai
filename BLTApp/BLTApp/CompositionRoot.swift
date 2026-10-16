@@ -83,6 +83,11 @@ struct CompositionRoot {
         courseDirectory(for: language).appending(path: "practice.json", directoryHint: .notDirectory)
     }
 
+    /// Where one language's cheat sheet unlocks are kept: the topics that were ever complete (DECISIONS 048).
+    static func cheatSheetUnlocksFileURL(for language: CourseLanguage) -> URL {
+        courseDirectory(for: language).appending(path: "cheatsheets.json", directoryHint: .notDirectory)
+    }
+
     /// The learner's reminder choices. One file for the device, not one per course: the choices are about the
     /// phone (notifications, quiet hours), not about a language.
     static var practicePreferencesFileURL: URL {
@@ -110,7 +115,8 @@ struct CompositionRoot {
         let stores = CourseStores(
             make: { FileProgressStore(fileURL: Self.progressFileURL(for: $0)) },
             makeExam: { FileExamResultStore(fileURL: Self.examResultsFileURL(for: $0)) },
-            makePractice: { FilePracticeLogStore(fileURL: Self.practiceLogFileURL(for: $0)) }
+            makePractice: { FilePracticeLogStore(fileURL: Self.practiceLogFileURL(for: $0)) },
+            makeCheatSheetUnlocks: { FileCheatSheetUnlockStore(fileURL: Self.cheatSheetUnlocksFileURL(for: $0)) }
         )
         return Composed(
             profileStore: FileProfileStore(fileURL: Self.supportFileURL(named: "profile.json")),
@@ -125,7 +131,8 @@ struct CompositionRoot {
                         now: { Date.now },
                         examResults: stores.examStore(for: language),
                         examPaper: Self.loadExamPaper(for: language, catalog: catalog),
-                        practiceLog: stores.practiceLog(for: language)
+                        practiceLog: stores.practiceLog(for: language),
+                        cheatSheetUnlocks: stores.cheatSheetUnlocks(for: language)
                     ),
                     lessonImporter: ImportedContentStore(
                         directory: Self.importedContentDirectory(for: language),
@@ -210,13 +217,19 @@ struct CourseStores: Sendable {
     private let teluguExam: any ExamResultStore
     private let tamilPractice: any PracticeLogStore
     private let teluguPractice: any PracticeLogStore
+    private let tamilCheatSheets: any CheatSheetUnlockStore
+    private let teluguCheatSheets: any CheatSheetUnlockStore
 
-    /// `makeExam` and `makePractice` default to in-memory stores: only the shipping composition keeps exam
-    /// attempts and practice sessions on disk (a UI-test launch keeps its own separate practice files).
+    /// `makeExam`, `makePractice` and `makeCheatSheetUnlocks` default to in-memory stores: only the shipping
+    /// composition keeps exam attempts, practice sessions and cheat sheet unlocks on disk (a UI-test launch keeps
+    /// its own separate files).
     init(
         make: (CourseLanguage) -> any ProgressStore,
         makeExam: (CourseLanguage) -> any ExamResultStore = { _ in InMemoryExamResultStore() },
-        makePractice: (CourseLanguage) -> any PracticeLogStore = { _ in InMemoryPracticeLogStore() }
+        makePractice: (CourseLanguage) -> any PracticeLogStore = { _ in InMemoryPracticeLogStore() },
+        makeCheatSheetUnlocks: (CourseLanguage) -> any CheatSheetUnlockStore = { _ in
+            InMemoryCheatSheetUnlockStore()
+        }
     ) {
         tamil = make(.tamil)
         telugu = make(.telugu)
@@ -224,6 +237,8 @@ struct CourseStores: Sendable {
         teluguExam = makeExam(.telugu)
         tamilPractice = makePractice(.tamil)
         teluguPractice = makePractice(.telugu)
+        tamilCheatSheets = makeCheatSheetUnlocks(.tamil)
+        teluguCheatSheets = makeCheatSheetUnlocks(.telugu)
     }
 
     func store(for language: CourseLanguage) -> any ProgressStore {
@@ -244,6 +259,13 @@ struct CourseStores: Sendable {
         switch language {
         case .tamil: tamilPractice
         case .telugu: teluguPractice
+        }
+    }
+
+    func cheatSheetUnlocks(for language: CourseLanguage) -> any CheatSheetUnlockStore {
+        switch language {
+        case .tamil: tamilCheatSheets
+        case .telugu: teluguCheatSheets
         }
     }
 }

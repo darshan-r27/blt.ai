@@ -77,7 +77,9 @@ enum SettingsPracticeSupport {
         return calendar
     }
 
-    static func dependencies() -> AppDependencies {
+    static func dependencies(
+        cheatSheetUnlocks: any CheatSheetUnlockStore = InMemoryCheatSheetUnlockStore()
+    ) -> AppDependencies {
         let item = Item(
             id: ItemID(rawValue: "zz-s1"),
             scenarioID: ScenarioID(rawValue: "zz-s"),
@@ -105,7 +107,8 @@ enum SettingsPracticeSupport {
             language: .tamil,
             store: InMemoryProgressStore(initial: .empty),
             scheduler: SM2Scheduler(),
-            now: { Date(timeIntervalSince1970: 1_000_000) }
+            now: { Date(timeIntervalSince1970: 1_000_000) },
+            cheatSheetUnlocks: cheatSheetUnlocks
         )
     }
 
