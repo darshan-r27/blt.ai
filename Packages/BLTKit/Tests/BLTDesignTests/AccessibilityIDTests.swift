@@ -65,4 +65,36 @@ struct AccessibilityIDTests {
         #expect(AccessibilityID.weekStripDay(3) == "weekStrip.day.3")
         #expect(AccessibilityID.homeChapter(1) != AccessibilityID.homeChapter(2))
     }
+
+    private let cheatSheetIDs: [String] = [
+        AccessibilityID.homeCheatSheets, AccessibilityID.cheatSheetList, AccessibilityID.cheatSheetScreen,
+        AccessibilityID.cheatSheetLocked, AccessibilityID.cheatSheetListClose, AccessibilityID.cheatSheetClose,
+        AccessibilityID.cheatSheetButton("zz"), AccessibilityID.cheatSheetListRow("zz"),
+        AccessibilityID.cheatSheetListRowLocked("zz"),
+        AccessibilityID.cheatSheetRow(0), AccessibilityID.cheatSheetRowUnreviewed(0)
+    ]
+
+    @Test func cheatSheetIDsAreDistinctAndNamespaced() {
+        #expect(Set(cheatSheetIDs).count == cheatSheetIDs.count)
+        #expect(cheatSheetIDs.allSatisfy { $0.contains(".") && !$0.contains(" ") })
+    }
+
+    @Test func cheatSheetIDsDoNotCollideWithExistingOnes() {
+        let existing = dailyPracticeIDs + [
+            AccessibilityID.feedbackCorrect, AccessibilityID.badgeUnreviewed, AccessibilityID.continueButton,
+            AccessibilityID.homeExam, AccessibilityID.homeLevel(1), AccessibilityID.scenarioCard("zz"),
+            AccessibilityID.homeContinueLesson, AccessibilityID.homeOtherLessons
+        ]
+        #expect(Set(existing).isDisjoint(with: cheatSheetIDs))
+    }
+
+    @Test func parameterisedCheatSheetIDsIncludeTheirArgument() {
+        #expect(AccessibilityID.cheatSheetButton("zz-topic") == "cheatSheet.button.zz-topic")
+        #expect(AccessibilityID.cheatSheetListRow("zz-topic") == "cheatSheet.list.row.zz-topic")
+        #expect(AccessibilityID.cheatSheetListRowLocked("zz-topic") == "cheatSheet.list.row.locked.zz-topic")
+        #expect(AccessibilityID.cheatSheetRow(4) == "cheatSheet.row.4")
+        #expect(AccessibilityID.cheatSheetRowUnreviewed(4) == "cheatSheet.row.unreviewed.4")
+        #expect(AccessibilityID.cheatSheetListRow("a") != AccessibilityID.cheatSheetListRowLocked("a"))
+        #expect(AccessibilityID.cheatSheetRow(1) != AccessibilityID.cheatSheetRow(2))
+    }
 }
