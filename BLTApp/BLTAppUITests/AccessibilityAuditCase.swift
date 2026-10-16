@@ -164,8 +164,13 @@ class AccessibilityAuditCase: BLTUITestCase {
     private static let behindSheetPrefixes = [
         "These lessons were drafted",
         "Every lesson was checked",
+        "Daily practice",
+        "Reminders",
         "Up to two short reminders",
+        "Quiet hours start",
+        "Quiet hours end",
         "No reminders during quiet hours",
+        "Daily goal",
         "Tamil",
         "Telugu"
     ]
