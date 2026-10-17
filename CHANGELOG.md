@@ -4,7 +4,11 @@ What changed in each version of blt.ai, newest first. These are project versions
 
 **How versions work.** `MINOR` goes up for a feature a learner can see or a change to how the app is built (v0.4.0 is daily practice, v0.5.0 is cheat sheets). `PATCH` goes up for a fix, a content or documentation change, or a tooling change. Every pull request that changes behaviour, a screen, storage, or the docs adds a line here under the version it ships in, and updates the README (features and screenshots) when a screen or a capability changed. The standing rule is in [`CLAUDE.md`](CLAUDE.md). Git tags (`v0.4.0` and so on) mark the merge commit of each version.
 
-## v0.5.0 (2026-10-16): Cheat sheets (this PR, DECISIONS 048)
+## v0.5.1 (2026-10-17): Cheat sheet screenshots
+
+- README screenshots of the cheat sheet and the Cheat sheets list, taken from a current build on iPhone 17e (they were linked in v0.5.0 but not yet added).
+
+## v0.5.0 (2026-10-16): Cheat sheets (PR #47, DECISIONS 048)
 
 **New for the learner**
 - **Cheat sheet button.** A topic's card gets a "Cheat sheet" button once the topic is complete. The sheet lists the topic's words in teaching order, each with its English meaning and the first phrase that uses it. Words from unreviewed phrases carry the "Unreviewed draft" label.
