@@ -112,6 +112,7 @@ struct ScenariosView: View {
                 if let next = viewModel.continueLesson {
                     ContinueLessonCard(summary: next) { onSelectScenario(next.id) }
                 }
+                HomeCheatSheetsEntry(action: onOpenCheatSheetList)
                 Text("Scenarios")
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(Palette(colorScheme).textPrimaryColor)
@@ -121,8 +122,6 @@ struct ScenariosView: View {
                     levelSection(section)
                 }
                 otherLessons
-                HomeCheatSheetsEntry(action: onOpenCheatSheetList)
-                    .padding(.top, 8)
                 if let entry = viewModel.examEntry {
                     ExamEntryCard(entry: entry, action: onOpenExam)
                         .padding(.top, 8)

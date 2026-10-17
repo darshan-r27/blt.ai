@@ -1,7 +1,7 @@
 # Progress: two-way course plan (plan.md)
 
 ## Next (2026-10-16)
-- Cheat sheets (plan.md "Cheat sheets", ships as v0.5.0): the owner approved the plan on 2026-10-16. Merged as #46 and #47, tagged `v0.4.2` and `v0.5.0`. Screenshots added in v0.5.1. Next: the owner checks on an iPhone (HANDOFF item 0a).
+- Cheat sheets (plan.md "Cheat sheets", ships as v0.5.0): the owner approved the plan on 2026-10-16. Merged as #46 and #47, tagged `v0.4.2` and `v0.5.0`. Screenshots added in v0.5.1; the Cheat sheets row moved to the top of Home in v0.5.2. Next: the owner checks on an iPhone (HANDOFF item 0a).
 
 ## Cheat sheets (plan.md "Cheat sheets")
 **Wave 1 built (branch `cheat-wave1`, merged from `cheat-c1`, `cheat-c2`, `cheat-c3`).**

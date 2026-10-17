@@ -4,6 +4,11 @@ What changed in each version of blt.ai, newest first. These are project versions
 
 **How versions work.** `MINOR` goes up for a feature a learner can see or a change to how the app is built (v0.4.0 is daily practice, v0.5.0 is cheat sheets). `PATCH` goes up for a fix, a content or documentation change, or a tooling change. Every pull request that changes behaviour, a screen, storage, or the docs adds a line here under the version it ships in, and updates the README (features and screenshots) when a screen or a capability changed. The standing rule is in [`CLAUDE.md`](CLAUDE.md). Git tags (`v0.4.0` and so on) mark the merge commit of each version.
 
+## v0.5.2 (2026-10-17): Cheat sheets entry moved to the top of Home
+
+- The "Cheat sheets" row on Home now sits just under the Today and Continue cards, above the topic list. It was at the very bottom, below all 24 topics, and easy to miss.
+- README Home screenshots retaken from a current build.
+
 ## v0.5.1 (2026-10-17): Cheat sheet screenshots
 
 - README screenshots of the cheat sheet and the Cheat sheets list, taken from a current build on iPhone 17e (they were linked in v0.5.0 but not yet added).
